@@ -58,6 +58,7 @@ let buildsRoot = null; // always the object like buildsRoot[class][spec][mode]
 let buildsMeta = { generatedAt: null, sources: null };
 let talentTreesRoot = null; // keyed by "Class|||Spec"
 let talentAllocations = {}; // keyed by node id
+let talentTreesLoadedCount = 0;
 
 // =========================
 // Helpers
@@ -320,7 +321,12 @@ function showTalentBuilder(className, specName) {
 
   if (!tree) {
     talentBuilderHint.hidden = false;
-    talentBuilderHint.textContent = "No local talent tree data for this spec yet.";
+    if (talentTreesLoadedCount === 0) {
+      talentBuilderHint.textContent =
+        "No talent tree data loaded yet. Add BLIZZARD_CLIENT_ID and BLIZZARD_CLIENT_SECRET repo secrets, then run the Update Builds workflow to generate talent-trees.json.";
+    } else {
+      talentBuilderHint.textContent = "No local talent tree data for this spec yet.";
+    }
     builderToolbar.hidden = true;
     talentTreeGrid.innerHTML = "";
     talentAllocations = {};
@@ -340,10 +346,12 @@ async function loadTalentTrees() {
     if (!res.ok) throw new Error(`HTTP ${res.status} loading talent-trees.json`);
     const payload = await res.json();
     talentTreesRoot = normalizeTalentTrees(payload);
+    talentTreesLoadedCount = Object.keys(talentTreesRoot).length;
     console.log("talent-trees.json loaded", { specs: Object.keys(talentTreesRoot).length });
   } catch (err) {
     console.error("Failed to load talent-trees.json", err);
     talentTreesRoot = {};
+    talentTreesLoadedCount = 0;
   }
 }
 
