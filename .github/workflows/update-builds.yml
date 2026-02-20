@@ -1,0 +1,42 @@
+﻿name: Update Builds
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-builds:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: Tools/update-builds
+
+      - name: Run updater
+        run: node update-builds.js
+        working-directory: Tools/update-builds
+
+      - name: Commit and push builds.json
+        run: |
+          if git diff --quiet -- builds.json; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add builds.json
+          git commit -m "chore: update builds.json"
+          git push
