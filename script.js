@@ -39,6 +39,10 @@ const buildNotes = document.getElementById("buildNotes");
 
 const exportString = document.getElementById("exportString");
 const copyBtn = document.getElementById("copyBtn");
+const talentBuilderWrap = document.getElementById("talentBuilderWrap");
+const talentBuilderTitle = document.getElementById("talentBuilderTitle");
+const talentBuilderFrame = document.getElementById("talentBuilderFrame");
+const talentBuilderLink = document.getElementById("talentBuilderLink");
 
 // =========================
 // App State
@@ -131,6 +135,7 @@ function renderSpecButtons(className) {
 
   buildTypeWrap.hidden = true;
   clearSelectedTabs();
+  resetTalentBuilder();
 
   resetBuildCard("Pick a spec, then a build type.");
 }
@@ -185,6 +190,41 @@ function modeLabel(mode) {
   if (mode === "raid") return "Raid";
   if (mode === "pvp") return "PvP";
   return mode;
+}
+
+function slugifyName(input) {
+  return String(input || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function talentBuilderUrl(className, specName) {
+  const classSlug = slugifyName(className);
+  const specSlug = slugifyName(specName);
+  if (!classSlug || !specSlug) return null;
+  return `https://www.wowhead.com/talent-calc/${classSlug}/${specSlug}`;
+}
+
+function resetTalentBuilder() {
+  talentBuilderWrap.hidden = true;
+  talentBuilderTitle.textContent = "Talent Builder";
+  talentBuilderFrame.src = "about:blank";
+  talentBuilderLink.removeAttribute("href");
+}
+
+function showTalentBuilder(className, specName) {
+  const url = talentBuilderUrl(className, specName);
+  if (!url) {
+    resetTalentBuilder();
+    return;
+  }
+
+  talentBuilderWrap.hidden = false;
+  talentBuilderTitle.textContent = `${specName} Talent Builder`;
+  talentBuilderFrame.src = url;
+  talentBuilderLink.href = url;
 }
 
 function showBuildFromData(className, specName, mode) {
@@ -250,6 +290,7 @@ specButtons.addEventListener("click", (e) => {
   const aoeBtn = buildTabs.querySelector('[data-mode="aoe"]');
   if (aoeBtn) aoeBtn.classList.add("selected");
 
+  showTalentBuilder(selectedClass, selectedSpec);
   showBuildFromData(selectedClass, selectedSpec, selectedMode);
 });
 
