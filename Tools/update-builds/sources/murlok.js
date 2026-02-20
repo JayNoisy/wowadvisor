@@ -164,3 +164,59 @@ export async function getMurlokPvpBuilds() {
 
   return builds;
 }
+
+export async function getMurlokPveBuilds() {
+  const modes = [
+    { mode: "aoe", activity: "m+", titleSuffix: "AoE (Mythic+)" },
+    { mode: "raid", activity: "raid", titleSuffix: "Raid" }
+  ];
+  const roles = ["dps", "healer", "tank"];
+
+  const builds = [];
+
+  for (const { mode, activity, titleSuffix } of modes) {
+    for (const role of roles) {
+      let meta = null;
+      try {
+        meta = await getMeta(role, activity);
+      } catch {
+        continue;
+      }
+
+      const updatedAt = meta?.UpdatedAt ?? null;
+      const ranks = Array.isArray(meta?.Ranks) ? meta.Ranks : [];
+
+      for (const r of ranks) {
+        const classSlug = r?.ClassSlug;
+        const specSlug = r?.SpecializationSlug;
+        if (!classSlug || !specSlug) continue;
+
+        let guide = null;
+        try {
+          guide = await getGuide(classSlug, specSlug, "", activity);
+        } catch {
+          continue;
+        }
+
+        const exportString = findExportStringDeep(guide);
+        if (!exportString) continue;
+
+        const className = slugToName(classSlug);
+        const specName = slugToName(specSlug);
+
+        builds.push({
+          className,
+          specName,
+          mode,
+          title: `${specName} — ${titleSuffix}`,
+          source: `Murlok.io (${activity})`,
+          updated: guide?.UpdatedAt ?? updatedAt,
+          exportString,
+          notes: []
+        });
+      }
+    }
+  }
+
+  return builds;
+}

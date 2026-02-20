@@ -305,6 +305,7 @@ function pickBoss0OrFirst(specTable) {
 
 export async function getPeaversBuilds() {
   const latest = await fetchJson(`${GITHUB_API}/repos/${REPO}/releases/latest`);
+  const releasePublishedAt = latest?.published_at ?? null;
   const assets = Array.isArray(latest.assets) ? latest.assets : [];
   const zipAsset = assets.find(a => typeof a.name === "string" && a.name.toLowerCase().endsWith(".zip"));
   if (!zipAsset?.browser_download_url) throw new Error(`No .zip asset found for ${REPO}`);
@@ -396,7 +397,7 @@ export async function getPeaversBuilds() {
           source: picked.source
             ? `PeaversTalentsData/${picked.source}`
             : `PeaversTalentsData/${path.basename(file, ".lua")}`,
-          updated: picked.updated || null,
+          updated: picked.updated || classEntry.updated || db.updated || releasePublishedAt || null,
           exportString: talent,
           notes: []
         });
