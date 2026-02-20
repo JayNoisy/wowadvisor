@@ -204,7 +204,7 @@ function showBuildFromData(className, specName, mode) {
   buildTitle.textContent = build.title || `${specName} — ${modeLabel(mode)}`;
 
   const metaParts = [];
-  metaParts.push(`Updated: ${build.updated || "Unknown"}`);
+  if (build.updated) metaParts.push(`Updated: ${build.updated}`);
   if (buildsMeta.generatedAt) metaParts.push(`Generated: ${buildsMeta.generatedAt}`);
 
   buildMeta.textContent = metaParts.join(" • ");
