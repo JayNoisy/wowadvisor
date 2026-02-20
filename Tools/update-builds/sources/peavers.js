@@ -8,6 +8,8 @@ import luaparse from "luaparse";
 
 const REPO = "Peavers-Warcraft/PeaversTalentsData";
 const GITHUB_API = "https://api.github.com";
+const CURSEFORGE_API = "https://www.curseforge.com/api/v1";
+const CURSEFORGE_MOD_ID = 1198986; // PeaversTalentsData
 
 const DEBUG = false;
 
@@ -56,11 +58,11 @@ function modeFromFilename(filePath) {
 async function fetchJson(url) {
   const res = await fetch(url, {
     headers: {
-      accept: "application/vnd.github+json",
+      accept: "application/json",
       "user-agent": "wow-builds-updater"
     }
   });
-  if (!res.ok) throw new Error(`GitHub API ${res.status}: ${url}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
   return res.json();
 }
 
@@ -304,15 +306,46 @@ function pickBoss0OrFirst(specTable) {
 }
 
 export async function getPeaversBuilds() {
-  const latest = await fetchJson(`${GITHUB_API}/repos/${REPO}/releases/latest`);
-  const releasePublishedAt = latest?.published_at ?? null;
-  const assets = Array.isArray(latest.assets) ? latest.assets : [];
-  const zipAsset = assets.find(a => typeof a.name === "string" && a.name.toLowerCase().endsWith(".zip"));
-  if (!zipAsset?.browser_download_url) throw new Error(`No .zip asset found for ${REPO}`);
+  let zipDownloadUrl = null;
+  let freshnessUpdatedAt = null;
+  let downloadedName = "peavers-data.zip";
+
+  // Primary feed: CurseForge file list (often updates before GitHub releases).
+  try {
+    const filesPayload = await fetchJson(
+      `${CURSEFORGE_API}/mods/${CURSEFORGE_MOD_ID}/files?page=1&pageSize=20&sort=dateCreated&sortDescending=true`
+    );
+    const files = Array.isArray(filesPayload?.data) ? filesPayload.data : [];
+    const newestZip = files.find((f) => {
+      const name = String(f?.fileName || f?.displayName || "").toLowerCase();
+      return name.endsWith(".zip");
+    });
+
+    if (newestZip?.id) {
+      zipDownloadUrl =
+        newestZip.downloadUrl ||
+        `${CURSEFORGE_API}/mods/${CURSEFORGE_MOD_ID}/files/${newestZip.id}/download`;
+      freshnessUpdatedAt = newestZip.fileDate || newestZip.dateCreated || null;
+      downloadedName = newestZip.fileName || downloadedName;
+    }
+  } catch {
+    // Fall through to GitHub release feed.
+  }
+
+  // Fallback feed: latest GitHub release asset.
+  if (!zipDownloadUrl) {
+    const latest = await fetchJson(`${GITHUB_API}/repos/${REPO}/releases/latest`);
+    freshnessUpdatedAt = latest?.published_at ?? null;
+    const assets = Array.isArray(latest.assets) ? latest.assets : [];
+    const zipAsset = assets.find(a => typeof a.name === "string" && a.name.toLowerCase().endsWith(".zip"));
+    if (!zipAsset?.browser_download_url) throw new Error(`No .zip asset found for ${REPO}`);
+    zipDownloadUrl = zipAsset.browser_download_url;
+    downloadedName = zipAsset.name || downloadedName;
+  }
 
   const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "peavers-"));
-  const zipPath = path.join(tmpDir, zipAsset.name);
-  await downloadFile(zipAsset.browser_download_url, zipPath);
+  const zipPath = path.join(tmpDir, downloadedName);
+  await downloadFile(zipDownloadUrl, zipPath);
 
   const extractDir = path.join(tmpDir, "unzipped");
   await fs.mkdir(extractDir, { recursive: true });
@@ -397,7 +430,7 @@ export async function getPeaversBuilds() {
           source: picked.source
             ? `PeaversTalentsData/${picked.source}`
             : `PeaversTalentsData/${path.basename(file, ".lua")}`,
-          updated: picked.updated || classEntry.updated || db.updated || releasePublishedAt || null,
+          updated: picked.updated || classEntry.updated || db.updated || freshnessUpdatedAt || null,
           exportString: talent,
           notes: []
         });
