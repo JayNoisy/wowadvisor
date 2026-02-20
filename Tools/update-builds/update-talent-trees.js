@@ -47,6 +47,14 @@ async function fetchApi(url, token) {
   return res.json();
 }
 
+async function tryFetchApi(url, token) {
+  try {
+    return await fetchApi(url, token);
+  } catch {
+    return null;
+  }
+}
+
 function toName(v) {
   if (!v) return "";
   if (typeof v === "string") return v;
@@ -119,14 +127,51 @@ async function resolveTalentTreePayload(specPayload, token) {
 
 async function buildTalentTrees() {
   const token = await getAccessToken();
-  // `playable-class/index` has intermittently returned 404s.
-  // Use specialization index as the primary entrypoint and resolve class from each spec.
-  const specIndex = await fetchApi(`https://${REGION}.api.blizzard.com/data/wow/playable-specialization/index`, token);
-  const specRefs = Array.isArray(specIndex?.character_specializations)
-    ? specIndex.character_specializations
-    : Array.isArray(specIndex?.specializations)
-      ? specIndex.specializations
-      : [];
+  // Try multiple discovery routes because Blizzard endpoints can vary by region/api version.
+  let specRefs = [];
+
+  const specIndex = await tryFetchApi(
+    `https://${REGION}.api.blizzard.com/data/wow/playable-specialization/index`,
+    token
+  );
+  if (specIndex) {
+    specRefs = Array.isArray(specIndex?.character_specializations)
+      ? specIndex.character_specializations
+      : Array.isArray(specIndex?.specializations)
+        ? specIndex.specializations
+        : [];
+  }
+
+  if (specRefs.length === 0) {
+    const classIndex = await tryFetchApi(
+      `https://${REGION}.api.blizzard.com/data/wow/playable-class/index`,
+      token
+    );
+    const classRefs = Array.isArray(classIndex?.classes) ? classIndex.classes : [];
+
+    for (const classRef of classRefs) {
+      const classHref = classRef?.key?.href || classRef?.href;
+      if (!classHref) continue;
+      const classPayload = await tryFetchApi(classHref, token);
+      if (!classPayload) continue;
+      const refs = Array.isArray(classPayload?.specializations) ? classPayload.specializations : [];
+      specRefs.push(...refs);
+    }
+  }
+
+  if (specRefs.length === 0) {
+    // Last resort: enumerate known class IDs directly.
+    const knownClassIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+    for (const classId of knownClassIds) {
+      const classPayload = await tryFetchApi(
+        `https://${REGION}.api.blizzard.com/data/wow/playable-class/${classId}`,
+        token
+      );
+      if (!classPayload) continue;
+      const refs = Array.isArray(classPayload?.specializations) ? classPayload.specializations : [];
+      specRefs.push(...refs);
+    }
+  }
 
   const classNameCache = new Map();
   const specs = [];
