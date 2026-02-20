@@ -119,36 +119,63 @@ async function resolveTalentTreePayload(specPayload, token) {
 
 async function buildTalentTrees() {
   const token = await getAccessToken();
-  const classIndex = await fetchApi(`https://${REGION}.api.blizzard.com/data/wow/playable-class/index`, token);
-  const classRefs = Array.isArray(classIndex?.classes) ? classIndex.classes : [];
+  // `playable-class/index` has intermittently returned 404s.
+  // Use specialization index as the primary entrypoint and resolve class from each spec.
+  const specIndex = await fetchApi(`https://${REGION}.api.blizzard.com/data/wow/playable-specialization/index`, token);
+  const specRefs = Array.isArray(specIndex?.character_specializations)
+    ? specIndex.character_specializations
+    : Array.isArray(specIndex?.specializations)
+      ? specIndex.specializations
+      : [];
 
+  const classNameCache = new Map();
   const specs = [];
 
-  for (const classRef of classRefs) {
-    const classHref = classRef?.key?.href || classRef?.href;
-    if (!classHref) continue;
+  for (const specRef of specRefs) {
+    const specHref = specRef?.key?.href || specRef?.href;
+    if (!specHref) continue;
 
-    const classPayload = await fetchApi(classHref, token);
-    const className = toName(classPayload?.name);
-    const specRefs = Array.isArray(classPayload?.specializations) ? classPayload.specializations : [];
-
-    for (const specRef of specRefs) {
-      const specHref = specRef?.key?.href || specRef?.href;
-      if (!specHref) continue;
-
-      const specPayload = await fetchApi(specHref, token);
-      const specName = toName(specPayload?.name);
-      if (!className || !specName) continue;
-
-      const treePayload = await resolveTalentTreePayload(specPayload, token);
-      const nodes = treePayload ? extractNodes(treePayload) : [];
-
-      specs.push({
-        className,
-        specName,
-        nodes
-      });
+    let specPayload;
+    try {
+      specPayload = await fetchApi(specHref, token);
+    } catch {
+      continue;
     }
+
+    const specName = toName(specPayload?.name);
+    if (!specName) continue;
+
+    let className = firstNonEmpty(specPayload?.playable_class?.name, specPayload?.character_class?.name);
+    const classHref =
+      specPayload?.playable_class?.key?.href ||
+      specPayload?.playable_class?.href ||
+      specPayload?.character_class?.key?.href ||
+      specPayload?.character_class?.href;
+
+    if (!className && classHref) {
+      if (classNameCache.has(classHref)) {
+        className = classNameCache.get(classHref);
+      } else {
+        try {
+          const classPayload = await fetchApi(classHref, token);
+          className = toName(classPayload?.name);
+          if (className) classNameCache.set(classHref, className);
+        } catch {
+          // keep empty and skip below
+        }
+      }
+    }
+
+    if (!className) continue;
+
+    const treePayload = await resolveTalentTreePayload(specPayload, token);
+    const nodes = treePayload ? extractNodes(treePayload) : [];
+
+    specs.push({
+      className,
+      specName,
+      nodes
+    });
   }
 
   return {
