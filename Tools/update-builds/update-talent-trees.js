@@ -218,6 +218,71 @@ function buildNodesFromTalentList(talents) {
     .filter(Boolean);
 }
 
+function extractLuaTableByMarker(luaText, marker) {
+  const markerIdx = luaText.indexOf(marker);
+  if (markerIdx < 0) return null;
+  const start = luaText.indexOf("{", markerIdx);
+  if (start < 0) return null;
+
+  let depth = 0;
+  for (let i = start; i < luaText.length; i++) {
+    const ch = luaText[i];
+    if (ch === "{") depth += 1;
+    if (ch === "}") depth -= 1;
+    if (depth === 0) return luaText.slice(start, i + 1);
+  }
+  return null;
+}
+
+function parseSpecMetaFromLua(luaText) {
+  const specMeta = new Map(); // specId -> { className, specName }
+  const classTable = extractLuaTableByMarker(luaText, "specializations =");
+  if (!classTable) return specMeta;
+
+  const classBlockRe = /\["([A-Z]+)"\]\s*=\s*\{([\s\S]*?)\n\s*\},/g;
+  let classMatch;
+  while ((classMatch = classBlockRe.exec(classTable))) {
+    const classFile = classMatch[1];
+    const className = CLASS_FILE_TO_NAME[classFile] || classFile;
+    const body = classMatch[2] || "";
+    const specRe = /id\s*=\s*(\d+),\s*name\s*=\s*("([^"]*)"|nil)/g;
+    let specMatch;
+    while ((specMatch = specRe.exec(body))) {
+      const specId = Number(specMatch[1]);
+      const specName = specMatch[3] || "";
+      if (!Number.isFinite(specId) || !specName) continue;
+      specMeta.set(specId, { className, specName });
+    }
+  }
+
+  return specMeta;
+}
+
+function parseTalentListsFromLua(luaText) {
+  const out = new Map(); // specId -> [{id,name}]
+  const pvpTable = extractLuaTableByMarker(luaText, "pvpTalents =");
+  if (!pvpTable) return out;
+
+  const specTalentBlockRe = /\[(\d+)\]\s*=\s*\{([\s\S]*?)\n\s*\},/g;
+  let specBlock;
+  while ((specBlock = specTalentBlockRe.exec(pvpTable))) {
+    const specId = Number(specBlock[1]);
+    const body = specBlock[2] || "";
+    if (!Number.isFinite(specId)) continue;
+
+    const talents = [];
+    const talentRe = /\{\s*id\s*=\s*(\d+),\s*name\s*=\s*"([^"]+)"/g;
+    let tMatch;
+    while ((tMatch = talentRe.exec(body))) {
+      talents.push({ id: Number(tMatch[1]), name: tMatch[2] });
+    }
+
+    if (talents.length > 0) out.set(specId, talents);
+  }
+
+  return out;
+}
+
 async function collectFromLibTalentInfoGithub() {
   const res = await fetch(LIB_TALENT_INFO_RETAIL_URL, {
     headers: { "user-agent": "wowadvisor-updater" }
@@ -237,41 +302,56 @@ async function collectFromLibTalentInfoGithub() {
   }
 
   const providerTable = findSetProviderArg(ast);
-  if (!providerTable) {
-    console.log("LibTalentInfo provider table not found");
-    return [];
-  }
+  if (providerTable) {
+    const provider = luaNodeToJs(providerTable);
+    const specsByClass = provider?.specializations && typeof provider.specializations === "object"
+      ? provider.specializations
+      : {};
+    const pvpTalentsBySpec = provider?.pvpTalents && typeof provider.pvpTalents === "object"
+      ? provider.pvpTalents
+      : {};
+    const talentsBySpec = provider?.talents && typeof provider.talents === "object"
+      ? provider.talents
+      : {};
 
-  const provider = luaNodeToJs(providerTable);
-  const specsByClass = provider?.specializations && typeof provider.specializations === "object"
-    ? provider.specializations
-    : {};
-  const pvpTalentsBySpec = provider?.pvpTalents && typeof provider.pvpTalents === "object"
-    ? provider.pvpTalents
-    : {};
-  const talentsBySpec = provider?.talents && typeof provider.talents === "object"
-    ? provider.talents
-    : {};
+    const out = [];
+    for (const [classFile, specMap] of Object.entries(specsByClass)) {
+      const className = CLASS_FILE_TO_NAME[classFile] || classFile;
+      if (!specMap || typeof specMap !== "object") continue;
 
-  const out = [];
-  for (const [classFile, specMap] of Object.entries(specsByClass)) {
-    const className = CLASS_FILE_TO_NAME[classFile] || classFile;
-    if (!specMap || typeof specMap !== "object") continue;
+      for (const spec of Object.values(specMap)) {
+        if (!spec || typeof spec !== "object") continue;
+        const specId = Number(spec.id);
+        const specName = toName(spec.name);
+        if (!specName || !Number.isFinite(specId)) continue;
 
-    for (const spec of Object.values(specMap)) {
-      if (!spec || typeof spec !== "object") continue;
-      const specId = Number(spec.id);
-      const specName = toName(spec.name);
-      if (!specName || !Number.isFinite(specId)) continue;
+        const rawList = pvpTalentsBySpec[String(specId)] || talentsBySpec[String(specId)] || [];
+        const nodes = buildNodesFromTalentList(rawList);
+        if (nodes.length === 0) continue;
 
-      const rawList = pvpTalentsBySpec[String(specId)] || talentsBySpec[String(specId)] || [];
-      const nodes = buildNodesFromTalentList(rawList);
-      if (nodes.length === 0) continue;
-
-      out.push({ className, specName, nodes });
+        out.push({ className, specName, nodes });
+      }
     }
+    if (out.length > 0) return out;
   }
 
+  // Fallback parser for when AST/provider extraction changes upstream.
+  const specMeta = parseSpecMetaFromLua(luaText);
+  const talentsBySpec = parseTalentListsFromLua(luaText);
+  const out = [];
+  for (const [specId, talents] of talentsBySpec.entries()) {
+    const meta = specMeta.get(specId);
+    if (!meta) continue;
+    const nodes = buildNodesFromTalentList(talents);
+    if (nodes.length === 0) continue;
+    out.push({
+      className: meta.className,
+      specName: meta.specName,
+      nodes
+    });
+  }
+
+  if (out.length === 0) console.log("LibTalentInfo fallback parse produced 0 specs");
   return out;
 }
 
