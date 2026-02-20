@@ -32,11 +32,12 @@ jobs:
       - name: Update talent trees (optional)
         run: |
           if [ -z "$BLIZZARD_CLIENT_ID" ] || [ -z "$BLIZZARD_CLIENT_SECRET" ]; then
-            echo "Blizzard credentials not set; skipping talent tree refresh."
-            exit 0
+            echo "Blizzard credentials not set; failing run."
+            exit 1
           fi
+          echo "Blizzard credentials detected; generating talent trees..."
           node update-talent-trees.js
-          node -e "const fs=require('fs'); const p=JSON.parse(fs.readFileSync('../../talent-trees.json','utf8')); console.log('Talent tree specs generated:', Array.isArray(p.specs)?p.specs.length:0);"
+          node -e "const fs=require('fs'); const p=JSON.parse(fs.readFileSync('../../talent-trees.json','utf8')); const c=Array.isArray(p.specs)?p.specs.length:0; console.log('Talent tree specs generated:', c); if(c===0){console.error('No specs were generated. Check Blizzard client credentials and API access.'); process.exit(1);}"
         working-directory: Tools/update-builds
         env:
           BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
