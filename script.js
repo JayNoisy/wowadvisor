@@ -58,6 +58,13 @@ function getClassColor(buttonEl) {
   return (styles.getPropertyValue("--class-color") || "").trim() || "#00bfff";
 }
 
+function classThemeKey(className) {
+  return String(className || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 function setSelectedClassButton(newBtn) {
   const all = classButtons.querySelectorAll(".class-btn");
   all.forEach(btn => {
@@ -130,6 +137,7 @@ function renderSpecButtons(className) {
 
 function showPanelForClass(className, classBtnEl) {
   const color = getClassColor(classBtnEl);
+  panel.dataset.theme = classThemeKey(className);
 
   selectedClassTitle.textContent = className;
   panelSubtitle.textContent = "Now click your spec.";

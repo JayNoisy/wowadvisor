@@ -94,13 +94,50 @@ body {
 
 /* Panel */
 .panel {
+  --panel-theme-a: rgba(0, 191, 255, 0.22);
+  --panel-theme-b: rgba(255, 255, 255, 0.08);
   max-width: 760px;
   margin: 0 auto;
-  background: linear-gradient(180deg, var(--card), var(--card2));
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(120% 140% at 0% 0%, var(--panel-theme-a), transparent 55%),
+    radial-gradient(95% 120% at 100% 100%, var(--panel-theme-b), transparent 62%),
+    linear-gradient(180deg, var(--card), var(--card2));
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
 }
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: -35% -20% auto;
+  height: 220px;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.08) 45%, transparent 100%);
+  transform: rotate(-4deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.panel[data-theme="warrior"] { --panel-theme-a: rgba(199, 156, 110, 0.30); --panel-theme-b: rgba(106, 82, 58, 0.24); }
+.panel[data-theme="paladin"] { --panel-theme-a: rgba(245, 140, 186, 0.30); --panel-theme-b: rgba(206, 164, 104, 0.20); }
+.panel[data-theme="hunter"] { --panel-theme-a: rgba(171, 212, 115, 0.30); --panel-theme-b: rgba(91, 125, 56, 0.24); }
+.panel[data-theme="rogue"] { --panel-theme-a: rgba(255, 245, 105, 0.30); --panel-theme-b: rgba(148, 133, 52, 0.24); }
+.panel[data-theme="priest"] { --panel-theme-a: rgba(255, 255, 255, 0.26); --panel-theme-b: rgba(155, 168, 190, 0.20); }
+.panel[data-theme="death-knight"] { --panel-theme-a: rgba(196, 31, 59, 0.30); --panel-theme-b: rgba(90, 14, 30, 0.24); }
+.panel[data-theme="shaman"] { --panel-theme-a: rgba(0, 112, 222, 0.30); --panel-theme-b: rgba(0, 52, 104, 0.24); }
+.panel[data-theme="mage"] { --panel-theme-a: rgba(105, 204, 240, 0.30); --panel-theme-b: rgba(42, 108, 142, 0.24); }
+.panel[data-theme="warlock"] { --panel-theme-a: rgba(148, 130, 201, 0.30); --panel-theme-b: rgba(72, 59, 118, 0.24); }
+.panel[data-theme="monk"] { --panel-theme-a: rgba(0, 255, 150, 0.26); --panel-theme-b: rgba(0, 109, 74, 0.24); }
+.panel[data-theme="druid"] { --panel-theme-a: rgba(255, 125, 10, 0.30); --panel-theme-b: rgba(130, 60, 0, 0.24); }
+.panel[data-theme="demon-hunter"] { --panel-theme-a: rgba(163, 48, 201, 0.30); --panel-theme-b: rgba(88, 27, 112, 0.24); }
+.panel[data-theme="evoker"] { --panel-theme-a: rgba(51, 147, 127, 0.30); --panel-theme-b: rgba(23, 86, 74, 0.24); }
 
 .panel-header {
   padding: 14px 16px;
