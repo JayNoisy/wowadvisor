@@ -49,6 +49,17 @@ async function fetchApi(url, token, namespaceOverride = ACTIVE_NAMESPACE) {
   return res.json();
 }
 
+async function fetchApiStatus(url, token, namespaceOverride = ACTIVE_NAMESPACE) {
+  const u = new URL(url);
+  if (!u.searchParams.get("namespace") && namespaceOverride) {
+    u.searchParams.set("namespace", namespaceOverride);
+  }
+  if (!u.searchParams.get("locale")) u.searchParams.set("locale", LOCALE);
+  if (!u.searchParams.get("access_token")) u.searchParams.set("access_token", token);
+  const res = await fetch(u.toString());
+  return { ok: res.ok, status: res.status, url: u.toString() };
+}
+
 async function tryFetchApi(url, token, namespaceOverride = ACTIVE_NAMESPACE) {
   try {
     return await fetchApi(url, token, namespaceOverride);
@@ -188,7 +199,10 @@ async function resolveClassAndSpecNames(treePayload, token) {
 async function collectFromTalentTreeIndex(token) {
   const out = [];
   const indexPayload = await tryFetchApi(`https://${REGION}.api.blizzard.com/data/wow/talent-tree/index`, token);
-  if (!indexPayload) return out;
+  if (!indexPayload) {
+    console.log("talent-tree/index unavailable in current namespace");
+    return out;
+  }
 
   const refs = Array.isArray(indexPayload?.spec_talent_trees)
     ? indexPayload.spec_talent_trees
@@ -216,18 +230,92 @@ async function collectFromTalentTreeIndex(token) {
   return out;
 }
 
+async function collectFromSpecSearch(token) {
+  const out = [];
+  const seen = new Set();
+
+  // Search endpoint often works even when some index endpoints do not.
+  const searchPayload = await tryFetchApi(
+    `https://${REGION}.api.blizzard.com/data/wow/search/playable-specialization?orderby=id&_page=1`,
+    token
+  );
+  const rows = Array.isArray(searchPayload?.results) ? searchPayload.results : [];
+  if (rows.length === 0) {
+    console.log("search/playable-specialization returned 0 rows or is unavailable");
+    return out;
+  }
+
+  for (const row of rows) {
+    const data = row?.data || {};
+    const specId = Number(data?.id);
+    const specName = toName(data?.name);
+    const className = firstNonEmpty(data?.playable_class?.name, data?.character_class?.name);
+    if (!Number.isFinite(specId) || !specName || !className) continue;
+    if (seen.has(specId)) continue;
+    seen.add(specId);
+
+    // Blizzard sometimes maps talent-tree IDs independently. We try both common patterns.
+    const candidates = [
+      `https://${REGION}.api.blizzard.com/data/wow/talent-tree/${specId}`,
+      `https://${REGION}.api.blizzard.com/data/wow/talent-tree/${specId}/playable-specialization/${specId}`
+    ];
+
+    let treePayload = null;
+    for (const href of candidates) {
+      treePayload = await tryFetchApi(href, token);
+      if (treePayload) break;
+    }
+    if (!treePayload) continue;
+
+    const nodes = extractNodes(treePayload);
+    if (nodes.length === 0) continue;
+
+    out.push({ className, specName, nodes });
+  }
+
+  return out;
+}
+
+async function logEndpointDiagnostics(token) {
+  const probes = [
+    `https://${REGION}.api.blizzard.com/data/wow/playable-race/index`,
+    `https://${REGION}.api.blizzard.com/data/wow/playable-class/index`,
+    `https://${REGION}.api.blizzard.com/data/wow/playable-specialization/index`,
+    `https://${REGION}.api.blizzard.com/data/wow/talent-tree/index`,
+    `https://${REGION}.api.blizzard.com/data/wow/search/playable-specialization?orderby=id&_page=1`
+  ];
+
+  for (const p of probes) {
+    const r = await fetchApiStatus(p, token);
+    console.log(`Probe ${r.status}: ${r.url}`);
+  }
+}
+
 async function buildTalentTrees() {
   const token = await getAccessToken();
   ACTIVE_NAMESPACE = await resolveWorkingNamespace(token);
   console.log(`Using WoW API namespace: ${ACTIVE_NAMESPACE}`);
+  await logEndpointDiagnostics(token);
 
   const fromTalentTreeIndex = await collectFromTalentTreeIndex(token);
   if (fromTalentTreeIndex.length > 0) {
+    console.log(`Collected ${fromTalentTreeIndex.length} specs from talent-tree/index`);
     return {
       generatedAt: new Date().toISOString(),
       region: REGION,
       locale: LOCALE,
       specs: fromTalentTreeIndex
+    };
+  }
+
+  const fromSpecSearch = await collectFromSpecSearch(token);
+  if (fromSpecSearch.length > 0) {
+    console.log(`Collected ${fromSpecSearch.length} specs from search/playable-specialization fallback`);
+    return {
+      generatedAt: new Date().toISOString(),
+      region: REGION,
+      locale: LOCALE,
+      specs: fromSpecSearch
     };
   }
 
@@ -326,6 +414,8 @@ async function buildTalentTrees() {
       nodes
     });
   }
+
+  console.log(`Collected ${specs.length} specs from class/specialization route fallback`);
 
   return {
     generatedAt: new Date().toISOString(),
