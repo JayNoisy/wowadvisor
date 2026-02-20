@@ -1,0 +1,233 @@
+:root {
+  --bg: #0f0f14;
+  --card: #171723;
+  --card2: #1f1f2f;
+  --text: #ffffff;
+  --muted: #a7a7b3;
+  --border: rgba(255, 255, 255, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 32px 18px;
+}
+
+.header { text-align: center; margin-bottom: 22px; }
+.header h1 { margin: 0 0 8px 0; }
+.header p { margin: 0; color: var(--muted); }
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  gap: 18px;
+}
+
+/* Class buttons */
+.class-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.class-btn {
+  width: 170px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, #1e1e2f, #2a2a40);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  --class-color: #00bfff;
+}
+
+.class-btn:hover {
+  transform: scale(1.02);
+  border-color: rgba(255,255,255,0.25);
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.20);
+}
+
+.class-btn.selected {
+  border-color: var(--class-color);
+  box-shadow: 0 0 18px var(--class-color);
+}
+
+.class-glyph {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--class-color);
+  background: rgba(0,0,0,0.30);
+}
+
+.glyph-emoji { font-size: 18px; line-height: 1; }
+.class-name { font-weight: bold; }
+
+/* Class colors */
+.class-btn[data-class="Warrior"] { --class-color: #C79C6E; }
+.class-btn[data-class="Paladin"] { --class-color: #F58CBA; }
+.class-btn[data-class="Hunter"] { --class-color: #ABD473; }
+.class-btn[data-class="Rogue"] { --class-color: #FFF569; }
+.class-btn[data-class="Priest"] { --class-color: #FFFFFF; }
+.class-btn[data-class="Death Knight"] { --class-color: #C41F3B; }
+.class-btn[data-class="Shaman"] { --class-color: #0070DE; }
+.class-btn[data-class="Mage"] { --class-color: #69CCF0; }
+.class-btn[data-class="Warlock"] { --class-color: #9482C9; }
+.class-btn[data-class="Monk"] { --class-color: #00FF96; }
+.class-btn[data-class="Druid"] { --class-color: #FF7D0A; }
+.class-btn[data-class="Demon Hunter"] { --class-color: #A330C9; }
+.class-btn[data-class="Evoker"] { --class-color: #33937F; }
+
+/* Panel */
+.panel {
+  max-width: 760px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, var(--card), var(--card2));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.panel-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+  background: rgba(255,255,255,0.06);
+  border: 2px solid rgba(255,255,255,0.14);
+}
+
+.panel-body { padding: 16px; display: grid; gap: 16px; }
+.section-title { margin: 0 0 10px 0; font-size: 16px; }
+.muted { color: var(--muted); margin: 0; }
+
+/* Spec buttons */
+.spec-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.spec-btn {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.18);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spec-btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.25); }
+
+.spec-btn.selected {
+  border-color: rgba(255,255,255,0.35);
+  box-shadow: 0 0 14px rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.08);
+}
+
+.spec-icon {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+/* Build tabs */
+.build-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tab-btn {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.18);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.tab-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.25);
+}
+
+.tab-btn.selected {
+  border-color: rgba(255,255,255,0.35);
+  box-shadow: 0 0 14px rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.08);
+}
+
+/* Build card */
+.build-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  background: rgba(0,0,0,0.18);
+}
+
+.build-card h3 { margin: 0 0 8px 0; }
+
+.notes {
+  margin: 10px 0 0 18px;
+  padding: 0;
+  color: var(--muted);
+}
+
+.export-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+#exportString {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+}
+
+#copyBtn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  cursor: pointer;
+}
+
+#copyBtn:disabled { opacity: 0.5; cursor: not-allowed; }

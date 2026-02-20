@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WoW Talent Advisor</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <h1>WoW Talent Advisor</h1>
+    <p>Select your class, then spec, then pick a build type.</p>
+  </header>
+
+  <main class="container">
+    <section aria-label="Class selection">
+      <div class="class-buttons" id="classButtons">
+        <button class="class-btn" data-class="Warrior" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">⚔️</span></span><span class="class-name">Warrior</span></button>
+        <button class="class-btn" data-class="Paladin" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">🛡️</span></span><span class="class-name">Paladin</span></button>
+        <button class="class-btn" data-class="Hunter" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">🏹</span></span><span class="class-name">Hunter</span></button>
+        <button class="class-btn" data-class="Rogue" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">🗡️</span></span><span class="class-name">Rogue</span></button>
+        <button class="class-btn" data-class="Priest" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">✨</span></span><span class="class-name">Priest</span></button>
+        <button class="class-btn" data-class="Death Knight" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">💀</span></span><span class="class-name">Death Knight</span></button>
+        <button class="class-btn" data-class="Shaman" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">🌩️</span></span><span class="class-name">Shaman</span></button>
+        <button class="class-btn" data-class="Mage" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">🔥</span></span><span class="class-name">Mage</span></button>
+        <button class="class-btn" data-class="Warlock" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">🕯️</span></span><span class="class-name">Warlock</span></button>
+        <button class="class-btn" data-class="Monk" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">🥋</span></span><span class="class-name">Monk</span></button>
+        <button class="class-btn" data-class="Druid" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">🌿</span></span><span class="class-name">Druid</span></button>
+        <button class="class-btn" data-class="Demon Hunter" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">👁️</span></span><span class="class-name">Demon Hunter</span></button>
+        <button class="class-btn" data-class="Evoker" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><span class="glyph-emoji">🐉</span></span><span class="class-name">Evoker</span></button>
+      </div>
+    </section>
+
+    <section class="panel" id="panel" hidden aria-label="Spec selection and build">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="badge" id="classBadge" aria-hidden="true">?</span>
+          <h2 id="selectedClassTitle">Choose a class</h2>
+        </div>
+        <p class="muted" id="panelSubtitle">Then choose a spec.</p>
+      </div>
+
+      <div class="panel-body">
+        <div class="specs">
+          <h3 class="section-title">Specs</h3>
+          <div class="spec-buttons" id="specButtons" aria-label="Spec selection"></div>
+        </div>
+
+        <div class="build-type" id="buildTypeWrap" hidden>
+          <h3 class="section-title">Build type</h3>
+          <div class="build-tabs" id="buildTabs" aria-label="Build type selection">
+            <button class="tab-btn" data-mode="aoe" type="button">AoE (Mythic+)</button>
+            <button class="tab-btn" data-mode="raid" type="button">Raid</button>
+            <button class="tab-btn" data-mode="pvp" type="button">PvP</button>
+          </div>
+        </div>
+
+        <div class="build-card">
+          <h3 id="buildTitle">Best Talent Build</h3>
+          <p class="muted" id="buildMeta"></p>
+          <p class="muted" id="buildHint">Pick a spec, then a build type.</p>
+
+          <ul id="buildNotes" class="notes" hidden></ul>
+
+          <div class="export-row">
+            <input id="exportString" type="text" placeholder="Export string will appear here…" readonly />
+            <button id="copyBtn" type="button" disabled>Copy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,940 @@
+{
+  "generatedAt": "2026-02-19T05:57:52.104Z",
+  "sources": {
+    "murlok": {
+      "ok": true,
+      "mplusMetaUpdatedAt": "2026-02-19T02:10:25.614445Z",
+      "pvpOk": true,
+      "pvpCount": 39
+    },
+    "peavers": {
+      "ok": true,
+      "count": 355
+    }
+  },
+  "builds": {
+    "Warrior": {
+      "Arms": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzYmZAAAAMMNMGGWmZmZGMmZAAAAAMzyMDIjhtBWADAmAzgNwMDmtxwyMLDwMDADD",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAgZmxsMzMzYGAAAghphxwMWmxMzYGmZAAAAAM2MDIDAzYYBAzAaMYBYGMbDmtZ2GMzAAGzA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Arms — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:01:06.918076Z",
+          "exportString": "CcEAjLzRlq54bI5v+r8Sr9Xw4DzMzsMzMzYAAAAMMNMzwMLLmxMDjZmBAAAAwYxMgMzYZbWMz2wmhhZmZajmZwCwwyYZMbWmZZAAAGDA",
+          "notes": []
+        }
+      },
+      "Fury": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDDmZ2MzMzMDjZmZGzMzsMjZmZmZxYmBAAihtBWADAmAzwGwMDDDAAmZYMGGG",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjZMzmZmZGjZMzYGzYmlZmxYmZZMzMAAQYgNAjGGAzCGWAMDzYAwMDghZmBG",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Fury — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:01:07.571232Z",
+          "exportString": "CgEAjLzRlq54bI5v+r8Sr9Xw4DAAAAAAgGDDjxmZGzgZYGzYmZmlZMGzMLjZmBAAiZW2GbsAz0wMDTmNmZsAAwAgZGgZYGDMA",
+          "notes": []
+        }
+      },
+      "Protection": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAA02AAAzMDzMzMmZ2MzsMMGjYGDLzMzMDDzMAAAAYZAYGDwAglF0YGADY2YMjZGMbDAmZAAYA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzwMzMzMmtZmZZYMGxMGWmZmZGGmZAAAAwyYAmxAMAYZBNmBwAmNMmZmBz2AgZGAAGA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Protection — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:01:08.093402Z",
+          "exportString": "CkEAjLzRlq54bI5v+r8Sr9Xw43yAAAjZMmZmZmZ2MmlhxYmmZmZsxMPwMYYmBAAAALjBYGDwgFzYWW2oZmhZYZ0YmNMmxAz2AgZGAAGAA",
+          "notes": []
+        }
+      }
+    },
+    "Paladin": {
+      "Holy": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYBAMAAGsMzMzYGzMwgxsMYmlZ0EDjZmhhZLDADAbgNWmZmZZ2mxsFAAAgF2GgFYMjZYAAYMMjxA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYBAMAAGsMmZmZGzMwgxsMYmFz0EDDzMMMbZAYAYDsxyMzMLz2MmtAAAAsw2AsYgZMDDAAjhZMGA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Holy — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:54.721273Z",
+          "exportString": "CEEAVg1HmQqr1Dwlv86ljju8vCAAAYBAMDAwglhBzsMzYxMzYmHYbsNzsx0EzyMMDgtMAMAsB2YzMDACAYmZZbxyYYjtxwYzMMzwAAGAwgRA",
+          "notes": []
+        }
+      },
+      "Protection": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNzMPAzyMLjZMzMWGmhZhZMAADAAAAAASzMbmxMDjZ2aDADMDA2AAAAgxstt0GjFDMAgZYMAYmBAzMA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNjBzyYbMjZmZZbMzwsMLzYAAGAAAAAA00MzyMjZGGs1GAGYAgNAAAAYMLbLtwYxMYAMYGGDAmZAwMDA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Protection — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:55.314992Z",
+          "exportString": "CIEAVg1HmQqr1Dwlv86ljju8vuZmB2GLzMjZmZbhxMzsYZYAAGAAAAAA00MzyMjZmxgt2AwAAzgtBAAMTmZ2MzMLbLtxYhBDgZYYYAwM2mBYGAA",
+          "notes": []
+        }
+      },
+      "Retribution": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQzy2MzsMMzAAAAAAwoMmhZGbDjhZ2mxYMzwwCbDDAAMj2GjZAAbAGAMmhZwMGzGWmBDjhB",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQzy2MzsMGzMAAAAAAmpMMMzYbYMMz2MzYMGGWYDDAAMj2GjZAAbAGAMmhZwMmZ2wyMYYMMA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Retribution — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:56.31132Z",
+          "exportString": "CYEAVg1HmQqr1Dwlv86ljju8vCAAAAAQzy2MzsNmZGDAAAAAwMFLzwMjtBbDzsNjxYMMjN2GAmFbMzSzYaZGLGAwGgBwMMjBMjhFsMzMzwYYA",
+          "notes": []
+        }
+      }
+    },
+    "Hunter": {
+      "Beast Mastery": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAYzYgBAYYDYsAAgZYbMzyMDzYmhhZGjZGzMjZMDzMjZMDGaGAAAAAwMAAAMmZGMzAEwsA2A",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMGG2gFYGQDbAAYGzyMzsZGmZmZGzMMmxMMzYGzwMzwYGWYaGAAAAAAAAAMGzMgZA2gZBsB",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Beast Mastery — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:40.570952Z",
+          "exportString": "C0PAYEriH0bRqGs1Qj5St9dJoBMmxwCsBzwQDbAAYGz2YmFzwMmZY8AzMGmxMzMYmllZmxMzMANDAAAAAYGAAAmBzAAyCmZBsB",
+          "notes": []
+        }
+      },
+      "Marksmanship": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwwohBwMYDAAAAAAAAYGzYGmxMzYGMmmxYGz22mZmZYmZYmZZwsMYGAAAzMGAMjNGGgtB",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwwohBwMYDAAAAAAAAYGzMzYbGzYMDGTzYMzYZbzMzMMzMMzsMGzywMDAAgxYAwwGYA2G",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Marksmanship — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:43.566793Z",
+          "exportString": "C4PAYEriH0bRqGs1Qj5St9dJoZZZ2GDjZMTjlZgMDzGAAAAAAAAgBA8AMMANMYshxAzMYGLwDsNMDAAAAAAAAA",
+          "notes": []
+        }
+      },
+      "Survival": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxohBwMgNjZmxMzyAAAAAAgZMjZwYMjZwYaGAAAAAAwYZbmZWMzMDzMDAYADjxM2A",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxohBwMgtZmZmZmZ2mHAAAAAAgZMjZsNjhxMsMmmBAAAAMAAW2mZsNjZGMGDAGAGDzsB",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Survival — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:46.564973Z",
+          "exportString": "C8PAYEriH0bRqGs1Qj5St9dJoNWwYYmZb0stMMDmpBLmZmZMeglZAAAAAAYGYssMjHwMjBzoZAAAAADAgllZmZxMzMmhZGwMMYBzYMjFA",
+          "notes": []
+        }
+      }
+    },
+    "Rogue": {
+      "Assassination": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmZMLzAAAAAAwsNYZGAAAAAQ2mZmxDMzYMzMzsNz2MzMYMzMzYmxwAYgNYY0AALDYzAgZmxA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAA4BmZmZxgBAAAAAmtBbzAAAAAAy2YmZmZGjZmZmtZ2mZMegZmZmxwMjxAYgNYY0AALDYzAgZGA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Assassination — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:59.196803Z",
+          "exportString": "CMQAByFP3pExAEG41/8+e6b8fbGzMmZAAAAAAMLD2mBAAAAA0yyYGwADzYwAYmBDwYGD2mZZsxYGzSjZZbYy2wwGAAA",
+          "notes": []
+        }
+      },
+      "Outlaw": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAghHYMGzYmZbmZmx4BMb8AzMzy0ygtZAAAAAA22GzMmZmZmxMzsNAAAAMGAMGGGYALsQYjBYmBA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgBMmZGmxMzMjZegZ24BmZGTLD2mBAAAAAYbZMzMzMzMzYmZ2GAAAAGDAGDDDMgFWIsxAMzgB",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Outlaw — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:01:00.306672Z",
+          "exportString": "CQQAByFP3pExAEG41/8+e6b8fDgZAAgBAsAsMtMYZGAAAAAgllxMgxAmxAAAAwMGYwsNbmZmRzMbMbssNtwCAAAA",
+          "notes": []
+        }
+      },
+      "Subtlety": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGbTMbbjxMMDegZmZGjZbmZG2GzMzMzYAzsNAAAAMYMMLDMAADTgZBzwMDwMA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGbTMbLjxMMjxDMzMzYMbzYG2GzMzMzYAzsNAAAAMYMgxwwADYhFiNMDYmBzA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Subtlety — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:01:00.883749Z",
+          "exportString": "CUQAByFP3pExAEG41/8+e6b8fDgZ2mBAAAAAmtZmZZiZZbmZmZMDMzMzsMmtxMzssMMDMGwMGAAAAzAsYWmxsNDjFGMz20CtMbMzADwMA",
+          "notes": []
+        }
+      }
+    },
+    "Priest": {
+      "Discipline": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMGWmZMYGmZbmtZmZmxMDAAAAAAAAAgBLzMmZmZwwMgpZaMAzshhwYAYMYBAAGDzYwMAmZGA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMGWmZMmZGmZbmtZmZmhZAAAAAAAAAAMYZmxMzMDGjBMNTMAzshhwYAYMYBAAGzYGDmBwMzA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Discipline — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:57.092859Z",
+          "exportString": "CAQA4VPTJ8eQb8/qEm8PyGu4yADsxwyMjZmBmZbmlZmZMmZAAAAAAAAAAMzYZgxMjlZmZGWWMNTMYmZmNMEGzyMbzymBjFDAADDMYAYMTA",
+          "notes": []
+        }
+      },
+      "Holy": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAGjZmlZmZMzMDzMDLzwMAAAAGsMzYmZmhZYGAmaAMzCGCjBgxALMmNAMGjxwMDgZGA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAMmxYMDzMzwMzwyMzMDAAAgBLzwMzMDzYmBwMFAmFMEGDAjBWMzYDgZMDjBzAMzMDA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Holy — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:57.814688Z",
+          "exportString": "CEQA4VPTJ8eQb8/qEm8PyGu4ywYAAAAAAAMmZmlxMzMzYYGmZbmZAAAAwAGMYsgxwyixMFAGYIMmlBYMwixAgmxgxgBgZMA",
+          "notes": []
+        }
+      },
+      "Shadow": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMjZMGAAAAAAAAAAAADLzMGLzMMz2MDzw2MzYYmByMsMTDwMzMAQAmtZDY2YAGjBjZmZMbjZADmB",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMjZMGAAAAAAAAAAAADLzMGLzMMzyMDzw2MGzMzAyMYmGgZmZAgAMbzGwsxAMGDGzMzY2GzAGMDA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Shadow — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:58.488344Z",
+          "exportString": "CIQA4VPTJ8eQb8/qEm8PyGu4yADzAAAAAAAAAAAAgZxMzMLzMmZ2mxYADGmxCywCTzMwMjBzsYGNLGMbzyWGzsxAMmZAzwYWYGwAAA",
+          "notes": []
+        }
+      }
+    },
+    "Death Knight": {
+      "Blood": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWGzMmxYMMbzMz0MLGjxMGAAAAYmZmZmZmZYGjBAMzMzAAAgxADAYZYCMsAYGmBAwMDgB",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWmZGmxMzMMLzMz0MMGjZMAAAAgZmZmZmZGmZGAwYmZmBAAAz2ADAYZQghFAzwMAAmZAA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Blood — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:01.566675Z",
+          "exportString": "CoPASnrjTdwaLTX9NnLQoJJXfAzyMzwMmxMMLjZmmZzMjZmBAAAAYmZmZGmZGzMjBAjZmZGAAAmZbMMGW0glBZbYYDwMmBAgZmZGAA",
+          "notes": []
+        }
+      },
+      "Frost": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAYAmZMjZAz2MzMzMLmZkZwMmZmxYmBMzMzMDAAAAAAAAAAbmNDDAmNGaYDzMzMzAGADAMzA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAYAzMMjZAzmZmZmZxMjmZwwMjx4BmxMzMzMzMDAAAAAAAAAAbmNDDMwsxQDbYmZmZGAADAYGA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Frost — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:04.569092Z",
+          "exportString": "CsPASnrjTdwaLTX9NnLQoJJXfMDYmBDMDzyYmZYzgMjxMjZGDjZGMzMzMDAAAAAAAAAGz2sZ2mhxCDLzsNN0M2MmZgBMAGAAA",
+          "notes": []
+        }
+      },
+      "Unholy": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAwMjZMGDzyMzMTzmxYMjZAAAAAAAAYGmZAwyMzMz2MzYGDwmZBGAMbM0YBAzAAzMjZAMDmB",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmhZMGDz2MzMTDjxMzYGAAAAAAAAzMYGAsMMzsNzMmxMGYghFNAw2gNMgZAYMzMMYmBYG",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Unholy — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:07.560081Z",
+          "exportString": "CwPASnrjTdwaLTX9NnLQoJJXfAYmBPgZYMzyYmZa2MGjZMDAAAAAAAgZwMDAWmBDzMmZmxgtZWMzMLamlNmNmtpxCDwMAmZmZGzAghZA",
+          "notes": []
+        }
+      }
+    },
+    "Shaman": {
+      "Elemental": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMLLzMmZmZZbZwMMDAAAAgZ2gBMgZjJwsAAzyMzMGbLmwMjxyMzMjhFLGLmZMzsBAMAAjhB",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMLLzMGjZZZZMmhBAAAAgZ2gBMgZjJwsAAzyMzMYDBzsNzyMmZeghlZZGLzMjZmFAghBAjhB",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Elemental — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:01:01.497842Z",
+          "exportString": "CYQARUG2fGwHkLP0T7/MoTNl/AAAAAmZZbMMzMbbLMmhZAAAAAMzGMgBMbMhMLAAzMGzstYyYmxYxYmxMzmNzsMMzMjBAMjBAjhZA",
+          "notes": []
+        }
+      },
+      "Enhancement": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAAAMW0YbAMDYDALzYGjllZgZmNWmZmZYYMDAgBYMjYmBAG",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzYGzAAAAAAAAAALAYG0YbAMAbAMLzYGjlFDMzsxyMmZGYMDAAwYMzEzMADG",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Enhancement — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:01:02.62521Z",
+          "exportString": "CcQARUG2fGwHkLP0T7/MoTNl/MzMzgZmZmZmhZGDAAAAAAAAgNsgtlZYmtFNbbDzwMTDWAY2mhxMbLzYhxgFjZmxMbYAAmhZmZMzEgBDGA",
+          "notes": []
+        }
+      },
+      "Restoration": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAjZmxy2MMjxMzMzwgxCMAgZhJwYxYMw2YMTz2yMDzYWYxYmxMMLDAAAMzMAYmhZG",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAjZMW2mhZmZmZmxwgxCMAgZhJwYBzMY2mZMa2WmZYGzCLGzMGMLDAAGgZmBAzMMzA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Restoration — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:01:03.095182Z",
+          "exportString": "CgQARUG2fGwHkLP0T7/MoTNl/AAAAAAAAAYMzMLLLzwMPwMzMzYGDGL2YYsox2MLMZGGLGzMY2GjRzyiZYGDWMmZYmtZzAAAAzMwMYmhZGA",
+          "notes": []
+        }
+      }
+    },
+    "Mage": {
+      "Arcane": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMzQzwAAAwAAMzklNzAAYDAAMzMzM2sMzMzygxYmZmxCzMzYGAgBAAYAmZAzAgB",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzQzMGAAAAAMzklNzAAYDAgNMzMDbWmZmZZwYmZmZGLMjZegZAAGAAgBYmBMDAG",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Arcane — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:49.569188Z",
+          "exportString": "C4DAMhlVtghLZL4RZzExaQoBYNstYWmZmZxmZGawMAAAGAgZmssYmZmZW2mZiNAAWwMzMsZZmZmlxMj5BmZmhFmZmxMAADAAwAMzAjBAYA",
+          "notes": []
+        }
+      },
+      "Fire": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGYZmZmFmZIzMGAAAGAwMzklFzAAsZmZmtZMmZAAAAAAbmZmZGAAMjxMmZMzsMAYGgxAMA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAMzALzMzsgZGZmxAAAwAAmZmssZGAgNzMsMzMzYWAAAAAgNzMzMPAAAmZYmZmZmZWAgZAGjBA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Fire — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:51.714754Z",
+          "exportString": "C8DAMhlVtghLZL4RZzExaQoBYNstMzyMzML8AzMygZAAAMzyMmZWmFzMZZxMAAbmZMbDjZmFAAAAAYxMzMDAAMMzMMDzsMDgZGyghhZA",
+          "notes": []
+        }
+      },
+      "Frost": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAYGGLzYmFmZmYGmZMjZWMzMzMjZAAAgZGsMz0GAAAAAAYDgttxMzMYWmxYGWAAAYmFgZwMgBA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAMzwYZm5BmFMzEzMzMzMzMziZmZmxYGmMzysAAAALAAwGAAAwCAbLjZMDmNjZmZsAAAAmZwAGAA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Frost — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:52.313432Z",
+          "exportString": "CAEAMhlVtghLZL4RZzExaQoBYNstwyMzMLYmJmhZmZmZsZmZMzMzMLz0Mz2sAAAgWAAgFAAAgNA22GzMzALGjZmlFAAAAwgxAGA",
+          "notes": []
+        }
+      }
+    },
+    "Warlock": {
+      "Affliction": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAgZMzoZjhZmxsMAAgZmZxmZmNzAAjllBGwAmhtADbDAAAzAAAAMzMzYAzMzMzMDmZmZAAzA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAghZGNbmx2MzYWGAAwMzsMbzMz2YAAWWGYADYGEYYbAAAwAAAwMjZYmtZGzgZmZGDzMzAAMA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Affliction — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:01:03.679266Z",
+          "exportString": "CkQAy0jxIDofkwJmoH7WhvESotMmxMjmtZGLMzMLDAAwMziFzMLmBAmlltxwYWMTjZmhtMbMsNAAAMDAAAMmZYMjhZMzMzMYGMAgZAA",
+          "notes": []
+        }
+      },
+      "Demonology": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMjZGNbMMzMmlBAAAAAAAMmBAgthNaYxMzMWmlZmZYAgZGzMzMzAMmxMDAAwYmZGDDmxAA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMMzoZzM2mZGzyAAAAAAAAGzAAwywGNsYMzYZMjxMDAMzMzYmZGgxMMzGAAYMzMMGsNzMA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Demonology — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:01:04.487467Z",
+          "exportString": "CoQAy0jxIDofkwJmoH7WhvESoZMDDNLzMWYmZWGAAAAAAgxy2MmZwmBMz2s1CNjFzMzYbWmZmhBAMDzMjZAmZmZmBAAYMjhxMjthBA",
+          "notes": []
+        }
+      },
+      "Destruction": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAwMjZGNbMMzMmlZhZmZZmZsYGAAMmxMzsAGzAAw2wCNWYAAgBYGAYmBYMjxAAAwMzMDAAzA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAYMMzoZzM2mZGzysZMzsYmZZxMAAYMjZmZxCMwwohBwshNGAAYYYAAgZwYGMbAAAmZmBAAzA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Destruction — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:01:06.071685Z",
+          "exportString": "CsQAy0jxIDofkwJmoH7WhvESotMGMjmlxAzMAzYWmxstYGAAMzMmZmFbYmZMjlRzAbDLzWjNGAAYMwYDAYmBDjxAAAwMMAAMPwA",
+          "notes": []
+        }
+      }
+    },
+    "Monk": {
+      "Brewmaster": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAgZbzYGPwYWM2mxMDAAAAAAALLYEzMwMMYGjZmZwsgZMzywymltZZYWAAgNAAAgtZpZmZWMDLAGYaMAAA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAgZbzYGzYWM2wMjBAAAAAAYZBEzMwMM2AmZmZMzGmxMLDLbPwy2sNjZBAA2AAAA2mlmZmZjhNADMNGAAA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Brewmaster — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:53.002981Z",
+          "exportString": "CwQAi6cZM+HWADeySjzG9Lwx8DAAAgZbxYmZG2mxGmZAAAAAAAYZDjYmZ2YGGgxMjZGzCMMLDLb22GzY2AAglZZaZ2GAAws0MzMbmhFwMzMYaMADAA",
+          "notes": []
+        }
+      },
+      "Windwalker": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzMzMLMGmlZmZDAAAAAAAAAAAglhZCzYZYADDzMzMMbDzwsYCAYzMLjxwMzAAYDAYWamZmFMAYGAwyAYA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzMzMLMGsNzMbYAAAAAAAAAAAglhZCzYZYADDzMzMMbDzwsYCAYzMbjBmZGAAbAAzSzMzsghBYGAwyAYA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Windwalker — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:53.584296Z",
+          "exportString": "C0QAi6cZM+HWADeySjzG9Lwx8bmZMYMDbzM2mxAAAAAAAAAAAALDjwMz2wAGmxMDzYWswwsMTAAbmZxMjxMzABwGWmlx0sNamZAYYgZGAYZAMA",
+          "notes": []
+        }
+      },
+      "Mistweaver": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM2mB2sYGzMbzYDzMDzsstNzYhZ0MmBMYAzyMzMDz2gBLmAAAAAAgFLjFmZAAAAgZAjhxiMmB",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgxMWGLDLWMmZsZsssNDPwmZ22WmZswQzYGwgBMLzMzMMbYGmFTAAAAAAwitxCzMAAAAwMgxALyYGA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Mistweaver — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:54.209654Z",
+          "exportString": "C4QAi6cZM+HWADeySjzG9Lwx8DAAAAAAAghZWGLDwYmBAAw2MDY0wMgBAAAAmtZCAAAAMLTbz2MLzmlZWmtxACAAAAAABA",
+          "notes": []
+        }
+      }
+    },
+    "Druid": {
+      "Balance": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNMmZgxswMzMLMwwMbzYGzYbsMjZGDzGGAMALbATmZZAAAAwmZmHYmBbGGjZAMzAA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNMmZAmlZmZmZhhxMmZZmFzMjlxyMLjxgFMAYsYmBMGATAAAAWYGzMYbZYMGAAmZA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Balance — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:19.559666Z",
+          "exportString": "CYGA8cL7tpvige+kkmGM9zUPWDAAAAAAAAAAAAAAAAWoMLNjxMDMmNzMzMbMgZZsMz2MmZWmZxYmZmhNMAYstMjttZ2mlZamZZmAAAAsxMGD2MMGGAAAA",
+          "notes": []
+        }
+      },
+      "Feral": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjhxMzMzMmtNWmZbGzYmZAAAAYJYWMGmZUzYWYmZGjZYAAAAAAMwAAAAIjZbMzAAWAzMALMYAAAMzG",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZ2MzMzMGzmx2YbmZm5BmZAAAAYJYWMGmZUzYWYmZmlxMAAAAAAwADAAAgMmtZmZAALgZGgFGMAAAMbA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Feral — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:22.566207Z",
+          "exportString": "CcGA8cL7tpvige+kkmGM9zUPWDAAAAAAzMzCzYmZGz2ywMLzYm5BmZAAAAYJY2MwMzUzY2YmZmtxMMAAAAAAADAAAgmZZ2mZmZ2mZpZbmlNwMDwCDGAAAAA",
+          "notes": []
+        }
+      },
+      "Guardian": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxs4BGzDM2MLzMPgZZZghhRT0MzsYmZmxMzAAAAAAww2MAAAAIjZZGzAAYBz8AALmBDGssNAYmF",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZmlZmZMWMLeg5BmZZZAbGGNRzMzyYmZmlxMAAAAAAMmNDYxMDYMAmAAAA2wMAWMDGMYZDwMDA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Guardian — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:25.565075Z",
+          "exportString": "CgGA8cL7tpvige+kkmGM9zUPWDAAAAAAAAAAAgZmxsYMjZWmZZMjxyADzY0ENzMbMzMz2YGGAAAAAwMWmBssNDMmtBwUzsMLjBAALw8AALmBDAbDAmZDA",
+          "notes": []
+        }
+      },
+      "Restoration": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMjxMLz2MmZY2GmxMYswAAAAAAAAAAAbDa2YMNDDjZZmZmZYYmBAAAAAAwYAbGLYaYZAAAAswYGYmBoZAwMDAA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMMmxsNjZmxsN8AMzswsYbGAAAAAAAAAAsNoZDmmhZ8AmFzMzMLzwDMDAAAAAAgxAAAAAgZbs1sYYjxMwYWANDAwMDA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Restoration — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:28.564747Z",
+          "exportString": "CkGA8cL7tpvige+kkmGM9zUPWPmZmBzYmZMLjZGDYWsNDAAAAAAAAAAWmhsZGTzMzMY2YmZmNDDAAAAAGAwYAAIAAgZbmlmtZWsxYGYGANDAAAA",
+          "notes": []
+        }
+      }
+    },
+    "Demon Hunter": {
+      "Havoc": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYGYmZ2MmZmxYmMmZAAAAAAAzixsNYmxyMzYb2mZmZZMDWGwsYGY2QDzMG2AAAAAAAAYmBDAAAA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZ2MmZmxYmMmZAAAAAAAzixYwMzYMjtZzMDjBWGwsZGYWQjZmxM2AAAAGAAAAzMYAAAAA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Havoc — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:10.564193Z",
+          "exportString": "CEkAG5bbocFKcv+yIq8fPd6ORZGMzMzixMzMmZmMMAAAAAAAzixYGzMzsNzMzysNmxygZsNWmZZWmZmx2sopZmZGzYBAAAAAABYmBAABAAA",
+          "notes": []
+        }
+      },
+      "Vengeance": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjZmZkZmZYYmZGDzYmxMmxMzwMmZsxMGDAAAAAAAAYmZsBAAAgBjZYGtNzMDAMAAAA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjhZkZmBWMjZwMjZGz8AzMzYYmtZGbMjxYGAAAAAAAAmZGbAAAAYgZGmRbzMzAADAAAA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Vengeance — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:13.560434Z",
+          "exportString": "CUkAG5bbocFKcv+yIq8fPd6ORBAYMzMjhZkZmBWMjZwMjZGz8AzMzYYmtZGbMjxYGAAAAAAABMzM2AAAAwAzMMj2mZmBAGAAAAA",
+          "notes": []
+        }
+      }
+    },
+    "Evoker": {
+      "Devastation": {
+        "raid": {
+          "title": "The Soul Hunters",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZwMDGMgBjZaGzMZMWmZmZGmZmZGwMmZGzMLjZwMwwMAwCYGmAbglhBgZA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmHYMzMzMzwMwwYYaYmJjx2gZGGzMzAmZmZGzMLjZwMwMmBAWAzwEYDsMMAMG",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Devastation — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:31.562002Z",
+          "exportString": "CsbBPJc41CfcseY0baneJ1IHrBAAAAAAAAAAAzMzgZYGMMz8AGDTjZmpZmxyMMzMzYmZGwMzMYmZZMDMwYwGsMGN2GQmJAbYAAA",
+          "notes": []
+        }
+      },
+      "Preservation": {
+        "raid": {
+          "title": "Plexus Sentinel",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAYmZ2WGYGzMPwsYMzMzyAAAYGzYGMmRmBAAAgZmZyMzMzDMLjZAwAjZAwADGaALwYmBA",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ2MwwMzDMLmZmhNAAAmhxMYMjMzMAAAgtZmZyYmZmxYGAAGzAgBGM0gxCMmZAA",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Preservation — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:34.563123Z",
+          "exportString": "CwbBPJc41CfcseY0baneJ1IHrBAAAAAYmZW2GYYmZwMzMjtZMAAghZmBDzEmZAAAgtZmZCYmBDAAGzAgBmRDNgFYYGAA",
+          "notes": []
+        }
+      },
+      "Augmentation": {
+        "raid": {
+          "title": "The Soul Hunters",
+          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
+          "updated": null,
+          "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMmxMbzMzMWGYmlZMGmZDAAAAAGAAMzAGMUjZmZAAAAwMmxYmZZMzAzsZALgxwwAYGEbYmBmZgB",
+          "notes": []
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": null,
+          "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMmZmZbmZmhBmZZGjhZ2AAAAAAAAwMwMYoGzMzAAAAgZmZMmZMmZgZ2MgFwYYYAMDiNMzMYmBG",
+          "notes": []
+        },
+        "pvp": {
+          "title": "Augmentation — PvP (Solo Shuffle)",
+          "source": "Murlok.io",
+          "updated": "2026-02-19T02:00:37.563063Z",
+          "exportString": "CEcBPJc41CfcseY0baneJ1IHrNMzMbzMzM2mhZmthZmxMAAAAAAAAgZMzMGD1YmZGAAAAYGGMzyYmBmBGsALMMAwMRshxAzMYGA",
+          "notes": []
+        }
+      }
+    }
+  }
+}
