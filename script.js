@@ -44,15 +44,18 @@ const talentBuilderTitle = document.getElementById("talentBuilderTitle");
 const talentBuilderHint = document.getElementById("talentBuilderHint");
 const builderToolbar = document.getElementById("builderToolbar");
 const builderPoints = document.getElementById("builderPoints");
-const builderFilters = document.getElementById("builderFilters");
 const builderResetBtn = document.getElementById("builderResetBtn");
-const talentTreeGrid = document.getElementById("talentTreeGrid");
+const classTreeGrid = document.getElementById("classTreeGrid");
+const specTreeGrid = document.getElementById("specTreeGrid");
+const classTreePoints = document.getElementById("classTreePoints");
+const specTreePoints = document.getElementById("specTreePoints");
 const talentNodeDetails = document.getElementById("talentNodeDetails");
 const nodeDetailsTitle = document.getElementById("nodeDetailsTitle");
 const nodeDetailsHint = document.getElementById("nodeDetailsHint");
 const nodeDetailsType = document.getElementById("nodeDetailsType");
 const nodeDetailsRank = document.getElementById("nodeDetailsRank");
 const nodeDetailsPosition = document.getElementById("nodeDetailsPosition");
+const nodeDetailsUnlock = document.getElementById("nodeDetailsUnlock");
 
 // =========================
 // App State
@@ -64,10 +67,9 @@ let selectedMode = null; // "aoe" | "raid" | "pvp"
 let buildsRoot = null; // always the object like buildsRoot[class][spec][mode]
 let buildsMeta = { generatedAt: null, sources: null };
 let talentTreesRoot = null; // keyed by "Class|||Spec"
-let talentAllocations = {}; // keyed by node id
+let talentAllocations = {}; // keyed by treeType:id
 let talentTreesLoadedCount = 0;
-let talentTreeFilter = "all"; // "all" | "class" | "spec"
-let selectedTalentNodeId = null;
+let selectedTalentNodeKey = null;
 const TREE_GATES = [
   { minRow: 8, pointsRequired: 20 },
   { minRow: 5, pointsRequired: 8 }
@@ -258,42 +260,6 @@ function getActiveTree() {
   return talentTreesRoot?.[talentTreeKey(selectedClass, selectedSpec)] ?? null;
 }
 
-function pointsSpent(tree) {
-  if (!tree || !Array.isArray(tree.nodes)) return 0;
-  return tree.nodes.reduce((sum, n) => sum + (talentAllocations[n.id] || 0), 0);
-}
-
-function pointsSpentByType(tree, treeType) {
-  if (!tree || !Array.isArray(tree.nodes)) return 0;
-  return tree.nodes.reduce((sum, n) => {
-    if (normalizedTreeType(n.treeType) !== treeType) return sum;
-    return sum + (talentAllocations[n.id] || 0);
-  }, 0);
-}
-
-function requiredPointsForRow(row) {
-  for (const gate of TREE_GATES) {
-    if (row >= gate.minRow) return gate.pointsRequired;
-  }
-  return 0;
-}
-
-function getNodeLockState(node, tree) {
-  const treeType = normalizedTreeType(node?.treeType);
-  const required = requiredPointsForRow(Number(node?.row ?? 0));
-  const spentInTree = pointsSpentByType(tree, treeType);
-  const current = talentAllocations[node?.id] || 0;
-  const locked = required > 0 && spentInTree < required && current === 0;
-  return { locked, required, spentInTree, treeType };
-}
-
-function updateBuilderPoints(tree) {
-  const total = pointsSpent(tree);
-  const classPoints = pointsSpentByType(tree, "class");
-  const specPoints = pointsSpentByType(tree, "spec");
-  builderPoints.textContent = `Points: ${total} (Class ${classPoints} / Spec ${specPoints})`;
-}
-
 function normalizedTreeType(value) {
   const raw = String(value || "").toLowerCase();
   if (raw === "class") return "class";
@@ -304,42 +270,39 @@ function treeTypeLabel(type) {
   return type === "class" ? "Class" : "Spec";
 }
 
-function visibleTreeNodes(tree) {
-  const nodes = Array.isArray(tree?.nodes) ? tree.nodes : [];
-  if (talentTreeFilter === "all") return nodes;
-  return nodes.filter((node) => normalizedTreeType(node.treeType) === talentTreeFilter);
+function allocationKey(nodeOrId, treeType) {
+  const id = typeof nodeOrId === "object" ? Number(nodeOrId.id) : Number(nodeOrId);
+  const t = typeof nodeOrId === "object" ? normalizedTreeType(nodeOrId.treeType) : normalizedTreeType(treeType);
+  return `${t}:${id}`;
 }
 
-function setTreeFilterButtons() {
-  const buttons = builderFilters?.querySelectorAll(".builder-filter-btn") ?? [];
-  buttons.forEach((btn) => {
-    btn.classList.toggle("selected", btn.dataset.treeFilter === talentTreeFilter);
-  });
+function allocationValue(nodeOrId, treeType) {
+  return talentAllocations[allocationKey(nodeOrId, treeType)] || 0;
 }
 
-function renderNodeDetails(tree) {
-  const nodes = Array.isArray(tree?.nodes) ? tree.nodes : [];
-  const node = nodes.find((n) => n.id === selectedTalentNodeId) || null;
-  if (!node) {
-    nodeDetailsTitle.textContent = "Node Details";
-    nodeDetailsHint.textContent = "Click a talent node to inspect it.";
-    nodeDetailsType.textContent = "-";
-    nodeDetailsRank.textContent = "-";
-    nodeDetailsPosition.textContent = "-";
-    return;
-  }
+function setAllocation(node, value) {
+  const key = allocationKey(node);
+  talentAllocations[key] = Math.max(0, value);
+}
 
-  const spent = talentAllocations[node.id] || 0;
-  const lockState = getNodeLockState(node, tree);
-  nodeDetailsTitle.textContent = node.name;
-  if (lockState.locked) {
-    nodeDetailsHint.textContent = `Locked: needs ${lockState.required} points in ${treeTypeLabel(lockState.treeType)} tree (${lockState.spentInTree}/${lockState.required}).`;
-  } else {
-    nodeDetailsHint.textContent = "Left click to add rank. Right click to remove rank.";
+function pointsSpent(tree) {
+  if (!tree || !Array.isArray(tree.nodes)) return 0;
+  return tree.nodes.reduce((sum, n) => sum + allocationValue(n), 0);
+}
+
+function pointsSpentByType(tree, treeType) {
+  if (!tree || !Array.isArray(tree.nodes)) return 0;
+  return tree.nodes.reduce((sum, n) => {
+    if (normalizedTreeType(n.treeType) !== treeType) return sum;
+    return sum + allocationValue(n);
+  }, 0);
+}
+
+function requiredPointsForRow(row) {
+  for (const gate of TREE_GATES) {
+    if (row >= gate.minRow) return gate.pointsRequired;
   }
-  nodeDetailsType.textContent = treeTypeLabel(normalizedTreeType(node.treeType));
-  nodeDetailsRank.textContent = `${spent}/${node.maxRank}`;
-  nodeDetailsPosition.textContent = `Row ${node.row + 1}, Col ${node.col + 1}`;
+  return 0;
 }
 
 function getTreeEdges(nodes) {
@@ -350,10 +313,8 @@ function getTreeEdges(nodes) {
   });
 
   for (const node of sorted) {
-    const type = normalizedTreeType(node.treeType);
     const possibleParents = sorted.filter((candidate) => {
       if (candidate.id === node.id) return false;
-      if (normalizedTreeType(candidate.treeType) !== type) return false;
       if (candidate.row >= node.row) return false;
       return Math.abs(candidate.col - node.col) <= 2;
     });
@@ -365,27 +326,102 @@ function getTreeEdges(nodes) {
     });
     edges.push({ from: possibleParents[0].id, to: node.id });
   }
-
   return edges;
 }
 
-function renderTreeLinks(tree, nodes) {
+function buildParentMap(nodes) {
+  const map = new Map();
+  for (const edge of getTreeEdges(nodes)) {
+    const parents = map.get(edge.to) || [];
+    parents.push(edge.from);
+    map.set(edge.to, parents);
+  }
+  return map;
+}
+
+function getNodeLockState(node, tree, parentMap) {
+  const treeType = normalizedTreeType(node?.treeType);
+  const required = requiredPointsForRow(Number(node?.row ?? 0));
+  const spentInTree = pointsSpentByType(tree, treeType);
+  const current = allocationValue(node);
+
+  const parents = parentMap?.get(node?.id) || [];
+  const hasParentReq = Number(node?.row ?? 0) <= 0 || parents.length === 0
+    ? true
+    : parents.some((id) => allocationValue(id, treeType) > 0);
+
+  const gateLocked = required > 0 && spentInTree < required;
+  const locked = current === 0 && (gateLocked || !hasParentReq);
+
+  return {
+    locked,
+    required,
+    spentInTree,
+    treeType,
+    gateLocked,
+    hasParentReq,
+    parentCount: parents.length
+  };
+}
+
+function updateBuilderPoints(tree) {
+  const total = pointsSpent(tree);
+  const classPoints = pointsSpentByType(tree, "class");
+  const specPoints = pointsSpentByType(tree, "spec");
+  builderPoints.textContent = `Points: ${total} (Class ${classPoints} / Spec ${specPoints})`;
+  classTreePoints.textContent = `Points: ${classPoints}`;
+  specTreePoints.textContent = `Points: ${specPoints}`;
+}
+
+function renderNodeDetails(tree) {
+  const nodes = Array.isArray(tree?.nodes) ? tree.nodes : [];
+  const node = nodes.find((n) => allocationKey(n) === selectedTalentNodeKey) || null;
+  if (!node) {
+    nodeDetailsTitle.textContent = "Node Details";
+    nodeDetailsHint.textContent = "Click a talent node to inspect it.";
+    nodeDetailsType.textContent = "-";
+    nodeDetailsRank.textContent = "-";
+    nodeDetailsPosition.textContent = "-";
+    nodeDetailsUnlock.textContent = "-";
+    return;
+  }
+
+  const type = normalizedTreeType(node.treeType);
+  const nodesForType = nodes.filter((n) => normalizedTreeType(n.treeType) === type);
+  const parentMap = buildParentMap(nodesForType);
+  const spent = allocationValue(node);
+  const lockState = getNodeLockState(node, tree, parentMap);
+  nodeDetailsTitle.textContent = node.name;
+  if (lockState.gateLocked) {
+    nodeDetailsHint.textContent = `Locked: needs ${lockState.required} points in ${treeTypeLabel(lockState.treeType)} tree (${lockState.spentInTree}/${lockState.required}).`;
+  } else if (!lockState.hasParentReq && lockState.parentCount > 0) {
+    nodeDetailsHint.textContent = "Locked: requires at least one connected parent node.";
+  } else {
+    nodeDetailsHint.textContent = "Left click to add rank. Right click to remove rank.";
+  }
+  nodeDetailsType.textContent = treeTypeLabel(type);
+  nodeDetailsRank.textContent = `${spent}/${node.maxRank}`;
+  nodeDetailsPosition.textContent = `Row ${node.row + 1}, Col ${node.col + 1}`;
+  nodeDetailsUnlock.textContent = lockState.locked ? "Locked" : "Unlocked";
+}
+
+function renderTreeLinks(gridEl, nodes) {
   const edges = getTreeEdges(nodes);
   const nodeElements = new Map();
-  talentTreeGrid.querySelectorAll(".talent-node").forEach((el) => {
+  gridEl.querySelectorAll(".talent-node").forEach((el) => {
     nodeElements.set(Number(el.dataset.nodeId), el);
   });
 
-  const oldLayer = talentTreeGrid.querySelector(".talent-link-layer");
+  const oldLayer = gridEl.querySelector(".talent-link-layer");
   if (oldLayer) oldLayer.remove();
 
   if (edges.length === 0) return;
   const svgNs = "http://www.w3.org/2000/svg";
   const layer = document.createElementNS(svgNs, "svg");
   layer.setAttribute("class", "talent-link-layer");
-  layer.setAttribute("viewBox", `0 0 ${talentTreeGrid.clientWidth} ${talentTreeGrid.clientHeight}`);
-  layer.setAttribute("width", String(talentTreeGrid.clientWidth));
-  layer.setAttribute("height", String(talentTreeGrid.clientHeight));
+  layer.setAttribute("viewBox", `0 0 ${gridEl.clientWidth} ${gridEl.clientHeight}`);
+  layer.setAttribute("width", String(gridEl.clientWidth));
+  layer.setAttribute("height", String(gridEl.clientHeight));
 
   for (const edge of edges) {
     const fromEl = nodeElements.get(edge.from);
@@ -396,15 +432,15 @@ function renderTreeLinks(tree, nodes) {
     const toNode = nodes.find((n) => n.id === edge.to);
     const fromRect = fromEl.getBoundingClientRect();
     const toRect = toEl.getBoundingClientRect();
-    const baseRect = talentTreeGrid.getBoundingClientRect();
+    const baseRect = gridEl.getBoundingClientRect();
 
     const x1 = fromRect.left + fromRect.width / 2 - baseRect.left;
     const y1 = fromRect.top + fromRect.height / 2 - baseRect.top;
     const x2 = toRect.left + toRect.width / 2 - baseRect.left;
     const y2 = toRect.top + toRect.height / 2 - baseRect.top;
 
-    const spentFrom = fromNode ? (talentAllocations[fromNode.id] || 0) : 0;
-    const spentTo = toNode ? (talentAllocations[toNode.id] || 0) : 0;
+    const spentFrom = fromNode ? allocationValue(fromNode) : 0;
+    const spentTo = toNode ? allocationValue(toNode) : 0;
     const active = spentFrom > 0 || spentTo > 0;
 
     const line = document.createElementNS(svgNs, "line");
@@ -416,82 +452,87 @@ function renderTreeLinks(tree, nodes) {
     layer.appendChild(line);
   }
 
-  talentTreeGrid.appendChild(layer);
+  gridEl.appendChild(layer);
 }
 
-function renderTalentTreeNodes(tree) {
-  const nodes = visibleTreeNodes(tree);
-  talentTreeGrid.innerHTML = "";
-  setTreeFilterButtons();
+function renderTreePanel(tree, treeType, gridEl) {
+  const nodes = Array.isArray(tree?.nodes)
+    ? tree.nodes.filter((n) => normalizedTreeType(n.treeType) === treeType)
+    : [];
+  gridEl.innerHTML = "";
 
   if (nodes.length === 0) {
-    const scopeText = talentTreeFilter === "all" ? "this tree" : `${talentTreeFilter} tree`;
-    talentBuilderHint.textContent = `No nodes found for ${scopeText}.`;
-    talentBuilderHint.hidden = false;
-    renderNodeDetails(tree);
+    const empty = document.createElement("p");
+    empty.className = "tree-empty muted";
+    empty.textContent = `No ${treeTypeLabel(treeType)} tree data found.`;
+    gridEl.appendChild(empty);
     return;
   }
 
-  talentBuilderHint.hidden = true;
   const maxRow = Math.max(...nodes.map((n) => n.row), 0) + 1;
   const maxCol = Math.max(...nodes.map((n) => n.col), 0) + 1;
-  talentTreeGrid.style.setProperty("--tree-rows", String(maxRow));
-  talentTreeGrid.style.setProperty("--tree-cols", String(Math.max(8, maxCol)));
+  gridEl.style.setProperty("--tree-rows", String(maxRow));
+  gridEl.style.setProperty("--tree-cols", String(Math.max(6, maxCol)));
 
-  if (!nodes.some((n) => n.id === selectedTalentNodeId)) {
-    selectedTalentNodeId = nodes[0]?.id ?? null;
+  if (!nodes.some((n) => allocationKey(n) === selectedTalentNodeKey)) {
+    selectedTalentNodeKey = allocationKey(nodes[0]);
   }
 
+  const parentMap = buildParentMap(nodes);
   for (const node of nodes) {
-    const spent = talentAllocations[node.id] || 0;
-    const lockState = getNodeLockState(node, tree);
+    const spent = allocationValue(node);
+    const lockState = getNodeLockState(node, tree, parentMap);
     const item = document.createElement("button");
     item.type = "button";
     item.className = "talent-node";
     if (spent > 0) item.classList.add("allocated");
-    if (selectedTalentNodeId === node.id) item.classList.add("active");
+    if (selectedTalentNodeKey === allocationKey(node)) item.classList.add("active");
     if (lockState.locked) item.classList.add("locked");
     item.style.gridRow = String(node.row + 1);
     item.style.gridColumn = String(node.col + 1);
     item.dataset.nodeId = String(node.id);
-    const type = normalizedTreeType(node.treeType);
     item.innerHTML = `
-      <span class="talent-node-kind">${treeTypeLabel(type)}</span>
+      <span class="talent-node-kind">${treeTypeLabel(treeType)}</span>
       <span class="talent-node-name">${node.name}</span>
       <span class="talent-node-rank">${spent}/${node.maxRank}</span>
     `;
     item.setAttribute("aria-label", `${node.name} ${spent} of ${node.maxRank}`);
 
     item.addEventListener("click", () => {
-      selectedTalentNodeId = node.id;
-      const state = getNodeLockState(node, tree);
+      selectedTalentNodeKey = allocationKey(node);
+      const state = getNodeLockState(node, tree, parentMap);
       if (state.locked) {
-        renderTalentTreeNodes(tree);
+        renderTalentTree(tree);
         updateBuilderPoints(tree);
         renderNodeDetails(tree);
         return;
       }
-      const current = talentAllocations[node.id] || 0;
-      talentAllocations[node.id] = Math.min(node.maxRank, current + 1);
-      renderTalentTreeNodes(tree);
+      const current = allocationValue(node);
+      setAllocation(node, Math.min(node.maxRank, current + 1));
+      renderTalentTree(tree);
       updateBuilderPoints(tree);
       renderNodeDetails(tree);
     });
 
     item.addEventListener("contextmenu", (e) => {
       e.preventDefault();
-      selectedTalentNodeId = node.id;
-      const current = talentAllocations[node.id] || 0;
-      talentAllocations[node.id] = Math.max(0, current - 1);
-      renderTalentTreeNodes(tree);
+      selectedTalentNodeKey = allocationKey(node);
+      const current = allocationValue(node);
+      setAllocation(node, Math.max(0, current - 1));
+      renderTalentTree(tree);
       updateBuilderPoints(tree);
       renderNodeDetails(tree);
     });
 
-    talentTreeGrid.appendChild(item);
+    gridEl.appendChild(item);
   }
 
-  renderTreeLinks(tree, nodes);
+  renderTreeLinks(gridEl, nodes);
+}
+
+function renderTalentTree(tree) {
+  renderTreePanel(tree, "class", classTreeGrid);
+  renderTreePanel(tree, "spec", specTreeGrid);
   renderNodeDetails(tree);
 }
 
@@ -501,10 +542,12 @@ function resetTalentBuilder() {
   talentBuilderHint.hidden = false;
   talentBuilderHint.textContent = "Talent tree not loaded for this spec yet.";
   builderToolbar.hidden = true;
-  talentTreeGrid.innerHTML = "";
+  classTreeGrid.innerHTML = "";
+  specTreeGrid.innerHTML = "";
+  classTreePoints.textContent = "Points: 0";
+  specTreePoints.textContent = "Points: 0";
   talentAllocations = {};
-  talentTreeFilter = "all";
-  selectedTalentNodeId = null;
+  selectedTalentNodeKey = null;
   renderNodeDetails(null);
 }
 
@@ -522,7 +565,8 @@ function showTalentBuilder(className, specName) {
       talentBuilderHint.textContent = "No local talent tree data for this spec yet.";
     }
     builderToolbar.hidden = true;
-    talentTreeGrid.innerHTML = "";
+    classTreeGrid.innerHTML = "";
+    specTreeGrid.innerHTML = "";
     talentAllocations = {};
     return;
   }
@@ -530,9 +574,8 @@ function showTalentBuilder(className, specName) {
   talentBuilderHint.hidden = true;
   builderToolbar.hidden = false;
   talentAllocations = {};
-  talentTreeFilter = "all";
-  selectedTalentNodeId = null;
-  renderTalentTreeNodes(tree);
+  selectedTalentNodeKey = null;
+  renderTalentTree(tree);
   updateBuilderPoints(tree);
   renderNodeDetails(tree);
 }
@@ -650,20 +693,9 @@ builderResetBtn.addEventListener("click", () => {
   const tree = getActiveTree();
   if (!tree) return;
   talentAllocations = {};
-  renderTalentTreeNodes(tree);
+  selectedTalentNodeKey = null;
+  renderTalentTree(tree);
   updateBuilderPoints(tree);
-  renderNodeDetails(tree);
-});
-
-builderFilters?.addEventListener("click", (e) => {
-  const btn = e.target.closest(".builder-filter-btn");
-  if (!btn) return;
-  const next = btn.dataset.treeFilter;
-  if (!next) return;
-  talentTreeFilter = next;
-  const tree = getActiveTree();
-  if (!tree) return;
-  renderTalentTreeNodes(tree);
   renderNodeDetails(tree);
 });
 

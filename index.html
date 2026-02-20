@@ -76,15 +76,21 @@
           <p class="muted" id="talentBuilderHint">Talent tree not loaded for this spec yet.</p>
           <div class="builder-toolbar" id="builderToolbar" hidden>
             <span class="muted" id="builderPoints"></span>
-            <div class="builder-filters" id="builderFilters">
-              <button class="builder-filter-btn selected" type="button" data-tree-filter="all">All</button>
-              <button class="builder-filter-btn" type="button" data-tree-filter="class">Class</button>
-              <button class="builder-filter-btn" type="button" data-tree-filter="spec">Spec</button>
-            </div>
             <button id="builderResetBtn" type="button">Reset</button>
           </div>
           <div class="builder-layout">
-            <div id="talentTreeGrid" class="talent-tree-grid" aria-live="polite"></div>
+            <div class="talent-tree-stage">
+              <section class="tree-panel">
+                <h4>Class Tree</h4>
+                <p class="muted tree-points" id="classTreePoints">Points: 0</p>
+                <div id="classTreeGrid" class="talent-tree-grid" aria-live="polite"></div>
+              </section>
+              <section class="tree-panel">
+                <h4>Spec Tree</h4>
+                <p class="muted tree-points" id="specTreePoints">Points: 0</p>
+                <div id="specTreeGrid" class="talent-tree-grid" aria-live="polite"></div>
+              </section>
+            </div>
             <aside class="talent-node-details" id="talentNodeDetails">
               <h4 id="nodeDetailsTitle">Node Details</h4>
               <p class="muted" id="nodeDetailsHint">Click a talent node to inspect it.</p>
@@ -100,6 +106,10 @@
                 <div class="node-stat-row">
                   <dt>Position</dt>
                   <dd id="nodeDetailsPosition">-</dd>
+                </div>
+                <div class="node-stat-row">
+                  <dt>Unlock</dt>
+                  <dd id="nodeDetailsUnlock">-</dd>
                 </div>
               </dl>
             </aside>
