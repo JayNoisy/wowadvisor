@@ -41,7 +41,6 @@ const exportString = document.getElementById("exportString");
 const copyBtn = document.getElementById("copyBtn");
 const talentBuilderWrap = document.getElementById("talentBuilderWrap");
 const talentBuilderTitle = document.getElementById("talentBuilderTitle");
-const talentBuilderFrame = document.getElementById("talentBuilderFrame");
 const talentBuilderLink = document.getElementById("talentBuilderLink");
 
 // =========================
@@ -210,7 +209,6 @@ function talentBuilderUrl(className, specName) {
 function resetTalentBuilder() {
   talentBuilderWrap.hidden = true;
   talentBuilderTitle.textContent = "Talent Builder";
-  talentBuilderFrame.src = "about:blank";
   talentBuilderLink.removeAttribute("href");
 }
 
@@ -223,7 +221,6 @@ function showTalentBuilder(className, specName) {
 
   talentBuilderWrap.hidden = false;
   talentBuilderTitle.textContent = `${specName} Talent Builder`;
-  talentBuilderFrame.src = url;
   talentBuilderLink.href = url;
 }
 

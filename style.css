@@ -248,15 +248,6 @@ body {
   margin: 0 0 8px 0;
 }
 
-#talentBuilderFrame {
-  width: 100%;
-  height: 580px;
-  margin-top: 10px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: rgba(0,0,0,0.35);
-}
-
 #talentBuilderLink {
   display: inline-block;
   margin-top: 10px;
@@ -315,11 +306,5 @@ body {
   .spec-btn,
   .tab-btn {
     padding: 12px 15px;
-  }
-}
-
-@media (max-width: 899px) {
-  #talentBuilderFrame {
-    height: 480px;
   }
 }
