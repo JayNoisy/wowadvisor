@@ -72,8 +72,12 @@
 
         <div class="builder-card" id="talentBuilderWrap" hidden>
           <h3 id="talentBuilderTitle">Talent Builder</h3>
-          <p class="muted">Wowhead blocks embedding in iframes. Open the live builder in a new tab:</p>
-          <a id="talentBuilderLink" target="_blank" rel="noopener noreferrer">Open talent builder in a new tab</a>
+          <p class="muted" id="talentBuilderHint">Talent tree not loaded for this spec yet.</p>
+          <div class="builder-toolbar" id="builderToolbar" hidden>
+            <span class="muted" id="builderPoints"></span>
+            <button id="builderResetBtn" type="button">Reset</button>
+          </div>
+          <div id="talentTreeGrid" class="talent-tree-grid" aria-live="polite"></div>
         </div>
       </div>
     </section>

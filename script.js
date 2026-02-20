@@ -41,7 +41,11 @@ const exportString = document.getElementById("exportString");
 const copyBtn = document.getElementById("copyBtn");
 const talentBuilderWrap = document.getElementById("talentBuilderWrap");
 const talentBuilderTitle = document.getElementById("talentBuilderTitle");
-const talentBuilderLink = document.getElementById("talentBuilderLink");
+const talentBuilderHint = document.getElementById("talentBuilderHint");
+const builderToolbar = document.getElementById("builderToolbar");
+const builderPoints = document.getElementById("builderPoints");
+const builderResetBtn = document.getElementById("builderResetBtn");
+const talentTreeGrid = document.getElementById("talentTreeGrid");
 
 // =========================
 // App State
@@ -52,6 +56,8 @@ let selectedMode = null; // "aoe" | "raid" | "pvp"
 
 let buildsRoot = null; // always the object like buildsRoot[class][spec][mode]
 let buildsMeta = { generatedAt: null, sources: null };
+let talentTreesRoot = null; // keyed by "Class|||Spec"
+let talentAllocations = {}; // keyed by node id
 
 // =========================
 // Helpers
@@ -191,37 +197,154 @@ function modeLabel(mode) {
   return mode;
 }
 
-function slugifyName(input) {
-  return String(input || "")
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
+function talentTreeKey(className, specName) {
+  return `${className}|||${specName}`;
 }
 
-function talentBuilderUrl(className, specName) {
-  const classSlug = slugifyName(className);
-  const specSlug = slugifyName(specName);
-  if (!classSlug || !specSlug) return null;
-  return `https://www.wowhead.com/talent-calc/${classSlug}/${specSlug}`;
+function normalizeTreeNode(rawNode, idx) {
+  if (!rawNode || typeof rawNode !== "object") return null;
+  const nodeId = Number(rawNode.id ?? rawNode.nodeId ?? idx + 1);
+  const maxRank = Math.max(1, Number(rawNode.maxRanks ?? rawNode.maxRank ?? 1) || 1);
+  const row = Math.max(0, Number(rawNode.row ?? rawNode.posY ?? rawNode.y ?? 0) || 0);
+  const col = Math.max(0, Number(rawNode.col ?? rawNode.column ?? rawNode.posX ?? rawNode.x ?? 0) || 0);
+  const name = String(rawNode.name ?? rawNode.spellName ?? `Talent ${nodeId}`);
+  const treeType = String(rawNode.treeType ?? rawNode.type ?? "spec");
+
+  return { id: nodeId, name, row, col, maxRank, treeType };
+}
+
+function normalizeTalentTrees(payload) {
+  const out = {};
+  if (!payload || typeof payload !== "object") return out;
+
+  const rawSpecs = Array.isArray(payload.specs) ? payload.specs : [];
+  for (const spec of rawSpecs) {
+    if (!spec || typeof spec !== "object") continue;
+    const className = String(spec.className || "").trim();
+    const specName = String(spec.specName || "").trim();
+    if (!className || !specName) continue;
+
+    const rawNodes = Array.isArray(spec.nodes) ? spec.nodes : [];
+    const nodes = rawNodes
+      .map((n, i) => normalizeTreeNode(n, i))
+      .filter(Boolean);
+
+    out[talentTreeKey(className, specName)] = {
+      className,
+      specName,
+      nodes
+    };
+  }
+
+  return out;
+}
+
+function getActiveTree() {
+  if (!selectedClass || !selectedSpec) return null;
+  return talentTreesRoot?.[talentTreeKey(selectedClass, selectedSpec)] ?? null;
+}
+
+function pointsSpent(tree) {
+  if (!tree || !Array.isArray(tree.nodes)) return 0;
+  return tree.nodes.reduce((sum, n) => sum + (talentAllocations[n.id] || 0), 0);
+}
+
+function updateBuilderPoints(tree) {
+  const total = pointsSpent(tree);
+  builderPoints.textContent = `Points spent: ${total}`;
+}
+
+function renderTalentTreeNodes(tree) {
+  const nodes = Array.isArray(tree?.nodes) ? tree.nodes : [];
+  talentTreeGrid.innerHTML = "";
+
+  if (nodes.length === 0) {
+    talentBuilderHint.textContent = "Talent tree data exists but has no nodes.";
+    talentBuilderHint.hidden = false;
+    builderToolbar.hidden = true;
+    return;
+  }
+
+  const maxRow = Math.max(...nodes.map((n) => n.row), 0) + 1;
+  const maxCol = Math.max(...nodes.map((n) => n.col), 0) + 1;
+  talentTreeGrid.style.setProperty("--tree-rows", String(maxRow));
+  talentTreeGrid.style.setProperty("--tree-cols", String(Math.max(6, maxCol)));
+
+  for (const node of nodes) {
+    const spent = talentAllocations[node.id] || 0;
+    const item = document.createElement("button");
+    item.type = "button";
+    item.className = "talent-node";
+    item.style.gridRow = String(node.row + 1);
+    item.style.gridColumn = String(node.col + 1);
+    item.dataset.nodeId = String(node.id);
+    item.innerHTML = `
+      <span class="talent-node-name">${node.name}</span>
+      <span class="talent-node-rank">${spent}/${node.maxRank}</span>
+    `;
+    item.setAttribute("aria-label", `${node.name} ${spent} of ${node.maxRank}`);
+
+    item.addEventListener("click", () => {
+      const current = talentAllocations[node.id] || 0;
+      talentAllocations[node.id] = current >= node.maxRank ? 0 : current + 1;
+      renderTalentTreeNodes(tree);
+      updateBuilderPoints(tree);
+    });
+
+    item.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+      const current = talentAllocations[node.id] || 0;
+      talentAllocations[node.id] = Math.max(0, current - 1);
+      renderTalentTreeNodes(tree);
+      updateBuilderPoints(tree);
+    });
+
+    talentTreeGrid.appendChild(item);
+  }
 }
 
 function resetTalentBuilder() {
   talentBuilderWrap.hidden = true;
   talentBuilderTitle.textContent = "Talent Builder";
-  talentBuilderLink.removeAttribute("href");
+  talentBuilderHint.hidden = false;
+  talentBuilderHint.textContent = "Talent tree not loaded for this spec yet.";
+  builderToolbar.hidden = true;
+  talentTreeGrid.innerHTML = "";
+  talentAllocations = {};
 }
 
 function showTalentBuilder(className, specName) {
-  const url = talentBuilderUrl(className, specName);
-  if (!url) {
-    resetTalentBuilder();
+  const tree = talentTreesRoot?.[talentTreeKey(className, specName)] ?? null;
+  talentBuilderWrap.hidden = false;
+  talentBuilderTitle.textContent = `${specName} Talent Builder`;
+
+  if (!tree) {
+    talentBuilderHint.hidden = false;
+    talentBuilderHint.textContent = "No local talent tree data for this spec yet.";
+    builderToolbar.hidden = true;
+    talentTreeGrid.innerHTML = "";
+    talentAllocations = {};
     return;
   }
 
-  talentBuilderWrap.hidden = false;
-  talentBuilderTitle.textContent = `${specName} Talent Builder`;
-  talentBuilderLink.href = url;
+  talentBuilderHint.hidden = true;
+  builderToolbar.hidden = false;
+  talentAllocations = {};
+  renderTalentTreeNodes(tree);
+  updateBuilderPoints(tree);
+}
+
+async function loadTalentTrees() {
+  try {
+    const res = await fetch("./talent-trees.json", { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status} loading talent-trees.json`);
+    const payload = await res.json();
+    talentTreesRoot = normalizeTalentTrees(payload);
+    console.log("talent-trees.json loaded", { specs: Object.keys(talentTreesRoot).length });
+  } catch (err) {
+    console.error("Failed to load talent-trees.json", err);
+    talentTreesRoot = {};
+  }
 }
 
 function showBuildFromData(className, specName, mode) {
@@ -318,5 +441,14 @@ copyBtn.addEventListener("click", async () => {
   }
 });
 
+builderResetBtn.addEventListener("click", () => {
+  const tree = getActiveTree();
+  if (!tree) return;
+  talentAllocations = {};
+  renderTalentTreeNodes(tree);
+  updateBuilderPoints(tree);
+});
+
 // Start
 loadBuilds();
+loadTalentTrees();

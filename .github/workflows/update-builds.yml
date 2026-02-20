@@ -29,14 +29,28 @@ jobs:
         run: node update-builds.js
         working-directory: Tools/update-builds
 
-      - name: Commit and push builds.json
+      - name: Update talent trees (optional)
         run: |
-          if git diff --quiet -- builds.json; then
+          if [ -z "$BLIZZARD_CLIENT_ID" ] || [ -z "$BLIZZARD_CLIENT_SECRET" ]; then
+            echo "Blizzard credentials not set; skipping talent tree refresh."
+            exit 0
+          fi
+          node update-talent-trees.js
+        working-directory: Tools/update-builds
+        env:
+          BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
+          BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
+          BLIZZARD_REGION: us
+          BLIZZARD_LOCALE: en_US
+
+      - name: Commit and push updated data files
+        run: |
+          if git diff --quiet -- builds.json talent-trees.json; then
             echo "No changes to commit"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add builds.json
-          git commit -m "chore: update builds.json"
+          git add builds.json talent-trees.json
+          git commit -m "chore: update build and talent data"
           git push
