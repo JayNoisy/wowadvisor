@@ -36,6 +36,7 @@ jobs:
             exit 0
           fi
           node update-talent-trees.js
+          node -e "const fs=require('fs'); const p=JSON.parse(fs.readFileSync('../../talent-trees.json','utf8')); console.log('Talent tree specs generated:', Array.isArray(p.specs)?p.specs.length:0);"
         working-directory: Tools/update-builds
         env:
           BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
