@@ -323,7 +323,7 @@ function showTalentBuilder(className, specName) {
     talentBuilderHint.hidden = false;
     if (talentTreesLoadedCount === 0) {
       talentBuilderHint.textContent =
-        "No talent tree data loaded yet. Add BLIZZARD_CLIENT_ID and BLIZZARD_CLIENT_SECRET repo secrets, then run the Update Builds workflow to generate talent-trees.json.";
+        "No talent tree data loaded yet. Run the Update Builds workflow to generate talent-trees.json.";
     } else {
       talentBuilderHint.textContent = "No local talent tree data for this spec yet.";
     }
