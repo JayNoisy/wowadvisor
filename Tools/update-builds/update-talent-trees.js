@@ -125,8 +125,76 @@ async function resolveTalentTreePayload(specPayload, token) {
   return null;
 }
 
+async function resolveClassAndSpecNames(treePayload, token) {
+  let specName = firstNonEmpty(treePayload?.playable_specialization?.name, treePayload?.specialization?.name);
+  let className = firstNonEmpty(
+    treePayload?.playable_specialization?.playable_class?.name,
+    treePayload?.playable_class?.name,
+    treePayload?.character_class?.name
+  );
+
+  const specHref =
+    treePayload?.playable_specialization?.key?.href ||
+    treePayload?.playable_specialization?.href ||
+    treePayload?.specialization?.key?.href ||
+    treePayload?.specialization?.href;
+
+  if ((!className || !specName) && specHref) {
+    const specPayload = await tryFetchApi(specHref, token);
+    if (specPayload) {
+      if (!specName) specName = toName(specPayload?.name);
+      if (!className) {
+        className = firstNonEmpty(specPayload?.playable_class?.name, specPayload?.character_class?.name);
+      }
+    }
+  }
+
+  return { className, specName };
+}
+
+async function collectFromTalentTreeIndex(token) {
+  const out = [];
+  const indexPayload = await tryFetchApi(`https://${REGION}.api.blizzard.com/data/wow/talent-tree/index`, token);
+  if (!indexPayload) return out;
+
+  const refs = Array.isArray(indexPayload?.spec_talent_trees)
+    ? indexPayload.spec_talent_trees
+    : Array.isArray(indexPayload?.talent_trees)
+      ? indexPayload.talent_trees
+      : [];
+
+  for (const ref of refs) {
+    const href = ref?.key?.href || ref?.href;
+    if (!href) continue;
+
+    const treePayload = await tryFetchApi(href, token);
+    if (!treePayload) continue;
+
+    const { className, specName } = await resolveClassAndSpecNames(treePayload, token);
+    if (!className || !specName) continue;
+
+    out.push({
+      className,
+      specName,
+      nodes: extractNodes(treePayload)
+    });
+  }
+
+  return out;
+}
+
 async function buildTalentTrees() {
   const token = await getAccessToken();
+  const fromTalentTreeIndex = await collectFromTalentTreeIndex(token);
+  if (fromTalentTreeIndex.length > 0) {
+    return {
+      generatedAt: new Date().toISOString(),
+      region: REGION,
+      locale: LOCALE,
+      specs: fromTalentTreeIndex
+    };
+  }
+
   // Try multiple discovery routes because Blizzard endpoints can vary by region/api version.
   let specRefs = [];
 
