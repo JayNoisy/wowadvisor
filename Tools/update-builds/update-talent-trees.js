@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import luaparse from "luaparse";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -8,6 +9,23 @@ const __dirname = path.dirname(__filename);
 const REGION = process.env.BLIZZARD_REGION || "us";
 const LOCALE = process.env.BLIZZARD_LOCALE || "en_US";
 let ACTIVE_NAMESPACE = `static-${REGION}`;
+const LIB_TALENT_INFO_RETAIL_URL =
+  "https://raw.githubusercontent.com/Snakybo/LibTalentInfo-1.0/master/LibTalentInfo-1.0/TalentDataRetail.lua";
+const CLASS_FILE_TO_NAME = {
+  DEATHKNIGHT: "Death Knight",
+  DEMONHUNTER: "Demon Hunter",
+  DRUID: "Druid",
+  EVOKER: "Evoker",
+  HUNTER: "Hunter",
+  MAGE: "Mage",
+  MONK: "Monk",
+  PALADIN: "Paladin",
+  PRIEST: "Priest",
+  ROGUE: "Rogue",
+  SHAMAN: "Shaman",
+  WARLOCK: "Warlock",
+  WARRIOR: "Warrior"
+};
 
 function requireEnv(name) {
   const v = process.env[name];
@@ -112,6 +130,136 @@ function firstNonEmpty(...vals) {
     if (s) return s;
   }
   return "";
+}
+
+function luaNodeToJs(node) {
+  if (!node) return null;
+
+  switch (node.type) {
+    case "StringLiteral":
+      return typeof node.value === "string" ? node.value : null;
+    case "NumericLiteral":
+      return node.value;
+    case "BooleanLiteral":
+      return node.value;
+    case "NilLiteral":
+      return null;
+    case "Identifier":
+      return node.name;
+    case "TableConstructorExpression": {
+      const obj = {};
+      const arr = [];
+      let isArrayLike = true;
+      for (const field of node.fields || []) {
+        if (field.type === "TableValue") {
+          arr.push(luaNodeToJs(field.value));
+          continue;
+        }
+        isArrayLike = false;
+        if (field.type === "TableKeyString") {
+          obj[field.key?.name] = luaNodeToJs(field.value);
+          continue;
+        }
+        if (field.type === "TableKey") {
+          obj[String(luaNodeToJs(field.key))] = luaNodeToJs(field.value);
+        }
+      }
+      return isArrayLike ? arr : obj;
+    }
+    default:
+      return null;
+  }
+}
+
+function findSetProviderArg(ast) {
+  for (const stmt of ast.body || []) {
+    if (stmt.type !== "CallStatement") continue;
+    const expr = stmt.expression;
+    if (!expr || expr.type !== "CallExpression") continue;
+    const base = expr.base;
+    if (!base || base.type !== "MemberExpression") continue;
+    if (base.identifier?.name !== "SetProvider") continue;
+    const args = expr.arguments || [];
+    const first = args[0];
+    if (first?.type === "TableConstructorExpression") return first;
+  }
+  return null;
+}
+
+function buildNodesFromTalentList(talents) {
+  const list = Array.isArray(talents) ? talents : [];
+  return list
+    .map((t, i) => {
+      if (!t || typeof t !== "object") return null;
+      const id = Number(t.id ?? i + 1);
+      const name = toName(t.name) || `Talent ${id}`;
+      return {
+        id,
+        name,
+        row: Math.floor(i / 4),
+        col: i % 4,
+        maxRank: 1,
+        treeType: "spec"
+      };
+    })
+    .filter(Boolean);
+}
+
+async function collectFromLibTalentInfoGithub() {
+  const res = await fetch(LIB_TALENT_INFO_RETAIL_URL, {
+    headers: { "user-agent": "wowadvisor-updater" }
+  });
+  if (!res.ok) {
+    console.log(`LibTalentInfo fetch failed: HTTP ${res.status}`);
+    return [];
+  }
+
+  const luaText = await res.text();
+  let ast;
+  try {
+    ast = luaparse.parse(luaText, { luaVersion: "5.1" });
+  } catch {
+    console.log("LibTalentInfo parse failed");
+    return [];
+  }
+
+  const providerTable = findSetProviderArg(ast);
+  if (!providerTable) {
+    console.log("LibTalentInfo provider table not found");
+    return [];
+  }
+
+  const provider = luaNodeToJs(providerTable);
+  const specsByClass = provider?.specializations && typeof provider.specializations === "object"
+    ? provider.specializations
+    : {};
+  const pvpTalentsBySpec = provider?.pvpTalents && typeof provider.pvpTalents === "object"
+    ? provider.pvpTalents
+    : {};
+  const talentsBySpec = provider?.talents && typeof provider.talents === "object"
+    ? provider.talents
+    : {};
+
+  const out = [];
+  for (const [classFile, specMap] of Object.entries(specsByClass)) {
+    const className = CLASS_FILE_TO_NAME[classFile] || classFile;
+    if (!specMap || typeof specMap !== "object") continue;
+
+    for (const spec of Object.values(specMap)) {
+      if (!spec || typeof spec !== "object") continue;
+      const specId = Number(spec.id);
+      const specName = toName(spec.name);
+      if (!specName || !Number.isFinite(specId)) continue;
+
+      const rawList = pvpTalentsBySpec[String(specId)] || talentsBySpec[String(specId)] || [];
+      const nodes = buildNodesFromTalentList(rawList);
+      if (nodes.length === 0) continue;
+
+      out.push({ className, specName, nodes });
+    }
+  }
+
+  return out;
 }
 
 function normalizeNode(raw, idx) {
@@ -416,6 +564,19 @@ async function buildTalentTrees() {
   }
 
   console.log(`Collected ${specs.length} specs from class/specialization route fallback`);
+
+  if (specs.length === 0) {
+    const fromLibTalentInfo = await collectFromLibTalentInfoGithub();
+    if (fromLibTalentInfo.length > 0) {
+      console.log(`Collected ${fromLibTalentInfo.length} specs from LibTalentInfo GitHub fallback`);
+      return {
+        generatedAt: new Date().toISOString(),
+        region: REGION,
+        locale: LOCALE,
+        specs: fromLibTalentInfo
+      };
+    }
+  }
 
   return {
     generatedAt: new Date().toISOString(),
