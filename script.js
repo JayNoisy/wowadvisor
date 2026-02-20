@@ -44,8 +44,15 @@ const talentBuilderTitle = document.getElementById("talentBuilderTitle");
 const talentBuilderHint = document.getElementById("talentBuilderHint");
 const builderToolbar = document.getElementById("builderToolbar");
 const builderPoints = document.getElementById("builderPoints");
+const builderFilters = document.getElementById("builderFilters");
 const builderResetBtn = document.getElementById("builderResetBtn");
 const talentTreeGrid = document.getElementById("talentTreeGrid");
+const talentNodeDetails = document.getElementById("talentNodeDetails");
+const nodeDetailsTitle = document.getElementById("nodeDetailsTitle");
+const nodeDetailsHint = document.getElementById("nodeDetailsHint");
+const nodeDetailsType = document.getElementById("nodeDetailsType");
+const nodeDetailsRank = document.getElementById("nodeDetailsRank");
+const nodeDetailsPosition = document.getElementById("nodeDetailsPosition");
 
 // =========================
 // App State
@@ -59,6 +66,12 @@ let buildsMeta = { generatedAt: null, sources: null };
 let talentTreesRoot = null; // keyed by "Class|||Spec"
 let talentAllocations = {}; // keyed by node id
 let talentTreesLoadedCount = 0;
+let talentTreeFilter = "all"; // "all" | "class" | "spec"
+let selectedTalentNodeId = null;
+const TREE_GATES = [
+  { minRow: 8, pointsRequired: 20 },
+  { minRow: 5, pointsRequired: 8 }
+];
 
 // =========================
 // Helpers
@@ -250,58 +263,236 @@ function pointsSpent(tree) {
   return tree.nodes.reduce((sum, n) => sum + (talentAllocations[n.id] || 0), 0);
 }
 
-function updateBuilderPoints(tree) {
-  const total = pointsSpent(tree);
-  builderPoints.textContent = `Points spent: ${total}`;
+function pointsSpentByType(tree, treeType) {
+  if (!tree || !Array.isArray(tree.nodes)) return 0;
+  return tree.nodes.reduce((sum, n) => {
+    if (normalizedTreeType(n.treeType) !== treeType) return sum;
+    return sum + (talentAllocations[n.id] || 0);
+  }, 0);
 }
 
-function renderTalentTreeNodes(tree) {
-  const nodes = Array.isArray(tree?.nodes) ? tree.nodes : [];
-  talentTreeGrid.innerHTML = "";
+function requiredPointsForRow(row) {
+  for (const gate of TREE_GATES) {
+    if (row >= gate.minRow) return gate.pointsRequired;
+  }
+  return 0;
+}
 
-  if (nodes.length === 0) {
-    talentBuilderHint.textContent = "Talent tree data exists but has no nodes.";
-    talentBuilderHint.hidden = false;
-    builderToolbar.hidden = true;
+function getNodeLockState(node, tree) {
+  const treeType = normalizedTreeType(node?.treeType);
+  const required = requiredPointsForRow(Number(node?.row ?? 0));
+  const spentInTree = pointsSpentByType(tree, treeType);
+  const current = talentAllocations[node?.id] || 0;
+  const locked = required > 0 && spentInTree < required && current === 0;
+  return { locked, required, spentInTree, treeType };
+}
+
+function updateBuilderPoints(tree) {
+  const total = pointsSpent(tree);
+  const classPoints = pointsSpentByType(tree, "class");
+  const specPoints = pointsSpentByType(tree, "spec");
+  builderPoints.textContent = `Points: ${total} (Class ${classPoints} / Spec ${specPoints})`;
+}
+
+function normalizedTreeType(value) {
+  const raw = String(value || "").toLowerCase();
+  if (raw === "class") return "class";
+  return "spec";
+}
+
+function treeTypeLabel(type) {
+  return type === "class" ? "Class" : "Spec";
+}
+
+function visibleTreeNodes(tree) {
+  const nodes = Array.isArray(tree?.nodes) ? tree.nodes : [];
+  if (talentTreeFilter === "all") return nodes;
+  return nodes.filter((node) => normalizedTreeType(node.treeType) === talentTreeFilter);
+}
+
+function setTreeFilterButtons() {
+  const buttons = builderFilters?.querySelectorAll(".builder-filter-btn") ?? [];
+  buttons.forEach((btn) => {
+    btn.classList.toggle("selected", btn.dataset.treeFilter === talentTreeFilter);
+  });
+}
+
+function renderNodeDetails(tree) {
+  const nodes = Array.isArray(tree?.nodes) ? tree.nodes : [];
+  const node = nodes.find((n) => n.id === selectedTalentNodeId) || null;
+  if (!node) {
+    nodeDetailsTitle.textContent = "Node Details";
+    nodeDetailsHint.textContent = "Click a talent node to inspect it.";
+    nodeDetailsType.textContent = "-";
+    nodeDetailsRank.textContent = "-";
+    nodeDetailsPosition.textContent = "-";
     return;
   }
 
+  const spent = talentAllocations[node.id] || 0;
+  const lockState = getNodeLockState(node, tree);
+  nodeDetailsTitle.textContent = node.name;
+  if (lockState.locked) {
+    nodeDetailsHint.textContent = `Locked: needs ${lockState.required} points in ${treeTypeLabel(lockState.treeType)} tree (${lockState.spentInTree}/${lockState.required}).`;
+  } else {
+    nodeDetailsHint.textContent = "Left click to add rank. Right click to remove rank.";
+  }
+  nodeDetailsType.textContent = treeTypeLabel(normalizedTreeType(node.treeType));
+  nodeDetailsRank.textContent = `${spent}/${node.maxRank}`;
+  nodeDetailsPosition.textContent = `Row ${node.row + 1}, Col ${node.col + 1}`;
+}
+
+function getTreeEdges(nodes) {
+  const edges = [];
+  const sorted = [...nodes].sort((a, b) => {
+    if (a.row !== b.row) return a.row - b.row;
+    return a.col - b.col;
+  });
+
+  for (const node of sorted) {
+    const type = normalizedTreeType(node.treeType);
+    const possibleParents = sorted.filter((candidate) => {
+      if (candidate.id === node.id) return false;
+      if (normalizedTreeType(candidate.treeType) !== type) return false;
+      if (candidate.row >= node.row) return false;
+      return Math.abs(candidate.col - node.col) <= 2;
+    });
+    if (possibleParents.length === 0) continue;
+
+    possibleParents.sort((a, b) => {
+      if (a.row !== b.row) return b.row - a.row;
+      return Math.abs(a.col - node.col) - Math.abs(b.col - node.col);
+    });
+    edges.push({ from: possibleParents[0].id, to: node.id });
+  }
+
+  return edges;
+}
+
+function renderTreeLinks(tree, nodes) {
+  const edges = getTreeEdges(nodes);
+  const nodeElements = new Map();
+  talentTreeGrid.querySelectorAll(".talent-node").forEach((el) => {
+    nodeElements.set(Number(el.dataset.nodeId), el);
+  });
+
+  const oldLayer = talentTreeGrid.querySelector(".talent-link-layer");
+  if (oldLayer) oldLayer.remove();
+
+  if (edges.length === 0) return;
+  const svgNs = "http://www.w3.org/2000/svg";
+  const layer = document.createElementNS(svgNs, "svg");
+  layer.setAttribute("class", "talent-link-layer");
+  layer.setAttribute("viewBox", `0 0 ${talentTreeGrid.clientWidth} ${talentTreeGrid.clientHeight}`);
+  layer.setAttribute("width", String(talentTreeGrid.clientWidth));
+  layer.setAttribute("height", String(talentTreeGrid.clientHeight));
+
+  for (const edge of edges) {
+    const fromEl = nodeElements.get(edge.from);
+    const toEl = nodeElements.get(edge.to);
+    if (!fromEl || !toEl) continue;
+
+    const fromNode = nodes.find((n) => n.id === edge.from);
+    const toNode = nodes.find((n) => n.id === edge.to);
+    const fromRect = fromEl.getBoundingClientRect();
+    const toRect = toEl.getBoundingClientRect();
+    const baseRect = talentTreeGrid.getBoundingClientRect();
+
+    const x1 = fromRect.left + fromRect.width / 2 - baseRect.left;
+    const y1 = fromRect.top + fromRect.height / 2 - baseRect.top;
+    const x2 = toRect.left + toRect.width / 2 - baseRect.left;
+    const y2 = toRect.top + toRect.height / 2 - baseRect.top;
+
+    const spentFrom = fromNode ? (talentAllocations[fromNode.id] || 0) : 0;
+    const spentTo = toNode ? (talentAllocations[toNode.id] || 0) : 0;
+    const active = spentFrom > 0 || spentTo > 0;
+
+    const line = document.createElementNS(svgNs, "line");
+    line.setAttribute("x1", String(x1));
+    line.setAttribute("y1", String(y1));
+    line.setAttribute("x2", String(x2));
+    line.setAttribute("y2", String(y2));
+    line.setAttribute("class", active ? "talent-link active" : "talent-link");
+    layer.appendChild(line);
+  }
+
+  talentTreeGrid.appendChild(layer);
+}
+
+function renderTalentTreeNodes(tree) {
+  const nodes = visibleTreeNodes(tree);
+  talentTreeGrid.innerHTML = "";
+  setTreeFilterButtons();
+
+  if (nodes.length === 0) {
+    const scopeText = talentTreeFilter === "all" ? "this tree" : `${talentTreeFilter} tree`;
+    talentBuilderHint.textContent = `No nodes found for ${scopeText}.`;
+    talentBuilderHint.hidden = false;
+    renderNodeDetails(tree);
+    return;
+  }
+
+  talentBuilderHint.hidden = true;
   const maxRow = Math.max(...nodes.map((n) => n.row), 0) + 1;
   const maxCol = Math.max(...nodes.map((n) => n.col), 0) + 1;
   talentTreeGrid.style.setProperty("--tree-rows", String(maxRow));
-  talentTreeGrid.style.setProperty("--tree-cols", String(Math.max(6, maxCol)));
+  talentTreeGrid.style.setProperty("--tree-cols", String(Math.max(8, maxCol)));
+
+  if (!nodes.some((n) => n.id === selectedTalentNodeId)) {
+    selectedTalentNodeId = nodes[0]?.id ?? null;
+  }
 
   for (const node of nodes) {
     const spent = talentAllocations[node.id] || 0;
+    const lockState = getNodeLockState(node, tree);
     const item = document.createElement("button");
     item.type = "button";
     item.className = "talent-node";
+    if (spent > 0) item.classList.add("allocated");
+    if (selectedTalentNodeId === node.id) item.classList.add("active");
+    if (lockState.locked) item.classList.add("locked");
     item.style.gridRow = String(node.row + 1);
     item.style.gridColumn = String(node.col + 1);
     item.dataset.nodeId = String(node.id);
+    const type = normalizedTreeType(node.treeType);
     item.innerHTML = `
+      <span class="talent-node-kind">${treeTypeLabel(type)}</span>
       <span class="talent-node-name">${node.name}</span>
       <span class="talent-node-rank">${spent}/${node.maxRank}</span>
     `;
     item.setAttribute("aria-label", `${node.name} ${spent} of ${node.maxRank}`);
 
     item.addEventListener("click", () => {
+      selectedTalentNodeId = node.id;
+      const state = getNodeLockState(node, tree);
+      if (state.locked) {
+        renderTalentTreeNodes(tree);
+        updateBuilderPoints(tree);
+        renderNodeDetails(tree);
+        return;
+      }
       const current = talentAllocations[node.id] || 0;
-      talentAllocations[node.id] = current >= node.maxRank ? 0 : current + 1;
+      talentAllocations[node.id] = Math.min(node.maxRank, current + 1);
       renderTalentTreeNodes(tree);
       updateBuilderPoints(tree);
+      renderNodeDetails(tree);
     });
 
     item.addEventListener("contextmenu", (e) => {
       e.preventDefault();
+      selectedTalentNodeId = node.id;
       const current = talentAllocations[node.id] || 0;
       talentAllocations[node.id] = Math.max(0, current - 1);
       renderTalentTreeNodes(tree);
       updateBuilderPoints(tree);
+      renderNodeDetails(tree);
     });
 
     talentTreeGrid.appendChild(item);
   }
+
+  renderTreeLinks(tree, nodes);
+  renderNodeDetails(tree);
 }
 
 function resetTalentBuilder() {
@@ -312,6 +503,9 @@ function resetTalentBuilder() {
   builderToolbar.hidden = true;
   talentTreeGrid.innerHTML = "";
   talentAllocations = {};
+  talentTreeFilter = "all";
+  selectedTalentNodeId = null;
+  renderNodeDetails(null);
 }
 
 function showTalentBuilder(className, specName) {
@@ -336,8 +530,11 @@ function showTalentBuilder(className, specName) {
   talentBuilderHint.hidden = true;
   builderToolbar.hidden = false;
   talentAllocations = {};
+  talentTreeFilter = "all";
+  selectedTalentNodeId = null;
   renderTalentTreeNodes(tree);
   updateBuilderPoints(tree);
+  renderNodeDetails(tree);
 }
 
 async function loadTalentTrees() {
@@ -455,6 +652,19 @@ builderResetBtn.addEventListener("click", () => {
   talentAllocations = {};
   renderTalentTreeNodes(tree);
   updateBuilderPoints(tree);
+  renderNodeDetails(tree);
+});
+
+builderFilters?.addEventListener("click", (e) => {
+  const btn = e.target.closest(".builder-filter-btn");
+  if (!btn) return;
+  const next = btn.dataset.treeFilter;
+  if (!next) return;
+  talentTreeFilter = next;
+  const tree = getActiveTree();
+  if (!tree) return;
+  renderTalentTreeNodes(tree);
+  renderNodeDetails(tree);
 });
 
 // Start
