@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 const REGION = process.env.BLIZZARD_REGION || "us";
 const LOCALE = process.env.BLIZZARD_LOCALE || "en_US";
-const NAMESPACE = `static-${REGION}`;
+let ACTIVE_NAMESPACE = `static-${REGION}`;
 
 function requireEnv(name) {
   const v = process.env[name];
@@ -37,9 +37,11 @@ async function getAccessToken() {
   return data.access_token;
 }
 
-async function fetchApi(url, token) {
+async function fetchApi(url, token, namespaceOverride = ACTIVE_NAMESPACE) {
   const u = new URL(url);
-  if (!u.searchParams.get("namespace")) u.searchParams.set("namespace", NAMESPACE);
+  if (!u.searchParams.get("namespace") && namespaceOverride) {
+    u.searchParams.set("namespace", namespaceOverride);
+  }
   if (!u.searchParams.get("locale")) u.searchParams.set("locale", LOCALE);
   if (!u.searchParams.get("access_token")) u.searchParams.set("access_token", token);
   const res = await fetch(u.toString());
@@ -47,12 +49,43 @@ async function fetchApi(url, token) {
   return res.json();
 }
 
-async function tryFetchApi(url, token) {
+async function tryFetchApi(url, token, namespaceOverride = ACTIVE_NAMESPACE) {
   try {
-    return await fetchApi(url, token);
+    return await fetchApi(url, token, namespaceOverride);
   } catch {
     return null;
   }
+}
+
+function namespaceFromSelf(payload) {
+  const href = payload?._links?.self?.href;
+  if (!href) return null;
+  try {
+    const ns = new URL(href).searchParams.get("namespace");
+    return ns || null;
+  } catch {
+    return null;
+  }
+}
+
+async function resolveWorkingNamespace(token) {
+  const probeUrls = [
+    `https://${REGION}.api.blizzard.com/data/wow/playable-race/index`,
+    `https://${REGION}.api.blizzard.com/data/wow/item-class/index`,
+    `https://${REGION}.api.blizzard.com/data/wow/playable-class/index`
+  ];
+  const candidates = [`static-${REGION}`, `dynamic-${REGION}`];
+
+  for (const ns of candidates) {
+    for (const url of probeUrls) {
+      const payload = await tryFetchApi(url, token, ns);
+      if (!payload) continue;
+      const hinted = namespaceFromSelf(payload);
+      return hinted || ns;
+    }
+  }
+
+  return ACTIVE_NAMESPACE;
 }
 
 function toName(v) {
@@ -185,6 +218,9 @@ async function collectFromTalentTreeIndex(token) {
 
 async function buildTalentTrees() {
   const token = await getAccessToken();
+  ACTIVE_NAMESPACE = await resolveWorkingNamespace(token);
+  console.log(`Using WoW API namespace: ${ACTIVE_NAMESPACE}`);
+
   const fromTalentTreeIndex = await collectFromTalentTreeIndex(token);
   if (fromTalentTreeIndex.length > 0) {
     return {
