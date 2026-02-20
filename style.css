@@ -268,3 +268,26 @@ body {
 }
 
 #copyBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (min-width: 900px) {
+  .class-buttons {
+    gap: 16px;
+    max-width: 920px;
+  }
+
+  .class-btn {
+    width: 190px;
+    padding: 15px;
+    gap: 14px;
+  }
+
+  .spec-buttons,
+  .build-tabs {
+    gap: 12px;
+  }
+
+  .spec-btn,
+  .tab-btn {
+    padding: 12px 15px;
+  }
+}
