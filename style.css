@@ -74,7 +74,11 @@ body {
   background: rgba(0,0,0,0.30);
 }
 
-.glyph-emoji { font-size: 18px; line-height: 1; }
+.class-icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
 .class-name { font-weight: bold; }
 
 /* Class colors */
@@ -159,6 +163,12 @@ body {
   font-weight: bold;
   background: rgba(255,255,255,0.06);
   border: 2px solid rgba(255,255,255,0.14);
+}
+
+.badge.has-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .panel-body { padding: 16px; display: grid; gap: 16px; }

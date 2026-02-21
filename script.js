@@ -2,19 +2,19 @@
 // UI Spec Definitions
 // =========================
 const CLASS_DATA = {
-  "Warrior": { classEmoji: "⚔️", specs: [{ name: "Arms", icon: "🩸" }, { name: "Fury", icon: "🔥" }, { name: "Protection", icon: "🛡️" }] },
-  "Paladin": { classEmoji: "🛡️", specs: [{ name: "Holy", icon: "✨" }, { name: "Protection", icon: "🛡️" }, { name: "Retribution", icon: "⚔️" }] },
-  "Hunter": { classEmoji: "🏹", specs: [{ name: "Beast Mastery", icon: "🐺" }, { name: "Marksmanship", icon: "🎯" }, { name: "Survival", icon: "🪤" }] },
-  "Rogue": { classEmoji: "🗡️", specs: [{ name: "Assassination", icon: "☠️" }, { name: "Outlaw", icon: "🏴‍☠️" }, { name: "Subtlety", icon: "🌑" }] },
-  "Priest": { classEmoji: "✨", specs: [{ name: "Discipline", icon: "📜" }, { name: "Holy", icon: "✨" }, { name: "Shadow", icon: "🕳️" }] },
-  "Death Knight": { classEmoji: "💀", specs: [{ name: "Blood", icon: "🩸" }, { name: "Frost", icon: "❄️" }, { name: "Unholy", icon: "🦠" }] },
-  "Shaman": { classEmoji: "🌩️", specs: [{ name: "Elemental", icon: "🌩️" }, { name: "Enhancement", icon: "⚡" }, { name: "Restoration", icon: "💧" }] },
-  "Mage": { classEmoji: "🔥", specs: [{ name: "Arcane", icon: "🌀" }, { name: "Fire", icon: "🔥" }, { name: "Frost", icon: "❄️" }] },
-  "Warlock": { classEmoji: "🕯️", specs: [{ name: "Affliction", icon: "🕸️" }, { name: "Demonology", icon: "😈" }, { name: "Destruction", icon: "🔥" }] },
-  "Monk": { classEmoji: "🥋", specs: [{ name: "Brewmaster", icon: "🍺" }, { name: "Mistweaver", icon: "🌫️" }, { name: "Windwalker", icon: "💨" }] },
-  "Druid": { classEmoji: "🌿", specs: [{ name: "Balance", icon: "🌙" }, { name: "Feral", icon: "🐾" }, { name: "Guardian", icon: "🐻" }, { name: "Restoration", icon: "🌿" }] },
-  "Demon Hunter": { classEmoji: "👁️", specs: [{ name: "Havoc", icon: "🟣" }, { name: "Vengeance", icon: "🛡️" }] },
-  "Evoker": { classEmoji: "🐉", specs: [{ name: "Devastation", icon: "🔥" }, { name: "Preservation", icon: "💚" }, { name: "Augmentation", icon: "🪄" }] }
+  "Warrior": { classIcon: "assets/class-icons/warrior.png", specs: [{ name: "Arms", icon: "🩸" }, { name: "Fury", icon: "🔥" }, { name: "Protection", icon: "🛡️" }] },
+  "Paladin": { classIcon: "assets/class-icons/paladin.png", specs: [{ name: "Holy", icon: "✨" }, { name: "Protection", icon: "🛡️" }, { name: "Retribution", icon: "⚔️" }] },
+  "Hunter": { classIcon: "assets/class-icons/hunter.png", specs: [{ name: "Beast Mastery", icon: "🐺" }, { name: "Marksmanship", icon: "🎯" }, { name: "Survival", icon: "🪤" }] },
+  "Rogue": { classIcon: "assets/class-icons/rogue.png", specs: [{ name: "Assassination", icon: "☠️" }, { name: "Outlaw", icon: "🏴‍☠️" }, { name: "Subtlety", icon: "🌑" }] },
+  "Priest": { classIcon: "assets/class-icons/priest.png", specs: [{ name: "Discipline", icon: "📜" }, { name: "Holy", icon: "✨" }, { name: "Shadow", icon: "🕳️" }] },
+  "Death Knight": { classIcon: "assets/class-icons/death-knight.png", specs: [{ name: "Blood", icon: "🩸" }, { name: "Frost", icon: "❄️" }, { name: "Unholy", icon: "🦠" }] },
+  "Shaman": { classIcon: "assets/class-icons/shaman.png", specs: [{ name: "Elemental", icon: "🌩️" }, { name: "Enhancement", icon: "⚡" }, { name: "Restoration", icon: "💧" }] },
+  "Mage": { classIcon: "assets/class-icons/mage.png", specs: [{ name: "Arcane", icon: "🌀" }, { name: "Fire", icon: "🔥" }, { name: "Frost", icon: "❄️" }] },
+  "Warlock": { classIcon: "assets/class-icons/warlock.png", specs: [{ name: "Affliction", icon: "🕸️" }, { name: "Demonology", icon: "😈" }, { name: "Destruction", icon: "🔥" }] },
+  "Monk": { classIcon: "assets/class-icons/monk.png", specs: [{ name: "Brewmaster", icon: "🍺" }, { name: "Mistweaver", icon: "🌫️" }, { name: "Windwalker", icon: "💨" }] },
+  "Druid": { classIcon: "assets/class-icons/druid.png", specs: [{ name: "Balance", icon: "🌙" }, { name: "Feral", icon: "🐾" }, { name: "Guardian", icon: "🐻" }, { name: "Restoration", icon: "🌿" }] },
+  "Demon Hunter": { classIcon: "assets/class-icons/demon-hunter.png", specs: [{ name: "Havoc", icon: "🟣" }, { name: "Vengeance", icon: "🛡️" }] },
+  "Evoker": { classIcon: "assets/class-icons/evoker.png", specs: [{ name: "Devastation", icon: "🔥" }, { name: "Preservation", icon: "💚" }, { name: "Augmentation", icon: "🪄" }] }
 };
 
 const STAT_PRIORITIES = {
@@ -666,9 +666,12 @@ function showPanelForClass(className, classBtnEl) {
   selectedClassTitle.textContent = className;
   panelSubtitle.textContent = "Now click your spec.";
 
-  classBadge.textContent = CLASS_DATA[className]?.classEmoji ?? "❔";
+  const classIcon = CLASS_DATA[className]?.classIcon || "";
+  classBadge.textContent = "";
   classBadge.style.borderColor = color;
   classBadge.style.boxShadow = `0 0 16px ${color}`;
+  classBadge.style.backgroundImage = classIcon ? `url('${classIcon}')` : "";
+  classBadge.classList.toggle("has-image", Boolean(classIcon));
 
   panel.hidden = false;
   renderSpecButtons(className);
