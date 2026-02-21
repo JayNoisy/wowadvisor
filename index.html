@@ -6,8 +6,8 @@
   <title>WoW Talent Advisor</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23171723'/%3E%3Ctext x='50%25' y='56%25' font-size='34' text-anchor='middle' fill='%23fff'%3E%E2%9A%94%3C/text%3E%3C/svg%3E" />
 
-  <link rel="stylesheet" href="style.css?v=20260221-4" />
-  <script src="script.js?v=20260221-4" defer></script>
+  <link rel="stylesheet" href="style.css?v=20260221-5" />
+  <script src="script.js?v=20260221-5" defer></script>
 </head>
 <body>
   <header class="header">
@@ -75,6 +75,11 @@
           <h3>Talent Tree (Blizzard API)</h3>
           <p class="muted" id="talentTreeHint">Pick a spec to load talent nodes.</p>
           <div id="talentTreeWrap" class="talent-tree-wrap" hidden></div>
+          <div id="talentNodeInspector" class="talent-node-inspector" hidden>
+            <h4 class="talent-node-title">Talent Details</h4>
+            <p class="muted" id="talentNodeHint">Click a talent node to inspect it.</p>
+            <div id="talentNodeBody" class="talent-node-body"></div>
+          </div>
         </div>
 
       </div>

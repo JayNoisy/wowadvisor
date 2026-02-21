@@ -38,6 +38,9 @@ const buildHint = document.getElementById("buildHint");
 const buildNotes = document.getElementById("buildNotes");
 const talentTreeHint = document.getElementById("talentTreeHint");
 const talentTreeWrap = document.getElementById("talentTreeWrap");
+const talentNodeInspector = document.getElementById("talentNodeInspector");
+const talentNodeHint = document.getElementById("talentNodeHint");
+const talentNodeBody = document.getElementById("talentNodeBody");
 
 const exportString = document.getElementById("exportString");
 const copyBtn = document.getElementById("copyBtn");
@@ -54,6 +57,7 @@ let buildsMeta = { generatedAt: null, sources: null };
 let talentTreesMeta = { generatedAt: null, source: null, specCount: 0 };
 let talentTreesSpecs = [];
 let talentTreesLoadError = null;
+let talentNodeIndex = new Map();
 
 // =========================
 // Helpers
@@ -126,6 +130,10 @@ function resetTalentTreeCard(message) {
   talentTreeHint.textContent = message;
   talentTreeWrap.innerHTML = "";
   talentTreeWrap.hidden = true;
+  talentNodeIndex = new Map();
+  talentNodeInspector.hidden = true;
+  talentNodeHint.textContent = "Click a talent node to inspect it.";
+  talentNodeBody.innerHTML = "";
 }
 
 function titleCase(word) {
@@ -249,6 +257,8 @@ function renderTalentTree(className, specName) {
     return;
   }
 
+  talentNodeIndex = new Map();
+
   function renderTreePane(pane) {
     const title = pane?.label || "Tree";
     const typeNodes = Array.isArray(pane?.nodes) ? pane.nodes : [];
@@ -304,8 +314,14 @@ function renderTalentTree(className, specName) {
         const nodeKind = String(n?.nodeKind || (entries.length > 1 ? "choice" : "active")).toLowerCase();
         const choicesText = entries.length > 1 ? `, Choices: ${entries.map((e) => e?.name).filter(Boolean).slice(0, 2).join(" / ")}` : "";
         const nodeTitle = `${name} (Max rank: ${rank}${spellId ? `, Spell ID: ${spellId}` : ""}${choicesText})`;
+        const nodeKey = `${pane.key || "tree"}:${Number(n?.id) || `${row}-${col}`}`;
+        talentNodeIndex.set(nodeKey, {
+          paneKey: pane.key || "tree",
+          paneLabel: pane.label || "Tree",
+          node: n
+        });
         return `
-          <button class="wow-node wow-node-${escapeHtml(nodeKind)}" type="button" style="grid-row:${row};grid-column:${col}" title="${nodeTitle}">
+          <button class="wow-node wow-node-${escapeHtml(nodeKind)}" data-node-key="${escapeHtml(nodeKey)}" type="button" style="grid-row:${row};grid-column:${col}" title="${nodeTitle}">
             <span class="wow-node-core${iconUrl ? " has-icon" : ""}"${iconStyle}>
               <span class="wow-node-initials">${initials}</span>
             </span>
@@ -343,6 +359,42 @@ function renderTalentTree(className, specName) {
   talentTreeWrap.className = "talent-tree-wrap wow-tree-layout";
   talentTreeWrap.innerHTML = blocks.join("");
   talentTreeWrap.hidden = false;
+  talentNodeInspector.hidden = false;
+  talentNodeHint.textContent = "Click a node to inspect rank, type, choices, and prerequisites.";
+  talentNodeBody.innerHTML = "";
+}
+
+function renderTalentNodeInspector(nodeInfo) {
+  if (!nodeInfo || !nodeInfo.node) return;
+  const node = nodeInfo.node;
+  const entries = Array.isArray(node?.entries) ? node.entries : [];
+  const primary = entries[0] || null;
+  const name = escapeHtml(node?.name || "Unknown Talent");
+  const nodeKind = escapeHtml(String(node?.nodeKind || "active").toUpperCase());
+  const maxRank = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? 1));
+  const spellId = Number.isFinite(Number(node?.spellId ?? primary?.spellId)) ? Number(node?.spellId ?? primary?.spellId) : null;
+  const reqs = Array.isArray(node?.requiredNodeIds) ? node.requiredNodeIds : [];
+  const iconUrl = typeof primary?.iconUrl === "string" && primary.iconUrl
+    ? primary.iconUrl
+    : (typeof node?.iconUrl === "string" ? node.iconUrl : "");
+  const iconHtml = iconUrl ? `<span class="inspector-icon" style="background-image:url('${escapeHtml(iconUrl)}')"></span>` : `<span class="inspector-icon fallback">${escapeHtml(nodeInitials(node?.name))}</span>`;
+  const choiceHtml = entries.length > 1
+    ? `<ul class="inspector-list">${entries.map((e) => `<li>${escapeHtml(e?.name || "Unknown choice")}${e?.spellId ? ` <span class="muted">(#${Number(e.spellId)})</span>` : ""}</li>`).join("")}</ul>`
+    : "<p class=\"muted\">No choice variants.</p>";
+
+  talentNodeHint.textContent = `${nodeInfo.paneLabel} | ${name}`;
+  talentNodeBody.innerHTML = `
+    <div class="inspector-head">
+      ${iconHtml}
+      <div>
+        <p class="inspector-name">${name}</p>
+        <p class="muted">Type: ${nodeKind} | Max rank: ${maxRank}${spellId ? ` | Spell: ${spellId}` : ""}</p>
+      </div>
+    </div>
+    <p class="muted">Prerequisites: ${reqs.length > 0 ? reqs.join(", ") : "None"}</p>
+    <h5 class="inspector-subtitle">Choices</h5>
+    ${choiceHtml}
+  `;
 }
 
 function renderSpecButtons(className) {
@@ -561,6 +613,20 @@ copyBtn.addEventListener("click", async () => {
     copyBtn.textContent = "Copy failed";
     setTimeout(() => (copyBtn.textContent = "Copy"), 900);
   }
+});
+
+talentTreeWrap.addEventListener("click", (e) => {
+  const nodeBtn = e.target.closest(".wow-node");
+  if (!nodeBtn) return;
+  const nodeKey = nodeBtn.dataset.nodeKey;
+  if (!nodeKey) return;
+  const nodeInfo = talentNodeIndex.get(nodeKey);
+  if (!nodeInfo) return;
+
+  const allNodes = talentTreeWrap.querySelectorAll(".wow-node");
+  allNodes.forEach((n) => n.classList.remove("selected"));
+  nodeBtn.classList.add("selected");
+  renderTalentNodeInspector(nodeInfo);
 });
 
 // Start
