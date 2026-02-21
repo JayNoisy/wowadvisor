@@ -206,7 +206,11 @@ function normalizeBuild(build) {
     source: core.source ?? build.source ?? null,
     updated: core.updated ?? build.updated ?? null,
     exportString: core.exportString ?? build.exportString ?? "",
-    notes: Array.isArray(core.notes) ? core.notes : (Array.isArray(build.notes) ? build.notes : [])
+    notes: Array.isArray(core.notes) ? core.notes : (Array.isArray(build.notes) ? build.notes : []),
+    confidence: core.confidence ?? build.confidence ?? null,
+    confidenceScore: core.confidenceScore ?? build.confidenceScore ?? null,
+    confidenceRationale: core.confidenceRationale ?? build.confidenceRationale ?? null,
+    sampleSize: core.sampleSize ?? build.sampleSize ?? null
   };
 }
 
@@ -796,11 +800,16 @@ function showBuildFromData(className, specName, mode) {
   const metaParts = [];
   if (build.updated) metaParts.push(`Updated: ${build.updated}`);
   if (buildsMeta.generatedAt) metaParts.push(`Generated: ${buildsMeta.generatedAt}`);
+  if (build.confidence && build.confidenceScore != null) {
+    metaParts.push(`Confidence: ${String(build.confidence).toUpperCase()} (${build.confidenceScore})`);
+  }
 
   buildMeta.textContent = metaParts.join(" • ");
   buildHint.textContent = "";
 
-  const notes = build.notes ?? [];
+  const notes = [...(build.notes ?? [])];
+  if (build.sampleSize != null) notes.push(`Sample size: ${build.sampleSize}`);
+  if (build.confidenceRationale) notes.push(`Confidence rationale: ${build.confidenceRationale}`);
   buildNotes.innerHTML = notes.map(n => `<li>${n}</li>`).join("");
   buildNotes.hidden = notes.length === 0;
 
