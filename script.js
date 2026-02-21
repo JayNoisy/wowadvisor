@@ -950,10 +950,9 @@ function showBuildFromData(className, specName, mode) {
   buildMeta.textContent = metaParts.join(" • ");
   buildHint.textContent = "";
 
-  const notes = [...(build.notes ?? [])];
+  const notes = [...(build.notes ?? [])]
+    .filter((n) => !/^player:/i.test(String(n || "").trim()));
   if (build.sampleSize != null) notes.push(`Sample size: ${build.sampleSize}`);
-  if (build.agreementCount != null) notes.push(`Exact-match agreement count: ${build.agreementCount}`);
-  if (build.confidenceRationale) notes.push(`Confidence rationale: ${build.confidenceRationale}`);
   buildNotes.innerHTML = notes.map(n => `<li>${n}</li>`).join("");
   buildNotes.hidden = notes.length === 0;
 
