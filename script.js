@@ -145,12 +145,15 @@ function classThemeKey(className) {
     .replace(/^-|-$/g, "");
 }
 
-function ensureElementBottomVisible(el, padding = 20) {
+function ensureElementTopVisible(el, topPadding = 18) {
   if (!el) return;
   const rect = el.getBoundingClientRect();
-  const overflowBottom = rect.bottom - window.innerHeight + padding;
-  if (overflowBottom > 0) {
-    window.scrollBy({ top: overflowBottom, behavior: "smooth" });
+  const targetTop = topPadding;
+  const targetBottom = window.innerHeight - 120;
+
+  // Only nudge scroll when the section start is outside a comfortable viewport band.
+  if (rect.top < targetTop || rect.top > targetBottom) {
+    window.scrollBy({ top: rect.top - targetTop, behavior: "smooth" });
   }
 }
 
@@ -841,9 +844,9 @@ specButtons.addEventListener("click", (e) => {
   renderStatPriorities(selectedClass, selectedSpec, selectedMode);
   renderTalentTree(selectedClass, selectedSpec);
 
-  // Spec selection expands panel content; keep expanded section in view.
+  // Spec selection expands panel content; reveal just enough to show section start.
   requestAnimationFrame(() => {
-    ensureElementBottomVisible(panel, 26);
+    ensureElementTopVisible(buildTypeWrap, 22);
   });
 });
 
