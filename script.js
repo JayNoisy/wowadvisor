@@ -94,6 +94,7 @@ const panel = document.getElementById("panel");
 const selectedClassTitle = document.getElementById("selectedClassTitle");
 const classBadge = document.getElementById("classBadge");
 const panelSubtitle = document.getElementById("panelSubtitle");
+const backToClassesBtn = document.getElementById("backToClassesBtn");
 
 const specButtons = document.getElementById("specButtons");
 
@@ -178,6 +179,14 @@ function clearSelectedTabs() {
   all.forEach(btn => btn.classList.remove("selected"));
 }
 
+function clearSelectedClassButtons() {
+  const all = classButtons.querySelectorAll(".class-btn");
+  all.forEach(btn => {
+    btn.classList.remove("selected");
+    btn.setAttribute("aria-pressed", "false");
+  });
+}
+
 function resetBuildCard(message) {
   buildTitle.textContent = "Best Talent Build";
   buildMeta.textContent = "";
@@ -225,20 +234,34 @@ function slugifyTalentName(value) {
     .replace(/^-|-$/g, "");
 }
 
-function buildSelectedTalentSlugMap(selectedTalents) {
-  const m = new Map();
-  const groups = selectedTalents && typeof selectedTalents === "object" ? selectedTalents : {};
-  const all = [
-    ...(Array.isArray(groups.class) ? groups.class : []),
-    ...(Array.isArray(groups.spec) ? groups.spec : []),
-    ...(Array.isArray(groups.hero) ? groups.hero : [])
-  ];
-  for (const t of all) {
-    const slug = slugifyTalentName(t?.slug);
-    if (!slug) continue;
-    m.set(slug, Math.max(1, Number(t?.rank) || 1));
+function buildSelectedTalentSelection(selectedTalents) {
+  const slugRanks = new Map();
+  const idRanks = new Map();
+  const mappedGroups = { class: [], spec: [], hero: [] };
+  const rawGroups = selectedTalents && typeof selectedTalents === "object" ? selectedTalents : {};
+  const allGroups = {
+    class: Array.isArray(rawGroups.class) ? rawGroups.class : [],
+    spec: Array.isArray(rawGroups.spec) ? rawGroups.spec : [],
+    hero: Array.isArray(rawGroups.hero) ? rawGroups.hero : []
+  };
+
+  for (const key of Object.keys(allGroups)) {
+    for (const t of allGroups[key]) {
+      const slug = slugifyTalentName(t?.slug);
+      const rank = Math.max(1, Number(t?.rank) || 1);
+      const id = Number(t?.id);
+      mappedGroups[key].push({ slug: slug || "", rank, id: Number.isFinite(id) ? id : null });
+      if (slug) slugRanks.set(slug, rank);
+      if (Number.isFinite(id)) idRanks.set(id, rank);
+    }
   }
-  return m;
+
+  return {
+    slugRanks,
+    idRanks,
+    groups: mappedGroups,
+    totalCount: mappedGroups.class.length + mappedGroups.spec.length + mappedGroups.hero.length
+  };
 }
 
 function normalizeKey(value) {
@@ -536,6 +559,8 @@ function renderTalentTree(className, specName) {
   }
 
   talentNodeIndex = new Map();
+  const selectedSet = buildSelectedTalentSelection(activeBuild?.selectedTalents);
+  let matchedCount = 0;
 
   function renderTreePane(pane) {
     const title = pane?.label || "Tree";
@@ -570,7 +595,6 @@ function renderTalentTree(className, specName) {
       linkHtml.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`);
     }
 
-    const selectedSlugRanks = buildSelectedTalentSlugMap(activeBuild?.selectedTalents);
     const nodeHtml = typeNodes
       .sort((a, b) => {
         const rowDelta = Number(a?.row ?? 0) - Number(b?.row ?? 0);
@@ -585,8 +609,36 @@ function renderTalentTree(className, specName) {
         const rank = Math.max(1, Number(primaryEntry?.maxRank ?? n?.maxRank ?? 1));
         const name = escapeHtml(n?.name || "Unknown Talent");
         const nodeSlug = slugifyTalentName(n?.name);
-        const selectedRank = selectedSlugRanks.get(nodeSlug) || 0;
+        const entrySlugs = entries.map((entry) => slugifyTalentName(entry?.name)).filter(Boolean);
+        const nodeId = Number(n?.id);
+        const idCandidates = [
+          nodeId,
+          Number(n?.spellId),
+          ...entries.map((entry) => Number(entry?.id)),
+          ...entries.map((entry) => Number(entry?.spellId))
+        ].filter((value) => Number.isFinite(value));
+        let selectedRank = 0;
+        for (const candidateId of idCandidates) {
+          const rankById = selectedSet.idRanks.get(candidateId);
+          if (rankById) {
+            selectedRank = rankById;
+            break;
+          }
+        }
+        if (!selectedRank && nodeSlug) {
+          selectedRank = selectedSet.slugRanks.get(nodeSlug) || 0;
+        }
+        if (!selectedRank && entrySlugs.length > 0) {
+          for (const entrySlug of entrySlugs) {
+            const rankBySlug = selectedSet.slugRanks.get(entrySlug);
+            if (rankBySlug) {
+              selectedRank = rankBySlug;
+              break;
+            }
+          }
+        }
         const isSelectedByBuild = selectedRank > 0;
+        if (isSelectedByBuild) matchedCount += 1;
         const initials = escapeHtml(nodeInitials(n?.name));
         const iconUrl = typeof primaryEntry?.iconUrl === "string" && primaryEntry.iconUrl
           ? primaryEntry.iconUrl
@@ -634,6 +686,34 @@ function renderTalentTree(className, specName) {
     renderTreePane(classPane),
     renderTreePane(specPane)
   ];
+
+  const selectedTotal = selectedSet.totalCount;
+  const likelyIncompleteTree = selectedTotal > 0 && (nodes.length <= 12 || matchedCount < Math.ceil(selectedTotal * 0.45));
+  if (likelyIncompleteTree) {
+    const groupOrder = ["class", "spec", "hero"];
+    const groupLabels = { class: "Class", spec: "Spec", hero: "Hero" };
+    const groupHtml = groupOrder.map((g) => {
+      const items = selectedSet.groups[g] || [];
+      if (items.length === 0) return "";
+      const rows = items.map((t) => `<span class="build-map-chip">${escapeHtml(t.slug || "unknown")} <em>${t.rank}</em></span>`).join("");
+      return `
+        <div class="build-map-group">
+          <h5>${groupLabels[g]} talents</h5>
+          <div class="build-map-chips">${rows}</div>
+        </div>
+      `;
+    }).join("");
+
+    if (groupHtml) {
+      blocks.push(`
+        <section class="build-map-fallback">
+          <h4>Selected Build Map</h4>
+          <p class="muted">Full tree data is incomplete for this spec. Showing selected talents from top-player build data.</p>
+          ${groupHtml}
+        </section>
+      `);
+    }
+  }
 
   const totalNodes = Number(specPayload?.summary?.totalNodes) || nodes.length;
   const isLikelyPvpOnly = totalNodes <= 12;
@@ -727,6 +807,34 @@ function showPanelForClass(className, classBtnEl) {
   // Bring the class panel into view so users don't need to scroll manually.
   requestAnimationFrame(() => {
     panel.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
+function collapseClassPanel() {
+  selectedClass = null;
+  selectedSpec = null;
+  selectedMode = null;
+  activeBuild = null;
+
+  clearSelectedClassButtons();
+  clearSelectedSpecButtons();
+  clearSelectedTabs();
+
+  panel.hidden = true;
+  panel.removeAttribute("data-theme");
+  panelSubtitle.textContent = "Then choose a spec.";
+  selectedClassTitle.textContent = "Choose a class";
+  classBadge.textContent = "?";
+  classBadge.style.backgroundImage = "";
+  classBadge.classList.remove("has-image");
+
+  buildTypeWrap.hidden = true;
+  resetBuildCard("Pick a spec, then a build type.");
+  resetStatPrioritiesCard("Pick a spec to view stat priorities.");
+  resetTalentTreeCard("Pick a spec to load talent nodes.");
+
+  requestAnimationFrame(() => {
+    classButtons.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 }
 
@@ -952,6 +1060,10 @@ statPills.addEventListener("click", (e) => {
   btn.classList.add("selected");
 
   renderStatExplanation(selectedClass, selectedSpec, stat, rank, selectedMode);
+});
+
+backToClassesBtn?.addEventListener("click", () => {
+  collapseClassPanel();
 });
 
 // Start
