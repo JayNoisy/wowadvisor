@@ -579,6 +579,19 @@ body {
     0 0 22px rgba(241, 196, 95, 0.52);
 }
 
+.wow-node.selected-by-build .wow-node-core {
+  border-color: rgba(97, 227, 173, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(21, 83, 61, 0.9) inset,
+    0 0 18px rgba(97, 227, 173, 0.52);
+}
+
+.wow-node.selected-by-build .wow-node-rank {
+  border-color: rgba(97, 227, 173, 0.85);
+  color: #c8ffe9;
+  background: rgba(9, 45, 35, 0.88);
+}
+
 .notes {
   margin: 10px 0 0 18px;
   padding: 0;

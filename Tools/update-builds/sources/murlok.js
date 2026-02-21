@@ -116,6 +116,24 @@ function buildsFromGuideCharacters(guide, mode, sourceLabelBase, title) {
     const className = slugToName(ch?.ClassSlug || guide?.ClassSlug);
     const specName = slugToName(ch?.SpecializationSlug || guide?.SpecializationSlug);
     if (!className || !specName) continue;
+    const selectedTalents = {
+      class: Array.isArray(ch?.ClassTalents)
+        ? ch.ClassTalents
+            .filter((t) => t && typeof t.Slug === "string" && t.Slug.length > 0)
+            .map((t) => ({ slug: String(t.Slug), rank: Number(t.CurrentRank) || 1 }))
+        : [],
+      spec: Array.isArray(ch?.SpecializationTalents)
+        ? ch.SpecializationTalents
+            .filter((t) => t && typeof t.Slug === "string" && t.Slug.length > 0)
+            .map((t) => ({ slug: String(t.Slug), rank: Number(t.CurrentRank) || 1 }))
+        : [],
+      hero: Array.isArray(ch?.HeroTalents)
+        ? ch.HeroTalents
+            .filter((t) => t && typeof t.Slug === "string" && t.Slug.length > 0)
+            .map((t) => ({ slug: String(t.Slug), rank: Number(t.CurrentRank) || 1 }))
+        : []
+    };
+
     out.push({
       className,
       specName,
@@ -124,6 +142,7 @@ function buildsFromGuideCharacters(guide, mode, sourceLabelBase, title) {
       source: `${sourceLabelBase} top-player`,
       updated: ch?.UpdatedAt || guide?.UpdatedAt || null,
       exportString,
+      selectedTalents,
       notes: [ch?.Slug ? `Player: ${ch.Slug}` : null, Number.isFinite(rank) ? `RankIndex: ${rank}` : null].filter(Boolean)
     });
   }

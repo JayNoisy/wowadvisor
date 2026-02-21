@@ -171,6 +171,7 @@ function chooseBestPerSpec(candidates) {
     const bestCluster = clusterList[0];
     const runnerUpCluster = clusterList[1] || null;
     const best = bestCluster.bestMember;
+    const withSelectedTalents = bestCluster.members.find((m) => m?.selectedTalents && typeof m.selectedTalents === "object") || null;
     const { className, specName } = best;
 
     const classNode = ensure(chosen, className);
@@ -214,7 +215,8 @@ function chooseBestPerSpec(candidates) {
       confidenceScore,
       confidenceRationale: rationale,
       sampleSize: arr.length,
-      agreementCount: bestCluster.members.length
+      agreementCount: bestCluster.members.length,
+      selectedTalents: withSelectedTalents?.selectedTalents ?? null
     };
   }
 

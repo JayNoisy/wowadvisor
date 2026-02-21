@@ -129,6 +129,7 @@ let talentTreesMeta = { generatedAt: null, source: null, specCount: 0 };
 let talentTreesSpecs = [];
 let talentTreesLoadError = null;
 let talentNodeIndex = new Map();
+let activeBuild = null;
 
 // =========================
 // Helpers
@@ -187,6 +188,7 @@ function resetBuildCard(message) {
 
   buildNotes.innerHTML = "";
   buildNotes.hidden = true;
+  activeBuild = null;
 }
 
 function resetStatPrioritiesCard(message) {
@@ -211,8 +213,32 @@ function normalizeBuild(build) {
     confidenceScore: core.confidenceScore ?? build.confidenceScore ?? null,
     confidenceRationale: core.confidenceRationale ?? build.confidenceRationale ?? null,
     sampleSize: core.sampleSize ?? build.sampleSize ?? null,
-    agreementCount: core.agreementCount ?? build.agreementCount ?? null
+    agreementCount: core.agreementCount ?? build.agreementCount ?? null,
+    selectedTalents: core.selectedTalents ?? build.selectedTalents ?? null
   };
+}
+
+function slugifyTalentName(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function buildSelectedTalentSlugMap(selectedTalents) {
+  const m = new Map();
+  const groups = selectedTalents && typeof selectedTalents === "object" ? selectedTalents : {};
+  const all = [
+    ...(Array.isArray(groups.class) ? groups.class : []),
+    ...(Array.isArray(groups.spec) ? groups.spec : []),
+    ...(Array.isArray(groups.hero) ? groups.hero : [])
+  ];
+  for (const t of all) {
+    const slug = slugifyTalentName(t?.slug);
+    if (!slug) continue;
+    m.set(slug, Math.max(1, Number(t?.rank) || 1));
+  }
+  return m;
 }
 
 function normalizeKey(value) {
@@ -544,6 +570,7 @@ function renderTalentTree(className, specName) {
       linkHtml.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`);
     }
 
+    const selectedSlugRanks = buildSelectedTalentSlugMap(activeBuild?.selectedTalents);
     const nodeHtml = typeNodes
       .sort((a, b) => {
         const rowDelta = Number(a?.row ?? 0) - Number(b?.row ?? 0);
@@ -557,6 +584,9 @@ function renderTalentTree(className, specName) {
         const primaryEntry = entries[0] || null;
         const rank = Math.max(1, Number(primaryEntry?.maxRank ?? n?.maxRank ?? 1));
         const name = escapeHtml(n?.name || "Unknown Talent");
+        const nodeSlug = slugifyTalentName(n?.name);
+        const selectedRank = selectedSlugRanks.get(nodeSlug) || 0;
+        const isSelectedByBuild = selectedRank > 0;
         const initials = escapeHtml(nodeInitials(n?.name));
         const iconUrl = typeof primaryEntry?.iconUrl === "string" && primaryEntry.iconUrl
           ? primaryEntry.iconUrl
@@ -565,7 +595,8 @@ function renderTalentTree(className, specName) {
         const iconStyle = iconUrl ? ` style="background-image:url('${escapeHtml(iconUrl)}')"` : "";
         const nodeKind = String(n?.nodeKind || (entries.length > 1 ? "choice" : "active")).toLowerCase();
         const choicesText = entries.length > 1 ? `, Choices: ${entries.map((e) => e?.name).filter(Boolean).slice(0, 2).join(" / ")}` : "";
-        const nodeTitle = `${name} (Max rank: ${rank}${spellId ? `, Spell ID: ${spellId}` : ""}${choicesText})`;
+        const chosenText = isSelectedByBuild ? `, Selected rank: ${selectedRank}` : "";
+        const nodeTitle = `${name} (Max rank: ${rank}${chosenText}${spellId ? `, Spell ID: ${spellId}` : ""}${choicesText})`;
         const nodeKey = `${pane.key || "tree"}:${Number(n?.id) || `${row}-${col}`}`;
         talentNodeIndex.set(nodeKey, {
           paneKey: pane.key || "tree",
@@ -573,11 +604,11 @@ function renderTalentTree(className, specName) {
           node: n
         });
         return `
-          <button class="wow-node wow-node-${escapeHtml(nodeKind)}" data-node-key="${escapeHtml(nodeKey)}" type="button" style="grid-row:${row};grid-column:${col}" title="${nodeTitle}">
+          <button class="wow-node wow-node-${escapeHtml(nodeKind)}${isSelectedByBuild ? " selected-by-build" : ""}" data-node-key="${escapeHtml(nodeKey)}" type="button" style="grid-row:${row};grid-column:${col}" title="${nodeTitle}">
             <span class="wow-node-core${iconUrl ? " has-icon" : ""}"${iconStyle}>
               <span class="wow-node-initials">${initials}</span>
             </span>
-            <span class="wow-node-rank">${rank}</span>
+            <span class="wow-node-rank">${isSelectedByBuild ? selectedRank : rank}</span>
             <span class="wow-node-label">${name}</span>
           </button>
         `;
@@ -795,6 +826,7 @@ function showBuildFromData(className, specName, mode) {
     resetBuildCard(`No ${modeLabel(mode)} build found for ${className} — ${specName}. Add it to builds.json.`);
     return;
   }
+  activeBuild = build;
 
   buildTitle.textContent = build.title || `${specName} — ${modeLabel(mode)}`;
 
@@ -875,6 +907,7 @@ buildTabs.addEventListener("click", (e) => {
 
   showBuildFromData(selectedClass, selectedSpec, selectedMode);
   renderStatPriorities(selectedClass, selectedSpec, selectedMode);
+  renderTalentTree(selectedClass, selectedSpec);
 });
 
 copyBtn.addEventListener("click", async () => {
