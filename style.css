@@ -166,20 +166,27 @@ body {
   height: 34px;
   padding: 0 10px;
   border-radius: 9px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(8, 14, 28, 0.72);
-  color: #dce8ff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    linear-gradient(135deg, color-mix(in srgb, var(--panel-theme-a) 55%, transparent), rgba(7, 12, 24, 0.68));
+  color: #d6e3ff;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.25px;
   cursor: pointer;
-  transition: border-color 0.14s ease, box-shadow 0.14s ease, transform 0.14s ease;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 4px 10px rgba(0, 0, 0, 0.22);
+  transition: border-color 0.14s ease, box-shadow 0.14s ease, transform 0.14s ease, background 0.14s ease;
 }
 
 .back-btn:hover {
   transform: translateY(-1px);
-  border-color: rgba(205, 227, 255, 0.45);
-  box-shadow: 0 0 12px rgba(108, 167, 255, 0.24);
+  border-color: rgba(205, 227, 255, 0.3);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 12px color-mix(in srgb, var(--panel-theme-a) 50%, transparent);
 }
 
 .back-btn:focus-visible {
