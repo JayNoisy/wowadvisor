@@ -5,12 +5,43 @@ import { fileURLToPath } from "node:url";
 
 import { getMeta, getMurlokPveBuilds, getMurlokPvpBuilds } from "./sources/murlok.js";
 import { getPeaversBuilds } from "./sources/peavers.js";
+import { getExternalJsonBuilds } from "./sources/external-json.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const MODES = ["aoe", "raid", "pvp"];
 const ENABLE_MURLOK_PVE = process.env.ENABLE_MURLOK_PVE !== "false";
+
+const DEFAULT_WEIGHT_CONFIG = {
+  sourceBase: {
+    murlok: 20,
+    peavers: 16,
+    archon: 20,
+    wowhead: 15,
+    icyveins: 14,
+    method: 14,
+    external: 16,
+    other: 10
+  },
+  modeBonus: {
+    pvp: { murlok: 22, wowhead: 5, archon: 8 },
+    aoe: { peavers: 8, archon: 10, method: 6 },
+    raid: { peavers: 8, archon: 10, method: 6 }
+  },
+  freshness: {
+    unknown: -6,
+    le3d: 24,
+    le7d: 18,
+    le14d: 12,
+    le30d: 6,
+    gt45d: -8,
+    peaversPenaltyOver30d: -8
+  },
+  misc: {
+    notesBonus: 1
+  }
+};
 
 function makeEmptyBuildsJson() {
   return {
@@ -23,6 +54,47 @@ function makeEmptyBuildsJson() {
 function ensure(obj, key) {
   if (!obj[key]) obj[key] = {};
   return obj[key];
+}
+
+function mergeWeightConfig(base, override) {
+  const merged = JSON.parse(JSON.stringify(base));
+  if (!override || typeof override !== "object") return merged;
+
+  for (const [k, v] of Object.entries(override)) {
+    if (v && typeof v === "object" && !Array.isArray(v) && merged[k] && typeof merged[k] === "object") {
+      merged[k] = { ...merged[k], ...v };
+      if (k === "modeBonus") {
+        for (const mk of Object.keys(merged.modeBonus)) {
+          merged.modeBonus[mk] = {
+            ...(base.modeBonus?.[mk] || {}),
+            ...(override.modeBonus?.[mk] || {})
+          };
+        }
+      }
+    } else {
+      merged[k] = v;
+    }
+  }
+  return merged;
+}
+
+async function loadWeightConfig() {
+  const cfgPath = process.env.SOURCE_WEIGHT_CONFIG_PATH
+    ? path.resolve(process.cwd(), process.env.SOURCE_WEIGHT_CONFIG_PATH)
+    : path.join(__dirname, "source-weights.json");
+  try {
+    const raw = await fs.readFile(cfgPath, "utf8");
+    const parsed = JSON.parse(raw);
+    return {
+      config: mergeWeightConfig(DEFAULT_WEIGHT_CONFIG, parsed),
+      source: cfgPath
+    };
+  } catch {
+    return {
+      config: DEFAULT_WEIGHT_CONFIG,
+      source: "defaults"
+    };
+  }
 }
 
 async function writeProjectBuildsJson(payload) {
@@ -65,38 +137,36 @@ function sourceFamily(source) {
   const s = String(source || "").toLowerCase();
   if (s.includes("murlok")) return "murlok";
   if (s.includes("peavers")) return "peavers";
+  if (s.includes("archon")) return "archon";
+  if (s.includes("wowhead")) return "wowhead";
+  if (s.includes("icy-veins") || s.includes("icyveins")) return "icyveins";
+  if (s.includes("method")) return "method";
+  if (s.includes("communityjson") || s.includes("externaljson")) return "external";
   return "other";
 }
 
 function sourceWeight(candidate, mode) {
   const fam = sourceFamily(candidate.source);
-  let score = 0;
-
-  if (fam === "murlok") score += 20;
-  if (fam === "peavers") score += 16;
-  if (fam === "other") score += 10;
-
-  if (mode === "pvp" && fam === "murlok") score += 22;
-  if ((mode === "aoe" || mode === "raid") && fam === "peavers") score += 8;
-
-  return score;
+  const base = WEIGHT_CONFIG.sourceBase?.[fam] ?? WEIGHT_CONFIG.sourceBase?.other ?? 10;
+  const modeDelta = WEIGHT_CONFIG.modeBonus?.[mode]?.[fam] ?? 0;
+  return base + modeDelta;
 }
 
 function freshnessWeight(updated) {
   let score = 0;
   const days = ageDays(updated);
   if (days === null) {
-    score -= 6;
+    score += WEIGHT_CONFIG.freshness.unknown ?? -6;
   } else if (days <= 3) {
-    score += 24;
+    score += WEIGHT_CONFIG.freshness.le3d ?? 24;
   } else if (days <= 7) {
-    score += 18;
+    score += WEIGHT_CONFIG.freshness.le7d ?? 18;
   } else if (days <= 14) {
-    score += 12;
+    score += WEIGHT_CONFIG.freshness.le14d ?? 12;
   } else if (days <= 30) {
-    score += 6;
+    score += WEIGHT_CONFIG.freshness.le30d ?? 6;
   } else if (days > 45) {
-    score -= 8;
+    score += WEIGHT_CONFIG.freshness.gt45d ?? -8;
   }
   return score;
 }
@@ -110,11 +180,17 @@ function scoreCandidate(candidate, mode) {
 
   // If Peavers is stale or missing dates, make it easier for a fresher source to win.
   const days = ageDays(candidate.updated);
-  if (fam === "peavers" && (days === null || days > 30)) score -= 8;
+  if (fam === "peavers" && (days === null || days > 30)) {
+    score += WEIGHT_CONFIG.freshness.peaversPenaltyOver30d ?? -8;
+  }
 
-  if (Array.isArray(candidate.notes) && candidate.notes.length > 0) score += 1;
+  if (Array.isArray(candidate.notes) && candidate.notes.length > 0) {
+    score += WEIGHT_CONFIG.misc.notesBonus ?? 1;
+  }
   return score;
 }
+
+let WEIGHT_CONFIG = DEFAULT_WEIGHT_CONFIG;
 
 function chooseBestPerSpec(candidates) {
   const groups = new Map();
@@ -225,6 +301,12 @@ function chooseBestPerSpec(candidates) {
 
 async function main() {
   const out = makeEmptyBuildsJson();
+  const loadedWeights = await loadWeightConfig();
+  WEIGHT_CONFIG = loadedWeights.config;
+  out.sources.weightConfig = {
+    ok: true,
+    source: loadedWeights.source
+  };
 
   // 1) Murlok freshness
   try {
@@ -289,7 +371,24 @@ async function main() {
   }
 
   // 5) Merge + choose best per spec/mode using validation + scoring.
-  const candidates = [...peaversBuilds, ...murlokPveBuilds, ...murlokPvpBuilds];
+  let externalBuilds = [];
+  try {
+    const external = await getExternalJsonBuilds();
+    externalBuilds = Array.isArray(external?.builds) ? external.builds : [];
+    out.sources.externalJson = {
+      ok: true,
+      count: externalBuilds.length,
+      localCount: external?.stats?.localCount ?? 0,
+      remote: external?.stats?.remote ?? []
+    };
+  } catch (err) {
+    out.sources.externalJson = {
+      ok: false,
+      error: String(err)
+    };
+  }
+
+  const candidates = [...peaversBuilds, ...murlokPveBuilds, ...murlokPvpBuilds, ...externalBuilds];
   out.builds = chooseBestPerSpec(candidates);
 
   // 6) Preserve existing builds if something went wrong and we generated nothing
