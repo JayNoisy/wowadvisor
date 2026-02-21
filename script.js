@@ -106,6 +106,7 @@ const buildHint = document.getElementById("buildHint");
 const buildNotes = document.getElementById("buildNotes");
 const statHint = document.getElementById("statHint");
 const statPills = document.getElementById("statPills");
+const statExplain = document.getElementById("statExplain");
 const talentTreeHint = document.getElementById("talentTreeHint");
 const talentTreeWrap = document.getElementById("talentTreeWrap");
 const talentNodeInspector = document.getElementById("talentNodeInspector");
@@ -180,6 +181,8 @@ function resetStatPrioritiesCard(message) {
   statHint.textContent = message;
   statPills.innerHTML = "";
   statPills.hidden = true;
+  statExplain.innerHTML = "";
+  statExplain.hidden = true;
 }
 
 function normalizeBuild(build) {
@@ -330,6 +333,121 @@ function resolveStatPriorities(className, specName, mode) {
   return Array.isArray(fallback) ? fallback : [];
 }
 
+function getSpecArchetype(className, specName) {
+  const map = {
+    "Warrior": { "Arms": "melee-burst", "Fury": "melee-haste", "Protection": "tank" },
+    "Paladin": { "Holy": "healer", "Protection": "tank", "Retribution": "melee-burst" },
+    "Hunter": { "Beast Mastery": "ranged-pet", "Marksmanship": "ranged-burst", "Survival": "melee-haste" },
+    "Rogue": { "Assassination": "dot-melee", "Outlaw": "melee-haste", "Subtlety": "melee-burst" },
+    "Priest": { "Discipline": "healer", "Holy": "healer", "Shadow": "dot-caster" },
+    "Death Knight": { "Blood": "tank", "Frost": "melee-burst", "Unholy": "dot-melee" },
+    "Shaman": { "Elemental": "caster", "Enhancement": "melee-haste", "Restoration": "healer" },
+    "Mage": { "Arcane": "caster", "Fire": "crit-caster", "Frost": "caster" },
+    "Warlock": { "Affliction": "dot-caster", "Demonology": "caster", "Destruction": "crit-caster" },
+    "Monk": { "Brewmaster": "tank", "Mistweaver": "healer", "Windwalker": "melee-burst" },
+    "Druid": { "Balance": "caster", "Feral": "dot-melee", "Guardian": "tank", "Restoration": "healer" },
+    "Demon Hunter": { "Havoc": "melee-burst", "Vengeance": "tank" },
+    "Evoker": { "Devastation": "caster", "Preservation": "healer", "Augmentation": "support-caster" }
+  };
+  return map?.[className]?.[specName] || "generic";
+}
+
+function getStatExplanation(className, specName, stat, mode) {
+  const statKey = String(stat || "").toLowerCase();
+  const archetype = getSpecArchetype(className, specName);
+  const byArch = {
+    "tank": {
+      "haste": "Improves resource generation and cooldown flow, smoothing mitigation uptime.",
+      "versatility": "Gives flat damage reduction and damage gain, making it the safest all-around defensive stat.",
+      "mastery": "Strengthens spec-specific mitigation value, especially in sustained damage windows.",
+      "critical strike": "Adds offensive pressure and can improve proc-based durability effects."
+    },
+    "healer": {
+      "haste": "Increases cast frequency and HoT/DoT tick rate, helping react faster to incoming damage.",
+      "critical strike": "Boosts burst healing moments and improves clutch recovery windows.",
+      "mastery": "Amplifies core healing profile for your spec’s specialty throughput.",
+      "versatility": "Provides stable healing and survivability with no conditionals."
+    },
+    "caster": {
+      "haste": "Speeds casts and periodic effects, increasing overall throughput and rotational fluidity.",
+      "mastery": "Amplifies your spec’s primary damage pattern, making major abilities hit harder.",
+      "critical strike": "Improves burst potential and scales well with high-impact spells.",
+      "versatility": "Adds consistent damage and survivability when other stats are close."
+    },
+    "support-caster": {
+      "haste": "Improves buff cadence and rotational tempo, enabling stronger team uptime windows.",
+      "mastery": "Scales your core support/damage amplifiers effectively for group value.",
+      "critical strike": "Adds extra burst potential during coordinated cooldown windows.",
+      "versatility": "Reliable throughput and defense for predictable performance."
+    },
+    "crit-caster": {
+      "critical strike": "High value because your kit converts crits into major burst or extra effect chains.",
+      "haste": "Keeps casts flowing to capitalize on proc windows and maintain pressure.",
+      "mastery": "Strongly scales core spell packages and sustained priority-target damage.",
+      "versatility": "Steady fallback throughput and durability."
+    },
+    "dot-caster": {
+      "haste": "Increases periodic tick frequency and reduces ramp friction for DoT-centric gameplay.",
+      "mastery": "Boosts sustained pressure from core periodic or shadow/flame effects.",
+      "critical strike": "Improves spike damage on key casts layered into DoT windows.",
+      "versatility": "Consistent gain to both offense and defense."
+    },
+    "melee-haste": {
+      "haste": "Improves attack/resource tempo so your rotation stays smooth and ability-dense.",
+      "mastery": "Boosts core melee toolkit damage and scales your primary spenders.",
+      "critical strike": "Adds burst and improves finisher impact during cooldowns.",
+      "versatility": "Reliable all-purpose stat for damage and toughness."
+    },
+    "melee-burst": {
+      "mastery": "Typically scales your strongest burst abilities and cooldown windows.",
+      "critical strike": "Enables higher spike damage and better kill pressure.",
+      "haste": "Improves rotational speed and resource flow between burst windows.",
+      "versatility": "Stable throughput with bonus survivability in difficult content."
+    },
+    "dot-melee": {
+      "mastery": "Amplifies bleed/poison or sustained profile damage where your spec gains most value.",
+      "critical strike": "Increases pressure spikes and finisher impact.",
+      "haste": "Improves energy/rune pacing to keep effects and uptime stable.",
+      "versatility": "Consistent fallback throughput and defense."
+    },
+    "ranged-pet": {
+      "critical strike": "Strong burst contribution for both player and pet damage events.",
+      "mastery": "Scales signature pet-focused damage patterns effectively.",
+      "haste": "Smooths cast and focus flow for cleaner ability chaining.",
+      "versatility": "Reliable all-round gain, especially for difficult pulls."
+    },
+    "ranged-burst": {
+      "mastery": "Scales high-impact windows and signature shots very efficiently.",
+      "critical strike": "Adds burst consistency for priority-target damage.",
+      "haste": "Improves cast cadence and global throughput.",
+      "versatility": "Steady output and extra survivability."
+    },
+    "generic": {
+      "haste": "Improves rotational speed and ability cadence.",
+      "critical strike": "Raises burst potential and high-roll outcomes.",
+      "mastery": "Scales your spec’s signature damage/healing profile.",
+      "versatility": "Provides stable offense and defense with no conditions."
+    }
+  };
+
+  const text = byArch?.[archetype]?.[statKey] || byArch.generic[statKey] || "Solid stat for consistent performance in most content.";
+  const modeNote = mode === "pvp"
+    ? " In PvP, versatility and defensive value often move up based on comp and matchup."
+    : mode === "raid"
+      ? " In raid, priority-target consistency and planned cooldown windows matter most."
+      : " In Mythic+, value shifts with pull size and damage profile.";
+  return `${text}${modeNote}`;
+}
+
+function renderStatExplanation(className, specName, stat, rank, mode) {
+  const description = getStatExplanation(className, specName, stat, mode);
+  statExplain.innerHTML = `
+    <p class="stat-explain-title">#${rank} ${escapeHtml(stat)} | Why It Is Good</p>
+    <p class="stat-explain-text">${escapeHtml(description)}</p>
+  `;
+  statExplain.hidden = false;
+}
+
 function renderStatPriorities(className, specName, mode) {
   if (!className || !specName) {
     resetStatPrioritiesCard("Pick a spec to view stat priorities.");
@@ -344,9 +462,10 @@ function renderStatPriorities(className, specName, mode) {
 
   statHint.textContent = `${className} ${specName} | ${modeLabel(mode)} priority`;
   statPills.innerHTML = priorities
-    .map((stat, idx) => `<span class="stat-pill"><span class="stat-rank">#${idx + 1}</span><span>${escapeHtml(stat)}</span></span>`)
+    .map((stat, idx) => `<button type="button" class="stat-pill${idx === 0 ? " selected" : ""}" data-stat="${escapeHtml(stat)}" data-rank="${idx + 1}"><span class="stat-rank">#${idx + 1}</span><span>${escapeHtml(stat)}</span></button>`)
     .join("");
   statPills.hidden = false;
+  renderStatExplanation(className, specName, priorities[0], 1, mode);
 }
 
 function renderTalentTree(className, specName) {
@@ -746,6 +865,22 @@ talentTreeWrap.addEventListener("click", (e) => {
   allNodes.forEach((n) => n.classList.remove("selected"));
   nodeBtn.classList.add("selected");
   renderTalentNodeInspector(nodeInfo);
+});
+
+statPills.addEventListener("click", (e) => {
+  const btn = e.target.closest(".stat-pill");
+  if (!btn) return;
+  if (!selectedClass || !selectedSpec || !selectedMode) return;
+
+  const stat = btn.dataset.stat;
+  const rank = Number(btn.dataset.rank) || 1;
+  if (!stat) return;
+
+  const all = statPills.querySelectorAll(".stat-pill");
+  all.forEach((p) => p.classList.remove("selected"));
+  btn.classList.add("selected");
+
+  renderStatExplanation(selectedClass, selectedSpec, stat, rank, selectedMode);
 });
 
 // Start

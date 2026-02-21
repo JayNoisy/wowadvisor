@@ -263,6 +263,18 @@ body {
   background: rgba(16, 26, 48, 0.72);
   color: #d7e7ff;
   font-size: 13px;
+  cursor: pointer;
+}
+
+.stat-pill.selected {
+  border-color: rgba(241, 196, 95, 0.8);
+  background: rgba(44, 30, 7, 0.9);
+  color: #ffd89a;
+}
+
+.stat-pill:focus-visible {
+  outline: 2px solid rgba(241, 196, 95, 0.85);
+  outline-offset: 2px;
 }
 
 .stat-rank {
@@ -276,6 +288,29 @@ body {
   background: rgba(43, 29, 8, 0.9);
   color: #ffd89a;
   font-size: 11px;
+}
+
+.stat-explain {
+  margin-top: 10px;
+  border: 1px solid rgba(208, 176, 108, 0.35);
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(10, 16, 30, 0.8);
+}
+
+.stat-explain-title {
+  margin: 0 0 6px 0;
+  color: #e8c682;
+  font-size: 12px;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+}
+
+.stat-explain-text {
+  margin: 0;
+  color: #d7e7ff;
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 .talent-card {
