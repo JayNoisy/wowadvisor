@@ -148,21 +148,13 @@ function classThemeKey(className) {
 function ensureElementTopVisible(el, topPadding = 18) {
   if (!el) return;
   const rect = el.getBoundingClientRect();
-  const shouldScrollDown = rect.bottom > window.innerHeight - 16;
-  const shouldScrollUp = rect.top < topPadding;
-
-  if (shouldScrollDown || shouldScrollUp) {
-    const targetY = window.scrollY + rect.top - topPadding;
-    window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
-  }
+  const targetY = window.scrollY + rect.top - topPadding;
+  window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
 }
 
 function ensureSpecExpansionVisible() {
-  if (!buildTypeWrap || buildTypeWrap.hidden) return;
-  const rect = buildTypeWrap.getBoundingClientRect();
-  if (rect.bottom > window.innerHeight - 12 || rect.top < 18) {
-    ensureElementTopVisible(buildTypeWrap, 22);
-  }
+  // Keep the class panel anchored near the top once spec content expands.
+  ensureElementTopVisible(panel, 14);
 }
 
 function setSelectedClassButton(newBtn) {
@@ -852,12 +844,12 @@ specButtons.addEventListener("click", (e) => {
   renderStatPriorities(selectedClass, selectedSpec, selectedMode);
   renderTalentTree(selectedClass, selectedSpec);
 
-  // Spec selection expands panel content; reveal just enough to show section start.
+  // Spec selection expands panel content; keep panel top visible like a focused section.
   requestAnimationFrame(() => {
     ensureSpecExpansionVisible();
     requestAnimationFrame(() => ensureSpecExpansionVisible());
   });
-  setTimeout(() => ensureSpecExpansionVisible(), 120);
+  setTimeout(() => ensureSpecExpansionVisible(), 140);
 });
 
 buildTabs.addEventListener("click", (e) => {
