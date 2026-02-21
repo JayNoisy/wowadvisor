@@ -800,6 +800,7 @@ function showPanelForClass(className, classBtnEl) {
   classBadge.style.boxShadow = `0 0 16px ${color}`;
   classBadge.style.backgroundImage = classIcon ? `url('${classIcon}')` : "";
   classBadge.classList.toggle("has-image", Boolean(classIcon));
+  panel.style.setProperty("--panel-icon-url", classIcon ? `url('${classIcon}')` : "none");
 
   panel.hidden = false;
   renderSpecButtons(className);
@@ -827,6 +828,7 @@ function collapseClassPanel() {
   classBadge.textContent = "?";
   classBadge.style.backgroundImage = "";
   classBadge.classList.remove("has-image");
+  panel.style.setProperty("--panel-icon-url", "none");
 
   buildTypeWrap.hidden = true;
   resetBuildCard("Pick a spec, then a build type.");

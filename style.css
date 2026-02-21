@@ -108,6 +108,7 @@ body {
 .panel {
   --panel-theme-a: rgba(0, 191, 255, 0.22);
   --panel-theme-b: rgba(255, 255, 255, 0.08);
+  --panel-icon-url: none;
   max-width: 760px;
   margin: 0 auto;
   position: relative;
@@ -128,6 +129,20 @@ body {
   height: 220px;
   background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.08) 45%, transparent 100%);
   transform: rotate(-4deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--panel-icon-url);
+  background-repeat: no-repeat;
+  background-position: right -14px center;
+  background-size: clamp(220px, 42%, 360px);
+  opacity: 0.09;
+  filter: grayscale(0.18) saturate(0.92) contrast(0.96);
   pointer-events: none;
   z-index: 0;
 }
