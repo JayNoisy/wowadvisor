@@ -40,6 +40,11 @@ function normalizeNode(raw, idx) {
   );
   const maxRank = Number(raw.ranks ?? raw.max_ranks ?? entry?.max_ranks ?? 1) || 1;
   const treeType = String(raw.tree_type || raw.type || "spec");
+  const requiredNodeIds = Array.isArray(raw.required_node_ids)
+    ? raw.required_node_ids.map(Number).filter(Number.isFinite)
+    : Array.isArray(raw.prerequisite_node_ids)
+      ? raw.prerequisite_node_ids.map(Number).filter(Number.isFinite)
+      : [];
 
   return {
     id,
@@ -47,7 +52,8 @@ function normalizeNode(raw, idx) {
     row: Math.max(0, row),
     col: Math.max(0, col),
     maxRank: Math.max(1, maxRank),
-    treeType
+    treeType,
+    requiredNodeIds
   };
 }
 
@@ -164,13 +170,54 @@ async function resolveClassAndSpecNames(treePayload, token, locale, namespace) {
   return { className, specName };
 }
 
-async function collectTalentTrees(region, token, locale, namespace) {
-  const indexPayload = await fetchApi(
+function upsertByRichness(target, incoming) {
+  for (const spec of incoming) {
+    const classKey = toName(spec?.className).toLowerCase();
+    const specKey = toName(spec?.specName).toLowerCase();
+    if (!classKey || !specKey) continue;
+    const key = `${classKey}::${specKey}`;
+    const existing = target.get(key);
+    if (!existing || (Array.isArray(spec?.nodes) ? spec.nodes.length : 0) > (Array.isArray(existing?.nodes) ? existing.nodes.length : 0)) {
+      target.set(key, spec);
+    }
+  }
+}
+
+async function resolveTalentTreePayload(specPayload, token, region, locale, namespace) {
+  const maybeHrefs = [
+    specPayload?.talent_tree?.key?.href,
+    specPayload?.talent_tree?.href,
+    specPayload?.talent_trees?.[0]?.key?.href,
+    specPayload?.talent_trees?.[0]?.href
+  ].filter(Boolean);
+
+  for (const href of maybeHrefs) {
+    const payload = await tryFetchApi(href, token, locale, namespace);
+    if (payload) return payload;
+  }
+
+  const specId = Number(specPayload?.id);
+  if (!Number.isFinite(specId)) return null;
+  const candidates = [
+    `https://${region}.api.blizzard.com/data/wow/talent-tree/${specId}`,
+    `https://${region}.api.blizzard.com/data/wow/talent-tree/${specId}/playable-specialization/${specId}`
+  ];
+  for (const href of candidates) {
+    const payload = await tryFetchApi(href, token, locale, namespace);
+    if (payload) return payload;
+  }
+
+  return null;
+}
+
+async function collectFromTalentTreeIndex(region, token, locale, namespace) {
+  const indexPayload = await tryFetchApi(
     `https://${region}.api.blizzard.com/data/wow/talent-tree/index`,
     token,
     locale,
     namespace
   );
+  if (!indexPayload) return [];
 
   const refs = Array.isArray(indexPayload?.spec_talent_trees)
     ? indexPayload.spec_talent_trees
@@ -193,6 +240,94 @@ async function collectTalentTrees(region, token, locale, namespace) {
   }
 
   return specs;
+}
+
+async function collectFromSpecSearch(region, token, locale, namespace) {
+  const searchPayload = await tryFetchApi(
+    `https://${region}.api.blizzard.com/data/wow/search/playable-specialization?orderby=id&_page=1`,
+    token,
+    locale,
+    namespace
+  );
+  const rows = Array.isArray(searchPayload?.results) ? searchPayload.results : [];
+  if (rows.length === 0) return [];
+
+  const out = [];
+  for (const row of rows) {
+    const data = row?.data || {};
+    const specId = Number(data?.id);
+    const className = firstNonEmpty(data?.playable_class?.name, data?.character_class?.name);
+    const specName = toName(data?.name);
+    if (!Number.isFinite(specId) || !className || !specName) continue;
+
+    const specPayload = await tryFetchApi(
+      `https://${region}.api.blizzard.com/data/wow/playable-specialization/${specId}`,
+      token,
+      locale,
+      namespace
+    );
+    if (!specPayload) continue;
+
+    const treePayload = await resolveTalentTreePayload(specPayload, token, region, locale, namespace);
+    if (!treePayload) continue;
+
+    out.push({ className, specName, nodes: extractNodes(treePayload) });
+  }
+
+  return out;
+}
+
+async function collectFromPlayableClassRoute(region, token, locale, namespace) {
+  const classIndex = await tryFetchApi(
+    `https://${region}.api.blizzard.com/data/wow/playable-class/index`,
+    token,
+    locale,
+    namespace
+  );
+  const classRefs = Array.isArray(classIndex?.classes) ? classIndex.classes : [];
+  if (classRefs.length === 0) return [];
+
+  const out = [];
+  for (const classRef of classRefs) {
+    const classHref = classRef?.key?.href || classRef?.href;
+    if (!classHref) continue;
+    const classPayload = await tryFetchApi(classHref, token, locale, namespace);
+    const className = toName(classPayload?.name);
+    const specRefs = Array.isArray(classPayload?.specializations) ? classPayload.specializations : [];
+
+    for (const specRef of specRefs) {
+      const specHref = specRef?.key?.href || specRef?.href;
+      if (!specHref) continue;
+      const specPayload = await tryFetchApi(specHref, token, locale, namespace);
+      if (!specPayload) continue;
+
+      const specName = toName(specPayload?.name);
+      const resolvedClassName = className || firstNonEmpty(specPayload?.playable_class?.name, specPayload?.character_class?.name);
+      if (!resolvedClassName || !specName) continue;
+
+      const treePayload = await resolveTalentTreePayload(specPayload, token, region, locale, namespace);
+      if (!treePayload) continue;
+
+      out.push({ className: resolvedClassName, specName, nodes: extractNodes(treePayload) });
+    }
+  }
+
+  return out;
+}
+
+async function collectTalentTrees(region, token, locale, namespace) {
+  const bySpecKey = new Map();
+
+  const fromIndex = await collectFromTalentTreeIndex(region, token, locale, namespace);
+  upsertByRichness(bySpecKey, fromIndex);
+
+  const fromSearch = await collectFromSpecSearch(region, token, locale, namespace);
+  upsertByRichness(bySpecKey, fromSearch);
+
+  const fromClassRoute = await collectFromPlayableClassRoute(region, token, locale, namespace);
+  upsertByRichness(bySpecKey, fromClassRoute);
+
+  return Array.from(bySpecKey.values());
 }
 
 module.exports = async function handler(req, res) {
