@@ -31,6 +31,17 @@ function normalizeNode(raw, idx) {
   const col = Number(raw.display_col ?? raw.column ?? raw.ui_col ?? 0) || 0;
 
   const entry = Array.isArray(raw.entries) && raw.entries.length > 0 ? raw.entries[0] : null;
+  const spell = raw.spell_tooltip?.spell || entry?.spell_tooltip?.spell || null;
+  const spellId = Number(spell?.id);
+  const iconName = String(
+    spell?.icon ||
+    raw.icon ||
+    entry?.icon ||
+    ""
+  ).trim().toLowerCase();
+  const iconUrl = iconName
+    ? `https://wow.zamimg.com/images/wow/icons/large/${iconName}.jpg`
+    : null;
   const name = firstNonEmpty(
     raw.name,
     raw.spell_tooltip?.spell?.name,
@@ -53,7 +64,10 @@ function normalizeNode(raw, idx) {
     col: Math.max(0, col),
     maxRank: Math.max(1, maxRank),
     treeType,
-    requiredNodeIds
+    requiredNodeIds,
+    spellId: Number.isFinite(spellId) ? spellId : null,
+    iconName: iconName || null,
+    iconUrl
   };
 }
 

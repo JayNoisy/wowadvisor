@@ -259,9 +259,13 @@ function renderTalentTree(className, specName) {
         const rank = Math.max(1, Number(n?.maxRank ?? 1));
         const name = escapeHtml(n?.name || "Unknown Talent");
         const initials = escapeHtml(nodeInitials(n?.name));
+        const iconUrl = typeof n?.iconUrl === "string" && n.iconUrl ? n.iconUrl : "";
+        const spellId = Number.isFinite(Number(n?.spellId)) ? Number(n.spellId) : null;
+        const iconStyle = iconUrl ? ` style="background-image:url('${escapeHtml(iconUrl)}')"` : "";
+        const nodeTitle = `${name} (Max rank: ${rank}${spellId ? `, Spell ID: ${spellId}` : ""})`;
         return `
-          <button class="wow-node" type="button" style="grid-row:${row};grid-column:${col}" title="${name} (Max rank: ${rank})">
-            <span class="wow-node-core">
+          <button class="wow-node" type="button" style="grid-row:${row};grid-column:${col}" title="${nodeTitle}">
+            <span class="wow-node-core${iconUrl ? " has-icon" : ""}"${iconStyle}>
               <span class="wow-node-initials">${initials}</span>
             </span>
             <span class="wow-node-rank">${rank}</span>
