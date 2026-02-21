@@ -50,6 +50,10 @@ function isValidTalentString(s) {
   return /^[A-Za-z0-9+/=]+$/.test(trimmed);
 }
 
+function normalizeTalentString(s) {
+  return typeof s === "string" ? s.trim() : "";
+}
+
 function ageDays(updated) {
   const d = parseDateSafe(updated);
   if (!d) return null;
@@ -57,18 +61,30 @@ function ageDays(updated) {
   return Math.max(0, ms / (1000 * 60 * 60 * 24));
 }
 
-function scoreCandidate(candidate, mode) {
+function sourceFamily(source) {
+  const s = String(source || "").toLowerCase();
+  if (s.includes("murlok")) return "murlok";
+  if (s.includes("peavers")) return "peavers";
+  return "other";
+}
+
+function sourceWeight(candidate, mode) {
+  const fam = sourceFamily(candidate.source);
   let score = 0;
-  const source = String(candidate.source || "").toLowerCase();
-  const isMurlok = source.includes("murlok");
-  const isPeavers = source.includes("peavers");
 
-  if (isMurlok) score += 20;
-  if (isPeavers) score += 16;
+  if (fam === "murlok") score += 20;
+  if (fam === "peavers") score += 16;
+  if (fam === "other") score += 10;
 
-  if (mode === "pvp" && isMurlok) score += 20;
+  if (mode === "pvp" && fam === "murlok") score += 22;
+  if ((mode === "aoe" || mode === "raid") && fam === "peavers") score += 8;
 
-  const days = ageDays(candidate.updated);
+  return score;
+}
+
+function freshnessWeight(updated) {
+  let score = 0;
+  const days = ageDays(updated);
   if (days === null) {
     score -= 6;
   } else if (days <= 3) {
@@ -82,9 +98,19 @@ function scoreCandidate(candidate, mode) {
   } else if (days > 45) {
     score -= 8;
   }
+  return score;
+}
+
+function scoreCandidate(candidate, mode) {
+  let score = 0;
+  const fam = sourceFamily(candidate.source);
+
+  score += sourceWeight(candidate, mode);
+  score += freshnessWeight(candidate.updated);
 
   // If Peavers is stale or missing dates, make it easier for a fresher source to win.
-  if (isPeavers && (days === null || days > 30)) score -= 8;
+  const days = ageDays(candidate.updated);
+  if (fam === "peavers" && (days === null || days > 30)) score -= 8;
 
   if (Array.isArray(candidate.notes) && candidate.notes.length > 0) score += 1;
   return score;
@@ -95,11 +121,12 @@ function chooseBestPerSpec(candidates) {
   for (const b of candidates) {
     if (!b?.className || !b?.specName || !b?.mode) continue;
     if (!MODES.includes(b.mode)) continue;
-    if (!isValidTalentString(b.exportString)) continue;
+    const exportString = normalizeTalentString(b.exportString);
+    if (!isValidTalentString(exportString)) continue;
 
     const k = keyOf(b);
     if (!groups.has(k)) groups.set(k, []);
-    groups.get(k).push(b);
+    groups.get(k).push({ ...b, exportString });
   }
 
   const chosen = {};
@@ -107,29 +134,85 @@ function chooseBestPerSpec(candidates) {
   for (const arr of groups.values()) {
     const mode = arr[0]?.mode;
 
-    arr.sort((a, b) => {
-      const scoreDiff = scoreCandidate(b, mode) - scoreCandidate(a, mode);
-      if (scoreDiff !== 0) return scoreDiff;
+    // Cluster candidates by identical talent string, then pick the strongest consensus.
+    const clusters = new Map();
+    for (const c of arr) {
+      const tk = c.exportString;
+      if (!clusters.has(tk)) clusters.set(tk, []);
+      clusters.get(tk).push(c);
+    }
 
-      const bd = parseDateSafe(b.updated)?.getTime() ?? 0;
-      const ad = parseDateSafe(a.updated)?.getTime() ?? 0;
-      if (bd !== ad) return bd - ad;
-
-      return String(a.source || "").localeCompare(String(b.source || ""));
+    const clusterList = Array.from(clusters.values()).map((members) => {
+      const distinctFamilies = new Set(members.map((m) => sourceFamily(m.source)));
+      const supportScore = members.reduce((sum, m) => sum + scoreCandidate(m, mode), 0);
+      const bestMember = [...members].sort((a, b) => {
+        const scoreDiff = scoreCandidate(b, mode) - scoreCandidate(a, mode);
+        if (scoreDiff !== 0) return scoreDiff;
+        const bd = parseDateSafe(b.updated)?.getTime() ?? 0;
+        const ad = parseDateSafe(a.updated)?.getTime() ?? 0;
+        return bd - ad;
+      })[0];
+      return {
+        members,
+        bestMember,
+        supportScore,
+        distinctSourceCount: distinctFamilies.size
+      };
     });
 
-    const best = arr[0];
+    clusterList.sort((a, b) => {
+      if (b.supportScore !== a.supportScore) return b.supportScore - a.supportScore;
+      if (b.distinctSourceCount !== a.distinctSourceCount) return b.distinctSourceCount - a.distinctSourceCount;
+      const bd = parseDateSafe(b.bestMember?.updated)?.getTime() ?? 0;
+      const ad = parseDateSafe(a.bestMember?.updated)?.getTime() ?? 0;
+      return bd - ad;
+    });
+
+    const bestCluster = clusterList[0];
+    const runnerUpCluster = clusterList[1] || null;
+    const best = bestCluster.bestMember;
     const { className, specName } = best;
 
     const classNode = ensure(chosen, className);
     const specNode = ensure(classNode, specName);
+
+    const margin = Math.max(
+      0,
+      bestCluster.supportScore - (runnerUpCluster ? runnerUpCluster.supportScore : 0)
+    );
+    const recencyBonus = (() => {
+      const d = ageDays(best.updated);
+      if (d === null) return 0;
+      if (d <= 3) return 10;
+      if (d <= 7) return 7;
+      if (d <= 14) return 4;
+      return 0;
+    })();
+    const sourceDiversityBonus = Math.min(12, bestCluster.distinctSourceCount * 6);
+    const baseConfidence = Math.min(100, Math.max(5, 45 + margin + recencyBonus + sourceDiversityBonus));
+    const confidenceScore = Math.round(baseConfidence);
+    const confidence =
+      confidenceScore >= 80 ? "high" :
+      confidenceScore >= 60 ? "medium" :
+      "low";
+
+    const rationale = [
+      `support=${bestCluster.supportScore.toFixed(1)}`,
+      `sources=${bestCluster.distinctSourceCount}`,
+      runnerUpCluster ? `margin=${margin.toFixed(1)}` : "margin=max",
+      best.updated ? `updated=${best.updated}` : "updated=unknown"
+    ].join(", ");
 
     specNode[mode] = {
       title: best.title ?? `${specName} - ${mode.toUpperCase()}`,
       source: best.source ?? "Unknown",
       updated: best.updated ?? null,
       exportString: best.exportString ?? "",
-      notes: Array.isArray(best.notes) ? best.notes : []
+      notes: Array.isArray(best.notes) ? best.notes : [],
+      confidence,
+      confidenceScore,
+      confidenceRationale: rationale,
+      sampleSize: bestCluster.members.length
     };
   }
 
