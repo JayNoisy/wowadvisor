@@ -199,6 +199,7 @@ function chooseBestPerSpec(candidates) {
     const rationale = [
       `support=${bestCluster.supportScore.toFixed(1)}`,
       `sources=${bestCluster.distinctSourceCount}`,
+      `agreement=${bestCluster.members.length}/${arr.length}`,
       runnerUpCluster ? `margin=${margin.toFixed(1)}` : "margin=max",
       best.updated ? `updated=${best.updated}` : "updated=unknown"
     ].join(", ");
@@ -212,7 +213,8 @@ function chooseBestPerSpec(candidates) {
       confidence,
       confidenceScore,
       confidenceRationale: rationale,
-      sampleSize: bestCluster.members.length
+      sampleSize: arr.length,
+      agreementCount: bestCluster.members.length
     };
   }
 

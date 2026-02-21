@@ -210,7 +210,8 @@ function normalizeBuild(build) {
     confidence: core.confidence ?? build.confidence ?? null,
     confidenceScore: core.confidenceScore ?? build.confidenceScore ?? null,
     confidenceRationale: core.confidenceRationale ?? build.confidenceRationale ?? null,
-    sampleSize: core.sampleSize ?? build.sampleSize ?? null
+    sampleSize: core.sampleSize ?? build.sampleSize ?? null,
+    agreementCount: core.agreementCount ?? build.agreementCount ?? null
   };
 }
 
@@ -809,6 +810,7 @@ function showBuildFromData(className, specName, mode) {
 
   const notes = [...(build.notes ?? [])];
   if (build.sampleSize != null) notes.push(`Sample size: ${build.sampleSize}`);
+  if (build.agreementCount != null) notes.push(`Exact-match agreement count: ${build.agreementCount}`);
   if (build.confidenceRationale) notes.push(`Confidence rationale: ${build.confidenceRationale}`);
   buildNotes.innerHTML = notes.map(n => `<li>${n}</li>`).join("");
   buildNotes.hidden = notes.length === 0;

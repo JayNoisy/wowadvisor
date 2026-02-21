@@ -105,6 +105,31 @@ function findExportStringDeep(value) {
   return walk(value);
 }
 
+function buildsFromGuideCharacters(guide, mode, sourceLabelBase, title) {
+  const out = [];
+  const chars = Array.isArray(guide?.Characters) ? guide.Characters : [];
+  let rank = 0;
+  for (const ch of chars) {
+    const exportString = findExportStringDeep(ch?.TalentsCode || ch);
+    if (!exportString) continue;
+    rank += 1;
+    const className = slugToName(ch?.ClassSlug || guide?.ClassSlug);
+    const specName = slugToName(ch?.SpecializationSlug || guide?.SpecializationSlug);
+    if (!className || !specName) continue;
+    out.push({
+      className,
+      specName,
+      mode,
+      title: title || `${specName} — ${mode.toUpperCase()}`,
+      source: `${sourceLabelBase} top-player`,
+      updated: ch?.UpdatedAt || guide?.UpdatedAt || null,
+      exportString,
+      notes: [ch?.Slug ? `Player: ${ch.Slug}` : null, Number.isFinite(rank) ? `RankIndex: ${rank}` : null].filter(Boolean)
+    });
+  }
+  return out;
+}
+
 /**
  * Return normalized PvP builds in the same shape as Peavers:
  * { className, specName, mode:"pvp", title, source, updated, exportString, notes }
@@ -139,16 +164,21 @@ export async function getMurlokPvpBuilds() {
         continue;
       }
 
-      const exportString = findExportStringDeep(guide);
-      if (!exportString) {
-        // If Murlok doesn't expose a ready-made export string for this guide payload,
-        // we skip it rather than writing junk.
+      const perPlayer = buildsFromGuideCharacters(
+        guide,
+        "pvp",
+        "Murlok.io",
+        `${slugToName(specSlug)} — PvP (Solo Shuffle)`
+      );
+      if (perPlayer.length > 0) {
+        builds.push(...perPlayer);
         continue;
       }
 
+      const exportString = findExportStringDeep(guide);
+      if (!exportString) continue;
       const className = slugToName(classSlug);
       const specName = slugToName(specSlug);
-
       builds.push({
         className,
         specName,
@@ -198,12 +228,21 @@ export async function getMurlokPveBuilds() {
           continue;
         }
 
+        const perPlayer = buildsFromGuideCharacters(
+          guide,
+          mode,
+          `Murlok.io (${activity})`,
+          `${slugToName(specSlug)} — ${titleSuffix}`
+        );
+        if (perPlayer.length > 0) {
+          builds.push(...perPlayer);
+          continue;
+        }
+
         const exportString = findExportStringDeep(guide);
         if (!exportString) continue;
-
         const className = slugToName(classSlug);
         const specName = slugToName(specSlug);
-
         builds.push({
           className,
           specName,

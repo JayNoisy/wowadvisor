@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-02-21T07:35:13.347Z",
+  "generatedAt": "2026-02-21T07:40:17.923Z",
   "sources": {
     "murlok": {
       "ok": true,
       "mplusMetaUpdatedAt": "2026-02-21T02:10:22.418752Z",
       "pvpOk": true,
-      "pvpCount": 38,
+      "pvpCount": 1503,
       "pveOk": true,
-      "pveCount": 40
+      "pveCount": 1977
     },
     "peavers": {
       "ok": true,
@@ -25,30 +25,39 @@
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=48.0, sources=1, margin=0.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/6, margin=0.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 6,
+          "agreementCount": 1
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAgZmxsMzMzYGAAAghphxwMbLzMPwMjZGzMAAAAAGbmB2iBwMGWAwMgGDWAGM2GMbmtBzMAAmB",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Arms — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:40:29.940018Z",
+          "exportString": "CcEAjLzRlq54bI5v+r8Sr9Xw4jZmxsMzMzYGAAAghphxwMbLzMPwMjZGzMAAAAAGbmB2iBwMGWAwMCNGsAMYsNY2MbDmZAAMDA",
+          "notes": [
+            "Player: ocyde",
+            "RankIndex: 46"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=315.0, sources=1, agreement=7/53, margin=135.0, updated=2026-02-21T00:40:29.940018Z",
+          "sampleSize": 53,
+          "agreementCount": 7
         },
         "pvp": {
           "title": "Arms — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:08.272151Z",
-          "exportString": "CcEAjLzRlq54bI5v+r8Sr9Xw4DzMzsNzMzYAAAAMMNMzwMLLmxMDjZmBAAAAwYxMgMzYZbWMz2wmhhZmZajmZwCwwyYZMbWmZZAAAGDA",
-          "notes": [],
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:17:49.43888Z",
+          "exportString": "CcEAjLzRlq54bI5v+r8Sr9Xw4DzMzsNzMzMDAAAghphZmZmZjZMDGmZAAAAAMWMDIzMW2mFzsNsZYYmZmWoZmhFghFzyMzGzYAAADDA",
+          "notes": [
+            "Player: ãwkñd",
+            "RankIndex: 14"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:08.272151Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=201.0, sources=1, agreement=3/51, margin=67.0, updated=2026-02-21T00:17:49.43888Z",
+          "sampleSize": 51,
+          "agreementCount": 3
         }
       },
       "Fury": {
@@ -60,30 +69,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/6, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 6,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjZMzmZmZGjZMzYGzYmlZmxYmZZMzMAAQYgNAjGGAzCGWAMDzYAwMDghZmBG",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Fury — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:40:24.36111Z",
+          "exportString": "CgEAjLzRlq54bI5v+r8Sr9Xw4DAAAAAAgGDjhhlZmHYmZmZMzYGzYmlZmxYmZbMzMAAQw2yALABzgAzwGgBmtBAAzMGmZmZYA",
+          "notes": [
+            "Player: dundee",
+            "RankIndex: 41"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=180.0, sources=1, agreement=4/53, margin=45.0, updated=2026-02-21T00:40:24.36111Z",
+          "sampleSize": 53,
+          "agreementCount": 4
         },
         "pvp": {
           "title": "Fury — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:09.019623Z",
-          "exportString": "CgEAjLzRlq54bI5v+r8Sr9Xw4DAAAAAAgGDDjxmZGzgZYGzYmZmlZMGzMLjZmBAAiZW2GbsAz0wMDTmNmZsAAwAgZGgZYGDMA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:09.019623Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:18:33.135435Z",
+          "exportString": "CgEAjLzRlq54bI5v+r8Sr9Xw4DAAAAAAgGDzMmZWMzMzMYMzMzYmZmlZMzYMbGzMAAQYW2YjNLbmpxMzgMbMDbAmZxYBAAmZYMmxwMA",
+          "notes": [
+            "Player: chîfugoox",
+            "RankIndex: 48"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 67,
+          "confidenceRationale": "support=201.0, sources=1, agreement=3/51, margin=6.0, updated=2026-02-21T00:18:33.135435Z",
+          "sampleSize": 51,
+          "agreementCount": 3
         }
       },
       "Protection": {
@@ -95,30 +113,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzwMzMzMmtZmZZYMGxMGWmZmZGGmZAAAAwyYAmxAMAYZBNmBwAmNMmZmBz2AgZGAAGA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Protection — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:40:34.117529Z",
+          "exportString": "CkEAjLzRlq54bI5v+r8Sr9Xw43yAAAjZYmZmZGzmZmlBGjGzMjFmZmZMDzMAAAAYZMAzYAGYDWY0AAzSMzGMzYGMLDAmZAAYAA",
+          "notes": [
+            "Player: kushshiva",
+            "RankIndex: 44"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=90.0, sources=1, agreement=2/52, margin=42.0, updated=2026-02-21T00:40:34.117529Z",
+          "sampleSize": 52,
+          "agreementCount": 2
         },
         "pvp": {
           "title": "Protection — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:09.870812Z",
-          "exportString": "CkEAjLzRlq54bI5v+r8Sr9Xw43yAAAjZMmZmZmZ2MmlhxYmmZmZsxMPwMYYmBAAAALjBYGDwgFzYWW2oZmhZYZ0YmNMmxAz2AgZGAAGAA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:09.870812Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:33:15.709308Z",
+          "exportString": "CkEAjLzRlq54bI5v+r8Sr9Xw432AAAjZwMzMzMzmxsMwYmmZmZsxMmBwMAAAAYZMAzYAGssNjZZZb0MzwMsMbNmZDzMDglBAAAAAA",
+          "notes": [
+            "Player: lillian",
+            "RankIndex: 4"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/6, margin=0.0, updated=2026-02-21T00:33:15.709308Z",
+          "sampleSize": 6,
+          "agreementCount": 1
         }
       }
     },
@@ -132,30 +159,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYBAMAAGsMmZmZGzMwgxsMYmFz0EDDzMMMbZAYAYDsxyMzMLz2MmtAAAAsw2AsYgZMDDAAjhZMGA",
-          "notes": [],
+          "title": "Holy — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:37:31.118624Z",
+          "exportString": "CEEAVg1HmQqr1Dwlv86ljju8vCAAAYBAMDAwglxMzMzYmxCjxw2YxMLzoJGGmZYY2yAwAwGYjFzMzysMzMbNAgZmltFLjhN2GDs5BGMjBDADAYMIA",
+          "notes": [
+            "Player: carington",
+            "RankIndex: 43"
+          ],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 61,
+          "confidenceRationale": "support=90.0, sources=1, agreement=2/53, margin=0.0, updated=2026-02-21T00:37:31.118624Z",
+          "sampleSize": 53,
+          "agreementCount": 2
         },
         "pvp": {
           "title": "Holy — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:56.199811Z",
-          "exportString": "CEEAVg1HmQqr1Dwlv86ljju8vCAAAYBAMDAwglhBzsMzYxMzYGbjtZmlhmYWmhZGgtMAMAsB2YzMDACAYmZZbxyYYjtxwYzMMzwgBwAAGQA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:56.199811Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:29:38.417607Z",
+          "exportString": "CEEAVg1HmQqr1Dwlv86ljju8vCAAAYBAMDAwglhBzsMzYZmxY8AbzsZmthmYWmhZGgtMAMAsB2YzMDACAYmZZbxyYYjtxAbmhZGGAwAAGMC",
+          "notes": [
+            "Player: holyshockerz",
+            "RankIndex: 28"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=134.0, sources=1, agreement=2/52, margin=0.0, updated=2026-02-21T00:29:38.417607Z",
+          "sampleSize": 52,
+          "agreementCount": 2
         }
       },
       "Protection": {
@@ -167,8 +203,9 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/4, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 4,
+          "agreementCount": 2
         },
         "aoe": {
           "title": "All Dungeons",
@@ -177,20 +214,25 @@
           "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNjBzyYbMjZmZZbMzwsMLzYAAGAAAAAA00MzyMjZGGs1GAGYAgNAAAAYMLbLtwYxMYAMYGGDAmZAwMDA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 64,
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/52, margin=3.0, updated=2026-02-21 02:02:50",
+          "sampleSize": 52,
+          "agreementCount": 1
         },
         "pvp": {
           "title": "Protection — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:56.810638Z",
-          "exportString": "CIEAVg1HmQqr1Dwlv86ljju8vuZmB2GLzMjZmZbhxMzsYZYAAGAAAAAA00MzyMjZmxgt2AwAAzgtBAAMTmZ2MzMLbLtxYhBDgZYYYAwM2mBYGAA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:56.810638Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:29:38.856476Z",
+          "exportString": "CIEAVg1HmQqr1Dwlv86ljju8vuNzYGz28ALjZMzwGzMmZBMAADAAAAAAaamZxMmZYM2aDADMgB2GAAwMZmZxMzsspNGbGYAMYGDDAmZ2mBGzMAA",
+          "notes": [
+            "Player: trufflebuter",
+            "RankIndex: 10"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/12, margin=0.0, updated=2026-02-21T00:29:38.856476Z",
+          "sampleSize": 12,
+          "agreementCount": 1
         }
       },
       "Retribution": {
@@ -202,30 +244,39 @@
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=48.0, sources=1, margin=0.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/5, margin=0.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 1
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQzy2MzsMGzMAAAAAAmpMMMzYbY2GmZbmZMGDzYhNAAAmRbjxMAgNADAGzwAzYmZDLzghxwA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Retribution — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:37:53.772418Z",
+          "exportString": "CYEAVg1HmQqr1Dwlv86ljju8vCAAAAAQzy2MzsMMzAAAAAAwoMMMzYbY2GmZbGjxMDzYhtBAAkZ02YMDAYDwAgxMMwMGzG2mBDjZMA",
+          "notes": [
+            "Player: nopulse",
+            "RankIndex: 48"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=135.0, sources=1, agreement=3/53, margin=45.0, updated=2026-02-21T00:37:53.772418Z",
+          "sampleSize": 53,
+          "agreementCount": 3
         },
         "pvp": {
           "title": "Retribution — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:57.573185Z",
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:13:28.342195Z",
           "exportString": "CYEAVg1HmQqr1Dwlv86ljju8vCAAAAAQzy2MzsNmZGDAAAAAwMFLzwMjtBbDzsNjxYMMjN2GAmFbMzSzYaZGLGAwGgBwMMjBMjhFsMzMzwYYA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:57.573185Z",
-          "sampleSize": 1
+          "notes": [
+            "Player: gàvan",
+            "RankIndex: 48"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=201.0, sources=1, agreement=3/52, margin=0.0, updated=2026-02-21T00:13:28.342195Z",
+          "sampleSize": 52,
+          "agreementCount": 3
         }
       }
     },
@@ -239,30 +290,39 @@
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=48.0, sources=1, margin=0.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/5, margin=0.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 1
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMGG2gFYGQDbAAYGzyMzsZGmZmZGzMMmxMMzYGzwMzwYGWYaGAAAAAAAAAMGzMgZA2gZBsB",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Beast Mastery — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:35:58.714655Z",
+          "exportString": "C0PAYEriH0bRqGs1Qj5St9dJoBMGG2gNYGQDbAAYGzyMzsZGmZmZGzMMmxMMzYGzwMzwYGWYaGAAAAAAAAAMGzMgZgsBzCYDA",
+          "notes": [
+            "Player: draggrozwerk",
+            "RankIndex: 45"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=180.0, sources=1, agreement=4/52, margin=45.0, updated=2026-02-21T00:35:58.714655Z",
+          "sampleSize": 52,
+          "agreementCount": 4
         },
         "pvp": {
           "title": "Beast Mastery — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:41.221763Z",
-          "exportString": "C0PAYEriH0bRqGs1Qj5St9dJoBMGGWgFYGQDbAAYGjxMLmhZMzwYmZMMjZmhxYZZm5BMzMDMaGAAAAAwMAAAMDzMgZgAzsAWA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:41.221763Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:26:26.512903Z",
+          "exportString": "C0PAYEriH0bRqGs1Qj5St9dJohxMGzwihFMzsANjFAAMjxYGmhZMzwMzMjhZMzMegxMMzMMzMANDAAAAAYGAAAmhZGmZmByCmZBsB",
+          "notes": [
+            "Player: cedxtwo",
+            "RankIndex: 32"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=134.0, sources=1, agreement=2/52, margin=0.0, updated=2026-02-21T00:26:26.512903Z",
+          "sampleSize": 52,
+          "agreementCount": 2
         }
       },
       "Marksmanship": {
@@ -274,30 +334,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwwohBwMYDAAAAAAAAYGzYGbzYGjZY5BMNjxMjltNzMzwMzwMzyYMLDzMAAAGjBADbwMAbD",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Marksmanship — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:36:06.258741Z",
+          "exportString": "C4PAYEriH0bRqGs1Qj5St9dJoxCMwwohBkZwGAAAAAAAAwMmxM2mxMGzwyDYaGjZGLbbmZmhZmhZmlxYWGmZAAAMGDAG2gZA2GA",
+          "notes": [
+            "Player: rapidfire",
+            "RankIndex: 48"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=405.0, sources=1, agreement=9/53, margin=270.0, updated=2026-02-21T00:36:06.258741Z",
+          "sampleSize": 53,
+          "agreementCount": 9
         },
         "pvp": {
           "title": "Marksmanship — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:44.22968Z",
-          "exportString": "C4PAYEriH0bRqGs1Qj5St9dJoZZZWGDjZMTjlZgMDzGAAAAAAAAgBA8AMMAhBjNbGDMzgZsBPwygBAAAAAAAAA",
-          "notes": [],
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:10:16.969406Z",
+          "exportString": "C4PAYEriH0bRqGs1Qj5St9dJoZZZWGDDjZasMDkZY2AAAAAAAAAMAgHghBIMYshxAzMYGbwDsMMDAAAAAAAAA",
+          "notes": [
+            "Player: slorly",
+            "RankIndex: 18"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:44.22968Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=201.0, sources=1, agreement=3/52, margin=67.0, updated=2026-02-21T00:10:16.969406Z",
+          "sampleSize": 52,
+          "agreementCount": 3
         }
       },
       "Survival": {
@@ -309,30 +378,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/3, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 3,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxohBwMgtZmZmZmZ2mHAAAAAAgZMjZsNjhxMsMmmBAAAAMAAW2mZsNjZGMGDAGAGDzsB",
-          "notes": [],
+          "title": "Survival — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:36:14.839681Z",
+          "exportString": "C8PAYEriH0bRqGs1Qj5St9dJoNWgBmxohBwMBbGzMjZmlBAAAAAAzYGzYZGjZMDeATGAAAAwAAGLbzMziZmZMzYAADAjxM2A",
+          "notes": [
+            "Player: fapandtrap",
+            "RankIndex: 46"
+          ],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 61,
+          "confidenceRationale": "support=90.0, sources=1, agreement=2/52, margin=0.0, updated=2026-02-21T00:36:14.839681Z",
+          "sampleSize": 52,
+          "agreementCount": 2
         },
         "pvp": {
           "title": "Survival — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:47.23168Z",
-          "exportString": "C8PAYEriH0bRqGs1Qj5St9dJoNWwYGmZb0ssMMDmpBLmZmZMeglZAAAAAAYGYssMjHwMjBzoZAAAAADAgltZmZxMzMmhZGwMMYBzYMjFA",
-          "notes": [],
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:10:29.667996Z",
+          "exportString": "C8PAYEriH0bRqGs1Qj5St9dJoNWwMDzMbjmllhZwMNYxMzMjxDsMDAAAAAAzwYssMjHwMjBzoZAAAAADAgllZmHYxMzMmhZGwMAwMGzMbA",
+          "notes": [
+            "Player: karuso",
+            "RankIndex: 48"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:47.23168Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=201.0, sources=1, agreement=3/52, margin=67.0, updated=2026-02-21T00:10:29.667996Z",
+          "sampleSize": 52,
+          "agreementCount": 3
         }
       }
     },
@@ -346,30 +424,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAA4BmZmZxAAAAAAwsNYbGAAAAAQ2mZmxDMzYMzMzsNz2MjxDMzMzMGmZMGADsBDjGAYZAbGAMzYG",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Assassination — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:38:35.859311Z",
+          "exportString": "CMQAByFP3pExAEG41/8+e6b8f7BmZmZxAAAAAAwsMYbGAAAAAQ2mZmxDMzYMzMzsNz2MjxDMzMzMGmZMGADsBDjGAyyA2MAYmxMA",
+          "notes": [
+            "Player: sinistru",
+            "RankIndex: 49"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=315.0, sources=1, agreement=7/53, margin=135.0, updated=2026-02-21T00:38:35.859311Z",
+          "sampleSize": 53,
+          "agreementCount": 7
         },
         "pvp": {
           "title": "Assassination — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:01.371286Z",
-          "exportString": "CMQAByFP3pExAEG41/8+e6b8fbGzMmZAAAAAAMLD2mBAAAAA0yyYGwADzYwAYmBDwYGD2mZZsxYGzSjZZbYy2wwGAAA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:01.371286Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:30:53.586583Z",
+          "exportString": "CMQAByFP3pExAEG41/8+e6b8fbGzMmZAAAAAAMbD2mBAAAAA0yywMwADzYwAYmBDwYGD2mZbsxYGzSjZbbYy2wwGAAA",
+          "notes": [
+            "Player: solorbgs",
+            "RankIndex: 28"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/36, margin=0.0, updated=2026-02-21T00:30:53.586583Z",
+          "sampleSize": 36,
+          "agreementCount": 1
         }
       },
       "Outlaw": {
@@ -381,30 +468,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgBMmZGmxMzMjZegZ24BmZGTLD2mBAAAAAYbZMzMzMzMzYmZ2GAAAAGDAGDDDMgFWIsxAMzgB",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Outlaw — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:38:53.040475Z",
+          "exportString": "CQQAByFP3pExAEG41/8+e6b8fDgBMmZmZmZbmZmxMPwMb8AMjplBbzAAAAAAstNzMjHYmZmZMzMLDAAAAjBAjhhhMgFWIsxAMzgZA",
+          "notes": [
+            "Player: shibulinchen",
+            "RankIndex: 13"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=180.0, sources=1, agreement=4/52, margin=45.0, updated=2026-02-21T00:38:53.040475Z",
+          "sampleSize": 52,
+          "agreementCount": 4
         },
         "pvp": {
           "title": "Outlaw — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:01.877083Z",
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:30:56.955759Z",
           "exportString": "CQQAByFP3pExAEG41/8+e6b8fDgZAAgBAsAsMtMYZGAAAAAgllxMgxAmxAAAAwMGYwsNbmZmRzMbMbssNtwCAAAA",
-          "notes": [],
+          "notes": [
+            "Player: gnoh",
+            "RankIndex: 6"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:01.877083Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=201.0, sources=1, agreement=3/34, margin=134.0, updated=2026-02-21T00:30:56.955759Z",
+          "sampleSize": 34,
+          "agreementCount": 3
         }
       },
       "Subtlety": {
@@ -416,30 +512,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGbTMbLjxMMjxDMzMzYMbzYG2GzMzMzYAzsNAAAAMYMgxwwADYhFiNMDYmBzA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Subtlety — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:38:56.396284Z",
+          "exportString": "CUQAByFP3pExAEG41/8+e6b8fDgx2MAAAAAwsMGLTMbbjxMMDegZmZGjZbmZGbbzMz4BmZMgZ2GAAAAGMGmlBGAghJkZBzwMDwMA",
+          "notes": [
+            "Player: mikutashi",
+            "RankIndex: 50"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=450.0, sources=1, agreement=10/52, margin=360.0, updated=2026-02-21T00:38:56.396284Z",
+          "sampleSize": 52,
+          "agreementCount": 10
         },
         "pvp": {
           "title": "Subtlety — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:02.484831Z",
-          "exportString": "CUQAByFP3pExAEG41/8+e6b8fDgZ2mBAAAAAmtZmZZiZZbmZmZMDMzMzsMmtxMzssMMDMGwMGAAAAzAsYWmxsNDjFGMz20CtMbMzADwMA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:02.484831Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:31:13.21386Z",
+          "exportString": "CUQAByFP3pExAEG41/8+e6b8fDgZ2mBAAAAAmtxMLTMLLzMmZMDMzMzsMmtxMzstMMYmxAmxAAAAYGMsYWmxsNDjFwyMbTL0yshZAMYmB",
+          "notes": [
+            "Player: cap",
+            "RankIndex: 33"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=134.0, sources=1, agreement=2/51, margin=0.0, updated=2026-02-21T00:31:13.21386Z",
+          "sampleSize": 51,
+          "agreementCount": 2
         }
       }
     },
@@ -453,30 +558,39 @@
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=48.0, sources=1, margin=0.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/5, margin=0.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 1
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMGWmZMmZGmZbmtZmZmhZAAAAAAAAAAMYZmxMzMDGjBMNTMAzshhwYAYMYBAAGzYGDmBwMzA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Discipline — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:38:04.017517Z",
+          "exportString": "CAQA4VPTJ8eQb8/qEm8PyGu4yADsMGWmZMmZGmZbmtZmZmhZAAAAAAAAAAMYZGmZmZwYmxgpZiBYmNMEGDAjBLAAwYGGDmBwMzEA",
+          "notes": [
+            "Player: veni",
+            "RankIndex: 46"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=225.0, sources=1, agreement=5/52, margin=135.0, updated=2026-02-21T00:38:04.017517Z",
+          "sampleSize": 52,
+          "agreementCount": 5
         },
         "pvp": {
           "title": "Discipline — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:58.182063Z",
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:30:30.252001Z",
           "exportString": "CAQA4VPTJ8eQb8/qEm8PyGu4yADsxwyMjZmBmZbmlZmZMmZAAAAAAAAAAMzYZgxMjlZmZGWWMNTMYmZmNMEGzyMbzymBjFDAADDMYAYMTA",
-          "notes": [],
+          "notes": [
+            "Player: quesabirria",
+            "RankIndex: 37"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:58.182063Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=134.0, sources=1, agreement=2/51, margin=67.0, updated=2026-02-21T00:30:30.252001Z",
+          "sampleSize": 51,
+          "agreementCount": 2
         }
       },
       "Holy": {
@@ -488,30 +602,39 @@
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=48.0, sources=1, margin=0.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/6, margin=0.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 6,
+          "agreementCount": 1
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAMmxYMDzMzwMzwyMzMDAAAgBLzwMzMDzYmBwMFAmFMEGDAjBWMzYDgZMDjBzAMzMDA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Holy — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:38:12.270849Z",
+          "exportString": "CEQA4VPTJ8eQb8/qEm8PyGu4ywYAAAAAAAMmxYMDzMzwMzwyMzMDAAAgBLzwMzMDzYmBwMFAmFMEGDAjBWMzYDQzYGGDmBYmZGA",
+          "notes": [
+            "Player: 小小糖果",
+            "RankIndex: 30"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=90.0, sources=1, agreement=2/53, margin=42.0, updated=2026-02-21T00:38:12.270849Z",
+          "sampleSize": 53,
+          "agreementCount": 2
         },
         "pvp": {
           "title": "Holy — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:58.99995Z",
-          "exportString": "CEQA4VPTJ8eQb8/qEm8PyGu4ywYAAAAAAAMmZmlxMzMzYYGmZbmZAAAAwAGMYsgxwyixMFAGYIMmlBYMwixAgmxgxgBgZMA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:58.99995Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:30:30.326786Z",
+          "exportString": "CEQA4VPTJ8eQb8/qEm8PyGu4yADAAAAAAAegZmlxMzMzAzwMbzMmBAAAwYYmxMzDMjFMzw2ixMFAzsNzmZysNjlBYGDWMzMLAaGGmZwAYmZGA",
+          "notes": [
+            "Player: brattiness",
+            "RankIndex: 36"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/38, margin=0.0, updated=2026-02-21T00:30:30.326786Z",
+          "sampleSize": 38,
+          "agreementCount": 1
         }
       },
       "Shadow": {
@@ -523,30 +646,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMjZMGAAAAAAAAAAAADLzMGLzMMzyMDzw2MGzMzAyMYmGgZmZAgAMbzGwsxAMGDGzMzY2GzAGMDA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Shadow — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:38:25.921957Z",
+          "exportString": "CIQA4VPTJ8eQb8/qEm8PyGu4yMYYAAAAAAAAAAAAwYZmZGLjxMziZMzwmBzMzYDZGLmpBwMGAIAz2sJY2YAmZ8ADjZmZMbMDMDmBA",
+          "notes": [
+            "Player: keinkrieger",
+            "RankIndex: 45"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=180.0, sources=1, agreement=4/53, margin=45.0, updated=2026-02-21T00:38:25.921957Z",
+          "sampleSize": 53,
+          "agreementCount": 4
         },
         "pvp": {
           "title": "Shadow — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:00.006297Z",
-          "exportString": "CIQA4VPTJ8eQb8/qEm8PyGu4yMYMGAAAAAAAAAAAgBLmxMLzMmZ2mZYM2mBzMzYhJDLLmGgZGDmZxMa2MY2mtlMmZjBYMzgxMjxsMmBMYGA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:00.006297Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:30:51.818055Z",
+          "exportString": "CIQA4VPTJ8eQb8/qEm8PyGu4ygZ4BGAAAAAAAAAAAgBLmZmZZmxMzyMzYG2MYmZGLIDLLmGDMzMDmZxMa2MY2mllMmZjBYMGMmZmxswMAYGA",
+          "notes": [
+            "Player: minegames",
+            "RankIndex: 47"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=134.0, sources=1, agreement=2/51, margin=0.0, updated=2026-02-21T00:30:51.818055Z",
+          "sampleSize": 51,
+          "agreementCount": 2
         }
       }
     },
@@ -560,30 +692,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWmZGmxMzMMLzMz0MMGjZMAAAAgZmZmZmZGmZGAwYmZmBAAAz2ADAYZQghFAzwMAAmZAA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Blood — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:33:50.923509Z",
+          "exportString": "CoPASnrjTdwaLTX9NnLQoJJXfwYWmZGmxYmhZZmZmmZxYMmxAAAAAzMmZmZmZYGjBAjZmZGAAAMGYACWGmADLAmxMAAMzAAA",
+          "notes": [
+            "Player: justdóit",
+            "RankIndex: 45"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=225.0, sources=1, agreement=5/53, margin=177.0, updated=2026-02-21T00:33:50.923509Z",
+          "sampleSize": 53,
+          "agreementCount": 5
         },
         "pvp": {
           "title": "Blood — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:02.232579Z",
-          "exportString": "CoPASnrjTdwaLTX9NnLQoJJXfAzyMzwMmxMMLjZmmZzMjZmBAAAAYmZmZGmZGzMjBAjZmZGAAAmZbMMGW0glBZbYYDwMmBAgZmZGAA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:02.232579Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:19:47.552527Z",
+          "exportString": "CoPASnrjTdwaLTX9NnLQoJJXfwYWmZGmxYmhZZmZmmZxYMmxAAAAAzMmZmZmZYGjBAjZmZGAAAMGYACWGmADLAmxMAAMzAAA",
+          "notes": [
+            "Player: gripstunwin",
+            "RankIndex: 2"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/4, margin=0.0, updated=2026-02-21T00:19:47.552527Z",
+          "sampleSize": 4,
+          "agreementCount": 1
         }
       },
       "Frost": {
@@ -595,30 +736,39 @@
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=48.0, sources=1, margin=0.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/6, margin=0.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 6,
+          "agreementCount": 1
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAYAzMMjZAzmZmZmZxMjmZwwMjx4BmxMzMzMzMDAAAAAAAAAAbmNDDMwsxQDbYmZmZGAADAYGA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Frost — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:33:58.607704Z",
+          "exportString": "CsPASnrjTdwaLTX9NnLQoJJXfMDYmhZMDDz2MzMzMMzIzYMGmZAmZmZmZmZGAAAAAAAAAMGDMAglhJkxCmZmZmBGAGMDwAA",
+          "notes": [
+            "Player: hommemort",
+            "RankIndex: 30"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=135.0, sources=1, agreement=3/53, margin=87.0, updated=2026-02-21T00:33:58.607704Z",
+          "sampleSize": 53,
+          "agreementCount": 3
         },
         "pvp": {
           "title": "Frost — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:05.232285Z",
-          "exportString": "CsPASnrjTdwaLTX9NnLQoJJXfYAzAAwCjHYmBoZGDwMGGAzMzMAAAAAAAAAgxsNbmtZYswwyMbTDNjNDAAAAAAA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:05.232285Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:03:28.148898Z",
+          "exportString": "CsPASnrjTdwaLTX9NnLQoJJXf8AAzMMjxYY2mZmZmhZmpZGjZMzYwDMjxMzMzMzAAAAAAAAAgxsNbmtZYswwyMbTDNjNMzMzYgBgBAAA",
+          "notes": [
+            "Player: cobragrip",
+            "RankIndex: 21"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=134.0, sources=1, agreement=2/36, margin=0.0, updated=2026-02-21T00:03:28.148898Z",
+          "sampleSize": 36,
+          "agreementCount": 2
         }
       },
       "Unholy": {
@@ -630,30 +780,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=48.0, sources=1, margin=40.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/4, margin=40.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 4,
+          "agreementCount": 1
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmhZMGDz2MzMTDjxMzYGAAAAAAAAzMYGAsMMzsNzMmxMGYghFNAw2gNMgZAYMzMMYmBYG",
-          "notes": [],
+          "title": "Unholy — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:34:07.063302Z",
+          "exportString": "CwPASnrjTdwaLTX9NnLQoJJXfAwMjZMDDz2MzMTDzMGzYAAAAAAAAYmhZGAsMMmtZmxMmBsYWghAmNGasgBMDAjZmhBwMDzA",
+          "notes": [
+            "Player: legnatsal",
+            "RankIndex: 41"
+          ],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 67,
+          "confidenceRationale": "support=90.0, sources=1, agreement=2/52, margin=6.0, updated=2026-02-21T00:34:07.063302Z",
+          "sampleSize": 52,
+          "agreementCount": 2
         },
         "pvp": {
           "title": "Unholy — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:08.23068Z",
-          "exportString": "CwPASnrjTdwaLTX9NnLQoJJXfAYmBMDjZWGzMTz2MGzMMDAAAAAAAADmZAwyMmZWMzYMzYw2MMzMLamlFsxsNNWAwMAMzMzYGAzMmZA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:08.23068Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:20:42.121953Z",
+          "exportString": "CwPASnrjTdwaLTX9NnLQoJJXfAYmBjZYYWYmZa2mxYMjZAAAAAAAAMDmZAwyMmZYmxMzMGsNDzYW0MgNmtpxCDwMAMPwMzYGMzYGmZA",
+          "notes": [
+            "Player: bettyk",
+            "RankIndex: 37"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=134.0, sources=1, agreement=2/51, margin=0.0, updated=2026-02-21T00:20:42.121953Z",
+          "sampleSize": 51,
+          "agreementCount": 2
         }
       }
     },
@@ -667,30 +826,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMLLzMGjZZZZMmhBAAAAgZ2gBMgZjJwsAAzyMzMGbMtxMjxyMmZMsMLzYZmZMzsAAMAAjhB",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Elemental — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:39:04.995386Z",
+          "exportString": "CYQARUG2fGwHkLP0T7/MoTNl/AAAAAzMLLzMmZmZZbZwMMDAAAAgZ2gBMgZjJkZBAmlZmZM2WMhZGjlZmZGDLWMWMzYmZDAYAAGDDA",
+          "notes": [
+            "Player: gauchosham",
+            "RankIndex: 37"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=90.0, sources=1, agreement=2/52, margin=42.0, updated=2026-02-21T00:39:04.995386Z",
+          "sampleSize": 52,
+          "agreementCount": 2
         },
         "pvp": {
           "title": "Elemental — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:03.078493Z",
-          "exportString": "CYQARUG2fGwHkLP0T7/MoTNl/AAAAAmZZbMYMLbbMzMYAAAAALmZDGwAmNmQmFAgZGjZ2WMZMzYsYMzYmZzmZWmZmZmxAAmxAAGmB",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:03.078493Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:31:40.515212Z",
+          "exportString": "CYQARUG2fGwHkLP0T7/MoTNl/AAAAAmZZbGGDLLbzMGMDAAAAYxYbzMzwGshtZmGamFAY2mZGmZjJMzYsMjZGzMbzGzyMjZMLDAMYAMzYYGA",
+          "notes": [
+            "Player: drecs",
+            "RankIndex: 41"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/51, margin=0.0, updated=2026-02-21T00:31:40.515212Z",
+          "sampleSize": 51,
+          "agreementCount": 1
         }
       },
       "Enhancement": {
@@ -702,30 +870,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/6, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 6,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzYGzAAAAAAAAAALAYG0YbAMAbAMLzYGjlFDMzsxyMmZGYMDAAwYMzEzMADG",
-          "notes": [],
+          "title": "Enhancement — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:39:16.614051Z",
+          "exportString": "CcQARUG2fGwHkLP0T7/MoTNl/MzMzMzMzMzMzMzMzYGAAAAAAAAAAAMW0YbAMTwGAWmxMGLLzAzMbsMzMzwwYGAADwYGxMDAMA",
+          "notes": [
+            "Player: benïce",
+            "RankIndex: 49"
+          ],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 61,
+          "confidenceRationale": "support=135.0, sources=1, agreement=3/53, margin=0.0, updated=2026-02-21T00:39:16.614051Z",
+          "sampleSize": 53,
+          "agreementCount": 3
         },
         "pvp": {
           "title": "Enhancement — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:03.979449Z",
-          "exportString": "CcQARUG2fGwHkLP0T7/MoTNl/MzMjZGzMzMmZGzYGAAAAAAAAAYBbmhZ2W0stNMDzoBbAMbzwYmtlZswYwixMzYmNMAAzwMGmZCzwgBDA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:03.979449Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:31:51.435945Z",
+          "exportString": "CcQARUG2fGwHkLP0T7/MoTNl/MzMzgZmZmZmhZGDAAAAAAAAgNsgtlZYmtFNbbDzwMTDWAY2GMmZbZGLMGjFjZmxMbYAAmhZmZMzEgBDGA",
+          "notes": [
+            "Player: shocklesner",
+            "RankIndex: 30"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=134.0, sources=1, agreement=2/51, margin=0.0, updated=2026-02-21T00:31:51.435945Z",
+          "sampleSize": 51,
+          "agreementCount": 2
         }
       },
       "Restoration": {
@@ -737,30 +914,39 @@
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=48.0, sources=1, margin=0.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/6, margin=0.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 6,
+          "agreementCount": 1
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAjZMW2mhZmZmZmxwgxCMAgZhJwYBzMY2mZMa2WmZYGzCLGzMGMLDAAGgZmBAzMMzA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Restoration — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:39:28.220748Z",
+          "exportString": "CgQARUG2fGwHkLP0T7/MoTNl/AAAAgBAAAAjZMW2mhZmZmZmxwgxCMABzCTgxCmZwsNzY0stMzwMmFWMmZMDzyAAgBYMDAmZYmBA",
+          "notes": [
+            "Player: jsun",
+            "RankIndex: 21"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=135.0, sources=1, agreement=3/53, margin=45.0, updated=2026-02-21T00:39:28.220748Z",
+          "sampleSize": 53,
+          "agreementCount": 3
         },
         "pvp": {
           "title": "Restoration — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:04.479417Z",
-          "exportString": "CgQARUG2fGwHkLP0T7/MoTNl/AAAAAAAAAYMzMLLLzwMPwMzMzYGDGL2YYsox2MLMZGGLGzMY2GjRzyiZYGDWMmZYmtZzAAAAzMwMYmhZGA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:04.479417Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:32:09.660435Z",
+          "exportString": "CgQARUG2fGwHkLP0T7/MoTNl/AAAAgBAAAAjZM2WmhZmZmZmZmxwyML2YMjlpx2MLIzwYBzMYWeAjRzyyMDzYwixMjZmtZzAAAgxMAwMYGA",
+          "notes": [
+            "Player: gladxm",
+            "RankIndex: 27"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/51, margin=0.0, updated=2026-02-21T00:32:09.660435Z",
+          "sampleSize": 51,
+          "agreementCount": 1
         }
       }
     },
@@ -774,30 +960,39 @@
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=48.0, sources=1, margin=0.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/5, margin=0.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 1
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzQzMGAAAAAMzklNzAAYDAgNMzMDbWmZmZZwYmZmZGLMjZegZAAGAAgBYmBMDAG",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Arcane — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:36:24.23478Z",
+          "exportString": "C4DAMhlVtghLZL4RZzExaQoBYNzwYZmZmFMzQzMGAAAGAAEwMDWmZiFAA2GmZGz2ilZmZMzYMmZmZswMmxMAADAAgZWAAzAAM",
+          "notes": [
+            "Player: kokeyn",
+            "RankIndex: 43"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=495.0, sources=1, agreement=11/53, margin=405.0, updated=2026-02-21T00:36:24.23478Z",
+          "sampleSize": 53,
+          "agreementCount": 11
         },
         "pvp": {
           "title": "Arcane — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:50.232816Z",
-          "exportString": "C4DAMhlVtghLZL4RZzExaQoBYNstYWmZmZxmZGawMAAAGAgZmssYmZmZW2mZiNAAWwMzMsZZmZmlxMj5BmZmhFmZmxMAADAAwAMzAjBAYA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:50.232816Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:27:32.509103Z",
+          "exportString": "C4DAMhlVtghLZL4RZzExaQoBYNmlFWmZmZBzM0MGDAAgBAMzMNLLLzMzYW2mZiFAAWGMzY22sMzMzyMjxMmZmxGzMzYAAMAAAYDAGAAG",
+          "notes": [
+            "Player: dalinus",
+            "RankIndex: 25"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=134.0, sources=1, agreement=2/47, margin=0.0, updated=2026-02-21T00:27:32.509103Z",
+          "sampleSize": 47,
+          "agreementCount": 2
         }
       },
       "Fire": {
@@ -809,30 +1004,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAMzALzMzsgZGZmxAAAwAAmZmssZGAgNzMsMzMzYWAAAAAgNzMzMPAAAmZYmZmZmZWAgZAGjBA",
-          "notes": [],
+          "title": "Fire — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:36:36.238331Z",
+          "exportString": "C8DAMhlVtghLZL4RZzExaQoBYNzALzMzsgZGZmxAAAwAAmZmssZGAgNzMsMzMzMzCAAAAAsZmZm5BAAwMDzMmZmZWAgZIMGDAA",
+          "notes": [
+            "Player: masti",
+            "RankIndex: 26"
+          ],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 61,
+          "confidenceRationale": "support=90.0, sources=1, agreement=2/30, margin=0.0, updated=2026-02-21T00:36:36.238331Z",
+          "sampleSize": 30,
+          "agreementCount": 2
         },
         "pvp": {
           "title": "Fire — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:53.230631Z",
-          "exportString": "C8DAMhlVtghLZL4RZzExaQoBYNYZmlZmZ2wMjMzYAAAYmlZMzsMLzMTzyyyMAAbmZGbDjZmFAAAAAYzMzMDAAMmxMMzYmlZAAygBMDA",
-          "notes": [],
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:28:24.414854Z",
+          "exportString": "C8DAMhlVtghLZL4RZzExaQoBYBAeAghMAAAAmlZMzsMLzMTzyyyMAAbmZAAAAAAAAAAAAAAAAgAAA",
+          "notes": [
+            "Player: welikeweed",
+            "RankIndex: 35"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:53.230631Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=335.0, sources=1, agreement=5/52, margin=134.0, updated=2026-02-21T00:28:24.414854Z",
+          "sampleSize": 52,
+          "agreementCount": 5
         }
       },
       "Frost": {
@@ -844,30 +1048,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAMzwMLzMzsgZmYGGzMzMziZmZmxYGmMzysAAAALAAwGAAAwCAbbjZmZwsZMzMjFAAAwMDGwAA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Frost — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:36:39.995201Z",
+          "exportString": "CAEAMhlVtghLZL4RZzExaQoBYZGGLmZmFMzEzMmZmZmZ2MzMjZMzsNTmZZWAAzMYbmpNAAYDAAAYBgtlxMzMY2GzYmxCAAAzsxgZYMAAA",
+          "notes": [
+            "Player: louïse",
+            "RankIndex: 18"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=90.0, sources=1, agreement=2/53, margin=42.0, updated=2026-02-21T00:36:39.995201Z",
+          "sampleSize": 53,
+          "agreementCount": 2
         },
         "pvp": {
           "title": "Frost — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:53.789868Z",
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:28:20.139998Z",
           "exportString": "CAEAMhlVtghLZL4RZzExaQoBYNstwyMzMLYmJmhZmZmZsZmZMzMzMLz0Mz2sAAAgWAAgFAAAgNA22GzMzALGjZmlFAAAAwgxAGA",
-          "notes": [],
+          "notes": [
+            "Player: sdk",
+            "RankIndex: 38"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:53.789868Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=268.0, sources=1, agreement=4/52, margin=134.0, updated=2026-02-21T00:28:20.139998Z",
+          "sampleSize": 52,
+          "agreementCount": 4
         }
       }
     },
@@ -881,8 +1094,9 @@
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=48.0, sources=1, margin=0.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/5, margin=0.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 1
         },
         "aoe": {
           "title": "All Dungeons",
@@ -891,20 +1105,25 @@
           "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAghZGNbmx2MzYWGAAwMzsMbzMz2YAAWWGYADYGEYYbAAAwAAAwMjZYmtZGzgZmZGDzMzAAMA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 64,
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/53, margin=3.0, updated=2026-02-21 02:02:50",
+          "sampleSize": 53,
+          "agreementCount": 1
         },
         "pvp": {
           "title": "Affliction — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:05.12164Z",
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:17:21.871917Z",
           "exportString": "CkQAy0jxIDofkwJmoH7WhvESotMmxMjmtZGLMzMLDAAwMziFzMLmBAmlltxwYWMTjZmhtMbMsNAAAMDAAAMmZYMjhZMzMzMYGMAgZAA",
-          "notes": [],
+          "notes": [
+            "Player: pauze",
+            "RankIndex: 34"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:05.12164Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=268.0, sources=1, agreement=4/38, margin=67.0, updated=2026-02-21T00:17:21.871917Z",
+          "sampleSize": 38,
+          "agreementCount": 4
         }
       },
       "Demonology": {
@@ -916,30 +1135,39 @@
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=48.0, sources=1, margin=0.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/5, margin=0.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 1
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAghZGNbmx2MzMjBAAAAAAAMmBAglhNaYxYmxyYGjZGAYmZmxMzMAjZYmNAAwYmZGjBbzMDA",
-          "notes": [],
+          "title": "Demonology — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:39:59.558287Z",
+          "exportString": "CoQAy0jxIDofkwJmoH7WhvESohhZGNbmx2MzMjBAAAAAAYsYgBAMDbhM2MmZsMmxYmBAmZmZMDgZGzwMbAAgxMzMGD2mZGAA",
+          "notes": [
+            "Player: huskydots",
+            "RankIndex: 36"
+          ],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 61,
+          "confidenceRationale": "support=90.0, sources=1, agreement=2/53, margin=0.0, updated=2026-02-21T00:39:59.558287Z",
+          "sampleSize": 53,
+          "agreementCount": 2
         },
         "pvp": {
           "title": "Demonology — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:05.692673Z",
-          "exportString": "CoQAy0jxIDofkwJmoH7WhvESoZMDDNLzMWYmZWGAAAAAAgxy2MmZwmBMz2s1CNjFzMzYbWmZmhBAMDzMjZAmZmZmBAAYMjhxMjthBA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:05.692673Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:23:06.951776Z",
+          "exportString": "CoQAy0jxIDofkwJmoH7WhvESohZMzoZhxCzMzyAAAAAAAM2WmhZG2MMMzys1CNjNjZGbzyMmZMAgZmxYYAMzMzMAAAjZMzMmZsxMAA",
+          "notes": [
+            "Player: wöopzy",
+            "RankIndex: 6"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=268.0, sources=1, agreement=4/52, margin=0.0, updated=2026-02-21T00:23:06.951776Z",
+          "sampleSize": 52,
+          "agreementCount": 4
         }
       },
       "Destruction": {
@@ -951,30 +1179,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/3, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 3,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAghZGNbmx2MzMjZzYmZxMzyiZAAwYGzMziFYghRDDgZDbMAAwwwAAAzgxMMzGAAgZmZAAwM",
-          "notes": [],
+          "title": "Destruction — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:40:18.334874Z",
+          "exportString": "CsQAy0jxIDofkwJmoH7WhvESoZMzDMzoZjxmZGzysZMzsYmZZxMAAgZMzMLWgBGGNMAmtYjBAAGGmBAAzgxMYAAAYmZmBAgZA",
+          "notes": [
+            "Player: schteiin",
+            "RankIndex: 44"
+          ],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 61,
+          "confidenceRationale": "support=90.0, sources=1, agreement=2/52, margin=0.0, updated=2026-02-21T00:40:18.334874Z",
+          "sampleSize": 52,
+          "agreementCount": 2
         },
         "pvp": {
           "title": "Destruction — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:01:06.978327Z",
-          "exportString": "CsQAy0jxIDofkwJmoH7WhvESotMGmZ0sMGLMzMLjxMmlZMLLmBAAzMjZmZxGmZGzYZ0Mw2wys1YjBAAGDM2AAmZwMzYMAAAMjZAAYMA",
-          "notes": [],
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:18:03.954907Z",
+          "exportString": "CsQAy0jxIDofkwJmoH7WhvESotMzwMjmNGLMzMLzyYGPgZmZbxMAAYmhZmZxCmZGzssMamZYbYZ2asxAAAjBmZBAAw8AzMzAAAwMzAAgxA",
+          "notes": [
+            "Player: únknøwn",
+            "RankIndex: 46"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:01:06.978327Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=201.0, sources=1, agreement=3/52, margin=67.0, updated=2026-02-21T00:18:03.954907Z",
+          "sampleSize": 52,
+          "agreementCount": 3
         }
       }
     },
@@ -988,30 +1225,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/4, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 4,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAgZbzYGzYWM2wMjBAAAAAAYZBEzMwMM2AmZmZMzGmxMLDLbPwy2sNjZBAA2AAAA2mlmZmZjhNADMNGAAA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Brewmaster — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:36:52.90457Z",
+          "exportString": "CwQAi6cZM+HWADeySjzG9Lwx8DAAAgZbzYGzYWmxGmZMAAAAAAALLgYmBmhxmZwMzMY2wMmZZYZzy2sNjZBAA2mlplZbAAgtZpZmZ2YYDMzMw0YAAAA",
+          "notes": [
+            "Player: мастурбейби",
+            "RankIndex: 33"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=90.0, sources=1, agreement=2/52, margin=42.0, updated=2026-02-21T00:36:52.90457Z",
+          "sampleSize": 52,
+          "agreementCount": 2
         },
         "pvp": {
           "title": "Brewmaster — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:54.391751Z",
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:27:56.923827Z",
           "exportString": "CwQAi6cZM+HWADeySjzG9Lwx8DAAAgZbxYmZG2mxGmZAAAAAAAYZDjYmZ2YGGgxMjZGzCMMLDLb22GzY2AAglZZaZ2GAAws0MzMbmhFwMzMYaMADAA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:54.391751Z",
-          "sampleSize": 1
+          "notes": [
+            "Player: blácköüt",
+            "RankIndex: 1"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/4, margin=0.0, updated=2026-02-21T00:27:56.923827Z",
+          "sampleSize": 4,
+          "agreementCount": 1
         }
       },
       "Windwalker": {
@@ -1023,30 +1269,39 @@
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=48.0, sources=1, margin=0.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/4, margin=0.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 4,
+          "agreementCount": 1
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYAMMbzMz2MzAAAAAAAAAAAALDzEmhhBMjhZGDmNMDzyMBAsZmtxwYmZAAsBAMLNzMzCwwgZAALzAMA",
-          "notes": [],
+          "title": "Windwalker — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:37:14.666062Z",
+          "exportString": "C0QAi6cZM+HWADeySjzG9Lwx8PzYAMMbzMz2MzAAAAAAAAAAAALDzEmhhBMjhZGDmNMDzyMBAsZmtxwYmZgAYDAxs0MzMLADDMDAYZGgBA",
+          "notes": [
+            "Player: xeeng",
+            "RankIndex: 48"
+          ],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 61,
+          "confidenceRationale": "support=135.0, sources=1, agreement=3/52, margin=0.0, updated=2026-02-21T00:37:14.666062Z",
+          "sampleSize": 52,
+          "agreementCount": 3
         },
         "pvp": {
           "title": "Windwalker — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:54.997334Z",
-          "exportString": "C0QAi6cZM+HWADeySjzG9Lwx8bmZMYMDbzM2mxAAAAAAAAAAAALDjwMz2wAGmxMDzYWswwsMTAAbmZxMjxMzABwGWmlx0sNamZAYYgZGAYZAMA",
-          "notes": [],
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:28:38.953785Z",
+          "exportString": "C0QAi6cZM+HWADeySjzG9Lwx8bmZMYGMbzwyMGAAAAAAAAAAAYZYEmZ2GGDwMmZMDzCMMLzEAwiZWYYmZmBCgFzgx0sNLNjBMMMwMzMAwwgZmZB",
+          "notes": [
+            "Player: dog",
+            "RankIndex: 6"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:54.997334Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=134.0, sources=1, agreement=2/51, margin=67.0, updated=2026-02-21T00:28:38.953785Z",
+          "sampleSize": 51,
+          "agreementCount": 2
         }
       },
       "Mistweaver": {
@@ -1058,8 +1313,9 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/6, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 6,
+          "agreementCount": 2
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1068,20 +1324,25 @@
           "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgxMWGLDLWMmZsZsssNDPwmZ22WmZswQzYGwgBMLzMzMMbYGmFTAAAAAAwitxCzMAAAAwMgxALyYGA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 64,
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/53, margin=3.0, updated=2026-02-21 02:02:50",
+          "sampleSize": 53,
+          "agreementCount": 1
         },
         "pvp": {
           "title": "Mistweaver — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:55.60446Z",
-          "exportString": "C4QAi6cZM+HWADeySjzG9Lwx8DAAAAAAAgxMWmZZMbWMjZsNzsgxgZWsMzYhZ0MmBMYWMYZMzMMLwDwsMTAAAAgZZab2mZZ2sMzysNGQAwAAAYA2mAA",
-          "notes": [],
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:29:28.919161Z",
+          "exportString": "C4QAi6cZM+HWADeySjzG9Lwx8DAAAAAAAgxMzyYZgFjZGLGLWmxMeAzyy2MjNmRDzYBDmFGz2YmBjZBMbjAAAAAzy0ysMz2sYZmFGDIAYAAmBMGYTGzA",
+          "notes": [
+            "Player: kdeezyfn",
+            "RankIndex: 26"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:55.60446Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=195.0, sources=1, agreement=3/51, margin=61.0, updated=2026-02-21T00:29:28.919161Z",
+          "sampleSize": 51,
+          "agreementCount": 3
         }
       }
     },
@@ -1095,8 +1356,9 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1105,20 +1367,25 @@
           "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNMmZAmlZmZmZhhxMmZZmFzMjlxyMLjxgFMAYsYmBMGATAAAAWYGzMYbZYMGAAmZA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 64,
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/53, margin=3.0, updated=2026-02-21 02:02:50",
+          "sampleSize": 53,
+          "agreementCount": 1
         },
         "pvp": {
           "title": "Balance — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:20.233818Z",
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:07:45.85057Z",
           "exportString": "CYGA8cL7tpvige+kkmGM9zUPWDAAAAAAAAAAAAAAAAWoMLNjxMDMmNzMzMbMgZZsMz2MmZWmZxYmZmhNMAYstMjttZ2mlZamZZmAAAAsxMGD2MMGGAAAA",
-          "notes": [],
+          "notes": [
+            "Player: enygma",
+            "RankIndex: 40"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:20.233818Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=201.0, sources=1, agreement=3/52, margin=67.0, updated=2026-02-21T00:07:45.85057Z",
+          "sampleSize": 52,
+          "agreementCount": 3
         }
       },
       "Feral": {
@@ -1130,30 +1397,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/6, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 6,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZ2MzMzMGzmx2YbmZm5BmZAAAAYJYWMGmZUzYWYmZmlxMAAAAAAwADAAAgMmtZmZAALgZGgFGMAAAMbA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Feral — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T01:27:46.250063Z",
+          "exportString": "CcGA8cL7tpvige+kkmGM9zUPWDAAAAAAmZ2MzMzMGzmx2YbmZm5BmZAAAAYJY2MGmZUzYWYmZmlxMAAAAAAwADAAAgMmtZmZABWAzMALMYAAAY2A",
+          "notes": [
+            "Player: shayao",
+            "RankIndex: 47"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=135.0, sources=1, agreement=3/54, margin=45.0, updated=2026-02-21T01:27:46.250063Z",
+          "sampleSize": 54,
+          "agreementCount": 3
         },
         "pvp": {
           "title": "Feral — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:23.234363Z",
-          "exportString": "CcGA8cL7tpvige+kkmGM9zUPWDAAAAAAzMzCzYmZGz2ywMLzYGzMDAAAALBzmBmZmaGzGzMzsNmhBAAAAAAYAAAA0MLz2MzMz2MLNbzssBmZAWYwAAAAA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:23.234363Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:27:01.073884Z",
+          "exportString": "CcGA8cL7tpvige+kkmGM9zUPWDAAAAAwYMzGzMzMzY2WGLjlZMjHYmBAAAglgZxAzMTNjZjxMjhBAAAAAAADAAAgmZZ2GjZYWa2GLbAeAAADAgZGAA",
+          "notes": [
+            "Player: ninjakitty",
+            "RankIndex: 48"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/52, margin=0.0, updated=2026-02-21T00:27:01.073884Z",
+          "sampleSize": 52,
+          "agreementCount": 1
         }
       },
       "Guardian": {
@@ -1165,19 +1441,24 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZmlZmZMWMLeg5BmZZZAbGGNRzMzyYmZmlxMAAAAAAMmNDYxMDYMAmAAAA2wMAWMDGMYZDwMDA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Guardian — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:35:07.041154Z",
+          "exportString": "CgGA8cL7tpvige+kkmGM9zUPWDAAAAAAAAAAAgZmZml5BmZMWMLeg5BmZZZgZzwoJamZWYmZmlxMAAAAAAMsNDYxMDYMAmCAAAshZeAgFzgBDW2AMzAA",
+          "notes": [
+            "Player: crulls",
+            "RankIndex: 43"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=135.0, sources=1, agreement=3/52, margin=45.0, updated=2026-02-21T00:35:07.041154Z",
+          "sampleSize": 52,
+          "agreementCount": 3
         },
         "pvp": {
           "title": "Open-World | Elunes Chosen",
@@ -1187,8 +1468,9 @@
           "notes": [],
           "confidence": "low",
           "confidenceScore": 51,
-          "confidenceRationale": "support=0.0, sources=1, margin=max, updated=2025-06-12 22:32:23",
-          "sampleSize": 1
+          "confidenceRationale": "support=0.0, sources=1, agreement=1/1, margin=max, updated=2025-06-12 22:32:23",
+          "sampleSize": 1,
+          "agreementCount": 1
         }
       },
       "Restoration": {
@@ -1200,8 +1482,9 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/6, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 6,
+          "agreementCount": 2
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1210,20 +1493,25 @@
           "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMMmxsNjZmxsN8AMzswsYbGAAAAAAAAAAsNoZDmmhZ8AmFzMzMLzwDMDAAAAAAgxAAAAAgZbs1sYYjxMwYWANDAwMDA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 64,
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/53, margin=3.0, updated=2026-02-21 02:02:50",
+          "sampleSize": 53,
+          "agreementCount": 1
         },
         "pvp": {
           "title": "Restoration — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:29.231058Z",
-          "exportString": "CkGA8cL7tpvige+kkmGM9zUPWPmZmBzYmZMLjZGDYWsNDAAAAAAAAAAWmhsZGTzMzMY2YmZmNDDAAAAAGAwYAAIAAgZbmlmtZWsxYGYGANDAAAA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:29.231058Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:34:42.128421Z",
+          "exportString": "CkGA8cL7tpvige+kkmGM9zUPWPMzMbMjZmxsMmZMsxsYbAAAAAAAAAAglBZzMmmZmhxsZmZmZxADAAAAAAgxAYsgJzsNAAmtZWa2mZxGMzDgZsAaGAMzAAA",
+          "notes": [
+            "Player: ingerion",
+            "RankIndex: 13"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/15, margin=0.0, updated=2026-02-21T00:34:42.128421Z",
+          "sampleSize": 15,
+          "agreementCount": 1
         }
       }
     },
@@ -1237,30 +1525,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZ2MmZmxYmMmZAAAAAAAzixYwMzYMjtZzMDjBWGwsZGYWQjZmxM2AAAAGAAAAzMYAAAAA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Havoc — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:34:20.872258Z",
+          "exportString": "CEkAG5bbocFKcv+yIq8fPd6ORZmZmZmZ2MmZmxYmMmZAAAAAAAzixwwMDjZsNbmZGjBWGwsZGYWkGzMjZsBAAAMAAEAMzgBgAAAA",
+          "notes": [
+            "Player: jaggerdh",
+            "RankIndex: 47"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=225.0, sources=1, agreement=5/52, margin=45.0, updated=2026-02-21T00:34:20.872258Z",
+          "sampleSize": 52,
+          "agreementCount": 5
         },
         "pvp": {
           "title": "Havoc — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:11.234923Z",
-          "exportString": "CEkAG5bbocFKcv+yIq8fPd6ORZGMzMzixMzMmZmMMAAAAAAAzixYGzMzsNzMzysNmxygZsNWmZZWmZmx2sopZmZGzYBAAAAAABYmBAABAAA",
-          "notes": [],
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:21:14.848231Z",
+          "exportString": "CEkAG5bbocFKcv+yIq8fPd6ORZmZMzMzGmxMGzkBAAAAAAAzCGwMzsNzMYbGjlBzYbsMzyYMzYzimmZGDjNAAAAAAEgZmZGAgAAAA",
+          "notes": [
+            "Player: thegoph",
+            "RankIndex: 6"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=max, updated=2026-02-21T02:00:11.234923Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=201.0, sources=1, agreement=3/50, margin=67.0, updated=2026-02-21T00:21:14.848231Z",
+          "sampleSize": 50,
+          "agreementCount": 3
         }
       },
       "Vengeance": {
@@ -1272,43 +1569,56 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjhZkZmBWMjZwMjZGz8AzMzYYmtZGbMjxYGAAAAAAAAmZGbAAAAYgZGmRbzMzAADAAAA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Vengeance — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:34:27.926597Z",
+          "exportString": "CUkAG5bbocFKcv+yIq8fPd6ORBAYMzMjhZkZmBWMjZwMjZGz8AzMzYYmtZGbMjxYGAAAAAAABMzM2AAAAwAzMMj2mZmBAGAAAAA",
+          "notes": [
+            "Player: vødkas",
+            "RankIndex: 49"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=450.0, sources=1, agreement=10/53, margin=402.0, updated=2026-02-21T00:34:27.926597Z",
+          "sampleSize": 53,
+          "agreementCount": 10
         },
         "pvp": {
           "title": "Vengeance — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:14.22945Z",
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:21:21.914856Z",
           "exportString": "CUkAG5bbocFKcv+yIq8fPd6ORBAYMzMjhZkZmBWMjZwMjZGz8AzMzYYmtZGbMjxYGAAAAAAABMzM2AAAAwAzMMj2mZmBAGAAAAA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=max, updated=2026-02-21T02:00:14.22945Z",
-          "sampleSize": 1
+          "notes": [
+            "Player: sadgirlx",
+            "RankIndex: 1"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/2, margin=0.0, updated=2026-02-21T00:21:21.914856Z",
+          "sampleSize": 2,
+          "agreementCount": 1
         }
       },
       "Devourer": {
         "aoe": {
           "title": "Devourer — AoE (Mythic+)",
-          "source": "Murlok.io (m+)",
-          "updated": "2026-02-21T02:03:12.211522Z",
-          "exportString": "CgcBG5bbocFKcv+yIq8fPd6ORBA2MmZmZmZmBmBAAAAAAYzYAzAAAAAAAAwMmhZmZmZmZmZGzsYGjFtsxMjZ02MjBwwAQAjBjB",
-          "notes": [],
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:34:33.990394Z",
+          "exportString": "CgcBG5bbocFKcv+yIq8fPd6ORBA2MmZmZmZmxwMAAAAAAAMGwMAAAAAAAAMjZYmZmZmZmZmxMLmxYRLbMzYGtNzYAMMAEwYwYA",
+          "notes": [
+            "Player: таиссиа",
+            "RankIndex: 36"
+          ],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=44.0, sources=1, margin=max, updated=2026-02-21T02:03:12.211522Z",
-          "sampleSize": 1
+          "confidenceRationale": "support=135.0, sources=1, agreement=3/50, margin=45.0, updated=2026-02-21T00:34:33.990394Z",
+          "sampleSize": 50,
+          "agreementCount": 3
         }
       }
     },
@@ -1322,30 +1632,39 @@
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=48.0, sources=1, margin=0.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 1
+          "confidenceRationale": "support=48.0, sources=1, agreement=1/4, margin=0.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 4,
+          "agreementCount": 1
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmHYMzMzMzwMwwYYaYmJjx2gZGGzMzAmZmZGzMLjZwMwwMAwCYGmAbglhBgZG",
-          "notes": [],
+          "title": "Devastation — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:35:28.744398Z",
+          "exportString": "CsbBPJc41CfcseY0baneJ1IHrBAAAAAAAAAAgZmZwMDGMgBjZaGzMZMWmZmZGmZmZGwMmZGzMbjZwMwwMAwSwMMhsBWGGAmBA",
+          "notes": [
+            "Player: дымчатая",
+            "RankIndex: 48"
+          ],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "confidenceScore": 61,
+          "confidenceRationale": "support=90.0, sources=1, agreement=2/52, margin=0.0, updated=2026-02-21T00:35:28.744398Z",
+          "sampleSize": 52,
+          "agreementCount": 2
         },
         "pvp": {
           "title": "Devastation — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:32.233058Z",
-          "exportString": "CsbBPJc41CfcseY0baneJ1IHrBAAAAAAAAAAwYmZGjZGzwMMz8AGDTzMzMZwyMzMzYGzMzAmZGwMLjZgBMzMwilhtGbzMMZkNw2wAzMAA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:32.233058Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:25:44.12397Z",
+          "exportString": "CsbBPJc41CfcseY0baneJ1IHrBAAAAAAAAAAAzMzgZYGzM8AzMYYamZmpZmxyMMzMzYmZGwMzAzMLjZgBYAwY0YbAZEgNMwMDA",
+          "notes": [
+            "Player: alteredbeest",
+            "RankIndex: 34"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/52, margin=0.0, updated=2026-02-21T00:25:44.12397Z",
+          "sampleSize": 52,
+          "agreementCount": 1
         }
       },
       "Preservation": {
@@ -1357,30 +1676,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/4, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 4,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ2MwwMzDMLmZmhNAAAmhxMYMjMzMAAAgtZmZyYmZmxYGAAGzAgBGM0gxCMmZAA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Preservation — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:35:39.200203Z",
+          "exportString": "CwbBPJc41CfcseY0baneJ1IHrBAAAAAmZmZ2MwwMzDMLmZmhNAAAmhxMYMjMzMAAAgtZmZyYmZmxYGAAGzAgBGaoBjFYMzAAA",
+          "notes": [
+            "Player: drãgo",
+            "RankIndex: 46"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=180.0, sources=1, agreement=4/53, margin=90.0, updated=2026-02-21T00:35:39.200203Z",
+          "sampleSize": 53,
+          "agreementCount": 4
         },
         "pvp": {
           "title": "Preservation — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:35.236527Z",
-          "exportString": "CwbBPJc41CfcseY0baneJ1IHrBAAAAAYmZW2GYYmZwMzMjtZMAAghZmBDzEmZAAAgtZmZCYmBDAAGzAgBmRDNgFYYGAA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:35.236527Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:25:02.619765Z",
+          "exportString": "CwbBPJc41CfcseY0baneJ1IHrBAAAAAYmZ2MwwMzDgBAGAAwwMzghZCmBAAA2mZmJgZGMDAAjZsxCMwMaoBsADAAA",
+          "notes": [
+            "Player: flapandclap",
+            "RankIndex: 12"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=134.0, sources=1, agreement=2/36, margin=0.0, updated=2026-02-21T00:25:02.619765Z",
+          "sampleSize": 36,
+          "agreementCount": 2
         }
       },
       "Augmentation": {
@@ -1392,30 +1720,39 @@
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=96.0, sources=1, margin=88.0, updated=2026-02-21 02:03:36",
-          "sampleSize": 2
+          "confidenceRationale": "support=96.0, sources=1, agreement=2/5, margin=88.0, updated=2026-02-21 02:03:36",
+          "sampleSize": 5,
+          "agreementCount": 2
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-02-21 02:02:50",
-          "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMmZmZbmZmhBmZZGjhZ2AAAAAAAAwMwMYoGzMzAAAAgZmZMmZMmZgZ2MgFwYYYAMDiNMzMYmBG",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=48.0, sources=1, margin=4.0, updated=2026-02-21 02:02:50",
-          "sampleSize": 1
+          "title": "Augmentation — AoE (Mythic+)",
+          "source": "Murlok.io (m+) top-player",
+          "updated": "2026-02-21T00:35:49.21061Z",
+          "exportString": "CEcBPJc41CfcseY0baneJ1IHrNmZmZbmZmhBmZZGjhZ2AAAAAAAAwMwMY8A1YmZGAAAAMzMjxMjxMDMzmBsAGDDDgZiYDzMDmZAA",
+          "notes": [
+            "Player: dracthyrform",
+            "RankIndex: 41"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=180.0, sources=1, agreement=4/53, margin=90.0, updated=2026-02-21T00:35:49.21061Z",
+          "sampleSize": 53,
+          "agreementCount": 4
         },
         "pvp": {
           "title": "Augmentation — PvP (Solo Shuffle)",
-          "source": "Murlok.io",
-          "updated": "2026-02-21T02:00:38.23492Z",
-          "exportString": "CEcBPJc41CfcseY0baneJ1IHrNMzMbzMzM2mhZmthZmxMAAAAAAAAgZMzMGD1YmZGAAAAYGGMzyYmBmBGsALMMAwMRshxAzMYGA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 100,
-          "confidenceRationale": "support=66.0, sources=1, margin=66.0, updated=2026-02-21T02:00:38.23492Z",
-          "sampleSize": 1
+          "source": "Murlok.io top-player",
+          "updated": "2026-02-21T00:25:05.620035Z",
+          "exportString": "CEcBPJc41CfcseY0baneJ1IHrNmZGbzMzM2GegZmtZMGGAAAAAwAAgZmZYmBD1YmZGAAAAYmBMzyYmBmxwgFYZMM2GAzExGmZGAAA",
+          "notes": [
+            "Player: suan",
+            "RankIndex: 7"
+          ],
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=67.0, sources=1, agreement=1/15, margin=0.0, updated=2026-02-21T00:25:05.620035Z",
+          "sampleSize": 15,
+          "agreementCount": 1
         }
       }
     }
