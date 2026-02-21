@@ -923,6 +923,29 @@ function modeLabel(mode) {
   return mode;
 }
 
+function parseFlexibleDate(value) {
+  if (!value) return null;
+  const raw = String(value).trim();
+  if (!raw) return null;
+  const normalized = raw.includes("T") ? raw : raw.replace(" ", "T");
+  const d = new Date(normalized);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
+function formatUpdatedAgo(value) {
+  const d = parseFlexibleDate(value);
+  if (!d) return null;
+  const now = Date.now();
+  const diffMs = Math.max(0, now - d.getTime());
+  const minuteMs = 60 * 1000;
+  const hourMs = 60 * minuteMs;
+  const dayMs = 24 * hourMs;
+  if (diffMs < minuteMs) return "Updated just now";
+  if (diffMs < hourMs) return `Updated ${Math.floor(diffMs / minuteMs)}m ago`;
+  if (diffMs < dayMs) return `Updated ${Math.floor(diffMs / hourMs)}h ago`;
+  return `Updated ${Math.floor(diffMs / dayMs)}d ago`;
+}
+
 function showBuildFromData(className, specName, mode) {
   if (!buildsRoot) {
     resetBuildCard("Could not load builds.json. Make sure Live Server is running and builds.json exists.");
@@ -941,8 +964,8 @@ function showBuildFromData(className, specName, mode) {
   buildTitle.textContent = build.title || `${specName} — ${modeLabel(mode)}`;
 
   const metaParts = [];
-  if (build.updated) metaParts.push(`Updated: ${build.updated}`);
-  if (buildsMeta.generatedAt) metaParts.push(`Generated: ${buildsMeta.generatedAt}`);
+  const updatedAgo = formatUpdatedAgo(build.updated);
+  if (updatedAgo) metaParts.push(updatedAgo);
   if (build.confidence && build.confidenceScore != null) {
     metaParts.push(`Confidence: ${String(build.confidence).toUpperCase()} (${build.confidenceScore})`);
   }
