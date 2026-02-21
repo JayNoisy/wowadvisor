@@ -675,6 +675,11 @@ function showPanelForClass(className, classBtnEl) {
 
   panel.hidden = false;
   renderSpecButtons(className);
+
+  // Bring the class panel into view so users don't need to scroll manually.
+  requestAnimationFrame(() => {
+    panel.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 }
 
 // =========================
