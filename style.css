@@ -154,6 +154,14 @@ body {
 .panel-header {
   padding: 14px 16px;
   border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+}
+
+.panel-head-left {
+  min-width: 0;
 }
 
 .panel-title {
@@ -195,22 +203,26 @@ body {
 }
 
 .badge {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+  width: 84px;
+  height: 84px;
+  border-radius: 14px;
   display: grid;
   place-items: center;
   font-weight: bold;
-  background: rgba(255,255,255,0.08);
-  border: 2px solid rgba(255,255,255,0.22);
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.12) inset;
+  background:
+    radial-gradient(70% 70% at 30% 28%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.03) 56%, rgba(0, 0, 0, 0.35)),
+    rgba(255,255,255,0.08);
+  border: 2px solid rgba(255,255,255,0.28);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.12) inset,
+    0 0 20px color-mix(in srgb, var(--panel-theme-a) 58%, transparent);
 }
 
 .badge.has-image {
-  background-size: 88%;
+  background-size: 94%;
   background-position: center;
   background-repeat: no-repeat;
-  filter: saturate(1.3) contrast(1.15) brightness(1.08) drop-shadow(0 1px 2px rgba(0,0,0,0.6));
+  filter: saturate(1.35) contrast(1.18) brightness(1.1) drop-shadow(0 2px 4px rgba(0,0,0,0.6));
 }
 
 .panel-body { padding: 16px; display: grid; gap: 16px; }
@@ -755,5 +767,16 @@ body {
   .wow-node-label {
     max-width: 96px;
   }
+}
 
+@media (max-width: 640px) {
+  .badge {
+    width: 58px;
+    height: 58px;
+    border-radius: 11px;
+  }
+
+  .badge.has-image {
+    background-size: 92%;
+  }
 }
