@@ -157,6 +157,14 @@ function ensureElementTopVisible(el, topPadding = 18) {
   }
 }
 
+function ensureSpecExpansionVisible() {
+  if (!buildTypeWrap || buildTypeWrap.hidden) return;
+  const rect = buildTypeWrap.getBoundingClientRect();
+  if (rect.bottom > window.innerHeight - 12 || rect.top < 18) {
+    ensureElementTopVisible(buildTypeWrap, 22);
+  }
+}
+
 function setSelectedClassButton(newBtn) {
   const all = classButtons.querySelectorAll(".class-btn");
   all.forEach(btn => {
@@ -846,8 +854,10 @@ specButtons.addEventListener("click", (e) => {
 
   // Spec selection expands panel content; reveal just enough to show section start.
   requestAnimationFrame(() => {
-    ensureElementTopVisible(buildTypeWrap, 22);
+    ensureSpecExpansionVisible();
+    requestAnimationFrame(() => ensureSpecExpansionVisible());
   });
+  setTimeout(() => ensureSpecExpansionVisible(), 120);
 });
 
 buildTabs.addEventListener("click", (e) => {
