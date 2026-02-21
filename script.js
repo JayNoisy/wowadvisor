@@ -36,6 +36,8 @@ const buildTitle = document.getElementById("buildTitle");
 const buildMeta = document.getElementById("buildMeta");
 const buildHint = document.getElementById("buildHint");
 const buildNotes = document.getElementById("buildNotes");
+const talentTreeHint = document.getElementById("talentTreeHint");
+const talentTreeWrap = document.getElementById("talentTreeWrap");
 
 const exportString = document.getElementById("exportString");
 const copyBtn = document.getElementById("copyBtn");
@@ -49,6 +51,8 @@ let selectedMode = null; // "aoe" | "raid" | "pvp"
 
 let buildsRoot = null; // always the object like buildsRoot[class][spec][mode]
 let buildsMeta = { generatedAt: null, sources: null };
+let talentTreesMeta = { generatedAt: null, source: null, specCount: 0 };
+let talentTreesSpecs = [];
 
 // =========================
 // Helpers
@@ -110,6 +114,105 @@ function normalizeBuild(build) {
   };
 }
 
+function normalizeKey(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function resetTalentTreeCard(message) {
+  talentTreeHint.textContent = message;
+  talentTreeWrap.innerHTML = "";
+  talentTreeWrap.hidden = true;
+}
+
+function titleCase(word) {
+  return String(word || "").slice(0, 1).toUpperCase() + String(word || "").slice(1).toLowerCase();
+}
+
+function findTalentSpec(className, specName) {
+  if (!Array.isArray(talentTreesSpecs) || talentTreesSpecs.length === 0) return null;
+  const classKey = normalizeKey(className);
+  const specKey = normalizeKey(specName);
+
+  let match = talentTreesSpecs.find((s) =>
+    normalizeKey(s?.className) === classKey && normalizeKey(s?.specName) === specKey
+  );
+  if (match) return match;
+
+  match = talentTreesSpecs.find((s) => normalizeKey(s?.specName) === specKey);
+  return match || null;
+}
+
+function renderTalentTree(className, specName) {
+  if (!className || !specName) {
+    resetTalentTreeCard("Pick a spec to load talent nodes.");
+    return;
+  }
+
+  if (!Array.isArray(talentTreesSpecs) || talentTreesSpecs.length === 0) {
+    resetTalentTreeCard("Talent tree data is still loading, or unavailable.");
+    return;
+  }
+
+  const specPayload = findTalentSpec(className, specName);
+  if (!specPayload) {
+    resetTalentTreeCard(`No talent tree found for ${className} | ${specName}.`);
+    return;
+  }
+
+  const nodes = Array.isArray(specPayload.nodes) ? specPayload.nodes : [];
+  if (nodes.length === 0) {
+    resetTalentTreeCard(`No nodes found for ${className} | ${specName}.`);
+    return;
+  }
+
+  const groups = new Map();
+  for (const node of nodes) {
+    const type = String(node?.treeType || "spec").toLowerCase();
+    if (!groups.has(type)) groups.set(type, []);
+    groups.get(type).push(node);
+  }
+
+  const blocks = [];
+  for (const [type, typeNodes] of groups.entries()) {
+    const maxCol = Math.max(...typeNodes.map((n) => Number(n?.col ?? 0)));
+    const cols = Math.min(8, Math.max(4, maxCol + 1));
+
+    const nodeHtml = typeNodes
+      .sort((a, b) => {
+        const rowDelta = Number(a?.row ?? 0) - Number(b?.row ?? 0);
+        if (rowDelta !== 0) return rowDelta;
+        return Number(a?.col ?? 0) - Number(b?.col ?? 0);
+      })
+      .map((n) => {
+        const row = Math.max(1, Number(n?.row ?? 0) + 1);
+        const col = Math.max(1, Number(n?.col ?? 0) + 1);
+        const rank = Math.max(1, Number(n?.maxRank ?? 1));
+        const name = String(n?.name || "Unknown Talent");
+        return `
+          <div class="tree-node" style="grid-row:${row};grid-column:${col}">
+            <span class="tree-node-name">${name}</span>
+            <span class="tree-node-rank">Max rank: ${rank}</span>
+          </div>
+        `;
+      })
+      .join("");
+
+    blocks.push(`
+      <section class="tree-block">
+        <h4 class="tree-block-title">${titleCase(type)} tree</h4>
+        <div class="tree-grid" style="--tree-cols:${cols}">${nodeHtml}</div>
+      </section>
+    `);
+  }
+
+  talentTreeHint.textContent = `${specPayload.className} ${specPayload.specName} | ${nodes.length} nodes | ${talentTreesMeta.source || "unknown source"}`;
+  talentTreeWrap.innerHTML = blocks.join("");
+  talentTreeWrap.hidden = false;
+}
+
 function renderSpecButtons(className) {
   const specs = CLASS_DATA[className]?.specs ?? [];
   specButtons.innerHTML = "";
@@ -133,6 +236,7 @@ function renderSpecButtons(className) {
   clearSelectedTabs();
 
   resetBuildCard("Pick a spec, then a build type.");
+  resetTalentTreeCard("Pick a spec to load talent nodes.");
 }
 
 function showPanelForClass(className, classBtnEl) {
@@ -178,6 +282,31 @@ async function loadBuilds() {
     buildsMeta.generatedAt = null;
     buildsMeta.sources = null;
   }
+}
+
+async function loadTalentTreesMeta() {
+  const urls = ["/api/talent-trees", "./talent-trees.json"];
+  for (const url of urls) {
+    try {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) continue;
+      const payload = await res.json();
+      const specs = Array.isArray(payload?.specs) ? payload.specs : [];
+      talentTreesSpecs = specs;
+      talentTreesMeta = {
+        generatedAt: payload?.generatedAt ?? null,
+        source: payload?.source ?? (url.startsWith("/api/") ? "blizzard-api" : "local-json"),
+        specCount: specs.length
+      };
+      console.log("Talent trees loaded", { url, specs: talentTreesMeta.specCount });
+      if (selectedClass && selectedSpec) renderTalentTree(selectedClass, selectedSpec);
+      return;
+    } catch {
+      // try the next source
+    }
+  }
+  talentTreesSpecs = [];
+  console.warn("Could not load talent tree metadata from API or local file.");
 }
 
 function modeLabel(mode) {
@@ -251,6 +380,7 @@ specButtons.addEventListener("click", (e) => {
   if (aoeBtn) aoeBtn.classList.add("selected");
 
   showBuildFromData(selectedClass, selectedSpec, selectedMode);
+  renderTalentTree(selectedClass, selectedSpec);
 });
 
 buildTabs.addEventListener("click", (e) => {
@@ -281,4 +411,4 @@ copyBtn.addEventListener("click", async () => {
 });
 
 // Start
-loadBuilds();
+Promise.all([loadBuilds(), loadTalentTreesMeta()]);
