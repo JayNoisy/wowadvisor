@@ -434,7 +434,20 @@ async function collectFromPlayableClassRoute(region, token, locale, namespace) {
   return out;
 }
 
-async function collectTalentTrees(region, token, locale, namespace) {
+function mergeEnrichedSpecsByRichness(target, incoming) {
+  for (const spec of incoming) {
+    const classKey = toName(spec?.className).toLowerCase();
+    const specKey = toName(spec?.specName).toLowerCase();
+    if (!classKey || !specKey) continue;
+    const key = `${classKey}::${specKey}`;
+    const existing = target.get(key);
+    const incomingCount = Number(spec?.summary?.totalNodes) || (Array.isArray(spec?.nodes) ? spec.nodes.length : 0);
+    const existingCount = Number(existing?.summary?.totalNodes) || (Array.isArray(existing?.nodes) ? existing.nodes.length : 0);
+    if (!existing || incomingCount > existingCount) target.set(key, spec);
+  }
+}
+
+async function collectTalentTreesForNamespace(region, token, locale, namespace) {
   const bySpecKey = new Map();
 
   const fromIndex = await collectFromTalentTreeIndex(region, token, locale, namespace);
@@ -447,6 +460,28 @@ async function collectTalentTrees(region, token, locale, namespace) {
   upsertByRichness(bySpecKey, fromClassRoute);
 
   return Array.from(bySpecKey.values()).map(enrichSpecShape);
+}
+
+async function collectTalentTrees(region, token, locale, resolvedNamespace) {
+  const namespaces = Array.from(new Set([
+    resolvedNamespace,
+    `static-${region}`,
+    `dynamic-${region}`
+  ].filter(Boolean)));
+
+  const merged = new Map();
+  let namespaceUsed = resolvedNamespace;
+
+  for (const ns of namespaces) {
+    const specs = await collectTalentTreesForNamespace(region, token, locale, ns);
+    if (specs.length > 0) namespaceUsed = ns;
+    mergeEnrichedSpecsByRichness(merged, specs);
+  }
+
+  return {
+    specs: Array.from(merged.values()),
+    namespaceUsed
+  };
 }
 
 async function loadLocalTalentTreeFallback() {
@@ -473,13 +508,16 @@ module.exports = async function handler(req, res) {
   try {
     const token = await fetchOAuthToken(region);
     const namespace = await resolveNamespace(region, token, locale);
-    let specs = await collectTalentTrees(region, token, locale, namespace);
+    const collected = await collectTalentTrees(region, token, locale, namespace);
+    let specs = collected.specs;
+    let namespaceUsed = collected.namespaceUsed || namespace;
     let source = "blizzard-api";
 
     if (specs.length === 0) {
       const fallbackSpecs = await loadLocalTalentTreeFallback();
       if (fallbackSpecs.length > 0) {
         specs = fallbackSpecs;
+        namespaceUsed = namespace;
         source = "local-fallback";
       }
     }
@@ -490,7 +528,7 @@ module.exports = async function handler(req, res) {
       source,
       region,
       locale,
-      namespace,
+      namespace: namespaceUsed,
       specs
     });
   } catch (error) {
