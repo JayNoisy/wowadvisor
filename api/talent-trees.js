@@ -1,3 +1,6 @@
+const fs = require("node:fs/promises");
+const path = require("node:path");
+
 const REGION_DEFAULT = "us";
 const LOCALE_DEFAULT = "en_US";
 
@@ -446,6 +449,18 @@ async function collectTalentTrees(region, token, locale, namespace) {
   return Array.from(bySpecKey.values()).map(enrichSpecShape);
 }
 
+async function loadLocalTalentTreeFallback() {
+  try {
+    const filePath = path.join(process.cwd(), "talent-trees.json");
+    const raw = await fs.readFile(filePath, "utf8");
+    const payload = JSON.parse(raw);
+    const specs = Array.isArray(payload?.specs) ? payload.specs : [];
+    return specs.map(enrichSpecShape);
+  } catch {
+    return [];
+  }
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== "GET") {
     res.setHeader("allow", "GET");
@@ -458,12 +473,21 @@ module.exports = async function handler(req, res) {
   try {
     const token = await fetchOAuthToken(region);
     const namespace = await resolveNamespace(region, token, locale);
-    const specs = await collectTalentTrees(region, token, locale, namespace);
+    let specs = await collectTalentTrees(region, token, locale, namespace);
+    let source = "blizzard-api";
+
+    if (specs.length === 0) {
+      const fallbackSpecs = await loadLocalTalentTreeFallback();
+      if (fallbackSpecs.length > 0) {
+        specs = fallbackSpecs;
+        source = "local-fallback";
+      }
+    }
 
     res.setHeader("cache-control", "public, s-maxage=3600, stale-while-revalidate=86400");
     return json(res, 200, {
       generatedAt: new Date().toISOString(),
-      source: "blizzard-api",
+      source,
       region,
       locale,
       namespace,
