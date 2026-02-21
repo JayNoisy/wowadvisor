@@ -417,7 +417,13 @@ async function loadBuilds() {
 }
 
 async function loadTalentTreesMeta() {
-  const urls = ["/api/talent-trees", "/talent-trees.json", "./talent-trees.json"];
+  const host = String(window.location.hostname || "").toLowerCase();
+  const isLocalDev = host === "localhost" || host === "127.0.0.1";
+  const isGithubPages = host.endsWith(".github.io");
+  const allowFallback = isLocalDev || isGithubPages || window.location.protocol === "file:";
+  const urls = allowFallback
+    ? ["/api/talent-trees", "/talent-trees.json", "./talent-trees.json"]
+    : ["/api/talent-trees"];
   const errors = [];
   for (const url of urls) {
     try {
@@ -449,7 +455,10 @@ async function loadTalentTreesMeta() {
   }
   talentTreesSpecs = [];
   talentTreesLoadError = errors.length > 0 ? errors.join(" | ") : "all sources failed";
-  console.warn("Could not load talent tree metadata from API or local file.", { errors });
+  if (!allowFallback) {
+    talentTreesLoadError = `API required on this host. ${talentTreesLoadError}`;
+  }
+  console.warn("Could not load talent tree metadata from API or local file.", { errors, allowFallback, host });
   if (selectedClass && selectedSpec) renderTalentTree(selectedClass, selectedSpec);
 }
 
