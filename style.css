@@ -237,6 +237,47 @@ body {
 
 .build-card h3 { margin: 0 0 8px 0; }
 
+.stat-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  background: rgba(0,0,0,0.20);
+}
+
+.stat-card h3 { margin: 0 0 8px 0; }
+
+.stat-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(197, 217, 255, 0.4);
+  background: rgba(16, 26, 48, 0.72);
+  color: #d7e7ff;
+  font-size: 13px;
+}
+
+.stat-rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(241, 196, 95, 0.66);
+  background: rgba(43, 29, 8, 0.9);
+  color: #ffd89a;
+  font-size: 11px;
+}
+
 .talent-card {
   border: 1px solid var(--border);
   border-radius: 12px;

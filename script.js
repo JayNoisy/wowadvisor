@@ -17,6 +17,74 @@ const CLASS_DATA = {
   "Evoker": { classEmoji: "🐉", specs: [{ name: "Devastation", icon: "🔥" }, { name: "Preservation", icon: "💚" }, { name: "Augmentation", icon: "🪄" }] }
 };
 
+const STAT_PRIORITIES = {
+  "Warrior": {
+    "Arms": ["Critical Strike", "Mastery", "Haste", "Versatility"],
+    "Fury": ["Haste", "Mastery", "Critical Strike", "Versatility"],
+    "Protection": ["Haste", "Versatility", "Critical Strike", "Mastery"]
+  },
+  "Paladin": {
+    "Holy": ["Haste", "Critical Strike", "Mastery", "Versatility"],
+    "Protection": ["Haste", "Mastery", "Versatility", "Critical Strike"],
+    "Retribution": ["Mastery", "Haste", "Critical Strike", "Versatility"]
+  },
+  "Hunter": {
+    "Beast Mastery": ["Critical Strike", "Mastery", "Haste", "Versatility"],
+    "Marksmanship": ["Mastery", "Critical Strike", "Haste", "Versatility"],
+    "Survival": ["Haste", "Critical Strike", "Mastery", "Versatility"]
+  },
+  "Rogue": {
+    "Assassination": ["Mastery", "Haste", "Critical Strike", "Versatility"],
+    "Outlaw": ["Haste", "Versatility", "Critical Strike", "Mastery"],
+    "Subtlety": ["Mastery", "Critical Strike", "Versatility", "Haste"]
+  },
+  "Priest": {
+    "Discipline": ["Haste", "Critical Strike", "Mastery", "Versatility"],
+    "Holy": ["Mastery", "Critical Strike", "Haste", "Versatility"],
+    "Shadow": ["Haste", "Mastery", "Critical Strike", "Versatility"]
+  },
+  "Death Knight": {
+    "Blood": ["Haste", "Versatility", "Mastery", "Critical Strike"],
+    "Frost": ["Mastery", "Haste", "Critical Strike", "Versatility"],
+    "Unholy": ["Haste", "Mastery", "Critical Strike", "Versatility"]
+  },
+  "Shaman": {
+    "Elemental": ["Mastery", "Haste", "Critical Strike", "Versatility"],
+    "Enhancement": ["Haste", "Mastery", "Critical Strike", "Versatility"],
+    "Restoration": ["Mastery", "Haste", "Critical Strike", "Versatility"]
+  },
+  "Mage": {
+    "Arcane": ["Mastery", "Haste", "Versatility", "Critical Strike"],
+    "Fire": ["Critical Strike", "Haste", "Mastery", "Versatility"],
+    "Frost": ["Mastery", "Haste", "Critical Strike", "Versatility"]
+  },
+  "Warlock": {
+    "Affliction": ["Haste", "Mastery", "Critical Strike", "Versatility"],
+    "Demonology": ["Haste", "Mastery", "Critical Strike", "Versatility"],
+    "Destruction": ["Haste", "Critical Strike", "Mastery", "Versatility"]
+  },
+  "Monk": {
+    "Brewmaster": ["Versatility", "Haste", "Critical Strike", "Mastery"],
+    "Mistweaver": ["Critical Strike", "Mastery", "Haste", "Versatility"],
+    "Windwalker": ["Mastery", "Haste", "Critical Strike", "Versatility"]
+  },
+  "Druid": {
+    "Balance": ["Mastery", "Haste", "Critical Strike", "Versatility"],
+    "Feral": ["Mastery", "Critical Strike", "Haste", "Versatility"],
+    "Guardian": ["Versatility", "Haste", "Mastery", "Critical Strike"],
+    "Restoration": ["Mastery", "Haste", "Critical Strike", "Versatility"]
+  },
+  "Demon Hunter": {
+    "Havoc": ["Critical Strike", "Mastery", "Versatility", "Haste"],
+    "Vengeance": ["Haste", "Versatility", "Critical Strike", "Mastery"]
+  },
+  "Evoker": {
+    "Devastation": ["Mastery", "Haste", "Critical Strike", "Versatility"],
+    "Preservation": ["Mastery", "Critical Strike", "Haste", "Versatility"],
+    "Augmentation": ["Mastery", "Haste", "Critical Strike", "Versatility"]
+  }
+};
+
 // =========================
 // DOM References
 // =========================
@@ -36,6 +104,8 @@ const buildTitle = document.getElementById("buildTitle");
 const buildMeta = document.getElementById("buildMeta");
 const buildHint = document.getElementById("buildHint");
 const buildNotes = document.getElementById("buildNotes");
+const statHint = document.getElementById("statHint");
+const statPills = document.getElementById("statPills");
 const talentTreeHint = document.getElementById("talentTreeHint");
 const talentTreeWrap = document.getElementById("talentTreeWrap");
 const talentNodeInspector = document.getElementById("talentNodeInspector");
@@ -104,6 +174,12 @@ function resetBuildCard(message) {
 
   buildNotes.innerHTML = "";
   buildNotes.hidden = true;
+}
+
+function resetStatPrioritiesCard(message) {
+  statHint.textContent = message;
+  statPills.innerHTML = "";
+  statPills.hidden = true;
 }
 
 function normalizeBuild(build) {
@@ -231,6 +307,46 @@ function resolveTalentPanes(specPayload) {
     specPane: buildFallbackPane("spec", "Spec Tree", specNodes),
     nodes
   };
+}
+
+function resolveStatPriorities(className, specName, mode) {
+  const modeBuild = buildsRoot?.[className]?.[specName]?.[mode] || null;
+  const rawBuild = buildsRoot?.[className]?.[specName] || null;
+
+  if (Array.isArray(modeBuild?.statPriority) && modeBuild.statPriority.length > 0) {
+    return modeBuild.statPriority;
+  }
+  if (Array.isArray(modeBuild?.statPriorities) && modeBuild.statPriorities.length > 0) {
+    return modeBuild.statPriorities;
+  }
+
+  const sp = rawBuild?.statPriorities;
+  if (sp && typeof sp === "object") {
+    if (Array.isArray(sp?.[mode]) && sp[mode].length > 0) return sp[mode];
+    if (Array.isArray(sp?.default) && sp.default.length > 0) return sp.default;
+  }
+
+  const fallback = STAT_PRIORITIES?.[className]?.[specName];
+  return Array.isArray(fallback) ? fallback : [];
+}
+
+function renderStatPriorities(className, specName, mode) {
+  if (!className || !specName) {
+    resetStatPrioritiesCard("Pick a spec to view stat priorities.");
+    return;
+  }
+
+  const priorities = resolveStatPriorities(className, specName, mode);
+  if (!Array.isArray(priorities) || priorities.length === 0) {
+    resetStatPrioritiesCard(`No stat priority found for ${className} | ${specName}.`);
+    return;
+  }
+
+  statHint.textContent = `${className} ${specName} | ${modeLabel(mode)} priority`;
+  statPills.innerHTML = priorities
+    .map((stat, idx) => `<span class="stat-pill"><span class="stat-rank">#${idx + 1}</span><span>${escapeHtml(stat)}</span></span>`)
+    .join("");
+  statPills.hidden = false;
 }
 
 function renderTalentTree(className, specName) {
@@ -420,6 +536,7 @@ function renderSpecButtons(className) {
   clearSelectedTabs();
 
   resetBuildCard("Pick a spec, then a build type.");
+  resetStatPrioritiesCard("Pick a spec to view stat priorities.");
   resetTalentTreeCard("Pick a spec to load talent nodes.");
 }
 
@@ -585,6 +702,7 @@ specButtons.addEventListener("click", (e) => {
   if (aoeBtn) aoeBtn.classList.add("selected");
 
   showBuildFromData(selectedClass, selectedSpec, selectedMode);
+  renderStatPriorities(selectedClass, selectedSpec, selectedMode);
   renderTalentTree(selectedClass, selectedSpec);
 });
 
@@ -599,6 +717,7 @@ buildTabs.addEventListener("click", (e) => {
   btn.classList.add("selected");
 
   showBuildFromData(selectedClass, selectedSpec, selectedMode);
+  renderStatPriorities(selectedClass, selectedSpec, selectedMode);
 });
 
 copyBtn.addEventListener("click", async () => {
