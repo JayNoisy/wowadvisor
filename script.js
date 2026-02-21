@@ -148,12 +148,12 @@ function classThemeKey(className) {
 function ensureElementTopVisible(el, topPadding = 18) {
   if (!el) return;
   const rect = el.getBoundingClientRect();
-  const targetTop = topPadding;
-  const targetBottom = window.innerHeight - 120;
+  const shouldScrollDown = rect.bottom > window.innerHeight - 16;
+  const shouldScrollUp = rect.top < topPadding;
 
-  // Only nudge scroll when the section start is outside a comfortable viewport band.
-  if (rect.top < targetTop || rect.top > targetBottom) {
-    window.scrollBy({ top: rect.top - targetTop, behavior: "smooth" });
+  if (shouldScrollDown || shouldScrollUp) {
+    const targetY = window.scrollY + rect.top - topPadding;
+    window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
   }
 }
 
