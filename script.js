@@ -140,6 +140,16 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+function nodeInitials(name) {
+  const words = String(name || "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2);
+  if (words.length === 0) return "?";
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+  return `${words[0][0]}${words[1][0]}`.toUpperCase();
+}
+
 function findTalentSpec(className, specName) {
   if (!Array.isArray(talentTreesSpecs) || talentTreesSpecs.length === 0) return null;
   const classKey = normalizeKey(className);
@@ -207,6 +217,33 @@ function renderTalentTree(className, specName) {
     const maxRow = Math.max(...typeNodes.map((n) => Number(n?.row ?? 0)));
     const cols = Math.min(10, Math.max(4, maxCol + 1));
     const rows = Math.min(20, Math.max(6, maxRow + 1));
+    const viewWidth = Math.max(1, cols - 1);
+    const viewHeight = Math.max(1, rows - 1);
+
+    const byId = new Map();
+    for (const node of typeNodes) {
+      byId.set(Number(node?.id), node);
+    }
+
+    const linkSet = new Set();
+    const linkHtml = [];
+    for (const node of typeNodes) {
+      const toId = Number(node?.id);
+      const req = Array.isArray(node?.requiredNodeIds) ? node.requiredNodeIds : [];
+      for (const fromId of req) {
+        const fromNode = byId.get(Number(fromId));
+        if (!fromNode || !Number.isFinite(toId)) continue;
+        const key = `${fromId}->${toId}`;
+        if (linkSet.has(key)) continue;
+        linkSet.add(key);
+
+        const x1 = Math.max(0, Number(fromNode?.col ?? 0));
+        const y1 = Math.max(0, Number(fromNode?.row ?? 0));
+        const x2 = Math.max(0, Number(node?.col ?? 0));
+        const y2 = Math.max(0, Number(node?.row ?? 0));
+        linkHtml.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`);
+      }
+    }
 
     const nodeHtml = typeNodes
       .sort((a, b) => {
@@ -219,9 +256,12 @@ function renderTalentTree(className, specName) {
         const col = Math.max(1, Number(n?.col ?? 0) + 1);
         const rank = Math.max(1, Number(n?.maxRank ?? 1));
         const name = escapeHtml(n?.name || "Unknown Talent");
+        const initials = escapeHtml(nodeInitials(n?.name));
         return `
           <button class="wow-node" type="button" style="grid-row:${row};grid-column:${col}" title="${name} (Max rank: ${rank})">
-            <span class="wow-node-core"></span>
+            <span class="wow-node-core">
+              <span class="wow-node-initials">${initials}</span>
+            </span>
             <span class="wow-node-rank">${rank}</span>
             <span class="wow-node-label">${name}</span>
           </button>
@@ -232,8 +272,13 @@ function renderTalentTree(className, specName) {
     return `
       <section class="wow-tree-pane">
         <h4 class="wow-tree-title">${escapeHtml(title)}</h4>
-        <div class="wow-tree-grid" style="--tree-cols:${cols};--tree-rows:${rows}">
-          ${nodeHtml}
+        <div class="wow-tree-stage">
+          <svg class="wow-tree-links" viewBox="0 0 ${viewWidth} ${viewHeight}" preserveAspectRatio="none" aria-hidden="true">
+            ${linkHtml.join("")}
+          </svg>
+          <div class="wow-tree-grid wow-tree-nodes" style="--tree-cols:${cols};--tree-rows:${rows}">
+            ${nodeHtml}
+          </div>
         </div>
       </section>
     `;
