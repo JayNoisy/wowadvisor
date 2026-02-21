@@ -22,6 +22,31 @@ function firstNonEmpty(...vals) {
   return "";
 }
 
+function iconUrlFromName(iconNameLike) {
+  const iconName = String(iconNameLike || "").trim().toLowerCase();
+  if (!iconName) return null;
+  return `https://wow.zamimg.com/images/wow/icons/large/${iconName}.jpg`;
+}
+
+function normalizeEntry(rawEntry, fallbackName, fallbackMaxRank) {
+  if (!rawEntry || typeof rawEntry !== "object") return null;
+  const spell = rawEntry.spell_tooltip?.spell || rawEntry.spell || null;
+  const spellId = Number(spell?.id);
+  const iconName = String(
+    spell?.icon ||
+    rawEntry.icon ||
+    ""
+  ).trim().toLowerCase();
+  return {
+    id: Number(rawEntry.id) || null,
+    name: firstNonEmpty(rawEntry.name, spell?.name, fallbackName) || "Unknown Talent",
+    spellId: Number.isFinite(spellId) ? spellId : null,
+    iconName: iconName || null,
+    iconUrl: iconUrlFromName(iconName),
+    maxRank: Math.max(1, Number(rawEntry.max_ranks ?? rawEntry.ranks ?? fallbackMaxRank ?? 1) || 1)
+  };
+}
+
 function normalizeNode(raw, idx) {
   if (!raw || typeof raw !== "object") return null;
   const id = Number(raw.id ?? raw.node?.id ?? raw.talent?.id ?? idx + 1);
@@ -30,7 +55,8 @@ function normalizeNode(raw, idx) {
   const row = Number(raw.display_row ?? raw.row ?? raw.ui_row ?? 0) || 0;
   const col = Number(raw.display_col ?? raw.column ?? raw.ui_col ?? 0) || 0;
 
-  const entry = Array.isArray(raw.entries) && raw.entries.length > 0 ? raw.entries[0] : null;
+  const rawEntries = Array.isArray(raw.entries) ? raw.entries : [];
+  const entry = rawEntries.length > 0 ? rawEntries[0] : null;
   const spell = raw.spell_tooltip?.spell || entry?.spell_tooltip?.spell || null;
   const spellId = Number(spell?.id);
   const iconName = String(
@@ -40,7 +66,7 @@ function normalizeNode(raw, idx) {
     ""
   ).trim().toLowerCase();
   const iconUrl = iconName
-    ? `https://wow.zamimg.com/images/wow/icons/large/${iconName}.jpg`
+    ? iconUrlFromName(iconName)
     : null;
   const name = firstNonEmpty(
     raw.name,
@@ -51,11 +77,28 @@ function normalizeNode(raw, idx) {
   );
   const maxRank = Number(raw.ranks ?? raw.max_ranks ?? entry?.max_ranks ?? 1) || 1;
   const treeType = String(raw.tree_type || raw.type || "spec");
+  const nodeTypeRaw = String(raw.node_type || raw.type || "").toLowerCase();
   const requiredNodeIds = Array.isArray(raw.required_node_ids)
     ? raw.required_node_ids.map(Number).filter(Number.isFinite)
     : Array.isArray(raw.prerequisite_node_ids)
       ? raw.prerequisite_node_ids.map(Number).filter(Number.isFinite)
       : [];
+  const entries = rawEntries
+    .map((e) => normalizeEntry(e, name, maxRank))
+    .filter(Boolean);
+  if (entries.length === 0) {
+    entries.push({
+      id: null,
+      name,
+      spellId: Number.isFinite(spellId) ? spellId : null,
+      iconName: iconName || null,
+      iconUrl,
+      maxRank: Math.max(1, maxRank)
+    });
+  }
+  let nodeKind = "passive";
+  if (entries.length > 1 || nodeTypeRaw.includes("choice")) nodeKind = "choice";
+  else if (nodeTypeRaw.includes("active") || entries[0]?.spellId) nodeKind = "active";
 
   return {
     id,
@@ -67,7 +110,9 @@ function normalizeNode(raw, idx) {
     requiredNodeIds,
     spellId: Number.isFinite(spellId) ? spellId : null,
     iconName: iconName || null,
-    iconUrl
+    iconUrl,
+    nodeKind,
+    entries
   };
 }
 
@@ -195,6 +240,63 @@ function upsertByRichness(target, incoming) {
       target.set(key, spec);
     }
   }
+}
+
+function buildPane(nodes, key, label) {
+  const list = Array.isArray(nodes) ? nodes : [];
+  const edges = [];
+  const maxRow = Math.max(0, ...list.map((n) => Number(n?.row ?? 0)));
+  const maxCol = Math.max(0, ...list.map((n) => Number(n?.col ?? 0)));
+  for (const node of list) {
+    const toNodeId = Number(node?.id);
+    const req = Array.isArray(node?.requiredNodeIds) ? node.requiredNodeIds : [];
+    for (const fromNodeId of req) {
+      if (!Number.isFinite(toNodeId) || !Number.isFinite(Number(fromNodeId))) continue;
+      edges.push({ fromNodeId: Number(fromNodeId), toNodeId });
+    }
+  }
+  return {
+    key,
+    label,
+    grid: { rows: maxRow + 1, cols: maxCol + 1 },
+    nodes: list,
+    edges
+  };
+}
+
+function enrichSpecShape(spec) {
+  const nodes = Array.isArray(spec?.nodes) ? spec.nodes : [];
+  const classNodes = [];
+  const specNodes = [];
+  const otherNodes = [];
+  for (const node of nodes) {
+    const type = String(node?.treeType || "").toLowerCase();
+    if (type.includes("class")) classNodes.push(node);
+    else if (type.includes("spec")) specNodes.push(node);
+    else otherNodes.push(node);
+  }
+  if (classNodes.length === 0 && specNodes.length === 0 && otherNodes.length > 0) {
+    specNodes.push(...otherNodes);
+  } else if (otherNodes.length > 0) {
+    specNodes.push(...otherNodes);
+  }
+  const classTree = buildPane(classNodes, "class", "Class Tree");
+  const specTree = buildPane(specNodes, "spec", "Spec Tree");
+  return {
+    className: spec?.className || "",
+    specName: spec?.specName || "",
+    nodes,
+    trees: {
+      class: classTree,
+      spec: specTree
+    },
+    summary: {
+      totalNodes: nodes.length,
+      classNodes: classTree.nodes.length,
+      specNodes: specTree.nodes.length,
+      edgeCount: classTree.edges.length + specTree.edges.length
+    }
+  };
 }
 
 async function resolveTalentTreePayload(specPayload, token, region, locale, namespace) {
@@ -341,7 +443,7 @@ async function collectTalentTrees(region, token, locale, namespace) {
   const fromClassRoute = await collectFromPlayableClassRoute(region, token, locale, namespace);
   upsertByRichness(bySpecKey, fromClassRoute);
 
-  return Array.from(bySpecKey.values());
+  return Array.from(bySpecKey.values()).map(enrichSpecShape);
 }
 
 module.exports = async function handler(req, res) {

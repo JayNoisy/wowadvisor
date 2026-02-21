@@ -336,6 +336,24 @@ body {
   text-align: center;
 }
 
+.wow-node-choice .wow-node-core {
+  border-color: rgba(247, 191, 118, 0.85);
+  box-shadow:
+    0 0 0 1px rgba(62, 36, 13, 0.9) inset,
+    0 0 14px rgba(241, 153, 77, 0.38);
+}
+
+.wow-node-passive .wow-node-core {
+  filter: saturate(0.75);
+  border-color: rgba(173, 197, 242, 0.45);
+}
+
+.wow-node-choice .wow-node-rank {
+  background: rgba(43, 22, 10, 0.92);
+  border-color: rgba(247, 191, 118, 0.72);
+  color: #ffd7a0;
+}
+
 .wow-node-core {
   width: 42px;
   height: 42px;
