@@ -59,6 +59,13 @@
             <button class="tab-btn" data-mode="raid" type="button">Raid</button>
             <button class="tab-btn" data-mode="pvp" type="button">PvP</button>
           </div>
+          <button id="rotationToggleBtn" class="rotation-toggle-btn" type="button" hidden aria-expanded="false" aria-controls="rotationHelperPanel">Show Rotation Helper</button>
+        </div>
+
+        <div class="rotation-card" id="rotationHelperPanel" hidden>
+          <h3 id="rotationTitle">Rotation Helper</h3>
+          <p class="muted" id="rotationHint">Pick a spec to see rotation guidance.</p>
+          <ol id="rotationSteps" class="rotation-steps"></ol>
         </div>
 
         <div class="build-card">

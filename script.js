@@ -100,6 +100,11 @@ const specButtons = document.getElementById("specButtons");
 
 const buildTypeWrap = document.getElementById("buildTypeWrap");
 const buildTabs = document.getElementById("buildTabs");
+const rotationToggleBtn = document.getElementById("rotationToggleBtn");
+const rotationHelperPanel = document.getElementById("rotationHelperPanel");
+const rotationTitle = document.getElementById("rotationTitle");
+const rotationHint = document.getElementById("rotationHint");
+const rotationSteps = document.getElementById("rotationSteps");
 
 const buildTitle = document.getElementById("buildTitle");
 const buildMeta = document.getElementById("buildMeta");
@@ -131,6 +136,7 @@ let talentTreesSpecs = [];
 let talentTreesLoadError = null;
 let talentNodeIndex = new Map();
 let activeBuild = null;
+let rotationPanelOpen = false;
 
 // =========================
 // Helpers
@@ -206,6 +212,19 @@ function resetStatPrioritiesCard(message) {
   statPills.hidden = true;
   statExplain.innerHTML = "";
   statExplain.hidden = true;
+}
+
+function resetRotationHelper(message) {
+  rotationPanelOpen = false;
+  if (rotationToggleBtn) {
+    rotationToggleBtn.hidden = true;
+    rotationToggleBtn.textContent = "Show Rotation Helper";
+    rotationToggleBtn.setAttribute("aria-expanded", "false");
+  }
+  if (rotationHelperPanel) rotationHelperPanel.hidden = true;
+  if (rotationTitle) rotationTitle.textContent = "Rotation Helper";
+  if (rotationHint) rotationHint.textContent = message;
+  if (rotationSteps) rotationSteps.innerHTML = "";
 }
 
 function normalizeBuild(build) {
@@ -505,6 +524,110 @@ function getStatExplanation(className, specName, stat, mode) {
   return `${text}${modeNote}`;
 }
 
+function getRotationSteps(className, specName, mode) {
+  const archetype = getSpecArchetype(className, specName);
+  const byArchetype = {
+    tank: [
+      "Keep active mitigation rolling before heavy enemy casts or tank-buster windows.",
+      "Spend resources on survivability first, damage second when pressure is high.",
+      "Cycle defensives instead of stacking them unless a lethal hit is imminent.",
+      "Use interrupts and stops aggressively to reduce incoming group damage."
+    ],
+    healer: [
+      "Maintain key HoTs/shields before damage events so recovery starts earlier.",
+      "Use efficient filler healing between spikes and save major cooldowns for scripted bursts.",
+      "Keep damage contribution active during stable moments without risking coverage.",
+      "Plan mobility and instant casts for high movement windows."
+    ],
+    caster: [
+      "Open with your major cooldown package and align trinkets with burst windows.",
+      "Maintain core DoTs/debuffs and avoid clipping high-value casts.",
+      "Spend procs quickly when near cap; do not overcap resources.",
+      "Pre-position for mechanics to protect long casts and uptime."
+    ],
+    "support-caster": [
+      "Align support buffs with team cooldown windows rather than using on cooldown blindly.",
+      "Keep your highest value debuffs/buffs active on priority targets.",
+      "Use utility globals only when they preserve net team damage or survival.",
+      "Track ally burst cycles and hold short cooldowns for coordinated setups."
+    ],
+    "crit-caster": [
+      "Build for burst windows and pool resources before major cooldown usage.",
+      "Prioritize high-impact casts during proc/crit amplification windows.",
+      "Keep DoTs/debuffs active so burst casts gain full multipliers.",
+      "Avoid overcapping procs by spending them early in movement-safe windows."
+    ],
+    "dot-caster": [
+      "Apply and maintain full DoT coverage before committing to filler casts.",
+      "Refresh DoTs in efficient windows; avoid early clipping unless buffed.",
+      "Use cooldowns when multiple DoTs and debuffs are already established.",
+      "Route execute or shard spenders into priority-target windows."
+    ],
+    "melee-haste": [
+      "Keep generators and spenders flowing to avoid empty globals.",
+      "Pool briefly before cooldown windows so burst openers are clean.",
+      "Prioritize high-value procs and avoid capping class resources.",
+      "Maintain uptime by pre-moving for mechanics and sticking to targets."
+    ],
+    "melee-burst": [
+      "Pool resources before burst so cooldowns start with full pressure.",
+      "Stack damage amps and major abilities in the same short window.",
+      "Use filler priority that feeds next burst instead of random spending.",
+      "Preserve uptime and frontload damage into vulnerability phases."
+    ],
+    "dot-melee": [
+      "Maintain bleeds/poisons first; then spend on finishers efficiently.",
+      "Reapply DoTs during buff windows when possible for stronger snapshots.",
+      "Avoid energy/rune capping by planning spender cadence.",
+      "Use mobility tools proactively to keep melee uptime high."
+    ],
+    "ranged-pet": [
+      "Keep pet active on target and avoid desync with your core cooldowns.",
+      "Spend focus/resources to avoid capping while preserving burst setup.",
+      "Use high-value proc shots/skills immediately in priority windows.",
+      "Pre-position to minimize movement downtime during rapid casts."
+    ],
+    "ranged-burst": [
+      "Enter burst windows with resources pooled and major cooldowns aligned.",
+      "Prioritize instant/high-impact shots during movement-heavy mechanics.",
+      "Keep core debuffs up so burst casts gain full value.",
+      "Use defensive utility early to avoid losing cast uptime."
+    ],
+    generic: [
+      "Maintain core buffs/debuffs and avoid resource overcap.",
+      "Use major cooldowns in planned burst windows.",
+      "Prioritize uptime and movement discipline for consistent output.",
+      "Adjust utility and defensives to encounter damage patterns."
+    ]
+  };
+
+  const modeNote = mode === "pvp"
+    ? "PvP focus: hold burst for crowd-control chains and trade defensives early."
+    : mode === "raid"
+      ? "Raid focus: align cooldowns to boss timers and execute phases."
+      : "Mythic+ focus: frontload AoE and rotate defensives per dangerous pull.";
+
+  const base = byArchetype[archetype] || byArchetype.generic;
+  return [...base, modeNote];
+}
+
+function renderRotationHelper(className, specName, mode) {
+  if (!rotationToggleBtn || !rotationHelperPanel || !rotationHint || !rotationSteps || !rotationTitle) return;
+  if (!className || !specName || !mode) {
+    resetRotationHelper("Pick a spec to see rotation guidance.");
+    return;
+  }
+
+  rotationToggleBtn.hidden = false;
+  const steps = getRotationSteps(className, specName, mode);
+  rotationTitle.textContent = `${specName} Rotation Helper`;
+  rotationHint.textContent = `${className} ${specName} | ${modeLabel(mode)} quick guide`;
+  rotationSteps.innerHTML = steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("");
+  rotationHelperPanel.hidden = !rotationPanelOpen;
+  rotationToggleBtn.textContent = rotationPanelOpen ? "Hide Rotation Helper" : "Show Rotation Helper";
+  rotationToggleBtn.setAttribute("aria-expanded", rotationPanelOpen ? "true" : "false");
+}
+
 function renderStatExplanation(className, specName, stat, rank, mode) {
   const description = getStatExplanation(className, specName, stat, mode);
   statExplain.innerHTML = `
@@ -785,6 +908,7 @@ function renderSpecButtons(className) {
   resetBuildCard("Pick a spec, then a build type.");
   resetStatPrioritiesCard("Pick a spec to view stat priorities.");
   resetTalentTreeCard("Pick a spec to load talent nodes.");
+  resetRotationHelper("Pick a spec to see rotation guidance.");
 }
 
 function showPanelForClass(className, classBtnEl) {
@@ -834,6 +958,7 @@ function collapseClassPanel() {
   resetBuildCard("Pick a spec, then a build type.");
   resetStatPrioritiesCard("Pick a spec to view stat priorities.");
   resetTalentTreeCard("Pick a spec to load talent nodes.");
+  resetRotationHelper("Pick a spec to see rotation guidance.");
 
   requestAnimationFrame(() => {
     classButtons.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1018,6 +1143,8 @@ specButtons.addEventListener("click", (e) => {
   showBuildFromData(selectedClass, selectedSpec, selectedMode);
   renderStatPriorities(selectedClass, selectedSpec, selectedMode);
   renderTalentTree(selectedClass, selectedSpec);
+  rotationPanelOpen = false;
+  renderRotationHelper(selectedClass, selectedSpec, selectedMode);
 
   // Spec selection expands panel content; keep panel top visible like a focused section.
   requestAnimationFrame(() => {
@@ -1040,6 +1167,7 @@ buildTabs.addEventListener("click", (e) => {
   showBuildFromData(selectedClass, selectedSpec, selectedMode);
   renderStatPriorities(selectedClass, selectedSpec, selectedMode);
   renderTalentTree(selectedClass, selectedSpec);
+  renderRotationHelper(selectedClass, selectedSpec, selectedMode);
 });
 
 copyBtn.addEventListener("click", async () => {
@@ -1088,6 +1216,17 @@ statPills.addEventListener("click", (e) => {
 
 backToClassesBtn?.addEventListener("click", () => {
   collapseClassPanel();
+});
+
+rotationToggleBtn?.addEventListener("click", () => {
+  if (!selectedClass || !selectedSpec || !selectedMode) return;
+  rotationPanelOpen = !rotationPanelOpen;
+  renderRotationHelper(selectedClass, selectedSpec, selectedMode);
+  if (rotationPanelOpen) {
+    requestAnimationFrame(() => {
+      ensureElementTopVisible(rotationHelperPanel, 14);
+    });
+  }
 });
 
 // Start
