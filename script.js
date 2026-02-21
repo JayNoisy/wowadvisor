@@ -53,6 +53,7 @@ let buildsRoot = null; // always the object like buildsRoot[class][spec][mode]
 let buildsMeta = { generatedAt: null, sources: null };
 let talentTreesMeta = { generatedAt: null, source: null, specCount: 0 };
 let talentTreesSpecs = [];
+let talentTreesLoadError = null;
 
 // =========================
 // Helpers
@@ -171,7 +172,8 @@ function renderTalentTree(className, specName) {
   }
 
   if (!Array.isArray(talentTreesSpecs) || talentTreesSpecs.length === 0) {
-    resetTalentTreeCard("Talent tree data is still loading, or unavailable.");
+    const errorMsg = talentTreesLoadError ? `Talent tree data unavailable: ${talentTreesLoadError}` : "Talent tree data is still loading, or unavailable.";
+    resetTalentTreeCard(errorMsg);
     return;
   }
 
@@ -369,14 +371,23 @@ async function loadBuilds() {
 }
 
 async function loadTalentTreesMeta() {
-  const urls = ["/api/talent-trees", "./talent-trees.json"];
+  const urls = ["/api/talent-trees", "/talent-trees.json", "./talent-trees.json"];
+  const errors = [];
   for (const url of urls) {
     try {
       const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) continue;
+      if (!res.ok) {
+        errors.push(`${url} -> HTTP ${res.status}`);
+        continue;
+      }
       const payload = await res.json();
       const specs = Array.isArray(payload?.specs) ? payload.specs : [];
+      if (specs.length === 0) {
+        errors.push(`${url} -> 0 specs in payload`);
+        continue;
+      }
       talentTreesSpecs = specs;
+      talentTreesLoadError = null;
       talentTreesMeta = {
         generatedAt: payload?.generatedAt ?? null,
         source: payload?.source ?? (url.startsWith("/api/") ? "blizzard-api" : "local-json"),
@@ -386,11 +397,14 @@ async function loadTalentTreesMeta() {
       if (selectedClass && selectedSpec) renderTalentTree(selectedClass, selectedSpec);
       return;
     } catch {
+      errors.push(`${url} -> fetch failed`);
       // try the next source
     }
   }
   talentTreesSpecs = [];
-  console.warn("Could not load talent tree metadata from API or local file.");
+  talentTreesLoadError = errors.length > 0 ? errors.join(" | ") : "all sources failed";
+  console.warn("Could not load talent tree metadata from API or local file.", { errors });
+  if (selectedClass && selectedSpec) renderTalentTree(selectedClass, selectedSpec);
 }
 
 function modeLabel(mode) {
