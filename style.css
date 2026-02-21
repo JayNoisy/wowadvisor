@@ -65,19 +65,27 @@ body {
 }
 
 .class-glyph {
-  width: 34px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
   border-radius: 999px;
   display: grid;
   place-items: center;
   border: 2px solid var(--class-color);
-  background: rgba(0,0,0,0.30);
+  background:
+    radial-gradient(70% 70% at 30% 28%, rgba(255,255,255,0.18), rgba(255,255,255,0.02) 52%, rgba(0,0,0,0.35)),
+    rgba(4, 10, 20, 0.82);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.14) inset,
+    0 0 10px color-mix(in srgb, var(--class-color) 55%, transparent);
+  overflow: hidden;
 }
 
 .class-icon-img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 999px;
+  filter: saturate(1.35) contrast(1.18) brightness(1.08) drop-shadow(0 1px 2px rgba(0,0,0,0.65));
 }
 .class-name { font-weight: bold; }
 
@@ -155,20 +163,22 @@ body {
 }
 
 .badge {
-  width: 34px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
   border-radius: 10px;
   display: grid;
   place-items: center;
   font-weight: bold;
-  background: rgba(255,255,255,0.06);
-  border: 2px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(255,255,255,0.22);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.12) inset;
 }
 
 .badge.has-image {
-  background-size: cover;
+  background-size: 88%;
   background-position: center;
   background-repeat: no-repeat;
+  filter: saturate(1.3) contrast(1.15) brightness(1.08) drop-shadow(0 1px 2px rgba(0,0,0,0.6));
 }
 
 .panel-body { padding: 16px; display: grid; gap: 16px; }
@@ -611,6 +621,16 @@ body {
     width: 190px;
     padding: 15px;
     gap: 14px;
+  }
+
+  .class-glyph {
+    width: 46px;
+    height: 46px;
+  }
+
+  .class-icon-img {
+    width: 33px;
+    height: 33px;
   }
 
   .spec-buttons,
