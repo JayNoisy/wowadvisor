@@ -145,6 +145,15 @@ function classThemeKey(className) {
     .replace(/^-|-$/g, "");
 }
 
+function ensureElementBottomVisible(el, padding = 20) {
+  if (!el) return;
+  const rect = el.getBoundingClientRect();
+  const overflowBottom = rect.bottom - window.innerHeight + padding;
+  if (overflowBottom > 0) {
+    window.scrollBy({ top: overflowBottom, behavior: "smooth" });
+  }
+}
+
 function setSelectedClassButton(newBtn) {
   const all = classButtons.querySelectorAll(".class-btn");
   all.forEach(btn => {
@@ -831,6 +840,11 @@ specButtons.addEventListener("click", (e) => {
   showBuildFromData(selectedClass, selectedSpec, selectedMode);
   renderStatPriorities(selectedClass, selectedSpec, selectedMode);
   renderTalentTree(selectedClass, selectedSpec);
+
+  // Spec selection expands panel content; keep expanded section in view.
+  requestAnimationFrame(() => {
+    ensureElementBottomVisible(panel, 26);
+  });
 });
 
 buildTabs.addEventListener("click", (e) => {
