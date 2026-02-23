@@ -59,6 +59,19 @@
             <button class="tab-btn" data-mode="raid" type="button">Raid</button>
             <button class="tab-btn" data-mode="pvp" type="button">PvP</button>
           </div>
+          <div class="mythic-context-card" id="mythicContextCard" hidden>
+            <h4 class="mythic-context-title">Mythic+ Context</h4>
+            <p class="muted" id="mythicContextHint">Set key level and affixes to tune AoE recommendations.</p>
+            <div class="mythic-context-controls">
+              <label class="mythic-level-label" for="mythicKeyLevel">Key level</label>
+              <input id="mythicKeyLevel" class="mythic-level-input" type="number" min="2" max="35" step="1" value="10" />
+              <button id="mythicQuickFortifiedBtn" class="mythic-quick-btn" type="button">Fortified week</button>
+              <button id="mythicQuickTyrannicalBtn" class="mythic-quick-btn" type="button">Tyrannical week</button>
+              <button id="mythicClearAffixesBtn" class="mythic-quick-btn" type="button">Clear affixes</button>
+            </div>
+            <div id="mythicAffixList" class="mythic-affix-list" aria-label="Affix selection"></div>
+            <ul id="mythicContextNotes" class="notes" hidden></ul>
+          </div>
           <button id="rotationToggleBtn" class="rotation-toggle-btn" type="button" hidden aria-expanded="false" aria-controls="rotationHelperPanel">Show Rotation Helper</button>
         </div>
 
@@ -90,8 +103,18 @@
 
         <div class="talent-card" id="talentCard">
           <h3>Talent Tree (Blizzard API)</h3>
-          <p class="muted" id="talentTreeHint">Pick a spec to load talent nodes.</p>
-          <div id="talentTreeWrap" class="talent-tree-wrap" hidden></div>
+          <p class="muted" id="talentTreeHint" hidden>Pick a spec to load talent nodes.</p>
+          <div id="talentTreeWrap" class="talent-tree-wrap" hidden>
+            <div id="talent-system">
+              <div class="talent-points-header">
+                Points Spent: <span id="pointsSpent">0</span> / <span id="maxPoints">10</span>
+              </div>
+
+              <div class="talent-tree" id="talentTree"></div>
+            </div>
+
+            <div class="talent-tooltip" id="talentTooltip" style="display: none;"></div>
+          </div>
           <div id="talentNodeInspector" class="talent-node-inspector" hidden>
             <h4 class="talent-node-title">Talent Details</h4>
             <p class="muted" id="talentNodeHint">Click a talent node to inspect it.</p>

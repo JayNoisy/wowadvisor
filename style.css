@@ -875,3 +875,93 @@ body {
     background-size: 92%;
   }
 }
+
+#talent-system {
+  background: #111;
+  border: 1px solid #333;
+  padding: 20px;
+  border-radius: 8px;
+  width: max-content;
+  color: #eee;
+  user-select: none;
+}
+
+.talent-points-header {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #ffd100;
+}
+
+.talent-tree {
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  grid-template-rows: repeat(5, 60px);
+  gap: 20px;
+  position: relative;
+}
+
+.talent-node {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #555;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.talent-node.unavailable {
+  filter: grayscale(100%) brightness(40%);
+  cursor: not-allowed;
+  border-color: #333;
+}
+
+.talent-node.maxed {
+  border-color: #ffd100;
+  box-shadow: 0 0 10px rgba(255, 209, 0, 0.6);
+}
+
+.points-badge {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  border: 1px solid #777;
+  font-weight: bold;
+}
+
+.talent-tooltip {
+  position: absolute;
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid #ffd100;
+  padding: 12px;
+  border-radius: 5px;
+  pointer-events: none;
+  z-index: 1000;
+  width: 220px;
+  color: white;
+}
+
+.talent-tooltip h4 {
+  margin: 0 0 5px 0;
+  color: #ffd100;
+  font-size: 16px;
+}
+
+.talent-tooltip p {
+  margin: 0 0 5px 0;
+  font-size: 13px;
+  color: #ddd;
+}
+
+.talent-tooltip .req-error {
+  color: #ff3333;
+  font-weight: bold;
+}

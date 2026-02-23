@@ -85,6 +85,21 @@ const STAT_PRIORITIES = {
   }
 };
 
+const M_PLUS_AFFIXES = [
+  "Fortified",
+  "Tyrannical",
+  "Bolstering",
+  "Bursting",
+  "Raging",
+  "Sanguine",
+  "Spiteful",
+  "Volcanic",
+  "Storming",
+  "Entangling",
+  "Afflicted",
+  "Incorporeal"
+];
+
 // =========================
 // DOM References
 // =========================
@@ -100,6 +115,14 @@ const specButtons = document.getElementById("specButtons");
 
 const buildTypeWrap = document.getElementById("buildTypeWrap");
 const buildTabs = document.getElementById("buildTabs");
+const mythicContextCard = document.getElementById("mythicContextCard");
+const mythicContextHint = document.getElementById("mythicContextHint");
+const mythicContextNotes = document.getElementById("mythicContextNotes");
+const mythicKeyLevelInput = document.getElementById("mythicKeyLevel");
+const mythicAffixList = document.getElementById("mythicAffixList");
+const mythicQuickFortifiedBtn = document.getElementById("mythicQuickFortifiedBtn");
+const mythicQuickTyrannicalBtn = document.getElementById("mythicQuickTyrannicalBtn");
+const mythicClearAffixesBtn = document.getElementById("mythicClearAffixesBtn");
 const rotationToggleBtn = document.getElementById("rotationToggleBtn");
 const rotationHelperPanel = document.getElementById("rotationHelperPanel");
 const rotationTitle = document.getElementById("rotationTitle");
@@ -115,6 +138,11 @@ const statPills = document.getElementById("statPills");
 const statExplain = document.getElementById("statExplain");
 const talentTreeHint = document.getElementById("talentTreeHint");
 const talentTreeWrap = document.getElementById("talentTreeWrap");
+const talentSystem = document.getElementById("talent-system");
+const talentTree = document.getElementById("talentTree");
+const pointsSpent = document.getElementById("pointsSpent");
+const maxPoints = document.getElementById("maxPoints");
+const talentTooltip = document.getElementById("talentTooltip");
 const talentNodeInspector = document.getElementById("talentNodeInspector");
 const talentNodeHint = document.getElementById("talentNodeHint");
 const talentNodeBody = document.getElementById("talentNodeBody");
@@ -137,6 +165,10 @@ let talentTreesLoadError = null;
 let talentNodeIndex = new Map();
 let activeBuild = null;
 let rotationPanelOpen = false;
+const mythicContext = {
+  keyLevel: 10,
+  affixes: new Set(["Fortified"])
+};
 
 // =========================
 // Helpers
@@ -191,6 +223,192 @@ function clearSelectedClassButtons() {
     btn.classList.remove("selected");
     btn.setAttribute("aria-pressed", "false");
   });
+}
+
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function getMythicContext() {
+  return {
+    keyLevel: clamp(Number(mythicContext.keyLevel) || 10, 2, 35),
+    affixes: Array.from(mythicContext.affixes)
+  };
+}
+
+function setMythicAffixes(nextAffixes) {
+  mythicContext.affixes = new Set(
+    (Array.isArray(nextAffixes) ? nextAffixes : [])
+      .map((a) => String(a || "").trim())
+      .filter((a) => M_PLUS_AFFIXES.includes(a))
+  );
+}
+
+function rankAdjustedStats(basePriorities, bonusByStat) {
+  const deduped = [];
+  for (const stat of basePriorities) {
+    const clean = String(stat || "").trim();
+    if (!clean || deduped.includes(clean)) continue;
+    deduped.push(clean);
+  }
+  const weights = new Map();
+  const len = deduped.length;
+  deduped.forEach((stat, idx) => {
+    const baseWeight = (len - idx) * 100;
+    const bonus = Number(bonusByStat?.[stat] || 0);
+    weights.set(stat, baseWeight + bonus);
+  });
+  return deduped.sort((a, b) => {
+    const w = (weights.get(b) || 0) - (weights.get(a) || 0);
+    if (w !== 0) return w;
+    return deduped.indexOf(a) - deduped.indexOf(b);
+  });
+}
+
+function getMythicAdaptation(className, specName, mode, priorities) {
+  const basePriorities = Array.isArray(priorities) ? [...priorities] : [];
+  const noChange = {
+    priorities: basePriorities,
+    summary: "",
+    notes: []
+  };
+  if (mode !== "aoe" || basePriorities.length === 0) return noChange;
+
+  const context = getMythicContext();
+  const affixSet = new Set(context.affixes);
+  const archetype = getSpecArchetype(className, specName);
+  const statBonus = {};
+  const notes = [];
+  const addBonus = (stat, amount) => {
+    statBonus[stat] = (statBonus[stat] || 0) + amount;
+  };
+
+  if (context.keyLevel >= 12) {
+    addBonus("Versatility", 22);
+    notes.push(`+${context.keyLevel} key: survivability and consistency are weighted higher.`);
+    if (archetype === "tank" || archetype === "healer") {
+      addBonus("Versatility", 12);
+      addBonus("Haste", 8);
+      notes.push("Tank/healer profile: extra value to defensive throughput and response speed.");
+    }
+  }
+
+  if (affixSet.has("Fortified")) {
+    addBonus("Haste", 18);
+    addBonus("Mastery", 10);
+    notes.push("Fortified: favors repeatable trash throughput and pull-to-pull cooldown cadence.");
+  }
+
+  if (affixSet.has("Tyrannical")) {
+    addBonus("Mastery", 16);
+    addBonus("Critical Strike", 10);
+    notes.push("Tyrannical: shifts value toward priority-target and boss damage.");
+  }
+
+  if (affixSet.has("Raging") || affixSet.has("Bolstering")) {
+    addBonus("Versatility", 10);
+    addBonus("Critical Strike", 6);
+    notes.push("Raging/Bolstering: rewards controlled kill windows and safer damage profiles.");
+  }
+
+  if (affixSet.has("Bursting") || affixSet.has("Spiteful") || affixSet.has("Sanguine")) {
+    addBonus("Versatility", 12);
+    addBonus("Haste", 6);
+    notes.push("Bursting/Spiteful/Sanguine: favors stability and quick defensive reactions.");
+  }
+
+  if (affixSet.has("Afflicted") || affixSet.has("Incorporeal") || affixSet.has("Entangling")) {
+    addBonus("Haste", 10);
+    notes.push("Utility-heavy affixes: higher haste for faster globals and cleaner utility coverage.");
+  }
+
+  if (affixSet.has("Volcanic") || affixSet.has("Storming")) {
+    addBonus("Versatility", 8);
+    notes.push("Movement pressure affixes: versatility gains value from safer uptime.");
+  }
+
+  const affixLabel = context.affixes.length > 0 ? context.affixes.join(", ") : "No affixes selected";
+  return {
+    priorities: rankAdjustedStats(basePriorities, statBonus),
+    summary: `M+ context: +${context.keyLevel} | ${affixLabel}`,
+    notes
+  };
+}
+
+function getMythicBuildNotes(mode) {
+  if (mode !== "aoe") return [];
+  const context = getMythicContext();
+  const affixSet = new Set(context.affixes);
+  const notes = [];
+  if (context.keyLevel >= 12) {
+    notes.push("High key reminder: route defensives and externals before damage cooldown optimization.");
+  }
+  if (affixSet.has("Tyrannical")) {
+    notes.push("Tyrannical reminder: hold major cooldowns for bosses and dangerous mini-boss pulls.");
+  }
+  if (affixSet.has("Fortified")) {
+    notes.push("Fortified reminder: frontload AoE cooldowns on large trash pulls.");
+  }
+  if (affixSet.has("Bursting")) {
+    notes.push("Bursting reminder: stagger kill timing to avoid lethal stack spikes.");
+  }
+  return notes;
+}
+
+function getMythicRotationNotes(mode) {
+  if (mode !== "aoe") return [];
+  const context = getMythicContext();
+  const affixSet = new Set(context.affixes);
+  const notes = [`Mythic+ context: key +${context.keyLevel}.`];
+  if (affixSet.has("Tyrannical")) {
+    notes.push("Tyrannical: avoid sending every major cooldown on low-risk trash.");
+  }
+  if (affixSet.has("Fortified")) {
+    notes.push("Fortified: chain offensive cooldowns early in large pulls to shorten danger windows.");
+  }
+  if (affixSet.has("Spiteful") || affixSet.has("Storming") || affixSet.has("Volcanic")) {
+    notes.push("Movement-heavy affixes: pre-position before burst windows to protect uptime.");
+  }
+  return notes;
+}
+
+function renderMythicContextNotes(items) {
+  if (!mythicContextNotes) return;
+  const notes = Array.isArray(items) ? items.filter(Boolean) : [];
+  mythicContextNotes.innerHTML = notes.map((n) => `<li>${escapeHtml(n)}</li>`).join("");
+  mythicContextNotes.hidden = notes.length === 0;
+}
+
+function renderMythicAffixButtons() {
+  if (!mythicAffixList) return;
+  mythicAffixList.innerHTML = M_PLUS_AFFIXES.map((affix) => {
+    const active = mythicContext.affixes.has(affix) ? " selected" : "";
+    return `<button type="button" class="mythic-affix-btn${active}" data-affix="${escapeHtml(affix)}">${escapeHtml(affix)}</button>`;
+  }).join("");
+}
+
+function refreshRecommendationsForContext() {
+  if (!selectedClass || !selectedSpec || !selectedMode) return;
+  showBuildFromData(selectedClass, selectedSpec, selectedMode);
+  renderStatPriorities(selectedClass, selectedSpec, selectedMode);
+  renderRotationHelper(selectedClass, selectedSpec, selectedMode);
+}
+
+function renderMythicContextCard() {
+  if (!mythicContextCard) return;
+  const shouldShow = Boolean(selectedClass && selectedSpec && selectedMode === "aoe");
+  mythicContextCard.hidden = !shouldShow;
+  if (!shouldShow) return;
+
+  mythicContext.keyLevel = clamp(Number(mythicKeyLevelInput?.value) || mythicContext.keyLevel || 10, 2, 35);
+  if (mythicKeyLevelInput) mythicKeyLevelInput.value = String(mythicContext.keyLevel);
+
+  const context = getMythicContext();
+  if (mythicContextHint) {
+    const affixText = context.affixes.length > 0 ? context.affixes.join(", ") : "No affixes selected";
+    mythicContextHint.textContent = `Adjusting AoE recommendations for +${context.keyLevel} | ${affixText}.`;
+  }
+  renderMythicAffixButtons();
 }
 
 function resetBuildCard(message) {
@@ -290,10 +508,188 @@ function normalizeKey(value) {
     .trim();
 }
 
+const talentData = [
+  {
+    id: "t1",
+    row: 1,
+    col: 2,
+    name: "Savage Strikes",
+    desc: "Increases critical strike chance.",
+    maxPoints: 3,
+    reqNode: null,
+    reqPointsTotal: 0,
+    icon: "https://wow.zamimg.com/images/wow/icons/large/ability_warrior_savageblow.jpg"
+  },
+  {
+    id: "t2",
+    row: 1,
+    col: 3,
+    name: "Toughness",
+    desc: "Increases armor value from items by 10%.",
+    maxPoints: 5,
+    reqNode: null,
+    reqPointsTotal: 0,
+    icon: "https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotion.jpg"
+  },
+  {
+    id: "t3",
+    row: 2,
+    col: 2,
+    name: "Deep Wounds",
+    desc: "Your critical strikes cause bleeding.",
+    maxPoints: 3,
+    reqNode: "t1",
+    reqPointsTotal: 0,
+    icon: "https://wow.zamimg.com/images/wow/icons/large/ability_backstab.jpg"
+  },
+  {
+    id: "t4",
+    row: 3,
+    col: 2,
+    name: "Mortal Strike",
+    desc: "A vicious strike that deals damage and reduces healing received.",
+    maxPoints: 1,
+    reqNode: "t3",
+    reqPointsTotal: 5,
+    icon: "https://wow.zamimg.com/images/wow/icons/large/ability_warrior_punishingblow.jpg"
+  }
+];
+
+let totalPointsSpent = 0;
+const MAX_TOTAL_POINTS = 10;
+const nodeState = {};
+
+function initTalentTree() {
+  if (!talentTree) return;
+  talentTree.innerHTML = "";
+  totalPointsSpent = 0;
+  Object.keys(nodeState).forEach((key) => delete nodeState[key]);
+
+  talentData.forEach((talent) => {
+    nodeState[talent.id] = 0;
+
+    const nodeEl = document.createElement("div");
+    nodeEl.className = "talent-node";
+    nodeEl.id = `node-${talent.id}`;
+    nodeEl.style.gridRow = talent.row;
+    nodeEl.style.gridColumn = talent.col;
+    nodeEl.style.backgroundImage = `url(${talent.icon})`;
+
+    const badge = document.createElement("div");
+    badge.className = "points-badge";
+    badge.id = `badge-${talent.id}`;
+    badge.innerText = `0/${talent.maxPoints}`;
+
+    nodeEl.appendChild(badge);
+    talentTree.appendChild(nodeEl);
+
+    nodeEl.addEventListener("click", () => addPoint(talent.id));
+    nodeEl.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+      removePoint(talent.id);
+    });
+
+    nodeEl.addEventListener("mousemove", (e) => showTooltip(e, talent));
+    nodeEl.addEventListener("mouseleave", hideTooltip);
+  });
+
+  updateTreeVisuals();
+}
+
+function addPoint(id) {
+  const talent = talentData.find((t) => t.id === id);
+  if (!talent || !canAddPoint(talent)) return;
+
+  nodeState[id] += 1;
+  totalPointsSpent += 1;
+  updateTreeVisuals();
+}
+
+function removePoint(id) {
+  const talent = talentData.find((t) => t.id === id);
+  if (!talent || !canRemovePoint(talent)) return;
+
+  nodeState[id] -= 1;
+  totalPointsSpent -= 1;
+  updateTreeVisuals();
+}
+
+function canAddPoint(talent) {
+  if (totalPointsSpent >= MAX_TOTAL_POINTS) return false;
+  if (nodeState[talent.id] >= talent.maxPoints) return false;
+  if (talent.reqPointsTotal > totalPointsSpent) return false;
+  if (talent.reqNode && nodeState[talent.reqNode] === 0) return false;
+  return true;
+}
+
+function canRemovePoint(talent) {
+  if (nodeState[talent.id] <= 0) return false;
+
+  const dependents = talentData.filter((t) => t.reqNode === talent.id);
+  for (const dep of dependents) {
+    if (nodeState[dep.id] > 0 && nodeState[talent.id] - 1 === 0) return false;
+  }
+  return true;
+}
+
+function updateTreeVisuals() {
+  if (pointsSpent) pointsSpent.innerText = totalPointsSpent;
+  if (maxPoints) maxPoints.innerText = MAX_TOTAL_POINTS;
+
+  talentData.forEach((talent) => {
+    const el = document.getElementById(`node-${talent.id}`);
+    const badge = document.getElementById(`badge-${talent.id}`);
+    if (!el || !badge) return;
+    badge.innerText = `${nodeState[talent.id]}/${talent.maxPoints}`;
+
+    let isAvailable = true;
+    if (talent.reqPointsTotal > totalPointsSpent) isAvailable = false;
+    if (talent.reqNode && nodeState[talent.reqNode] === 0) isAvailable = false;
+
+    el.classList.remove("unavailable", "maxed");
+    if (!isAvailable && nodeState[talent.id] === 0) {
+      el.classList.add("unavailable");
+    } else if (nodeState[talent.id] === talent.maxPoints) {
+      el.classList.add("maxed");
+    }
+  });
+}
+
+function showTooltip(e, talent) {
+  if (!talentTooltip) return;
+  talentTooltip.style.display = "block";
+  talentTooltip.style.left = `${e.pageX + 15}px`;
+  talentTooltip.style.top = `${e.pageY + 15}px`;
+
+  let requirementsHtml = "";
+  if (talent.reqPointsTotal > totalPointsSpent) {
+    requirementsHtml += `<p class="req-error">Requires ${talent.reqPointsTotal} points in tree</p>`;
+  }
+  if (talent.reqNode && nodeState[talent.reqNode] === 0) {
+    const reqTalent = talentData.find((t) => t.id === talent.reqNode);
+    const reqTalentName = reqTalent ? reqTalent.name : talent.reqNode;
+    requirementsHtml += `<p class="req-error">Requires points in ${escapeHtml(reqTalentName)}</p>`;
+  }
+
+  talentTooltip.innerHTML = `
+    <h4>${escapeHtml(talent.name)}</h4>
+    <p>Rank ${nodeState[talent.id]}/${talent.maxPoints}</p>
+    ${requirementsHtml}
+    <p style="margin-top: 8px;">${escapeHtml(talent.desc)}</p>
+  `;
+}
+
+function hideTooltip() {
+  if (!talentTooltip) return;
+  talentTooltip.style.display = "none";
+}
+
 function resetTalentTreeCard(message) {
   talentTreeHint.textContent = message;
-  talentTreeWrap.innerHTML = "";
-  talentTreeWrap.hidden = true;
+  talentTreeHint.hidden = false;
+  talentTreeWrap.hidden = false;
+  if (talentSystem) talentSystem.hidden = true;
+  hideTooltip();
   talentNodeIndex = new Map();
   talentNodeInspector.hidden = true;
   talentNodeHint.textContent = "Click a talent node to inspect it.";
@@ -1478,190 +1874,14 @@ function renderTalentTree(className, specName) {
     return;
   }
 
-  if (!Array.isArray(talentTreesSpecs) || talentTreesSpecs.length === 0) {
-    const errorMsg = talentTreesLoadError ? `Talent tree data unavailable: ${talentTreesLoadError}` : "Talent tree data is still loading, or unavailable.";
-    resetTalentTreeCard(errorMsg);
-    return;
-  }
-
-  const specPayload = findTalentSpec(className, specName);
-  if (!specPayload) {
-    resetTalentTreeCard(`No talent tree found for ${className} | ${specName}.`);
-    return;
-  }
-
-  const { classPane, specPane, nodes } = resolveTalentPanes(specPayload);
-  if (nodes.length === 0) {
-    resetTalentTreeCard(`No nodes found for ${className} | ${specName}.`);
-    return;
-  }
-
-  talentNodeIndex = new Map();
-  const selectedSet = buildSelectedTalentSelection(activeBuild?.selectedTalents);
-  let matchedCount = 0;
-
-  function renderTreePane(pane) {
-    const title = pane?.label || "Tree";
-    const typeNodes = Array.isArray(pane?.nodes) ? pane.nodes : [];
-    if (typeNodes.length === 0) {
-      return `
-        <section class="wow-tree-pane">
-          <h4 class="wow-tree-title">${escapeHtml(title)}</h4>
-          <p class="wow-tree-empty">No nodes in this tree.</p>
-        </section>
-      `;
-    }
-
-    const maxCol = Math.max(...typeNodes.map((n) => Number(n?.col ?? 0)));
-    const maxRow = Math.max(...typeNodes.map((n) => Number(n?.row ?? 0)));
-    const cols = Math.min(10, Math.max(4, maxCol + 1));
-    const rows = Math.min(20, Math.max(6, maxRow + 1));
-    const viewWidth = Math.max(1, cols - 1);
-    const viewHeight = Math.max(1, rows - 1);
-
-    const byId = new Map(typeNodes.map((n) => [Number(n?.id), n]));
-    const linkHtml = [];
-    const paneEdges = Array.isArray(pane?.edges) ? pane.edges : [];
-    for (const edge of paneEdges) {
-      const fromNode = byId.get(Number(edge?.fromNodeId));
-      const toNode = byId.get(Number(edge?.toNodeId));
-      if (!fromNode || !toNode) continue;
-      const x1 = Math.max(0, Number(fromNode?.col ?? 0));
-      const y1 = Math.max(0, Number(fromNode?.row ?? 0));
-      const x2 = Math.max(0, Number(toNode?.col ?? 0));
-      const y2 = Math.max(0, Number(toNode?.row ?? 0));
-      linkHtml.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`);
-    }
-
-    const nodeHtml = typeNodes
-      .sort((a, b) => {
-        const rowDelta = Number(a?.row ?? 0) - Number(b?.row ?? 0);
-        if (rowDelta !== 0) return rowDelta;
-        return Number(a?.col ?? 0) - Number(b?.col ?? 0);
-      })
-      .map((n) => {
-        const row = Math.max(1, Number(n?.row ?? 0) + 1);
-        const col = Math.max(1, Number(n?.col ?? 0) + 1);
-        const entries = Array.isArray(n?.entries) ? n.entries : [];
-        const primaryEntry = entries[0] || null;
-        const rank = Math.max(1, Number(primaryEntry?.maxRank ?? n?.maxRank ?? 1));
-        const name = escapeHtml(n?.name || "Unknown Talent");
-        const nodeSlug = slugifyTalentName(n?.name);
-        const entrySlugs = entries.map((entry) => slugifyTalentName(entry?.name)).filter(Boolean);
-        const nodeId = Number(n?.id);
-        const idCandidates = [
-          nodeId,
-          Number(n?.spellId),
-          ...entries.map((entry) => Number(entry?.id)),
-          ...entries.map((entry) => Number(entry?.spellId))
-        ].filter((value) => Number.isFinite(value));
-        let selectedRank = 0;
-        for (const candidateId of idCandidates) {
-          const rankById = selectedSet.idRanks.get(candidateId);
-          if (rankById) {
-            selectedRank = rankById;
-            break;
-          }
-        }
-        if (!selectedRank && nodeSlug) {
-          selectedRank = selectedSet.slugRanks.get(nodeSlug) || 0;
-        }
-        if (!selectedRank && entrySlugs.length > 0) {
-          for (const entrySlug of entrySlugs) {
-            const rankBySlug = selectedSet.slugRanks.get(entrySlug);
-            if (rankBySlug) {
-              selectedRank = rankBySlug;
-              break;
-            }
-          }
-        }
-        const isSelectedByBuild = selectedRank > 0;
-        if (isSelectedByBuild) matchedCount += 1;
-        const initials = escapeHtml(nodeInitials(n?.name));
-        const iconUrl = typeof primaryEntry?.iconUrl === "string" && primaryEntry.iconUrl
-          ? primaryEntry.iconUrl
-          : (typeof n?.iconUrl === "string" && n.iconUrl ? n.iconUrl : "");
-        const spellId = Number.isFinite(Number(n?.spellId)) ? Number(n.spellId) : null;
-        const iconStyle = iconUrl ? ` style="background-image:url('${escapeHtml(iconUrl)}')"` : "";
-        const nodeKind = String(n?.nodeKind || (entries.length > 1 ? "choice" : "active")).toLowerCase();
-        const choicesText = entries.length > 1 ? `, Choices: ${entries.map((e) => e?.name).filter(Boolean).slice(0, 2).join(" / ")}` : "";
-        const chosenText = isSelectedByBuild ? `, Selected rank: ${selectedRank}` : "";
-        const nodeTitle = `${name} (Max rank: ${rank}${chosenText}${spellId ? `, Spell ID: ${spellId}` : ""}${choicesText})`;
-        const nodeKey = `${pane.key || "tree"}:${Number(n?.id) || `${row}-${col}`}`;
-        talentNodeIndex.set(nodeKey, {
-          paneKey: pane.key || "tree",
-          paneLabel: pane.label || "Tree",
-          node: n
-        });
-        return `
-          <button class="wow-node wow-node-${escapeHtml(nodeKind)}${isSelectedByBuild ? " selected-by-build" : ""}" data-node-key="${escapeHtml(nodeKey)}" type="button" style="grid-row:${row};grid-column:${col}" title="${nodeTitle}">
-            <span class="wow-node-core${iconUrl ? " has-icon" : ""}"${iconStyle}>
-              <span class="wow-node-initials">${initials}</span>
-            </span>
-            <span class="wow-node-rank">${isSelectedByBuild ? selectedRank : rank}</span>
-            <span class="wow-node-label">${name}</span>
-          </button>
-        `;
-      })
-      .join("");
-
-    return `
-      <section class="wow-tree-pane">
-        <h4 class="wow-tree-title">${escapeHtml(title)}</h4>
-        <div class="wow-tree-stage">
-          <svg class="wow-tree-links" viewBox="0 0 ${viewWidth} ${viewHeight}" preserveAspectRatio="none" aria-hidden="true">
-            ${linkHtml.join("")}
-          </svg>
-          <div class="wow-tree-grid wow-tree-nodes" style="--tree-cols:${cols};--tree-rows:${rows}">
-            ${nodeHtml}
-          </div>
-        </div>
-      </section>
-    `;
-  }
-
-  const blocks = [
-    renderTreePane(classPane),
-    renderTreePane(specPane)
-  ];
-
-  const selectedTotal = selectedSet.totalCount;
-  const likelyIncompleteTree = selectedTotal > 0 && (nodes.length <= 12 || matchedCount < Math.ceil(selectedTotal * 0.45));
-  if (likelyIncompleteTree) {
-    const groupOrder = ["class", "spec", "hero"];
-    const groupLabels = { class: "Class", spec: "Spec", hero: "Hero" };
-    const groupHtml = groupOrder.map((g) => {
-      const items = selectedSet.groups[g] || [];
-      if (items.length === 0) return "";
-      const rows = items.map((t) => `<span class="build-map-chip">${escapeHtml(t.slug || "unknown")} <em>${t.rank}</em></span>`).join("");
-      return `
-        <div class="build-map-group">
-          <h5>${groupLabels[g]} talents</h5>
-          <div class="build-map-chips">${rows}</div>
-        </div>
-      `;
-    }).join("");
-
-    if (groupHtml) {
-      blocks.push(`
-        <section class="build-map-fallback">
-          <h4>Selected Build Map</h4>
-          <p class="muted">Full tree data is incomplete for this spec. Showing selected talents from top-player build data.</p>
-          ${groupHtml}
-        </section>
-      `);
-    }
-  }
-
-  const totalNodes = Number(specPayload?.summary?.totalNodes) || nodes.length;
-  const isLikelyPvpOnly = totalNodes <= 12;
-  const treeQualityHint = isLikelyPvpOnly ? " (PvP-sized tree; full spec data may be unavailable in this API response)" : "";
-  talentTreeHint.textContent = `${specPayload.className} ${specPayload.specName} | ${totalNodes} nodes | ${talentTreesMeta.source || "unknown source"}${treeQualityHint}`;
-  talentTreeWrap.className = "talent-tree-wrap wow-tree-layout";
-  talentTreeWrap.innerHTML = blocks.join("");
+  talentTreeHint.hidden = true;
   talentTreeWrap.hidden = false;
-  talentNodeInspector.hidden = false;
-  talentNodeHint.textContent = "Click a node to inspect rank, type, choices, and prerequisites.";
+  talentTreeWrap.className = "talent-tree-wrap";
+  if (talentSystem) talentSystem.hidden = false;
+  initTalentTree();
+  talentTreeWrap.hidden = false;
+  talentNodeInspector.hidden = true;
+  talentNodeHint.textContent = "Click a talent node to inspect it.";
   talentNodeBody.innerHTML = "";
 }
 
