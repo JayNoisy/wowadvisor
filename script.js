@@ -797,6 +797,27 @@ function titleCase(word) {
   return String(word || "").slice(0, 1).toUpperCase() + String(word || "").slice(1).toLowerCase();
 }
 
+function titleCaseFromSlug(value) {
+  const parts = String(value || "")
+    .trim()
+    .split(/[^a-zA-Z0-9]+/)
+    .filter(Boolean);
+  if (parts.length === 0) return "";
+  return parts
+    .map((part) => {
+      const clean = String(part || "");
+      if (clean.length <= 2) return clean.toUpperCase();
+      return `${clean.slice(0, 1).toUpperCase()}${clean.slice(1).toLowerCase()}`;
+    })
+    .join(" ");
+}
+
+function normalizeLookupKey(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
+}
+
 function escapeHtml(value) {
   return String(value || "")
     .replace(/&/g, "&amp;")
@@ -1298,6 +1319,9 @@ const SPELL_ICON_MAP = {
 };
 
 const SORTED_SPELL_NAMES = Object.keys(SPELL_ICON_MAP).sort((a, b) => b.length - a.length);
+const NORMALIZED_SPELL_ICON_MAP = new Map(
+  Object.entries(SPELL_ICON_MAP).map(([name, iconName]) => [normalizeLookupKey(name), iconName])
+);
 
 function findSpellNameInStep(stepText) {
   const text = String(stepText || "").toLowerCase();
@@ -1309,7 +1333,9 @@ function findSpellNameInStep(stepText) {
 }
 
 function iconUrlForSpellName(spellName) {
-  const iconName = SPELL_ICON_MAP[spellName];
+  const raw = String(spellName || "").trim();
+  if (!raw) return null;
+  const iconName = SPELL_ICON_MAP[raw] || NORMALIZED_SPELL_ICON_MAP.get(normalizeLookupKey(raw));
   if (!iconName) return null;
   return `https://wow.zamimg.com/images/wow/icons/large/${iconName}.jpg`;
 }
@@ -2143,8 +2169,9 @@ function renderTalentTree(className, specName) {
     const itemId = Number(item?.id);
     let node = Number.isFinite(itemId) ? lookup.byId.get(itemId) : null;
     if (!node && Number.isFinite(itemId)) node = allLookup.byId.get(itemId);
-    if (!node && item?.slug) node = lookup.bySlug.get(item.slug);
-    if (!node && item?.slug) node = allLookup.bySlug.get(item.slug);
+    const itemSlug = slugifyTalentName(item?.slug);
+    if (!node && itemSlug) node = lookup.bySlug.get(itemSlug);
+    if (!node && itemSlug) node = allLookup.bySlug.get(itemSlug);
     return node || null;
   }
 
@@ -2173,10 +2200,140 @@ function renderTalentTree(className, specName) {
     return 0;
   }
 
+  function defaultColsForGroup(groupKey) {
+    if (groupKey === "hero") return 3;
+    return 4;
+  }
+
+  function layoutPosition(index, baseRow, cols) {
+    const safeCols = Math.max(3, Number(cols) || 4);
+    return {
+      row: baseRow + Math.floor(index / safeCols),
+      col: 1 + (index % safeCols)
+    };
+  }
+
+  function resolveIconUrl(node, preferredName, preferredSlug) {
+    const entries = Array.isArray(node?.entries) ? node.entries : [];
+    const primary = entries[0] || null;
+    const safeName = String(preferredName || node?.name || primary?.name || "").trim();
+    const safeSlug = String(preferredSlug || "").trim();
+    return (
+      (typeof primary?.iconUrl === "string" && primary.iconUrl) ||
+      iconUrlFromIconName(primary?.iconName) ||
+      (typeof node?.iconUrl === "string" && node.iconUrl) ||
+      iconUrlFromIconName(node?.iconName) ||
+      (safeName ? iconUrlForSpellName(safeName) : null) ||
+      (safeSlug ? iconUrlForSpellName(titleCaseFromSlug(safeSlug)) : null) ||
+      null
+    );
+  }
+
+  function inferEdgesFromRecords(records) {
+    const list = (Array.isArray(records) ? records : [])
+      .filter((record) => Number.isFinite(record?.row) && Number.isFinite(record?.col))
+      .map((record) => ({
+        key: record.key,
+        row: Number(record.row),
+        col: Number(record.col)
+      }));
+    if (list.length < 2) return [];
+
+    const byRow = new Map();
+    for (const record of list) {
+      if (!byRow.has(record.row)) byRow.set(record.row, []);
+      byRow.get(record.row).push(record);
+    }
+
+    const rows = Array.from(byRow.keys()).sort((a, b) => a - b);
+    const edges = [];
+    for (const row of rows) {
+      const current = byRow.get(row) || [];
+      if (current.length === 0) continue;
+
+      const parentPool = [];
+      for (const previousRow of rows) {
+        if (previousRow >= row) break;
+        const distance = row - previousRow;
+        if (distance > 2) continue;
+        for (const parent of byRow.get(previousRow) || []) {
+          parentPool.push({
+            key: parent.key,
+            col: parent.col,
+            distance
+          });
+        }
+      }
+
+      for (const child of current) {
+        const nearestParents = parentPool
+          .map((parent) => ({
+            key: parent.key,
+            score: parent.distance * 10 + Math.abs(parent.col - child.col)
+          }))
+          .sort((a, b) => a.score - b.score)
+          .slice(0, 2);
+        for (const parent of nearestParents) {
+          edges.push({ fromKey: parent.key, toKey: child.key });
+        }
+      }
+    }
+
+    const dedup = new Map();
+    for (const edge of edges) {
+      if (!edge?.fromKey || !edge?.toKey) continue;
+      const key = `${edge.fromKey}->${edge.toKey}`;
+      if (!dedup.has(key)) dedup.set(key, edge);
+    }
+    return Array.from(dedup.values());
+  }
+
   function collectRecordsForGroup(groupKey) {
     const pane = paneByGroup[groupKey];
     const paneNodes = Array.isArray(pane?.nodes) ? pane.nodes : [];
     const records = [];
+    const cols = defaultColsForGroup(groupKey);
+    const byNodeId = new Map();
+    const bySlug = new Map();
+
+    const bindRecord = (record) => {
+      if (Number.isFinite(record?.nodeId)) byNodeId.set(Number(record.nodeId), record);
+      const recordSlug = slugifyTalentName(record?.name);
+      if (recordSlug && !bySlug.has(recordSlug)) bySlug.set(recordSlug, record);
+    };
+
+    const createFallbackVirtualRecord = (item, itemIdx, baseRow, slotIndex) => {
+      const itemSlug = slugifyTalentName(item?.slug);
+      const name = titleCaseFromSlug(itemSlug) || `Talent ${itemIdx + 1}`;
+      const rank = Math.max(1, Number(item?.rank) || 1);
+      const pos = layoutPosition(slotIndex, baseRow, cols);
+      const virtualNode = {
+        id: null,
+        name,
+        row: pos.row - 1,
+        col: pos.col - 1,
+        maxRank: rank,
+        treeType: groupKey,
+        requiredNodeIds: [],
+        spellId: null,
+        iconName: null,
+        iconUrl: null,
+        nodeKind: "active",
+        entries: []
+      };
+      return {
+        key: `${groupKey}:virtual-selected:${itemSlug || itemIdx}:${itemIdx}`,
+        nodeId: null,
+        node: virtualNode,
+        name,
+        row: pos.row,
+        col: pos.col,
+        maxRank: rank,
+        selectedRank: rank,
+        isSelected: true,
+        iconUrl: resolveIconUrl(virtualNode, name, itemSlug)
+      };
+    };
 
     if (paneNodes.length > 0) {
       paneNodes.forEach((node, idx) => {
@@ -2189,15 +2346,7 @@ function renderTalentTree(className, specName) {
         const col = Number.isFinite(Number(node?.col)) ? Number(node.col) + 1 : (idx % 4) + 1;
         const nodeId = Number(node?.id);
         const key = Number.isFinite(nodeId) ? `${groupKey}:${nodeId}` : `${groupKey}:virtual:${idx}`;
-        const iconUrl = (
-          (typeof primary?.iconUrl === "string" && primary.iconUrl) ||
-          iconUrlFromIconName(primary?.iconName) ||
-          (typeof node?.iconUrl === "string" && node.iconUrl) ||
-          iconUrlFromIconName(node?.iconName) ||
-          iconUrlForSpellName(name) ||
-          "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"
-        );
-        records.push({
+        const record = {
           key,
           nodeId: Number.isFinite(nodeId) ? nodeId : null,
           node,
@@ -2207,62 +2356,109 @@ function renderTalentTree(className, specName) {
           maxRank,
           selectedRank,
           isSelected: selectedRank > 0,
-          iconUrl
-        });
+          iconUrl: resolveIconUrl(node, name, slugifyTalentName(name))
+        };
+        records.push(record);
+        bindRecord(record);
       });
-      return records;
     }
 
-    // Fallback if pane is missing: render selected nodes only.
     const items = selectedSet.groups[groupKey] || [];
+    const maxExistingRow = records.length > 0 ? Math.max(...records.map((record) => Number(record.row) || 1)) : 0;
+    const fallbackBaseRow = Math.max(1, maxExistingRow + (records.length > 0 ? 1 : 0));
+    let fallbackSlot = 0;
     items.forEach((item, idx) => {
       const node = resolveNodeForItem(groupKey, item);
-      if (!node) return;
-      const entries = Array.isArray(node?.entries) ? node.entries : [];
-      const primary = entries[0] || null;
-      const maxRank = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? item?.rank ?? 1) || 1);
       const selectedRank = Math.max(1, Number(item?.rank) || 1);
-      const row = Number.isFinite(Number(node?.row)) ? Number(node.row) + 1 : Math.floor(idx / 4) + 1;
-      const col = Number.isFinite(Number(node?.col)) ? Number(node.col) + 1 : (idx % 4) + 1;
+      const itemSlug = slugifyTalentName(item?.slug);
       const nodeId = Number(node?.id);
-      const key = Number.isFinite(nodeId) ? `${groupKey}:${nodeId}` : `${groupKey}:virtual:${idx}`;
-      const iconUrl = (
-        (typeof primary?.iconUrl === "string" && primary.iconUrl) ||
-        iconUrlFromIconName(primary?.iconName) ||
-        (typeof node?.iconUrl === "string" && node.iconUrl) ||
-        iconUrlFromIconName(node?.iconName) ||
-        iconUrlForSpellName(node?.name) ||
-        "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"
-      );
-      records.push({
-        key,
-        nodeId: Number.isFinite(nodeId) ? nodeId : null,
-        node,
-        name: String(node?.name || `Talent ${idx + 1}`),
-        row,
-        col,
-        maxRank,
-        selectedRank,
-        isSelected: true,
-        iconUrl
-      });
+      const existingById = Number.isFinite(nodeId) ? byNodeId.get(nodeId) : null;
+      const nodeName = String(node?.name || "").trim();
+      const existingByName = nodeName ? bySlug.get(slugifyTalentName(nodeName)) : null;
+      const existingBySlug = itemSlug ? bySlug.get(itemSlug) : null;
+      const existing = existingById || existingByName || existingBySlug || null;
+      if (existing) {
+        existing.selectedRank = Math.max(existing.selectedRank, selectedRank);
+        existing.maxRank = Math.max(existing.maxRank, selectedRank);
+        existing.isSelected = true;
+        if (!existing.iconUrl) {
+          existing.iconUrl = resolveIconUrl(existing.node, existing.name, itemSlug);
+        }
+        return;
+      }
+
+      if (node) {
+        const entries = Array.isArray(node?.entries) ? node.entries : [];
+        const primary = entries[0] || null;
+        const maxRank = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? item?.rank ?? 1) || 1);
+        const hasPos = Number.isFinite(Number(node?.row)) && Number.isFinite(Number(node?.col));
+        const fallbackPos = layoutPosition(fallbackSlot, fallbackBaseRow, cols);
+        const row = hasPos ? Number(node.row) + 1 : fallbackPos.row;
+        const col = hasPos ? Number(node.col) + 1 : fallbackPos.col;
+        if (!hasPos) fallbackSlot += 1;
+        const key = Number.isFinite(nodeId)
+          ? `${groupKey}:${nodeId}`
+          : `${groupKey}:resolved-selected:${itemSlug || idx}:${idx}`;
+        const record = {
+          key,
+          nodeId: Number.isFinite(nodeId) ? nodeId : null,
+          node,
+          name: String(node?.name || titleCaseFromSlug(itemSlug) || `Talent ${idx + 1}`),
+          row,
+          col,
+          maxRank,
+          selectedRank,
+          isSelected: true,
+          iconUrl: resolveIconUrl(node, node?.name, itemSlug)
+        };
+        records.push(record);
+        bindRecord(record);
+        return;
+      }
+
+      const virtualRecord = createFallbackVirtualRecord(item, idx, fallbackBaseRow, fallbackSlot);
+      fallbackSlot += 1;
+      records.push(virtualRecord);
+      bindRecord(virtualRecord);
     });
+
     return records;
   }
 
   function buildEdges(records, groupKey) {
+    const byKey = new Map(records.map((record) => [record.key, record]));
     const byNodeId = new Map(
       records
         .filter((r) => Number.isFinite(r.nodeId))
         .map((r) => [Number(r.nodeId), r])
     );
     const paneEdges = getPaneEdges(groupKey);
-    return paneEdges
+    const concreteEdges = paneEdges
       .map((edge) => ({
         from: byNodeId.get(edge.fromNodeId),
         to: byNodeId.get(edge.toNodeId)
       }))
       .filter((edge) => edge.from && edge.to);
+
+    const merged = new Map();
+    for (const edge of concreteEdges) {
+      const key = `${edge.from.key}->${edge.to.key}`;
+      merged.set(key, edge);
+    }
+
+    const needsInferred = concreteEdges.length === 0 || merged.size < Math.max(0, records.length - 1);
+    if (needsInferred) {
+      const inferred = inferEdgesFromRecords(records);
+      for (const edge of inferred) {
+        const from = byKey.get(edge.fromKey);
+        const to = byKey.get(edge.toKey);
+        if (!from || !to) continue;
+        const key = `${from.key}->${to.key}`;
+        if (!merged.has(key)) merged.set(key, { from, to });
+      }
+    }
+
+    return Array.from(merged.values());
   }
 
   function renderSelectedGroupPane(groupKey) {
