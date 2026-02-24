@@ -2010,136 +2010,127 @@ function renderTalentTree(className, specName) {
 
   talentNodeIndex = new Map();
   const selectedSet = buildSelectedTalentSelection(activeBuild?.selectedTalents);
+  const paneByGroup = {
+    class: classPane,
+    hero: heroPane,
+    spec: specPane
+  };
+  const order = ["class", "hero", "spec"];
 
-  function renderTreePane(pane) {
-    if (!pane) return "";
-    const title = pane?.label || "Tree";
-    const typeNodes = Array.isArray(pane?.nodes) ? pane.nodes : [];
-    if (typeNodes.length === 0) return "";
-
-    const maxCol = Math.max(...typeNodes.map((n) => Number(n?.col ?? 0)));
-    const maxRow = Math.max(...typeNodes.map((n) => Number(n?.row ?? 0)));
-    const cols = Math.min(10, Math.max(4, maxCol + 1));
-    const rows = Math.min(20, Math.max(6, maxRow + 1));
-    const viewWidth = Math.max(1, cols - 1);
-    const viewHeight = Math.max(1, rows - 1);
-
-    const byId = new Map(typeNodes.map((n) => [Number(n?.id), n]));
-    const paneEdges = Array.isArray(pane?.edges) && pane.edges.length > 0
-      ? pane.edges
-      : typeNodes.flatMap((node) => {
-        const req = Array.isArray(node?.requiredNodeIds) ? node.requiredNodeIds : [];
-        return req.map((fromNodeId) => ({ fromNodeId: Number(fromNodeId), toNodeId: Number(node?.id) }));
-      });
-
-    const selectedNodeIds = new Set();
-    const nodeHtml = typeNodes
-      .sort((a, b) => {
-        const rowDelta = Number(a?.row ?? 0) - Number(b?.row ?? 0);
-        if (rowDelta !== 0) return rowDelta;
-        return Number(a?.col ?? 0) - Number(b?.col ?? 0);
-      })
-      .map((n) => {
-        const row = Math.max(1, Number(n?.row ?? 0) + 1);
-        const col = Math.max(1, Number(n?.col ?? 0) + 1);
-        const entries = Array.isArray(n?.entries) ? n.entries : [];
-        const primaryEntry = entries[0] || null;
-        const rank = Math.max(1, Number(primaryEntry?.maxRank ?? n?.maxRank ?? 1));
-        const name = escapeHtml(n?.name || "Unknown Talent");
-        const nodeSlug = slugifyTalentName(n?.name);
-        const entrySlugs = entries.map((entry) => slugifyTalentName(entry?.name)).filter(Boolean);
-        const nodeId = Number(n?.id);
-        const idCandidates = [
-          nodeId,
-          Number(n?.spellId),
-          ...entries.map((entry) => Number(entry?.id)),
-          ...entries.map((entry) => Number(entry?.spellId))
-        ].filter((value) => Number.isFinite(value));
-        let selectedRank = 0;
-        for (const candidateId of idCandidates) {
-          const rankById = selectedSet.idRanks.get(candidateId);
-          if (rankById) {
-            selectedRank = rankById;
-            break;
-          }
-        }
-        if (!selectedRank && nodeSlug) selectedRank = selectedSet.slugRanks.get(nodeSlug) || 0;
-        if (!selectedRank && entrySlugs.length > 0) {
-          for (const entrySlug of entrySlugs) {
-            const rankBySlug = selectedSet.slugRanks.get(entrySlug);
-            if (rankBySlug) {
-              selectedRank = rankBySlug;
-              break;
-            }
-          }
-        }
-        const isSelectedByBuild = selectedRank > 0;
-        if (isSelectedByBuild && Number.isFinite(nodeId)) selectedNodeIds.add(nodeId);
-        const initials = escapeHtml(nodeInitials(n?.name));
-        const iconUrl = typeof primaryEntry?.iconUrl === "string" && primaryEntry.iconUrl
-          ? primaryEntry.iconUrl
-          : (typeof n?.iconUrl === "string" && n.iconUrl ? n.iconUrl : "");
-        const iconStyle = iconUrl ? ` style="background-image:url('${escapeHtml(iconUrl)}')"` : "";
-        const nodeKind = String(n?.nodeKind || (entries.length > 1 ? "choice" : "active")).toLowerCase();
-        const nodeKey = `${pane.key || "tree"}:${Number(n?.id) || `${row}-${col}`}`;
-        talentNodeIndex.set(nodeKey, { paneKey: pane.key || "tree", paneLabel: pane.label || "Tree", node: n });
-
-        return `
-          <button class="wow-node wow-node-${escapeHtml(nodeKind)}${isSelectedByBuild ? " selected-by-build" : " inactive"}" data-node-key="${escapeHtml(nodeKey)}" type="button" style="grid-row:${row};grid-column:${col}" title="${name}">
-            <span class="wow-node-core${iconUrl ? " has-icon" : ""}"${iconStyle}>
-              <span class="wow-node-initials">${initials}</span>
-            </span>
-            <span class="wow-node-rank">${isSelectedByBuild ? selectedRank : `0/${rank}`}</span>
-            <span class="wow-node-label">${name}</span>
-          </button>
-        `;
-      })
-      .join("");
-
-    const linkHtml = [];
-    for (const edge of paneEdges) {
-      const fromNode = byId.get(Number(edge?.fromNodeId));
-      const toNode = byId.get(Number(edge?.toNodeId));
-      if (!fromNode || !toNode) continue;
-      const x1 = Math.max(0, Number(fromNode?.col ?? 0));
-      const y1 = Math.max(0, Number(fromNode?.row ?? 0));
-      const x2 = Math.max(0, Number(toNode?.col ?? 0));
-      const y2 = Math.max(0, Number(toNode?.row ?? 0));
-      const isActivePath = selectedNodeIds.has(Number(fromNode?.id)) && selectedNodeIds.has(Number(toNode?.id));
-      linkHtml.push(`<line class="${isActivePath ? "active" : "inactive"}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`);
+  function buildPaneLookup(pane) {
+    const list = Array.isArray(pane?.nodes) ? pane.nodes : [];
+    const byId = new Map();
+    const bySlug = new Map();
+    for (const node of list) {
+      const nodeId = Number(node?.id);
+      if (Number.isFinite(nodeId)) byId.set(nodeId, node);
+      const slug = slugifyTalentName(node?.name);
+      if (slug) bySlug.set(slug, node);
+      const entries = Array.isArray(node?.entries) ? node.entries : [];
+      for (const entry of entries) {
+        const entryId = Number(entry?.id);
+        if (Number.isFinite(entryId)) byId.set(entryId, node);
+        const entrySpellId = Number(entry?.spellId);
+        if (Number.isFinite(entrySpellId)) byId.set(entrySpellId, node);
+        const entrySlug = slugifyTalentName(entry?.name);
+        if (entrySlug && !bySlug.has(entrySlug)) bySlug.set(entrySlug, node);
+      }
+      const spellId = Number(node?.spellId);
+      if (Number.isFinite(spellId)) byId.set(spellId, node);
     }
-
-    return `
-      <section class="wow-tree-pane">
-        <h4 class="wow-tree-title">${escapeHtml(title)}</h4>
-        <div class="wow-tree-stage">
-          <svg class="wow-tree-links" viewBox="0 0 ${viewWidth} ${viewHeight}" preserveAspectRatio="none" aria-hidden="true">
-            ${linkHtml.join("")}
-          </svg>
-          <div class="wow-tree-grid wow-tree-nodes" style="--tree-cols:${cols};--tree-rows:${rows}">
-            ${nodeHtml}
-          </div>
-        </div>
-      </section>
-    `;
+    return { byId, bySlug };
   }
 
-  const blocks = [
-    renderTreePane(classPane),
-    renderTreePane(heroPane),
-    renderTreePane(specPane)
-  ].filter(Boolean);
+  const paneLookup = {
+    class: buildPaneLookup(classPane),
+    hero: buildPaneLookup(heroPane),
+    spec: buildPaneLookup(specPane)
+  };
+  const allLookup = buildPaneLookup({ nodes });
 
-  const totalNodes = nodes.length;
-  talentTreeHint.textContent = `${className} ${specName} | ${totalNodes} nodes | ${talentTreesMeta.source || "unknown source"}`;
+  const sections = [];
+  for (const key of order) {
+    const items = selectedSet.groups[key] || [];
+    if (items.length === 0) continue;
+    const pane = paneByGroup[key];
+    const label = pane?.label || `${titleCase(key)} Tree`;
+    const localLookup = paneLookup[key] || allLookup;
 
+    const rows = items.map((item, idx) => {
+      const itemId = Number(item?.id);
+      let node = Number.isFinite(itemId) ? localLookup.byId.get(itemId) : null;
+      if (!node && item?.slug) node = localLookup.bySlug.get(item.slug);
+      if (!node && Number.isFinite(itemId)) node = allLookup.byId.get(itemId);
+      if (!node && item?.slug) node = allLookup.bySlug.get(item.slug);
+
+      const nodeName = node?.name || (item?.slug ? item.slug.replace(/-/g, " ") : `Talent ${idx + 1}`);
+      const entries = Array.isArray(node?.entries) ? node.entries : [];
+      const primary = entries[0] || null;
+      const maxRank = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? item?.rank ?? 1) || 1);
+      const rank = Math.max(1, Number(item?.rank) || 1);
+      const iconUrl = (
+        (typeof primary?.iconUrl === "string" && primary.iconUrl) ||
+        (typeof node?.iconUrl === "string" && node.iconUrl) ||
+        iconUrlForSpellName(nodeName) ||
+        "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"
+      );
+      const initials = escapeHtml(nodeInitials(nodeName));
+
+      if (node) {
+        const nodeId = Number(node?.id);
+        const nodeKey = `${key}:${Number.isFinite(nodeId) ? nodeId : `${key}-${idx}`}`;
+        talentNodeIndex.set(nodeKey, {
+          paneKey: key,
+          paneLabel: label,
+          node
+        });
+        return `
+          <button class="export-build-node" type="button" data-node-key="${escapeHtml(nodeKey)}" title="${escapeHtml(nodeName)}">
+            <span class="export-build-icon" style="background-image:url('${escapeHtml(iconUrl)}')"><span class="export-build-initials">${initials}</span></span>
+            <span class="export-build-copy">
+              <span class="export-build-name">${escapeHtml(nodeName)}</span>
+              <span class="export-build-rank">${rank}/${maxRank}</span>
+            </span>
+          </button>
+        `;
+      }
+
+      return `
+        <div class="export-build-node static">
+          <span class="export-build-icon" style="background-image:url('${escapeHtml(iconUrl)}')"><span class="export-build-initials">${initials}</span></span>
+          <span class="export-build-copy">
+            <span class="export-build-name">${escapeHtml(nodeName)}</span>
+            <span class="export-build-rank">${rank}/${maxRank}</span>
+          </span>
+        </div>
+      `;
+    }).join("");
+
+    sections.push(`
+      <section class="export-build-pane">
+        <h4 class="export-build-title">${escapeHtml(label)}</h4>
+        <div class="export-build-grid">${rows}</div>
+      </section>
+    `);
+  }
+
+  if (sections.length === 0) {
+    sections.push(`
+      <section class="export-build-pane">
+        <h4 class="export-build-title">Build Preview</h4>
+        <p class="wow-tree-empty">This build has no mapped selected talents yet. Export string is still shown above.</p>
+      </section>
+    `);
+  }
+
+  talentTreeHint.textContent = `${className} ${specName} | Export build preview | ${selectedSet.totalCount} selected talents`;
   talentTreeHint.hidden = false;
   talentTreeWrap.hidden = false;
-  talentTreeWrap.className = "talent-tree-wrap wow-tree-layout";
-  talentTreeWrap.innerHTML = blocks.join("");
+  talentTreeWrap.className = "talent-tree-wrap export-build-layout";
+  talentTreeWrap.innerHTML = sections.join("");
   if (talentSystem) talentSystem.hidden = true;
-  talentNodeInspector.hidden = false;
-  talentNodeHint.textContent = "Click a node to inspect rank, type, choices, and prerequisites.";
+  talentNodeInspector.hidden = talentNodeIndex.size === 0;
+  talentNodeHint.textContent = "Click a talent from the export build preview to inspect details.";
   talentNodeBody.innerHTML = "";
 }
 
@@ -2478,14 +2469,14 @@ copyBtn.addEventListener("click", async () => {
 });
 
 talentTreeWrap.addEventListener("click", (e) => {
-  const nodeBtn = e.target.closest(".wow-node");
+  const nodeBtn = e.target.closest(".wow-node, .export-build-node");
   if (!nodeBtn) return;
   const nodeKey = nodeBtn.dataset.nodeKey;
   if (!nodeKey) return;
   const nodeInfo = talentNodeIndex.get(nodeKey);
   if (!nodeInfo) return;
 
-  const allNodes = talentTreeWrap.querySelectorAll(".wow-node");
+  const allNodes = talentTreeWrap.querySelectorAll(".wow-node, .export-build-node");
   allNodes.forEach((n) => n.classList.remove("selected"));
   nodeBtn.classList.add("selected");
   renderTalentNodeInspector(nodeInfo);
