@@ -2015,6 +2015,97 @@ function renderTalentTree(className, specName) {
     hero: heroPane,
     spec: specPane
   };
+  const paneEdgeCache = new Map();
+
+  function inferPaneEdgesFromLayout(nodes) {
+    const list = Array.isArray(nodes) ? nodes : [];
+    const byRow = new Map();
+    for (const node of list) {
+      const nodeId = Number(node?.id);
+      const row = Number(node?.row);
+      const col = Number(node?.col);
+      if (!Number.isFinite(nodeId) || !Number.isFinite(row) || !Number.isFinite(col)) continue;
+      if (!byRow.has(row)) byRow.set(row, []);
+      byRow.get(row).push({ id: nodeId, row, col });
+    }
+
+    const allRows = Array.from(byRow.keys()).sort((a, b) => a - b);
+    const edges = [];
+    for (const row of allRows) {
+      const current = byRow.get(row) || [];
+      if (current.length === 0) continue;
+      const parentCandidates = [];
+      for (const prevRow of allRows) {
+        if (prevRow >= row) break;
+        const distance = row - prevRow;
+        if (distance > 2) continue;
+        for (const parent of byRow.get(prevRow) || []) {
+          parentCandidates.push({ ...parent, distance });
+        }
+      }
+
+      for (const child of current) {
+        const nearest = parentCandidates
+          .map((p) => ({
+            id: p.id,
+            score: p.distance * 10 + Math.abs(p.col - child.col)
+          }))
+          .sort((a, b) => a.score - b.score)
+          .slice(0, 2);
+        for (const parent of nearest) {
+          edges.push({ fromNodeId: parent.id, toNodeId: child.id });
+        }
+      }
+    }
+
+    return edges;
+  }
+
+  function getPaneEdges(groupKey) {
+    if (paneEdgeCache.has(groupKey)) return paneEdgeCache.get(groupKey);
+    const pane = paneByGroup[groupKey];
+    const typeNodes = Array.isArray(pane?.nodes) ? pane.nodes : [];
+    const nodeIdSet = new Set(
+      typeNodes
+        .map((n) => Number(n?.id))
+        .filter((id) => Number.isFinite(id))
+    );
+
+    let edges = [];
+    if (Array.isArray(pane?.edges) && pane.edges.length > 0) {
+      edges = pane.edges
+        .map((e) => ({
+          fromNodeId: Number(e?.fromNodeId),
+          toNodeId: Number(e?.toNodeId)
+        }))
+        .filter((e) => Number.isFinite(e.fromNodeId) && Number.isFinite(e.toNodeId));
+    }
+
+    if (edges.length === 0) {
+      edges = typeNodes.flatMap((node) => {
+        const toNodeId = Number(node?.id);
+        const req = Array.isArray(node?.requiredNodeIds) ? node.requiredNodeIds : [];
+        if (!Number.isFinite(toNodeId)) return [];
+        return req
+          .map((fromNodeId) => ({ fromNodeId: Number(fromNodeId), toNodeId }))
+          .filter((e) => Number.isFinite(e.fromNodeId));
+      });
+    }
+
+    if (edges.length === 0) {
+      edges = inferPaneEdgesFromLayout(typeNodes);
+    }
+
+    const dedup = new Map();
+    for (const edge of edges) {
+      if (!nodeIdSet.has(edge.fromNodeId) || !nodeIdSet.has(edge.toNodeId)) continue;
+      const key = `${edge.fromNodeId}->${edge.toNodeId}`;
+      if (!dedup.has(key)) dedup.set(key, edge);
+    }
+    const finalEdges = Array.from(dedup.values());
+    paneEdgeCache.set(groupKey, finalEdges);
+    return finalEdges;
+  }
 
   function buildPaneLookup(pane) {
     const list = Array.isArray(pane?.nodes) ? pane.nodes : [];
@@ -2118,17 +2209,23 @@ function renderTalentTree(className, specName) {
       }
     });
 
-    // Expand prerequisite chain recursively so inactive context keeps a natural tree shape.
-    const queue = [...records];
+    // Expand prerequisite chain recursively using pane edge graph.
+    const paneEdges = getPaneEdges(groupKey);
+    const incomingByTo = new Map();
+    for (const edge of paneEdges) {
+      if (!incomingByTo.has(edge.toNodeId)) incomingByTo.set(edge.toNodeId, []);
+      incomingByTo.get(edge.toNodeId).push(edge.fromNodeId);
+    }
+
+    const queue = Array.from(selectedIds);
     let idxOffset = 0;
     let guard = 0;
     while (queue.length > 0 && guard < 300) {
       guard += 1;
-      const current = queue.shift();
-      if (!current || !current.node) continue;
-      const req = Array.isArray(current.node.requiredNodeIds) ? current.node.requiredNodeIds : [];
-      for (const reqIdRaw of req) {
-        const prereqId = Number(reqIdRaw);
+      const currentId = Number(queue.shift());
+      if (!Number.isFinite(currentId)) continue;
+      const parents = incomingByTo.get(currentId) || [];
+      for (const prereqId of parents) {
         if (!Number.isFinite(prereqId) || seenIds.has(prereqId)) continue;
 
         const lookup = paneLookupByGroup[groupKey] || allLookup;
@@ -2168,7 +2265,7 @@ function renderTalentTree(className, specName) {
           iconUrl
         };
         records.push(next);
-        queue.push(next);
+        queue.push(prereqId);
         idxOffset += 1;
       }
     }
@@ -2176,26 +2273,19 @@ function renderTalentTree(className, specName) {
     return records;
   }
 
-  function buildEdges(records) {
-    const edges = [];
+  function buildEdges(records, groupKey) {
     const byNodeId = new Map(
       records
         .filter((r) => Number.isFinite(r.nodeId))
         .map((r) => [Number(r.nodeId), r])
     );
-
-    records.forEach((record) => {
-      const req = Array.isArray(record.node?.requiredNodeIds) ? record.node.requiredNodeIds : [];
-      req.forEach((fromIdRaw) => {
-        const fromId = Number(fromIdRaw);
-        if (!Number.isFinite(fromId)) return;
-        const fromRecord = byNodeId.get(fromId);
-        if (!fromRecord) return;
-        edges.push({ from: fromRecord, to: record });
-      });
-    });
-
-    return edges;
+    const paneEdges = getPaneEdges(groupKey);
+    return paneEdges
+      .map((edge) => ({
+        from: byNodeId.get(edge.fromNodeId),
+        to: byNodeId.get(edge.toNodeId)
+      }))
+      .filter((edge) => edge.from && edge.to);
   }
 
   function renderSelectedGroupPane(groupKey) {
@@ -2209,7 +2299,7 @@ function renderTalentTree(className, specName) {
     const viewWidth = Math.max(1, cols - 1);
     const viewHeight = Math.max(1, rows - 1);
 
-    const edges = buildEdges(records);
+    const edges = buildEdges(records, groupKey);
     const linkHtml = edges.map((edge) => {
       const x1 = Math.max(0, edge.from.col - 1);
       const y1 = Math.max(0, edge.from.row - 1);
