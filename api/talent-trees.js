@@ -214,9 +214,11 @@ async function fetchApi(url, token, locale, namespaceOverride) {
     u.searchParams.set("namespace", namespaceOverride);
   }
   if (!u.searchParams.get("locale")) u.searchParams.set("locale", locale);
-  if (!u.searchParams.get("access_token")) u.searchParams.set("access_token", token);
-
-  const res = await fetch(u.toString());
+  const res = await fetch(u.toString(), {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  });
   if (!res.ok) throw new Error(`Blizzard API ${res.status}: ${u.toString()}`);
   return res.json();
 }

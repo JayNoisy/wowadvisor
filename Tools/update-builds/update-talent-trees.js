@@ -79,8 +79,11 @@ async function fetchApi(url, token, namespaceOverride = ACTIVE_NAMESPACE) {
     u.searchParams.set("namespace", namespaceOverride);
   }
   if (!u.searchParams.get("locale")) u.searchParams.set("locale", LOCALE);
-  if (!u.searchParams.get("access_token")) u.searchParams.set("access_token", token);
-  const res = await fetch(u.toString());
+  const res = await fetch(u.toString(), {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  });
   if (!res.ok) throw new Error(`Blizzard API ${res.status}: ${u}`);
   return res.json();
 }
@@ -91,9 +94,19 @@ async function fetchApiStatus(url, token, namespaceOverride = ACTIVE_NAMESPACE) 
     u.searchParams.set("namespace", namespaceOverride);
   }
   if (!u.searchParams.get("locale")) u.searchParams.set("locale", LOCALE);
-  if (!u.searchParams.get("access_token")) u.searchParams.set("access_token", token);
-  const res = await fetch(u.toString());
-  return { ok: res.ok, status: res.status, url: u.toString() };
+  const res = await fetch(u.toString(), {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  });
+  let bodyText = "";
+  try {
+    bodyText = await res.text();
+  } catch {
+    bodyText = "";
+  }
+  const bodyPreview = bodyText ? bodyText.slice(0, 240).replace(/\s+/g, " ").trim() : "";
+  return { ok: res.ok, status: res.status, url: u.toString(), bodyPreview };
 }
 
 async function tryFetchApi(url, token, namespaceOverride = ACTIVE_NAMESPACE) {
@@ -983,7 +996,8 @@ async function logEndpointDiagnostics(token) {
 
   for (const p of probes) {
     const r = await fetchApiStatus(p, token);
-    console.log(`Probe ${r.status}: ${r.url}`);
+    const suffix = r.bodyPreview ? ` | ${r.bodyPreview}` : "";
+    console.log(`Probe ${r.status}: ${r.url}${suffix}`);
   }
 }
 
