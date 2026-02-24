@@ -2575,7 +2575,8 @@ function renderTalentTree(className, specName) {
   const fallbackSuffix = fallbackGroups.length > 0
     ? ` | Fallback layout: ${fallbackGroups.map((k) => titleCase(k)).join(", ")}`
     : "";
-  talentTreeHint.textContent = `${className} ${specName} | Export build tree | ${selectedSet.totalCount} selected talents${fallbackSuffix} | v${APP_BUILD_VERSION}`;
+  const modeSuffix = selectedMode ? ` | ${modeLabel(selectedMode)}` : "";
+  talentTreeHint.textContent = `${className} ${specName}${modeSuffix} | Export build tree | ${selectedSet.totalCount} selected talents${fallbackSuffix} | v${APP_BUILD_VERSION}`;
   talentTreeHint.hidden = false;
   talentTreeWrap.hidden = false;
   talentTreeWrap.className = "talent-tree-wrap wow-tree-layout";
@@ -2732,15 +2733,12 @@ async function loadBuilds() {
 }
 
 async function loadTalentTreesMeta() {
-  const host = String(window.location.hostname || "").toLowerCase();
-  const isLocalDev = host === "localhost" || host === "127.0.0.1";
-  const isGithubPages = host.endsWith(".github.io");
-  const allowFallback = isLocalDev || isGithubPages || window.location.protocol === "file:";
-  const urls = allowFallback
-    ? ["/api/talent-trees", "/talent-trees.json", "./talent-trees.json"]
-    : ["/api/talent-trees"];
+  const urls = ["./talent-trees.json", "talent-trees.json", "/talent-trees.json", "/api/talent-trees"];
+  const seenUrls = new Set();
   const errors = [];
   for (const url of urls) {
+    if (seenUrls.has(url)) continue;
+    seenUrls.add(url);
     try {
       const res = await fetch(url, { cache: "no-store" });
       if (!res.ok) {
@@ -2757,7 +2755,7 @@ async function loadTalentTreesMeta() {
       talentTreesLoadError = null;
       talentTreesMeta = {
         generatedAt: payload?.generatedAt ?? null,
-        source: payload?.source ?? (url.startsWith("/api/") ? "blizzard-api" : "local-json"),
+        source: url.includes("/api/") ? (payload?.source ?? "blizzard-api") : "local-json",
         specCount: specs.length
       };
       console.log("Talent trees loaded", { url, specs: talentTreesMeta.specCount });
@@ -2770,10 +2768,7 @@ async function loadTalentTreesMeta() {
   }
   talentTreesSpecs = [];
   talentTreesLoadError = errors.length > 0 ? errors.join(" | ") : "all sources failed";
-  if (!allowFallback) {
-    talentTreesLoadError = `API required on this host. ${talentTreesLoadError}`;
-  }
-  console.warn("Could not load talent tree metadata from API or local file.", { errors, allowFallback, host });
+  console.warn("Could not load talent tree metadata from static json or API.", { errors });
   if (selectedClass && selectedSpec) renderTalentTree(selectedClass, selectedSpec);
 }
 
