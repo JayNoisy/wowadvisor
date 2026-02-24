@@ -679,6 +679,51 @@ function buildCanonicalSpecRecord({ className, specName, specId, treeId, treePay
   };
 }
 
+function enrichMinimalSpecShape(spec) {
+  const nodes = Array.isArray(spec?.nodes) ? spec.nodes : [];
+  const classNodes = [];
+  const heroNodes = [];
+  const specNodes = [];
+  const otherNodes = [];
+  for (const node of nodes) {
+    const type = String(node?.treeType || "").toLowerCase();
+    if (type.includes("class")) classNodes.push(node);
+    else if (type.includes("hero")) heroNodes.push(node);
+    else if (type.includes("spec")) specNodes.push(node);
+    else otherNodes.push(node);
+  }
+  if (classNodes.length === 0 && heroNodes.length === 0 && specNodes.length === 0 && otherNodes.length > 0) {
+    specNodes.push(...otherNodes);
+  } else if (otherNodes.length > 0) {
+    specNodes.push(...otherNodes);
+  }
+
+  const classPane = buildPane("class", "Class Tree", classNodes);
+  const heroPane = buildPane("hero", "Hero Tree", heroNodes);
+  const specPane = buildPane("spec", "Spec Tree", specNodes);
+
+  return {
+    className: spec?.className || "",
+    specName: spec?.specName || "",
+    specId: Number.isFinite(Number(spec?.specId)) ? Number(spec.specId) : null,
+    treeId: Number.isFinite(Number(spec?.treeId)) ? Number(spec.treeId) : null,
+    nodeOrder: Array.isArray(spec?.nodeOrder) ? spec.nodeOrder : [],
+    nodes,
+    trees: {
+      class: classPane,
+      hero: heroPane,
+      spec: specPane
+    },
+    summary: {
+      totalNodes: nodes.length,
+      classNodes: classPane.nodes.length,
+      heroNodes: heroPane.nodes.length,
+      specNodes: specPane.nodes.length,
+      edgeCount: classPane.edges.length + heroPane.edges.length + specPane.edges.length
+    }
+  };
+}
+
 function resolveTreeRef(specPayload) {
   const href =
     specPayload?.spec_talent_tree?.key?.href ||
@@ -961,7 +1006,7 @@ async function buildTalentTrees() {
     const fromLibTalentInfo = await collectFromLibTalentInfoGithub();
     if (fromLibTalentInfo.length > 0) {
       console.log(`Collected ${fromLibTalentInfo.length} specs from LibTalentInfo GitHub fallback`);
-      specs = fromLibTalentInfo;
+      specs = fromLibTalentInfo.map((spec) => enrichMinimalSpecShape(spec));
       source = "libtalentinfo-fallback";
     }
   }

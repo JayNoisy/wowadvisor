@@ -2449,7 +2449,8 @@ function renderTalentTree(className, specName) {
   }
 
   function shouldUseSelectedOnlyLayout(groupKey, paneNodes) {
-    if (String(talentTreesMeta?.source || "") === "local-json") return true;
+    const sourceTag = String(talentTreesMeta?.source || "").toLowerCase();
+    if (sourceTag.includes("fallback")) return true;
     const paneList = Array.isArray(paneNodes) ? paneNodes : [];
     const items = getSelectedItemsForGroup(groupKey, paneNodes);
     if (paneList.length === 0) return true;
@@ -2742,8 +2743,9 @@ function renderTalentTree(className, specName) {
     : "";
   const selectedCount = decodedSelectedCount > 0 ? decodedSelectedCount : selectedSet.totalCount;
   const selectionSource = decodedSelectedCount > 0 ? "decoded import" : "selected map";
+  const treeSource = String(talentTreesMeta?.source || "unknown");
   const modeSuffix = selectedMode ? ` | ${modeLabel(selectedMode)}` : "";
-  talentTreeHint.textContent = `${className} ${specName}${modeSuffix} | Export build tree | ${selectedCount} selected talents (${selectionSource})${fallbackSuffix} | v${APP_BUILD_VERSION}`;
+  talentTreeHint.textContent = `${className} ${specName}${modeSuffix} | Export build tree | ${selectedCount} selected talents (${selectionSource})${fallbackSuffix} | source: ${treeSource} | v${APP_BUILD_VERSION}`;
   talentTreeHint.hidden = false;
   talentTreeWrap.hidden = false;
   talentTreeWrap.className = "talent-tree-wrap wow-tree-layout";
@@ -2922,7 +2924,9 @@ async function loadTalentTreesMeta() {
       talentTreesLoadError = null;
       talentTreesMeta = {
         generatedAt: payload?.generatedAt ?? null,
-        source: url.includes("/api/") ? (payload?.source ?? "blizzard-api") : "local-json",
+        source: url.includes("/api/")
+          ? (payload?.source ?? "blizzard-api")
+          : (payload?.source ? `local-json:${payload.source}` : "local-json"),
         specCount: specs.length
       };
       console.log("Talent trees loaded", { url, specs: talentTreesMeta.specCount });
