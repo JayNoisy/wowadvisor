@@ -2010,120 +2010,251 @@ function renderTalentTree(className, specName) {
 
   talentNodeIndex = new Map();
   const selectedSet = buildSelectedTalentSelection(activeBuild?.selectedTalents);
-  function renderTreePane(pane) {
-    if (!pane) return "";
-    const title = pane?.label || "Tree";
-    const typeNodes = Array.isArray(pane?.nodes) ? pane.nodes : [];
-    if (typeNodes.length === 0) return "";
+  const paneByGroup = {
+    class: classPane,
+    hero: heroPane,
+    spec: specPane
+  };
 
-    const maxCol = Math.max(...typeNodes.map((n) => Number(n?.col ?? 0)));
-    const maxRow = Math.max(...typeNodes.map((n) => Number(n?.row ?? 0)));
-    const cols = Math.min(10, Math.max(4, maxCol + 1));
-    const rows = Math.min(20, Math.max(6, maxRow + 1));
+  function buildPaneLookup(pane) {
+    const list = Array.isArray(pane?.nodes) ? pane.nodes : [];
+    const byId = new Map();
+    const bySlug = new Map();
+    for (const node of list) {
+      const nodeId = Number(node?.id);
+      if (Number.isFinite(nodeId)) byId.set(nodeId, node);
+      const nodeSlug = slugifyTalentName(node?.name);
+      if (nodeSlug) bySlug.set(nodeSlug, node);
+      const entries = Array.isArray(node?.entries) ? node.entries : [];
+      for (const entry of entries) {
+        const entryId = Number(entry?.id);
+        if (Number.isFinite(entryId)) byId.set(entryId, node);
+        const entrySpellId = Number(entry?.spellId);
+        if (Number.isFinite(entrySpellId)) byId.set(entrySpellId, node);
+        const entrySlug = slugifyTalentName(entry?.name);
+        if (entrySlug && !bySlug.has(entrySlug)) bySlug.set(entrySlug, node);
+      }
+      const spellId = Number(node?.spellId);
+      if (Number.isFinite(spellId)) byId.set(spellId, node);
+    }
+    return { byId, bySlug };
+  }
+
+  const paneLookupByGroup = {
+    class: buildPaneLookup(classPane),
+    hero: buildPaneLookup(heroPane),
+    spec: buildPaneLookup(specPane)
+  };
+  const allLookup = buildPaneLookup({ nodes });
+
+  function resolveNodeForItem(groupKey, item) {
+    const lookup = paneLookupByGroup[groupKey] || allLookup;
+    const itemId = Number(item?.id);
+    let node = Number.isFinite(itemId) ? lookup.byId.get(itemId) : null;
+    if (!node && Number.isFinite(itemId)) node = allLookup.byId.get(itemId);
+    if (!node && item?.slug) node = lookup.bySlug.get(item.slug);
+    if (!node && item?.slug) node = allLookup.bySlug.get(item.slug);
+    return node || null;
+  }
+
+  function collectRecordsForGroup(groupKey) {
+    const items = selectedSet.groups[groupKey] || [];
+    if (items.length === 0) return [];
+    const records = [];
+    const selectedIds = new Set();
+
+    items.forEach((item, idx) => {
+      const node = resolveNodeForItem(groupKey, item);
+      const entries = Array.isArray(node?.entries) ? node.entries : [];
+      const primary = entries[0] || null;
+      const name = node?.name || (item?.slug ? item.slug.replace(/-/g, " ") : `Talent ${idx + 1}`);
+      const maxRank = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? item?.rank ?? 1) || 1);
+      const selectedRank = Math.max(1, Number(item?.rank) || 1);
+      const row = Number.isFinite(Number(node?.row)) ? Number(node.row) + 1 : Math.floor(idx / 4) + 1;
+      const col = Number.isFinite(Number(node?.col)) ? Number(node.col) + 1 : (idx % 4) + 1;
+      const nodeId = Number(node?.id);
+      const key = Number.isFinite(nodeId) ? `${groupKey}:${nodeId}` : `${groupKey}:virtual:${idx}`;
+      const iconUrl = (
+        (typeof primary?.iconUrl === "string" && primary.iconUrl) ||
+        iconUrlFromIconName(primary?.iconName) ||
+        (typeof node?.iconUrl === "string" && node.iconUrl) ||
+        iconUrlFromIconName(node?.iconName) ||
+        iconUrlForSpellName(name) ||
+        "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"
+      );
+      const nodeForInspector = node || {
+        id: null,
+        name,
+        row: row - 1,
+        col: col - 1,
+        maxRank,
+        nodeKind: "active",
+        requiredNodeIds: [],
+        entries: [{
+          id: Number.isFinite(Number(item?.id)) ? Number(item.id) : null,
+          name,
+          spellId: null,
+          iconName: null,
+          iconUrl,
+          maxRank
+        }]
+      };
+      records.push({
+        key,
+        nodeId: Number.isFinite(nodeId) ? nodeId : null,
+        node: nodeForInspector,
+        name,
+        row,
+        col,
+        maxRank,
+        selectedRank,
+        isSelected: true,
+        iconUrl
+      });
+      if (Number.isFinite(nodeId)) selectedIds.add(nodeId);
+    });
+
+    const existingIds = new Set(records.map((r) => r.nodeId).filter((id) => Number.isFinite(id)));
+    const prereqIds = new Set();
+    records.forEach((r) => {
+      const req = Array.isArray(r.node?.requiredNodeIds) ? r.node.requiredNodeIds : [];
+      for (const reqIdRaw of req) {
+        const reqId = Number(reqIdRaw);
+        if (!Number.isFinite(reqId)) continue;
+        if (selectedIds.has(reqId) || existingIds.has(reqId)) continue;
+        prereqIds.add(reqId);
+      }
+    });
+
+    let idxOffset = 0;
+    for (const prereqId of prereqIds) {
+      const lookup = paneLookupByGroup[groupKey] || allLookup;
+      const reqNode = lookup.byId.get(prereqId) || allLookup.byId.get(prereqId);
+      if (!reqNode) continue;
+      const entries = Array.isArray(reqNode?.entries) ? reqNode.entries : [];
+      const primary = entries[0] || null;
+      const name = reqNode?.name || `Talent ${prereqId}`;
+      const maxRank = Math.max(1, Number(primary?.maxRank ?? reqNode?.maxRank ?? 1) || 1);
+      const row = Number.isFinite(Number(reqNode?.row))
+        ? Number(reqNode.row) + 1
+        : Math.floor((records.length + idxOffset) / 4) + 1;
+      const col = Number.isFinite(Number(reqNode?.col))
+        ? Number(reqNode.col) + 1
+        : ((records.length + idxOffset) % 4) + 1;
+      const key = `${groupKey}:${prereqId}`;
+      const iconUrl = (
+        (typeof primary?.iconUrl === "string" && primary.iconUrl) ||
+        iconUrlFromIconName(primary?.iconName) ||
+        (typeof reqNode?.iconUrl === "string" && reqNode.iconUrl) ||
+        iconUrlFromIconName(reqNode?.iconName) ||
+        iconUrlForSpellName(name) ||
+        "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"
+      );
+      records.push({
+        key,
+        nodeId: prereqId,
+        node: reqNode,
+        name,
+        row,
+        col,
+        maxRank,
+        selectedRank: 0,
+        isSelected: false,
+        iconUrl
+      });
+      idxOffset += 1;
+    }
+
+    return records;
+  }
+
+  function buildEdges(records) {
+    const edges = [];
+    const byNodeId = new Map(
+      records
+        .filter((r) => Number.isFinite(r.nodeId))
+        .map((r) => [Number(r.nodeId), r])
+    );
+
+    records.forEach((record) => {
+      const req = Array.isArray(record.node?.requiredNodeIds) ? record.node.requiredNodeIds : [];
+      req.forEach((fromIdRaw) => {
+        const fromId = Number(fromIdRaw);
+        if (!Number.isFinite(fromId)) return;
+        const fromRecord = byNodeId.get(fromId);
+        if (!fromRecord) return;
+        edges.push({ from: fromRecord, to: record });
+      });
+    });
+
+    if (edges.length === 0 && records.length > 1) {
+      const sorted = [...records].sort((a, b) => {
+        const rowDelta = a.row - b.row;
+        if (rowDelta !== 0) return rowDelta;
+        return a.col - b.col;
+      });
+      for (let i = 1; i < sorted.length; i += 1) {
+        edges.push({ from: sorted[i - 1], to: sorted[i] });
+      }
+    }
+
+    return edges;
+  }
+
+  function renderSelectedGroupPane(groupKey) {
+    const records = collectRecordsForGroup(groupKey);
+    if (records.length === 0) return "";
+    const pane = paneByGroup[groupKey];
+    const title = pane?.label || `${titleCase(groupKey)} Tree`;
+
+    const cols = Math.min(10, Math.max(4, ...records.map((r) => r.col)));
+    const rows = Math.min(20, Math.max(6, ...records.map((r) => r.row)));
     const viewWidth = Math.max(1, cols - 1);
     const viewHeight = Math.max(1, rows - 1);
 
-    const byId = new Map(typeNodes.map((n) => [Number(n?.id), n]));
-    const paneEdges = Array.isArray(pane?.edges) && pane.edges.length > 0
-      ? pane.edges
-      : typeNodes.flatMap((node) => {
-        const req = Array.isArray(node?.requiredNodeIds) ? node.requiredNodeIds : [];
-        return req.map((fromNodeId) => ({ fromNodeId: Number(fromNodeId), toNodeId: Number(node?.id) }));
-      });
+    const edges = buildEdges(records);
+    const linkHtml = edges.map((edge) => {
+      const x1 = Math.max(0, edge.from.col - 1);
+      const y1 = Math.max(0, edge.from.row - 1);
+      const x2 = Math.max(0, edge.to.col - 1);
+      const y2 = Math.max(0, edge.to.row - 1);
+      const isActivePath = edge.from.isSelected && edge.to.isSelected;
+      return `<line class="${isActivePath ? "active" : "inactive"}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`;
+    }).join("");
 
-    const selectedNodeIds = new Set();
-    const nodeHtml = typeNodes
+    const nodeHtml = records
       .sort((a, b) => {
-        const rowDelta = Number(a?.row ?? 0) - Number(b?.row ?? 0);
+        const rowDelta = a.row - b.row;
         if (rowDelta !== 0) return rowDelta;
-        return Number(a?.col ?? 0) - Number(b?.col ?? 0);
+        return a.col - b.col;
       })
-      .map((n) => {
-        const row = Math.max(1, Number(n?.row ?? 0) + 1);
-        const col = Math.max(1, Number(n?.col ?? 0) + 1);
-        const entries = Array.isArray(n?.entries) ? n.entries : [];
-        const primaryEntry = entries[0] || null;
-        const maxRank = Math.max(1, Number(primaryEntry?.maxRank ?? n?.maxRank ?? 1));
-        const name = escapeHtml(n?.name || "Unknown Talent");
-        const nodeSlug = slugifyTalentName(n?.name);
-        const entrySlugs = entries.map((entry) => slugifyTalentName(entry?.name)).filter(Boolean);
-        const nodeId = Number(n?.id);
-        const idCandidates = [
-          nodeId,
-          Number(n?.spellId),
-          ...entries.map((entry) => Number(entry?.id)),
-          ...entries.map((entry) => Number(entry?.spellId))
-        ].filter((value) => Number.isFinite(value));
-        let selectedRank = 0;
-        for (const candidateId of idCandidates) {
-          const rankById = selectedSet.idRanks.get(candidateId);
-          if (rankById) {
-            selectedRank = rankById;
-            break;
-          }
-        }
-        if (!selectedRank && nodeSlug) selectedRank = selectedSet.slugRanks.get(nodeSlug) || 0;
-        if (!selectedRank && entrySlugs.length > 0) {
-          for (const entrySlug of entrySlugs) {
-            const rankBySlug = selectedSet.slugRanks.get(entrySlug);
-            if (rankBySlug) {
-              selectedRank = rankBySlug;
-              break;
-            }
-          }
-        }
-        const isSelectedByBuild = selectedRank > 0;
-        if (isSelectedByBuild && Number.isFinite(nodeId)) selectedNodeIds.add(nodeId);
-
-        const initials = escapeHtml(nodeInitials(n?.name));
-        const iconUrl = (
-          (typeof primaryEntry?.iconUrl === "string" && primaryEntry.iconUrl) ||
-          iconUrlFromIconName(primaryEntry?.iconName) ||
-          (typeof n?.iconUrl === "string" && n.iconUrl) ||
-          iconUrlFromIconName(n?.iconName) ||
-          iconUrlForSpellName(n?.name) ||
-          "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"
-        );
-        const iconStyle = iconUrl ? ` style="background-image:url('${escapeHtml(iconUrl)}')"` : "";
-        const nodeKind = String(n?.nodeKind || (entries.length > 1 ? "choice" : "active")).toLowerCase();
-        const nodeKey = `${pane.key || "tree"}:${Number(n?.id) || `${row}-${col}`}`;
-        talentNodeIndex.set(nodeKey, {
-          paneKey: pane.key || "tree",
-          paneLabel: pane.label || "Tree",
-          node: n
+      .map((record) => {
+        const nodeKind = String(record.node?.nodeKind || "active").toLowerCase();
+        const initials = escapeHtml(nodeInitials(record.name));
+        const iconStyle = record.iconUrl ? ` style="background-image:url('${escapeHtml(record.iconUrl)}')"` : "";
+        talentNodeIndex.set(record.key, {
+          paneKey: groupKey,
+          paneLabel: title,
+          node: record.node
         });
-
         return `
-          <button class="wow-node wow-node-${escapeHtml(nodeKind)}${isSelectedByBuild ? " selected-by-build" : " inactive"}" data-node-key="${escapeHtml(nodeKey)}" type="button" style="grid-row:${row};grid-column:${col}" title="${name}">
-            <span class="wow-node-core${iconUrl ? " has-icon" : ""}"${iconStyle}>
+          <button class="wow-node wow-node-${escapeHtml(nodeKind)}${record.isSelected ? " selected-by-build" : " inactive"}" data-node-key="${escapeHtml(record.key)}" type="button" style="grid-row:${record.row};grid-column:${record.col}" title="${escapeHtml(record.name)}">
+            <span class="wow-node-core${record.iconUrl ? " has-icon" : ""}"${iconStyle}>
               <span class="wow-node-initials">${initials}</span>
             </span>
-            <span class="wow-node-rank${isSelectedByBuild ? "" : " empty"}">${isSelectedByBuild ? `${selectedRank}/${maxRank}` : ""}</span>
-            <span class="wow-node-label">${name}</span>
+            <span class="wow-node-rank${record.isSelected ? "" : " empty"}">${record.isSelected ? `${record.selectedRank}/${record.maxRank}` : ""}</span>
+            <span class="wow-node-label">${escapeHtml(record.name)}</span>
           </button>
         `;
       })
       .join("");
-
-    const linkHtml = [];
-    for (const edge of paneEdges) {
-      const fromNode = byId.get(Number(edge?.fromNodeId));
-      const toNode = byId.get(Number(edge?.toNodeId));
-      if (!fromNode || !toNode) continue;
-      const x1 = Math.max(0, Number(fromNode?.col ?? 0));
-      const y1 = Math.max(0, Number(fromNode?.row ?? 0));
-      const x2 = Math.max(0, Number(toNode?.col ?? 0));
-      const y2 = Math.max(0, Number(toNode?.row ?? 0));
-      const isActivePath = selectedNodeIds.has(Number(fromNode?.id)) && selectedNodeIds.has(Number(toNode?.id));
-      linkHtml.push(`<line class="${isActivePath ? "active" : "inactive"}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`);
-    }
 
     return `
       <section class="wow-tree-pane">
         <h4 class="wow-tree-title">${escapeHtml(title)}</h4>
         <div class="wow-tree-stage">
           <svg class="wow-tree-links" viewBox="0 0 ${viewWidth} ${viewHeight}" preserveAspectRatio="none" aria-hidden="true">
-            ${linkHtml.join("")}
+            ${linkHtml}
           </svg>
           <div class="wow-tree-grid wow-tree-nodes" style="--tree-cols:${cols};--tree-rows:${rows}">
             ${nodeHtml}
@@ -2133,21 +2264,27 @@ function renderTalentTree(className, specName) {
     `;
   }
 
-  const blocks = [
-    renderTreePane(classPane),
-    renderTreePane(heroPane),
-    renderTreePane(specPane)
-  ].filter(Boolean);
+  const blocks = ["class", "hero", "spec"]
+    .map((groupKey) => renderSelectedGroupPane(groupKey))
+    .filter(Boolean);
 
-  const totalNodes = nodes.length;
-  talentTreeHint.textContent = `${className} ${specName} | ${totalNodes} nodes | ${talentTreesMeta.source || "unknown source"}`;
+  if (blocks.length === 0) {
+    blocks.push(`
+      <section class="wow-tree-pane">
+        <h4 class="wow-tree-title">Build Preview</h4>
+        <p class="wow-tree-empty">This build has no mapped selected talents yet. Export string is still shown above.</p>
+      </section>
+    `);
+  }
+
+  talentTreeHint.textContent = `${className} ${specName} | Export build tree | ${selectedSet.totalCount} selected talents`;
   talentTreeHint.hidden = false;
   talentTreeWrap.hidden = false;
   talentTreeWrap.className = "talent-tree-wrap wow-tree-layout";
   talentTreeWrap.innerHTML = blocks.join("");
   if (talentSystem) talentSystem.hidden = true;
-  talentNodeInspector.hidden = false;
-  talentNodeHint.textContent = "Click a node to inspect rank, type, choices, and prerequisites.";
+  talentNodeInspector.hidden = talentNodeIndex.size === 0;
+  talentNodeHint.textContent = "Click a node to inspect talent details.";
   talentNodeBody.innerHTML = "";
 }
 
