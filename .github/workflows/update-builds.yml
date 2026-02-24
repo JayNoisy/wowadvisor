@@ -29,17 +29,18 @@ jobs:
         run: node update-builds.js
         working-directory: Tools/update-builds
 
-      - name: Update talent trees (optional)
+      - name: Update talent trees
         run: |
-          echo "Generating talent trees (Blizzard API first, GitHub fallback if needed)..."
+          echo "Generating canonical talent trees (Blizzard API required)..."
           node update-talent-trees.js
-          node -e "const fs=require('fs'); const p=JSON.parse(fs.readFileSync('../../talent-trees.json','utf8')); const c=Array.isArray(p.specs)?p.specs.length:0; console.log('Talent tree specs generated:', c); if(c===0){console.error('No specs were generated. Check Blizzard client credentials and API access.'); process.exit(1);}"
+          node -e "const fs=require('fs'); const p=JSON.parse(fs.readFileSync('../../talent-trees.json','utf8')); const specs=Array.isArray(p.specs)?p.specs:[]; const c=specs.length; const withNodeOrder=specs.filter(s=>Array.isArray(s?.nodeOrder)&&s.nodeOrder.length>0).length; console.log('Talent tree specs generated:', c, 'source:', p.source, 'withNodeOrder:', withNodeOrder); if(c===0||p.source!=='blizzard-api-canonical'||withNodeOrder===0){console.error('Canonical Blizzard talent trees were not generated. Check BLIZZARD_CLIENT_ID/BLIZZARD_CLIENT_SECRET and API access.'); process.exit(1);}"
         working-directory: Tools/update-builds
         env:
           BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
           BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
           BLIZZARD_REGION: us
           BLIZZARD_LOCALE: en_US
+          FAIL_ON_FALLBACK: "true"
 
       - name: Commit and push updated data files
         run: |

@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename);
 
 const REGION = process.env.BLIZZARD_REGION || "us";
 const LOCALE = process.env.BLIZZARD_LOCALE || "en_US";
+const FAIL_ON_FALLBACK = /^(1|true|yes)$/i.test(String(process.env.FAIL_ON_FALLBACK || ""));
 let ACTIVE_NAMESPACE = `static-${REGION}`;
 const LIB_TALENT_INFO_RETAIL_URL =
   "https://raw.githubusercontent.com/Snakybo/LibTalentInfo-1.0/master/LibTalentInfo-1.0/TalentDataRetail.lua";
@@ -57,13 +58,17 @@ async function getAccessToken() {
 
 async function tryGetAccessToken() {
   if (!process.env.BLIZZARD_CLIENT_ID || !process.env.BLIZZARD_CLIENT_SECRET) {
-    console.log("Blizzard credentials not set; skipping Blizzard API routes.");
+    const message = "Blizzard credentials not set.";
+    if (FAIL_ON_FALLBACK) throw new Error(`${message} Canonical talent tree fetch is required.`);
+    console.log(`${message} Skipping Blizzard API routes.`);
     return null;
   }
   try {
     return await getAccessToken();
   } catch (err) {
-    console.log(`Blizzard token request failed; skipping Blizzard API routes. ${String(err)}`);
+    const message = `Blizzard token request failed: ${String(err)}`;
+    if (FAIL_ON_FALLBACK) throw new Error(`${message}. Canonical talent tree fetch is required.`);
+    console.log(`${message}. Skipping Blizzard API routes.`);
     return null;
   }
 }
@@ -1023,10 +1028,21 @@ async function buildTalentTrees() {
 
 async function main() {
   const payload = await buildTalentTrees();
+  const specs = Array.isArray(payload?.specs) ? payload.specs : [];
+  const withNodeOrder = specs.filter((spec) => Array.isArray(spec?.nodeOrder) && spec.nodeOrder.length > 0).length;
+  if (FAIL_ON_FALLBACK) {
+    if (payload?.source !== "blizzard-api-canonical") {
+      throw new Error(`Expected source=blizzard-api-canonical but got ${String(payload?.source || "unknown")}`);
+    }
+    if (withNodeOrder === 0) {
+      throw new Error("Expected canonical nodeOrder data, but none was generated.");
+    }
+  }
+
   const projectRoot = path.resolve(__dirname, "..", "..");
   const outPath = path.join(projectRoot, "talent-trees.json");
   await fs.writeFile(outPath, JSON.stringify(payload, null, 2), "utf8");
-  console.log(`Wrote talent trees: ${outPath} (${payload.specs.length} specs)`);
+  console.log(`Wrote talent trees: ${outPath} (${specs.length} specs, source=${payload.source}, withNodeOrder=${withNodeOrder})`);
 }
 
 main().catch((err) => {
