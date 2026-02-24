@@ -145,6 +145,12 @@ function firstNonEmpty(...vals) {
   return "";
 }
 
+function iconUrlFromName(iconNameLike) {
+  const iconName = String(iconNameLike || "").trim().toLowerCase();
+  if (!iconName) return null;
+  return `https://wow.zamimg.com/images/wow/icons/large/${iconName}.jpg`;
+}
+
 function luaNodeToJs(node) {
   if (!node) return null;
 
@@ -355,6 +361,25 @@ async function collectFromLibTalentInfoGithub() {
   return out;
 }
 
+function normalizeEntry(rawEntry, fallbackName, fallbackMaxRank) {
+  if (!rawEntry || typeof rawEntry !== "object") return null;
+  const spell = rawEntry.spell_tooltip?.spell || rawEntry.spell || null;
+  const spellId = Number(spell?.id);
+  const iconName = String(
+    spell?.icon ||
+    rawEntry.icon ||
+    ""
+  ).trim().toLowerCase();
+  return {
+    id: Number(rawEntry.id) || null,
+    name: firstNonEmpty(rawEntry.name, spell?.name, fallbackName) || "Unknown Talent",
+    spellId: Number.isFinite(spellId) ? spellId : null,
+    iconName: iconName || null,
+    iconUrl: iconUrlFromName(iconName),
+    maxRank: Math.max(1, Number(rawEntry.max_ranks ?? rawEntry.ranks ?? fallbackMaxRank ?? 1) || 1)
+  };
+}
+
 function normalizeNode(raw, idx) {
   if (!raw || typeof raw !== "object") return null;
   const id = Number(raw.id ?? raw.node?.id ?? raw.talent?.id ?? idx + 1);
@@ -363,7 +388,19 @@ function normalizeNode(raw, idx) {
   const row = Number(raw.display_row ?? raw.row ?? raw.ui_row ?? 0) || 0;
   const col = Number(raw.display_col ?? raw.column ?? raw.ui_col ?? 0) || 0;
 
-  const entry = Array.isArray(raw.entries) && raw.entries.length > 0 ? raw.entries[0] : null;
+  const rawEntries = Array.isArray(raw.entries) ? raw.entries : [];
+  const entry = rawEntries.length > 0 ? rawEntries[0] : null;
+  const spell = raw.spell_tooltip?.spell || entry?.spell_tooltip?.spell || null;
+  const spellId = Number(spell?.id);
+  const iconName = String(
+    spell?.icon ||
+    raw.icon ||
+    entry?.icon ||
+    ""
+  ).trim().toLowerCase();
+  const iconUrl = iconName
+    ? iconUrlFromName(iconName)
+    : null;
   const name = firstNonEmpty(
     raw.name,
     raw.spell_tooltip?.spell?.name,
@@ -373,6 +410,28 @@ function normalizeNode(raw, idx) {
   );
   const maxRank = Number(raw.ranks ?? raw.max_ranks ?? entry?.max_ranks ?? 1) || 1;
   const treeType = String(raw.tree_type || raw.type || "spec");
+  const nodeTypeRaw = String(raw.node_type || raw.type || "").toLowerCase();
+  const requiredNodeIds = Array.isArray(raw.required_node_ids)
+    ? raw.required_node_ids.map(Number).filter(Number.isFinite)
+    : Array.isArray(raw.prerequisite_node_ids)
+      ? raw.prerequisite_node_ids.map(Number).filter(Number.isFinite)
+      : [];
+  const entries = rawEntries
+    .map((e) => normalizeEntry(e, name, maxRank))
+    .filter(Boolean);
+  if (entries.length === 0) {
+    entries.push({
+      id: null,
+      name,
+      spellId: Number.isFinite(spellId) ? spellId : null,
+      iconName: iconName || null,
+      iconUrl,
+      maxRank: Math.max(1, maxRank)
+    });
+  }
+  let nodeKind = "passive";
+  if (entries.length > 1 || nodeTypeRaw.includes("choice")) nodeKind = "choice";
+  else if (nodeTypeRaw.includes("active") || entries[0]?.spellId) nodeKind = "active";
 
   return {
     id,
@@ -380,7 +439,13 @@ function normalizeNode(raw, idx) {
     row: Math.max(0, row),
     col: Math.max(0, col),
     maxRank: Math.max(1, maxRank),
-    treeType
+    treeType,
+    requiredNodeIds,
+    spellId: Number.isFinite(spellId) ? spellId : null,
+    iconName: iconName || null,
+    iconUrl,
+    nodeKind,
+    entries
   };
 }
 

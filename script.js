@@ -548,11 +548,15 @@ function buildInteractiveTalentData(specPayload) {
       const reqNodes = requiredNodeIds
         .map((id) => idMap.get(id))
         .filter(Boolean);
+      const primaryIconFromName = iconUrlFromIconName(primary?.iconName);
+      const nodeIconFromName = iconUrlFromIconName(node?.iconName);
       const iconUrl = (
         (typeof primary?.iconUrl === "string" && primary.iconUrl) ||
         (typeof node?.iconUrl === "string" && node.iconUrl) ||
+        primaryIconFromName ||
+        nodeIconFromName ||
         iconUrlForSpellName(node?.name) ||
-        ""
+        "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"
       );
       const descBase = pane === "class" ? "Class talent node." : "Spec talent node.";
       const desc = `${descBase} ${String(node?.nodeKind || "active")} | Max rank ${maxPoints}.`;
@@ -1259,6 +1263,12 @@ function findSpellNameInStep(stepText) {
 
 function iconUrlForSpellName(spellName) {
   const iconName = SPELL_ICON_MAP[spellName];
+  if (!iconName) return null;
+  return `https://wow.zamimg.com/images/wow/icons/large/${iconName}.jpg`;
+}
+
+function iconUrlFromIconName(iconNameLike) {
+  const iconName = String(iconNameLike || "").trim().toLowerCase();
   if (!iconName) return null;
   return `https://wow.zamimg.com/images/wow/icons/large/${iconName}.jpg`;
 }
