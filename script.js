@@ -782,7 +782,9 @@ function hideTooltip() {
 function resetTalentTreeCard(message) {
   talentTreeHint.textContent = message;
   talentTreeHint.hidden = false;
-  talentTreeWrap.hidden = false;
+  talentTreeWrap.innerHTML = "";
+  talentTreeWrap.hidden = true;
+  talentTreeWrap.className = "talent-tree-wrap";
   if (talentSystem) talentSystem.hidden = true;
   hideTooltip();
   talentNodeIndex = new Map();
@@ -831,19 +833,21 @@ function findTalentSpec(className, specName) {
 function splitNodesByTreeType(nodes) {
   const classNodes = [];
   const specNodes = [];
+  const heroNodes = [];
   const otherNodes = [];
   for (const node of nodes) {
     const type = String(node?.treeType || "").toLowerCase();
     if (type.includes("class")) classNodes.push(node);
     else if (type.includes("spec")) specNodes.push(node);
+    else if (type.includes("hero")) heroNodes.push(node);
     else otherNodes.push(node);
   }
-  if (classNodes.length === 0 && specNodes.length === 0 && otherNodes.length > 0) {
+  if (classNodes.length === 0 && specNodes.length === 0 && heroNodes.length === 0 && otherNodes.length > 0) {
     specNodes.push(...otherNodes);
   } else if (otherNodes.length > 0) {
     specNodes.push(...otherNodes);
   }
-  return { classNodes, specNodes };
+  return { classNodes, specNodes, heroNodes };
 }
 
 function buildFallbackPane(key, label, nodes) {
@@ -870,6 +874,14 @@ function resolveTalentPanes(specPayload) {
         nodes: Array.isArray(specPayload.trees.class.nodes) ? specPayload.trees.class.nodes : [],
         edges: Array.isArray(specPayload.trees.class.edges) ? specPayload.trees.class.edges : []
       },
+      heroPane: specPayload?.trees?.hero
+        ? {
+          key: "hero",
+          label: specPayload.trees.hero.label || "Hero Tree",
+          nodes: Array.isArray(specPayload.trees.hero.nodes) ? specPayload.trees.hero.nodes : [],
+          edges: Array.isArray(specPayload.trees.hero.edges) ? specPayload.trees.hero.edges : []
+        }
+        : null,
       specPane: {
         key: "spec",
         label: specPayload.trees.spec.label || "Spec Tree",
@@ -880,9 +892,10 @@ function resolveTalentPanes(specPayload) {
     };
   }
 
-  const { classNodes, specNodes } = splitNodesByTreeType(nodes);
+  const { classNodes, specNodes, heroNodes } = splitNodesByTreeType(nodes);
   return {
     classPane: buildFallbackPane("class", "Class Tree", classNodes),
+    heroPane: heroNodes.length > 0 ? buildFallbackPane("hero", "Hero Tree", heroNodes) : null,
     specPane: buildFallbackPane("spec", "Spec Tree", specNodes),
     nodes
   };
@@ -1989,27 +2002,145 @@ function renderTalentTree(className, specName) {
     return;
   }
 
-  const mapped = buildInteractiveTalentData(specPayload);
-  if (!Array.isArray(mapped.talents) || mapped.talents.length === 0) {
+  const { classPane, heroPane, specPane, nodes } = resolveTalentPanes(specPayload);
+  if (!Array.isArray(nodes) || nodes.length === 0) {
     resetTalentTreeCard(`No nodes found for ${className} | ${specName}.`);
     return;
   }
 
-  talentData = mapped.talents;
-  maxTotalPoints = mapped.maxTotalPoints;
-  const totalNodes = talentData.length;
+  talentNodeIndex = new Map();
+  const selectedSet = buildSelectedTalentSelection(activeBuild?.selectedTalents);
+
+  function renderTreePane(pane) {
+    if (!pane) return "";
+    const title = pane?.label || "Tree";
+    const typeNodes = Array.isArray(pane?.nodes) ? pane.nodes : [];
+    if (typeNodes.length === 0) return "";
+
+    const maxCol = Math.max(...typeNodes.map((n) => Number(n?.col ?? 0)));
+    const maxRow = Math.max(...typeNodes.map((n) => Number(n?.row ?? 0)));
+    const cols = Math.min(10, Math.max(4, maxCol + 1));
+    const rows = Math.min(20, Math.max(6, maxRow + 1));
+    const viewWidth = Math.max(1, cols - 1);
+    const viewHeight = Math.max(1, rows - 1);
+
+    const byId = new Map(typeNodes.map((n) => [Number(n?.id), n]));
+    const paneEdges = Array.isArray(pane?.edges) && pane.edges.length > 0
+      ? pane.edges
+      : typeNodes.flatMap((node) => {
+        const req = Array.isArray(node?.requiredNodeIds) ? node.requiredNodeIds : [];
+        return req.map((fromNodeId) => ({ fromNodeId: Number(fromNodeId), toNodeId: Number(node?.id) }));
+      });
+
+    const selectedNodeIds = new Set();
+    const nodeHtml = typeNodes
+      .sort((a, b) => {
+        const rowDelta = Number(a?.row ?? 0) - Number(b?.row ?? 0);
+        if (rowDelta !== 0) return rowDelta;
+        return Number(a?.col ?? 0) - Number(b?.col ?? 0);
+      })
+      .map((n) => {
+        const row = Math.max(1, Number(n?.row ?? 0) + 1);
+        const col = Math.max(1, Number(n?.col ?? 0) + 1);
+        const entries = Array.isArray(n?.entries) ? n.entries : [];
+        const primaryEntry = entries[0] || null;
+        const rank = Math.max(1, Number(primaryEntry?.maxRank ?? n?.maxRank ?? 1));
+        const name = escapeHtml(n?.name || "Unknown Talent");
+        const nodeSlug = slugifyTalentName(n?.name);
+        const entrySlugs = entries.map((entry) => slugifyTalentName(entry?.name)).filter(Boolean);
+        const nodeId = Number(n?.id);
+        const idCandidates = [
+          nodeId,
+          Number(n?.spellId),
+          ...entries.map((entry) => Number(entry?.id)),
+          ...entries.map((entry) => Number(entry?.spellId))
+        ].filter((value) => Number.isFinite(value));
+        let selectedRank = 0;
+        for (const candidateId of idCandidates) {
+          const rankById = selectedSet.idRanks.get(candidateId);
+          if (rankById) {
+            selectedRank = rankById;
+            break;
+          }
+        }
+        if (!selectedRank && nodeSlug) selectedRank = selectedSet.slugRanks.get(nodeSlug) || 0;
+        if (!selectedRank && entrySlugs.length > 0) {
+          for (const entrySlug of entrySlugs) {
+            const rankBySlug = selectedSet.slugRanks.get(entrySlug);
+            if (rankBySlug) {
+              selectedRank = rankBySlug;
+              break;
+            }
+          }
+        }
+        const isSelectedByBuild = selectedRank > 0;
+        if (isSelectedByBuild && Number.isFinite(nodeId)) selectedNodeIds.add(nodeId);
+        const initials = escapeHtml(nodeInitials(n?.name));
+        const iconUrl = typeof primaryEntry?.iconUrl === "string" && primaryEntry.iconUrl
+          ? primaryEntry.iconUrl
+          : (typeof n?.iconUrl === "string" && n.iconUrl ? n.iconUrl : "");
+        const iconStyle = iconUrl ? ` style="background-image:url('${escapeHtml(iconUrl)}')"` : "";
+        const nodeKind = String(n?.nodeKind || (entries.length > 1 ? "choice" : "active")).toLowerCase();
+        const nodeKey = `${pane.key || "tree"}:${Number(n?.id) || `${row}-${col}`}`;
+        talentNodeIndex.set(nodeKey, { paneKey: pane.key || "tree", paneLabel: pane.label || "Tree", node: n });
+
+        return `
+          <button class="wow-node wow-node-${escapeHtml(nodeKind)}${isSelectedByBuild ? " selected-by-build" : " inactive"}" data-node-key="${escapeHtml(nodeKey)}" type="button" style="grid-row:${row};grid-column:${col}" title="${name}">
+            <span class="wow-node-core${iconUrl ? " has-icon" : ""}"${iconStyle}>
+              <span class="wow-node-initials">${initials}</span>
+            </span>
+            <span class="wow-node-rank">${isSelectedByBuild ? selectedRank : `0/${rank}`}</span>
+            <span class="wow-node-label">${name}</span>
+          </button>
+        `;
+      })
+      .join("");
+
+    const linkHtml = [];
+    for (const edge of paneEdges) {
+      const fromNode = byId.get(Number(edge?.fromNodeId));
+      const toNode = byId.get(Number(edge?.toNodeId));
+      if (!fromNode || !toNode) continue;
+      const x1 = Math.max(0, Number(fromNode?.col ?? 0));
+      const y1 = Math.max(0, Number(fromNode?.row ?? 0));
+      const x2 = Math.max(0, Number(toNode?.col ?? 0));
+      const y2 = Math.max(0, Number(toNode?.row ?? 0));
+      const isActivePath = selectedNodeIds.has(Number(fromNode?.id)) && selectedNodeIds.has(Number(toNode?.id));
+      linkHtml.push(`<line class="${isActivePath ? "active" : "inactive"}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`);
+    }
+
+    return `
+      <section class="wow-tree-pane">
+        <h4 class="wow-tree-title">${escapeHtml(title)}</h4>
+        <div class="wow-tree-stage">
+          <svg class="wow-tree-links" viewBox="0 0 ${viewWidth} ${viewHeight}" preserveAspectRatio="none" aria-hidden="true">
+            ${linkHtml.join("")}
+          </svg>
+          <div class="wow-tree-grid wow-tree-nodes" style="--tree-cols:${cols};--tree-rows:${rows}">
+            ${nodeHtml}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  const blocks = [
+    renderTreePane(classPane),
+    renderTreePane(heroPane),
+    renderTreePane(specPane)
+  ].filter(Boolean);
+
+  const totalNodes = nodes.length;
   talentTreeHint.textContent = `${className} ${specName} | ${totalNodes} nodes | ${talentTreesMeta.source || "unknown source"}`;
 
-  talentTreeHint.hidden = true;
+  talentTreeHint.hidden = false;
   talentTreeWrap.hidden = false;
-  talentTreeWrap.className = "talent-tree-wrap";
-  if (talentSystem) talentSystem.hidden = false;
-  initTalentTree();
-  talentTreeWrap.hidden = false;
-  talentNodeInspector.hidden = true;
-  talentNodeHint.textContent = "Click a talent node to inspect it.";
+  talentTreeWrap.className = "talent-tree-wrap wow-tree-layout";
+  talentTreeWrap.innerHTML = blocks.join("");
+  if (talentSystem) talentSystem.hidden = true;
+  talentNodeInspector.hidden = false;
+  talentNodeHint.textContent = "Click a node to inspect rank, type, choices, and prerequisites.";
   talentNodeBody.innerHTML = "";
-  applyBuildToTree();
 }
 
 function renderTalentNodeInspector(nodeInfo) {
