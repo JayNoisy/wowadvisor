@@ -170,30 +170,6 @@ const mythicContext = {
   affixes: new Set(["Fortified"])
 };
 
-function injectTalentTreeStyles() {
-  const style = document.createElement('style');
-  style.textContent = `
-    #talent-system {
-      position: relative; /* Needed for SVG overlay */
-    }
-    .talent-tree-lines {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-    .talent-tree-lines line {
-      stroke: #404040;
-      stroke-width: 2;
-    }
-    .talent-tree-lines line.active {
-      stroke: #ffd100;
-    }
-  `;
-  document.head.appendChild(style);
-}
 // =========================
 // Helpers
 // =========================
@@ -605,21 +581,14 @@ function buildInteractiveTalentData(specPayload) {
 }
 
 function initTalentTree() {
-  if (!talentTree || !talentSystem) return;
+  if (!talentTree) return;
   talentTree.innerHTML = "";
-  const oldSvg = talentSystem.querySelector(".talent-tree-lines");
-  if (oldSvg) oldSvg.remove();
-
   totalPointsSpent = 0;
   Object.keys(nodeState).forEach((key) => delete nodeState[key]);
   if (!Array.isArray(talentData) || talentData.length === 0) {
     updateTreeVisuals();
     return;
   }
-
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("class", "talent-tree-lines");
-  talentSystem.insertBefore(svg, talentTree);
 
   const maxCol = Math.max(1, ...talentData.map((t) => Number(t?.col ?? 1)));
   const maxRow = Math.max(1, ...talentData.map((t) => Number(t?.row ?? 1)));
@@ -652,49 +621,6 @@ function initTalentTree() {
 
     nodeEl.addEventListener("mousemove", (e) => showTooltip(e, talent));
     nodeEl.addEventListener("mouseleave", hideTooltip);
-  });
-
-  // Draw lines after a reflow to get correct positions.
-  requestAnimationFrame(() => {
-    const treeRect = talentTree.getBoundingClientRect();
-    if (treeRect.width === 0 || treeRect.height === 0) return;
-
-    svg.setAttribute("viewBox", `0 0 ${treeRect.width} ${treeRect.height}`);
-    svg.innerHTML = ""; // Clear previous lines
-
-    talentData.forEach((talent) => {
-      const toNode = document.getElementById(`node-${talent.id}`);
-      if (!toNode) return;
-
-      const toRect = toNode.getBoundingClientRect();
-      // Center of the node, relative to the tree container
-      const toX = toRect.left + toRect.width / 2 - treeRect.left;
-      const toY = toRect.top + toRect.height / 2 - treeRect.top;
-
-      (talent.reqNodes || []).forEach((reqId) => {
-        const fromNode = document.getElementById(`node-${reqId}`);
-        if (!fromNode) return;
-
-        const fromIdSafe = reqId.replace(/[^a-zA-Z0-9-_]/g, '');
-        const toIdSafe = talent.id.replace(/[^a-zA-Z0-9-_]/g, '');
-        const lineId = `line-${fromIdSafe}-to-${toIdSafe}`;
-
-        if (svg.querySelector(`#${lineId}`)) return; // already drawn
-
-        const fromRect = fromNode.getBoundingClientRect();
-        const fromX = fromRect.left + fromRect.width / 2 - treeRect.left;
-        const fromY = fromRect.top + fromRect.height / 2 - treeRect.top;
-
-        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        line.setAttribute("id", lineId);
-        line.setAttribute("x1", fromX);
-        line.setAttribute("y1", fromY);
-        line.setAttribute("x2", toX);
-        line.setAttribute("y2", toY);
-        svg.appendChild(line);
-      });
-    });
-    updateTreeVisuals(); // Call again to color lines
   });
 
   updateTreeVisuals();
@@ -763,29 +689,22 @@ function updateTreeVisuals() {
     const badge = document.getElementById(`badge-${talent.id}`);
     if (!el || !badge) return;
     badge.innerText = `${nodeState[talent.id]}/${talent.maxPoints}`;
-    
-    el.classList.remove("unavailable", "maxed", "available");
 
-    if (nodeState[talent.id] > 0) {
-      if (nodeState[talent.id] >= talent.maxPoints) {
-        el.classList.add("maxed");
-      }
-    } else {
-      if (canAddPoint(talent)) {
-        el.classList.add("available");
-      } else {
-        el.classList.add("unavailable");
-      }
+    let isAvailable = true;
+    if (talent.reqPointsTotal > totalPointsSpent) isAvailable = false;
+    const reqNodes = Array.isArray(talent.reqNodes) && talent.reqNodes.length > 0
+      ? talent.reqNodes
+      : (talent.reqNode ? [talent.reqNode] : []);
+    if (reqNodes.length > 0) {
+      const unlockedByReq = reqNodes.some((reqId) => Number(nodeState[reqId] || 0) > 0);
+      if (!unlockedByReq) isAvailable = false;
     }
 
-    // Update lines
-    (talent.reqNodes || []).forEach(reqId => {
-      const fromIdSafe = reqId.replace(/[^a-zA-Z0-9-_]/g, '');
-      const toIdSafe = talent.id.replace(/[^a-zA-Z0-9-_]/g, '');
-      const line = document.getElementById(`line-${fromIdSafe}-to-${toIdSafe}`);
-      if (!line) return;
-
-      line.classList.toggle('active', nodeState[reqId] > 0);
+    el.classList.remove("unavailable", "maxed");
+    if (!isAvailable && nodeState[talent.id] === 0) {
+      el.classList.add("unavailable");
+    } else if (nodeState[talent.id] === talent.maxPoints) {
+      el.classList.add("maxed");
     }
   });
 }
@@ -2392,20 +2311,6 @@ copyBtn.addEventListener("click", async () => {
   }
 });
 
-talentTreeWrap.addEventListener("click", (e) => {
-  const nodeBtn = e.target.closest(".wow-node");
-  if (!nodeBtn) return;
-  const nodeKey = nodeBtn.dataset.nodeKey;
-  if (!nodeKey) return;
-  const nodeInfo = talentNodeIndex.get(nodeKey);
-  if (!nodeInfo) return;
-
-  const allNodes = talentTreeWrap.querySelectorAll(".wow-node");
-  allNodes.forEach((n) => n.classList.remove("selected"));
-  nodeBtn.classList.add("selected");
-  renderTalentNodeInspector(nodeInfo);
-});
-
 statPills.addEventListener("click", (e) => {
   const btn = e.target.closest(".stat-pill");
   if (!btn) return;
@@ -2438,5 +2343,4 @@ rotationToggleBtn?.addEventListener("click", () => {
 });
 
 // Start
-injectTalentTreeStyles();
 Promise.all([loadBuilds(), loadTalentTreesMeta()]);
