@@ -407,6 +407,24 @@ function parseIdFromHref(href) {
   return Number.isFinite(id) ? id : null;
 }
 
+function parseTreeIdFromHref(href) {
+  const text = String(href || "");
+  if (!text) return null;
+  const match = text.match(/\/talent-tree\/(\d+)/);
+  if (!match) return null;
+  const id = Number(match[1]);
+  return Number.isFinite(id) ? id : null;
+}
+
+function parseSpecIdFromHref(href) {
+  const text = String(href || "");
+  if (!text) return null;
+  const match = text.match(/\/playable-specialization\/(\d+)/);
+  if (!match) return null;
+  const id = Number(match[1]);
+  return Number.isFinite(id) ? id : null;
+}
+
 function normalizeRefNodeId(value) {
   if (Number.isFinite(Number(value))) return Number(value);
   if (!value || typeof value !== "object") return null;
@@ -755,33 +773,51 @@ function resolveTreeRef(specPayload) {
     Number(specPayload?.spec_talent_tree?.id),
     Number(specPayload?.talent_tree?.id),
     Number(specPayload?.talent_trees?.[0]?.id),
+    Number(parseTreeIdFromHref(href)),
     Number(parseIdFromHref(href))
   ];
   const treeId = idCandidates.find((id) => Number.isFinite(id)) ?? null;
-  return { treeId, href };
+  const layoutHref = href && /\/playable-specialization\/\d+/.test(href) ? href : null;
+  const treeHref = Number.isFinite(treeId)
+    ? `https://${REGION}.api.blizzard.com/data/wow/talent-tree/${treeId}`
+    : (layoutHref ? null : href);
+  return { treeId, treeHref, layoutHref };
 }
 
 async function fetchTreeAndLayoutForSpec(specPayload, token) {
-  const specId = Number(specPayload?.id);
+  const { treeId, treeHref, layoutHref } = resolveTreeRef(specPayload);
+  const specId = Number(specPayload?.id ?? parseSpecIdFromHref(layoutHref) ?? parseSpecIdFromHref(treeHref));
   if (!Number.isFinite(specId)) return null;
 
-  const { treeId, href } = resolveTreeRef(specPayload);
   let treePayload = null;
-  if (href) treePayload = await tryFetchApi(href, token);
+  if (treeHref) treePayload = await tryFetchApi(treeHref, token);
   if (!treePayload && Number.isFinite(treeId)) {
     treePayload = await tryFetchApi(`https://${REGION}.api.blizzard.com/data/wow/talent-tree/${treeId}`, token);
   }
-  if (!treePayload) return null;
-
-  const resolvedTreeId = Number(treePayload?.id);
-  const finalTreeId = Number.isFinite(resolvedTreeId) ? resolvedTreeId : treeId;
   let layoutPayload = null;
-  if (Number.isFinite(finalTreeId)) {
+  if (layoutHref) {
+    layoutPayload = await tryFetchApi(layoutHref, token);
+  }
+  const treeIdFromTreePayload = Number(treePayload?.id);
+  let finalTreeId = Number.isFinite(treeIdFromTreePayload) ? treeIdFromTreePayload : treeId;
+  if (!layoutPayload && Number.isFinite(finalTreeId)) {
     layoutPayload = await tryFetchApi(
       `https://${REGION}.api.blizzard.com/data/wow/talent-tree/${finalTreeId}/playable-specialization/${specId}`,
       token
     );
   }
+  if (!treePayload && layoutPayload) {
+    const treeIdFromLayoutPayload = Number(layoutPayload?.id);
+    const treeIdFromLayoutHref = parseTreeIdFromHref(layoutPayload?._links?.self?.href);
+    finalTreeId = Number.isFinite(treeIdFromLayoutPayload)
+      ? treeIdFromLayoutPayload
+      : (Number.isFinite(treeIdFromLayoutHref) ? treeIdFromLayoutHref : finalTreeId);
+    if (Number.isFinite(finalTreeId)) {
+      treePayload = await tryFetchApi(`https://${REGION}.api.blizzard.com/data/wow/talent-tree/${finalTreeId}`, token);
+    }
+  }
+  if (!treePayload && !layoutPayload) return null;
+  if (!treePayload) treePayload = layoutPayload;
   if (!layoutPayload) layoutPayload = treePayload;
 
   return { specId, treeId: finalTreeId, treePayload, layoutPayload };
@@ -842,6 +878,7 @@ async function collectCanonicalTalentTrees(token) {
 
   const classNameCache = new Map();
   const bySpecKey = new Map();
+  let emptyNodeOrderCount = 0;
   for (const ref of specRefs) {
     const specHref = ref?.key?.href || ref?.href;
     const fallbackSpecId = Number(ref?.id ?? parseIdFromHref(specHref));
@@ -889,6 +926,12 @@ async function collectCanonicalTalentTrees(token) {
       treePayload: treeBundle.treePayload,
       layoutPayload: treeBundle.layoutPayload
     });
+    if (!Array.isArray(record?.nodeOrder) || record.nodeOrder.length === 0) {
+      emptyNodeOrderCount += 1;
+      if (emptyNodeOrderCount <= 8) {
+        console.log(`Node order missing for ${className} ${specName} (specId=${treeBundle.specId}, treeId=${treeBundle.treeId})`);
+      }
+    }
     const specKey = `${className.toLowerCase()}::${specName.toLowerCase()}`;
     const existing = bySpecKey.get(specKey);
     const incomingCount = Number(record?.summary?.totalNodes) || 0;
@@ -896,6 +939,10 @@ async function collectCanonicalTalentTrees(token) {
     if (!existing || incomingCount > existingCount) {
       bySpecKey.set(specKey, record);
     }
+  }
+
+  if (emptyNodeOrderCount > 0) {
+    console.log(`Canonical route warning: ${emptyNodeOrderCount} specs missing nodeOrder data.`);
   }
 
   return Array.from(bySpecKey.values()).sort((a, b) => {

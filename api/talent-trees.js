@@ -40,6 +40,24 @@ function parseIdFromHref(href) {
   return Number.isFinite(id) ? id : null;
 }
 
+function parseTreeIdFromHref(href) {
+  const text = String(href || "");
+  if (!text) return null;
+  const match = text.match(/\/talent-tree\/(\d+)/);
+  if (!match) return null;
+  const id = Number(match[1]);
+  return Number.isFinite(id) ? id : null;
+}
+
+function parseSpecIdFromHref(href) {
+  const text = String(href || "");
+  if (!text) return null;
+  const match = text.match(/\/playable-specialization\/(\d+)/);
+  if (!match) return null;
+  const id = Number(match[1]);
+  return Number.isFinite(id) ? id : null;
+}
+
 function normalizeRefNodeId(value) {
   if (Number.isFinite(Number(value))) return Number(value);
   if (!value || typeof value !== "object") return null;
@@ -403,10 +421,13 @@ function resolveTreeRef(specPayload) {
     Number(specPayload?.spec_talent_tree?.id),
     Number(specPayload?.talent_tree?.id),
     Number(specPayload?.talent_trees?.[0]?.id),
+    Number(parseTreeIdFromHref(href)),
     Number(parseIdFromHref(href))
   ];
   const treeId = idCandidates.find((id) => Number.isFinite(id)) ?? null;
-  return { treeId, href };
+  const layoutHref = href && /\/playable-specialization\/\d+/.test(href) ? href : null;
+  const treeHref = layoutHref ? null : href;
+  return { treeId, treeHref, layoutHref };
 }
 
 function buildCanonicalSpecRecord({ className, specName, specId, treeId, treePayload, layoutPayload }) {
@@ -464,11 +485,12 @@ function buildCanonicalSpecRecord({ className, specName, specId, treeId, treePay
 }
 
 async function fetchTreeAndLayoutForSpec(specPayload, region, token, locale, namespace) {
-  const specId = Number(specPayload?.id);
+  const { treeId, treeHref, layoutHref } = resolveTreeRef(specPayload);
+  const specId = Number(specPayload?.id ?? parseSpecIdFromHref(layoutHref) ?? parseSpecIdFromHref(treeHref));
   if (!Number.isFinite(specId)) return null;
-  const { treeId, href } = resolveTreeRef(specPayload);
+
   let treePayload = null;
-  if (href) treePayload = await tryFetchApi(href, token, locale, namespace);
+  if (treeHref) treePayload = await tryFetchApi(treeHref, token, locale, namespace);
   if (!treePayload && Number.isFinite(treeId)) {
     treePayload = await tryFetchApi(
       `https://${region}.api.blizzard.com/data/wow/talent-tree/${treeId}`,
@@ -477,12 +499,13 @@ async function fetchTreeAndLayoutForSpec(specPayload, region, token, locale, nam
       namespace
     );
   }
-  if (!treePayload) return null;
-
-  const resolvedTreeId = Number(treePayload?.id);
-  const finalTreeId = Number.isFinite(resolvedTreeId) ? resolvedTreeId : treeId;
   let layoutPayload = null;
-  if (Number.isFinite(finalTreeId)) {
+  if (layoutHref) {
+    layoutPayload = await tryFetchApi(layoutHref, token, locale, namespace);
+  }
+  const treeIdFromTreePayload = Number(treePayload?.id);
+  let finalTreeId = Number.isFinite(treeIdFromTreePayload) ? treeIdFromTreePayload : treeId;
+  if (!layoutPayload && Number.isFinite(finalTreeId)) {
     layoutPayload = await tryFetchApi(
       `https://${region}.api.blizzard.com/data/wow/talent-tree/${finalTreeId}/playable-specialization/${specId}`,
       token,
@@ -490,6 +513,23 @@ async function fetchTreeAndLayoutForSpec(specPayload, region, token, locale, nam
       namespace
     );
   }
+  if (!treePayload && layoutPayload) {
+    const treeIdFromLayoutPayload = Number(layoutPayload?.id);
+    const treeIdFromLayoutHref = parseTreeIdFromHref(layoutPayload?._links?.self?.href);
+    finalTreeId = Number.isFinite(treeIdFromLayoutPayload)
+      ? treeIdFromLayoutPayload
+      : (Number.isFinite(treeIdFromLayoutHref) ? treeIdFromLayoutHref : finalTreeId);
+    if (Number.isFinite(finalTreeId)) {
+      treePayload = await tryFetchApi(
+        `https://${region}.api.blizzard.com/data/wow/talent-tree/${finalTreeId}`,
+        token,
+        locale,
+        namespace
+      );
+    }
+  }
+  if (!treePayload && !layoutPayload) return null;
+  if (!treePayload) treePayload = layoutPayload;
   if (!layoutPayload) layoutPayload = treePayload;
   return {
     specId,
