@@ -2062,6 +2062,7 @@ function renderTalentTree(className, specName) {
     if (items.length === 0) return [];
     const records = [];
     const selectedIds = new Set();
+    const seenIds = new Set();
 
     items.forEach((item, idx) => {
       const node = resolveNodeForItem(groupKey, item);
@@ -2111,58 +2112,65 @@ function renderTalentTree(className, specName) {
         isSelected: true,
         iconUrl
       });
-      if (Number.isFinite(nodeId)) selectedIds.add(nodeId);
-    });
-
-    const existingIds = new Set(records.map((r) => r.nodeId).filter((id) => Number.isFinite(id)));
-    const prereqIds = new Set();
-    records.forEach((r) => {
-      const req = Array.isArray(r.node?.requiredNodeIds) ? r.node.requiredNodeIds : [];
-      for (const reqIdRaw of req) {
-        const reqId = Number(reqIdRaw);
-        if (!Number.isFinite(reqId)) continue;
-        if (selectedIds.has(reqId) || existingIds.has(reqId)) continue;
-        prereqIds.add(reqId);
+      if (Number.isFinite(nodeId)) {
+        selectedIds.add(nodeId);
+        seenIds.add(nodeId);
       }
     });
 
+    // Expand prerequisite chain recursively so inactive context keeps a natural tree shape.
+    const queue = [...records];
     let idxOffset = 0;
-    for (const prereqId of prereqIds) {
-      const lookup = paneLookupByGroup[groupKey] || allLookup;
-      const reqNode = lookup.byId.get(prereqId) || allLookup.byId.get(prereqId);
-      if (!reqNode) continue;
-      const entries = Array.isArray(reqNode?.entries) ? reqNode.entries : [];
-      const primary = entries[0] || null;
-      const name = reqNode?.name || `Talent ${prereqId}`;
-      const maxRank = Math.max(1, Number(primary?.maxRank ?? reqNode?.maxRank ?? 1) || 1);
-      const row = Number.isFinite(Number(reqNode?.row))
-        ? Number(reqNode.row) + 1
-        : Math.floor((records.length + idxOffset) / 4) + 1;
-      const col = Number.isFinite(Number(reqNode?.col))
-        ? Number(reqNode.col) + 1
-        : ((records.length + idxOffset) % 4) + 1;
-      const key = `${groupKey}:${prereqId}`;
-      const iconUrl = (
-        (typeof primary?.iconUrl === "string" && primary.iconUrl) ||
-        iconUrlFromIconName(primary?.iconName) ||
-        (typeof reqNode?.iconUrl === "string" && reqNode.iconUrl) ||
-        iconUrlFromIconName(reqNode?.iconName) ||
-        iconUrlForSpellName(name) ||
-        "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"
-      );
-      records.push({
-        key,
-        nodeId: prereqId,
-        node: reqNode,
-        name,
-        row,
-        col,
-        maxRank,
-        selectedRank: 0,
-        isSelected: false,
-        iconUrl
-      });
-      idxOffset += 1;
+    let guard = 0;
+    while (queue.length > 0 && guard < 300) {
+      guard += 1;
+      const current = queue.shift();
+      if (!current || !current.node) continue;
+      const req = Array.isArray(current.node.requiredNodeIds) ? current.node.requiredNodeIds : [];
+      for (const reqIdRaw of req) {
+        const prereqId = Number(reqIdRaw);
+        if (!Number.isFinite(prereqId) || seenIds.has(prereqId)) continue;
+
+        const lookup = paneLookupByGroup[groupKey] || allLookup;
+        const reqNode = lookup.byId.get(prereqId) || allLookup.byId.get(prereqId);
+        if (!reqNode) continue;
+        seenIds.add(prereqId);
+
+        const entries = Array.isArray(reqNode?.entries) ? reqNode.entries : [];
+        const primary = entries[0] || null;
+        const name = reqNode?.name || `Talent ${prereqId}`;
+        const maxRank = Math.max(1, Number(primary?.maxRank ?? reqNode?.maxRank ?? 1) || 1);
+        const row = Number.isFinite(Number(reqNode?.row))
+          ? Number(reqNode.row) + 1
+          : Math.floor((records.length + idxOffset) / 4) + 1;
+        const col = Number.isFinite(Number(reqNode?.col))
+          ? Number(reqNode.col) + 1
+          : ((records.length + idxOffset) % 4) + 1;
+        const key = `${groupKey}:${prereqId}`;
+        const iconUrl = (
+          (typeof primary?.iconUrl === "string" && primary.iconUrl) ||
+          iconUrlFromIconName(primary?.iconName) ||
+          (typeof reqNode?.iconUrl === "string" && reqNode.iconUrl) ||
+          iconUrlFromIconName(reqNode?.iconName) ||
+          iconUrlForSpellName(name) ||
+          "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"
+        );
+        const next = {
+          key,
+          nodeId: prereqId,
+          node: reqNode,
+          name,
+          row,
+          col,
+          maxRank,
+          selectedRank: 0,
+          isSelected: false,
+          iconUrl
+        };
+        records.push(next);
+        queue.push(next);
+        idxOffset += 1;
+      }
     }
 
     return records;
@@ -2186,17 +2194,6 @@ function renderTalentTree(className, specName) {
         edges.push({ from: fromRecord, to: record });
       });
     });
-
-    if (edges.length === 0 && records.length > 1) {
-      const sorted = [...records].sort((a, b) => {
-        const rowDelta = a.row - b.row;
-        if (rowDelta !== 0) return rowDelta;
-        return a.col - b.col;
-      });
-      for (let i = 1; i < sorted.length; i += 1) {
-        edges.push({ from: sorted[i - 1], to: sorted[i] });
-      }
-    }
 
     return edges;
   }
