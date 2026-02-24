@@ -817,7 +817,7 @@ function updateTreeVisuals() {
           line.classList.remove('active');
         }
       }
-    }
+    });
   });
 }
 
