@@ -380,7 +380,46 @@ function normalizeEntry(rawEntry, fallbackName, fallbackMaxRank) {
   };
 }
 
-function normalizeNode(raw, idx) {
+function parseIdFromHref(href) {
+  const text = String(href || "");
+  if (!text) return null;
+  const match = text.match(/\/(\d+)(?:\/)?(?:\?|$)/);
+  if (!match) return null;
+  const id = Number(match[1]);
+  return Number.isFinite(id) ? id : null;
+}
+
+function normalizeRefNodeId(value) {
+  if (Number.isFinite(Number(value))) return Number(value);
+  if (!value || typeof value !== "object") return null;
+  const candidates = [
+    value.id,
+    value.node_id,
+    value.talent_node_id,
+    value.node?.id,
+    value.talent_node?.id,
+    value.key?.id
+  ];
+  for (const candidate of candidates) {
+    const n = Number(candidate);
+    if (Number.isFinite(n)) return n;
+  }
+  const hrefCandidates = [value.href, value.key?.href, value.node?.key?.href];
+  for (const href of hrefCandidates) {
+    const id = parseIdFromHref(href);
+    if (Number.isFinite(id)) return id;
+  }
+  return null;
+}
+
+function normalizeRefNodeList(list) {
+  if (!Array.isArray(list)) return [];
+  return list
+    .map((v) => normalizeRefNodeId(v))
+    .filter((v) => Number.isFinite(v));
+}
+
+function normalizeNode(raw, idx, forcedTreeType = null, orderIndexById = null) {
   if (!raw || typeof raw !== "object") return null;
   const id = Number(raw.id ?? raw.node?.id ?? raw.talent?.id ?? idx + 1);
   if (!Number.isFinite(id)) return null;
@@ -409,13 +448,15 @@ function normalizeNode(raw, idx) {
     `Talent ${id}`
   );
   const maxRank = Number(raw.ranks ?? raw.max_ranks ?? entry?.max_ranks ?? 1) || 1;
-  const treeType = String(raw.tree_type || raw.type || "spec");
+  const treeType = String(forcedTreeType || raw.tree_type || raw.type || "spec");
   const nodeTypeRaw = String(raw.node_type || raw.type || "").toLowerCase();
   const requiredNodeIds = Array.isArray(raw.required_node_ids)
     ? raw.required_node_ids.map(Number).filter(Number.isFinite)
     : Array.isArray(raw.prerequisite_node_ids)
       ? raw.prerequisite_node_ids.map(Number).filter(Number.isFinite)
       : [];
+  const lockedByNodeIds = normalizeRefNodeList(raw.locked_by);
+  const unlocksNodeIds = normalizeRefNodeList(raw.unlocks);
   const entries = rawEntries
     .map((e) => normalizeEntry(e, name, maxRank))
     .filter(Boolean);
@@ -441,6 +482,9 @@ function normalizeNode(raw, idx) {
     maxRank: Math.max(1, maxRank),
     treeType,
     requiredNodeIds,
+    lockedByNodeIds,
+    unlocksNodeIds,
+    orderIndex: orderIndexById instanceof Map && orderIndexById.has(id) ? orderIndexById.get(id) : null,
     spellId: Number.isFinite(spellId) ? spellId : null,
     iconName: iconName || null,
     iconUrl,
@@ -449,12 +493,12 @@ function normalizeNode(raw, idx) {
   };
 }
 
-function extractNodes(treePayload) {
+function extractNodes(treePayload, forcedTreeType = null, orderIndexById = null) {
   const buckets = [];
   if (Array.isArray(treePayload?.class_talent_nodes)) buckets.push(...treePayload.class_talent_nodes);
   if (Array.isArray(treePayload?.spec_talent_nodes)) buckets.push(...treePayload.spec_talent_nodes);
   if (Array.isArray(treePayload?.talent_nodes)) buckets.push(...treePayload.talent_nodes);
-  return buckets.map((n, i) => normalizeNode(n, i)).filter(Boolean);
+  return buckets.map((n, i) => normalizeNode(n, i, forcedTreeType, orderIndexById)).filter(Boolean);
 }
 
 async function resolveTalentTreePayload(specPayload, token) {
@@ -500,6 +544,302 @@ async function resolveClassAndSpecNames(treePayload, token) {
   }
 
   return { className, specName };
+}
+
+function extractNodeOrder(treePayload) {
+  const rawNodes = Array.isArray(treePayload?.talent_nodes) ? treePayload.talent_nodes : [];
+  const seen = new Set();
+  const order = [];
+  for (const raw of rawNodes) {
+    const id = normalizeRefNodeId(raw);
+    if (!Number.isFinite(id) || seen.has(id)) continue;
+    seen.add(id);
+    order.push(id);
+  }
+  return order;
+}
+
+function buildPane(key, label, nodes) {
+  const list = Array.isArray(nodes) ? nodes : [];
+  const maxRow = Math.max(0, ...list.map((n) => Number(n?.row ?? 0)));
+  const maxCol = Math.max(0, ...list.map((n) => Number(n?.col ?? 0)));
+  const edgeMap = new Map();
+  for (const node of list) {
+    const toNodeId = Number(node?.id);
+    if (!Number.isFinite(toNodeId)) continue;
+    const req = Array.isArray(node?.requiredNodeIds) ? node.requiredNodeIds : [];
+    const locked = Array.isArray(node?.lockedByNodeIds) ? node.lockedByNodeIds : [];
+    const unlocks = Array.isArray(node?.unlocksNodeIds) ? node.unlocksNodeIds : [];
+    for (const fromNodeId of [...req, ...locked]) {
+      const from = Number(fromNodeId);
+      if (!Number.isFinite(from)) continue;
+      edgeMap.set(`${from}->${toNodeId}`, { fromNodeId: from, toNodeId });
+    }
+    for (const toRef of unlocks) {
+      const to = Number(toRef);
+      if (!Number.isFinite(to)) continue;
+      edgeMap.set(`${toNodeId}->${to}`, { fromNodeId: toNodeId, toNodeId: to });
+    }
+  }
+
+  return {
+    key,
+    label,
+    grid: { rows: maxRow + 1, cols: maxCol + 1 },
+    nodes: list,
+    edges: Array.from(edgeMap.values())
+  };
+}
+
+function dedupeNodesById(nodes) {
+  const out = [];
+  const seen = new Set();
+  for (const node of Array.isArray(nodes) ? nodes : []) {
+    const id = Number(node?.id);
+    if (!Number.isFinite(id) || seen.has(id)) continue;
+    seen.add(id);
+    out.push(node);
+  }
+  return out;
+}
+
+function buildCanonicalSpecRecord({ className, specName, specId, treeId, treePayload, layoutPayload }) {
+  const nodeOrder = extractNodeOrder(treePayload);
+  const orderIndexById = new Map(nodeOrder.map((id, idx) => [id, idx]));
+
+  const classNodes = Array.isArray(layoutPayload?.class_talent_nodes)
+    ? layoutPayload.class_talent_nodes.map((node, idx) => normalizeNode(node, idx, "class", orderIndexById)).filter(Boolean)
+    : [];
+  const specNodes = Array.isArray(layoutPayload?.spec_talent_nodes)
+    ? layoutPayload.spec_talent_nodes.map((node, idx) => normalizeNode(node, idx, "spec", orderIndexById)).filter(Boolean)
+    : [];
+
+  const heroNodes = [];
+  const heroTrees = Array.isArray(layoutPayload?.hero_talent_trees) ? layoutPayload.hero_talent_trees : [];
+  for (const heroTree of heroTrees) {
+    const heroList = Array.isArray(heroTree?.hero_talent_nodes)
+      ? heroTree.hero_talent_nodes
+      : Array.isArray(heroTree?.talent_nodes)
+        ? heroTree.talent_nodes
+        : Array.isArray(heroTree?.nodes)
+          ? heroTree.nodes
+          : [];
+    heroNodes.push(
+      ...heroList.map((node, idx) => normalizeNode(node, idx, "hero", orderIndexById)).filter(Boolean)
+    );
+  }
+  if (heroNodes.length === 0 && Array.isArray(layoutPayload?.hero_talent_nodes)) {
+    heroNodes.push(
+      ...layoutPayload.hero_talent_nodes.map((node, idx) => normalizeNode(node, idx, "hero", orderIndexById)).filter(Boolean)
+    );
+  }
+
+  let mergedNodes = dedupeNodesById([...classNodes, ...heroNodes, ...specNodes]);
+  if (mergedNodes.length === 0) {
+    mergedNodes = extractNodes(layoutPayload || treePayload, null, orderIndexById);
+  }
+  if (mergedNodes.length === 0) {
+    mergedNodes = extractNodes(treePayload, null, orderIndexById);
+  }
+
+  mergedNodes.sort((a, b) => {
+    const oa = Number(a?.orderIndex);
+    const ob = Number(b?.orderIndex);
+    if (Number.isFinite(oa) && Number.isFinite(ob) && oa !== ob) return oa - ob;
+    if (a.treeType !== b.treeType) return String(a.treeType).localeCompare(String(b.treeType));
+    if (a.row !== b.row) return a.row - b.row;
+    if (a.col !== b.col) return a.col - b.col;
+    return a.id - b.id;
+  });
+
+  const classPane = buildPane("class", "Class Tree", classNodes);
+  const heroPane = buildPane("hero", "Hero Tree", heroNodes);
+  const specPane = buildPane("spec", "Spec Tree", specNodes);
+
+  return {
+    className,
+    specName,
+    specId: Number.isFinite(Number(specId)) ? Number(specId) : null,
+    treeId: Number.isFinite(Number(treeId)) ? Number(treeId) : null,
+    nodeOrder,
+    nodes: mergedNodes,
+    trees: {
+      class: classPane,
+      hero: heroPane,
+      spec: specPane
+    },
+    restrictionLines: Array.isArray(layoutPayload?.restriction_lines) ? layoutPayload.restriction_lines : [],
+    summary: {
+      totalNodes: mergedNodes.length,
+      classNodes: classNodes.length,
+      heroNodes: heroNodes.length,
+      specNodes: specNodes.length,
+      edgeCount: classPane.edges.length + heroPane.edges.length + specPane.edges.length
+    }
+  };
+}
+
+function resolveTreeRef(specPayload) {
+  const href =
+    specPayload?.spec_talent_tree?.key?.href ||
+    specPayload?.spec_talent_tree?.href ||
+    specPayload?.talent_tree?.key?.href ||
+    specPayload?.talent_tree?.href ||
+    specPayload?.talent_trees?.[0]?.key?.href ||
+    specPayload?.talent_trees?.[0]?.href ||
+    null;
+  const idCandidates = [
+    Number(specPayload?.spec_talent_tree?.id),
+    Number(specPayload?.talent_tree?.id),
+    Number(specPayload?.talent_trees?.[0]?.id),
+    Number(parseIdFromHref(href))
+  ];
+  const treeId = idCandidates.find((id) => Number.isFinite(id)) ?? null;
+  return { treeId, href };
+}
+
+async function fetchTreeAndLayoutForSpec(specPayload, token) {
+  const specId = Number(specPayload?.id);
+  if (!Number.isFinite(specId)) return null;
+
+  const { treeId, href } = resolveTreeRef(specPayload);
+  let treePayload = null;
+  if (href) treePayload = await tryFetchApi(href, token);
+  if (!treePayload && Number.isFinite(treeId)) {
+    treePayload = await tryFetchApi(`https://${REGION}.api.blizzard.com/data/wow/talent-tree/${treeId}`, token);
+  }
+  if (!treePayload) return null;
+
+  const resolvedTreeId = Number(treePayload?.id);
+  const finalTreeId = Number.isFinite(resolvedTreeId) ? resolvedTreeId : treeId;
+  let layoutPayload = null;
+  if (Number.isFinite(finalTreeId)) {
+    layoutPayload = await tryFetchApi(
+      `https://${REGION}.api.blizzard.com/data/wow/talent-tree/${finalTreeId}/playable-specialization/${specId}`,
+      token
+    );
+  }
+  if (!layoutPayload) layoutPayload = treePayload;
+
+  return { specId, treeId: finalTreeId, treePayload, layoutPayload };
+}
+
+async function listPlayableSpecializationRefs(token) {
+  const out = [];
+  const seen = new Set();
+  const addRef = (ref) => {
+    if (!ref) return;
+    const href = ref?.key?.href || ref?.href || "";
+    const id = Number(ref?.id ?? parseIdFromHref(href));
+    const key = Number.isFinite(id) ? `id:${id}` : (href ? `href:${href}` : "");
+    if (!key || seen.has(key)) return;
+    seen.add(key);
+    out.push(ref);
+  };
+
+  const specIndex = await tryFetchApi(
+    `https://${REGION}.api.blizzard.com/data/wow/playable-specialization/index`,
+    token
+  );
+  const fromIndex = Array.isArray(specIndex?.character_specializations)
+    ? specIndex.character_specializations
+    : Array.isArray(specIndex?.specializations)
+      ? specIndex.specializations
+      : [];
+  fromIndex.forEach(addRef);
+  if (out.length > 0) return out;
+
+  const classIndex = await tryFetchApi(`https://${REGION}.api.blizzard.com/data/wow/playable-class/index`, token);
+  const classRefs = Array.isArray(classIndex?.classes) ? classIndex.classes : [];
+  for (const classRef of classRefs) {
+    const classHref = classRef?.key?.href || classRef?.href;
+    if (!classHref) continue;
+    const classPayload = await tryFetchApi(classHref, token);
+    const refs = Array.isArray(classPayload?.specializations) ? classPayload.specializations : [];
+    refs.forEach(addRef);
+  }
+  if (out.length > 0) return out;
+
+  const knownClassIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+  for (const classId of knownClassIds) {
+    const classPayload = await tryFetchApi(
+      `https://${REGION}.api.blizzard.com/data/wow/playable-class/${classId}`,
+      token
+    );
+    const refs = Array.isArray(classPayload?.specializations) ? classPayload.specializations : [];
+    refs.forEach(addRef);
+  }
+
+  return out;
+}
+
+async function collectCanonicalTalentTrees(token) {
+  const specRefs = await listPlayableSpecializationRefs(token);
+  if (specRefs.length === 0) return [];
+
+  const classNameCache = new Map();
+  const bySpecKey = new Map();
+  for (const ref of specRefs) {
+    const specHref = ref?.key?.href || ref?.href;
+    const fallbackSpecId = Number(ref?.id ?? parseIdFromHref(specHref));
+    let specPayload = null;
+    if (specHref) {
+      specPayload = await tryFetchApi(specHref, token);
+    }
+    if (!specPayload && Number.isFinite(fallbackSpecId)) {
+      specPayload = await tryFetchApi(
+        `https://${REGION}.api.blizzard.com/data/wow/playable-specialization/${fallbackSpecId}`,
+        token
+      );
+    }
+    if (!specPayload) continue;
+
+    const specName = toName(specPayload?.name);
+    let className = firstNonEmpty(specPayload?.playable_class?.name, specPayload?.character_class?.name);
+    const classHref =
+      specPayload?.playable_class?.key?.href ||
+      specPayload?.playable_class?.href ||
+      specPayload?.character_class?.key?.href ||
+      specPayload?.character_class?.href;
+    if (!className && classHref) {
+      if (classNameCache.has(classHref)) {
+        className = classNameCache.get(classHref);
+      } else {
+        const classPayload = await tryFetchApi(classHref, token);
+        const resolved = toName(classPayload?.name);
+        if (resolved) {
+          className = resolved;
+          classNameCache.set(classHref, resolved);
+        }
+      }
+    }
+    if (!className || !specName) continue;
+
+    const treeBundle = await fetchTreeAndLayoutForSpec(specPayload, token);
+    if (!treeBundle) continue;
+
+    const record = buildCanonicalSpecRecord({
+      className,
+      specName,
+      specId: treeBundle.specId,
+      treeId: treeBundle.treeId,
+      treePayload: treeBundle.treePayload,
+      layoutPayload: treeBundle.layoutPayload
+    });
+    const specKey = `${className.toLowerCase()}::${specName.toLowerCase()}`;
+    const existing = bySpecKey.get(specKey);
+    const incomingCount = Number(record?.summary?.totalNodes) || 0;
+    const existingCount = Number(existing?.summary?.totalNodes) || 0;
+    if (!existing || incomingCount > existingCount) {
+      bySpecKey.set(specKey, record);
+    }
+  }
+
+  return Array.from(bySpecKey.values()).sort((a, b) => {
+    const c = String(a.className || "").localeCompare(String(b.className || ""));
+    if (c !== 0) return c;
+    return String(a.specName || "").localeCompare(String(b.specName || ""));
+  });
 }
 
 async function collectFromTalentTreeIndex(token) {
@@ -600,143 +940,29 @@ async function logEndpointDiagnostics(token) {
 async function buildTalentTrees() {
   const token = await tryGetAccessToken();
   let specs = [];
+  let source = "none";
 
   if (token) {
     ACTIVE_NAMESPACE = await resolveWorkingNamespace(token);
     console.log(`Using WoW API namespace: ${ACTIVE_NAMESPACE}`);
     await logEndpointDiagnostics(token);
 
-    const fromTalentTreeIndex = await collectFromTalentTreeIndex(token);
-    if (fromTalentTreeIndex.length > 0) {
-      console.log(`Collected ${fromTalentTreeIndex.length} specs from talent-tree/index`);
-      return {
-        generatedAt: new Date().toISOString(),
-        region: REGION,
-        locale: LOCALE,
-        specs: fromTalentTreeIndex
-      };
+    const canonicalSpecs = await collectCanonicalTalentTrees(token);
+    if (canonicalSpecs.length > 0) {
+      specs = canonicalSpecs;
+      source = "blizzard-api-canonical";
+      console.log(`Collected ${canonicalSpecs.length} specs from canonical specialization -> tree route`);
+    } else {
+      console.log("Canonical specialization -> tree route returned 0 specs");
     }
-
-    const fromSpecSearch = await collectFromSpecSearch(token);
-    if (fromSpecSearch.length > 0) {
-      console.log(`Collected ${fromSpecSearch.length} specs from search/playable-specialization fallback`);
-      return {
-        generatedAt: new Date().toISOString(),
-        region: REGION,
-        locale: LOCALE,
-        specs: fromSpecSearch
-      };
-    }
-
-    // Try multiple discovery routes because Blizzard endpoints can vary by region/api version.
-    let specRefs = [];
-
-    const specIndex = await tryFetchApi(
-      `https://${REGION}.api.blizzard.com/data/wow/playable-specialization/index`,
-      token
-    );
-    if (specIndex) {
-      specRefs = Array.isArray(specIndex?.character_specializations)
-        ? specIndex.character_specializations
-        : Array.isArray(specIndex?.specializations)
-          ? specIndex.specializations
-          : [];
-    }
-
-    if (specRefs.length === 0) {
-      const classIndex = await tryFetchApi(
-        `https://${REGION}.api.blizzard.com/data/wow/playable-class/index`,
-        token
-      );
-      const classRefs = Array.isArray(classIndex?.classes) ? classIndex.classes : [];
-
-      for (const classRef of classRefs) {
-        const classHref = classRef?.key?.href || classRef?.href;
-        if (!classHref) continue;
-        const classPayload = await tryFetchApi(classHref, token);
-        if (!classPayload) continue;
-        const refs = Array.isArray(classPayload?.specializations) ? classPayload.specializations : [];
-        specRefs.push(...refs);
-      }
-    }
-
-    if (specRefs.length === 0) {
-      // Last resort: enumerate known class IDs directly.
-      const knownClassIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-      for (const classId of knownClassIds) {
-        const classPayload = await tryFetchApi(
-          `https://${REGION}.api.blizzard.com/data/wow/playable-class/${classId}`,
-          token
-        );
-        if (!classPayload) continue;
-        const refs = Array.isArray(classPayload?.specializations) ? classPayload.specializations : [];
-        specRefs.push(...refs);
-      }
-    }
-
-    const classNameCache = new Map();
-    specs = [];
-
-    for (const specRef of specRefs) {
-      const specHref = specRef?.key?.href || specRef?.href;
-      if (!specHref) continue;
-
-      let specPayload;
-      try {
-        specPayload = await fetchApi(specHref, token);
-      } catch {
-        continue;
-      }
-
-      const specName = toName(specPayload?.name);
-      if (!specName) continue;
-
-      let className = firstNonEmpty(specPayload?.playable_class?.name, specPayload?.character_class?.name);
-      const classHref =
-        specPayload?.playable_class?.key?.href ||
-        specPayload?.playable_class?.href ||
-        specPayload?.character_class?.key?.href ||
-        specPayload?.character_class?.href;
-
-      if (!className && classHref) {
-        if (classNameCache.has(classHref)) {
-          className = classNameCache.get(classHref);
-        } else {
-          try {
-            const classPayload = await fetchApi(classHref, token);
-            className = toName(classPayload?.name);
-            if (className) classNameCache.set(classHref, className);
-          } catch {
-            // keep empty and skip below
-          }
-        }
-      }
-
-      if (!className) continue;
-
-      const treePayload = await resolveTalentTreePayload(specPayload, token);
-      const nodes = treePayload ? extractNodes(treePayload) : [];
-
-      specs.push({
-        className,
-        specName,
-        nodes
-      });
-    }
-
-    console.log(`Collected ${specs.length} specs from class/specialization route fallback`);
   }
 
   if (specs.length === 0) {
     const fromLibTalentInfo = await collectFromLibTalentInfoGithub();
     if (fromLibTalentInfo.length > 0) {
       console.log(`Collected ${fromLibTalentInfo.length} specs from LibTalentInfo GitHub fallback`);
-      return {
-        generatedAt: new Date().toISOString(),
-        region: REGION,
-        locale: LOCALE,
-        specs: fromLibTalentInfo
-      };
+      specs = fromLibTalentInfo;
+      source = "libtalentinfo-fallback";
     }
   }
 
@@ -744,6 +970,8 @@ async function buildTalentTrees() {
     generatedAt: new Date().toISOString(),
     region: REGION,
     locale: LOCALE,
+    namespace: ACTIVE_NAMESPACE,
+    source,
     specs
   };
 }

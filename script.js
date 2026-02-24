@@ -512,6 +512,118 @@ function normalizeKey(value) {
     .trim();
 }
 
+const TALENT_EXPORT_CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+const TALENT_EXPORT_CHAR_INDEX = new Map(
+  TALENT_EXPORT_CHARSET.split("").map((ch, idx) => [ch, idx])
+);
+
+function decodeTalentExportString(exportString, nodeOrder, nodeMetaById) {
+  const code = String(exportString || "").trim();
+  const order = Array.isArray(nodeOrder)
+    ? nodeOrder.map((v) => Number(v)).filter((v) => Number.isFinite(v))
+    : [];
+  if (!code || order.length === 0) return null;
+
+  const values = [];
+  for (const ch of code) {
+    const value = TALENT_EXPORT_CHAR_INDEX.get(ch);
+    if (!Number.isFinite(value)) return null;
+    values.push(value);
+  }
+  if (values.length < 5) return null;
+
+  let bitIndex = 0;
+  let truncated = false;
+
+  function readBits(count) {
+    let out = 0;
+    for (let i = 0; i < count; i += 1) {
+      const charIndex = Math.floor(bitIndex / 6);
+      const bitOffset = bitIndex % 6;
+      if (charIndex >= values.length) {
+        truncated = true;
+        return null;
+      }
+      const bit = (values[charIndex] >> bitOffset) & 1;
+      out |= (bit << i);
+      bitIndex += 1;
+    }
+    return out;
+  }
+
+  const version = readBits(8);
+  const specId = readBits(16);
+  if (!Number.isFinite(version) || !Number.isFinite(specId)) return null;
+
+  const treeHashBytes = [];
+  for (let i = 0; i < 16; i += 1) {
+    const next = readBits(8);
+    if (!Number.isFinite(next)) return null;
+    treeHashBytes.push(next);
+  }
+  const treeHash = treeHashBytes.map((b) => String(b).padStart(2, "0")).join("");
+
+  const nodeSelections = new Map();
+  for (const nodeId of order) {
+    const selected = readBits(1);
+    if (!Number.isFinite(selected)) break;
+    if (!selected) continue;
+
+    const purchased = readBits(1);
+    if (!Number.isFinite(purchased)) break;
+    if (!purchased) {
+      nodeSelections.set(nodeId, {
+        selected: true,
+        purchased: false,
+        rank: 0,
+        choiceIndex: null
+      });
+      continue;
+    }
+
+    const partiallyRanked = readBits(1);
+    if (!Number.isFinite(partiallyRanked)) break;
+
+    let rank = null;
+    if (partiallyRanked) {
+      const partialRank = readBits(6);
+      if (!Number.isFinite(partialRank)) break;
+      rank = Math.max(1, Number(partialRank) || 1);
+    }
+
+    const isChoiceNode = readBits(1);
+    if (!Number.isFinite(isChoiceNode)) break;
+
+    let choiceIndex = null;
+    if (isChoiceNode) {
+      const choice = readBits(2);
+      if (!Number.isFinite(choice)) break;
+      choiceIndex = Number(choice);
+    }
+
+    if (!Number.isFinite(rank)) {
+      const maxRank = Number(nodeMetaById?.get(nodeId)?.maxRank ?? 1);
+      rank = Math.max(1, Number.isFinite(maxRank) ? maxRank : 1);
+    }
+
+    nodeSelections.set(nodeId, {
+      selected: true,
+      purchased: true,
+      rank,
+      choiceIndex
+    });
+  }
+
+  return {
+    version: Number(version),
+    specId: Number(specId),
+    treeHash,
+    nodeSelections,
+    totalSelected: nodeSelections.size,
+    truncated
+  };
+}
+
 let talentData = [];
 let totalPointsSpent = 0;
 let maxTotalPoints = 10;
@@ -2040,6 +2152,23 @@ function renderTalentTree(className, specName) {
 
   talentNodeIndex = new Map();
   const selectedSet = buildSelectedTalentSelection(activeBuild?.selectedTalents);
+  const nodeMetaById = new Map(
+    (Array.isArray(nodes) ? nodes : [])
+      .map((node) => {
+        const nodeId = Number(node?.id);
+        if (!Number.isFinite(nodeId)) return null;
+        const primary = Array.isArray(node?.entries) ? node.entries[0] : null;
+        const maxRank = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? 1) || 1);
+        return [nodeId, { maxRank, treeType: String(node?.treeType || "spec"), node }];
+      })
+      .filter(Boolean)
+  );
+  const nodeOrder = Array.isArray(specPayload?.nodeOrder)
+    ? specPayload.nodeOrder.map((id) => Number(id)).filter((id) => Number.isFinite(id))
+    : [];
+  const decodedExport = decodeTalentExportString(activeBuild?.exportString, nodeOrder, nodeMetaById);
+  const decodedRanksByNodeId = decodedExport?.nodeSelections instanceof Map ? decodedExport.nodeSelections : new Map();
+  const decodedSelectedCount = Number(decodedExport?.totalSelected) || 0;
   const paneByGroup = {
     class: classPane,
     hero: heroPane,
@@ -2184,8 +2313,13 @@ function renderTalentTree(className, specName) {
     const entries = Array.isArray(node?.entries) ? node.entries : [];
     const nodeSlug = slugifyTalentName(node?.name);
     const entrySlugs = entries.map((entry) => slugifyTalentName(entry?.name)).filter(Boolean);
+    const nodeId = Number(node?.id);
+    if (Number.isFinite(nodeId) && decodedRanksByNodeId.has(nodeId)) {
+      const rank = Number(decodedRanksByNodeId.get(nodeId)?.rank);
+      if (Number.isFinite(rank) && rank > 0) return Math.max(1, rank);
+    }
     const idCandidates = [
-      Number(node?.id),
+      nodeId,
       Number(node?.spellId),
       ...entries.map((entry) => Number(entry?.id)),
       ...entries.map((entry) => Number(entry?.spellId))
@@ -2203,6 +2337,37 @@ function renderTalentTree(className, specName) {
       if (rankBySlug) return Math.max(1, Number(rankBySlug) || 1);
     }
     return 0;
+  }
+
+  function nodeGroupKey(node) {
+    const treeType = String(node?.treeType || "").toLowerCase();
+    if (treeType.includes("class")) return "class";
+    if (treeType.includes("hero")) return "hero";
+    return "spec";
+  }
+
+  function getSelectedItemsForGroup(groupKey, paneNodes) {
+    const explicitItems = Array.isArray(selectedSet.groups[groupKey]) ? selectedSet.groups[groupKey] : [];
+    if (explicitItems.length > 0) return explicitItems;
+    if (!(decodedRanksByNodeId instanceof Map) || decodedRanksByNodeId.size === 0) return [];
+
+    const sourceNodes = Array.isArray(paneNodes) && paneNodes.length > 0
+      ? paneNodes
+      : (Array.isArray(nodes) ? nodes.filter((node) => nodeGroupKey(node) === groupKey) : []);
+
+    return sourceNodes
+      .map((node) => {
+        const nodeId = Number(node?.id);
+        if (!Number.isFinite(nodeId) || !decodedRanksByNodeId.has(nodeId)) return null;
+        const decoded = decodedRanksByNodeId.get(nodeId);
+        const rank = Math.max(1, Number(decoded?.rank) || 1);
+        return {
+          id: nodeId,
+          slug: slugifyTalentName(node?.name),
+          rank
+        };
+      })
+      .filter(Boolean);
   }
 
   function defaultColsForGroup(groupKey) {
@@ -2286,7 +2451,7 @@ function renderTalentTree(className, specName) {
   function shouldUseSelectedOnlyLayout(groupKey, paneNodes) {
     if (String(talentTreesMeta?.source || "") === "local-json") return true;
     const paneList = Array.isArray(paneNodes) ? paneNodes : [];
-    const items = Array.isArray(selectedSet.groups[groupKey]) ? selectedSet.groups[groupKey] : [];
+    const items = getSelectedItemsForGroup(groupKey, paneNodes);
     if (paneList.length === 0) return true;
     if (items.length === 0) return false;
 
@@ -2394,7 +2559,7 @@ function renderTalentTree(className, specName) {
       });
     }
 
-    const items = selectedSet.groups[groupKey] || [];
+    const items = getSelectedItemsForGroup(groupKey, paneNodes);
     const maxExistingRow = records.length > 0 ? Math.max(...records.map((record) => Number(record.row) || 1)) : 0;
     const fallbackBaseRow = Math.max(1, maxExistingRow + (records.length > 0 ? 1 : 0));
     let fallbackSlot = 0;
@@ -2575,8 +2740,10 @@ function renderTalentTree(className, specName) {
   const fallbackSuffix = fallbackGroups.length > 0
     ? ` | Fallback layout: ${fallbackGroups.map((k) => titleCase(k)).join(", ")}`
     : "";
+  const selectedCount = decodedSelectedCount > 0 ? decodedSelectedCount : selectedSet.totalCount;
+  const selectionSource = decodedSelectedCount > 0 ? "decoded import" : "selected map";
   const modeSuffix = selectedMode ? ` | ${modeLabel(selectedMode)}` : "";
-  talentTreeHint.textContent = `${className} ${specName}${modeSuffix} | Export build tree | ${selectedSet.totalCount} selected talents${fallbackSuffix} | v${APP_BUILD_VERSION}`;
+  talentTreeHint.textContent = `${className} ${specName}${modeSuffix} | Export build tree | ${selectedCount} selected talents (${selectionSource})${fallbackSuffix} | v${APP_BUILD_VERSION}`;
   talentTreeHint.hidden = false;
   talentTreeWrap.hidden = false;
   talentTreeWrap.className = "talent-tree-wrap wow-tree-layout";
