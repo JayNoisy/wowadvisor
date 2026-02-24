@@ -156,6 +156,7 @@ const copyBtn = document.getElementById("copyBtn");
 let selectedClass = null;
 let selectedSpec = null;
 let selectedMode = null; // "aoe" | "raid" | "pvp"
+const APP_BUILD_VERSION = "2026-02-24.01";
 
 let buildsRoot = null; // always the object like buildsRoot[class][spec][mode]
 let buildsMeta = { generatedAt: null, sources: null };
@@ -169,6 +170,9 @@ const mythicContext = {
   keyLevel: 10,
   affixes: new Set(["Fortified"])
 };
+
+window.__WOWADVISOR_VERSION = APP_BUILD_VERSION;
+console.log(`[wowadvisor] script.js loaded v${APP_BUILD_VERSION}`);
 
 // =========================
 // Helpers
@@ -2280,6 +2284,7 @@ function renderTalentTree(className, specName) {
   }
 
   function shouldUseSelectedOnlyLayout(groupKey, paneNodes) {
+    if (String(talentTreesMeta?.source || "") === "local-json") return true;
     const paneList = Array.isArray(paneNodes) ? paneNodes : [];
     const items = Array.isArray(selectedSet.groups[groupKey]) ? selectedSet.groups[groupKey] : [];
     if (paneList.length === 0) return true;
@@ -2570,7 +2575,7 @@ function renderTalentTree(className, specName) {
   const fallbackSuffix = fallbackGroups.length > 0
     ? ` | Fallback layout: ${fallbackGroups.map((k) => titleCase(k)).join(", ")}`
     : "";
-  talentTreeHint.textContent = `${className} ${specName} | Export build tree | ${selectedSet.totalCount} selected talents${fallbackSuffix}`;
+  talentTreeHint.textContent = `${className} ${specName} | Export build tree | ${selectedSet.totalCount} selected talents${fallbackSuffix} | v${APP_BUILD_VERSION}`;
   talentTreeHint.hidden = false;
   talentTreeWrap.hidden = false;
   talentTreeWrap.className = "talent-tree-wrap wow-tree-layout";
