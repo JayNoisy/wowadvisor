@@ -170,64 +170,6 @@ const mythicContext = {
   affixes: new Set(["Fortified"])
 };
 
-function injectTalentTreeStyles() {
-  const style = document.createElement('style');
-  style.textContent = `
-    #talent-system {
-      position: relative;
-      background-color: #151515;
-      border: 1px solid #444;
-      border-radius: 4px;
-      padding: 20px;
-      overflow: auto;
-      box-shadow: inset 0 0 20px #000;
-    }
-    .talent-tree-lines {
-      position: absolute;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .talent-tree-lines line {
-      stroke: #444;
-      stroke-width: 2;
-      transition: stroke 0.3s ease;
-    }
-    .talent-tree-lines line.active {
-      stroke: #ffd100;
-    }
-    #talentTree {
-      display: grid;
-      position: relative;
-      z-index: 1;
-      gap: 30px 15px;
-      justify-content: center;
-    }
-    .talent-node {
-      width: 42px;
-      height: 42px;
-      background-size: cover;
-      background-position: center;
-      border: 2px solid #444;
-      border-radius: 4px;
-      cursor: pointer;
-      position: relative;
-      box-shadow: 0 0 5px #000;
-      transition: transform 0.1s, border-color 0.2s;
-    }
-    .talent-node:hover { transform: scale(1.1); z-index: 10; border-color: #fff; }
-    .talent-node.available { border-color: #00ff00; box-shadow: 0 0 8px #00ff00; }
-    .talent-node.maxed { border-color: #ffd100; box-shadow: 0 0 8px #ffd100; }
-    .talent-node.unavailable { filter: grayscale(100%) brightness(0.4); border-color: #333; }
-    .points-badge {
-      position: absolute; bottom: -8px; right: -8px;
-      background: #000; color: #fff; font-size: 10px; padding: 1px 3px;
-      border-radius: 3px; border: 1px solid #555;
-    }
-  `;
-  document.head.appendChild(style);
-}
 // =========================
 // Helpers
 // =========================
@@ -638,13 +580,43 @@ function buildInteractiveTalentData(specPayload) {
   return { talents, maxTotalPoints: derivedMax };
 }
 
-function initTalentTree() {
-  if (!talentTree || !talentSystem) return;
-  talentTree.innerHTML = "";
+function applyBuildToTree() {
+  if (!activeBuild || !activeBuild.selectedTalents) return;
   
-  const oldSvg = talentSystem.querySelector(".talent-tree-lines");
-  if (oldSvg) oldSvg.remove();
+  // Reset tree state
+  Object.keys(nodeState).forEach(key => nodeState[key] = 0);
+  totalPointsSpent = 0;
 
+  const selection = buildSelectedTalentSelection(activeBuild.selectedTalents);
+  
+  talentData.forEach(talent => {
+    // Extract numeric ID from "class-123" or "spec-123"
+    const parts = talent.id.split('-');
+    const numericId = parseInt(parts[1], 10);
+    
+    let rank = 0;
+    if (selection.idRanks.has(numericId)) {
+      rank = selection.idRanks.get(numericId);
+    } else {
+      const slug = slugifyTalentName(talent.name);
+      if (selection.slugRanks.has(slug)) {
+        rank = selection.slugRanks.get(slug);
+      }
+    }
+
+    if (rank > 0) {
+      const appliedRank = Math.min(rank, talent.maxPoints);
+      nodeState[talent.id] = appliedRank;
+      totalPointsSpent += appliedRank;
+    }
+  });
+  
+  updateTreeVisuals();
+}
+
+function initTalentTree() {
+  if (!talentTree) return;
+  talentTree.innerHTML = "";
   totalPointsSpent = 0;
   Object.keys(nodeState).forEach((key) => delete nodeState[key]);
   if (!Array.isArray(talentData) || talentData.length === 0) {
@@ -652,14 +624,10 @@ function initTalentTree() {
     return;
   }
 
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("class", "talent-tree-lines");
-  talentSystem.insertBefore(svg, talentTree);
-
   const maxCol = Math.max(1, ...talentData.map((t) => Number(t?.col ?? 1)));
   const maxRow = Math.max(1, ...talentData.map((t) => Number(t?.row ?? 1)));
-  talentTree.style.gridTemplateColumns = `repeat(${maxCol}, 50px)`;
-  talentTree.style.gridTemplateRows = `repeat(${maxRow}, 50px)`;
+  talentTree.style.gridTemplateColumns = `repeat(${maxCol}, 60px)`;
+  talentTree.style.gridTemplateRows = `repeat(${maxRow}, 60px)`;
 
   talentData.forEach((talent) => {
     nodeState[talent.id] = 0;
@@ -679,10 +647,7 @@ function initTalentTree() {
     nodeEl.appendChild(badge);
     talentTree.appendChild(nodeEl);
 
-    nodeEl.addEventListener("click", (e) => {
-      e.preventDefault();
-      addPoint(talent.id);
-    });
+    nodeEl.addEventListener("click", () => addPoint(talent.id));
     nodeEl.addEventListener("contextmenu", (e) => {
       e.preventDefault();
       removePoint(talent.id);
@@ -691,42 +656,6 @@ function initTalentTree() {
     nodeEl.addEventListener("mousemove", (e) => showTooltip(e, talent));
     nodeEl.addEventListener("mouseleave", hideTooltip);
   });
-
-  const drawLines = () => {
-    svg.style.width = `${talentTree.scrollWidth}px`;
-    svg.style.height = `${talentTree.scrollHeight}px`;
-    svg.innerHTML = "";
-
-    talentData.forEach((talent) => {
-      const toNode = document.getElementById(`node-${talent.id}`);
-      if (!toNode) return;
-
-      const toX = toNode.offsetLeft + toNode.offsetWidth / 2;
-      const toY = toNode.offsetTop + toNode.offsetHeight / 2;
-
-      (talent.reqNodes || []).forEach((reqId) => {
-        const fromNode = document.getElementById(`node-${reqId}`);
-        if (!fromNode) return;
-
-        const fromX = fromNode.offsetLeft + fromNode.offsetWidth / 2;
-        const fromY = fromNode.offsetTop + fromNode.offsetHeight / 2;
-
-        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        const lineId = `line-${reqId.replace(/[^a-zA-Z0-9-_]/g, '')}-to-${talent.id.replace(/[^a-zA-Z0-9-_]/g, '')}`;
-        line.setAttribute("id", lineId);
-        line.setAttribute("x1", fromX);
-        line.setAttribute("y1", fromY);
-        line.setAttribute("x2", toX);
-        line.setAttribute("y2", toY);
-        svg.appendChild(line);
-      });
-    });
-    updateTreeVisuals();
-  };
-
-  // Draw lines after layout
-  requestAnimationFrame(drawLines);
-  window.addEventListener('resize', drawLines);
 
   updateTreeVisuals();
 }
@@ -794,30 +723,23 @@ function updateTreeVisuals() {
     const badge = document.getElementById(`badge-${talent.id}`);
     if (!el || !badge) return;
     badge.innerText = `${nodeState[talent.id]}/${talent.maxPoints}`;
-    
-    el.classList.remove("unavailable", "maxed", "available");
 
-    if (nodeState[talent.id] >= talent.maxPoints) {
-      el.classList.add("maxed");
-    } else if (canAddPoint(talent)) {
-      el.classList.add("available");
-    } else if (nodeState[talent.id] === 0) {
-      el.classList.add("unavailable");
+    let isAvailable = true;
+    if (talent.reqPointsTotal > totalPointsSpent) isAvailable = false;
+    const reqNodes = Array.isArray(talent.reqNodes) && talent.reqNodes.length > 0
+      ? talent.reqNodes
+      : (talent.reqNode ? [talent.reqNode] : []);
+    if (reqNodes.length > 0) {
+      const unlockedByReq = reqNodes.some((reqId) => Number(nodeState[reqId] || 0) > 0);
+      if (!unlockedByReq) isAvailable = false;
     }
 
-    // Update lines
-    (talent.reqNodes || []).forEach(reqId => {
-      const lineId = `line-${reqId.replace(/[^a-zA-Z0-9-_]/g, '')}-to-${talent.id.replace(/[^a-zA-Z0-9-_]/g, '')}`;
-      const line = document.getElementById(lineId);
-      if (line) {
-        // Line is active if the parent node has at least 1 point
-        if (nodeState[reqId] > 0) {
-          line.classList.add('active');
-        } else {
-          line.classList.remove('active');
-        }
-      }
-    });
+    el.classList.remove("unavailable", "maxed");
+    if (!isAvailable && nodeState[talent.id] === 0) {
+      el.classList.add("unavailable");
+    } else if (nodeState[talent.id] === talent.maxPoints) {
+      el.classList.add("maxed");
+    }
   });
 }
 
@@ -2087,6 +2009,7 @@ function renderTalentTree(className, specName) {
   talentNodeInspector.hidden = true;
   talentNodeHint.textContent = "Click a talent node to inspect it.";
   talentNodeBody.innerHTML = "";
+  applyBuildToTree();
 }
 
 function renderTalentNodeInspector(nodeInfo) {
@@ -2423,6 +2346,20 @@ copyBtn.addEventListener("click", async () => {
   }
 });
 
+talentTreeWrap.addEventListener("click", (e) => {
+  const nodeBtn = e.target.closest(".wow-node");
+  if (!nodeBtn) return;
+  const nodeKey = nodeBtn.dataset.nodeKey;
+  if (!nodeKey) return;
+  const nodeInfo = talentNodeIndex.get(nodeKey);
+  if (!nodeInfo) return;
+
+  const allNodes = talentTreeWrap.querySelectorAll(".wow-node");
+  allNodes.forEach((n) => n.classList.remove("selected"));
+  nodeBtn.classList.add("selected");
+  renderTalentNodeInspector(nodeInfo);
+});
+
 statPills.addEventListener("click", (e) => {
   const btn = e.target.closest(".stat-pill");
   if (!btn) return;
@@ -2455,5 +2392,4 @@ rotationToggleBtn?.addEventListener("click", () => {
 });
 
 // Start
-injectTalentTreeStyles();
 Promise.all([loadBuilds(), loadTalentTreesMeta()]);
