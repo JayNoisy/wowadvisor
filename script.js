@@ -2042,6 +2042,7 @@ function renderTalentTree(className, specName) {
     spec: specPane
   };
   const paneEdgeCache = new Map();
+  const fallbackModeByGroup = new Map();
 
   function inferPaneEdgesFromLayout(nodes) {
     const list = Array.isArray(nodes) ? nodes : [];
@@ -2250,31 +2251,21 @@ function renderTalentTree(className, specName) {
     for (const row of rows) {
       const current = byRow.get(row) || [];
       if (current.length === 0) continue;
-
-      const parentPool = [];
-      for (const previousRow of rows) {
-        if (previousRow >= row) break;
-        const distance = row - previousRow;
-        if (distance > 2) continue;
-        for (const parent of byRow.get(previousRow) || []) {
-          parentPool.push({
-            key: parent.key,
-            col: parent.col,
-            distance
-          });
-        }
-      }
+      let parentRow = row - 1;
+      while (parentRow >= rows[0] && !byRow.has(parentRow)) parentRow -= 1;
+      const parentPool = parentRow >= rows[0] ? (byRow.get(parentRow) || []) : [];
+      if (parentPool.length === 0) continue;
 
       for (const child of current) {
-        const nearestParents = parentPool
+        const nearestParent = parentPool
           .map((parent) => ({
             key: parent.key,
-            score: parent.distance * 10 + Math.abs(parent.col - child.col)
+            score: Math.abs(parent.col - child.col)
           }))
           .sort((a, b) => a.score - b.score)
-          .slice(0, 2);
-        for (const parent of nearestParents) {
-          edges.push({ fromKey: parent.key, toKey: child.key });
+          .slice(0, 1);
+        if (nearestParent.length > 0) {
+          edges.push({ fromKey: nearestParent[0].key, toKey: child.key });
         }
       }
     }
@@ -2288,9 +2279,44 @@ function renderTalentTree(className, specName) {
     return Array.from(dedup.values());
   }
 
+  function shouldUseSelectedOnlyLayout(groupKey, paneNodes) {
+    const paneList = Array.isArray(paneNodes) ? paneNodes : [];
+    const items = Array.isArray(selectedSet.groups[groupKey]) ? selectedSet.groups[groupKey] : [];
+    if (paneList.length === 0) return true;
+    if (items.length === 0) return false;
+
+    const paneIdSet = new Set(
+      paneList
+        .map((node) => Number(node?.id))
+        .filter((id) => Number.isFinite(id))
+    );
+    const paneSlugSet = new Set(
+      paneList
+        .map((node) => slugifyTalentName(node?.name))
+        .filter(Boolean)
+    );
+
+    let matched = 0;
+    for (const item of items) {
+      const node = resolveNodeForItem(groupKey, item);
+      if (!node) continue;
+      const nodeId = Number(node?.id);
+      const nodeSlug = slugifyTalentName(node?.name);
+      if ((Number.isFinite(nodeId) && paneIdSet.has(nodeId)) || (nodeSlug && paneSlugSet.has(nodeSlug))) {
+        matched += 1;
+      }
+    }
+
+    const coverage = matched / Math.max(1, items.length);
+    const paneTooSmall = paneList.length < Math.max(18, Math.floor(items.length * 0.75));
+    return paneTooSmall && coverage < 0.55;
+  }
+
   function collectRecordsForGroup(groupKey) {
     const pane = paneByGroup[groupKey];
     const paneNodes = Array.isArray(pane?.nodes) ? pane.nodes : [];
+    const useSelectedOnlyLayout = shouldUseSelectedOnlyLayout(groupKey, paneNodes);
+    fallbackModeByGroup.set(groupKey, useSelectedOnlyLayout);
     const records = [];
     const cols = defaultColsForGroup(groupKey);
     const byNodeId = new Map();
@@ -2335,7 +2361,7 @@ function renderTalentTree(className, specName) {
       };
     };
 
-    if (paneNodes.length > 0) {
+    if (!useSelectedOnlyLayout && paneNodes.length > 0) {
       paneNodes.forEach((node, idx) => {
         const entries = Array.isArray(node?.entries) ? node.entries : [];
         const primary = entries[0] || null;
@@ -2388,6 +2414,7 @@ function renderTalentTree(className, specName) {
       }
 
       if (node) {
+        if (!useSelectedOnlyLayout) return;
         const entries = Array.isArray(node?.entries) ? node.entries : [];
         const primary = entries[0] || null;
         const maxRank = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? item?.rank ?? 1) || 1);
@@ -2416,6 +2443,7 @@ function renderTalentTree(className, specName) {
         return;
       }
 
+      if (!useSelectedOnlyLayout) return;
       const virtualRecord = createFallbackVirtualRecord(item, idx, fallbackBaseRow, fallbackSlot);
       fallbackSlot += 1;
       records.push(virtualRecord);
@@ -2436,7 +2464,8 @@ function renderTalentTree(className, specName) {
     const concreteEdges = paneEdges
       .map((edge) => ({
         from: byNodeId.get(edge.fromNodeId),
-        to: byNodeId.get(edge.toNodeId)
+        to: byNodeId.get(edge.toNodeId),
+        inferred: false
       }))
       .filter((edge) => edge.from && edge.to);
 
@@ -2454,7 +2483,7 @@ function renderTalentTree(className, specName) {
         const to = byKey.get(edge.toKey);
         if (!from || !to) continue;
         const key = `${from.key}->${to.key}`;
-        if (!merged.has(key)) merged.set(key, { from, to });
+        if (!merged.has(key)) merged.set(key, { from, to, inferred: true });
       }
     }
 
@@ -2478,7 +2507,7 @@ function renderTalentTree(className, specName) {
       const y1 = Math.max(0, edge.from.row - 1);
       const x2 = Math.max(0, edge.to.col - 1);
       const y2 = Math.max(0, edge.to.row - 1);
-      const isActivePath = edge.from.isSelected && edge.to.isSelected;
+      const isActivePath = !edge.inferred && edge.from.isSelected && edge.to.isSelected;
       return `<line class="${isActivePath ? "active" : "inactive"}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`;
     }).join("");
 
@@ -2537,7 +2566,11 @@ function renderTalentTree(className, specName) {
     `);
   }
 
-  talentTreeHint.textContent = `${className} ${specName} | Export build tree | ${selectedSet.totalCount} selected talents`;
+  const fallbackGroups = ["class", "hero", "spec"].filter((groupKey) => fallbackModeByGroup.get(groupKey));
+  const fallbackSuffix = fallbackGroups.length > 0
+    ? ` | Fallback layout: ${fallbackGroups.map((k) => titleCase(k)).join(", ")}`
+    : "";
+  talentTreeHint.textContent = `${className} ${specName} | Export build tree | ${selectedSet.totalCount} selected talents${fallbackSuffix}`;
   talentTreeHint.hidden = false;
   talentTreeWrap.hidden = false;
   talentTreeWrap.className = "talent-tree-wrap wow-tree-layout";
