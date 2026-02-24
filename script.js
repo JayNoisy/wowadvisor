@@ -508,62 +508,88 @@ function normalizeKey(value) {
     .trim();
 }
 
-const talentData = [
-  {
-    id: "t1",
-    row: 1,
-    col: 2,
-    name: "Savage Strikes",
-    desc: "Increases critical strike chance.",
-    maxPoints: 3,
-    reqNode: null,
-    reqPointsTotal: 0,
-    icon: "https://wow.zamimg.com/images/wow/icons/large/ability_warrior_savageblow.jpg"
-  },
-  {
-    id: "t2",
-    row: 1,
-    col: 3,
-    name: "Toughness",
-    desc: "Increases armor value from items by 10%.",
-    maxPoints: 5,
-    reqNode: null,
-    reqPointsTotal: 0,
-    icon: "https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotion.jpg"
-  },
-  {
-    id: "t3",
-    row: 2,
-    col: 2,
-    name: "Deep Wounds",
-    desc: "Your critical strikes cause bleeding.",
-    maxPoints: 3,
-    reqNode: "t1",
-    reqPointsTotal: 0,
-    icon: "https://wow.zamimg.com/images/wow/icons/large/ability_backstab.jpg"
-  },
-  {
-    id: "t4",
-    row: 3,
-    col: 2,
-    name: "Mortal Strike",
-    desc: "A vicious strike that deals damage and reduces healing received.",
-    maxPoints: 1,
-    reqNode: "t3",
-    reqPointsTotal: 5,
-    icon: "https://wow.zamimg.com/images/wow/icons/large/ability_warrior_punishingblow.jpg"
-  }
-];
-
+let talentData = [];
 let totalPointsSpent = 0;
-const MAX_TOTAL_POINTS = 10;
+let maxTotalPoints = 10;
 const nodeState = {};
+
+function buildInteractiveTalentData(specPayload) {
+  const { classPane, specPane, nodes } = resolveTalentPanes(specPayload);
+  const classNodes = Array.isArray(classPane?.nodes) ? classPane.nodes : [];
+  const specNodes = Array.isArray(specPane?.nodes) ? specPane.nodes : [];
+  const classMaxCol = Math.max(0, ...classNodes.map((n) => Number(n?.col ?? 0)));
+  const specColOffset = classNodes.length > 0 && specNodes.length > 0 ? classMaxCol + 3 : 0;
+
+  const combinedNodes = [];
+  classNodes.forEach((n) => combinedNodes.push({ pane: "class", colOffset: 0, node: n }));
+  specNodes.forEach((n) => combinedNodes.push({ pane: "spec", colOffset: specColOffset, node: n }));
+  if (combinedNodes.length === 0) {
+    const flatNodes = Array.isArray(nodes) ? nodes : [];
+    flatNodes.forEach((n) => combinedNodes.push({ pane: "spec", colOffset: 0, node: n }));
+  }
+
+  const idMap = new Map();
+  combinedNodes.forEach(({ pane, node }) => {
+    const nodeId = Number(node?.id);
+    if (!Number.isFinite(nodeId)) return;
+    idMap.set(nodeId, `${pane}-${nodeId}`);
+  });
+
+  const talents = combinedNodes
+    .map(({ pane, colOffset, node }) => {
+      const nodeId = Number(node?.id);
+      if (!Number.isFinite(nodeId)) return null;
+      const entries = Array.isArray(node?.entries) ? node.entries : [];
+      const primary = entries[0] || null;
+      const maxPoints = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? 1) || 1);
+      const requiredNodeIds = Array.isArray(node?.requiredNodeIds)
+        ? node.requiredNodeIds.map(Number).filter(Number.isFinite)
+        : [];
+      const reqNodes = requiredNodeIds
+        .map((id) => idMap.get(id))
+        .filter(Boolean);
+      const iconUrl = (
+        (typeof primary?.iconUrl === "string" && primary.iconUrl) ||
+        (typeof node?.iconUrl === "string" && node.iconUrl) ||
+        iconUrlForSpellName(node?.name) ||
+        ""
+      );
+      const descBase = pane === "class" ? "Class talent node." : "Spec talent node.";
+      const desc = `${descBase} ${String(node?.nodeKind || "active")} | Max rank ${maxPoints}.`;
+      return {
+        id: `${pane}-${nodeId}`,
+        row: Math.max(1, Number(node?.row ?? 0) + 1),
+        col: Math.max(1, Number(node?.col ?? 0) + 1 + colOffset),
+        name: String(node?.name || `Talent ${nodeId}`),
+        desc,
+        maxPoints,
+        reqNode: reqNodes[0] || null,
+        reqNodes,
+        reqPointsTotal: 0,
+        icon: iconUrl
+      };
+    })
+    .filter(Boolean);
+
+  const totalNodeRanks = talents.reduce((sum, t) => sum + Math.max(1, Number(t?.maxPoints || 1)), 0);
+  const derivedMax = Math.max(10, Math.min(80, totalNodeRanks));
+  return { talents, maxTotalPoints: derivedMax };
+}
 
 function initTalentTree() {
   if (!talentTree) return;
   talentTree.innerHTML = "";
   totalPointsSpent = 0;
   Object.keys(nodeState).forEach((key) => delete nodeState[key]);
+  if (!Array.isArray(talentData) || talentData.length === 0) {
+    updateTreeVisuals();
+    return;
+  }
+
+  const maxCol = Math.max(1, ...talentData.map((t) => Number(t?.col ?? 1)));
+  const maxRow = Math.max(1, ...talentData.map((t) => Number(t?.row ?? 1)));
+  talentTree.style.gridTemplateColumns = `repeat(${maxCol}, 60px)`;
+  talentTree.style.gridTemplateRows = `repeat(${maxRow}, 60px)`;
 
   talentData.forEach((talent) => {
     nodeState[talent.id] = 0;
@@ -615,26 +641,44 @@ function removePoint(id) {
 }
 
 function canAddPoint(talent) {
-  if (totalPointsSpent >= MAX_TOTAL_POINTS) return false;
+  if (totalPointsSpent >= maxTotalPoints) return false;
   if (nodeState[talent.id] >= talent.maxPoints) return false;
   if (talent.reqPointsTotal > totalPointsSpent) return false;
-  if (talent.reqNode && nodeState[talent.reqNode] === 0) return false;
+  const reqNodes = Array.isArray(talent.reqNodes) && talent.reqNodes.length > 0
+    ? talent.reqNodes
+    : (talent.reqNode ? [talent.reqNode] : []);
+  if (reqNodes.length > 0) {
+    const unlockedByReq = reqNodes.some((reqId) => Number(nodeState[reqId] || 0) > 0);
+    if (!unlockedByReq) return false;
+  }
   return true;
 }
 
 function canRemovePoint(talent) {
   if (nodeState[talent.id] <= 0) return false;
 
-  const dependents = talentData.filter((t) => t.reqNode === talent.id);
+  const dependents = talentData.filter((t) => {
+    if (Array.isArray(t.reqNodes) && t.reqNodes.length > 0) return t.reqNodes.includes(talent.id);
+    return t.reqNode === talent.id;
+  });
   for (const dep of dependents) {
-    if (nodeState[dep.id] > 0 && nodeState[talent.id] - 1 === 0) return false;
+    if (nodeState[dep.id] <= 0) continue;
+    const depReqNodes = Array.isArray(dep.reqNodes) && dep.reqNodes.length > 0
+      ? dep.reqNodes
+      : (dep.reqNode ? [dep.reqNode] : []);
+    if (depReqNodes.length === 0) continue;
+    const stillSatisfied = depReqNodes.some((reqId) => {
+      if (reqId === talent.id) return nodeState[talent.id] - 1 > 0;
+      return Number(nodeState[reqId] || 0) > 0;
+    });
+    if (!stillSatisfied) return false;
   }
   return true;
 }
 
 function updateTreeVisuals() {
   if (pointsSpent) pointsSpent.innerText = totalPointsSpent;
-  if (maxPoints) maxPoints.innerText = MAX_TOTAL_POINTS;
+  if (maxPoints) maxPoints.innerText = maxTotalPoints;
 
   talentData.forEach((talent) => {
     const el = document.getElementById(`node-${talent.id}`);
@@ -644,7 +688,13 @@ function updateTreeVisuals() {
 
     let isAvailable = true;
     if (talent.reqPointsTotal > totalPointsSpent) isAvailable = false;
-    if (talent.reqNode && nodeState[talent.reqNode] === 0) isAvailable = false;
+    const reqNodes = Array.isArray(talent.reqNodes) && talent.reqNodes.length > 0
+      ? talent.reqNodes
+      : (talent.reqNode ? [talent.reqNode] : []);
+    if (reqNodes.length > 0) {
+      const unlockedByReq = reqNodes.some((reqId) => Number(nodeState[reqId] || 0) > 0);
+      if (!unlockedByReq) isAvailable = false;
+    }
 
     el.classList.remove("unavailable", "maxed");
     if (!isAvailable && nodeState[talent.id] === 0) {
@@ -665,10 +715,17 @@ function showTooltip(e, talent) {
   if (talent.reqPointsTotal > totalPointsSpent) {
     requirementsHtml += `<p class="req-error">Requires ${talent.reqPointsTotal} points in tree</p>`;
   }
-  if (talent.reqNode && nodeState[talent.reqNode] === 0) {
-    const reqTalent = talentData.find((t) => t.id === talent.reqNode);
-    const reqTalentName = reqTalent ? reqTalent.name : talent.reqNode;
-    requirementsHtml += `<p class="req-error">Requires points in ${escapeHtml(reqTalentName)}</p>`;
+  const reqNodes = Array.isArray(talent.reqNodes) && talent.reqNodes.length > 0
+    ? talent.reqNodes
+    : (talent.reqNode ? [talent.reqNode] : []);
+  if (reqNodes.length > 0) {
+    const hasReq = reqNodes.some((reqId) => Number(nodeState[reqId] || 0) > 0);
+    if (!hasReq) {
+      const reqTalentNames = reqNodes
+        .map((reqId) => talentData.find((t) => t.id === reqId)?.name || reqId)
+        .slice(0, 3);
+      requirementsHtml += `<p class="req-error">Requires points in ${escapeHtml(reqTalentNames.join(" or "))}</p>`;
+    }
   }
 
   talentTooltip.innerHTML = `
@@ -1873,6 +1930,31 @@ function renderTalentTree(className, specName) {
     resetTalentTreeCard("Pick a spec to load talent nodes.");
     return;
   }
+
+  if (!Array.isArray(talentTreesSpecs) || talentTreesSpecs.length === 0) {
+    const errorMsg = talentTreesLoadError
+      ? `Talent tree data unavailable: ${talentTreesLoadError}`
+      : "Talent tree data is still loading, or unavailable.";
+    resetTalentTreeCard(errorMsg);
+    return;
+  }
+
+  const specPayload = findTalentSpec(className, specName);
+  if (!specPayload) {
+    resetTalentTreeCard(`No talent tree found for ${className} | ${specName}.`);
+    return;
+  }
+
+  const mapped = buildInteractiveTalentData(specPayload);
+  if (!Array.isArray(mapped.talents) || mapped.talents.length === 0) {
+    resetTalentTreeCard(`No nodes found for ${className} | ${specName}.`);
+    return;
+  }
+
+  talentData = mapped.talents;
+  maxTotalPoints = mapped.maxTotalPoints;
+  const totalNodes = talentData.length;
+  talentTreeHint.textContent = `${className} ${specName} | ${totalNodes} nodes | ${talentTreesMeta.source || "unknown source"}`;
 
   talentTreeHint.hidden = true;
   talentTreeWrap.hidden = false;
