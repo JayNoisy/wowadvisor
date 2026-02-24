@@ -2448,40 +2448,12 @@ function renderTalentTree(className, specName) {
     return Array.from(dedup.values());
   }
 
-  function shouldUseSelectedOnlyLayout(groupKey, paneNodes) {
-    const sourceTag = String(talentTreesMeta?.source || "").toLowerCase();
-    if (sourceTag.includes("fallback")) return true;
-    const paneList = Array.isArray(paneNodes) ? paneNodes : [];
-    const items = getSelectedItemsForGroup(groupKey, paneNodes);
-    if (paneList.length === 0) return true;
-    if (items.length === 0) return false;
-
-    const paneIdSet = new Set(
-      paneList
-        .map((node) => Number(node?.id))
-        .filter((id) => Number.isFinite(id))
-    );
-    const paneSlugSet = new Set(
-      paneList
-        .map((node) => slugifyTalentName(node?.name))
-        .filter(Boolean)
-    );
-
-    let matched = 0;
-    for (const item of items) {
-      const node = resolveNodeForItem(groupKey, item);
-      if (!node) continue;
-      const nodeId = Number(node?.id);
-      const nodeSlug = slugifyTalentName(node?.name);
-      if ((Number.isFinite(nodeId) && paneIdSet.has(nodeId)) || (nodeSlug && paneSlugSet.has(nodeSlug))) {
-        matched += 1;
-      }
-    }
-
-    const coverage = matched / Math.max(1, items.length);
-    const paneTooSmall = paneList.length < Math.max(18, Math.floor(items.length * 0.75));
-    return paneTooSmall && coverage < 0.55;
-  }
+function shouldUseSelectedOnlyLayout(groupKey, paneNodes) {
+  const sourceTag = String(talentTreesMeta?.source || "").toLowerCase();
+  if (sourceTag.includes("fallback")) return true;
+  const paneList = Array.isArray(paneNodes) ? paneNodes : [];
+  return paneList.length === 0;
+}
 
   function collectRecordsForGroup(groupKey) {
     const pane = paneByGroup[groupKey];
@@ -2539,8 +2511,10 @@ function renderTalentTree(className, specName) {
         const name = String(node?.name || `Talent ${idx + 1}`);
         const maxRank = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? 1) || 1);
         const selectedRank = selectedRankForNode(node);
-        const row = Number.isFinite(Number(node?.row)) ? Number(node.row) + 1 : Math.floor(idx / 4) + 1;
-        const col = Number.isFinite(Number(node?.col)) ? Number(node.col) + 1 : (idx % 4) + 1;
+        const rawRow = Number(node?.row);
+        const rawCol = Number(node?.col);
+        const row = Number.isFinite(rawRow) ? Math.max(1, rawRow) : Math.floor(idx / 4) + 1;
+        const col = Number.isFinite(rawCol) ? Math.max(1, rawCol) : (idx % 4) + 1;
         const nodeId = Number(node?.id);
         const key = Number.isFinite(nodeId) ? `${groupKey}:${nodeId}` : `${groupKey}:virtual:${idx}`;
         const record = {
@@ -2589,10 +2563,12 @@ function renderTalentTree(className, specName) {
         const entries = Array.isArray(node?.entries) ? node.entries : [];
         const primary = entries[0] || null;
         const maxRank = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? item?.rank ?? 1) || 1);
-        const hasPos = Number.isFinite(Number(node?.row)) && Number.isFinite(Number(node?.col));
+        const rawRow = Number(node?.row);
+        const rawCol = Number(node?.col);
+        const hasPos = Number.isFinite(rawRow) && Number.isFinite(rawCol);
         const fallbackPos = layoutPosition(fallbackSlot, fallbackBaseRow, cols);
-        const row = hasPos ? Number(node.row) + 1 : fallbackPos.row;
-        const col = hasPos ? Number(node.col) + 1 : fallbackPos.col;
+        const row = hasPos ? Math.max(1, rawRow) : fallbackPos.row;
+        const col = hasPos ? Math.max(1, rawCol) : fallbackPos.col;
         if (!hasPos) fallbackSlot += 1;
         const key = Number.isFinite(nodeId)
           ? `${groupKey}:${nodeId}`
@@ -2646,7 +2622,8 @@ function renderTalentTree(className, specName) {
       merged.set(key, edge);
     }
 
-    const needsInferred = concreteEdges.length === 0 || merged.size < Math.max(0, records.length - 1);
+    const useSelectedOnlyLayout = Boolean(fallbackModeByGroup.get(groupKey));
+    const needsInferred = useSelectedOnlyLayout && (concreteEdges.length === 0 || merged.size < Math.max(0, records.length - 1));
     if (needsInferred) {
       const inferred = inferEdgesFromRecords(records);
       for (const edge of inferred) {
@@ -2661,23 +2638,55 @@ function renderTalentTree(className, specName) {
     return Array.from(merged.values());
   }
 
+  function normalizeRecordsToGrid(records) {
+    const list = Array.isArray(records) ? records : [];
+    if (list.length === 0) return list;
+
+    const rows = Array.from(
+      new Set(
+        list
+          .map((record) => Number(record?.row))
+          .filter((value) => Number.isFinite(value))
+      )
+    ).sort((a, b) => a - b);
+    const cols = Array.from(
+      new Set(
+        list
+          .map((record) => Number(record?.col))
+          .filter((value) => Number.isFinite(value))
+      )
+    ).sort((a, b) => a - b);
+
+    const rowMap = new Map(rows.map((value, idx) => [value, idx + 1]));
+    const colMap = new Map(cols.map((value, idx) => [value, idx + 1]));
+
+    for (const record of list) {
+      const mappedRow = rowMap.get(Number(record?.row));
+      const mappedCol = colMap.get(Number(record?.col));
+      if (Number.isFinite(mappedRow)) record.row = mappedRow;
+      if (Number.isFinite(mappedCol)) record.col = mappedCol;
+    }
+    return list;
+  }
+
   function renderSelectedGroupPane(groupKey) {
     const records = collectRecordsForGroup(groupKey);
     if (records.length === 0) return "";
+    normalizeRecordsToGrid(records);
     const pane = paneByGroup[groupKey];
     const title = pane?.label || `${titleCase(groupKey)} Tree`;
 
-    const cols = Math.min(10, Math.max(4, ...records.map((r) => r.col)));
-    const rows = Math.min(20, Math.max(6, ...records.map((r) => r.row)));
-    const viewWidth = Math.max(1, cols - 1);
-    const viewHeight = Math.max(1, rows - 1);
+    const cols = Math.max(4, ...records.map((r) => r.col));
+    const rows = Math.max(6, ...records.map((r) => r.row));
+    const viewWidth = Math.max(1, cols);
+    const viewHeight = Math.max(1, rows);
 
     const edges = buildEdges(records, groupKey);
     const linkHtml = edges.map((edge) => {
-      const x1 = Math.max(0, edge.from.col - 1);
-      const y1 = Math.max(0, edge.from.row - 1);
-      const x2 = Math.max(0, edge.to.col - 1);
-      const y2 = Math.max(0, edge.to.row - 1);
+      const x1 = Math.max(0, edge.from.col - 0.5);
+      const y1 = Math.max(0, edge.from.row - 0.5);
+      const x2 = Math.max(0, edge.to.col - 0.5);
+      const y2 = Math.max(0, edge.to.row - 0.5);
       const isActivePath = !edge.inferred && edge.from.isSelected && edge.to.isSelected;
       return `<line class="${isActivePath ? "active" : "inactive"}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`;
     }).join("");
