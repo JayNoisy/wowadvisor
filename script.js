@@ -171,6 +171,8 @@ const mythicContext = {
 };
 
 function injectTalentTreeStyles() {
+  // Keep authoritative tree styling in style.css. Do not override at runtime.
+  return;
   const styleId = "wow-tree-styles";
   if (document.getElementById(styleId)) return;
   const style = document.createElement("style");
