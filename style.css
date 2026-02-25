@@ -109,7 +109,7 @@ body {
   --panel-theme-a: rgba(0, 191, 255, 0.22);
   --panel-theme-b: rgba(255, 255, 255, 0.08);
   --panel-icon-url: none;
-  max-width: 760px;
+  max-width: min(1480px, calc(100vw - 28px));
   margin: 0 auto;
   position: relative;
   isolation: isolate;
@@ -563,6 +563,7 @@ body {
   border: 1px solid rgba(94, 94, 94, 0.35);
   border-radius: 10px;
   padding: 8px;
+  min-width: 0;
   background:
     radial-gradient(120% 90% at 50% 0%, rgba(88, 88, 88, 0.12), transparent 62%),
     linear-gradient(180deg, rgba(19, 20, 23, 0.95), rgba(15, 16, 19, 0.98));
@@ -598,9 +599,9 @@ body {
 
 .wow-tree-grid {
   display: grid;
-  gap: 8px 4px;
-  grid-template-columns: repeat(var(--tree-cols, 4), minmax(52px, 1fr));
-  grid-template-rows: repeat(var(--tree-rows, 8), minmax(76px, auto));
+  gap: 7px 3px;
+  grid-template-columns: repeat(var(--tree-cols, 4), minmax(30px, 1fr));
+  grid-template-rows: repeat(var(--tree-rows, 8), minmax(60px, auto));
   align-items: start;
 }
 
@@ -663,8 +664,8 @@ body {
 }
 
 .wow-node-core {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: linear-gradient(160deg, #4f5560 0%, #242a30 100%);
   border: 2px solid rgba(122, 124, 129, 0.78);
@@ -691,15 +692,15 @@ body {
 }
 
 .wow-node-rank {
-  min-width: 22px;
-  height: 14px;
+  min-width: 18px;
+  height: 12px;
   border-radius: 3px;
-  padding: 0 3px;
+  padding: 0 2px;
   background: rgba(0, 0, 0, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #ffffff;
-  font-size: 9px;
-  line-height: 12px;
+  font-size: 8px;
+  line-height: 10px;
   font-weight: 700;
 }
 
@@ -968,7 +969,7 @@ body {
   }
 
   .wow-tree-layout {
-    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   }
 
   .export-build-layout {
@@ -976,8 +977,8 @@ body {
   }
 
   .wow-node-core {
-    width: 42px;
-    height: 42px;
+    width: 34px;
+    height: 34px;
   }
 }
 
