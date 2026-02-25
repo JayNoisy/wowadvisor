@@ -109,7 +109,8 @@ body {
   --panel-theme-a: rgba(0, 191, 255, 0.22);
   --panel-theme-b: rgba(255, 255, 255, 0.08);
   --panel-icon-url: none;
-  max-width: min(1480px, calc(100vw - 28px));
+  width: min(1800px, calc(100vw - 20px));
+  max-width: 1800px;
   margin: 0 auto;
   position: relative;
   isolation: isolate;
@@ -969,7 +970,7 @@ body {
   }
 
   .wow-tree-layout {
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .export-build-layout {
