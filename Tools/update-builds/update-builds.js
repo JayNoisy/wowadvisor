@@ -6,6 +6,8 @@ import { fileURLToPath } from "node:url";
 import { getMeta, getMurlokPveBuilds, getMurlokPvpBuilds } from "./sources/murlok.js";
 import { getPeaversBuilds } from "./sources/peavers.js";
 import { getExternalJsonBuilds } from "./sources/external-json.js";
+import { getArchonBuilds } from "./sources/archon.js";
+import { getCuratedGuideBuilds } from "./sources/curated-guides.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -516,6 +518,40 @@ async function main() {
   }
 
   // 5) Merge + choose best per spec/mode using validation + scoring.
+  let archonBuilds = [];
+  try {
+    const archon = await getArchonBuilds();
+    archonBuilds = Array.isArray(archon?.builds) ? archon.builds : [];
+    out.sources.archon = {
+      ok: true,
+      count: archonBuilds.length,
+      localCount: archon?.stats?.localCount ?? 0,
+      remote: archon?.stats?.remote ?? []
+    };
+  } catch (err) {
+    out.sources.archon = {
+      ok: false,
+      error: String(err)
+    };
+  }
+
+  let curatedGuideBuilds = [];
+  try {
+    const curated = await getCuratedGuideBuilds();
+    curatedGuideBuilds = Array.isArray(curated?.builds) ? curated.builds : [];
+    out.sources.curatedGuides = {
+      ok: true,
+      count: curatedGuideBuilds.length,
+      localCount: curated?.stats?.localCount ?? 0,
+      remote: curated?.stats?.remote ?? []
+    };
+  } catch (err) {
+    out.sources.curatedGuides = {
+      ok: false,
+      error: String(err)
+    };
+  }
+
   let externalBuilds = [];
   try {
     const external = await getExternalJsonBuilds();
@@ -533,7 +569,14 @@ async function main() {
     };
   }
 
-  const candidates = [...peaversBuilds, ...murlokPveBuilds, ...murlokPvpBuilds, ...externalBuilds];
+  const candidates = [
+    ...peaversBuilds,
+    ...murlokPveBuilds,
+    ...murlokPvpBuilds,
+    ...archonBuilds,
+    ...curatedGuideBuilds,
+    ...externalBuilds
+  ];
   out.builds = chooseBestPerSpec(candidates);
 
   // 6) Preserve existing builds if something went wrong and we generated nothing

@@ -28,6 +28,10 @@ jobs:
       - name: Run updater
         run: node update-builds.js
         working-directory: Tools/update-builds
+        env:
+          ARCHON_BUILD_SOURCE_URLS: ${{ vars.ARCHON_BUILD_SOURCE_URLS }}
+          CURATED_GUIDE_SOURCE_URLS: ${{ vars.CURATED_GUIDE_SOURCE_URLS }}
+          EXTRA_BUILD_SOURCE_URLS: ${{ vars.EXTRA_BUILD_SOURCE_URLS }}
 
       - name: Update talent trees
         run: |
