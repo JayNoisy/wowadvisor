@@ -156,7 +156,6 @@ const copyBtn = document.getElementById("copyBtn");
 let selectedClass = null;
 let selectedSpec = null;
 let selectedMode = null; // "aoe" | "raid" | "pvp"
-const APP_BUILD_VERSION = "2026-02-24.01";
 
 let buildsRoot = null; // always the object like buildsRoot[class][spec][mode]
 let buildsMeta = { generatedAt: null, sources: null };
@@ -171,8 +170,141 @@ const mythicContext = {
   affixes: new Set(["Fortified"])
 };
 
-window.__WOWADVISOR_VERSION = APP_BUILD_VERSION;
-console.log(`[wowadvisor] script.js loaded v${APP_BUILD_VERSION}`);
+function injectTalentTreeStyles() {
+  const styleId = "wow-tree-styles";
+  if (document.getElementById(styleId)) return;
+  const style = document.createElement("style");
+  style.id = styleId;
+  style.textContent = `
+    .talent-tree-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      background: #151515;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      margin-top: 15px;
+    }
+    .wow-tree-pane {
+      position: relative;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 4px;
+      padding: 15px;
+      min-width: 300px;
+      flex: 1;
+      box-shadow: inset 0 0 20px #000;
+    }
+    .wow-tree-title {
+      text-align: center;
+      color: #ffd100;
+      margin-top: 0;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-family: sans-serif;
+      letter-spacing: 1px;
+      font-size: 1.1em;
+      text-shadow: 0 2px 4px #000;
+    }
+    .wow-tree-stage {
+      position: relative;
+      aspect-ratio: 3 / 5; 
+      min-height: 500px;
+    }
+    .wow-tree-links {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wow-tree-links line {
+      stroke: #444;
+      stroke-width: 4px;
+      opacity: 0.6;
+    }
+    .wow-tree-links line.active {
+      stroke: #ffd100;
+      opacity: 1;
+    }
+    .wow-tree-grid {
+      display: grid;
+      grid-template-columns: repeat(var(--tree-cols), 1fr);
+      grid-template-rows: repeat(var(--tree-rows), 1fr);
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
+    .wow-node {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      margin: auto;
+      border: 2px solid #555;
+      border-radius: 4px;
+      background-color: #333;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      transition: transform 0.1s, border-color 0.2s;
+      padding: 0;
+      box-shadow: 0 2px 5px #000;
+    }
+    .wow-node:hover {
+      transform: scale(1.2);
+      border-color: #fff;
+      z-index: 10;
+    }
+    .wow-node.selected-by-build {
+      border-color: #ffd100;
+      box-shadow: 0 0 10px rgba(255, 209, 0, 0.5);
+    }
+    .wow-node.inactive {
+      filter: grayscale(100%) brightness(0.4);
+      opacity: 0.8;
+    }
+    .wow-node-passive {
+      border-radius: 50%;
+    }
+    .wow-node-choice {
+      border-radius: 0;
+    }
+    .wow-node-rank {
+      position: absolute;
+      bottom: -8px;
+      right: -8px;
+      background: #000;
+      color: #aaa;
+      font-size: 10px;
+      padding: 1px 4px;
+      border: 1px solid #444;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+    .selected-by-build .wow-node-rank {
+      border-color: #ffd100;
+      color: #ffd100;
+      background: #221a00;
+    }
+    .wow-node-initials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: #888;
+      font-weight: bold;
+      font-size: 12px;
+      text-shadow: 0 1px 2px #000;
+    }
+    .wow-node-label { display: none; }
+  `;
+  document.head.appendChild(style);
+}
 
 // =========================
 // Helpers
@@ -512,118 +644,6 @@ function normalizeKey(value) {
     .trim();
 }
 
-const TALENT_EXPORT_CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-const TALENT_EXPORT_CHAR_INDEX = new Map(
-  TALENT_EXPORT_CHARSET.split("").map((ch, idx) => [ch, idx])
-);
-
-function decodeTalentExportString(exportString, nodeOrder, nodeMetaById) {
-  const code = String(exportString || "").trim();
-  const order = Array.isArray(nodeOrder)
-    ? nodeOrder.map((v) => Number(v)).filter((v) => Number.isFinite(v))
-    : [];
-  if (!code || order.length === 0) return null;
-
-  const values = [];
-  for (const ch of code) {
-    const value = TALENT_EXPORT_CHAR_INDEX.get(ch);
-    if (!Number.isFinite(value)) return null;
-    values.push(value);
-  }
-  if (values.length < 5) return null;
-
-  let bitIndex = 0;
-  let truncated = false;
-
-  function readBits(count) {
-    let out = 0;
-    for (let i = 0; i < count; i += 1) {
-      const charIndex = Math.floor(bitIndex / 6);
-      const bitOffset = bitIndex % 6;
-      if (charIndex >= values.length) {
-        truncated = true;
-        return null;
-      }
-      const bit = (values[charIndex] >> bitOffset) & 1;
-      out |= (bit << i);
-      bitIndex += 1;
-    }
-    return out;
-  }
-
-  const version = readBits(8);
-  const specId = readBits(16);
-  if (!Number.isFinite(version) || !Number.isFinite(specId)) return null;
-
-  const treeHashBytes = [];
-  for (let i = 0; i < 16; i += 1) {
-    const next = readBits(8);
-    if (!Number.isFinite(next)) return null;
-    treeHashBytes.push(next);
-  }
-  const treeHash = treeHashBytes.map((b) => String(b).padStart(2, "0")).join("");
-
-  const nodeSelections = new Map();
-  for (const nodeId of order) {
-    const selected = readBits(1);
-    if (!Number.isFinite(selected)) break;
-    if (!selected) continue;
-
-    const purchased = readBits(1);
-    if (!Number.isFinite(purchased)) break;
-    if (!purchased) {
-      nodeSelections.set(nodeId, {
-        selected: true,
-        purchased: false,
-        rank: 0,
-        choiceIndex: null
-      });
-      continue;
-    }
-
-    const partiallyRanked = readBits(1);
-    if (!Number.isFinite(partiallyRanked)) break;
-
-    let rank = null;
-    if (partiallyRanked) {
-      const partialRank = readBits(6);
-      if (!Number.isFinite(partialRank)) break;
-      rank = Math.max(1, Number(partialRank) || 1);
-    }
-
-    const isChoiceNode = readBits(1);
-    if (!Number.isFinite(isChoiceNode)) break;
-
-    let choiceIndex = null;
-    if (isChoiceNode) {
-      const choice = readBits(2);
-      if (!Number.isFinite(choice)) break;
-      choiceIndex = Number(choice);
-    }
-
-    if (!Number.isFinite(rank)) {
-      const maxRank = Number(nodeMetaById?.get(nodeId)?.maxRank ?? 1);
-      rank = Math.max(1, Number.isFinite(maxRank) ? maxRank : 1);
-    }
-
-    nodeSelections.set(nodeId, {
-      selected: true,
-      purchased: true,
-      rank,
-      choiceIndex
-    });
-  }
-
-  return {
-    version: Number(version),
-    specId: Number(specId),
-    treeHash,
-    nodeSelections,
-    totalSelected: nodeSelections.size,
-    truncated
-  };
-}
-
 let talentData = [];
 let totalPointsSpent = 0;
 let maxTotalPoints = 10;
@@ -694,40 +714,6 @@ function buildInteractiveTalentData(specPayload) {
   const totalNodeRanks = talents.reduce((sum, t) => sum + Math.max(1, Number(t?.maxPoints || 1)), 0);
   const derivedMax = Math.max(10, Math.min(80, totalNodeRanks));
   return { talents, maxTotalPoints: derivedMax };
-}
-
-function applyBuildToTree() {
-  if (!activeBuild || !activeBuild.selectedTalents) return;
-  
-  // Reset tree state
-  Object.keys(nodeState).forEach(key => nodeState[key] = 0);
-  totalPointsSpent = 0;
-
-  const selection = buildSelectedTalentSelection(activeBuild.selectedTalents);
-  
-  talentData.forEach(talent => {
-    // Extract numeric ID from "class-123" or "spec-123"
-    const parts = talent.id.split('-');
-    const numericId = parseInt(parts[1], 10);
-    
-    let rank = 0;
-    if (selection.idRanks.has(numericId)) {
-      rank = selection.idRanks.get(numericId);
-    } else {
-      const slug = slugifyTalentName(talent.name);
-      if (selection.slugRanks.has(slug)) {
-        rank = selection.slugRanks.get(slug);
-      }
-    }
-
-    if (rank > 0) {
-      const appliedRank = Math.min(rank, talent.maxPoints);
-      nodeState[talent.id] = appliedRank;
-      totalPointsSpent += appliedRank;
-    }
-  });
-  
-  updateTreeVisuals();
 }
 
 function initTalentTree() {
@@ -898,9 +884,7 @@ function hideTooltip() {
 function resetTalentTreeCard(message) {
   talentTreeHint.textContent = message;
   talentTreeHint.hidden = false;
-  talentTreeWrap.innerHTML = "";
-  talentTreeWrap.hidden = true;
-  talentTreeWrap.className = "talent-tree-wrap";
+  talentTreeWrap.hidden = false;
   if (talentSystem) talentSystem.hidden = true;
   hideTooltip();
   talentNodeIndex = new Map();
@@ -911,27 +895,6 @@ function resetTalentTreeCard(message) {
 
 function titleCase(word) {
   return String(word || "").slice(0, 1).toUpperCase() + String(word || "").slice(1).toLowerCase();
-}
-
-function titleCaseFromSlug(value) {
-  const parts = String(value || "")
-    .trim()
-    .split(/[^a-zA-Z0-9]+/)
-    .filter(Boolean);
-  if (parts.length === 0) return "";
-  return parts
-    .map((part) => {
-      const clean = String(part || "");
-      if (clean.length <= 2) return clean.toUpperCase();
-      return `${clean.slice(0, 1).toUpperCase()}${clean.slice(1).toLowerCase()}`;
-    })
-    .join(" ");
-}
-
-function normalizeLookupKey(value) {
-  return String(value || "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "");
 }
 
 function escapeHtml(value) {
@@ -970,21 +933,19 @@ function findTalentSpec(className, specName) {
 function splitNodesByTreeType(nodes) {
   const classNodes = [];
   const specNodes = [];
-  const heroNodes = [];
   const otherNodes = [];
   for (const node of nodes) {
     const type = String(node?.treeType || "").toLowerCase();
     if (type.includes("class")) classNodes.push(node);
     else if (type.includes("spec")) specNodes.push(node);
-    else if (type.includes("hero")) heroNodes.push(node);
     else otherNodes.push(node);
   }
-  if (classNodes.length === 0 && specNodes.length === 0 && heroNodes.length === 0 && otherNodes.length > 0) {
+  if (classNodes.length === 0 && specNodes.length === 0 && otherNodes.length > 0) {
     specNodes.push(...otherNodes);
   } else if (otherNodes.length > 0) {
     specNodes.push(...otherNodes);
   }
-  return { classNodes, specNodes, heroNodes };
+  return { classNodes, specNodes };
 }
 
 function buildFallbackPane(key, label, nodes) {
@@ -1011,14 +972,6 @@ function resolveTalentPanes(specPayload) {
         nodes: Array.isArray(specPayload.trees.class.nodes) ? specPayload.trees.class.nodes : [],
         edges: Array.isArray(specPayload.trees.class.edges) ? specPayload.trees.class.edges : []
       },
-      heroPane: specPayload?.trees?.hero
-        ? {
-          key: "hero",
-          label: specPayload.trees.hero.label || "Hero Tree",
-          nodes: Array.isArray(specPayload.trees.hero.nodes) ? specPayload.trees.hero.nodes : [],
-          edges: Array.isArray(specPayload.trees.hero.edges) ? specPayload.trees.hero.edges : []
-        }
-        : null,
       specPane: {
         key: "spec",
         label: specPayload.trees.spec.label || "Spec Tree",
@@ -1029,10 +982,9 @@ function resolveTalentPanes(specPayload) {
     };
   }
 
-  const { classNodes, specNodes, heroNodes } = splitNodesByTreeType(nodes);
+  const { classNodes, specNodes } = splitNodesByTreeType(nodes);
   return {
     classPane: buildFallbackPane("class", "Class Tree", classNodes),
-    heroPane: heroNodes.length > 0 ? buildFallbackPane("hero", "Hero Tree", heroNodes) : null,
     specPane: buildFallbackPane("spec", "Spec Tree", specNodes),
     nodes
   };
@@ -1435,9 +1387,6 @@ const SPELL_ICON_MAP = {
 };
 
 const SORTED_SPELL_NAMES = Object.keys(SPELL_ICON_MAP).sort((a, b) => b.length - a.length);
-const NORMALIZED_SPELL_ICON_MAP = new Map(
-  Object.entries(SPELL_ICON_MAP).map(([name, iconName]) => [normalizeLookupKey(name), iconName])
-);
 
 function findSpellNameInStep(stepText) {
   const text = String(stepText || "").toLowerCase();
@@ -1449,9 +1398,7 @@ function findSpellNameInStep(stepText) {
 }
 
 function iconUrlForSpellName(spellName) {
-  const raw = String(spellName || "").trim();
-  if (!raw) return null;
-  const iconName = SPELL_ICON_MAP[raw] || NORMALIZED_SPELL_ICON_MAP.get(normalizeLookupKey(raw));
+  const iconName = SPELL_ICON_MAP[spellName];
   if (!iconName) return null;
   return `https://wow.zamimg.com/images/wow/icons/large/${iconName}.jpg`;
 }
@@ -2144,624 +2091,25 @@ function renderTalentTree(className, specName) {
     return;
   }
 
-  const { classPane, heroPane, specPane, nodes } = resolveTalentPanes(specPayload);
-  if (!Array.isArray(nodes) || nodes.length === 0) {
+  const mapped = buildInteractiveTalentData(specPayload);
+  if (!Array.isArray(mapped.talents) || mapped.talents.length === 0) {
     resetTalentTreeCard(`No nodes found for ${className} | ${specName}.`);
     return;
   }
 
-  talentNodeIndex = new Map();
-  const selectedSet = buildSelectedTalentSelection(activeBuild?.selectedTalents);
-  const nodeMetaById = new Map(
-    (Array.isArray(nodes) ? nodes : [])
-      .map((node) => {
-        const nodeId = Number(node?.id);
-        if (!Number.isFinite(nodeId)) return null;
-        const primary = Array.isArray(node?.entries) ? node.entries[0] : null;
-        const maxRank = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? 1) || 1);
-        return [nodeId, { maxRank, treeType: String(node?.treeType || "spec"), node }];
-      })
-      .filter(Boolean)
-  );
-  const nodeOrder = Array.isArray(specPayload?.nodeOrder)
-    ? specPayload.nodeOrder.map((id) => Number(id)).filter((id) => Number.isFinite(id))
-    : [];
-  const decodedExport = decodeTalentExportString(activeBuild?.exportString, nodeOrder, nodeMetaById);
-  const decodedRanksByNodeId = decodedExport?.nodeSelections instanceof Map ? decodedExport.nodeSelections : new Map();
-  const decodedSelectedCount = Number(decodedExport?.totalSelected) || 0;
-  const paneByGroup = {
-    class: classPane,
-    hero: heroPane,
-    spec: specPane
-  };
-  const paneEdgeCache = new Map();
-  const fallbackModeByGroup = new Map();
+  talentData = mapped.talents;
+  maxTotalPoints = mapped.maxTotalPoints;
+  const totalNodes = talentData.length;
+  talentTreeHint.textContent = `${className} ${specName} | ${totalNodes} nodes | ${talentTreesMeta.source || "unknown source"}`;
 
-  function inferPaneEdgesFromLayout(nodes) {
-    const list = Array.isArray(nodes) ? nodes : [];
-    const byRow = new Map();
-    for (const node of list) {
-      const nodeId = Number(node?.id);
-      const row = Number(node?.row);
-      const col = Number(node?.col);
-      if (!Number.isFinite(nodeId) || !Number.isFinite(row) || !Number.isFinite(col)) continue;
-      if (!byRow.has(row)) byRow.set(row, []);
-      byRow.get(row).push({ id: nodeId, row, col });
-    }
-
-    const allRows = Array.from(byRow.keys()).sort((a, b) => a - b);
-    const edges = [];
-    for (const row of allRows) {
-      const current = byRow.get(row) || [];
-      if (current.length === 0) continue;
-      const parentCandidates = [];
-      for (const prevRow of allRows) {
-        if (prevRow >= row) break;
-        const distance = row - prevRow;
-        if (distance > 2) continue;
-        for (const parent of byRow.get(prevRow) || []) {
-          parentCandidates.push({ ...parent, distance });
-        }
-      }
-
-      for (const child of current) {
-        const nearest = parentCandidates
-          .map((p) => ({
-            id: p.id,
-            score: p.distance * 10 + Math.abs(p.col - child.col)
-          }))
-          .sort((a, b) => a.score - b.score)
-          .slice(0, 2);
-        for (const parent of nearest) {
-          edges.push({ fromNodeId: parent.id, toNodeId: child.id });
-        }
-      }
-    }
-
-    return edges;
-  }
-
-  function getPaneEdges(groupKey) {
-    if (paneEdgeCache.has(groupKey)) return paneEdgeCache.get(groupKey);
-    const pane = paneByGroup[groupKey];
-    const typeNodes = Array.isArray(pane?.nodes) ? pane.nodes : [];
-    const nodeIdSet = new Set(
-      typeNodes
-        .map((n) => Number(n?.id))
-        .filter((id) => Number.isFinite(id))
-    );
-
-    let edges = [];
-    if (Array.isArray(pane?.edges) && pane.edges.length > 0) {
-      edges = pane.edges
-        .map((e) => ({
-          fromNodeId: Number(e?.fromNodeId),
-          toNodeId: Number(e?.toNodeId)
-        }))
-        .filter((e) => Number.isFinite(e.fromNodeId) && Number.isFinite(e.toNodeId));
-    }
-
-    if (edges.length === 0) {
-      edges = typeNodes.flatMap((node) => {
-        const toNodeId = Number(node?.id);
-        const req = Array.isArray(node?.requiredNodeIds) ? node.requiredNodeIds : [];
-        if (!Number.isFinite(toNodeId)) return [];
-        return req
-          .map((fromNodeId) => ({ fromNodeId: Number(fromNodeId), toNodeId }))
-          .filter((e) => Number.isFinite(e.fromNodeId));
-      });
-    }
-
-    if (edges.length === 0) {
-      edges = inferPaneEdgesFromLayout(typeNodes);
-    }
-
-    const dedup = new Map();
-    for (const edge of edges) {
-      if (!nodeIdSet.has(edge.fromNodeId) || !nodeIdSet.has(edge.toNodeId)) continue;
-      const key = `${edge.fromNodeId}->${edge.toNodeId}`;
-      if (!dedup.has(key)) dedup.set(key, edge);
-    }
-    const finalEdges = Array.from(dedup.values());
-    paneEdgeCache.set(groupKey, finalEdges);
-    return finalEdges;
-  }
-
-  function buildPaneLookup(pane) {
-    const list = Array.isArray(pane?.nodes) ? pane.nodes : [];
-    const byId = new Map();
-    const bySlug = new Map();
-    for (const node of list) {
-      const nodeId = Number(node?.id);
-      if (Number.isFinite(nodeId)) byId.set(nodeId, node);
-      const nodeSlug = slugifyTalentName(node?.name);
-      if (nodeSlug) bySlug.set(nodeSlug, node);
-      const entries = Array.isArray(node?.entries) ? node.entries : [];
-      for (const entry of entries) {
-        const entryId = Number(entry?.id);
-        if (Number.isFinite(entryId)) byId.set(entryId, node);
-        const entrySpellId = Number(entry?.spellId);
-        if (Number.isFinite(entrySpellId)) byId.set(entrySpellId, node);
-        const entrySlug = slugifyTalentName(entry?.name);
-        if (entrySlug && !bySlug.has(entrySlug)) bySlug.set(entrySlug, node);
-      }
-      const spellId = Number(node?.spellId);
-      if (Number.isFinite(spellId)) byId.set(spellId, node);
-    }
-    return { byId, bySlug };
-  }
-
-  const paneLookupByGroup = {
-    class: buildPaneLookup(classPane),
-    hero: buildPaneLookup(heroPane),
-    spec: buildPaneLookup(specPane)
-  };
-  const allLookup = buildPaneLookup({ nodes });
-
-  function resolveNodeForItem(groupKey, item) {
-    const lookup = paneLookupByGroup[groupKey] || allLookup;
-    const itemId = Number(item?.id);
-    let node = Number.isFinite(itemId) ? lookup.byId.get(itemId) : null;
-    if (!node && Number.isFinite(itemId)) node = allLookup.byId.get(itemId);
-    const itemSlug = slugifyTalentName(item?.slug);
-    if (!node && itemSlug) node = lookup.bySlug.get(itemSlug);
-    if (!node && itemSlug) node = allLookup.bySlug.get(itemSlug);
-    return node || null;
-  }
-
-  function selectedRankForNode(node) {
-    const entries = Array.isArray(node?.entries) ? node.entries : [];
-    const nodeSlug = slugifyTalentName(node?.name);
-    const entrySlugs = entries.map((entry) => slugifyTalentName(entry?.name)).filter(Boolean);
-    const nodeId = Number(node?.id);
-    if (Number.isFinite(nodeId) && decodedRanksByNodeId.has(nodeId)) {
-      const rank = Number(decodedRanksByNodeId.get(nodeId)?.rank);
-      if (Number.isFinite(rank) && rank > 0) return Math.max(1, rank);
-    }
-    const idCandidates = [
-      nodeId,
-      Number(node?.spellId),
-      ...entries.map((entry) => Number(entry?.id)),
-      ...entries.map((entry) => Number(entry?.spellId))
-    ].filter((value) => Number.isFinite(value));
-    for (const candidateId of idCandidates) {
-      const rankById = selectedSet.idRanks.get(candidateId);
-      if (rankById) return Math.max(1, Number(rankById) || 1);
-    }
-    if (nodeSlug) {
-      const rankBySlug = selectedSet.slugRanks.get(nodeSlug);
-      if (rankBySlug) return Math.max(1, Number(rankBySlug) || 1);
-    }
-    for (const entrySlug of entrySlugs) {
-      const rankBySlug = selectedSet.slugRanks.get(entrySlug);
-      if (rankBySlug) return Math.max(1, Number(rankBySlug) || 1);
-    }
-    return 0;
-  }
-
-  function nodeGroupKey(node) {
-    const treeType = String(node?.treeType || "").toLowerCase();
-    if (treeType.includes("class")) return "class";
-    if (treeType.includes("hero")) return "hero";
-    return "spec";
-  }
-
-  function getSelectedItemsForGroup(groupKey, paneNodes) {
-    const explicitItems = Array.isArray(selectedSet.groups[groupKey]) ? selectedSet.groups[groupKey] : [];
-    if (explicitItems.length > 0) return explicitItems;
-    if (!(decodedRanksByNodeId instanceof Map) || decodedRanksByNodeId.size === 0) return [];
-
-    const sourceNodes = Array.isArray(paneNodes) && paneNodes.length > 0
-      ? paneNodes
-      : (Array.isArray(nodes) ? nodes.filter((node) => nodeGroupKey(node) === groupKey) : []);
-
-    return sourceNodes
-      .map((node) => {
-        const nodeId = Number(node?.id);
-        if (!Number.isFinite(nodeId) || !decodedRanksByNodeId.has(nodeId)) return null;
-        const decoded = decodedRanksByNodeId.get(nodeId);
-        const rank = Math.max(1, Number(decoded?.rank) || 1);
-        return {
-          id: nodeId,
-          slug: slugifyTalentName(node?.name),
-          rank
-        };
-      })
-      .filter(Boolean);
-  }
-
-  function defaultColsForGroup(groupKey) {
-    if (groupKey === "hero") return 3;
-    return 4;
-  }
-
-  function layoutPosition(index, baseRow, cols) {
-    const safeCols = Math.max(3, Number(cols) || 4);
-    return {
-      row: baseRow + Math.floor(index / safeCols),
-      col: 1 + (index % safeCols)
-    };
-  }
-
-  function resolveIconUrl(node, preferredName, preferredSlug) {
-    const entries = Array.isArray(node?.entries) ? node.entries : [];
-    const primary = entries[0] || null;
-    const safeName = String(preferredName || node?.name || primary?.name || "").trim();
-    const safeSlug = String(preferredSlug || "").trim();
-    return (
-      (typeof primary?.iconUrl === "string" && primary.iconUrl) ||
-      iconUrlFromIconName(primary?.iconName) ||
-      (typeof node?.iconUrl === "string" && node.iconUrl) ||
-      iconUrlFromIconName(node?.iconName) ||
-      (safeName ? iconUrlForSpellName(safeName) : null) ||
-      (safeSlug ? iconUrlForSpellName(titleCaseFromSlug(safeSlug)) : null) ||
-      null
-    );
-  }
-
-  function inferEdgesFromRecords(records) {
-    const list = (Array.isArray(records) ? records : [])
-      .filter((record) => Number.isFinite(record?.row) && Number.isFinite(record?.col))
-      .map((record) => ({
-        key: record.key,
-        row: Number(record.row),
-        col: Number(record.col)
-      }));
-    if (list.length < 2) return [];
-
-    const byRow = new Map();
-    for (const record of list) {
-      if (!byRow.has(record.row)) byRow.set(record.row, []);
-      byRow.get(record.row).push(record);
-    }
-
-    const rows = Array.from(byRow.keys()).sort((a, b) => a - b);
-    const edges = [];
-    for (const row of rows) {
-      const current = byRow.get(row) || [];
-      if (current.length === 0) continue;
-      let parentRow = row - 1;
-      while (parentRow >= rows[0] && !byRow.has(parentRow)) parentRow -= 1;
-      const parentPool = parentRow >= rows[0] ? (byRow.get(parentRow) || []) : [];
-      if (parentPool.length === 0) continue;
-
-      for (const child of current) {
-        const nearestParent = parentPool
-          .map((parent) => ({
-            key: parent.key,
-            score: Math.abs(parent.col - child.col)
-          }))
-          .sort((a, b) => a.score - b.score)
-          .slice(0, 1);
-        if (nearestParent.length > 0) {
-          edges.push({ fromKey: nearestParent[0].key, toKey: child.key });
-        }
-      }
-    }
-
-    const dedup = new Map();
-    for (const edge of edges) {
-      if (!edge?.fromKey || !edge?.toKey) continue;
-      const key = `${edge.fromKey}->${edge.toKey}`;
-      if (!dedup.has(key)) dedup.set(key, edge);
-    }
-    return Array.from(dedup.values());
-  }
-
-function shouldUseSelectedOnlyLayout(groupKey, paneNodes) {
-  const sourceTag = String(talentTreesMeta?.source || "").toLowerCase();
-  if (sourceTag.includes("fallback")) return true;
-  const paneList = Array.isArray(paneNodes) ? paneNodes : [];
-  return paneList.length === 0;
-}
-
-  function collectRecordsForGroup(groupKey) {
-    const pane = paneByGroup[groupKey];
-    const paneNodes = Array.isArray(pane?.nodes) ? pane.nodes : [];
-    const useSelectedOnlyLayout = shouldUseSelectedOnlyLayout(groupKey, paneNodes);
-    fallbackModeByGroup.set(groupKey, useSelectedOnlyLayout);
-    const records = [];
-    const cols = defaultColsForGroup(groupKey);
-    const byNodeId = new Map();
-    const bySlug = new Map();
-
-    const bindRecord = (record) => {
-      if (Number.isFinite(record?.nodeId)) byNodeId.set(Number(record.nodeId), record);
-      const recordSlug = slugifyTalentName(record?.name);
-      if (recordSlug && !bySlug.has(recordSlug)) bySlug.set(recordSlug, record);
-    };
-
-    const createFallbackVirtualRecord = (item, itemIdx, baseRow, slotIndex) => {
-      const itemSlug = slugifyTalentName(item?.slug);
-      const name = titleCaseFromSlug(itemSlug) || `Talent ${itemIdx + 1}`;
-      const rank = Math.max(1, Number(item?.rank) || 1);
-      const pos = layoutPosition(slotIndex, baseRow, cols);
-      const virtualNode = {
-        id: null,
-        name,
-        row: pos.row - 1,
-        col: pos.col - 1,
-        maxRank: rank,
-        treeType: groupKey,
-        requiredNodeIds: [],
-        spellId: null,
-        iconName: null,
-        iconUrl: null,
-        nodeKind: "active",
-        entries: []
-      };
-      return {
-        key: `${groupKey}:virtual-selected:${itemSlug || itemIdx}:${itemIdx}`,
-        nodeId: null,
-        node: virtualNode,
-        name,
-        row: pos.row,
-        col: pos.col,
-        maxRank: rank,
-        selectedRank: rank,
-        isSelected: true,
-        iconUrl: resolveIconUrl(virtualNode, name, itemSlug)
-      };
-    };
-
-    if (!useSelectedOnlyLayout && paneNodes.length > 0) {
-      paneNodes.forEach((node, idx) => {
-        const entries = Array.isArray(node?.entries) ? node.entries : [];
-        const primary = entries[0] || null;
-        const name = String(node?.name || `Talent ${idx + 1}`);
-        const maxRank = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? 1) || 1);
-        const selectedRank = selectedRankForNode(node);
-        const rawRow = Number(node?.row);
-        const rawCol = Number(node?.col);
-        const row = Number.isFinite(rawRow) ? Math.max(1, rawRow) : Math.floor(idx / 4) + 1;
-        const col = Number.isFinite(rawCol) ? Math.max(1, rawCol) : (idx % 4) + 1;
-        const nodeId = Number(node?.id);
-        const key = Number.isFinite(nodeId) ? `${groupKey}:${nodeId}` : `${groupKey}:virtual:${idx}`;
-        const record = {
-          key,
-          nodeId: Number.isFinite(nodeId) ? nodeId : null,
-          node,
-          name,
-          row,
-          col,
-          maxRank,
-          selectedRank,
-          isSelected: selectedRank > 0,
-          iconUrl: resolveIconUrl(node, name, slugifyTalentName(name))
-        };
-        records.push(record);
-        bindRecord(record);
-      });
-    }
-
-    const items = getSelectedItemsForGroup(groupKey, paneNodes);
-    const maxExistingRow = records.length > 0 ? Math.max(...records.map((record) => Number(record.row) || 1)) : 0;
-    const fallbackBaseRow = Math.max(1, maxExistingRow + (records.length > 0 ? 1 : 0));
-    let fallbackSlot = 0;
-    items.forEach((item, idx) => {
-      const node = resolveNodeForItem(groupKey, item);
-      const selectedRank = Math.max(1, Number(item?.rank) || 1);
-      const itemSlug = slugifyTalentName(item?.slug);
-      const nodeId = Number(node?.id);
-      const existingById = Number.isFinite(nodeId) ? byNodeId.get(nodeId) : null;
-      const nodeName = String(node?.name || "").trim();
-      const existingByName = nodeName ? bySlug.get(slugifyTalentName(nodeName)) : null;
-      const existingBySlug = itemSlug ? bySlug.get(itemSlug) : null;
-      const existing = existingById || existingByName || existingBySlug || null;
-      if (existing) {
-        existing.selectedRank = Math.max(existing.selectedRank, selectedRank);
-        existing.maxRank = Math.max(existing.maxRank, selectedRank);
-        existing.isSelected = true;
-        if (!existing.iconUrl) {
-          existing.iconUrl = resolveIconUrl(existing.node, existing.name, itemSlug);
-        }
-        return;
-      }
-
-      if (node) {
-        if (!useSelectedOnlyLayout) return;
-        const entries = Array.isArray(node?.entries) ? node.entries : [];
-        const primary = entries[0] || null;
-        const maxRank = Math.max(1, Number(primary?.maxRank ?? node?.maxRank ?? item?.rank ?? 1) || 1);
-        const rawRow = Number(node?.row);
-        const rawCol = Number(node?.col);
-        const hasPos = Number.isFinite(rawRow) && Number.isFinite(rawCol);
-        const fallbackPos = layoutPosition(fallbackSlot, fallbackBaseRow, cols);
-        const row = hasPos ? Math.max(1, rawRow) : fallbackPos.row;
-        const col = hasPos ? Math.max(1, rawCol) : fallbackPos.col;
-        if (!hasPos) fallbackSlot += 1;
-        const key = Number.isFinite(nodeId)
-          ? `${groupKey}:${nodeId}`
-          : `${groupKey}:resolved-selected:${itemSlug || idx}:${idx}`;
-        const record = {
-          key,
-          nodeId: Number.isFinite(nodeId) ? nodeId : null,
-          node,
-          name: String(node?.name || titleCaseFromSlug(itemSlug) || `Talent ${idx + 1}`),
-          row,
-          col,
-          maxRank,
-          selectedRank,
-          isSelected: true,
-          iconUrl: resolveIconUrl(node, node?.name, itemSlug)
-        };
-        records.push(record);
-        bindRecord(record);
-        return;
-      }
-
-      if (!useSelectedOnlyLayout) return;
-      const virtualRecord = createFallbackVirtualRecord(item, idx, fallbackBaseRow, fallbackSlot);
-      fallbackSlot += 1;
-      records.push(virtualRecord);
-      bindRecord(virtualRecord);
-    });
-
-    return records;
-  }
-
-  function buildEdges(records, groupKey) {
-    const byKey = new Map(records.map((record) => [record.key, record]));
-    const byNodeId = new Map(
-      records
-        .filter((r) => Number.isFinite(r.nodeId))
-        .map((r) => [Number(r.nodeId), r])
-    );
-    const paneEdges = getPaneEdges(groupKey);
-    const concreteEdges = paneEdges
-      .map((edge) => ({
-        from: byNodeId.get(edge.fromNodeId),
-        to: byNodeId.get(edge.toNodeId),
-        inferred: false
-      }))
-      .filter((edge) => edge.from && edge.to);
-
-    const merged = new Map();
-    for (const edge of concreteEdges) {
-      const key = `${edge.from.key}->${edge.to.key}`;
-      merged.set(key, edge);
-    }
-
-    const useSelectedOnlyLayout = Boolean(fallbackModeByGroup.get(groupKey));
-    const needsInferred = useSelectedOnlyLayout && (concreteEdges.length === 0 || merged.size < Math.max(0, records.length - 1));
-    if (needsInferred) {
-      const inferred = inferEdgesFromRecords(records);
-      for (const edge of inferred) {
-        const from = byKey.get(edge.fromKey);
-        const to = byKey.get(edge.toKey);
-        if (!from || !to) continue;
-        const key = `${from.key}->${to.key}`;
-        if (!merged.has(key)) merged.set(key, { from, to, inferred: true });
-      }
-    }
-
-    return Array.from(merged.values());
-  }
-
-  function normalizeRecordsToGrid(records) {
-    const list = Array.isArray(records) ? records : [];
-    if (list.length === 0) return list;
-
-    const rows = Array.from(
-      new Set(
-        list
-          .map((record) => Number(record?.row))
-          .filter((value) => Number.isFinite(value))
-      )
-    ).sort((a, b) => a - b);
-    const cols = Array.from(
-      new Set(
-        list
-          .map((record) => Number(record?.col))
-          .filter((value) => Number.isFinite(value))
-      )
-    ).sort((a, b) => a - b);
-
-    const rowMap = new Map(rows.map((value, idx) => [value, idx + 1]));
-    const colMap = new Map(cols.map((value, idx) => [value, idx + 1]));
-
-    for (const record of list) {
-      const mappedRow = rowMap.get(Number(record?.row));
-      const mappedCol = colMap.get(Number(record?.col));
-      if (Number.isFinite(mappedRow)) record.row = mappedRow;
-      if (Number.isFinite(mappedCol)) record.col = mappedCol;
-    }
-    return list;
-  }
-
-  function renderSelectedGroupPane(groupKey) {
-    const records = collectRecordsForGroup(groupKey);
-    if (records.length === 0) return "";
-    normalizeRecordsToGrid(records);
-    const pane = paneByGroup[groupKey];
-    const title = pane?.label || `${titleCase(groupKey)} Tree`;
-
-    const cols = Math.max(4, ...records.map((r) => r.col));
-    const rows = Math.max(6, ...records.map((r) => r.row));
-    const viewWidth = Math.max(1, cols);
-    const viewHeight = Math.max(1, rows);
-
-    const edges = buildEdges(records, groupKey);
-    const linkHtml = edges.map((edge) => {
-      const x1 = Math.max(0, edge.from.col - 0.5);
-      const y1 = Math.max(0, edge.from.row - 0.5);
-      const x2 = Math.max(0, edge.to.col - 0.5);
-      const y2 = Math.max(0, edge.to.row - 0.5);
-      const isActivePath = !edge.inferred && edge.from.isSelected && edge.to.isSelected;
-      return `<line class="${isActivePath ? "active" : "inactive"}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`;
-    }).join("");
-
-    const nodeHtml = records
-      .sort((a, b) => {
-        const rowDelta = a.row - b.row;
-        if (rowDelta !== 0) return rowDelta;
-        return a.col - b.col;
-      })
-      .map((record) => {
-        const nodeKind = String(record.node?.nodeKind || "active").toLowerCase();
-        const initials = escapeHtml(nodeInitials(record.name));
-        const iconStyle = record.iconUrl ? ` style="background-image:url('${escapeHtml(record.iconUrl)}')"` : "";
-        talentNodeIndex.set(record.key, {
-          paneKey: groupKey,
-          paneLabel: title,
-          node: record.node
-        });
-        return `
-          <button class="wow-node wow-node-${escapeHtml(nodeKind)}${record.isSelected ? " selected-by-build" : " inactive"}" data-node-key="${escapeHtml(record.key)}" type="button" style="grid-row:${record.row};grid-column:${record.col}" title="${escapeHtml(record.name)}">
-            <span class="wow-node-core${record.iconUrl ? " has-icon" : ""}"${iconStyle}>
-              <span class="wow-node-initials">${initials}</span>
-            </span>
-            <span class="wow-node-rank${record.isSelected ? "" : " empty"}">${record.isSelected ? `${record.selectedRank}/${record.maxRank}` : ""}</span>
-            <span class="wow-node-label">${escapeHtml(record.name)}</span>
-          </button>
-        `;
-      })
-      .join("");
-
-    return `
-      <section class="wow-tree-pane">
-        <h4 class="wow-tree-title">${escapeHtml(title)}</h4>
-        <div class="wow-tree-stage">
-          <svg class="wow-tree-links" viewBox="0 0 ${viewWidth} ${viewHeight}" preserveAspectRatio="none" aria-hidden="true">
-            ${linkHtml}
-          </svg>
-          <div class="wow-tree-grid wow-tree-nodes" style="--tree-cols:${cols};--tree-rows:${rows}">
-            ${nodeHtml}
-          </div>
-        </div>
-      </section>
-    `;
-  }
-
-  const blocks = ["class", "hero", "spec"]
-    .map((groupKey) => renderSelectedGroupPane(groupKey))
-    .filter(Boolean);
-
-  if (blocks.length === 0) {
-    blocks.push(`
-      <section class="wow-tree-pane">
-        <h4 class="wow-tree-title">Build Preview</h4>
-        <p class="wow-tree-empty">This build has no mapped selected talents yet. Export string is still shown above.</p>
-      </section>
-    `);
-  }
-
-  const fallbackGroups = ["class", "hero", "spec"].filter((groupKey) => fallbackModeByGroup.get(groupKey));
-  const fallbackSuffix = fallbackGroups.length > 0
-    ? ` | Fallback layout: ${fallbackGroups.map((k) => titleCase(k)).join(", ")}`
-    : "";
-  const selectedCount = decodedSelectedCount > 0 ? decodedSelectedCount : selectedSet.totalCount;
-  const selectionSource = decodedSelectedCount > 0 ? "decoded import" : "selected map";
-  const treeSource = String(talentTreesMeta?.source || "unknown");
-  const modeSuffix = selectedMode ? ` | ${modeLabel(selectedMode)}` : "";
-  talentTreeHint.textContent = `${className} ${specName}${modeSuffix} | Export build tree | ${selectedCount} selected talents (${selectionSource})${fallbackSuffix} | source: ${treeSource} | v${APP_BUILD_VERSION}`;
-  talentTreeHint.hidden = false;
+  talentTreeHint.hidden = true;
   talentTreeWrap.hidden = false;
-  talentTreeWrap.className = "talent-tree-wrap wow-tree-layout";
-  talentTreeWrap.innerHTML = blocks.join("");
-  if (talentSystem) talentSystem.hidden = true;
-  talentNodeInspector.hidden = talentNodeIndex.size === 0;
-  talentNodeHint.textContent = "Click a node to inspect talent details.";
+  talentTreeWrap.className = "talent-tree-wrap";
+  if (talentSystem) talentSystem.hidden = false;
+  initTalentTree();
+  talentTreeWrap.hidden = false;
+  talentNodeInspector.hidden = true;
+  talentNodeHint.textContent = "Click a talent node to inspect it.";
   talentNodeBody.innerHTML = "";
 }
 
@@ -2911,12 +2259,15 @@ async function loadBuilds() {
 }
 
 async function loadTalentTreesMeta() {
-  const urls = ["./talent-trees.json", "talent-trees.json", "/talent-trees.json", "/api/talent-trees"];
-  const seenUrls = new Set();
+  const host = String(window.location.hostname || "").toLowerCase();
+  const isLocalDev = host === "localhost" || host === "127.0.0.1";
+  const isGithubPages = host.endsWith(".github.io");
+  const allowFallback = isLocalDev || isGithubPages || window.location.protocol === "file:";
+  const urls = allowFallback
+    ? ["/api/talent-trees", "/talent-trees.json", "./talent-trees.json"]
+    : ["/api/talent-trees"];
   const errors = [];
   for (const url of urls) {
-    if (seenUrls.has(url)) continue;
-    seenUrls.add(url);
     try {
       const res = await fetch(url, { cache: "no-store" });
       if (!res.ok) {
@@ -2933,9 +2284,7 @@ async function loadTalentTreesMeta() {
       talentTreesLoadError = null;
       talentTreesMeta = {
         generatedAt: payload?.generatedAt ?? null,
-        source: url.includes("/api/")
-          ? (payload?.source ?? "blizzard-api")
-          : (payload?.source ? `local-json:${payload.source}` : "local-json"),
+        source: payload?.source ?? (url.startsWith("/api/") ? "blizzard-api" : "local-json"),
         specCount: specs.length
       };
       console.log("Talent trees loaded", { url, specs: talentTreesMeta.specCount });
@@ -2948,7 +2297,10 @@ async function loadTalentTreesMeta() {
   }
   talentTreesSpecs = [];
   talentTreesLoadError = errors.length > 0 ? errors.join(" | ") : "all sources failed";
-  console.warn("Could not load talent tree metadata from static json or API.", { errors });
+  if (!allowFallback) {
+    talentTreesLoadError = `API required on this host. ${talentTreesLoadError}`;
+  }
+  console.warn("Could not load talent tree metadata from API or local file.", { errors, allowFallback, host });
   if (selectedClass && selectedSpec) renderTalentTree(selectedClass, selectedSpec);
 }
 
@@ -3096,14 +2448,14 @@ copyBtn.addEventListener("click", async () => {
 });
 
 talentTreeWrap.addEventListener("click", (e) => {
-  const nodeBtn = e.target.closest(".wow-node, .export-build-node");
+  const nodeBtn = e.target.closest(".wow-node");
   if (!nodeBtn) return;
   const nodeKey = nodeBtn.dataset.nodeKey;
   if (!nodeKey) return;
   const nodeInfo = talentNodeIndex.get(nodeKey);
   if (!nodeInfo) return;
 
-  const allNodes = talentTreeWrap.querySelectorAll(".wow-node, .export-build-node");
+  const allNodes = talentTreeWrap.querySelectorAll(".wow-node");
   allNodes.forEach((n) => n.classList.remove("selected"));
   nodeBtn.classList.add("selected");
   renderTalentNodeInspector(nodeInfo);
@@ -3141,4 +2493,5 @@ rotationToggleBtn?.addEventListener("click", () => {
 });
 
 // Start
+injectTalentTreeStyles();
 Promise.all([loadBuilds(), loadTalentTreesMeta()]);
