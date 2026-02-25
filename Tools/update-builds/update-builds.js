@@ -190,6 +190,119 @@ function scoreCandidate(candidate, mode) {
   return score;
 }
 
+function extractPlayerTag(candidate) {
+  const notes = Array.isArray(candidate?.notes) ? candidate.notes : [];
+  for (const note of notes) {
+    const m = String(note || "").match(/^Player:\s*(.+)$/i);
+    if (m && m[1]) return String(m[1]).trim().toLowerCase();
+  }
+  return null;
+}
+
+function parseRankIndex(candidate) {
+  const direct = Number(candidate?.rankIndex);
+  if (Number.isFinite(direct) && direct > 0) return Math.floor(direct);
+  const notes = Array.isArray(candidate?.notes) ? candidate.notes : [];
+  for (const note of notes) {
+    const m = String(note || "").match(/RankIndex:\s*(\d+)/i);
+    if (m && m[1]) {
+      const parsed = Number(m[1]);
+      if (Number.isFinite(parsed) && parsed > 0) return Math.floor(parsed);
+    }
+  }
+  return null;
+}
+
+function competitiveRankMultiplier(candidate) {
+  // Only apply to explicit top-player snapshots.
+  const source = String(candidate?.source || "").toLowerCase();
+  if (!source.includes("top-player")) return 1;
+  const idx = parseRankIndex(candidate);
+  if (idx === null) return 1;
+  if (idx <= 5) return 1.2;
+  if (idx <= 10) return 1.12;
+  if (idx <= 20) return 1.05;
+  if (idx <= 40) return 0.95;
+  return 0.88;
+}
+
+function effectiveCandidateScore(candidate, mode) {
+  return scoreCandidate(candidate, mode) * competitiveRankMultiplier(candidate);
+}
+
+function contributorKey(candidate) {
+  const fam = sourceFamily(candidate?.source);
+  const source = String(candidate?.source || "unknown").toLowerCase().trim();
+  const player = extractPlayerTag(candidate);
+  return player ? `${fam}::${source}::${player}` : `${fam}::${source}`;
+}
+
+function isFresher(a, b) {
+  const ad = parseDateSafe(a?.updated)?.getTime() ?? 0;
+  const bd = parseDateSafe(b?.updated)?.getTime() ?? 0;
+  return ad > bd;
+}
+
+function dedupeCandidates(candidates, mode) {
+  const byKey = new Map();
+  for (const c of candidates) {
+    const key = `${normalizeTalentString(c?.exportString)}|||${contributorKey(c)}`;
+    const prev = byKey.get(key);
+    if (!prev) {
+      byKey.set(key, c);
+      continue;
+    }
+    const prevScore = effectiveCandidateScore(prev, mode);
+    const nextScore = effectiveCandidateScore(c, mode);
+    if (nextScore > prevScore || (nextScore === prevScore && isFresher(c, prev))) {
+      byKey.set(key, c);
+    }
+  }
+  return Array.from(byKey.values());
+}
+
+function clusterSupportSummary(members, mode) {
+  const sourceSet = new Set();
+  const familySet = new Set();
+  const byFamily = new Map();
+
+  for (const m of members) {
+    const fam = sourceFamily(m?.source);
+    familySet.add(fam);
+    sourceSet.add(String(m?.source || "Unknown"));
+    if (!byFamily.has(fam)) byFamily.set(fam, []);
+    byFamily.get(fam).push(m);
+  }
+
+  let supportScore = 0;
+  const familyBreakdown = {};
+  for (const [fam, famMembers] of byFamily.entries()) {
+    const weighted = famMembers
+      .map((m) => effectiveCandidateScore(m, mode))
+      .sort((a, b) => b - a);
+    const familyBest = weighted[0] || 0;
+    const contributorCount = famMembers.length;
+    // Diminishing returns: a single source with many players should matter more,
+    // but not completely dominate all other sources.
+    const popularityBonus = Math.min(24, Math.log2(1 + contributorCount) * 6);
+    const familySupport = familyBest + popularityBonus;
+    supportScore += familySupport;
+    familyBreakdown[fam] = {
+      contributors: contributorCount,
+      familyBest: Number(familyBest.toFixed(2)),
+      popularityBonus: Number(popularityBonus.toFixed(2)),
+      familySupport: Number(familySupport.toFixed(2))
+    };
+  }
+
+  return {
+    supportScore,
+    distinctSourceCount: sourceSet.size,
+    distinctFamilyCount: familySet.size,
+    familyBreakdown
+  };
+}
+
 let WEIGHT_CONFIG = DEFAULT_WEIGHT_CONFIG;
 
 function chooseBestPerSpec(candidates) {
@@ -207,8 +320,10 @@ function chooseBestPerSpec(candidates) {
 
   const chosen = {};
 
-  for (const arr of groups.values()) {
-    const mode = arr[0]?.mode;
+  for (const rawArr of groups.values()) {
+    const mode = rawArr[0]?.mode;
+    const arr = dedupeCandidates(rawArr, mode);
+    if (arr.length === 0) continue;
 
     // Cluster candidates by identical talent string, then pick the strongest consensus.
     const clusters = new Map();
@@ -219,26 +334,31 @@ function chooseBestPerSpec(candidates) {
     }
 
     const clusterList = Array.from(clusters.values()).map((members) => {
-      const distinctFamilies = new Set(members.map((m) => sourceFamily(m.source)));
-      const supportScore = members.reduce((sum, m) => sum + scoreCandidate(m, mode), 0);
-      const bestMember = [...members].sort((a, b) => {
-        const scoreDiff = scoreCandidate(b, mode) - scoreCandidate(a, mode);
+      const dedupedMembers = dedupeCandidates(members, mode);
+      const summary = clusterSupportSummary(dedupedMembers, mode);
+      const bestMember = [...dedupedMembers].sort((a, b) => {
+        const scoreDiff = effectiveCandidateScore(b, mode) - effectiveCandidateScore(a, mode);
         if (scoreDiff !== 0) return scoreDiff;
         const bd = parseDateSafe(b.updated)?.getTime() ?? 0;
         const ad = parseDateSafe(a.updated)?.getTime() ?? 0;
         return bd - ad;
       })[0];
       return {
-        members,
+        members: dedupedMembers,
+        rawMemberCount: members.length,
         bestMember,
-        supportScore,
-        distinctSourceCount: distinctFamilies.size
+        supportScore: summary.supportScore,
+        distinctSourceCount: summary.distinctSourceCount,
+        distinctFamilyCount: summary.distinctFamilyCount,
+        familyBreakdown: summary.familyBreakdown
       };
     });
 
     clusterList.sort((a, b) => {
       if (b.supportScore !== a.supportScore) return b.supportScore - a.supportScore;
+      if (b.distinctFamilyCount !== a.distinctFamilyCount) return b.distinctFamilyCount - a.distinctFamilyCount;
       if (b.distinctSourceCount !== a.distinctSourceCount) return b.distinctSourceCount - a.distinctSourceCount;
+      if (b.members.length !== a.members.length) return b.members.length - a.members.length;
       const bd = parseDateSafe(b.bestMember?.updated)?.getTime() ?? 0;
       const ad = parseDateSafe(a.bestMember?.updated)?.getTime() ?? 0;
       return bd - ad;
@@ -247,16 +367,23 @@ function chooseBestPerSpec(candidates) {
     const bestCluster = clusterList[0];
     const runnerUpCluster = clusterList[1] || null;
     const best = bestCluster.bestMember;
-    const withSelectedTalents = bestCluster.members.find((m) => m?.selectedTalents && typeof m.selectedTalents === "object") || null;
+    const withSelectedTalents =
+      (best?.selectedTalents && typeof best.selectedTalents === "object")
+        ? best
+        : (bestCluster.members.find((m) => m?.selectedTalents && typeof m.selectedTalents === "object") || null);
     const { className, specName } = best;
 
     const classNode = ensure(chosen, className);
     const specNode = ensure(classNode, specName);
 
-    const margin = Math.max(
+    const marginAbs = Math.max(
       0,
       bestCluster.supportScore - (runnerUpCluster ? runnerUpCluster.supportScore : 0)
     );
+    const marginRatio = bestCluster.supportScore > 0
+      ? marginAbs / bestCluster.supportScore
+      : 0;
+    const agreementRatio = bestCluster.members.length / Math.max(1, arr.length);
     const recencyBonus = (() => {
       const d = ageDays(best.updated);
       if (d === null) return 0;
@@ -265,19 +392,33 @@ function chooseBestPerSpec(candidates) {
       if (d <= 14) return 4;
       return 0;
     })();
-    const sourceDiversityBonus = Math.min(12, bestCluster.distinctSourceCount * 6);
-    const baseConfidence = Math.min(100, Math.max(5, 45 + margin + recencyBonus + sourceDiversityBonus));
-    const confidenceScore = Math.round(baseConfidence);
+    const agreementBonus = Math.min(45, agreementRatio * 45);
+    const sourceDiversityBonus = Math.min(20, bestCluster.distinctSourceCount * 7);
+    const marginBonus = Math.min(20, marginRatio * 25);
+    let confidenceScore = Math.round(
+      Math.min(
+        100,
+        Math.max(5, 18 + agreementBonus + sourceDiversityBonus + marginBonus + recencyBonus)
+      )
+    );
+    // Guard against false high-confidence when only one source family is present.
+    if (bestCluster.distinctFamilyCount <= 1 && agreementRatio < 0.45) {
+      confidenceScore = Math.min(confidenceScore, 72);
+    }
+    if (agreementRatio < 0.2) {
+      confidenceScore = Math.min(confidenceScore, 58);
+    }
     const confidence =
-      confidenceScore >= 80 ? "high" :
-      confidenceScore >= 60 ? "medium" :
+      confidenceScore >= 78 ? "high" :
+      confidenceScore >= 58 ? "medium" :
       "low";
 
     const rationale = [
       `support=${bestCluster.supportScore.toFixed(1)}`,
+      `families=${bestCluster.distinctFamilyCount}`,
       `sources=${bestCluster.distinctSourceCount}`,
-      `agreement=${bestCluster.members.length}/${arr.length}`,
-      runnerUpCluster ? `margin=${margin.toFixed(1)}` : "margin=max",
+      `agreement=${bestCluster.members.length}/${arr.length} (${(agreementRatio * 100).toFixed(1)}%)`,
+      runnerUpCluster ? `margin=${marginAbs.toFixed(1)} (${(marginRatio * 100).toFixed(1)}%)` : "margin=max",
       best.updated ? `updated=${best.updated}` : "updated=unknown"
     ].join(", ");
 
@@ -292,6 +433,10 @@ function chooseBestPerSpec(candidates) {
       confidenceRationale: rationale,
       sampleSize: arr.length,
       agreementCount: bestCluster.members.length,
+      agreementRatio: Number(agreementRatio.toFixed(3)),
+      distinctSourceCount: bestCluster.distinctSourceCount,
+      distinctFamilyCount: bestCluster.distinctFamilyCount,
+      consensusBreakdown: bestCluster.familyBreakdown,
       selectedTalents: withSelectedTalents?.selectedTalents ?? null
     };
   }
