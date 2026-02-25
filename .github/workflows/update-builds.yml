@@ -25,6 +25,10 @@ jobs:
         run: npm ci
         working-directory: Tools/update-builds
 
+      - name: Seed Archon and curated guide sources
+        run: node seed-curated-sources.js
+        working-directory: Tools/update-builds
+
       - name: Run updater
         run: node update-builds.js
         working-directory: Tools/update-builds

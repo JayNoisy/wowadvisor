@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-25T04:12:50.311Z",
+  "generatedAt": "2026-02-25T04:29:14.810Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -19,14 +19,14 @@
     },
     "archon": {
       "ok": true,
-      "count": 0,
-      "localCount": 0,
+      "count": 80,
+      "localCount": 80,
       "remote": []
     },
     "curatedGuides": {
       "ok": true,
-      "count": 0,
-      "localCount": 0,
+      "count": 180,
+      "localCount": 180,
       "remote": []
     },
     "externalJson": {
@@ -45,333 +45,59 @@
           "updated": "2026-02-24 02:03:34",
           "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzYmZAAAAMMNMGzwyMzDMzgxMDAAAAgZWmZAZwy2ALAgZQgZwGwwmZbMsMzyAMzAwMGA",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 6,
-          "agreementCount": 2,
+          "confidence": "high",
+          "confidenceScore": 82,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=66.5 (75.1%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
+          "agreementCount": 3,
           "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Arms — AoE (Mythic+)",
-          "source": "Murlok.io (m+) top-player",
-          "updated": "2026-02-25T00:44:15.383164Z",
-          "exportString": "CcEAjLzRlq54bI5v+r8Sr9Xw4jZmxsMzMzYGAAAghphxwMbLzMPwMjZGzMAAAAAGbmB2iBwMGWAwMCNGsAMYsNY2MbDmZAAMDA",
-          "notes": [
-            "Player: 뿐도",
-            "RankIndex: 9"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": "2026-02-24 02:02:27",
+          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAgZmxsMzMzYGAAAghphxwMbLzMPwMjZGzMAAAAAGbmB2iBwMGWAwMgGDWAGM2GMbmtBzMAAmB",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=64.3, families=1, sources=1, agreement=4/25 (16.0%), margin=0.8 (1.3%), updated=2026-02-25T00:44:15.383164Z",
-          "sampleSize": 25,
-          "agreementCount": 4,
-          "agreementRatio": 0.16,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 51,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/28 (7.1%), margin=20.7 (24.3%), updated=2026-02-24 02:02:27",
+          "sampleSize": 28,
+          "agreementCount": 2,
+          "agreementRatio": 0.071,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "murlok": {
-              "contributors": 4,
-              "familyBest": 50.4,
-              "popularityBonus": 13.93,
-              "familySupport": 64.33
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "battle-stance",
-                "rank": 1
-              },
-              {
-                "slug": "battle-stance",
-                "rank": 1
-              },
-              {
-                "slug": "defensive-stance",
-                "rank": 1
-              },
-              {
-                "slug": "defensive-stance",
-                "rank": 1
-              },
-              {
-                "slug": "war-machine",
-                "rank": 1
-              },
-              {
-                "slug": "leeching-strikes",
-                "rank": 1
-              },
-              {
-                "slug": "impending-victory",
-                "rank": 1
-              },
-              {
-                "slug": "heroic-leap",
-                "rank": 1
-              },
-              {
-                "slug": "storm-bolt",
-                "rank": 1
-              },
-              {
-                "slug": "rend",
-                "rank": 1
-              },
-              {
-                "slug": "frothing-berserker",
-                "rank": 1
-              },
-              {
-                "slug": "bounding-stride",
-                "rank": 1
-              },
-              {
-                "slug": "pain-and-gain",
-                "rank": 1
-              },
-              {
-                "slug": "shockwave",
-                "rank": 1
-              },
-              {
-                "slug": "overwhelming-rage",
-                "rank": 1
-              },
-              {
-                "slug": "rallying-cry",
-                "rank": 1
-              },
-              {
-                "slug": "spell-reflection",
-                "rank": 1
-              },
-              {
-                "slug": "wrecking-throw",
-                "rank": 1
-              },
-              {
-                "slug": "rumbling-earth",
-                "rank": 1
-              },
-              {
-                "slug": "fearless",
-                "rank": 1
-              },
-              {
-                "slug": "piercing-howl",
-                "rank": 1
-              },
-              {
-                "slug": "honed-reflexes",
-                "rank": 1
-              },
-              {
-                "slug": "armored-to-the-teeth",
-                "rank": 2
-              },
-              {
-                "slug": "double-time",
-                "rank": 1
-              },
-              {
-                "slug": "reinforced-plates",
-                "rank": 2
-              },
-              {
-                "slug": "barbaric-training",
-                "rank": 1
-              },
-              {
-                "slug": "resonant-voice",
-                "rank": 1
-              },
-              {
-                "slug": "cruel-strikes",
-                "rank": 2
-              },
-              {
-                "slug": "two-handed-weapon-specialization",
-                "rank": 2
-              },
-              {
-                "slug": "wild-strikes",
-                "rank": 1
-              },
-              {
-                "slug": "anger-management",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "mortal-strike",
-                "rank": 1
-              },
-              {
-                "slug": "overpower",
-                "rank": 1
-              },
-              {
-                "slug": "sudden-death",
-                "rank": 1
-              },
-              {
-                "slug": "fueled-by-violence",
-                "rank": 1
-              },
-              {
-                "slug": "die-by-the-sword",
-                "rank": 1
-              },
-              {
-                "slug": "bloodsurge",
-                "rank": 1
-              },
-              {
-                "slug": "improved-overpower",
-                "rank": 1
-              },
-              {
-                "slug": "fervor-of-battle",
-                "rank": 1
-              },
-              {
-                "slug": "tactician",
-                "rank": 1
-              },
-              {
-                "slug": "colossus-smash",
-                "rank": 1
-              },
-              {
-                "slug": "impale",
-                "rank": 1
-              },
-              {
-                "slug": "strength-of-arms",
-                "rank": 2
-              },
-              {
-                "slug": "broad-strokes",
-                "rank": 1
-              },
-              {
-                "slug": "sharpened-blades",
-                "rank": 2
-              },
-              {
-                "slug": "cleave",
-                "rank": 1
-              },
-              {
-                "slug": "powerful-momentum",
-                "rank": 1
-              },
-              {
-                "slug": "dreadnaught",
-                "rank": 1
-              },
-              {
-                "slug": "crushing-combo",
-                "rank": 1
-              },
-              {
-                "slug": "mass-execution",
-                "rank": 1
-              },
-              {
-                "slug": "collateral-damage",
-                "rank": 1
-              },
-              {
-                "slug": "bloodborne",
-                "rank": 2
-              },
-              {
-                "slug": "ravager",
-                "rank": 1
-              },
-              {
-                "slug": "battlelord",
-                "rank": 1
-              },
-              {
-                "slug": "bloodletting",
-                "rank": 1
-              },
-              {
-                "slug": "executioner's-precision",
-                "rank": 1
-              },
-              {
-                "slug": "mortal-wounds",
-                "rank": 1
-              },
-              {
-                "slug": "avatar",
-                "rank": 1
-              }
-            ],
-            "hero": [
-              {
-                "slug": "demolish",
-                "rank": 1
-              },
-              {
-                "slug": "martial-expert",
-                "rank": 1
-              },
-              {
-                "slug": "colossal-might",
-                "rank": 1
-              },
-              {
-                "slug": "decimator",
-                "rank": 1
-              },
-              {
-                "slug": "one-against-many",
-                "rank": 1
-              },
-              {
-                "slug": "tide-of-battle",
-                "rank": 1
-              },
-              {
-                "slug": "cut-to-the-bone",
-                "rank": 1
-              },
-              {
-                "slug": "practiced-strikes",
-                "rank": 1
-              },
-              {
-                "slug": "precise-might",
-                "rank": 1
-              },
-              {
-                "slug": "celeritous-conclusion",
-                "rank": 1
-              },
-              {
-                "slug": "dominance-of-the-colossus",
-                "rank": 1
-              }
-            ]
-          }
+          "selectedTalents": null
         },
         "pvp": {
           "title": "Arms — PvP (Solo Shuffle)",
@@ -692,19 +418,25 @@
           "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDzwMsMz8AzMDjZmZGzMzsMzMGzMLDzMAAQMWWGYBMgZYCMDbAGbMbDAAghxMzwA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 6,
-          "agreementCount": 2,
+          "confidenceScore": 75,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
+          "agreementCount": 3,
           "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -719,11 +451,11 @@
             "RankIndex: 3"
           ],
           "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=69.5, families=1, sources=1, agreement=5/53 (9.4%), margin=9.5 (13.7%), updated=2026-02-25T00:44:17.002275Z",
-          "sampleSize": 53,
+          "confidenceScore": 42,
+          "confidenceRationale": "support=69.5, families=1, sources=1, agreement=5/56 (8.9%), margin=9.5 (13.7%), updated=2026-02-25T00:44:17.002275Z",
+          "sampleSize": 56,
           "agreementCount": 5,
-          "agreementRatio": 0.094,
+          "agreementRatio": 0.089,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -1322,19 +1054,25 @@
           "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAA02AAAzMDzMzMzMzmxsMMGz0YGDLjxMDzYmBAAAALDAzYAGAssgGzAYgZ2YMjZgZbAwMDAADA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -1350,10 +1088,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/52 (1.9%), margin=0.0 (0.0%), updated=2026-02-25T00:44:19.729701Z",
-          "sampleSize": 52,
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/55 (1.8%), margin=0.0 (0.0%), updated=2026-02-25T00:44:19.729701Z",
+          "sampleSize": 55,
           "agreementCount": 1,
-          "agreementRatio": 0.019,
+          "agreementRatio": 0.018,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -1978,19 +1716,25 @@
           "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYBAMAAGsMzMzYGzMwgxsMYmlZ0EDjZmhhZLDADAbgNWmZmZZ2mxsFAAAgF2GgFYMjZYAAYMMjxA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -2006,10 +1750,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/53 (3.8%), margin=3.5 (5.5%), updated=2026-02-25T00:41:26.803197Z",
-          "sampleSize": 53,
+          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/56 (3.6%), margin=3.5 (5.5%), updated=2026-02-25T00:41:26.803197Z",
+          "sampleSize": 56,
           "agreementCount": 2,
-          "agreementRatio": 0.038,
+          "agreementRatio": 0.036,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -2640,19 +2384,25 @@
           "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNzMPAzyMLjZMzMWGmhZhZMAADAAAAAASzMbmxMDjZ2aDADMDA2AAAAgxstt0GjFDMAgZYMAYmBAzMA",
           "notes": [],
           "confidence": "high",
-          "confidenceScore": 83,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/4 (50.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 4,
-          "agreementCount": 2,
-          "agreementRatio": 0.5,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 79,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/7 (42.9%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 7,
+          "agreementCount": 3,
+          "agreementRatio": 0.429,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -2668,10 +2418,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/52 (1.9%), margin=0.0 (0.0%), updated=2026-02-25T00:41:38.361476Z",
-          "sampleSize": 52,
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/55 (1.8%), margin=0.0 (0.0%), updated=2026-02-25T00:41:38.361476Z",
+          "sampleSize": 55,
           "agreementCount": 1,
-          "agreementRatio": 0.019,
+          "agreementRatio": 0.018,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -3286,19 +3036,25 @@
           "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQzy2MzsMMzAAAAAAwoMMMzYbY2GmZbGjxMDzYhtBAAwMabMmBAsBYAwYGGYGjZDbzghxMG",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -3314,10 +3070,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 39,
-          "confidenceRationale": "support=61.2, families=1, sources=1, agreement=4/53 (7.5%), margin=1.2 (1.9%), updated=2026-02-25T00:41:52.061804Z",
-          "sampleSize": 53,
+          "confidenceRationale": "support=61.2, families=1, sources=1, agreement=4/56 (7.1%), margin=1.2 (1.9%), updated=2026-02-25T00:41:52.061804Z",
+          "sampleSize": 56,
           "agreementCount": 4,
-          "agreementRatio": 0.075,
+          "agreementRatio": 0.071,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -3934,19 +3690,25 @@
           "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAYzYgBAYYDYsAAgZYbMzyMDzYmhhZGjZGzMjZMDGjZMzwYaGAAAAAwMAAAMzYgZGgAmFwG",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -3962,10 +3724,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 37,
-          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/52 (3.8%), margin=0.0 (0.0%), updated=2026-02-25T00:39:58.508349Z",
-          "sampleSize": 52,
+          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/55 (3.6%), margin=0.0 (0.0%), updated=2026-02-25T00:39:58.508349Z",
+          "sampleSize": 55,
           "agreementCount": 2,
-          "agreementRatio": 0.038,
+          "agreementRatio": 0.036,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -4532,320 +4294,58 @@
           "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwwohBwMYDAAAAAAAAYGzYGmxMzYGMmmxYmZ222MzMDzMYmZZwsMYGAAgHYMGAMjNGGgtB",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Marksmanship — AoE (Mythic+)",
-          "source": "Murlok.io (m+) top-player",
-          "updated": "2026-02-25T00:40:06.030685Z",
-          "exportString": "C4PAYEriH0bRqGs1Qj5St9dJoxCMwwohBkZwGAAAAAAAAwMmxM2mxMGzwyDYaGjZGLbbmZmhZmhZmlxYWGmZAAAMGDAG2gZA2GA",
-          "notes": [
-            "Player: mielikki",
-            "RankIndex: 5"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": "2026-02-24 02:02:27",
+          "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwwohBwMYDAAAAAAAAYGzYGbzYGjZY5BMNjxMjltNzMzwMzwMzyYMLDzMAAAGjBADbwMAbD",
+          "notes": [],
           "confidence": "low",
           "confidenceScore": 47,
-          "confidenceRationale": "support=73.9, families=1, sources=1, agreement=9/53 (17.0%), margin=13.9 (18.8%), updated=2026-02-25T00:40:06.030685Z",
-          "sampleSize": 53,
-          "agreementCount": 9,
-          "agreementRatio": 0.17,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=11.1 (13.0%), updated=2026-02-24 02:02:27",
+          "sampleSize": 56,
+          "agreementCount": 2,
+          "agreementRatio": 0.036,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "murlok": {
-              "contributors": 9,
-              "familyBest": 54,
-              "popularityBonus": 19.93,
-              "familySupport": 73.93
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "rejuvenating-wind",
-                "rank": 1
-              },
-              {
-                "slug": "survival-of-the-fittest",
-                "rank": 1
-              },
-              {
-                "slug": "posthaste",
-                "rank": 1
-              },
-              {
-                "slug": "natural-mending",
-                "rank": 2
-              },
-              {
-                "slug": "padded-armor",
-                "rank": 1
-              },
-              {
-                "slug": "hunter's-avoidance",
-                "rank": 1
-              },
-              {
-                "slug": "combat-experience",
-                "rank": 1
-              },
-              {
-                "slug": "improved-aspect-of-the-cheetah",
-                "rank": 1
-              },
-              {
-                "slug": "precision-strikes",
-                "rank": 1
-              },
-              {
-                "slug": "counter-shot",
-                "rank": 1
-              },
-              {
-                "slug": "serrated-tips",
-                "rank": 2
-              },
-              {
-                "slug": "tranquilizing-shot",
-                "rank": 1
-              },
-              {
-                "slug": "disruptive-rounds",
-                "rank": 1
-              },
-              {
-                "slug": "misdirection",
-                "rank": 1
-              },
-              {
-                "slug": "kodo-tranquilizer",
-                "rank": 1
-              },
-              {
-                "slug": "trigger-finger",
-                "rank": 2
-              },
-              {
-                "slug": "touch-of-grass",
-                "rank": 2
-              },
-              {
-                "slug": "camouflage",
-                "rank": 1
-              },
-              {
-                "slug": "improved-aspect-of-the-turtle",
-                "rank": 1
-              },
-              {
-                "slug": "specialized-arsenal",
-                "rank": 1
-              },
-              {
-                "slug": "intimidation",
-                "rank": 1
-              },
-              {
-                "slug": "lone-survivor",
-                "rank": 1
-              },
-              {
-                "slug": "guttural-roar",
-                "rank": 1
-              },
-              {
-                "slug": "born-to-be-wild",
-                "rank": 1
-              },
-              {
-                "slug": "keen-eyesight",
-                "rank": 2
-              },
-              {
-                "slug": "guardian's-hide",
-                "rank": 1
-              },
-              {
-                "slug": "unnatural-causes",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "aimed-shot",
-                "rank": 1
-              },
-              {
-                "slug": "rapid-fire",
-                "rank": 1
-              },
-              {
-                "slug": "precise-shots",
-                "rank": 1
-              },
-              {
-                "slug": "quick-draw",
-                "rank": 1
-              },
-              {
-                "slug": "lock-and-load",
-                "rank": 1
-              },
-              {
-                "slug": "surging-shots",
-                "rank": 1
-              },
-              {
-                "slug": "avian-specialization",
-                "rank": 1
-              },
-              {
-                "slug": "trick-shots",
-                "rank": 1
-              },
-              {
-                "slug": "penetrating-shots",
-                "rank": 1
-              },
-              {
-                "slug": "tenacious",
-                "rank": 1
-              },
-              {
-                "slug": "master-marksman",
-                "rank": 1
-              },
-              {
-                "slug": "light-ammo",
-                "rank": 1
-              },
-              {
-                "slug": "on-target",
-                "rank": 1
-              },
-              {
-                "slug": "small-game-hunter",
-                "rank": 1
-              },
-              {
-                "slug": "trueshot",
-                "rank": 1
-              },
-              {
-                "slug": "lethality",
-                "rank": 2
-              },
-              {
-                "slug": "target-acquisition",
-                "rank": 1
-              },
-              {
-                "slug": "critical-precision",
-                "rank": 1
-              },
-              {
-                "slug": "no-scope",
-                "rank": 1
-              },
-              {
-                "slug": "feathered-frenzy",
-                "rank": 1
-              },
-              {
-                "slug": "bullseye",
-                "rank": 1
-              },
-              {
-                "slug": "unmatched-precision",
-                "rank": 2
-              },
-              {
-                "slug": "unerring-vision",
-                "rank": 1
-              },
-              {
-                "slug": "focused-aim",
-                "rank": 1
-              },
-              {
-                "slug": "bulletstorm",
-                "rank": 1
-              },
-              {
-                "slug": "tensile-bowstring",
-                "rank": 1
-              },
-              {
-                "slug": "windrunner-quiver",
-                "rank": 1
-              },
-              {
-                "slug": "incendiary-ammunition",
-                "rank": 1
-              }
-            ],
-            "hero": [
-              {
-                "slug": "sentinel",
-                "rank": 1
-              },
-              {
-                "slug": "don't-look-back",
-                "rank": 1
-              },
-              {
-                "slug": "moon's-blessing",
-                "rank": 1
-              },
-              {
-                "slug": "sanctified-armaments",
-                "rank": 1
-              },
-              {
-                "slug": "moonlight-chakram",
-                "rank": 1
-              },
-              {
-                "slug": "stargazer",
-                "rank": 1
-              },
-              {
-                "slug": "can't-miss,-won't-miss",
-                "rank": 1
-              },
-              {
-                "slug": "stalk-and-strike",
-                "rank": 1
-              },
-              {
-                "slug": "arcane-talons",
-                "rank": 1
-              },
-              {
-                "slug": "lunar-calling",
-                "rank": 1
-              },
-              {
-                "slug": "lunar-storm",
-                "rank": 1
-              }
-            ]
-          }
+          "selectedTalents": null
         },
         "pvp": {
           "title": "Marksmanship — PvP (Solo Shuffle)",
@@ -5153,24 +4653,30 @@
       "Survival": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
-          "updated": "2026-02-24 02:03:34",
-          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxohBwMgNjZmxMzyAAAAAAgZMjZsMjxMmBPgJDAAAAYAAjltZmZxMzMmZMAgBgxYGbA",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-02-23 02:03:12",
+          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxohBwMgNjZmxMzyAAAAAAgZMjZwYMjZwYaGAAAAAAwYZbmZWMzMDzYMAYADjxM2A",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/3 (33.3%), margin=0.0 (0.0%), updated=2026-02-24 02:03:34",
-          "sampleSize": 3,
-          "agreementCount": 1,
+          "confidence": "medium",
+          "confidenceScore": 66,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=31.0 (36.5%), updated=2026-02-23 02:03:12",
+          "sampleSize": 6,
+          "agreementCount": 2,
           "agreementRatio": 0.333,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -5186,10 +4692,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 37,
-          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/52 (3.8%), margin=0.0 (0.0%), updated=2026-02-25T00:40:15.446204Z",
-          "sampleSize": 52,
+          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/55 (3.6%), margin=0.0 (0.0%), updated=2026-02-25T00:40:15.446204Z",
+          "sampleSize": 55,
           "agreementCount": 2,
-          "agreementRatio": 0.038,
+          "agreementRatio": 0.036,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -5770,19 +5276,25 @@
           "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmZMLzAAAAAAwsNYZGAAAAAQ2mZmxDMzYMzMzsNz2MzMYMzMzYmxwAYgNYY0AALDYzAgZmxA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 75,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -5797,11 +5309,11 @@
             "RankIndex: 4"
           ],
           "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=66.0, families=1, sources=1, agreement=3/23 (13.0%), margin=6.0 (9.1%), updated=2026-02-25T00:42:32.298456Z",
-          "sampleSize": 23,
+          "confidenceScore": 42,
+          "confidenceRationale": "support=66.0, families=1, sources=1, agreement=3/27 (11.1%), margin=6.0 (9.1%), updated=2026-02-25T00:42:32.298456Z",
+          "sampleSize": 27,
           "agreementCount": 3,
-          "agreementRatio": 0.13,
+          "agreementRatio": 0.111,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -6408,19 +5920,25 @@
           "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgBMGzYmZbmZmx4BMb8AzMzy0ygtZAAAAAA22mZmxDMzMzMmZmtBAAAgZGAMGGGYALsQYjBYmBD",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 75,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -6436,10 +5954,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=66.0, families=1, sources=1, agreement=3/41 (7.3%), margin=0.0 (0.0%), updated=2026-02-25T00:42:38.678515Z",
-          "sampleSize": 41,
+          "confidenceRationale": "support=66.0, families=1, sources=1, agreement=3/45 (6.7%), margin=0.0 (0.0%), updated=2026-02-25T00:42:38.678515Z",
+          "sampleSize": 45,
           "agreementCount": 3,
-          "agreementRatio": 0.073,
+          "agreementRatio": 0.067,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -6926,332 +6444,58 @@
           "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbbjxMMDegZmZGjZbmZGbbzMz4BmZMgZ2GAAAAGMGmlBGAghJwsgZYmBYG",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Subtlety — AoE (Mythic+)",
-          "source": "Murlok.io (m+) top-player",
-          "updated": "2026-02-25T00:16:21.824096Z",
-          "exportString": "CUQAByFP3pExAEG41/8+e6b8fDgx2MAAAAAwsMGLTMbbjxMMDegZmZGjZbmZGbbzMz4BmZMgZ2GAAAAGMGmlBGAghJkZBzwMDwMA",
-          "notes": [
-            "Player: 제퍼",
-            "RankIndex: 15"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": "2026-02-24 02:02:27",
+          "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbLjxMMjxDMzMzYMbzYGbbzMz4BmZMgZ2GAAAAGMGwYYYgBswCxGmBMzgZA",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 42,
-          "confidenceRationale": "support=64.1, families=1, sources=1, agreement=6/52 (11.5%), margin=4.1 (6.4%), updated=2026-02-25T00:16:21.824096Z",
-          "sampleSize": 52,
-          "agreementCount": 6,
-          "agreementRatio": 0.115,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 50,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/55 (3.6%), margin=20.9 (24.6%), updated=2026-02-24 02:02:27",
+          "sampleSize": 55,
+          "agreementCount": 2,
+          "agreementRatio": 0.036,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "murlok": {
-              "contributors": 6,
-              "familyBest": 47.25,
-              "popularityBonus": 16.84,
-              "familySupport": 64.09
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "blind",
-                "rank": 1
-              },
-              {
-                "slug": "cloak-of-shadows",
-                "rank": 1
-              },
-              {
-                "slug": "fleet-footed",
-                "rank": 1
-              },
-              {
-                "slug": "airborne-irritant",
-                "rank": 1
-              },
-              {
-                "slug": "thrill-seeking",
-                "rank": 1
-              },
-              {
-                "slug": "shadowrunner",
-                "rank": 1
-              },
-              {
-                "slug": "master-poisoner",
-                "rank": 1
-              },
-              {
-                "slug": "cheat-death",
-                "rank": 1
-              },
-              {
-                "slug": "tricks-of-the-trade",
-                "rank": 1
-              },
-              {
-                "slug": "nimble-fingers",
-                "rank": 1
-              },
-              {
-                "slug": "deadened-nerves",
-                "rank": 1
-              },
-              {
-                "slug": "quick-fingers",
-                "rank": 1
-              },
-              {
-                "slug": "improved-sprint",
-                "rank": 1
-              },
-              {
-                "slug": "evasion",
-                "rank": 1
-              },
-              {
-                "slug": "iron-stomach",
-                "rank": 1
-              },
-              {
-                "slug": "virulent-poisons",
-                "rank": 1
-              },
-              {
-                "slug": "graceful-guile",
-                "rank": 1
-              },
-              {
-                "slug": "featherfoot",
-                "rank": 1
-              },
-              {
-                "slug": "atrophic-poison",
-                "rank": 1
-              },
-              {
-                "slug": "deadly-precision",
-                "rank": 1
-              },
-              {
-                "slug": "deep-cuts",
-                "rank": 1
-              },
-              {
-                "slug": "danger-sense",
-                "rank": 1
-              },
-              {
-                "slug": "swift-slasher",
-                "rank": 1
-              },
-              {
-                "slug": "improved-ambush",
-                "rank": 1
-              },
-              {
-                "slug": "lethality",
-                "rank": 1
-              },
-              {
-                "slug": "recuperator",
-                "rank": 1
-              },
-              {
-                "slug": "alacrity",
-                "rank": 2
-              },
-              {
-                "slug": "supercharger",
-                "rank": 2
-              },
-              {
-                "slug": "forced-induction",
-                "rank": 1
-              },
-              {
-                "slug": "deeper-stratagem",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "find-weakness",
-                "rank": 1
-              },
-              {
-                "slug": "improved-backstab",
-                "rank": 1
-              },
-              {
-                "slug": "shadow-blades",
-                "rank": 1
-              },
-              {
-                "slug": "improved-shuriken-storm",
-                "rank": 1
-              },
-              {
-                "slug": "premeditation",
-                "rank": 1
-              },
-              {
-                "slug": "silent-storm",
-                "rank": 1
-              },
-              {
-                "slug": "exhilarating-execution",
-                "rank": 1
-              },
-              {
-                "slug": "fade-to-nothing",
-                "rank": 1
-              },
-              {
-                "slug": "master-of-shadows",
-                "rank": 1
-              },
-              {
-                "slug": "shadow-focus",
-                "rank": 1
-              },
-              {
-                "slug": "improved-secret-technique",
-                "rank": 1
-              },
-              {
-                "slug": "relentless-strikes",
-                "rank": 1
-              },
-              {
-                "slug": "weaponmaster",
-                "rank": 1
-              },
-              {
-                "slug": "warning-signs",
-                "rank": 1
-              },
-              {
-                "slug": "double-dance",
-                "rank": 1
-              },
-              {
-                "slug": "shadowed-finishers",
-                "rank": 1
-              },
-              {
-                "slug": "secret-stratagem",
-                "rank": 1
-              },
-              {
-                "slug": "umbral-edge",
-                "rank": 1
-              },
-              {
-                "slug": "the-first-dance",
-                "rank": 1
-              },
-              {
-                "slug": "deepening-shadows",
-                "rank": 1
-              },
-              {
-                "slug": "replicating-shadows",
-                "rank": 1
-              },
-              {
-                "slug": "improved-find-weakness",
-                "rank": 1
-              },
-              {
-                "slug": "deeper-daggers",
-                "rank": 1
-              },
-              {
-                "slug": "death-perception",
-                "rank": 2
-              },
-              {
-                "slug": "dark-shadow",
-                "rank": 2
-              },
-              {
-                "slug": "finality",
-                "rank": 1
-              },
-              {
-                "slug": "shadowcraft",
-                "rank": 1
-              },
-              {
-                "slug": "danse-macabre",
-                "rank": 1
-              }
-            ],
-            "hero": [
-              {
-                "slug": "deathstalker's-mark",
-                "rank": 1
-              },
-              {
-                "slug": "clear-the-witnesses",
-                "rank": 1
-              },
-              {
-                "slug": "hunt-them-down",
-                "rank": 1
-              },
-              {
-                "slug": "singular-focus",
-                "rank": 1
-              },
-              {
-                "slug": "precise-killer",
-                "rank": 1
-              },
-              {
-                "slug": "unshakeable-drive",
-                "rank": 1
-              },
-              {
-                "slug": "corrupt-the-blood",
-                "rank": 1
-              },
-              {
-                "slug": "lingering-darkness",
-                "rank": 1
-              },
-              {
-                "slug": "quietus-celeris",
-                "rank": 1
-              },
-              {
-                "slug": "mass-casualty",
-                "rank": 1
-              },
-              {
-                "slug": "darkest-night",
-                "rank": 1
-              }
-            ]
-          }
+          "selectedTalents": null
         },
         "pvp": {
           "title": "Subtlety — PvP (Solo Shuffle)",
@@ -7574,328 +6818,58 @@
           "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMGWmZMYGmZbmtZmZmxMDAAAAAAAAAgBLzwMzMDGzMwMNTjBYmNMEGDAjBLAAwYwYwMAmZGA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Discipline — AoE (Mythic+)",
-          "source": "Murlok.io (m+) top-player",
-          "updated": "2026-02-25T00:41:59.515981Z",
-          "exportString": "CAQA4VPTJ8eQb8/qEm8PyGu4yADsMGWmZMGDmZbmtZmZmxMDAAAAAAAAAgBLzgZmZYGzMYx0MNGMzMzCGCjhZZ2WMGjFDAAjhZMYGAzMCA",
-          "notes": [
-            "Player: yoori",
-            "RankIndex: 1"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": "2026-02-24 02:02:27",
+          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMGWmZMmZGmZbmtZmZmhZAAAAAAAAAAMYZGmZmZwYmxgpZiBYmNMEGDAjBLAAwYGGDmBwMzA",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 40,
-          "confidenceRationale": "support=66.0, families=1, sources=1, agreement=3/52 (5.8%), margin=6.0 (9.1%), updated=2026-02-25T00:41:59.515981Z",
-          "sampleSize": 52,
-          "agreementCount": 3,
-          "agreementRatio": 0.058,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 49,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/55 (3.6%), margin=19.0 (22.4%), updated=2026-02-24 02:02:27",
+          "sampleSize": 55,
+          "agreementCount": 2,
+          "agreementRatio": 0.036,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "murlok": {
-              "contributors": 3,
-              "familyBest": 54,
-              "popularityBonus": 12,
-              "familySupport": 66
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "improved-flash-heal",
-                "rank": 1
-              },
-              {
-                "slug": "angelic-feather",
-                "rank": 1
-              },
-              {
-                "slug": "mind-blast",
-                "rank": 1
-              },
-              {
-                "slug": "holy-nova",
-                "rank": 1
-              },
-              {
-                "slug": "spiritual-guidance",
-                "rank": 1
-              },
-              {
-                "slug": "psychic-scream",
-                "rank": 1
-              },
-              {
-                "slug": "leap-of-faith",
-                "rank": 1
-              },
-              {
-                "slug": "power-infusion",
-                "rank": 1
-              },
-              {
-                "slug": "painful-invocation",
-                "rank": 1
-              },
-              {
-                "slug": "surge-of-light",
-                "rank": 1
-              },
-              {
-                "slug": "mass-dispel",
-                "rank": 1
-              },
-              {
-                "slug": "twins-of-the-sun-priestess",
-                "rank": 1
-              },
-              {
-                "slug": "strength-of-soul",
-                "rank": 1
-              },
-              {
-                "slug": "mind-control",
-                "rank": 1
-              },
-              {
-                "slug": "everlasting-light",
-                "rank": 1
-              },
-              {
-                "slug": "twin-disciplines",
-                "rank": 1
-              },
-              {
-                "slug": "dark-enlightenment",
-                "rank": 1
-              },
-              {
-                "slug": "inspiration",
-                "rank": 1
-              },
-              {
-                "slug": "binding-heals",
-                "rank": 1
-              },
-              {
-                "slug": "shadow-word:-death",
-                "rank": 1
-              },
-              {
-                "slug": "sanguine-teachings",
-                "rank": 1
-              },
-              {
-                "slug": "desperate-prayer",
-                "rank": 1
-              },
-              {
-                "slug": "twist-of-fate",
-                "rank": 2
-              },
-              {
-                "slug": "fade",
-                "rank": 1
-              },
-              {
-                "slug": "protective-light",
-                "rank": 1
-              },
-              {
-                "slug": "mindpierce",
-                "rank": 1
-              },
-              {
-                "slug": "improved-fade",
-                "rank": 2
-              },
-              {
-                "slug": "unwavering-will",
-                "rank": 2
-              },
-              {
-                "slug": "benevolence",
-                "rank": 1
-              },
-              {
-                "slug": "translucent-image",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "atonement",
-                "rank": 1
-              },
-              {
-                "slug": "power-word:-radiance",
-                "rank": 1
-              },
-              {
-                "slug": "pain-suppression",
-                "rank": 1
-              },
-              {
-                "slug": "power-of-the-dark-side",
-                "rank": 1
-              },
-              {
-                "slug": "light's-promise",
-                "rank": 1
-              },
-              {
-                "slug": "protector-of-the-frail",
-                "rank": 1
-              },
-              {
-                "slug": "dark-indulgence",
-                "rank": 1
-              },
-              {
-                "slug": "encroaching-shadows",
-                "rank": 1
-              },
-              {
-                "slug": "enduring-luminescence",
-                "rank": 1
-              },
-              {
-                "slug": "shield-discipline",
-                "rank": 1
-              },
-              {
-                "slug": "ultimate-penitence",
-                "rank": 1
-              },
-              {
-                "slug": "painful-punishment",
-                "rank": 1
-              },
-              {
-                "slug": "holy-ray",
-                "rank": 1
-              },
-              {
-                "slug": "lenience",
-                "rank": 1
-              },
-              {
-                "slug": "shadow-tap",
-                "rank": 1
-              },
-              {
-                "slug": "purge-the-wicked",
-                "rank": 1
-              },
-              {
-                "slug": "castigation",
-                "rank": 1
-              },
-              {
-                "slug": "harsh-discipline",
-                "rank": 2
-              },
-              {
-                "slug": "evangelism",
-                "rank": 1
-              },
-              {
-                "slug": "inner-focus",
-                "rank": 1
-              },
-              {
-                "slug": "archangel",
-                "rank": 1
-              },
-              {
-                "slug": "divine-aegis",
-                "rank": 1
-              },
-              {
-                "slug": "borrowed-time",
-                "rank": 2
-              },
-              {
-                "slug": "blaze-of-light",
-                "rank": 2
-              },
-              {
-                "slug": "eternal-barrier",
-                "rank": 1
-              },
-              {
-                "slug": "weal-and-woe",
-                "rank": 1
-              },
-              {
-                "slug": "searing-light",
-                "rank": 1
-              }
-            ],
-            "hero": [
-              {
-                "slug": "guiding-light",
-                "rank": 1
-              },
-              {
-                "slug": "preventive-measures",
-                "rank": 1
-              },
-              {
-                "slug": "preemptive-care",
-                "rank": 1
-              },
-              {
-                "slug": "waste-no-time",
-                "rank": 1
-              },
-              {
-                "slug": "words-of-the-wise",
-                "rank": 1
-              },
-              {
-                "slug": "divine-feathers",
-                "rank": 1
-              },
-              {
-                "slug": "foreseen-circumstances",
-                "rank": 1
-              },
-              {
-                "slug": "prophet's-insight",
-                "rank": 1
-              },
-              {
-                "slug": "prompt-prognosis",
-                "rank": 1
-              },
-              {
-                "slug": "piety",
-                "rank": 1
-              },
-              {
-                "slug": "twinsight",
-                "rank": 1
-              }
-            ]
-          }
+          "selectedTalents": null
         },
         "pvp": {
           "title": "Discipline — PvP (Solo Shuffle)",
@@ -8099,345 +7073,63 @@
       "Holy": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
-          "updated": "2026-02-24 02:03:34",
-          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAGjZmlZmZMzMDzMDLzwMAAAAGsMDzMzMMzYGAzUDgZWwQYMAMGYhxsBghhxwMDgZmB",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-02-23 02:03:12",
+          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAGjZmlZmZMzMDzMDLzwMAAAAGsMDzMzMMzYGAzUDgZWwQYMAMGYhxsBgxgxwMDgZmB",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-02-24 02:03:34",
-          "sampleSize": 6,
-          "agreementCount": 1,
-          "agreementRatio": 0.167,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=31.0 (36.5%), updated=2026-02-23 02:03:12",
+          "sampleSize": 9,
+          "agreementCount": 2,
+          "agreementRatio": 0.222,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Holy — AoE (Mythic+)",
-          "source": "Murlok.io (m+) top-player",
-          "updated": "2026-02-25T00:42:13.181191Z",
-          "exportString": "CEQA4VPTJ8eQb8/qEm8PyGu4ywYAAAAAAgZzwYMYMzMzYmZGLzMzMAAAAGmlZwDMzMMjZGAzUDAMDzEMAwYwmxYDQzYGGDmZbZAmBA",
-          "notes": [
-            "Player: 冷魅帝姬",
-            "RankIndex: 5"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": "2026-02-24 02:02:27",
+          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAMmxYMDzMzwMzwyMzMDAAAgBLzwMzMDzYmBwMFAmFMEGDAjBWMzYDgZMDjBzAMzMDA",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/53 (3.8%), margin=3.5 (5.5%), updated=2026-02-25T00:42:13.181191Z",
-          "sampleSize": 53,
+          "confidenceScore": 50,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=21.5 (25.3%), updated=2026-02-24 02:02:27",
+          "sampleSize": 56,
           "agreementCount": 2,
-          "agreementRatio": 0.038,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "agreementRatio": 0.036,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "murlok": {
-              "contributors": 2,
-              "familyBest": 54,
-              "popularityBonus": 9.51,
-              "familySupport": 63.51
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "improved-flash-heal",
-                "rank": 1
-              },
-              {
-                "slug": "angelic-feather",
-                "rank": 1
-              },
-              {
-                "slug": "holy-fire",
-                "rank": 1
-              },
-              {
-                "slug": "holy-nova",
-                "rank": 1
-              },
-              {
-                "slug": "dispel-magic",
-                "rank": 1
-              },
-              {
-                "slug": "spiritual-guidance",
-                "rank": 1
-              },
-              {
-                "slug": "psychic-scream",
-                "rank": 1
-              },
-              {
-                "slug": "lightburst",
-                "rank": 1
-              },
-              {
-                "slug": "leap-of-faith",
-                "rank": 1
-              },
-              {
-                "slug": "power-infusion",
-                "rank": 1
-              },
-              {
-                "slug": "painful-invocation",
-                "rank": 1
-              },
-              {
-                "slug": "surge-of-light",
-                "rank": 1
-              },
-              {
-                "slug": "body-and-soul",
-                "rank": 1
-              },
-              {
-                "slug": "mass-dispel",
-                "rank": 1
-              },
-              {
-                "slug": "twins-of-the-sun-priestess",
-                "rank": 1
-              },
-              {
-                "slug": "strength-of-soul",
-                "rank": 1
-              },
-              {
-                "slug": "everlasting-light",
-                "rank": 1
-              },
-              {
-                "slug": "twin-disciplines",
-                "rank": 1
-              },
-              {
-                "slug": "dark-enlightenment",
-                "rank": 1
-              },
-              {
-                "slug": "inspiration",
-                "rank": 1
-              },
-              {
-                "slug": "binding-heals",
-                "rank": 1
-              },
-              {
-                "slug": "sanguine-teachings",
-                "rank": 1
-              },
-              {
-                "slug": "desperate-prayer",
-                "rank": 1
-              },
-              {
-                "slug": "twist-of-fate",
-                "rank": 1
-              },
-              {
-                "slug": "fade",
-                "rank": 1
-              },
-              {
-                "slug": "protective-light",
-                "rank": 1
-              },
-              {
-                "slug": "improved-fade",
-                "rank": 2
-              },
-              {
-                "slug": "unwavering-will",
-                "rank": 2
-              },
-              {
-                "slug": "angelic-bulwark",
-                "rank": 1
-              },
-              {
-                "slug": "benevolence",
-                "rank": 1
-              },
-              {
-                "slug": "translucent-image",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "holy-word:-serenity",
-                "rank": 1
-              },
-              {
-                "slug": "holy-word:-sanctify",
-                "rank": 1
-              },
-              {
-                "slug": "guardian-spirit",
-                "rank": 1
-              },
-              {
-                "slug": "holy-word:-chastise",
-                "rank": 1
-              },
-              {
-                "slug": "prayer-of-healing",
-                "rank": 1
-              },
-              {
-                "slug": "restitution",
-                "rank": 1
-              },
-              {
-                "slug": "empyreal-blaze",
-                "rank": 1
-              },
-              {
-                "slug": "prayerful-litany",
-                "rank": 1
-              },
-              {
-                "slug": "cosmic-ripple",
-                "rank": 1
-              },
-              {
-                "slug": "voice-of-harmony",
-                "rank": 1
-              },
-              {
-                "slug": "burning-vehemence",
-                "rank": 1
-              },
-              {
-                "slug": "uplifting-words",
-                "rank": 1
-              },
-              {
-                "slug": "divine-hymn",
-                "rank": 1
-              },
-              {
-                "slug": "enlightenment",
-                "rank": 1
-              },
-              {
-                "slug": "light's-resurgence",
-                "rank": 1
-              },
-              {
-                "slug": "efficient-prayers",
-                "rank": 1
-              },
-              {
-                "slug": "healing-focus",
-                "rank": 1
-              },
-              {
-                "slug": "renewed-faith",
-                "rank": 1
-              },
-              {
-                "slug": "angelic-touch",
-                "rank": 1
-              },
-              {
-                "slug": "apotheosis",
-                "rank": 1
-              },
-              {
-                "slug": "trail-of-light",
-                "rank": 1
-              },
-              {
-                "slug": "miracle-worker",
-                "rank": 1
-              },
-              {
-                "slug": "divinity",
-                "rank": 1
-              },
-              {
-                "slug": "holy-celerity",
-                "rank": 1
-              },
-              {
-                "slug": "crisis-management",
-                "rank": 1
-              },
-              {
-                "slug": "light-in-the-darkness",
-                "rank": 2
-              },
-              {
-                "slug": "lightweaver",
-                "rank": 1
-              },
-              {
-                "slug": "ultimate-serenity",
-                "rank": 1
-              },
-              {
-                "slug": "divine-image",
-                "rank": 1
-              }
-            ],
-            "hero": [
-              {
-                "slug": "halo",
-                "rank": 1
-              },
-              {
-                "slug": "perfected-form",
-                "rank": 1
-              },
-              {
-                "slug": "power-surge",
-                "rank": 1
-              },
-              {
-                "slug": "manifested-power",
-                "rank": 1
-              },
-              {
-                "slug": "focused-outburst",
-                "rank": 1
-              },
-              {
-                "slug": "energy-conservation",
-                "rank": 1
-              },
-              {
-                "slug": "empowered-surges",
-                "rank": 1
-              },
-              {
-                "slug": "word-of-supremacy",
-                "rank": 1
-              },
-              {
-                "slug": "resonant-energy",
-                "rank": 1
-              },
-              {
-                "slug": "spiritwell",
-                "rank": 1
-              },
-              {
-                "slug": "divine-halo",
-                "rank": 1
-              }
-            ]
-          }
+          "selectedTalents": null
         },
         "pvp": {
           "title": "Holy — PvP (Solo Shuffle)",
@@ -8766,19 +7458,25 @@
           "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMjZMGAAAAAAAAAAAADLzMGLzMMz2MDzw2MzYYmByMsMTDwMzMAQAmtZDY2YAGjBjZmZMbjZADmB",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 75,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -8793,11 +7491,11 @@
             "RankIndex: 10"
           ],
           "confidence": "low",
-          "confidenceScore": 39,
-          "confidenceRationale": "support=62.4, families=1, sources=1, agreement=3/53 (5.7%), margin=2.4 (3.8%), updated=2026-02-25T00:42:25.121839Z",
-          "sampleSize": 53,
+          "confidenceScore": 38,
+          "confidenceRationale": "support=62.4, families=1, sources=1, agreement=3/57 (5.3%), margin=2.4 (3.8%), updated=2026-02-25T00:42:25.121839Z",
+          "sampleSize": 57,
           "agreementCount": 3,
-          "agreementRatio": 0.057,
+          "agreementRatio": 0.053,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -9406,19 +8104,25 @@
           "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWGzMmxYMMbzMz0MLGjxMGAAAAYmZmZmZmZYGjBAMzMzAAAgxADAYZYCMsAYGmBAwMDgB",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -9434,10 +8138,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/53 (1.9%), margin=0.0 (0.0%), updated=2026-02-25T00:37:58.389672Z",
-          "sampleSize": 53,
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/56 (1.8%), margin=0.0 (0.0%), updated=2026-02-25T00:37:58.389672Z",
+          "sampleSize": 56,
           "agreementCount": 1,
-          "agreementRatio": 0.019,
+          "agreementRatio": 0.018,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -10048,19 +8752,25 @@
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMDwMjZMDDz2MzMzMMzIzYMGmZAmZmZmZmZGAAAAAAAAAMGDMAglhJwYBzMzMzADADmBYA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 6,
-          "agreementCount": 2,
+          "confidenceScore": 75,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
+          "agreementCount": 3,
           "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -10076,10 +8786,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/45 (2.2%), margin=0.0 (0.0%), updated=2026-02-25T00:38:07.984245Z",
-          "sampleSize": 45,
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/48 (2.1%), margin=0.0 (0.0%), updated=2026-02-25T00:38:07.984245Z",
+          "sampleSize": 48,
           "agreementCount": 1,
-          "agreementRatio": 0.022,
+          "agreementRatio": 0.021,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -10682,19 +9392,25 @@
           "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmhZMDDzmZmZa2MzYMjBAAAAAAAgZGmZAwyMGz2MzYGzA2MLwAgZjhGLAYGAYmZMDgZGmB",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=40.0 (74.1%), updated=2026-02-24 02:03:34",
-          "sampleSize": 4,
-          "agreementCount": 1,
-          "agreementRatio": 0.25,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 66,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=39.0 (45.9%), updated=2026-02-24 02:03:34",
+          "sampleSize": 7,
+          "agreementCount": 2,
+          "agreementRatio": 0.286,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -10710,10 +9426,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/52 (1.9%), margin=0.0 (0.0%), updated=2026-02-25T00:38:15.723776Z",
-          "sampleSize": 52,
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/55 (1.8%), margin=0.0 (0.0%), updated=2026-02-25T00:38:15.723776Z",
+          "sampleSize": 55,
           "agreementCount": 1,
-          "agreementRatio": 0.019,
+          "agreementRatio": 0.018,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -11317,24 +10033,30 @@
       "Elemental": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
-          "updated": "2026-02-24 02:03:34",
-          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAmZZZmxMzMbLLjxMmZAAAAAMzGMgBMbMBmFAYWmZmxYbxEmZMWmZmZMsYxYBzMzsAAMAAjhB",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-02-23 02:03:12",
+          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMLLzMmZmZZbZwMMDAAAAgZ2gBMgZjJwsAAzyMzMGbLmwMjxyMzMjhFLGLmZMzsBAMAAjhB",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 44,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidence": "medium",
+          "confidenceScore": 62,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/8 (25.0%), margin=31.0 (36.5%), updated=2026-02-23 02:03:12",
+          "sampleSize": 8,
+          "agreementCount": 2,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -11350,10 +10072,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/52 (1.9%), margin=0.0 (0.0%), updated=2026-02-25T00:42:58.438455Z",
-          "sampleSize": 52,
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/55 (1.8%), margin=0.0 (0.0%), updated=2026-02-25T00:42:58.438455Z",
+          "sampleSize": 55,
           "agreementCount": 1,
-          "agreementRatio": 0.019,
+          "agreementRatio": 0.018,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -11872,344 +10594,58 @@
           "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAAAMW0YbAMDYDALzYGjllZgZmNWmZmZYYMDAgBYMjYmBAG",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 74,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/10 (30.0%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 10,
+          "agreementCount": 3,
+          "agreementRatio": 0.3,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Enhancement — AoE (Mythic+)",
-          "source": "Murlok.io (m+) top-player",
-          "updated": "2026-02-25T00:43:12.691984Z",
-          "exportString": "CcQARUG2fGwHkLP0T7/MoTNl/MzMzMzMzMzMzMzYGzAAAAAAAAAALAYG0YbAMC2AYWmxMGbLGYmZjlZMzMwYGAAgxYmJmZAGMA",
-          "notes": [
-            "Player: arlesham",
-            "RankIndex: 10"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": "2026-02-24 02:02:27",
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzYGzAAAAAAAAAALAYG0YbAMAbAMLzYGjlFDMzsxyMmZGYMDAAwYMzEzMADG",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 39,
-          "confidenceRationale": "support=62.4, families=1, sources=1, agreement=3/53 (5.7%), margin=2.4 (3.8%), updated=2026-02-25T00:43:12.691984Z",
-          "sampleSize": 53,
-          "agreementCount": 3,
-          "agreementRatio": 0.057,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 49,
+          "confidenceRationale": "support=81.0, families=2, sources=2, agreement=2/57 (3.5%), margin=18.6 (23.0%), updated=2026-02-24 02:02:27",
+          "sampleSize": 57,
+          "agreementCount": 2,
+          "agreementRatio": 0.035,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "murlok": {
-              "contributors": 3,
-              "familyBest": 50.4,
-              "popularityBonus": 12,
-              "familySupport": 62.4
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            },
+            "icyveins": {
+              "contributors": 1,
+              "familyBest": 21,
+              "popularityBonus": 6,
+              "familySupport": 27
             }
           },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "chain-heal",
-                "rank": 1
-              },
-              {
-                "slug": "lava-lash",
-                "rank": 1
-              },
-              {
-                "slug": "chain-lightning",
-                "rank": 1
-              },
-              {
-                "slug": "chain-lightning",
-                "rank": 1
-              },
-              {
-                "slug": "chain-lightning",
-                "rank": 1
-              },
-              {
-                "slug": "earth-shield",
-                "rank": 1
-              },
-              {
-                "slug": "fire-and-ice",
-                "rank": 1
-              },
-              {
-                "slug": "spirit-wolf",
-                "rank": 1
-              },
-              {
-                "slug": "maelstrom-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "maelstrom-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-orbit",
-                "rank": 1
-              },
-              {
-                "slug": "gust-of-wind",
-                "rank": 1
-              },
-              {
-                "slug": "astral-shift",
-                "rank": 1
-              },
-              {
-                "slug": "nature's-guardian",
-                "rank": 1
-              },
-              {
-                "slug": "planes-traveler",
-                "rank": 1
-              },
-              {
-                "slug": "brimming-with-life",
-                "rank": 2
-              },
-              {
-                "slug": "wind-shear",
-                "rank": 1
-              },
-              {
-                "slug": "capacitor-totem",
-                "rank": 1
-              },
-              {
-                "slug": "spiritual-awakening",
-                "rank": 1
-              },
-              {
-                "slug": "enhanced-imbues",
-                "rank": 1
-              },
-              {
-                "slug": "windveil",
-                "rank": 1
-              },
-              {
-                "slug": "static-charge",
-                "rank": 2
-              },
-              {
-                "slug": "wind-rush-totem",
-                "rank": 1
-              },
-              {
-                "slug": "earth-elemental",
-                "rank": 1
-              },
-              {
-                "slug": "nature's-fury",
-                "rank": 2
-              },
-              {
-                "slug": "jet-stream",
-                "rank": 1
-              },
-              {
-                "slug": "primordial-bond",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-projection",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-warding",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-focus",
-                "rank": 1
-              },
-              {
-                "slug": "therazane's-resilience",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-surge",
-                "rank": 1
-              },
-              {
-                "slug": "instinctive-imbuements",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "maelstrom-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "windfury-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "flametongue-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "forceful-winds",
-                "rank": 1
-              },
-              {
-                "slug": "crash-lightning",
-                "rank": 1
-              },
-              {
-                "slug": "molten-assault",
-                "rank": 1
-              },
-              {
-                "slug": "unruly-winds",
-                "rank": 1
-              },
-              {
-                "slug": "raging-maelstrom",
-                "rank": 1
-              },
-              {
-                "slug": "ashen-catalyst",
-                "rank": 1
-              },
-              {
-                "slug": "stormblast",
-                "rank": 1
-              },
-              {
-                "slug": "overcharge",
-                "rank": 1
-              },
-              {
-                "slug": "overflowing-maelstrom",
-                "rank": 1
-              },
-              {
-                "slug": "hot-hand",
-                "rank": 2
-              },
-              {
-                "slug": "elemental-tempo",
-                "rank": 1
-              },
-              {
-                "slug": "voltaic-blaze",
-                "rank": 1
-              },
-              {
-                "slug": "chaining-storms",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-weapons",
-                "rank": 1
-              },
-              {
-                "slug": "fire-nova",
-                "rank": 1
-              },
-              {
-                "slug": "lashing-flames",
-                "rank": 1
-              },
-              {
-                "slug": "ride-the-lightning",
-                "rank": 1
-              },
-              {
-                "slug": "doom-winds",
-                "rank": 1
-              },
-              {
-                "slug": "sundering",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-assault",
-                "rank": 1
-              },
-              {
-                "slug": "static-accumulation",
-                "rank": 2
-              },
-              {
-                "slug": "feral-spirit",
-                "rank": 1
-              },
-              {
-                "slug": "surging-elements",
-                "rank": 1
-              },
-              {
-                "slug": "thorim's-invocation",
-                "rank": 1
-              },
-              {
-                "slug": "primordial-storm",
-                "rank": 1
-              }
-            ],
-            "hero": [
-              {
-                "slug": "surging-totem",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-rebound",
-                "rank": 1
-              },
-              {
-                "slug": "lively-totems",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-momentum",
-                "rank": 1
-              },
-              {
-                "slug": "oversized-totems",
-                "rank": 1
-              },
-              {
-                "slug": "splitstream",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-attunement",
-                "rank": 1
-              },
-              {
-                "slug": "imbuement-mastery",
-                "rank": 1
-              },
-              {
-                "slug": "earthsurge",
-                "rank": 1
-              },
-              {
-                "slug": "primal-catalyst",
-                "rank": 1
-              },
-              {
-                "slug": "whirling-elements",
-                "rank": 1
-              }
-            ]
-          }
+          "selectedTalents": null
         },
         "pvp": {
           "title": "Enhancement — PvP (Solo Shuffle)",
@@ -12542,19 +10978,25 @@
           "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAjZMbbLDzMGzMjZYGLAYG0YbAMgNPwwYGLjBNbLzMMjZhFzMzYGmlBAAGwMzgZGAGD",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 6,
-          "agreementCount": 2,
+          "confidenceScore": 75,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
+          "agreementCount": 3,
           "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -12570,10 +11012,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/53 (1.9%), margin=0.0 (0.0%), updated=2026-02-25T00:43:24.594238Z",
-          "sampleSize": 53,
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/56 (1.8%), margin=0.0 (0.0%), updated=2026-02-25T00:43:24.594238Z",
+          "sampleSize": 56,
           "agreementCount": 1,
-          "agreementRatio": 0.019,
+          "agreementRatio": 0.018,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -13181,12 +11623,12 @@
           "updated": "2026-02-24 02:03:34",
           "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMzQzwAAAwAAMzklNzAAYDAAMzMzM2sMzMzygxYmZmxCzMzYGAgBAAYAmZAzAgB",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
+          "confidence": "low",
+          "confidenceScore": 57,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/9 (22.2%), margin=11.5 (20.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
           "agreementCount": 2,
-          "agreementRatio": 0.4,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -13210,10 +11652,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 48,
-          "confidenceRationale": "support=74.8, families=1, sources=1, agreement=10/53 (18.9%), margin=14.8 (19.7%), updated=2026-02-25T00:40:21.172462Z",
-          "sampleSize": 53,
+          "confidenceRationale": "support=74.8, families=1, sources=1, agreement=10/57 (17.5%), margin=14.8 (19.7%), updated=2026-02-25T00:40:21.172462Z",
+          "sampleSize": 57,
           "agreementCount": 10,
-          "agreementRatio": 0.189,
+          "agreementRatio": 0.175,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -13816,320 +12258,58 @@
           "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzsgZIzMzAAAwMLzYYZAAAAWMzw2YmZmBAAAAAsZmxMDAAGDzMzMzMzGwMDImxYwA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Fire — AoE (Mythic+)",
-          "source": "Murlok.io (m+) top-player",
-          "updated": "2026-02-25T00:40:36.282565Z",
-          "exportString": "C8DAMhlVtghLZL4RZzExaQoBYZGGLzMzswMzIzYGAAAmZZGDLjZmJLMDAwiZG2GzMzMAAAAAgFzMzMAAwYYmZmZmZWAmZmZIMGDGA",
-          "notes": [
-            "Player: placement",
-            "RankIndex: 5"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": "2026-02-24 02:02:27",
+          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAMzALzMzsgZGZmxAAAwAAmZmssZGAgNzMsMzMzMzCAAAAAsZmZm5BAAwMDzMmZmZWAgZAGjBA",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/17 (5.9%), margin=0.0 (0.0%), updated=2026-02-25T00:40:36.282565Z",
-          "sampleSize": 17,
-          "agreementCount": 1,
-          "agreementRatio": 0.059,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 54,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/20 (10.0%), margin=25.0 (29.4%), updated=2026-02-24 02:02:27",
+          "sampleSize": 20,
+          "agreementCount": 2,
+          "agreementRatio": 0.1,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "murlok": {
+            "peavers": {
               "contributors": 1,
-              "familyBest": 54,
+              "familyBest": 48,
               "popularityBonus": 6,
-              "familySupport": 60
+              "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "blazing-barrier",
-                "rank": 1
-              },
-              {
-                "slug": "alter-time",
-                "rank": 1
-              },
-              {
-                "slug": "ice-block",
-                "rank": 1
-              },
-              {
-                "slug": "time-walk",
-                "rank": 1
-              },
-              {
-                "slug": "master-of-time",
-                "rank": 2
-              },
-              {
-                "slug": "winter's-protection",
-                "rank": 2
-              },
-              {
-                "slug": "arcane-warding",
-                "rank": 2
-              },
-              {
-                "slug": "inspired-intellect",
-                "rank": 1
-              },
-              {
-                "slug": "quick-witted",
-                "rank": 1
-              },
-              {
-                "slug": "remove-curse",
-                "rank": 1
-              },
-              {
-                "slug": "shimmer",
-                "rank": 1
-              },
-              {
-                "slug": "overflowing-energy",
-                "rank": 1
-              },
-              {
-                "slug": "greater-invisibility",
-                "rank": 1
-              },
-              {
-                "slug": "captured-thoughts",
-                "rank": 1
-              },
-              {
-                "slug": "tome-of-rhonin",
-                "rank": 1
-              },
-              {
-                "slug": "tome-of-antonidas",
-                "rank": 1
-              },
-              {
-                "slug": "incantation-of-swiftness",
-                "rank": 2
-              },
-              {
-                "slug": "master-of-escape",
-                "rank": 1
-              },
-              {
-                "slug": "charm-of-aegwynn",
-                "rank": 1
-              },
-              {
-                "slug": "brainstorm",
-                "rank": 1
-              },
-              {
-                "slug": "flow-of-time",
-                "rank": 1
-              },
-              {
-                "slug": "charm-of-medivh",
-                "rank": 1
-              },
-              {
-                "slug": "permafrost-bauble",
-                "rank": 1
-              },
-              {
-                "slug": "energized-barriers",
-                "rank": 1
-              },
-              {
-                "slug": "barrier-diffusion",
-                "rank": 1
-              },
-              {
-                "slug": "ice-cold",
-                "rank": 1
-              },
-              {
-                "slug": "spatial-manipulation",
-                "rank": 1
-              },
-              {
-                "slug": "improved-blazing-barrier",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "pyroblast",
-                "rank": 1
-              },
-              {
-                "slug": "fire-blast",
-                "rank": 1
-              },
-              {
-                "slug": "firestarter",
-                "rank": 1
-              },
-              {
-                "slug": "flamestrike",
-                "rank": 1
-              },
-              {
-                "slug": "ignition",
-                "rank": 1
-              },
-              {
-                "slug": "combustion",
-                "rank": 1
-              },
-              {
-                "slug": "fuel-the-fire",
-                "rank": 1
-              },
-              {
-                "slug": "fervent-flickering",
-                "rank": 1
-              },
-              {
-                "slug": "cauterize",
-                "rank": 1
-              },
-              {
-                "slug": "meteor",
-                "rank": 1
-              },
-              {
-                "slug": "flame-on",
-                "rank": 1
-              },
-              {
-                "slug": "kindling",
-                "rank": 1
-              },
-              {
-                "slug": "critical-mass",
-                "rank": 2
-              },
-              {
-                "slug": "deep-impact",
-                "rank": 1
-              },
-              {
-                "slug": "scald",
-                "rank": 1
-              },
-              {
-                "slug": "controlled-destruction",
-                "rank": 1
-              },
-              {
-                "slug": "mote-of-flame",
-                "rank": 1
-              },
-              {
-                "slug": "blast-zone",
-                "rank": 1
-              },
-              {
-                "slug": "intensifying-flame",
-                "rank": 1
-              },
-              {
-                "slug": "molten-fury",
-                "rank": 1
-              },
-              {
-                "slug": "inflame",
-                "rank": 1
-              },
-              {
-                "slug": "wildfire",
-                "rank": 2
-              },
-              {
-                "slug": "fevered-incantation",
-                "rank": 2
-              },
-              {
-                "slug": "master-of-flame",
-                "rank": 1
-              },
-              {
-                "slug": "from-the-ashes",
-                "rank": 1
-              },
-              {
-                "slug": "burnout",
-                "rank": 1
-              },
-              {
-                "slug": "burn-it-all",
-                "rank": 1
-              }
-            ],
-            "hero": [
-              {
-                "slug": "frostfire-bolt",
-                "rank": 1
-              },
-              {
-                "slug": "frostfire-empowerment",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-affinity",
-                "rank": 1
-              },
-              {
-                "slug": "duality",
-                "rank": 1
-              },
-              {
-                "slug": "thermal-conditioning",
-                "rank": 1
-              },
-              {
-                "slug": "dualcasting-adept",
-                "rank": 1
-              },
-              {
-                "slug": "molten-chill",
-                "rank": 1
-              },
-              {
-                "slug": "flash-freezeburn",
-                "rank": 1
-              },
-              {
-                "slug": "blast-radius",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-conduit",
-                "rank": 1
-              },
-              {
-                "slug": "isothermic-core",
-                "rank": 1
-              }
-            ]
-          }
+          "selectedTalents": null
         },
         "pvp": {
           "title": "Fire — PvP (Solo Shuffle)",
@@ -14246,19 +12426,25 @@
           "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAYGGLzYmFmZmYGmZMjZWMzMzMjZAAAgZGsMz0GAAAAAAYDgttxMzMYWmxYGWAAAYmFgZwMgBA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -14274,10 +12460,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/53 (1.9%), margin=0.0 (0.0%), updated=2026-02-25T00:40:39.767571Z",
-          "sampleSize": 53,
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/56 (1.8%), margin=0.0 (0.0%), updated=2026-02-25T00:40:39.767571Z",
+          "sampleSize": 56,
           "agreementCount": 1,
-          "agreementRatio": 0.019,
+          "agreementRatio": 0.018,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -14885,24 +13071,30 @@
       "Affliction": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
-          "updated": "2026-02-24 02:03:34",
-          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAgZMzoZjhZmxsMAAAzMLz2MzsYGAYssMwAGwMsFYYbAAAYGAAAgZmZGzAzYmZmZwMzMDAYA",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-02-23 02:03:12",
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMMzoZjhZmxsMAAAzMLz2MzsMzAAjllBGwAmhtADbDAAAGAAAYmZMzYGYGzMzMDmZmBAYA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 44,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidence": "medium",
+          "confidenceScore": 62,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/8 (25.0%), margin=31.0 (36.5%), updated=2026-02-23 02:03:12",
+          "sampleSize": 8,
+          "agreementCount": 2,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -14918,10 +13110,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/53 (3.8%), margin=3.5 (5.5%), updated=2026-02-25T00:43:36.729838Z",
-          "sampleSize": 53,
+          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/56 (3.6%), margin=3.5 (5.5%), updated=2026-02-25T00:43:36.729838Z",
+          "sampleSize": 56,
           "agreementCount": 2,
-          "agreementRatio": 0.038,
+          "agreementRatio": 0.036,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -15532,19 +13724,25 @@
           "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAgZmZGNbMMzMmlBAAAAAAYYZgBMADLBGbmZM2mlZmZMDAYGzMzAYGmZGDAAwYmZGDDLzYA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -15560,10 +13758,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/53 (1.9%), margin=0.0 (0.0%), updated=2026-02-25T00:43:48.982083Z",
-          "sampleSize": 53,
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/56 (1.8%), margin=0.0 (0.0%), updated=2026-02-25T00:43:48.982083Z",
+          "sampleSize": 56,
           "agreementCount": 1,
-          "agreementRatio": 0.019,
+          "agreementRatio": 0.018,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -16157,12 +14355,12 @@
           "updated": "2026-02-24 02:03:34",
           "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAwMjZGNbMMzMmlZhZmZZmZsYGAAMmxMzsAGzAAw2wCNWYAAgBYGAYmBYMjxAAAwMzMDAAzA",
           "notes": [],
-          "confidence": "high",
-          "confidenceScore": 91,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/3 (66.7%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 3,
+          "confidence": "medium",
+          "confidenceScore": 62,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=11.5 (20.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 6,
           "agreementCount": 2,
-          "agreementRatio": 0.667,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -16186,10 +14384,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 40,
-          "confidenceRationale": "support=66.0, families=1, sources=1, agreement=3/52 (5.8%), margin=6.0 (9.1%), updated=2026-02-25T00:43:59.754217Z",
-          "sampleSize": 52,
+          "confidenceRationale": "support=66.0, families=1, sources=1, agreement=3/55 (5.5%), margin=6.0 (9.1%), updated=2026-02-25T00:43:59.754217Z",
+          "sampleSize": 55,
           "agreementCount": 3,
-          "agreementRatio": 0.058,
+          "agreementRatio": 0.055,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -16782,19 +14980,25 @@
           "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAgZbzYGPwYWM2mxMDAAAAAAALLYEzMwMMYGjZmZwsgZMzywymltZZYWAAgNAAAgtZpZmZWMDLAGYaMAAA",
           "notes": [],
           "confidence": "high",
-          "confidenceScore": 83,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/4 (50.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 4,
-          "agreementCount": 2,
-          "agreementRatio": 0.5,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 79,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/7 (42.9%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 7,
+          "agreementCount": 3,
+          "agreementRatio": 0.429,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -16810,10 +15014,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/52 (3.8%), margin=3.5 (5.5%), updated=2026-02-25T00:40:50.900793Z",
-          "sampleSize": 52,
+          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/55 (3.6%), margin=3.5 (5.5%), updated=2026-02-25T00:40:50.900793Z",
+          "sampleSize": 55,
           "agreementCount": 2,
-          "agreementRatio": 0.038,
+          "agreementRatio": 0.036,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -17440,19 +15644,25 @@
           "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzMD2GGsMzMbzAAAAAAAAAAAAsMMCzYbYAzYYmxgZBzwsMTAAbmZbmhxMzAAYDAYWamZmFAMYGAwyYADA",
           "notes": [],
           "confidence": "high",
-          "confidenceScore": 83,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/4 (50.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 4,
-          "agreementCount": 2,
-          "agreementRatio": 0.5,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 79,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/7 (42.9%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 7,
+          "agreementCount": 3,
+          "agreementRatio": 0.429,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -17468,10 +15678,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 40,
-          "confidenceRationale": "support=65.9, families=1, sources=1, agreement=5/52 (9.6%), margin=2.4 (3.6%), updated=2026-02-25T00:41:03.168293Z",
-          "sampleSize": 52,
+          "confidenceRationale": "support=65.9, families=1, sources=1, agreement=5/55 (9.1%), margin=2.4 (3.6%), updated=2026-02-25T00:41:03.168293Z",
+          "sampleSize": 55,
           "agreementCount": 5,
-          "agreementRatio": 0.096,
+          "agreementRatio": 0.091,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -18098,19 +16308,25 @@
           "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAghx2MwmFzYmZbGbYmZYmlttZGLMjmxMgBDGzyMzMDzG8AYxEAAAAAAsYZswMDAAMAgZADMWkxMA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 6,
-          "agreementCount": 2,
+          "confidenceScore": 75,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
+          "agreementCount": 3,
           "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -18126,10 +16342,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/53 (3.8%), margin=3.5 (5.5%), updated=2026-02-25T00:41:13.864803Z",
-          "sampleSize": 53,
+          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/56 (3.6%), margin=3.5 (5.5%), updated=2026-02-25T00:41:13.864803Z",
+          "sampleSize": 56,
           "agreementCount": 2,
-          "agreementRatio": 0.038,
+          "agreementRatio": 0.036,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -18766,19 +16982,25 @@
           "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNMmZgxswMzMLMwwMbzYGzYbsMjZGDzGGAMALbATmZZAAAAwmZmHYmBbGGjZAMzAA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -18794,10 +17016,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 40,
-          "confidenceRationale": "support=66.0, families=1, sources=1, agreement=3/53 (5.7%), margin=6.0 (9.1%), updated=2026-02-25T00:38:55.540605Z",
-          "sampleSize": 53,
+          "confidenceRationale": "support=66.0, families=1, sources=1, agreement=3/56 (5.4%), margin=6.0 (9.1%), updated=2026-02-25T00:38:55.540605Z",
+          "sampleSize": 56,
           "agreementCount": 3,
-          "agreementRatio": 0.057,
+          "agreementRatio": 0.054,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -19408,19 +17630,25 @@
           "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjhxMzMzMmtNWmZbGzYmZAAAAYJYWMGmZUzYWYmZGjZYAAAAAAMwAAAAIjZbMzAAWAzMALMYAAAMzG",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 74,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/10 (30.0%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 10,
+          "agreementCount": 3,
+          "agreementRatio": 0.3,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -19436,10 +17664,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/36 (2.8%), margin=0.0 (0.0%), updated=2026-02-25T00:39:04.089619Z",
-          "sampleSize": 36,
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/40 (2.5%), margin=0.0 (0.0%), updated=2026-02-25T00:39:04.089619Z",
+          "sampleSize": 40,
           "agreementCount": 1,
-          "agreementRatio": 0.028,
+          "agreementRatio": 0.025,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -20066,19 +18294,25 @@
           "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxs4BGzDM2MLzMPgZZZghhRT0MzsYmZmxMzAAAAAAww2MAAAAIjZZGzAAYBz8AALmBDGssNAYmF",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 75,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -20094,10 +18328,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/52 (1.9%), margin=0.0 (0.0%), updated=2026-02-25T00:39:11.379164Z",
-          "sampleSize": 52,
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/56 (1.8%), margin=0.0 (0.0%), updated=2026-02-25T00:39:11.379164Z",
+          "sampleSize": 56,
           "agreementCount": 1,
-          "agreementRatio": 0.019,
+          "agreementRatio": 0.018,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -20716,19 +18950,25 @@
           "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMjxMLz2MmZY2GmxMYswAAAAAAAAAAAbDa2YMNDjZMLzMzMDDmBAAAAAAwYAbGLYaYZAAAAsAzMYmBoZAwMDAA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 6,
-          "agreementCount": 2,
+          "confidenceScore": 75,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
+          "agreementCount": 3,
           "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -20744,10 +18984,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/53 (1.9%), margin=0.0 (0.0%), updated=2026-02-25T00:39:22.871808Z",
-          "sampleSize": 53,
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/56 (1.8%), margin=0.0 (0.0%), updated=2026-02-25T00:39:22.871808Z",
+          "sampleSize": 56,
           "agreementCount": 1,
-          "agreementRatio": 0.019,
+          "agreementRatio": 0.018,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -21388,320 +19628,58 @@
           "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYGYmZ2MmZmxMzkxMDAAAAAAYWMGGmZsMzM2mtZmZWGzglBMLmBmN0wMjhNAAAAAAAAmZwAAAAA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 75,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Havoc — AoE (Mythic+)",
-          "source": "Murlok.io (m+) top-player",
-          "updated": "2026-02-25T00:38:29.065394Z",
-          "exportString": "CEkAG5bbocFKcv+yIq8fPd6ORZmZmZmZ2MmZmxYmMmZAAAAAAAzixwwMDjZsNbmZGjBWGwsZGYWkGzMjZsBAAAMAAEAMzgBgAAAA",
-          "notes": [
-            "Player: boksel",
-            "RankIndex: 19"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": "2026-02-24 02:02:27",
+          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZ2MmZmxYmMmZAAAAAAAzixwwMDjZsNbmZGjBWGwsZGYWQjZmxM2AAAAGAAAAzMYAAAAA",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 40,
-          "confidenceRationale": "support=64.1, families=1, sources=1, agreement=6/52 (11.5%), margin=0.6 (0.9%), updated=2026-02-25T00:38:29.065394Z",
-          "sampleSize": 52,
-          "agreementCount": 6,
-          "agreementRatio": 0.115,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 50,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=20.9 (24.6%), updated=2026-02-24 02:02:27",
+          "sampleSize": 56,
+          "agreementCount": 2,
+          "agreementRatio": 0.036,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "murlok": {
-              "contributors": 6,
-              "familyBest": 47.25,
-              "popularityBonus": 16.84,
-              "familySupport": 64.09
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "vengeful-retreat",
-                "rank": 1
-              },
-              {
-                "slug": "felblade",
-                "rank": 1
-              },
-              {
-                "slug": "sigil-of-misery",
-                "rank": 1
-              },
-              {
-                "slug": "unrestrained-fury",
-                "rank": 1
-              },
-              {
-                "slug": "shattered-restoration",
-                "rank": 1
-              },
-              {
-                "slug": "bouncing-glaives",
-                "rank": 1
-              },
-              {
-                "slug": "imprison",
-                "rank": 1
-              },
-              {
-                "slug": "charred-warblades",
-                "rank": 1
-              },
-              {
-                "slug": "chaos-nova",
-                "rank": 1
-              },
-              {
-                "slug": "improved-disrupt",
-                "rank": 1
-              },
-              {
-                "slug": "consume-magic",
-                "rank": 1
-              },
-              {
-                "slug": "focused-ire",
-                "rank": 1
-              },
-              {
-                "slug": "master-of-the-glaive",
-                "rank": 1
-              },
-              {
-                "slug": "blazing-path",
-                "rank": 1
-              },
-              {
-                "slug": "aura-of-pain",
-                "rank": 1
-              },
-              {
-                "slug": "pursuit",
-                "rank": 1
-              },
-              {
-                "slug": "soul-rending",
-                "rank": 2
-              },
-              {
-                "slug": "soul-cleanse",
-                "rank": 1
-              },
-              {
-                "slug": "illidari-knowledge",
-                "rank": 2
-              },
-              {
-                "slug": "felbound",
-                "rank": 1
-              },
-              {
-                "slug": "will-of-the-illidari",
-                "rank": 2
-              },
-              {
-                "slug": "internal-struggle",
-                "rank": 1
-              },
-              {
-                "slug": "furious",
-                "rank": 1
-              },
-              {
-                "slug": "remorseless",
-                "rank": 1
-              },
-              {
-                "slug": "first-in,-last-out",
-                "rank": 1
-              },
-              {
-                "slug": "final-breath",
-                "rank": 1
-              },
-              {
-                "slug": "soul-splitter",
-                "rank": 2
-              },
-              {
-                "slug": "demonic-resilience",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "eye-beam",
-                "rank": 1
-              },
-              {
-                "slug": "critical-chaos",
-                "rank": 1
-              },
-              {
-                "slug": "burning-hatred",
-                "rank": 1
-              },
-              {
-                "slug": "improved-chaos-strike",
-                "rank": 1
-              },
-              {
-                "slug": "first-blood",
-                "rank": 1
-              },
-              {
-                "slug": "demon-hide",
-                "rank": 1
-              },
-              {
-                "slug": "desperate-instincts",
-                "rank": 1
-              },
-              {
-                "slug": "deflecting-dance",
-                "rank": 1
-              },
-              {
-                "slug": "initiative",
-                "rank": 1
-              },
-              {
-                "slug": "scars-of-suffering",
-                "rank": 1
-              },
-              {
-                "slug": "demonic",
-                "rank": 1
-              },
-              {
-                "slug": "trail-of-ruin",
-                "rank": 1
-              },
-              {
-                "slug": "tactical-retreat",
-                "rank": 1
-              },
-              {
-                "slug": "blind-fury",
-                "rank": 2
-              },
-              {
-                "slug": "growing-inferno",
-                "rank": 1
-              },
-              {
-                "slug": "inertia",
-                "rank": 1
-              },
-              {
-                "slug": "the-hunt",
-                "rank": 1
-              },
-              {
-                "slug": "serrated-glaive",
-                "rank": 1
-              },
-              {
-                "slug": "burning-wound",
-                "rank": 1
-              },
-              {
-                "slug": "chaotic-transformation",
-                "rank": 1
-              },
-              {
-                "slug": "ragefire",
-                "rank": 1
-              },
-              {
-                "slug": "know-your-enemy",
-                "rank": 2
-              },
-              {
-                "slug": "cycle-of-hatred",
-                "rank": 1
-              },
-              {
-                "slug": "chaotic-disposition",
-                "rank": 2
-              },
-              {
-                "slug": "glaive-tempest",
-                "rank": 1
-              },
-              {
-                "slug": "screaming-brutality",
-                "rank": 1
-              },
-              {
-                "slug": "a-fire-inside",
-                "rank": 1
-              }
-            ],
-            "hero": [
-              {
-                "slug": "demonsurge",
-                "rank": 1
-              },
-              {
-                "slug": "wave-of-debilitation",
-                "rank": 1
-              },
-              {
-                "slug": "focused-hatred",
-                "rank": 1
-              },
-              {
-                "slug": "blind-focus",
-                "rank": 1
-              },
-              {
-                "slug": "burning-blades",
-                "rank": 1
-              },
-              {
-                "slug": "violent-transformation",
-                "rank": 1
-              },
-              {
-                "slug": "undying-embers",
-                "rank": 1
-              },
-              {
-                "slug": "untethered-fury",
-                "rank": 1
-              },
-              {
-                "slug": "flamebound",
-                "rank": 1
-              },
-              {
-                "slug": "volatile-instinct",
-                "rank": 1
-              },
-              {
-                "slug": "demonic-intensity",
-                "rank": 1
-              }
-            ]
-          }
+          "selectedTalents": null
         },
         "pvp": {
           "title": "Havoc — PvP (Solo Shuffle)",
@@ -22009,20 +19987,26 @@
           "updated": "2026-02-24 02:03:34",
           "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjZmZkZmZYYmZGDzYmxMmxMzwMmZsxMGDAAAAAAAAYmZsBAAAgBjZYGtNzMDAMAAAA",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidence": "high",
+          "confidenceScore": 84,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=66.5 (75.1%), updated=2026-02-24 02:03:34",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -22038,10 +20022,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 48,
-          "confidenceRationale": "support=75.5, families=1, sources=1, agreement=11/53 (20.8%), margin=12.0 (15.9%), updated=2026-02-25T00:38:33.118367Z",
-          "sampleSize": 53,
+          "confidenceRationale": "support=75.5, families=1, sources=1, agreement=11/56 (19.6%), margin=12.0 (15.9%), updated=2026-02-25T00:38:33.118367Z",
+          "sampleSize": 56,
           "agreementCount": 11,
-          "agreementRatio": 0.208,
+          "agreementRatio": 0.196,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -22427,10 +20411,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/50 (4.0%), margin=3.5 (5.5%), updated=2026-02-25T00:38:43.520255Z",
-          "sampleSize": 50,
+          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/54 (3.7%), margin=3.5 (5.5%), updated=2026-02-25T00:38:43.520255Z",
+          "sampleSize": 54,
           "agreementCount": 2,
-          "agreementRatio": 0.04,
+          "agreementRatio": 0.037,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -22709,6 +20693,32 @@
               }
             ]
           }
+        },
+        "raid": {
+          "title": "Devourer - Raid",
+          "source": "Wowhead",
+          "updated": "2026-02-24T14:15:10-06:00",
+          "exportString": "CgcBAAAAAAAAAAAAAAAAAAAAAAAWMmZmxMzMGzMAAAAAAAegxsNYGAAAAAAAAmxMMmZmZMzMDzsYGjNtsBgAAMjZmZZmZa2mZbmZwYGA",
+          "notes": [
+            "Guide URL: https://www.wowhead.com/guide/classes/demon-hunter/devourer/talent-builds-pve-dps"
+          ],
+          "confidence": "low",
+          "confidenceScore": 54,
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/4 (25.0%), margin=15.0 (32.6%), updated=2026-02-24T14:15:10-06:00",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "wowhead": {
+              "contributors": 1,
+              "familyBest": 40,
+              "popularityBonus": 6,
+              "familySupport": 46
+            }
+          },
+          "selectedTalents": null
         }
       }
     },
@@ -22716,24 +20726,30 @@
       "Devastation": {
         "raid": {
           "title": "The Soul Hunters",
-          "source": "PeaversTalentsData/ArchonHeroicRaidDB",
-          "updated": "2026-02-24 02:03:34",
-          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZwMDGMgBjZaGzMZMWmZmZGmZmZGwMmZGzMLjZwMwwMAwCYGmAbglhBgZA",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-02-23 02:03:12",
+          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZwMDGMgBjZaGzMZMWmZmZGmZmZGwMmZGzMbjZwMwwMAwCYGmAbglhBgZA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 46,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=0.0 (0.0%), updated=2026-02-24 02:03:34",
-          "sampleSize": 4,
-          "agreementCount": 1,
-          "agreementRatio": 0.25,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidence": "medium",
+          "confidenceScore": 64,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=31.0 (36.5%), updated=2026-02-23 02:03:12",
+          "sampleSize": 7,
+          "agreementCount": 2,
+          "agreementRatio": 0.286,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -22749,10 +20765,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/52 (3.8%), margin=3.5 (5.5%), updated=2026-02-25T00:39:34.397865Z",
-          "sampleSize": 52,
+          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/55 (3.6%), margin=3.5 (5.5%), updated=2026-02-25T00:39:34.397865Z",
+          "sampleSize": 55,
           "agreementCount": 2,
-          "agreementRatio": 0.038,
+          "agreementRatio": 0.036,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -23367,316 +21383,58 @@
           "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAYmZ2WGYGzMPwsYMzMzyAAAwYGzwMmRmxAAAAMzMTGzMzMLjZAAYMDAGYwQDYBGzMAA",
           "notes": [],
           "confidence": "high",
-          "confidenceScore": 83,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/4 (50.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 4,
-          "agreementCount": 2,
-          "agreementRatio": 0.5,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 79,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/7 (42.9%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 7,
+          "agreementCount": 3,
+          "agreementRatio": 0.429,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Preservation — AoE (Mythic+)",
-          "source": "Murlok.io (m+) top-player",
-          "updated": "2026-02-25T00:39:43.950346Z",
-          "exportString": "CwbBPJc41CfcseY0baneJ1IHrBAAAAAmZmZ2MwwMzDMLmZmhNAAAmhxMYMjMzMAAAgtZmZyYmZmxYGAAGzAgBGaoBjFYMzAAA",
-          "notes": [
-            "Player: 김업화",
-            "RankIndex: 8"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": "2026-02-24 02:02:27",
+          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ2MwwMzDMLmZmhNAAAmhxMYMjMzMAAAgtZmZyYmZmxYGAAGzAgBGM0gxCMmZAA",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=65.9, families=1, sources=1, agreement=5/37 (13.5%), margin=5.9 (9.0%), updated=2026-02-25T00:39:43.950346Z",
-          "sampleSize": 37,
-          "agreementCount": 5,
-          "agreementRatio": 0.135,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 50,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/40 (5.0%), margin=19.1 (22.5%), updated=2026-02-24 02:02:27",
+          "sampleSize": 40,
+          "agreementCount": 2,
+          "agreementRatio": 0.05,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "murlok": {
-              "contributors": 5,
-              "familyBest": 50.4,
-              "popularityBonus": 15.51,
-              "familySupport": 65.91
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "obsidian-scales",
-                "rank": 1
-              },
-              {
-                "slug": "expunge",
-                "rank": 1
-              },
-              {
-                "slug": "expunge",
-                "rank": 1
-              },
-              {
-                "slug": "heavy-wingbeats",
-                "rank": 1
-              },
-              {
-                "slug": "verdant-embrace",
-                "rank": 1
-              },
-              {
-                "slug": "innate-magic",
-                "rank": 2
-              },
-              {
-                "slug": "obsidian-bulwark",
-                "rank": 1
-              },
-              {
-                "slug": "enkindled",
-                "rank": 2
-              },
-              {
-                "slug": "scarlet-adaptation",
-                "rank": 1
-              },
-              {
-                "slug": "inner-radiance",
-                "rank": 1
-              },
-              {
-                "slug": "cauterizing-flame",
-                "rank": 1
-              },
-              {
-                "slug": "instinctive-arcana",
-                "rank": 2
-              },
-              {
-                "slug": "tip-the-scales",
-                "rank": 1
-              },
-              {
-                "slug": "attuned-to-the-dream",
-                "rank": 2
-              },
-              {
-                "slug": "inherent-resistance",
-                "rank": 2
-              },
-              {
-                "slug": "draconic-legacy",
-                "rank": 1
-              },
-              {
-                "slug": "extended-flight",
-                "rank": 2
-              },
-              {
-                "slug": "blast-furnace",
-                "rank": 1
-              },
-              {
-                "slug": "renewing-blaze",
-                "rank": 1
-              },
-              {
-                "slug": "panacea",
-                "rank": 1
-              },
-              {
-                "slug": "stretch-time",
-                "rank": 1
-              },
-              {
-                "slug": "foci-of-life",
-                "rank": 1
-              },
-              {
-                "slug": "rescue",
-                "rank": 1
-              },
-              {
-                "slug": "lush-growth",
-                "rank": 2
-              },
-              {
-                "slug": "leaping-flames",
-                "rank": 1
-              },
-              {
-                "slug": "aerial-mastery",
-                "rank": 1
-              },
-              {
-                "slug": "zephyr",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "echo",
-                "rank": 1
-              },
-              {
-                "slug": "dream-breath",
-                "rank": 1
-              },
-              {
-                "slug": "reversion",
-                "rank": 1
-              },
-              {
-                "slug": "temporal-compression",
-                "rank": 1
-              },
-              {
-                "slug": "essence-burst",
-                "rank": 1
-              },
-              {
-                "slug": "rewind",
-                "rank": 1
-              },
-              {
-                "slug": "lifebind",
-                "rank": 1
-              },
-              {
-                "slug": "essence-attunement",
-                "rank": 1
-              },
-              {
-                "slug": "time-dilation",
-                "rank": 1
-              },
-              {
-                "slug": "unshakable",
-                "rank": 1
-              },
-              {
-                "slug": "golden-hour",
-                "rank": 1
-              },
-              {
-                "slug": "just-in-time",
-                "rank": 1
-              },
-              {
-                "slug": "temporal-anomaly",
-                "rank": 1
-              },
-              {
-                "slug": "spiritual-clarity",
-                "rank": 1
-              },
-              {
-                "slug": "time-lord",
-                "rank": 2
-              },
-              {
-                "slug": "flow-state",
-                "rank": 1
-              },
-              {
-                "slug": "resonating-sphere",
-                "rank": 1
-              },
-              {
-                "slug": "call-of-ysera",
-                "rank": 1
-              },
-              {
-                "slug": "stasis",
-                "rank": 1
-              },
-              {
-                "slug": "grace-period",
-                "rank": 1
-              },
-              {
-                "slug": "life-giver's-flame",
-                "rank": 1
-              },
-              {
-                "slug": "temporal-artificer",
-                "rank": 1
-              },
-              {
-                "slug": "energy-loop",
-                "rank": 1
-              },
-              {
-                "slug": "lifeforce-mender",
-                "rank": 2
-              },
-              {
-                "slug": "timeless-magic",
-                "rank": 2
-              },
-              {
-                "slug": "lifespark",
-                "rank": 1
-              },
-              {
-                "slug": "tempo-charged",
-                "rank": 1
-              }
-            ],
-            "hero": [
-              {
-                "slug": "chrono-flame",
-                "rank": 1
-              },
-              {
-                "slug": "temporal-burst",
-                "rank": 1
-              },
-              {
-                "slug": "chronoboon",
-                "rank": 1
-              },
-              {
-                "slug": "reverberations",
-                "rank": 1
-              },
-              {
-                "slug": "nozdormu-adept",
-                "rank": 1
-              },
-              {
-                "slug": "energy-cycles",
-                "rank": 1
-              },
-              {
-                "slug": "primacy",
-                "rank": 1
-              },
-              {
-                "slug": "instability-matrix",
-                "rank": 1
-              },
-              {
-                "slug": "overclock",
-                "rank": 1
-              },
-              {
-                "slug": "golden-opportunity",
-                "rank": 1
-              },
-              {
-                "slug": "afterimage",
-                "rank": 1
-              }
-            ]
-          }
+          "selectedTalents": null
         },
         "pvp": {
           "title": "Preservation — PvP (Solo Shuffle)",
@@ -23953,336 +21711,58 @@
           "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMmxMbzMzMWGYmlZMGmZDAAAAAGAAMzAGMmaMzMDAAAAmxMYmZZMzAzsZALgxwwAYGEbYmBmZA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=43.5 (75.7%), updated=2026-02-24 02:03:34",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 75,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=42.5 (48.0%), updated=2026-02-24 02:03:34",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Augmentation — AoE (Mythic+)",
-          "source": "Murlok.io (m+) top-player",
-          "updated": "2026-02-25T00:39:51.788006Z",
-          "exportString": "CEcBPJc41CfcseY0baneJ1IHrNmZmZbmZmxyAzsMjxwMAAAAAAAAgBGYM1YmZGAAAAMjZmxMzyMzMwMbGwCYMMMAmJiNMzAzMYA",
-          "notes": [
-            "Player: schnebvoker",
-            "RankIndex: 4"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": "2026-02-24 02:02:27",
+          "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMmZmZbmZmhBmZZGjhZ2AAAAAAAAwMwMY8A1YmZGAAAAMzMjxMjxMDMzmBsAGDDDgZQshZmBzMA",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/34 (5.9%), margin=0.0 (0.0%), updated=2026-02-25T00:39:51.788006Z",
-          "sampleSize": 34,
+          "confidenceScore": 51,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/38 (5.3%), margin=21.5 (25.3%), updated=2026-02-24 02:02:27",
+          "sampleSize": 38,
           "agreementCount": 2,
-          "agreementRatio": 0.059,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "agreementRatio": 0.053,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "murlok": {
-              "contributors": 2,
-              "familyBest": 54,
-              "popularityBonus": 9.51,
-              "familySupport": 63.51
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "landslide",
-                "rank": 1
-              },
-              {
-                "slug": "obsidian-scales",
-                "rank": 1
-              },
-              {
-                "slug": "expunge",
-                "rank": 1
-              },
-              {
-                "slug": "natural-convergence",
-                "rank": 1
-              },
-              {
-                "slug": "heavy-wingbeats",
-                "rank": 1
-              },
-              {
-                "slug": "verdant-embrace",
-                "rank": 1
-              },
-              {
-                "slug": "innate-magic",
-                "rank": 2
-              },
-              {
-                "slug": "obsidian-bulwark",
-                "rank": 1
-              },
-              {
-                "slug": "scarlet-adaptation",
-                "rank": 1
-              },
-              {
-                "slug": "inner-radiance",
-                "rank": 1
-              },
-              {
-                "slug": "cauterizing-flame",
-                "rank": 1
-              },
-              {
-                "slug": "instinctive-arcana",
-                "rank": 2
-              },
-              {
-                "slug": "tip-the-scales",
-                "rank": 1
-              },
-              {
-                "slug": "protracted-talons",
-                "rank": 1
-              },
-              {
-                "slug": "inherent-resistance",
-                "rank": 2
-              },
-              {
-                "slug": "draconic-legacy",
-                "rank": 1
-              },
-              {
-                "slug": "extended-flight",
-                "rank": 2
-              },
-              {
-                "slug": "regenerative-magic",
-                "rank": 1
-              },
-              {
-                "slug": "blast-furnace",
-                "rank": 1
-              },
-              {
-                "slug": "renewing-blaze",
-                "rank": 1
-              },
-              {
-                "slug": "panacea",
-                "rank": 1
-              },
-              {
-                "slug": "stretch-time",
-                "rank": 1
-              },
-              {
-                "slug": "foci-of-life",
-                "rank": 1
-              },
-              {
-                "slug": "source-of-magic",
-                "rank": 1
-              },
-              {
-                "slug": "leaping-flames",
-                "rank": 1
-              },
-              {
-                "slug": "aerial-mastery",
-                "rank": 1
-              },
-              {
-                "slug": "potent-mana",
-                "rank": 1
-              },
-              {
-                "slug": "time-spiral",
-                "rank": 1
-              },
-              {
-                "slug": "zephyr",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "ebon-might",
-                "rank": 1
-              },
-              {
-                "slug": "eruption",
-                "rank": 1
-              },
-              {
-                "slug": "essence-burst",
-                "rank": 1
-              },
-              {
-                "slug": "quell",
-                "rank": 1
-              },
-              {
-                "slug": "ricocheting-pyroclast",
-                "rank": 1
-              },
-              {
-                "slug": "essence-attunement",
-                "rank": 1
-              },
-              {
-                "slug": "pupil-of-alexstrasza",
-                "rank": 1
-              },
-              {
-                "slug": "upheaval",
-                "rank": 1
-              },
-              {
-                "slug": "breath-of-eons",
-                "rank": 1
-              },
-              {
-                "slug": "defy-fate",
-                "rank": 1
-              },
-              {
-                "slug": "ignition-rush",
-                "rank": 1
-              },
-              {
-                "slug": "power-nexus",
-                "rank": 1
-              },
-              {
-                "slug": "volcanism",
-                "rank": 1
-              },
-              {
-                "slug": "improved-defy-fate",
-                "rank": 1
-              },
-              {
-                "slug": "blistering-scales",
-                "rank": 1
-              },
-              {
-                "slug": "prescience",
-                "rank": 1
-              },
-              {
-                "slug": "tectonic-locus",
-                "rank": 1
-              },
-              {
-                "slug": "regenerative-chitin",
-                "rank": 1
-              },
-              {
-                "slug": "momentum-shift",
-                "rank": 1
-              },
-              {
-                "slug": "fate-mirror",
-                "rank": 1
-              },
-              {
-                "slug": "hoarded-power",
-                "rank": 1
-              },
-              {
-                "slug": "anachronism",
-                "rank": 1
-              },
-              {
-                "slug": "accretion",
-                "rank": 1
-              },
-              {
-                "slug": "imminent-destruction",
-                "rank": 1
-              },
-              {
-                "slug": "time-skip",
-                "rank": 1
-              },
-              {
-                "slug": "inferno's-blessing",
-                "rank": 1
-              },
-              {
-                "slug": "rumbling-earth",
-                "rank": 1
-              },
-              {
-                "slug": "plot-the-future",
-                "rank": 1
-              },
-              {
-                "slug": "interwoven-threads",
-                "rank": 1
-              },
-              {
-                "slug": "molten-embers",
-                "rank": 1
-              }
-            ],
-            "hero": [
-              {
-                "slug": "mass-eruption",
-                "rank": 1
-              },
-              {
-                "slug": "might-of-the-black-dragonflight",
-                "rank": 1
-              },
-              {
-                "slug": "bombardments",
-                "rank": 1
-              },
-              {
-                "slug": "onslaught",
-                "rank": 1
-              },
-              {
-                "slug": "command-squadron",
-                "rank": 1
-              },
-              {
-                "slug": "wingleader",
-                "rank": 1
-              },
-              {
-                "slug": "unrelenting-siege",
-                "rank": 1
-              },
-              {
-                "slug": "concentrated-power",
-                "rank": 1
-              },
-              {
-                "slug": "extended-battle",
-                "rank": 1
-              },
-              {
-                "slug": "refined-essence",
-                "rank": 1
-              },
-              {
-                "slug": "maneuverability",
-                "rank": 1
-              }
-            ]
-          }
+          "selectedTalents": null
         },
         "pvp": {
           "title": "Augmentation — PvP (Solo Shuffle)",

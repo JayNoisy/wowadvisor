@@ -56,3 +56,14 @@ All feeds should provide objects with:
 - `mode` (`aoe`, `raid`, `pvp`)
 - `exportString`
 - optional: `title`, `source`, `updated`, `notes`, `selectedTalents`
+
+### Auto-seeding local sources
+To auto-populate local source files from live pages:
+
+```bash
+node Tools/update-builds/seed-curated-sources.js
+```
+
+This fills:
+- `Tools/update-builds/sources/archon-builds.json`
+- `Tools/update-builds/sources/curated-guides.json`

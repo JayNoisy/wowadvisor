@@ -2,7 +2,972 @@
   "sources": [
     {
       "label": "Archon.gg",
-      "builds": []
+      "builds": [
+        {
+          "className": "Death Knight",
+          "specName": "Blood",
+          "mode": "aoe",
+          "title": "Blood - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWmZGmxYmhZZmZmmZxYMmxAAAAAzMmZmZmZYGjBAjZmZGAAAMGYAALDTghFAzYGAAmZAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/blood/death-knight/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Death Knight",
+          "specName": "Blood",
+          "mode": "raid",
+          "title": "Blood - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWGzMmxYMMbzMz0MLGjxMGAAAAYmZmZmZmZYGjBAMzMzAAAgxADAYZYCMsAYGmBAwMDgB",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/blood/death-knight/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Death Knight",
+          "specName": "Frost",
+          "mode": "aoe",
+          "title": "Frost - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMDYmhZMDY2MzMzMLmZ0MDGmZMgxMzMzMzMDAAAAAAAAAY2GYAALDCMWwMzMzMwAwwMDwMA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/frost/death-knight/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Death Knight",
+          "specName": "Frost",
+          "mode": "raid",
+          "title": "Frost - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMDwMjZMDDz2MzMzMMzIzYMGmZAmZmZmZmZGAAAAAAAAAMGDMAglhJwYBzMzMzADADmBYA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/frost/death-knight/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Death Knight",
+          "specName": "Unholy",
+          "mode": "aoe",
+          "title": "Unholy - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmZMjZAzyMzMTDzMzYGAAAAAAAAYmBzAglhZmtZmxwAsYWgBAzGDNWwAmBgZmZGGAzMMD",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/unholy/death-knight/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Death Knight",
+          "specName": "Unholy",
+          "mode": "raid",
+          "title": "Unholy - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmhZMDDzmZmZa2MzYMjBAAAAAAAgZGmZAwyMGz2MzYGzA2MLwAgZjhGLAYGAYmZMDgZGmB",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/unholy/death-knight/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Demon Hunter",
+          "specName": "Devourer",
+          "mode": "aoe",
+          "title": "Devourer - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CgcBAAAAAAAAAAAAAAAAAAAAAAA2MmZmxMzMGmBAAAAAAgxYwMAAAAAAAAMjZYmZmZmZmZmZmZbmBbabDAAAMMGLzMTz2MMGMG",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/devourer/demon-hunter/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Demon Hunter",
+          "specName": "Devourer",
+          "mode": "raid",
+          "title": "Devourer - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CgcBAAAAAAAAAAAAAAAAAAAAAAA2MmZmZmZmxYmBAAAAAAYzYADAAAAAAAAmxgZMmZMzMzMzYmBbabDAAGgZMGLzMTz2MmZYYA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/devourer/demon-hunter/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Demon Hunter",
+          "specName": "Havoc",
+          "mode": "aoe",
+          "title": "Havoc - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZ2MmZmxYmMmZAAAAAAAzixwwMDjZsNbmZGjBWGwsZGYWQjZmxM2AAAAGAAAAzMYAAAAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/havoc/demon-hunter/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Demon Hunter",
+          "specName": "Havoc",
+          "mode": "raid",
+          "title": "Havoc - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYGYmZ2MmZmxMzkxMDAAAAAAYWMGGmZsMzM2mtZmZWGzglBMLmBmN0wMjhNAAAAAAAAmZwAAAAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/havoc/demon-hunter/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Demon Hunter",
+          "specName": "Vengeance",
+          "mode": "aoe",
+          "title": "Vengeance - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjhZkZmBWMjZwMjZGz8AzMzYYmtZGbmZMGGAAAAAAAAmZGbAAAAYgZGmRbzMzAADAAAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/vengeance/demon-hunter/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Demon Hunter",
+          "specName": "Vengeance",
+          "mode": "raid",
+          "title": "Vengeance - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjZmZkZmZYYmZGDzYmxMmxMzwMmZsxMGDAAAAAAAAYmZsBAAAgBjZYGtNzMDAMAAAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/vengeance/demon-hunter/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Druid",
+          "specName": "Balance",
+          "mode": "aoe",
+          "title": "Balance - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDwsYmZmBDMjZWmZxMzYZsMzyYMYBDDwYxMDYMAmAAAAswMzMD2MMGDAAzMA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/balance/druid/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Druid",
+          "specName": "Balance",
+          "mode": "raid",
+          "title": "Balance - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNMmZgxswMzMLMwwMbzYGzYbsMjZGDzGGAMALbATmZZAAAAwmZmHYmBbGGjZAMzAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/balance/druid/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Druid",
+          "specName": "Feral",
+          "mode": "aoe",
+          "title": "Feral - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZ2MzMzMmZ2M2GbzMzMPwMDAAAALBzixwMjaGzCzMzsMmBAAAAAAGAAAAgMmtZmZAALgZGgFGMAAAMbA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/feral/druid/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Druid",
+          "specName": "Feral",
+          "mode": "raid",
+          "title": "Feral - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjhxMzMzMmtNWmZbGzYmZAAAAYJYWMGmZUzYWYmZGjZYAAAAAAMwAAAAIjZbMzAAWAzMALMYAAAMzG",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/feral/druid/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Druid",
+          "specName": "Guardian",
+          "mode": "aoe",
+          "title": "Guardian - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZml5BmZMWMLeg5BmZZZgZzwoJamZWYmZmlxMAAAAAAMsNDYxMDYMAmAAAA2wMPAwiZwgBLbAmZA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/guardian/druid/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Druid",
+          "specName": "Guardian",
+          "mode": "raid",
+          "title": "Guardian - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxs4BGzDM2MLzMPgZZZghhRT0MzsYmZmxMzAAAAAAww2MAAAAIjZZGzAAYBz8AALmBDGssNAYmF",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/guardian/druid/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Druid",
+          "specName": "Restoration",
+          "mode": "aoe",
+          "title": "Restoration - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMMmxYGzMjZb4BYmZZML2mBAAAAAAAAAAbDa2gpZYGjZxMzMjZgBAAAAAAwYAAAAAwsN2aWMsxYmBmZB0MAAzMAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/restoration/druid/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Druid",
+          "specName": "Restoration",
+          "mode": "raid",
+          "title": "Restoration - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMjxMLz2MmZY2GmxMYswAAAAAAAAAAAbDa2YMNDjZMLzMzMDDmBAAAAAAwYAbGLYaYZAAAAsAzMYmBoZAwMDAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/restoration/druid/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Evoker",
+          "specName": "Augmentation",
+          "mode": "aoe",
+          "title": "Augmentation - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMmZmZbmZmhBmZZGjhZ2AAAAAAAAwMwMY8A1YmZGAAAAMzMjxMjxMDMzmBsAGDDDgZQshZmBzMA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/augmentation/evoker/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Evoker",
+          "specName": "Augmentation",
+          "mode": "raid",
+          "title": "Augmentation - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMmxMbzMzMWGYmlZMGmZDAAAAAGAAMzAGMmaMzMDAAAAmxMYmZZMzAzsZALgxwwAYGEbYmBmZA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/augmentation/evoker/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Evoker",
+          "specName": "Devastation",
+          "mode": "aoe",
+          "title": "Devastation - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZGjZmZmZGMYGGDTDzMZMWGmZGGzMzAmZmxYmZZmZwMwwMAwGYGmAbglhBgZG",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/devastation/evoker/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Evoker",
+          "specName": "Devastation",
+          "mode": "raid",
+          "title": "Devastation - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZwMDGMgBjZaGzMZMWmZmZGmZmZGwMmZGzMbjZwMwwMAwCYGmAbglhBgZA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/devastation/evoker/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Evoker",
+          "specName": "Preservation",
+          "mode": "aoe",
+          "title": "Preservation - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ2MwwMzDMLmZmhNAAAmhxMYMjMzMAAAgtZmZyYmZmxYGAAGzAgBGM0gxCMmZAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/preservation/evoker/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Evoker",
+          "specName": "Preservation",
+          "mode": "raid",
+          "title": "Preservation - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAYmZ2WGYGzMPwsYMzMzyAAAwYGzwMmRmxAAAAMzMTGzMzMLjZAAYMDAGYwQDYBGzMAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/preservation/evoker/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Hunter",
+          "specName": "Beast Mastery",
+          "mode": "aoe",
+          "title": "Beast Mastery - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMGG2gFYGQDbAAYGzyMzsZGmZmZGzMMmxMMzYmZGmZGGzwCaGAAAAAAAAAMGzMgZAMYWAbA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/beast-mastery/hunter/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Hunter",
+          "specName": "Beast Mastery",
+          "mode": "raid",
+          "title": "Beast Mastery - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAYzYgBAYYDYsAAgZYbMzyMDzYmhhZGjZGzMjZMDGjZMzwYaGAAAAAwMAAAMzYgZGgAmFwG",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/beast-mastery/hunter/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Hunter",
+          "specName": "Marksmanship",
+          "mode": "aoe",
+          "title": "Marksmanship - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwwohBwMYDAAAAAAAAYGzYGbzYGjZY5BMNjxMjltNzMzwMzwMzyYMLDzMAAAGjBADbwMAbD",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/marksmanship/hunter/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Hunter",
+          "specName": "Marksmanship",
+          "mode": "raid",
+          "title": "Marksmanship - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwwohBwMYDAAAAAAAAYGzYGmxMzYGMmmxYmZ222MzMDzMYmZZwsMYGAAgHYMGAMjNGGgtB",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/marksmanship/hunter/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Hunter",
+          "specName": "Survival",
+          "mode": "aoe",
+          "title": "Survival - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxohBwMgtZmZmZmZ2mHAAAAAAgZMzMjtZMMmBjpZAAAAADAgltZGbzYmBjxAgBgxwMLA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/survival/hunter/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Hunter",
+          "specName": "Survival",
+          "mode": "raid",
+          "title": "Survival - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxohBwMgNjZmxMzyAAAAAAgZMjZwYMjZwYaGAAAAAAwYZbmZWMzMDzYMAYADjxM2A",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/survival/hunter/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Mage",
+          "specName": "Arcane",
+          "mode": "aoe",
+          "title": "Arcane - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzALzMzsgZGamxAAAwAAAAzMYZmJWAAYbMzMjZbxyMzMmZMGzMzM2YGzYGAgBAAwMLAwMDAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/arcane/mage/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Mage",
+          "specName": "Arcane",
+          "mode": "raid",
+          "title": "Arcane - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAwwYZmZmFmZGamZGAAAGAAAYmBLzMxCAAGzMzY2WsMzMjZGjxMzMjFmxMmBAYAAAMzCAYGAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/arcane/mage/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Mage",
+          "specName": "Fire",
+          "mode": "aoe",
+          "title": "Fire - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAMzALzMzsgZGZmxAAAwAAmZmssZGAgNzMsMzMzMzCAAAAAsZmZm5BAAwMDzMmZmZWAgZAGjBA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/fire/mage/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Mage",
+          "specName": "Fire",
+          "mode": "raid",
+          "title": "Fire - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzsgZIzMzAAAwMLzYYZAAAAWMzw2YmZmBAAAAAsZmxMDAAGDzMzMzMzGwMDImxYwA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/fire/mage/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Mage",
+          "specName": "Frost",
+          "mode": "aoe",
+          "title": "Frost - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAYGGLzYmFmZmYGmZmZmZ2MzMzMMDAAAMzglZm2AAAAAAALAstNmZmBzmxYmxGAAAzsBMDjBAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/frost/mage/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Mage",
+          "specName": "Frost",
+          "mode": "raid",
+          "title": "Frost - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAYGGLzYmFmZmYGmZMjZWMzMzMjZAAAgZGsMz0GAAAAAAYDgttxMzMYWmxYGWAAAYmFgZwMgBA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/frost/mage/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Monk",
+          "specName": "Brewmaster",
+          "mode": "aoe",
+          "title": "Brewmaster - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAgZZzYGzwyM2MmZAAAAAAAYZBmYmBmhBzgZmZGmFMjZWG22ssNbzYWAAgNAAAgtZpZmZ2MDbAGYaAAAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/brewmaster/monk/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Monk",
+          "specName": "Brewmaster",
+          "mode": "raid",
+          "title": "Brewmaster - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAgZbzYGPwYWM2mxMDAAAAAAALLYEzMwMMYGjZmZwsgZMzywymltZZYWAAgNAAAgtZpZmZWMDLAGYaMAAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/brewmaster/monk/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Monk",
+          "specName": "Mistweaver",
+          "mode": "aoe",
+          "title": "Mistweaver - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMWmZZYxixMjNjlltZ4B2Mz22yMjFmRzYGwgBjxMzMDzGMMLzEAAAAAAsYbswMDAAAAMDYAWkxMA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/mistweaver/monk/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Monk",
+          "specName": "Mistweaver",
+          "mode": "raid",
+          "title": "Mistweaver - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAghx2MwmFzYmZbGbYmZYmlttZGLMjmxMgBDGzyMzMDzG8AYxEAAAAAAsYZswMDAAMAgZADMWkxMA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/mistweaver/monk/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Monk",
+          "specName": "Windwalker",
+          "mode": "aoe",
+          "title": "Windwalker - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYAMMbzMz2MzAAAAAAAAAAAALDzEmhhBMjhZGDmNMDzyMBAsZmtxwYmZAAsBAMLNzMzCwwgZAALzAMA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/windwalker/monk/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Monk",
+          "specName": "Windwalker",
+          "mode": "raid",
+          "title": "Windwalker - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzMD2GGsMzMbzAAAAAAAAAAAAsMMCzYbYAzYYmxgZBzwsMTAAbmZbmhxMzAAYDAYWamZmFAMYGAwyYADA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/windwalker/monk/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Paladin",
+          "specName": "Holy",
+          "mode": "aoe",
+          "title": "Holy - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYBAMDAwglxMzMzYmBGMmlBzsYmmYYYmhhZLDADAbgNWmZmZZ2mxsFAAAgF2GgFDMjBDAAjhZMGA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/holy/paladin/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Paladin",
+          "specName": "Holy",
+          "mode": "raid",
+          "title": "Holy - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYBAMAAGsMzMzYGzMwgxsMYmlZ0EDjZmhhZLDADAbgNWmZmZZ2mxsFAAAgF2GgFYMjZYAAYMMjxA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/holy/paladin/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Paladin",
+          "specName": "Protection",
+          "mode": "aoe",
+          "title": "Protection - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsZAWGLzMjZmZZZYmZmlZZGDAAAAAAAA00MziZMzwYGBADYAD2AAAzMZmZxAAsZGMAgZYMAAmBMzMA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/protection/paladin/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Paladin",
+          "specName": "Protection",
+          "mode": "raid",
+          "title": "Protection - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNzMPAzyMLjZMzMWGmhZhZMAADAAAAAASzMbmxMDjZ2aDADMDA2AAAAgxstt0GjFDMAgZYMAYmBAzMA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/protection/paladin/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Paladin",
+          "specName": "Retribution",
+          "mode": "aoe",
+          "title": "Retribution - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQzy2MzsMGzMAAAAAAmpMLGmZsNMbDzsNzMGjhZswGAAAzotxYGAwGgBAMDDMjZmNsMDGGDD",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/retribution/paladin/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Paladin",
+          "specName": "Retribution",
+          "mode": "raid",
+          "title": "Retribution - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQzy2MzsMMzAAAAAAwoMMMzYbY2GmZbGjxMDzYhtBAAwMabMmBAsBYAwYGGYGjZDbzghxMG",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/retribution/paladin/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Priest",
+          "specName": "Discipline",
+          "mode": "aoe",
+          "title": "Discipline - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMGWmZMmZGmZbmtZmZmhZAAAAAAAAAAMYZGmZmZwYmxgpZiBYmNMEGDAjBLAAwYGGDmBwMzA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/discipline/priest/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Priest",
+          "specName": "Discipline",
+          "mode": "raid",
+          "title": "Discipline - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMGWmZMYGmZbmtZmZmxMDAAAAAAAAAgBLzwMzMDGzMwMNTjBYmNMEGDAjBLAAwYwYwMAmZGA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/discipline/priest/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Priest",
+          "specName": "Holy",
+          "mode": "aoe",
+          "title": "Holy - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAMmxYMDzMzwMzwyMzMDAAAgBLzwMzMDzYmBwMFAmFMEGDAjBWMzYDgZMDjBzAMzMDA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/holy/priest/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Priest",
+          "specName": "Holy",
+          "mode": "raid",
+          "title": "Holy - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAGjZmlZmZMzMDzMDLzwMAAAAGsMDzMzMMzYGAzUDgZWwQYMAMGYhxsBgxgxwMDgZmB",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/holy/priest/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Priest",
+          "specName": "Shadow",
+          "mode": "aoe",
+          "title": "Shadow - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMjZMGAAAAAAAAAAAADLzMGLzMMzyMDDz2MzYmZGQGYmGgZmZAgAMbzGwsxAMGDGzMzY2GzAGMDA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/shadow/priest/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Priest",
+          "specName": "Shadow",
+          "mode": "raid",
+          "title": "Shadow - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMjZMGAAAAAAAAAAAADLzMGLzMMz2MDzw2MzYYmByMsMTDwMzMAQAmtZDY2YAGjBjZmZMbjZADmB",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/shadow/priest/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Rogue",
+          "specName": "Assassination",
+          "mode": "aoe",
+          "title": "Assassination - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAA4BmZmZxAAAAAAwsMYbGAAAAAQ2mZmxDMzYMzMzsNz2MjxDMzMzMGmZMGADsBDjGAYZAbGAMzYG",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/assassination/rogue/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Rogue",
+          "specName": "Assassination",
+          "mode": "raid",
+          "title": "Assassination - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmZMLzAAAAAAwsNYZGAAAAAQ2mZmxDMzYMzMzsNz2MzMYMzMzYmxwAYgNYY0AALDYzAgZmxA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/assassination/rogue/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Rogue",
+          "specName": "Outlaw",
+          "mode": "aoe",
+          "title": "Outlaw - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgBMmZGmxMzMjZegZ24BmZGTLD2mBAAAAAYbZMzMzMzMzYmZ2GAAAAGDAGDDDMgFWIsxAMzgB",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/outlaw/rogue/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Rogue",
+          "specName": "Outlaw",
+          "mode": "raid",
+          "title": "Outlaw - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgBMGzYmZbmZmx4BMb8AzMzy0ygtZAAAAAA22mZmxDMzMzMmZmtBAAAgZGAMGGGYALsQYjBYmBD",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/outlaw/rogue/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Rogue",
+          "specName": "Subtlety",
+          "mode": "aoe",
+          "title": "Subtlety - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbLjxMMjxDMzMzYMbzYGbbzMz4BmZMgZ2GAAAAGMGwYYYgBswCxGmBMzgZA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/subtlety/rogue/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Rogue",
+          "specName": "Subtlety",
+          "mode": "raid",
+          "title": "Subtlety - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbbjxMMDegZmZGjZbmZGbbzMz4BmZMgZ2GAAAAGMGmlBGAghJwsgZYmBYG",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/subtlety/rogue/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Shaman",
+          "specName": "Elemental",
+          "mode": "aoe",
+          "title": "Elemental - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMbLzMmZmZZbZMmxMAAAAAAmxwGAmB0YDAmlZmZM2WMhZGjlZmZGDLWMWwMzMLAADgZGYYA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/elemental/shaman/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Shaman",
+          "specName": "Elemental",
+          "mode": "raid",
+          "title": "Elemental - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMLLzMmZmZZbZwMMDAAAAgZ2gBMgZjJwsAAzyMzMGbLmwMjxyMzMjhFLGLmZMzsBAMAAjhB",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/elemental/shaman/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Shaman",
+          "specName": "Enhancement",
+          "mode": "aoe",
+          "title": "Enhancement - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzYGzAAAAAAAAAALAYG0YbAMAbAMLzYGjllZgZGsMzMzwwYGAAgxwMxMDwgB",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/enhancement/shaman/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Shaman",
+          "specName": "Enhancement",
+          "mode": "raid",
+          "title": "Enhancement - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAAAMW0YbAMDYDALzYGjllZgZmNWmZmZYYMDAgBYMjYmBAG",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/enhancement/shaman/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Shaman",
+          "specName": "Restoration",
+          "mode": "aoe",
+          "title": "Restoration - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAjZMW2mhZmZmZmxwgxCMAgZhJwYBzMY2mZMa2WmZYGzCLGzMGWmlBAADwYGAMzwMD",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/restoration/shaman/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Shaman",
+          "specName": "Restoration",
+          "mode": "raid",
+          "title": "Restoration - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAjZMbbLDzMGzMjZYGLAYG0YbAMgNPwwYGLjBNbLzMMjZhFzMzYGmlBAAGwMzgZGAGD",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/restoration/shaman/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Warlock",
+          "specName": "Affliction",
+          "mode": "aoe",
+          "title": "Affliction - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMGzoZjx2MzMzyAAAmZmlZbmZWGDAwyyADYAzgADbDAAAGAAAmZYYmtZGzgZmZGDzMzAAMA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/affliction/warlock/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Warlock",
+          "specName": "Affliction",
+          "mode": "raid",
+          "title": "Affliction - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMMzoZjhZmxsMAAAzMLz2MzsMzAAjllBGwAmhtADbDAAAGAAAYmZMzYGYGzMzMDmZmBAYA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/affliction/warlock/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Warlock",
+          "specName": "Demonology",
+          "mode": "aoe",
+          "title": "Demonology - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMMzoZjxyMzYWGAAAAAAAwYGAA2G2ohFjZGLjZMzYAgZmZYmZGgxMmZAAAGzMzYMYbmZA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/demonology/warlock/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Warlock",
+          "specName": "Demonology",
+          "mode": "raid",
+          "title": "Demonology - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAgZmZGNbMMzMmlBAAAAAAYYZgBMADLBGbmZM2mlZmZMDAYGzMzAYGmZGDAAwYmZGDDLzYA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/demonology/warlock/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Warlock",
+          "specName": "Destruction",
+          "mode": "aoe",
+          "title": "Destruction - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAwMDzoZzM2MzYWsZYmlZGLLmBAAY2mZmFgBsY0wAY2wGDAAMjhZAAYmBjZMzAAAwMzMDAAzA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/destruction/warlock/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Warlock",
+          "specName": "Destruction",
+          "mode": "raid",
+          "title": "Destruction - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAwMegZGNLMMzMmtZhxMLzYsYGAAMmxMzsYBGYY0wAY2wGDAAMAzsBAYGMmxMDAAAzMzAAwMD",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/destruction/warlock/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Warrior",
+          "specName": "Arms",
+          "mode": "aoe",
+          "title": "Arms - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAgZmxsMzMzYGAAAghphxwMbLzMPwMjZGzMAAAAAGbmB2iBwMGWAwMgGDWAGM2GMbmtBzMAAmB",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/arms/warrior/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Warrior",
+          "specName": "Arms",
+          "mode": "raid",
+          "title": "Arms - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzYmZAAAAMMNMGzwyMzDMzgxMDAAAAgZWmZAZwy2ALAgZQgZwGwwmZbMsMzyAMzAwMGA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/arms/warrior/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Warrior",
+          "specName": "Fury",
+          "mode": "aoe",
+          "title": "Fury - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjZMjlZGzYmZMzYGzYmlZmxYmZZMzMAAQYAwyiRDDgBmxCgBmtBAzMAGmZmBD",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/fury/warrior/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Warrior",
+          "specName": "Fury",
+          "mode": "raid",
+          "title": "Fury - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDzwMsMz8AzMDjZmZGzMzsMzMGzMLDzMAAQMWWGYBMgZYCMDbAGbMbDAAghxMzwA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/fury/warrior/raid/overview/mythic/all-bosses"
+          ]
+        },
+        {
+          "className": "Warrior",
+          "specName": "Protection",
+          "mode": "aoe",
+          "title": "Protection - AoE (Mythic+)",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzwMzMzMmtZmZZYMGNmZGWmZMzwwMDAAAAWGAmxAMAYZBNmBwAzshZmZGY2GAMzAAwAA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/protection/warrior/mythic-plus/overview/10/all-dungeons/this-week"
+          ]
+        },
+        {
+          "className": "Warrior",
+          "specName": "Protection",
+          "mode": "raid",
+          "title": "Protection - Raid",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAA02AAAzMDzMzMzMzmxsMMGz0YGDLjxMDzYmBAAAALDAzYAGAssgGzAYgZ2YMjZgZbAwMDAADA",
+          "notes": [
+            "Source URL: https://www.archon.gg/wow/builds/protection/warrior/raid/overview/mythic/all-bosses"
+          ]
+        }
+      ]
     }
+  ],
+  "generatedAt": "2026-02-25T04:29:04.642Z",
+  "notes": [
+    "Auto-generated by Tools/update-builds/seed-curated-sources.js"
   ]
 }
