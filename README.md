@@ -44,6 +44,12 @@ Optional remote JSON feeds (comma-separated `url|label`):
 - `CURATED_GUIDE_SOURCE_URLS`
 - `EXTRA_BUILD_SOURCE_URLS`
 
+GitHub Actions reads these from repo `Variables` first, then `Secrets` fallback.
+
+You can populate local files directly:
+- `Tools/update-builds/sources/archon-builds.json`
+- `Tools/update-builds/sources/curated-guides.json`
+
 All feeds should provide objects with:
 - `className`
 - `specName`
