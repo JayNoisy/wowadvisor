@@ -22,7 +22,8 @@ body {
 .header p { margin: 0; color: var(--muted); }
 
 .container {
-  max-width: 980px;
+  width: 100%;
+  max-width: 1840px;
   margin: 0 auto;
   display: grid;
   gap: 18px;
@@ -109,7 +110,7 @@ body {
   --panel-theme-a: rgba(0, 191, 255, 0.22);
   --panel-theme-b: rgba(255, 255, 255, 0.08);
   --panel-icon-url: none;
-  width: min(1800px, calc(100vw - 20px));
+  width: 100%;
   max-width: 1800px;
   margin: 0 auto;
   position: relative;
