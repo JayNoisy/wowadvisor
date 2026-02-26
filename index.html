@@ -8,9 +8,9 @@
   <meta name="wowadvisor-supabase-anon-key" content="" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23171723'/%3E%3Ctext x='50%25' y='56%25' font-size='34' text-anchor='middle' fill='%23fff'%3E%E2%9A%94%3C/text%3E%3C/svg%3E" />
 
-  <link rel="stylesheet" href="style.css?v=20260226-01" />
+  <link rel="stylesheet" href="style.css?v=20260226-02" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="script.js?v=20260226-01" defer></script>
+  <script src="script.js?v=20260226-02" defer></script>
 </head>
 <body>
   <header class="header">
@@ -24,10 +24,38 @@
     </div>
     <h1>WoW Talent Advisor</h1>
     <p>Select your class, then spec, then pick a build type.</p>
+    <div class="top-tabs" id="topTabs" role="tablist" aria-label="Primary sections">
+      <button id="homeTabBtn" class="top-tab-btn selected" type="button" role="tab" aria-selected="true" aria-controls="homePanel" data-top-tab="home">Home</button>
+      <button id="buildsTabBtn" class="top-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="buildsPanel" data-top-tab="builds">Builds</button>
+    </div>
     <div id="buildFreshnessAlert" class="build-freshness-alert" hidden></div>
   </header>
 
   <main class="container">
+    <section id="homePanel" class="top-tab-panel home-panel" aria-label="Homepage">
+      <div class="home-hero-card">
+        <p class="home-kicker">WoW Advisor</p>
+        <h2>Build faster. Play cleaner.</h2>
+        <p class="muted">Pick your spec, copy a build, and track if your setup goes out of date after data refreshes.</p>
+        <button id="goToBuildsBtn" class="auth-btn" type="button">Open Builds</button>
+      </div>
+      <div class="home-feature-grid">
+        <article class="home-feature-card">
+          <h3>Spec-Based Picks</h3>
+          <p>Get recommended builds for Mythic+, Raid, and PvP in one place.</p>
+        </article>
+        <article class="home-feature-card">
+          <h3>Track Your Copies</h3>
+          <p>Signed-in users can monitor copied builds and quickly open latest versions.</p>
+        </article>
+        <article class="home-feature-card">
+          <h3>Stat Priorities</h3>
+          <p>See stat order and role-based explanations without leaving the page.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="buildsPanel" class="top-tab-panel" aria-label="Builds panel" hidden>
     <section id="myBuildsCard" class="my-builds-card" hidden aria-label="My tracked builds">
       <div class="my-builds-head">
         <h2>My Builds</h2>
@@ -144,6 +172,7 @@
         </div>
 
       </div>
+    </section>
     </section>
   </main>
 

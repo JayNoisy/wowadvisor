@@ -108,6 +108,10 @@ const LOCAL_COPIED_BUILDS_KEY = "wowadvisor_copied_builds_v1";
 // =========================
 const classButtons = document.getElementById("classButtons");
 const panel = document.getElementById("panel");
+const topTabs = document.getElementById("topTabs");
+const homePanel = document.getElementById("homePanel");
+const buildsPanel = document.getElementById("buildsPanel");
+const goToBuildsBtn = document.getElementById("goToBuildsBtn");
 
 const selectedClassTitle = document.getElementById("selectedClassTitle");
 const classBadge = document.getElementById("classBadge");
@@ -187,6 +191,7 @@ let talentTreesLoadError = null;
 let talentNodeIndex = new Map();
 let activeBuild = null;
 let rotationPanelOpen = false;
+let activeTopTab = "home";
 const mythicContext = {
   keyLevel: 10,
   affixes: new Set(["Fortified"])
@@ -358,6 +363,30 @@ function ensureElementTopVisible(el, topPadding = 18) {
 function ensureSpecExpansionVisible() {
   // Keep the class panel anchored near the top once spec content expands.
   ensureElementTopVisible(panel, 14);
+}
+
+function switchTopTab(nextTab, options = {}) {
+  const tab = String(nextTab || "").toLowerCase() === "builds" ? "builds" : "home";
+  const shouldScroll = options.scroll !== false;
+  activeTopTab = tab;
+
+  const showBuilds = tab === "builds";
+  if (homePanel) homePanel.hidden = showBuilds;
+  if (buildsPanel) buildsPanel.hidden = !showBuilds;
+
+  const buttons = topTabs ? topTabs.querySelectorAll(".top-tab-btn") : [];
+  buttons.forEach((btn) => {
+    const selected = String(btn.dataset.topTab || "") === tab;
+    btn.classList.toggle("selected", selected);
+    btn.setAttribute("aria-selected", selected ? "true" : "false");
+  });
+
+  if (!shouldScroll) return;
+  if (showBuilds) {
+    ensureElementTopVisible(buildsPanel || classButtons, 14);
+    return;
+  }
+  ensureElementTopVisible(homePanel, 14);
 }
 
 function setSelectedClassButton(newBtn) {
@@ -1229,6 +1258,7 @@ function renderMyBuildsPanel(tracked) {
 }
 
 function openLatestTrackedBuild(className, specName, mode) {
+  switchTopTab("builds", { scroll: false });
   const classBtn = Array.from(classButtons.querySelectorAll(".class-btn"))
     .find((btn) => String(btn.dataset.class || "") === String(className || ""));
   if (!classBtn) return false;
@@ -3098,6 +3128,17 @@ rotationToggleBtn?.addEventListener("click", () => {
   }
 });
 
+topTabs?.addEventListener("click", (e) => {
+  const btn = e.target.closest(".top-tab-btn");
+  if (!btn) return;
+  const targetTab = btn.dataset.topTab || "home";
+  switchTopTab(targetTab);
+});
+
+goToBuildsBtn?.addEventListener("click", () => {
+  switchTopTab("builds");
+});
+
 authOpenBtn?.addEventListener("click", () => {
   if (!supabaseClient) return;
   openAuthModal();
@@ -3177,6 +3218,8 @@ document.addEventListener("keydown", (e) => {
 
 // Start
 injectTalentTreeStyles();
+const initialTopTab = String(window.location.hash || "").toLowerCase() === "#builds" ? "builds" : "home";
+switchTopTab(initialTopTab, { scroll: false });
 if (talentCard && !ENABLE_TALENT_TREE) talentCard.hidden = true;
 Promise.all([
   loadBuilds(),

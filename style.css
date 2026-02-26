@@ -113,6 +113,116 @@ body {
   color: #ffe08f;
 }
 
+.top-tabs {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 7px;
+  border-radius: 12px;
+  border: 1px solid rgba(137, 183, 255, 0.32);
+  background: linear-gradient(180deg, rgba(17, 29, 50, 0.88), rgba(12, 21, 37, 0.9));
+}
+
+.top-tab-btn {
+  height: 34px;
+  min-width: 120px;
+  padding: 0 14px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: #d8e7ff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: border-color 0.14s ease, box-shadow 0.14s ease, transform 0.14s ease, background 0.14s ease;
+}
+
+.top-tab-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(167, 209, 255, 0.46);
+}
+
+.top-tab-btn.selected {
+  border-color: rgba(141, 193, 255, 0.62);
+  background: linear-gradient(180deg, rgba(49, 88, 146, 0.92), rgba(30, 62, 114, 0.92));
+  color: #f7fbff;
+  box-shadow: 0 0 14px rgba(88, 152, 255, 0.28);
+}
+
+.top-tab-panel {
+  width: 100%;
+}
+
+.home-panel {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+
+.home-hero-card {
+  border-radius: 14px;
+  border: 1px solid rgba(137, 188, 255, 0.34);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(52, 97, 161, 0.32), transparent 58%),
+    linear-gradient(180deg, rgba(20, 36, 63, 0.9), rgba(14, 28, 49, 0.94));
+  padding: 18px;
+  display: grid;
+  gap: 10px;
+  text-align: left;
+}
+
+.home-kicker {
+  margin: 0;
+  color: #a8c9ff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.65px;
+  text-transform: uppercase;
+}
+
+.home-hero-card h2 {
+  margin: 0;
+  font-size: clamp(22px, 4vw, 31px);
+  line-height: 1.1;
+}
+
+.home-hero-card .auth-btn {
+  width: fit-content;
+  min-width: 160px;
+}
+
+.home-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.home-feature-card {
+  border-radius: 12px;
+  border: 1px solid rgba(150, 190, 255, 0.24);
+  background: rgba(15, 26, 45, 0.82);
+  padding: 12px;
+  text-align: left;
+}
+
+.home-feature-card h3 {
+  margin: 0 0 8px 0;
+  color: #e5f0ff;
+  font-size: 15px;
+}
+
+.home-feature-card p {
+  margin: 0;
+  color: #b7c9e4;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .auth-modal {
   position: fixed;
   inset: 0;
@@ -1295,6 +1405,19 @@ body.auth-modal-open {
 
   .auth-status-text {
     text-align: center;
+  }
+
+  .top-tabs {
+    width: 100%;
+  }
+
+  .top-tab-btn {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .home-feature-grid {
+    grid-template-columns: 1fr;
   }
 
   .my-build-row {
