@@ -4,18 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WoW Talent Advisor</title>
+  <meta name="wowadvisor-supabase-url" content="" />
+  <meta name="wowadvisor-supabase-anon-key" content="" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23171723'/%3E%3Ctext x='50%25' y='56%25' font-size='34' text-anchor='middle' fill='%23fff'%3E%E2%9A%94%3C/text%3E%3C/svg%3E" />
 
-  <link rel="stylesheet" href="style.css?v=20260224-01" />
-  <script src="script.js?v=20260224-01" defer></script>
+  <link rel="stylesheet" href="style.css?v=20260226-01" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js?v=20260226-01" defer></script>
 </head>
 <body>
   <header class="header">
+    <div class="header-auth-row">
+      <p class="muted auth-status-text" id="authStatusText">Sign in to save copied builds and get outdated alerts.</p>
+      <div class="auth-actions">
+        <span id="authUserEmail" class="auth-user-email" hidden></span>
+        <button id="authOpenBtn" class="auth-btn" type="button">Sign in</button>
+        <button id="authLogoutBtn" class="auth-btn secondary" type="button" hidden>Sign out</button>
+      </div>
+    </div>
     <h1>WoW Talent Advisor</h1>
     <p>Select your class, then spec, then pick a build type.</p>
+    <div id="buildFreshnessAlert" class="build-freshness-alert" hidden></div>
   </header>
 
   <main class="container">
+    <section id="myBuildsCard" class="my-builds-card" hidden aria-label="My tracked builds">
+      <div class="my-builds-head">
+        <h2>My Builds</h2>
+        <button id="myBuildsRefreshBtn" class="auth-btn secondary" type="button">Refresh</button>
+      </div>
+      <p id="myBuildsHint" class="muted">Sign in to track copied builds.</p>
+      <div id="myBuildsList" class="my-builds-list"></div>
+    </section>
+
     <section aria-label="Class selection">
       <div class="class-buttons" id="classButtons">
         <button class="class-btn" data-class="Warrior" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/warrior.png" alt="" /></span><span class="class-name">Warrior</span></button>
@@ -125,5 +146,26 @@
       </div>
     </section>
   </main>
+
+  <div id="authModal" class="auth-modal" hidden>
+    <button class="auth-modal-backdrop" type="button" data-auth-close="true" aria-label="Close sign in"></button>
+    <section class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+      <div class="auth-modal-head">
+        <h2 id="authModalTitle">Sign in</h2>
+        <button id="authCloseBtn" type="button" class="auth-close-btn" aria-label="Close sign in">Close</button>
+      </div>
+      <p class="muted">Create an account to track copied builds and future account features.</p>
+      <label class="auth-label" for="authEmail">Email</label>
+      <input id="authEmail" class="auth-input" type="email" autocomplete="email" placeholder="you@example.com" />
+      <label class="auth-label" for="authPassword">Password</label>
+      <input id="authPassword" class="auth-input" type="password" autocomplete="current-password" placeholder="At least 8 characters" />
+      <div class="auth-modal-actions">
+        <button id="authSignInBtn" class="auth-btn" type="button">Sign in</button>
+        <button id="authSignUpBtn" class="auth-btn secondary" type="button">Create account</button>
+      </div>
+      <button id="authGoogleBtn" class="auth-btn google" type="button">Continue with Google</button>
+      <p id="authMessage" class="auth-message" hidden></p>
+    </section>
+  </div>
 </body>
 </html>

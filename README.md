@@ -67,3 +67,27 @@ node Tools/update-builds/seed-curated-sources.js
 This fills:
 - `Tools/update-builds/sources/archon-builds.json`
 - `Tools/update-builds/sources/curated-guides.json`
+
+## Auth + user build tracking (Supabase)
+This repo now supports user login plus copied-build freshness checks.
+
+Frontend requirements:
+- Add your Supabase project values in `index.html` meta tags:
+  - `wowadvisor-supabase-url`
+  - `wowadvisor-supabase-anon-key`
+- Optional alternative: define `window.WOW_ADVISOR_AUTH = { supabaseUrl, supabaseAnonKey }` before `script.js`.
+
+Database setup:
+- Run SQL from:
+  - `supabase/user-build-events.sql`
+
+Vercel environment variables:
+- `SUPABASE_URL`
+- `SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+
+New API routes:
+- `POST /api/build-events` (authenticated): stores copy/view events linked to the logged-in user.
+- `GET /api/build-alerts` (authenticated): compares the user's latest copied builds against current `builds.json` and returns:
+  - `outdated[]` for alert banners
+  - `tracked[]` for the in-app **My Builds** list with `hasCurrent` + `outdated` flags

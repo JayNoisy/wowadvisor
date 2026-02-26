@@ -149,6 +149,23 @@ const talentNodeBody = document.getElementById("talentNodeBody");
 
 const exportString = document.getElementById("exportString");
 const copyBtn = document.getElementById("copyBtn");
+const authStatusText = document.getElementById("authStatusText");
+const authOpenBtn = document.getElementById("authOpenBtn");
+const authLogoutBtn = document.getElementById("authLogoutBtn");
+const authUserEmail = document.getElementById("authUserEmail");
+const authModal = document.getElementById("authModal");
+const authCloseBtn = document.getElementById("authCloseBtn");
+const authEmailInput = document.getElementById("authEmail");
+const authPasswordInput = document.getElementById("authPassword");
+const authSignInBtn = document.getElementById("authSignInBtn");
+const authSignUpBtn = document.getElementById("authSignUpBtn");
+const authGoogleBtn = document.getElementById("authGoogleBtn");
+const authMessage = document.getElementById("authMessage");
+const buildFreshnessAlert = document.getElementById("buildFreshnessAlert");
+const myBuildsCard = document.getElementById("myBuildsCard");
+const myBuildsHint = document.getElementById("myBuildsHint");
+const myBuildsList = document.getElementById("myBuildsList");
+const myBuildsRefreshBtn = document.getElementById("myBuildsRefreshBtn");
 
 // =========================
 // App State
@@ -169,6 +186,9 @@ const mythicContext = {
   keyLevel: 10,
   affixes: new Set(["Fortified"])
 };
+let supabaseClient = null;
+let authCurrentUser = null;
+let trackedUserBuilds = [];
 
 function injectTalentTreeStyles() {
   // Keep authoritative tree styling in style.css. Do not override at runtime.
@@ -907,6 +927,390 @@ function escapeHtml(value) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 }
+
+function getSupabasePublicConfig() {
+  const windowConfig = window.WOW_ADVISOR_AUTH && typeof window.WOW_ADVISOR_AUTH === "object"
+    ? window.WOW_ADVISOR_AUTH
+    : {};
+  const metaUrl = document.querySelector('meta[name="wowadvisor-supabase-url"]')?.getAttribute("content") || "";
+  const metaAnonKey = document.querySelector('meta[name="wowadvisor-supabase-anon-key"]')?.getAttribute("content") || "";
+  return {
+    url: String(windowConfig.supabaseUrl || metaUrl || "").trim(),
+    anonKey: String(windowConfig.supabaseAnonKey || metaAnonKey || "").trim()
+  };
+}
+
+function setAuthMessage(message, isError = false) {
+  if (!authMessage) return;
+  const text = String(message || "").trim();
+  authMessage.textContent = text;
+  authMessage.hidden = !text;
+  authMessage.classList.toggle("error", Boolean(text && isError));
+}
+
+function setAuthBusy(isBusy) {
+  const disabled = Boolean(isBusy);
+  if (authSignInBtn) authSignInBtn.disabled = disabled;
+  if (authSignUpBtn) authSignUpBtn.disabled = disabled;
+  if (authGoogleBtn) authGoogleBtn.disabled = disabled;
+}
+
+function openAuthModal() {
+  if (!authModal) return;
+  authModal.hidden = false;
+  document.body.classList.add("auth-modal-open");
+  setAuthMessage("");
+  if (authEmailInput) authEmailInput.focus();
+}
+
+function closeAuthModal() {
+  if (!authModal) return;
+  authModal.hidden = true;
+  document.body.classList.remove("auth-modal-open");
+  setAuthMessage("");
+}
+
+function clearBuildFreshnessAlert() {
+  if (!buildFreshnessAlert) return;
+  buildFreshnessAlert.hidden = true;
+  buildFreshnessAlert.textContent = "";
+}
+
+function clearMyBuildsPanel(hideCard = false) {
+  trackedUserBuilds = [];
+  if (myBuildsList) myBuildsList.innerHTML = "";
+  if (myBuildsHint) myBuildsHint.textContent = "Sign in to track copied builds.";
+  if (myBuildsRefreshBtn) myBuildsRefreshBtn.disabled = false;
+  if (hideCard && myBuildsCard) myBuildsCard.hidden = true;
+}
+
+function renderBuildFreshnessAlert(outdated) {
+  if (!buildFreshnessAlert) return;
+  const items = Array.isArray(outdated) ? outdated : [];
+  if (!authCurrentUser || items.length === 0) {
+    clearBuildFreshnessAlert();
+    return;
+  }
+  const preview = items.slice(0, 3).map((item) => {
+    const className = escapeHtml(item?.className || "");
+    const specName = escapeHtml(item?.specName || "");
+    const mode = escapeHtml(modeLabel(item?.mode || ""));
+    return `${className} ${specName} (${mode})`;
+  });
+  const remainder = items.length - preview.length;
+  buildFreshnessAlert.innerHTML = `<strong>${items.length} copied build${items.length === 1 ? "" : "s"} outdated.</strong> ${preview.join(" | ")}${remainder > 0 ? ` | +${remainder} more` : ""}`;
+  buildFreshnessAlert.hidden = false;
+}
+
+function renderMyBuildsPanel(tracked) {
+  if (!myBuildsCard || !myBuildsList || !myBuildsHint) return;
+  const items = Array.isArray(tracked) ? tracked : [];
+  trackedUserBuilds = items;
+
+  if (!authCurrentUser) {
+    clearMyBuildsPanel(true);
+    return;
+  }
+
+  myBuildsCard.hidden = false;
+  if (items.length === 0) {
+    myBuildsHint.textContent = "No copied builds yet. Copy a build to track it here.";
+    myBuildsList.innerHTML = "";
+    return;
+  }
+
+  const outdatedCount = items.filter((item) => Boolean(item?.outdated)).length;
+  myBuildsHint.textContent = `${items.length} tracked build${items.length === 1 ? "" : "s"} | ${outdatedCount} outdated`;
+  myBuildsList.innerHTML = items.map((item) => {
+    const className = String(item?.className || "").trim();
+    const specName = String(item?.specName || "").trim();
+    const mode = String(item?.mode || "").trim();
+    const hasCurrent = Boolean(item?.hasCurrent);
+    const outdated = Boolean(item?.outdated);
+    const copiedAgo = formatCopiedAgo(item?.copiedAt) || "Copied recently";
+    const currentAgo = formatUpdatedAgo(item?.currentUpdatedAt) || "Current build update unknown";
+
+    let statusClass = "fresh";
+    let statusText = "Up to date";
+    if (!hasCurrent) {
+      statusClass = "missing";
+      statusText = "No current build";
+    } else if (outdated) {
+      statusClass = "outdated";
+      statusText = "Outdated";
+    }
+
+    return `
+      <article class="my-build-row">
+        <div class="my-build-main">
+          <p class="my-build-title">${escapeHtml(className)} ${escapeHtml(specName)} | ${escapeHtml(modeLabel(mode))}</p>
+          <p class="my-build-meta">${escapeHtml(copiedAgo)} | ${escapeHtml(currentAgo)}</p>
+        </div>
+        <div class="my-build-actions">
+          <span class="my-build-pill ${statusClass}">${escapeHtml(statusText)}</span>
+          <button
+            type="button"
+            class="my-build-open-btn"
+            data-class-name="${escapeHtml(className)}"
+            data-spec-name="${escapeHtml(specName)}"
+            data-mode="${escapeHtml(mode)}"
+            ${hasCurrent ? "" : "disabled"}
+          >Open Latest</button>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function openLatestTrackedBuild(className, specName, mode) {
+  const classBtn = Array.from(classButtons.querySelectorAll(".class-btn"))
+    .find((btn) => String(btn.dataset.class || "") === String(className || ""));
+  if (!classBtn) return false;
+  classBtn.click();
+
+  const specBtn = Array.from(specButtons.querySelectorAll(".spec-btn"))
+    .find((btn) => String(btn.dataset.spec || "") === String(specName || ""));
+  if (!specBtn) return false;
+  specBtn.click();
+
+  const targetMode = ["aoe", "raid", "pvp"].includes(String(mode || "").toLowerCase())
+    ? String(mode).toLowerCase()
+    : "aoe";
+  if (targetMode !== "aoe") {
+    const modeBtn = buildTabs.querySelector(`.tab-btn[data-mode="${targetMode}"]`);
+    modeBtn?.click();
+  }
+  ensureElementTopVisible(panel, 14);
+  return true;
+}
+
+async function getAuthAccessToken() {
+  if (!supabaseClient) return null;
+  try {
+    const { data, error } = await supabaseClient.auth.getSession();
+    if (error) return null;
+    return data?.session?.access_token || null;
+  } catch {
+    return null;
+  }
+}
+
+function renderAuthState() {
+  if (!supabaseClient) {
+    if (authStatusText) authStatusText.textContent = "Logins are disabled until Supabase is configured.";
+    if (authOpenBtn) authOpenBtn.disabled = true;
+    if (authLogoutBtn) authLogoutBtn.hidden = true;
+    if (authUserEmail) authUserEmail.hidden = true;
+    clearBuildFreshnessAlert();
+    clearMyBuildsPanel(true);
+    return;
+  }
+
+  if (authCurrentUser) {
+    if (authStatusText) authStatusText.textContent = "Account active: copied builds are saved and checked for updates.";
+    if (authUserEmail) {
+      authUserEmail.textContent = authCurrentUser.email || "Signed in";
+      authUserEmail.hidden = false;
+    }
+    if (authOpenBtn) {
+      authOpenBtn.hidden = true;
+      authOpenBtn.disabled = false;
+    }
+    if (authLogoutBtn) authLogoutBtn.hidden = false;
+  } else {
+    if (authStatusText) authStatusText.textContent = "Sign in to save copied builds and get outdated alerts.";
+    if (authUserEmail) {
+      authUserEmail.textContent = "";
+      authUserEmail.hidden = true;
+    }
+    if (authOpenBtn) {
+      authOpenBtn.hidden = false;
+      authOpenBtn.disabled = false;
+    }
+    if (authLogoutBtn) authLogoutBtn.hidden = true;
+    clearBuildFreshnessAlert();
+    clearMyBuildsPanel(true);
+  }
+}
+
+async function refreshBuildFreshnessAlert() {
+  if (!authCurrentUser || !buildsRoot) {
+    clearBuildFreshnessAlert();
+    renderMyBuildsPanel([]);
+    return;
+  }
+  const token = await getAuthAccessToken();
+  if (!token) {
+    clearBuildFreshnessAlert();
+    renderMyBuildsPanel([]);
+    return;
+  }
+  try {
+    const res = await fetch("/api/build-alerts", {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    });
+    if (!res.ok) {
+      clearBuildFreshnessAlert();
+      renderMyBuildsPanel([]);
+      return;
+    }
+    const payload = await res.json();
+    renderBuildFreshnessAlert(payload?.outdated);
+    renderMyBuildsPanel(payload?.tracked);
+  } catch {
+    clearBuildFreshnessAlert();
+    renderMyBuildsPanel([]);
+  }
+}
+
+async function trackCopiedBuildForUser() {
+  if (!authCurrentUser || !activeBuild || !selectedClass || !selectedSpec || !selectedMode) return;
+  const token = await getAuthAccessToken();
+  if (!token) return;
+  try {
+    await fetch("/api/build-events", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        action: "copy",
+        className: selectedClass,
+        specName: selectedSpec,
+        mode: selectedMode,
+        exportString: activeBuild.exportString || "",
+        buildUpdated: activeBuild.updated || null,
+        buildTitle: activeBuild.title || null,
+        confidenceScore: activeBuild.confidenceScore ?? null
+      })
+    });
+    await refreshBuildFreshnessAlert();
+  } catch {
+    // Ignore telemetry errors in UI flow.
+  }
+}
+
+async function signInWithEmailPassword() {
+  if (!supabaseClient) return;
+  const email = String(authEmailInput?.value || "").trim();
+  const password = String(authPasswordInput?.value || "");
+  if (!email || !password) {
+    setAuthMessage("Enter both email and password.", true);
+    return;
+  }
+  setAuthBusy(true);
+  setAuthMessage("");
+  try {
+    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+    if (error) {
+      setAuthMessage(error.message || "Sign in failed.", true);
+      return;
+    }
+    closeAuthModal();
+  } finally {
+    setAuthBusy(false);
+  }
+}
+
+async function signUpWithEmailPassword() {
+  if (!supabaseClient) return;
+  const email = String(authEmailInput?.value || "").trim();
+  const password = String(authPasswordInput?.value || "");
+  if (!email || !password) {
+    setAuthMessage("Enter both email and password.", true);
+    return;
+  }
+  setAuthBusy(true);
+  setAuthMessage("");
+  try {
+    const redirectTo = `${window.location.origin}${window.location.pathname}`;
+    const { data, error } = await supabaseClient.auth.signUp({
+      email,
+      password,
+      options: { emailRedirectTo: redirectTo }
+    });
+    if (error) {
+      setAuthMessage(error.message || "Sign up failed.", true);
+      return;
+    }
+    if (data?.session) {
+      closeAuthModal();
+      return;
+    }
+    setAuthMessage("Account created. Check your email to confirm and finish sign in.");
+  } finally {
+    setAuthBusy(false);
+  }
+}
+
+async function signInWithGoogle() {
+  if (!supabaseClient) return;
+  setAuthBusy(true);
+  setAuthMessage("");
+  try {
+    const redirectTo = `${window.location.origin}${window.location.pathname}`;
+    const { error } = await supabaseClient.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo }
+    });
+    if (error) {
+      setAuthMessage(error.message || "Google sign in failed.", true);
+    }
+  } finally {
+    setAuthBusy(false);
+  }
+}
+
+async function signOutCurrentUser() {
+  if (!supabaseClient) return;
+  await supabaseClient.auth.signOut();
+  clearBuildFreshnessAlert();
+  clearMyBuildsPanel(true);
+}
+
+async function initAuth() {
+  const config = getSupabasePublicConfig();
+  if (!window.supabase?.createClient || !config.url || !config.anonKey) {
+    renderAuthState();
+    return;
+  }
+  supabaseClient = window.supabase.createClient(config.url, config.anonKey, {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true
+    }
+  });
+
+  try {
+    const { data } = await supabaseClient.auth.getSession();
+    authCurrentUser = data?.session?.user || null;
+  } catch {
+    authCurrentUser = null;
+  }
+
+  supabaseClient.auth.onAuthStateChange(async (_event, session) => {
+    authCurrentUser = session?.user || null;
+    renderAuthState();
+    await refreshBuildFreshnessAlert();
+  });
+
+  if (window.location.hash.includes("access_token=") || window.location.hash.includes("refresh_token=")) {
+    history.replaceState({}, document.title, `${window.location.pathname}${window.location.search}`);
+  }
+
+  renderAuthState();
+  await refreshBuildFreshnessAlert();
+}
+
+window.wowAdvisorAuth = {
+  getCurrentUser: () => authCurrentUser,
+  getAccessToken: () => getAuthAccessToken()
+};
 
 function nodeInitials(name) {
   const words = String(name || "")
@@ -2252,11 +2656,13 @@ async function loadBuilds() {
     }
 
     console.log("builds.json loaded ✅", { wrapper: !!payload.builds, generatedAt: buildsMeta.generatedAt });
+    await refreshBuildFreshnessAlert();
   } catch (err) {
     console.error("Failed to load builds.json ❌", err);
     buildsRoot = null;
     buildsMeta.generatedAt = null;
     buildsMeta.sources = null;
+    clearBuildFreshnessAlert();
   }
 }
 
@@ -2322,7 +2728,7 @@ function parseFlexibleDate(value) {
   return Number.isNaN(d.getTime()) ? null : d;
 }
 
-function formatUpdatedAgo(value) {
+function formatAgo(value, prefix) {
   const d = parseFlexibleDate(value);
   if (!d) return null;
   const now = Date.now();
@@ -2330,10 +2736,18 @@ function formatUpdatedAgo(value) {
   const minuteMs = 60 * 1000;
   const hourMs = 60 * minuteMs;
   const dayMs = 24 * hourMs;
-  if (diffMs < minuteMs) return "Updated just now";
-  if (diffMs < hourMs) return `Updated ${Math.floor(diffMs / minuteMs)}m ago`;
-  if (diffMs < dayMs) return `Updated ${Math.floor(diffMs / hourMs)}h ago`;
-  return `Updated ${Math.floor(diffMs / dayMs)}d ago`;
+  if (diffMs < minuteMs) return `${prefix} just now`;
+  if (diffMs < hourMs) return `${prefix} ${Math.floor(diffMs / minuteMs)}m ago`;
+  if (diffMs < dayMs) return `${prefix} ${Math.floor(diffMs / hourMs)}h ago`;
+  return `${prefix} ${Math.floor(diffMs / dayMs)}d ago`;
+}
+
+function formatUpdatedAgo(value) {
+  return formatAgo(value, "Updated");
+}
+
+function formatCopiedAgo(value) {
+  return formatAgo(value, "Copied");
 }
 
 function showBuildFromData(className, specName, mode) {
@@ -2442,6 +2856,7 @@ copyBtn.addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(text);
     copyBtn.textContent = "Copied!";
+    void trackCopiedBuildForUser();
     setTimeout(() => (copyBtn.textContent = "Copy"), 900);
   } catch {
     copyBtn.textContent = "Copy failed";
@@ -2494,6 +2909,80 @@ rotationToggleBtn?.addEventListener("click", () => {
   }
 });
 
+authOpenBtn?.addEventListener("click", () => {
+  if (!supabaseClient) return;
+  openAuthModal();
+});
+
+authCloseBtn?.addEventListener("click", () => {
+  closeAuthModal();
+});
+
+authModal?.addEventListener("click", (e) => {
+  const closeTrigger = e.target?.closest?.("[data-auth-close='true']");
+  if (closeTrigger) closeAuthModal();
+});
+
+authSignInBtn?.addEventListener("click", () => {
+  void signInWithEmailPassword();
+});
+
+authSignUpBtn?.addEventListener("click", () => {
+  void signUpWithEmailPassword();
+});
+
+authGoogleBtn?.addEventListener("click", () => {
+  void signInWithGoogle();
+});
+
+authLogoutBtn?.addEventListener("click", () => {
+  void signOutCurrentUser();
+});
+
+myBuildsRefreshBtn?.addEventListener("click", () => {
+  if (!authCurrentUser) return;
+  myBuildsRefreshBtn.disabled = true;
+  void refreshBuildFreshnessAlert().finally(() => {
+    myBuildsRefreshBtn.disabled = false;
+  });
+});
+
+myBuildsList?.addEventListener("click", (e) => {
+  const btn = e.target.closest(".my-build-open-btn");
+  if (!btn) return;
+  const className = btn.dataset.className || "";
+  const specName = btn.dataset.specName || "";
+  const mode = btn.dataset.mode || "aoe";
+  const ok = openLatestTrackedBuild(className, specName, mode);
+  if (!ok) {
+    const original = btn.textContent;
+    btn.textContent = "Unavailable";
+    setTimeout(() => {
+      btn.textContent = original;
+    }, 900);
+    return;
+  }
+  const original = btn.textContent;
+  btn.textContent = "Opened";
+  setTimeout(() => {
+    btn.textContent = original;
+  }, 900);
+});
+
+authPasswordInput?.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    void signInWithEmailPassword();
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && authModal && !authModal.hidden) {
+    closeAuthModal();
+  }
+});
+
 // Start
 injectTalentTreeStyles();
 Promise.all([loadBuilds(), loadTalentTreesMeta()]);
+void initAuth();
