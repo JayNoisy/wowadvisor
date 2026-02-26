@@ -72,7 +72,8 @@ This fills:
 This repo now supports user login plus copied-build freshness checks.
 
 Frontend requirements:
-- Add your Supabase project values in `index.html` meta tags:
+- Preferred: set Vercel env vars (`SUPABASE_URL`, `SUPABASE_ANON_KEY`) and frontend auto-loads via `GET /api/auth-config`.
+- Optional fallback: add Supabase values in `index.html` meta tags:
   - `wowadvisor-supabase-url`
   - `wowadvisor-supabase-anon-key`
 - Optional alternative: define `window.WOW_ADVISOR_AUTH = { supabaseUrl, supabaseAnonKey }` before `script.js`.
@@ -87,6 +88,7 @@ Vercel environment variables:
 - `SUPABASE_SERVICE_ROLE_KEY`
 
 New API routes:
+- `GET /api/auth-config`: returns public Supabase frontend config (`SUPABASE_URL`, `SUPABASE_ANON_KEY`).
 - `POST /api/build-events` (authenticated): stores copy/view events linked to the logged-in user.
 - `GET /api/build-alerts` (authenticated): compares the user's latest copied builds against current `builds.json` and returns:
   - `outdated[]` for alert banners

@@ -940,6 +940,20 @@ function getSupabasePublicConfig() {
   };
 }
 
+async function loadSupabasePublicConfigFromApi() {
+  try {
+    const res = await fetch("/api/auth-config", { cache: "no-store" });
+    if (!res.ok) return null;
+    const payload = await res.json();
+    const url = String(payload?.supabaseUrl || "").trim();
+    const anonKey = String(payload?.supabaseAnonKey || "").trim();
+    if (!url || !anonKey) return null;
+    return { url, anonKey };
+  } catch {
+    return null;
+  }
+}
+
 function setAuthMessage(message, isError = false) {
   if (!authMessage) return;
   const text = String(message || "").trim();
@@ -1273,7 +1287,12 @@ async function signOutCurrentUser() {
 }
 
 async function initAuth() {
-  const config = getSupabasePublicConfig();
+  const inlineConfig = getSupabasePublicConfig();
+  const apiConfig = await loadSupabasePublicConfigFromApi();
+  const config = {
+    url: inlineConfig.url || apiConfig?.url || "",
+    anonKey: inlineConfig.anonKey || apiConfig?.anonKey || ""
+  };
   if (!window.supabase?.createClient || !config.url || !config.anonKey) {
     renderAuthState();
     return;
