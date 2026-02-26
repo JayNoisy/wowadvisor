@@ -101,6 +101,7 @@ const M_PLUS_AFFIXES = [
 ];
 
 const ENABLE_TALENT_TREE = false;
+const LOCAL_COPIED_BUILDS_KEY = "wowadvisor_copied_builds_v1";
 
 // =========================
 // DOM References
@@ -670,6 +671,144 @@ function normalizeKey(value) {
     .trim();
 }
 
+function getLocalCopiedBuildMap() {
+  try {
+    const raw = localStorage.getItem(LOCAL_COPIED_BUILDS_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+function setLocalCopiedBuildMap(nextMap) {
+  try {
+    localStorage.setItem(LOCAL_COPIED_BUILDS_KEY, JSON.stringify(nextMap || {}));
+  } catch {
+    // Ignore local storage write failures.
+  }
+}
+
+function normalizeModeKey(value) {
+  const mode = String(value || "").trim().toLowerCase();
+  return mode === "aoe" || mode === "raid" || mode === "pvp" ? mode : "aoe";
+}
+
+function normalizeDateForCompare(value) {
+  const d = parseFlexibleDate(value);
+  return d ? d.toISOString() : "";
+}
+
+function buildTrackingKey(className, specName, mode) {
+  return `${normalizeKey(className)}::${normalizeKey(specName)}::${normalizeModeKey(mode)}`;
+}
+
+function rememberCopiedBuildLocal(className, specName, mode, build) {
+  if (!className || !specName || !mode || !build) return;
+  const exportStringValue = String(build?.exportString || "").trim();
+  if (!exportStringValue) return;
+
+  const key = buildTrackingKey(className, specName, mode);
+  const map = getLocalCopiedBuildMap();
+  map[key] = {
+    className: String(className),
+    specName: String(specName),
+    mode: normalizeModeKey(mode),
+    copiedAt: new Date().toISOString(),
+    copiedTitle: build?.title || null,
+    copiedUpdatedAt: normalizeDateForCompare(build?.updated) || null,
+    copiedExportString: exportStringValue
+  };
+  setLocalCopiedBuildMap(map);
+}
+
+function getCurrentBuildSnapshot(className, specName, mode) {
+  const current = normalizeBuild(buildsRoot?.[className]?.[specName]?.[normalizeModeKey(mode)]);
+  if (!current || !current.exportString) return null;
+  return {
+    title: current.title || null,
+    updatedAt: normalizeDateForCompare(current.updated) || null,
+    exportString: String(current.exportString || "")
+  };
+}
+
+function getLocalTrackedBuilds() {
+  const map = getLocalCopiedBuildMap();
+  const entries = Object.values(map || {}).filter((row) => row && typeof row === "object");
+  const tracked = entries.map((entry) => {
+    const className = String(entry.className || "");
+    const specName = String(entry.specName || "");
+    const mode = normalizeModeKey(entry.mode);
+    const current = getCurrentBuildSnapshot(className, specName, mode);
+    const copiedExport = String(entry.copiedExportString || "");
+    const copiedUpdated = normalizeDateForCompare(entry.copiedUpdatedAt);
+    const currentUpdated = normalizeDateForCompare(current?.updatedAt);
+    const outdated = Boolean(
+      current &&
+      copiedExport &&
+      (copiedExport !== String(current.exportString || "") || copiedUpdated !== currentUpdated)
+    );
+    return {
+      className,
+      specName,
+      mode,
+      copiedAt: entry.copiedAt || null,
+      copiedTitle: entry.copiedTitle || null,
+      copiedUpdatedAt: entry.copiedUpdatedAt || null,
+      currentTitle: current?.title || null,
+      currentUpdatedAt: current?.updatedAt || null,
+      hasCurrent: Boolean(current),
+      outdated
+    };
+  });
+
+  tracked.sort((a, b) => {
+    const at = Number(new Date(a.copiedAt || 0).getTime()) || 0;
+    const bt = Number(new Date(b.copiedAt || 0).getTime()) || 0;
+    return bt - at;
+  });
+  return tracked;
+}
+
+function mergeTrackedBuildLists(primary, secondary) {
+  const out = new Map();
+  const put = (item) => {
+    const key = buildTrackingKey(item?.className, item?.specName, item?.mode);
+    if (!key.trim()) return;
+    const existing = out.get(key);
+    if (!existing) {
+      out.set(key, item);
+      return;
+    }
+    const existingTs = Number(new Date(existing?.copiedAt || 0).getTime()) || 0;
+    const nextTs = Number(new Date(item?.copiedAt || 0).getTime()) || 0;
+    if (nextTs >= existingTs) out.set(key, item);
+  };
+  (Array.isArray(secondary) ? secondary : []).forEach(put);
+  (Array.isArray(primary) ? primary : []).forEach(put);
+  return Array.from(out.values()).sort((a, b) => {
+    const at = Number(new Date(a?.copiedAt || 0).getTime()) || 0;
+    const bt = Number(new Date(b?.copiedAt || 0).getTime()) || 0;
+    return bt - at;
+  });
+}
+
+function renderLocalTrackedFallback() {
+  if (!authCurrentUser) return;
+  const localTracked = getLocalTrackedBuilds();
+  renderBuildFreshnessAlert(localTracked.filter((item) => Boolean(item?.outdated)));
+  renderMyBuildsPanel(localTracked);
+  if (myBuildsHint && localTracked.length > 0) {
+    myBuildsHint.textContent = `${myBuildsHint.textContent} | local cache`;
+  }
+}
+
+function rememberActiveBuildCopyLocally() {
+  if (!activeBuild || !selectedClass || !selectedSpec || !selectedMode) return;
+  rememberCopiedBuildLocal(selectedClass, selectedSpec, selectedMode, activeBuild);
+}
+
 let talentData = [];
 let totalPointsSpent = 0;
 let maxTotalPoints = 10;
@@ -1169,8 +1308,7 @@ async function refreshBuildFreshnessAlert() {
   }
   const token = await getAuthAccessToken();
   if (!token) {
-    clearBuildFreshnessAlert();
-    renderMyBuildsPanel([]);
+    renderLocalTrackedFallback();
     return;
   }
   try {
@@ -1181,25 +1319,30 @@ async function refreshBuildFreshnessAlert() {
       }
     });
     if (!res.ok) {
-      clearBuildFreshnessAlert();
-      renderMyBuildsPanel([]);
+      renderLocalTrackedFallback();
       return;
     }
     const payload = await res.json();
-    renderBuildFreshnessAlert(payload?.outdated);
-    renderMyBuildsPanel(payload?.tracked);
+    const remoteTracked = Array.isArray(payload?.tracked) ? payload.tracked : [];
+    const localTracked = getLocalTrackedBuilds();
+    const mergedTracked = mergeTrackedBuildLists(remoteTracked, localTracked);
+    renderBuildFreshnessAlert(mergedTracked.filter((item) => Boolean(item?.outdated)));
+    renderMyBuildsPanel(mergedTracked);
   } catch {
-    clearBuildFreshnessAlert();
-    renderMyBuildsPanel([]);
+    renderLocalTrackedFallback();
   }
 }
 
 async function trackCopiedBuildForUser() {
-  if (!authCurrentUser || !activeBuild || !selectedClass || !selectedSpec || !selectedMode) return;
+  if (!activeBuild || !selectedClass || !selectedSpec || !selectedMode) return;
+  if (!authCurrentUser) return;
   const token = await getAuthAccessToken();
-  if (!token) return;
+  if (!token) {
+    renderLocalTrackedFallback();
+    return;
+  }
   try {
-    await fetch("/api/build-events", {
+    const res = await fetch("/api/build-events", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -1216,9 +1359,13 @@ async function trackCopiedBuildForUser() {
         confidenceScore: activeBuild.confidenceScore ?? null
       })
     });
+    if (!res.ok) {
+      renderLocalTrackedFallback();
+      return;
+    }
     await refreshBuildFreshnessAlert();
   } catch {
-    // Ignore telemetry errors in UI flow.
+    renderLocalTrackedFallback();
   }
 }
 
@@ -2894,6 +3041,10 @@ copyBtn.addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(text);
     copyBtn.textContent = "Copied!";
+    rememberActiveBuildCopyLocally();
+    if (authCurrentUser) {
+      renderLocalTrackedFallback();
+    }
     void trackCopiedBuildForUser();
     setTimeout(() => (copyBtn.textContent = "Copy"), 900);
   } catch {

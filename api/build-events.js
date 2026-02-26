@@ -79,7 +79,7 @@ async function resolveSupabaseUser(config, accessToken) {
   const res = await fetch(`${config.url}/auth/v1/user`, {
     method: "GET",
     headers: {
-      apikey: config.anonKey || config.serviceRoleKey,
+      apikey: config.serviceRoleKey,
       authorization: `Bearer ${accessToken}`
     }
   });

@@ -93,3 +93,6 @@ New API routes:
 - `GET /api/build-alerts` (authenticated): compares the user's latest copied builds against current `builds.json` and returns:
   - `outdated[]` for alert banners
   - `tracked[]` for the in-app **My Builds** list with `hasCurrent` + `outdated` flags
+
+Frontend fallback behavior:
+- Copied builds are also cached in browser `localStorage` (`wowadvisor_copied_builds_v1`) so **My Builds** still remembers recent copies if API sync is temporarily unavailable.
