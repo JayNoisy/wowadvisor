@@ -227,15 +227,38 @@ h1, h2, h3, h4 {
   border-radius: 16px;
   border: 1px solid rgba(164, 206, 255, 0.36);
   background:
+    linear-gradient(120deg, rgba(8, 14, 24, 0.72), rgba(8, 14, 24, 0.4)),
+    linear-gradient(180deg, rgba(8, 14, 24, 0.72), rgba(8, 14, 24, 0.82)),
+    url("assets/hero/home-hero.jpg"),
     radial-gradient(145% 150% at 0% 0%, rgba(74, 128, 205, 0.34), transparent 56%),
     radial-gradient(150% 170% at 100% 0%, rgba(45, 89, 152, 0.24), transparent 62%),
     linear-gradient(180deg, rgba(17, 35, 62, 0.93), rgba(11, 24, 43, 0.96));
+  background-size: cover, cover, cover, auto, auto, auto;
+  background-position: center, center, center, 0 0, 100% 0, 0 0;
   padding: 20px;
   display: grid;
   gap: 11px;
   text-align: left;
   box-shadow: 0 18px 34px rgba(6, 14, 29, 0.46);
   animation: soft-rise 0.28s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 100% at 10% 0%, rgba(64, 126, 219, 0.28), transparent 60%),
+    radial-gradient(120% 100% at 90% 0%, rgba(255, 120, 62, 0.24), transparent 62%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-hero-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .home-kicker {
