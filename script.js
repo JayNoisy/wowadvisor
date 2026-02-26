@@ -102,6 +102,7 @@ const M_PLUS_AFFIXES = [
 
 const ENABLE_TALENT_TREE = false;
 const LOCAL_COPIED_BUILDS_KEY = "wowadvisor_copied_builds_v1";
+const AUTH_REMEMBER_KEY = "wowadvisor_auth_remember_v1";
 
 // =========================
 // DOM References
@@ -165,6 +166,7 @@ const authModal = document.getElementById("authModal");
 const authCloseBtn = document.getElementById("authCloseBtn");
 const authEmailInput = document.getElementById("authEmail");
 const authPasswordInput = document.getElementById("authPassword");
+const authRememberInput = document.getElementById("authRemember");
 const authSignInBtn = document.getElementById("authSignInBtn");
 const authSignUpBtn = document.getElementById("authSignUpBtn");
 const authGoogleBtn = document.getElementById("authGoogleBtn");
@@ -199,6 +201,9 @@ const mythicContext = {
 let supabaseClient = null;
 let authCurrentUser = null;
 let trackedUserBuilds = [];
+let authConfig = null;
+let authRememberPreference = true;
+let authStateSubscription = null;
 
 function injectTalentTreeStyles() {
   // Keep authoritative tree styling in style.css. Do not override at runtime.
@@ -1130,6 +1135,81 @@ async function loadSupabasePublicConfigFromApi() {
   }
 }
 
+function readRememberPreference() {
+  try {
+    const stored = String(localStorage.getItem(AUTH_REMEMBER_KEY) || "").trim().toLowerCase();
+    if (stored === "0" || stored === "false") return false;
+    if (stored === "1" || stored === "true") return true;
+  } catch {
+    // Ignore storage failures and keep default behavior.
+  }
+  return true;
+}
+
+function writeRememberPreference(remember) {
+  authRememberPreference = Boolean(remember);
+  if (authRememberInput) authRememberInput.checked = authRememberPreference;
+  try {
+    localStorage.setItem(AUTH_REMEMBER_KEY, authRememberPreference ? "1" : "0");
+  } catch {
+    // Ignore storage failures and continue.
+  }
+}
+
+function getRememberSelection() {
+  if (authRememberInput) return Boolean(authRememberInput.checked);
+  return authRememberPreference;
+}
+
+function getAuthStorage(remember) {
+  return remember ? localStorage : sessionStorage;
+}
+
+function createSupabaseClient(config, remember) {
+  return window.supabase.createClient(config.url, config.anonKey, {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+      storage: getAuthStorage(remember)
+    }
+  });
+}
+
+function subscribeToAuthChanges() {
+  authStateSubscription?.unsubscribe?.();
+  authStateSubscription = null;
+  if (!supabaseClient) return;
+  const { data } = supabaseClient.auth.onAuthStateChange(async (_event, session) => {
+    authCurrentUser = session?.user || null;
+    renderAuthState();
+    await refreshBuildFreshnessAlert();
+  });
+  authStateSubscription = data?.subscription || null;
+}
+
+async function applyRememberPreference(remember, options = {}) {
+  const force = Boolean(options.force);
+  const desired = Boolean(remember);
+  const changed = authRememberPreference !== desired;
+  writeRememberPreference(desired);
+  if (!window.supabase?.createClient || !authConfig?.url || !authConfig?.anonKey) return;
+  if (!force && supabaseClient && !changed) return;
+
+  supabaseClient = createSupabaseClient(authConfig, desired);
+  subscribeToAuthChanges();
+
+  try {
+    const { data } = await supabaseClient.auth.getSession();
+    authCurrentUser = data?.session?.user || null;
+  } catch {
+    authCurrentUser = null;
+  }
+
+  renderAuthState();
+  await refreshBuildFreshnessAlert();
+}
+
 function setAuthMessage(message, isError = false) {
   if (!authMessage) return;
   const text = String(message || "").trim();
@@ -1400,6 +1480,7 @@ async function trackCopiedBuildForUser() {
 }
 
 async function signInWithEmailPassword() {
+  await applyRememberPreference(getRememberSelection());
   if (!supabaseClient) return;
   const email = String(authEmailInput?.value || "").trim();
   const password = String(authPasswordInput?.value || "");
@@ -1422,6 +1503,7 @@ async function signInWithEmailPassword() {
 }
 
 async function signUpWithEmailPassword() {
+  await applyRememberPreference(getRememberSelection());
   if (!supabaseClient) return;
   const email = String(authEmailInput?.value || "").trim();
   const password = String(authPasswordInput?.value || "");
@@ -1453,6 +1535,7 @@ async function signUpWithEmailPassword() {
 }
 
 async function signInWithGoogle() {
+  await applyRememberPreference(getRememberSelection());
   if (!supabaseClient) return;
   setAuthBusy(true);
   setAuthMessage("");
@@ -1484,37 +1567,17 @@ async function initAuth() {
     url: inlineConfig.url || apiConfig?.url || "",
     anonKey: inlineConfig.anonKey || apiConfig?.anonKey || ""
   };
+  authConfig = config;
+  writeRememberPreference(readRememberPreference());
   if (!window.supabase?.createClient || !config.url || !config.anonKey) {
     renderAuthState();
     return;
   }
-  supabaseClient = window.supabase.createClient(config.url, config.anonKey, {
-    auth: {
-      persistSession: true,
-      autoRefreshToken: true,
-      detectSessionInUrl: true
-    }
-  });
-
-  try {
-    const { data } = await supabaseClient.auth.getSession();
-    authCurrentUser = data?.session?.user || null;
-  } catch {
-    authCurrentUser = null;
-  }
-
-  supabaseClient.auth.onAuthStateChange(async (_event, session) => {
-    authCurrentUser = session?.user || null;
-    renderAuthState();
-    await refreshBuildFreshnessAlert();
-  });
+  await applyRememberPreference(authRememberPreference, { force: true });
 
   if (window.location.hash.includes("access_token=") || window.location.hash.includes("refresh_token=")) {
     history.replaceState({}, document.title, `${window.location.pathname}${window.location.search}`);
   }
-
-  renderAuthState();
-  await refreshBuildFreshnessAlert();
 }
 
 window.wowAdvisorAuth = {
@@ -3167,6 +3230,10 @@ authGoogleBtn?.addEventListener("click", () => {
 
 authGuestBtn?.addEventListener("click", () => {
   closeAuthModal();
+});
+
+authRememberInput?.addEventListener("change", () => {
+  writeRememberPreference(Boolean(authRememberInput.checked));
 });
 
 authLogoutBtn?.addEventListener("click", () => {

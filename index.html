@@ -13,7 +13,7 @@
 
   <link rel="stylesheet" href="style.css?v=20260226-08" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="script.js?v=20260226-02" defer></script>
+  <script src="script.js?v=20260226-03" defer></script>
 </head>
 <body>
   <header class="header">
@@ -217,6 +217,10 @@
       <input id="authEmail" class="auth-input" type="email" autocomplete="email" placeholder="you@example.com" />
       <label class="auth-label" for="authPassword">Password</label>
       <input id="authPassword" class="auth-input" type="password" autocomplete="current-password" placeholder="At least 8 characters" />
+      <label class="auth-remember" for="authRemember">
+        <input id="authRemember" type="checkbox" checked />
+        <span>Remember me on this device</span>
+      </label>
       <div class="auth-modal-actions">
         <button id="authSignInBtn" class="auth-btn" type="button">Sign in</button>
         <button id="authSignUpBtn" class="auth-btn secondary" type="button">Create account</button>
