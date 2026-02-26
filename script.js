@@ -160,6 +160,7 @@ const authPasswordInput = document.getElementById("authPassword");
 const authSignInBtn = document.getElementById("authSignInBtn");
 const authSignUpBtn = document.getElementById("authSignUpBtn");
 const authGoogleBtn = document.getElementById("authGoogleBtn");
+const authGuestBtn = document.getElementById("authGuestBtn");
 const authMessage = document.getElementById("authMessage");
 const buildFreshnessAlert = document.getElementById("buildFreshnessAlert");
 const myBuildsCard = document.getElementById("myBuildsCard");
@@ -967,6 +968,7 @@ function setAuthBusy(isBusy) {
   if (authSignInBtn) authSignInBtn.disabled = disabled;
   if (authSignUpBtn) authSignUpBtn.disabled = disabled;
   if (authGoogleBtn) authGoogleBtn.disabled = disabled;
+  if (authGuestBtn) authGuestBtn.disabled = disabled;
 }
 
 function openAuthModal() {
@@ -1121,6 +1123,7 @@ function renderAuthState() {
   }
 
   if (authCurrentUser) {
+    if (authModal && !authModal.hidden) closeAuthModal();
     if (authStatusText) authStatusText.textContent = "Account active: copied builds are saved and checked for updates.";
     if (authUserEmail) {
       authUserEmail.textContent = authCurrentUser.email || "Signed in";
@@ -2952,6 +2955,10 @@ authSignUpBtn?.addEventListener("click", () => {
 
 authGoogleBtn?.addEventListener("click", () => {
   void signInWithGoogle();
+});
+
+authGuestBtn?.addEventListener("click", () => {
+  closeAuthModal();
 });
 
 authLogoutBtn?.addEventListener("click", () => {
