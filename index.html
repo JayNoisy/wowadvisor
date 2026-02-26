@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css?v=20260226-03" />
+  <link rel="stylesheet" href="style.css?v=20260226-04" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="script.js?v=20260226-02" defer></script>
 </head>
@@ -59,6 +59,28 @@
     </section>
 
     <section id="buildsPanel" class="top-tab-panel" aria-label="Builds panel" hidden>
+    <section class="builds-hero" aria-label="Builds overview">
+      <div class="builds-hero-copy">
+        <p class="builds-kicker">Build Studio</p>
+        <h2>Curated picks for your spec and content type</h2>
+        <p class="muted">Choose a class, lock in a spec, then compare your setup across Mythic+, Raid, and PvP workflows.</p>
+      </div>
+      <div class="builds-hero-stats" aria-hidden="true">
+        <div class="builds-stat">
+          <span class="builds-stat-value">13</span>
+          <span class="builds-stat-label">Classes</span>
+        </div>
+        <div class="builds-stat">
+          <span class="builds-stat-value">39</span>
+          <span class="builds-stat-label">Specs</span>
+        </div>
+        <div class="builds-stat">
+          <span class="builds-stat-value">3</span>
+          <span class="builds-stat-label">Modes</span>
+        </div>
+      </div>
+    </section>
+
     <section id="myBuildsCard" class="my-builds-card" hidden aria-label="My tracked builds">
       <div class="my-builds-head">
         <h2>My Builds</h2>
@@ -68,7 +90,11 @@
       <div id="myBuildsList" class="my-builds-list"></div>
     </section>
 
-    <section aria-label="Class selection">
+    <section class="class-section" aria-label="Class selection">
+      <div class="section-headline">
+        <h3>Class Library</h3>
+        <p class="muted">Start by selecting your class to unlock tailored recommendations.</p>
+      </div>
       <div class="class-buttons" id="classButtons">
         <button class="class-btn" data-class="Warrior" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/warrior.png" alt="" /></span><span class="class-name">Warrior</span></button>
         <button class="class-btn" data-class="Paladin" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/paladin.png" alt="" /></span><span class="class-name">Paladin</span></button>
