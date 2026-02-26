@@ -1371,6 +1371,129 @@ async function getAuthAccessToken() {
   }
 }
 
+function normalizeTrackingConfidence(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return null;
+  return Math.max(0, Math.min(100, Math.round(n)));
+}
+
+async function hashSha256Hex(value) {
+  const subtle = window.crypto?.subtle;
+  if (!subtle) return "";
+  try {
+    const bytes = new TextEncoder().encode(String(value || ""));
+    const digest = await subtle.digest("SHA-256", bytes);
+    return Array.from(new Uint8Array(digest))
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+  } catch {
+    return "";
+  }
+}
+
+async function buildClientFingerprint(className, specName, mode, exportString, buildUpdated) {
+  const input = [
+    normalizeKey(className),
+    normalizeKey(specName),
+    normalizeModeKey(mode),
+    String(exportString || "").trim(),
+    normalizeDateForCompare(buildUpdated)
+  ].join("|");
+  const hashed = await hashSha256Hex(input);
+  return hashed || input;
+}
+
+async function saveBuildEventDirectly(eventPayload) {
+  if (!supabaseClient || !authCurrentUser?.id) return false;
+  const className = String(eventPayload?.className || "").trim();
+  const specName = String(eventPayload?.specName || "").trim();
+  const mode = normalizeModeKey(eventPayload?.mode);
+  const exportStringValue = String(eventPayload?.exportString || "").trim();
+  if (!className || !specName || !exportStringValue) return false;
+
+  const buildUpdatedAt = normalizeDateForCompare(eventPayload?.buildUpdated) || null;
+  const buildFingerprint = await buildClientFingerprint(
+    className,
+    specName,
+    mode,
+    exportStringValue,
+    buildUpdatedAt
+  );
+
+  const { error } = await supabaseClient
+    .from("user_build_events")
+    .insert({
+      user_id: authCurrentUser.id,
+      action: String(eventPayload?.action || "copy").trim().toLowerCase() === "view" ? "view" : "copy",
+      class_name: className,
+      spec_name: specName,
+      mode,
+      export_string: exportStringValue,
+      build_fingerprint: buildFingerprint,
+      build_title: String(eventPayload?.buildTitle || "").trim() || null,
+      build_updated_at: buildUpdatedAt,
+      confidence_score: normalizeTrackingConfidence(eventPayload?.confidenceScore)
+    });
+
+  if (error) return false;
+  return true;
+}
+
+async function loadTrackedBuildsDirectly() {
+  if (!supabaseClient || !authCurrentUser?.id) return null;
+  const { data, error } = await supabaseClient
+    .from("user_build_events")
+    .select("class_name,spec_name,mode,export_string,build_updated_at,build_title,created_at")
+    .eq("action", "copy")
+    .order("created_at", { ascending: false })
+    .limit(500);
+  if (error) return null;
+
+  const rows = Array.isArray(data) ? data : [];
+  const latestByKey = new Map();
+  for (const row of rows) {
+    const key = buildTrackingKey(row?.class_name, row?.spec_name, row?.mode);
+    if (!key || latestByKey.has(key)) continue;
+    latestByKey.set(key, row);
+  }
+
+  const tracked = [];
+  for (const row of latestByKey.values()) {
+    const copiedClassName = String(row?.class_name || "").trim();
+    const copiedSpecName = String(row?.spec_name || "").trim();
+    const copiedMode = normalizeModeKey(row?.mode);
+    const copiedExport = String(row?.export_string || "").trim();
+    const copiedUpdated = normalizeDateForCompare(row?.build_updated_at);
+    const current = getCurrentBuildSnapshot(copiedClassName, copiedSpecName, copiedMode);
+    const currentUpdated = normalizeDateForCompare(current?.updatedAt);
+    const outdated = Boolean(
+      current &&
+      copiedExport &&
+      (copiedExport !== String(current?.exportString || "") || copiedUpdated !== currentUpdated)
+    );
+
+    tracked.push({
+      className: copiedClassName,
+      specName: copiedSpecName,
+      mode: copiedMode,
+      copiedAt: row?.created_at || null,
+      copiedTitle: row?.build_title || null,
+      copiedUpdatedAt: copiedUpdated || null,
+      currentTitle: current?.title || null,
+      currentUpdatedAt: current?.updatedAt || null,
+      hasCurrent: Boolean(current),
+      outdated
+    });
+  }
+
+  tracked.sort((a, b) => {
+    const at = Number(new Date(a?.copiedAt || 0).getTime()) || 0;
+    const bt = Number(new Date(b?.copiedAt || 0).getTime()) || 0;
+    return bt - at;
+  });
+  return tracked;
+}
+
 function renderAuthState() {
   if (!supabaseClient) {
     if (authStatusText) authStatusText.textContent = "Logins are disabled until Supabase is configured.";
@@ -1417,66 +1540,85 @@ async function refreshBuildFreshnessAlert() {
     return;
   }
   const token = await getAuthAccessToken();
-  if (!token) {
-    renderLocalTrackedFallback();
-    return;
-  }
-  try {
-    const res = await fetch("/api/build-alerts", {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${token}`
+  if (token) {
+    try {
+      const res = await fetch("/api/build-alerts", {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      });
+      if (res.ok) {
+        const payload = await res.json();
+        const remoteTracked = Array.isArray(payload?.tracked) ? payload.tracked : [];
+        const localTracked = getLocalTrackedBuilds();
+        const mergedTracked = mergeTrackedBuildLists(remoteTracked, localTracked);
+        renderBuildFreshnessAlert(mergedTracked.filter((item) => Boolean(item?.outdated)));
+        renderMyBuildsPanel(mergedTracked);
+        return;
       }
-    });
-    if (!res.ok) {
-      renderLocalTrackedFallback();
-      return;
+    } catch {
+      // Fall through to direct Supabase fallback.
     }
-    const payload = await res.json();
-    const remoteTracked = Array.isArray(payload?.tracked) ? payload.tracked : [];
+  }
+
+  const directTracked = await loadTrackedBuildsDirectly();
+  if (Array.isArray(directTracked)) {
     const localTracked = getLocalTrackedBuilds();
-    const mergedTracked = mergeTrackedBuildLists(remoteTracked, localTracked);
+    const mergedTracked = mergeTrackedBuildLists(directTracked, localTracked);
     renderBuildFreshnessAlert(mergedTracked.filter((item) => Boolean(item?.outdated)));
     renderMyBuildsPanel(mergedTracked);
-  } catch {
-    renderLocalTrackedFallback();
+    if (myBuildsHint && directTracked.length > 0) {
+      myBuildsHint.textContent = `${myBuildsHint.textContent} | direct sync`;
+    }
+    return;
   }
+
+  renderLocalTrackedFallback();
 }
 
 async function trackCopiedBuildForUser() {
   if (!activeBuild || !selectedClass || !selectedSpec || !selectedMode) return;
   if (!authCurrentUser) return;
+  const payload = {
+    action: "copy",
+    className: selectedClass,
+    specName: selectedSpec,
+    mode: selectedMode,
+    exportString: activeBuild.exportString || "",
+    buildUpdated: activeBuild.updated || null,
+    buildTitle: activeBuild.title || null,
+    confidenceScore: activeBuild.confidenceScore ?? null
+  };
+
+  let saved = false;
   const token = await getAuthAccessToken();
-  if (!token) {
+  if (token) {
+    try {
+      const res = await fetch("/api/build-events", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(payload)
+      });
+      saved = res.ok;
+    } catch {
+      saved = false;
+    }
+  }
+
+  if (!saved) {
+    saved = await saveBuildEventDirectly(payload);
+  }
+
+  if (!saved) {
     renderLocalTrackedFallback();
     return;
   }
-  try {
-    const res = await fetch("/api/build-events", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify({
-        action: "copy",
-        className: selectedClass,
-        specName: selectedSpec,
-        mode: selectedMode,
-        exportString: activeBuild.exportString || "",
-        buildUpdated: activeBuild.updated || null,
-        buildTitle: activeBuild.title || null,
-        confidenceScore: activeBuild.confidenceScore ?? null
-      })
-    });
-    if (!res.ok) {
-      renderLocalTrackedFallback();
-      return;
-    }
-    await refreshBuildFreshnessAlert();
-  } catch {
-    renderLocalTrackedFallback();
-  }
+
+  await refreshBuildFreshnessAlert();
 }
 
 async function signInWithEmailPassword() {
