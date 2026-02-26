@@ -974,6 +974,8 @@ function setAuthBusy(isBusy) {
 function openAuthModal() {
   if (!authModal) return;
   authModal.hidden = false;
+  authModal.style.display = "grid";
+  authModal.setAttribute("aria-hidden", "false");
   document.body.classList.add("auth-modal-open");
   setAuthMessage("");
   if (authEmailInput) authEmailInput.focus();
@@ -982,6 +984,8 @@ function openAuthModal() {
 function closeAuthModal() {
   if (!authModal) return;
   authModal.hidden = true;
+  authModal.style.display = "none";
+  authModal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("auth-modal-open");
   setAuthMessage("");
 }
