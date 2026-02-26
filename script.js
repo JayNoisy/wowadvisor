@@ -100,6 +100,8 @@ const M_PLUS_AFFIXES = [
   "Incorporeal"
 ];
 
+const ENABLE_TALENT_TREE = false;
+
 // =========================
 // DOM References
 // =========================
@@ -136,6 +138,7 @@ const buildNotes = document.getElementById("buildNotes");
 const statHint = document.getElementById("statHint");
 const statPills = document.getElementById("statPills");
 const statExplain = document.getElementById("statExplain");
+const talentCard = document.getElementById("talentCard");
 const talentTreeHint = document.getElementById("talentTreeHint");
 const talentTreeWrap = document.getElementById("talentTreeWrap");
 const talentSystem = document.getElementById("talent-system");
@@ -905,6 +908,10 @@ function hideTooltip() {
 }
 
 function resetTalentTreeCard(message) {
+  if (!ENABLE_TALENT_TREE) {
+    if (talentCard) talentCard.hidden = true;
+    return;
+  }
   talentTreeHint.textContent = message;
   talentTreeHint.hidden = false;
   talentTreeWrap.hidden = false;
@@ -2504,6 +2511,10 @@ function renderStatPriorities(className, specName, mode) {
 }
 
 function renderTalentTree(className, specName) {
+  if (!ENABLE_TALENT_TREE) {
+    if (talentCard) talentCard.hidden = true;
+    return;
+  }
   if (!className || !specName) {
     resetTalentTreeCard("Pick a spec to load talent nodes.");
     return;
@@ -2693,6 +2704,7 @@ async function loadBuilds() {
 }
 
 async function loadTalentTreesMeta() {
+  if (!ENABLE_TALENT_TREE) return;
   const host = String(window.location.hostname || "").toLowerCase();
   const isLocalDev = host === "localhost" || host === "127.0.0.1";
   const isGithubPages = host.endsWith(".github.io");
@@ -2890,7 +2902,7 @@ copyBtn.addEventListener("click", async () => {
   }
 });
 
-talentTreeWrap.addEventListener("click", (e) => {
+talentTreeWrap?.addEventListener("click", (e) => {
   const nodeBtn = e.target.closest(".wow-node");
   if (!nodeBtn) return;
   const nodeKey = nodeBtn.dataset.nodeKey;
@@ -3014,5 +3026,9 @@ document.addEventListener("keydown", (e) => {
 
 // Start
 injectTalentTreeStyles();
-Promise.all([loadBuilds(), loadTalentTreesMeta()]);
+if (talentCard && !ENABLE_TALENT_TREE) talentCard.hidden = true;
+Promise.all([
+  loadBuilds(),
+  ENABLE_TALENT_TREE ? loadTalentTreesMeta() : Promise.resolve()
+]);
 void initAuth();
