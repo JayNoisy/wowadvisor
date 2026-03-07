@@ -1270,10 +1270,12 @@ function buildArmorySlotTooltip(item, slotLabel) {
   const itemId = Number(item?.itemId);
   const itemIdText = Number.isFinite(itemId) ? `Item ID ${itemId}` : "Item ID Unknown";
   const details = item?.details && typeof item.details === "object" ? item.details : {};
-  const typeLine = [details?.inventoryType, details?.subclass].filter(Boolean).join(" - ");
+  const gearTypeLine = details?.gearKindLine ? `Gear Type: ${details.gearKindLine}` : "";
+  const upgradeStateLine = details?.upgradeLine ? `Upgrade: ${details.upgradeLine}` : "";
   const topLines = [
     details?.bindText,
-    typeLine,
+    gearTypeLine,
+    upgradeStateLine,
     ilvlText,
     details?.armorLine
   ].filter(Boolean);

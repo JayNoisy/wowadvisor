@@ -185,6 +185,12 @@ function compactTextList(values) {
 
 function extractItemDetailLines(row) {
   const bindText = firstNonEmpty(row?.binding?.name, row?.binding?.type, row?.binding);
+  const itemClass = firstNonEmpty(
+    row?.item_class?.name,
+    row?.item_class?.type,
+    row?.itemClass?.name,
+    row?.itemClass?.type
+  );
   const inventoryType = firstNonEmpty(
     row?.inventory_type?.name,
     row?.inventory_type?.type,
@@ -192,6 +198,10 @@ function extractItemDetailLines(row) {
     row?.inventoryType?.type
   );
   const subclass = firstNonEmpty(row?.item_subclass?.name, row?.item_subclass?.type);
+  const gearTypeBase = [itemClass, subclass].filter(Boolean).join(" - ");
+  const gearKindLine = gearTypeBase
+    ? (inventoryType ? `${gearTypeBase} (${inventoryType})` : gearTypeBase)
+    : (inventoryType || null);
 
   const armorLine = firstNonEmpty(
     row?.armor?.display?.display_string,
@@ -255,8 +265,47 @@ function extractItemDetailLines(row) {
     row?.requirements?.achievement?.display_string
   ]));
 
+  const upgradeSource = row?.upgrade || row?.item_upgrade || row?.upgrade_info || row?.item_upgrade_info || null;
+  const upgradeTrack = firstNonEmpty(
+    upgradeSource?.upgrade_track?.name,
+    upgradeSource?.track?.name,
+    upgradeSource?.track,
+    upgradeSource?.name
+  );
+  const upgradeCurrent = Number(
+    upgradeSource?.current_level?.value
+    ?? upgradeSource?.current_level
+    ?? upgradeSource?.level?.value
+    ?? upgradeSource?.level
+    ?? upgradeSource?.current
+  );
+  const upgradeMax = Number(
+    upgradeSource?.max_level?.value
+    ?? upgradeSource?.max_level
+    ?? upgradeSource?.max
+    ?? upgradeSource?.total_levels
+  );
+  const upgradeDirect = firstNonEmpty(
+    upgradeSource?.display_string,
+    upgradeSource?.display?.display_string,
+    row?.upgrade?.display_string
+  );
+  let upgradeLine = null;
+  if (upgradeDirect) {
+    upgradeLine = upgradeDirect;
+  } else if (Number.isFinite(upgradeCurrent) && upgradeCurrent > 0) {
+    const rankText = Number.isFinite(upgradeMax) && upgradeMax > 0
+      ? `${Math.trunc(upgradeCurrent)}/${Math.trunc(upgradeMax)}`
+      : `${Math.trunc(upgradeCurrent)}`;
+    upgradeLine = upgradeTrack ? `${upgradeTrack} ${rankText}` : rankText;
+  } else if (upgradeTrack) {
+    upgradeLine = upgradeTrack;
+  }
+
   return {
     bindText: bindText || null,
+    gearKindLine: gearKindLine || null,
+    upgradeLine: upgradeLine || null,
     inventoryType: inventoryType || null,
     subclass: subclass || null,
     armorLine: armorLine || null,
