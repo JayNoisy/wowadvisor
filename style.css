@@ -333,12 +333,22 @@ h1, h2, h3, h4 {
   grid-template-columns: minmax(260px, 330px) minmax(0, 1fr) minmax(260px, 330px);
   gap: 14px;
   align-items: start;
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid rgba(130, 183, 244, 0.34);
+  background:
+    linear-gradient(180deg, rgba(6, 13, 24, 0.62), rgba(4, 9, 18, 0.72)),
+    radial-gradient(130% 120% at 50% 0%, rgba(42, 101, 165, 0.2), transparent 68%);
+  padding: 12px;
+  box-shadow:
+    0 0 0 1px rgba(187, 216, 255, 0.08) inset,
+    0 16px 28px rgba(0, 0, 0, 0.34);
 }
 
 .armory-slots {
   display: grid;
   gap: 10px;
-  padding-top: 6px;
+  padding: 6px 4px 0 4px;
 }
 
 .armory-slot-row {
@@ -444,22 +454,20 @@ h1, h2, h3, h4 {
 }
 
 .armory-model-card {
-  border: 1px solid rgba(111, 166, 232, 0.44);
-  border-radius: 6px;
-  background: rgba(4, 9, 16, 0.6);
-  padding: 10px;
-  width: min(920px, 100%);
-  margin: 0 auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  width: 100%;
+  margin: 0;
   min-height: 380px;
   perspective: 1200px;
   display: grid;
-  gap: 10px;
+  gap: 12px;
   align-items: start;
   transform-style: preserve-3d;
   transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
-  box-shadow:
-    0 18px 34px rgba(6, 14, 29, 0.42),
-    0 0 0 1px rgba(184, 214, 255, 0.1) inset;
+  box-shadow: none;
 }
 
 .armory-model-card.has-model {
@@ -473,10 +481,10 @@ h1, h2, h3, h4 {
 .armory-model-stage {
   width: 100%;
   min-height: 340px;
-  border-radius: 5px;
-  border: 1px solid rgba(137, 189, 255, 0.34);
+  border-radius: 0;
+  border: 0;
   background:
-    linear-gradient(180deg, rgba(6, 12, 22, 0.36), rgba(4, 8, 16, 0.58)),
+    linear-gradient(180deg, rgba(6, 12, 22, 0.18), rgba(4, 8, 16, 0.32)),
     radial-gradient(90% 110% at 50% 0%, rgba(55, 131, 198, 0.25), rgba(4, 9, 18, 0.74) 62%),
     url("assets/hero/hero-background.png"),
     linear-gradient(180deg, rgba(8, 15, 30, 0.76), rgba(4, 9, 18, 0.8));
@@ -502,8 +510,8 @@ h1, h2, h3, h4 {
 }
 
 .armory-weapon-slots {
-  width: min(540px, 100%);
-  margin: 0 auto;
+  width: min(600px, 100%);
+  margin: 0 auto 2px auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 9px;
@@ -2027,6 +2035,7 @@ body.auth-modal-open {
   .armory-paperdoll {
     grid-template-columns: 1fr;
     gap: 8px;
+    padding: 10px;
   }
 
   .armory-slots {
