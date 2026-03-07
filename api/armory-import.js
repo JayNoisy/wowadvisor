@@ -134,7 +134,34 @@ function extractCharacterRender(mediaPayload) {
   return { renderUrl: renderUrl || null, avatarUrl: avatarUrl || null };
 }
 
-function normalizeGearItems(equipmentPayload) {
+function extractItemIconUrl(mediaPayload) {
+  const assets = Array.isArray(mediaPayload?.assets) ? mediaPayload.assets : [];
+  const icon = assets.find((asset) => String(asset?.key || "").toLowerCase() === "icon");
+  if (icon?.value) return String(icon.value).trim();
+  const fallback = assets.find((asset) => String(asset?.value || "").trim().length > 0);
+  return fallback?.value ? String(fallback.value).trim() : null;
+}
+
+async function fetchItemIconMap(region, locale, token, itemIds) {
+  const ids = Array.from(new Set(
+    (Array.isArray(itemIds) ? itemIds : [])
+      .map((id) => Number(id))
+      .filter((id) => Number.isFinite(id) && id > 0)
+  ));
+  if (ids.length === 0) return new Map();
+
+  const namespace = `static-${region}`;
+  const rows = await Promise.all(ids.map(async (id) => {
+    const url = `https://${region}.api.blizzard.com/data/wow/media/item/${id}?namespace=${encodeURIComponent(namespace)}&locale=${encodeURIComponent(locale)}`;
+    const payload = await tryFetchApi(url, token);
+    const iconUrl = extractItemIconUrl(payload);
+    return [id, iconUrl || null];
+  }));
+
+  return new Map(rows);
+}
+
+function normalizeGearItems(equipmentPayload, iconByItemId = null) {
   const equippedItems = Array.isArray(equipmentPayload?.equipped_items) ? equipmentPayload.equipped_items : [];
   const slotOrder = [
     "head",
@@ -162,13 +189,15 @@ function normalizeGearItems(equipmentPayload) {
     const itemLevel = Number(row?.level?.value ?? row?.level ?? row?.item_level ?? 0) || null;
     const quality = firstNonEmpty(row?.quality?.name, row?.quality?.type);
     const itemId = Number(row?.item?.id ?? parseHrefId(row?.item?.key?.href ?? row?.item?.href));
+    const normalizedId = Number.isFinite(itemId) ? itemId : null;
     return {
       slot,
       slotType,
       name,
       itemLevel,
       quality: quality || null,
-      itemId: Number.isFinite(itemId) ? itemId : null
+      itemId: normalizedId,
+      iconUrl: normalizedId && iconByItemId instanceof Map ? (iconByItemId.get(normalizedId) || null) : null
     };
   });
   items.sort((a, b) => {
@@ -300,7 +329,9 @@ module.exports = async function handler(req, res) {
     const armoryUrl = `https://worldofwarcraft.blizzard.com/${armoryLocalePath}/character/${region}/${realmSlug}/${characterSlug}`;
     const loadoutCodes = collectLoadoutCodes(specs);
     const mediaPayload = extractCharacterRender(media);
-    const gearItems = normalizeGearItems(equipment);
+    const rawGearItems = normalizeGearItems(equipment);
+    const iconByItemId = await fetchItemIconMap(region, locale, token, rawGearItems.map((item) => item.itemId));
+    const gearItems = normalizeGearItems(equipment, iconByItemId);
     const gearPayload = extractGearSummary(equipment, gearItems);
 
     res.setHeader("cache-control", "public, s-maxage=300, stale-while-revalidate=1200");

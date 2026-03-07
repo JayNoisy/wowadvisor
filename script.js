@@ -126,8 +126,10 @@ const armorySummary = document.getElementById("armorySummary");
 const armoryModelCard = document.getElementById("armoryModelCard");
 const armoryModelImage = document.getElementById("armoryModelImage");
 const armoryModelFallback = document.getElementById("armoryModelFallback");
+const armorySlotsLeft = document.getElementById("armorySlotsLeft");
+const armorySlotsRight = document.getElementById("armorySlotsRight");
 const armoryGearSummary = document.getElementById("armoryGearSummary");
-const armoryGearList = document.getElementById("armoryGearList");
+const armoryGearTooltip = document.getElementById("armoryGearTooltip");
 const armoryLoadoutCode = document.getElementById("armoryLoadoutCode");
 const armoryCopyBtn = document.getElementById("armoryCopyBtn");
 const armoryOpenLink = document.getElementById("armoryOpenLink");
@@ -1143,10 +1145,139 @@ function normalizeArmorySlug(value) {
     .replace(/^-+|-+$/g, "");
 }
 
+const ARMORY_SLOT_LAYOUT = {
+  left: [
+    { key: "head", label: "Head" },
+    { key: "neck", label: "Neck" },
+    { key: "shoulder", label: "Shoulder" },
+    { key: "back", label: "Back" },
+    { key: "chest", label: "Chest" },
+    { key: "wrist", label: "Wrist" },
+    { key: "main_hand", label: "Main Hand" }
+  ],
+  right: [
+    { key: "hands", label: "Hands" },
+    { key: "waist", label: "Waist" },
+    { key: "legs", label: "Legs" },
+    { key: "feet", label: "Feet" },
+    { key: "finger_1", label: "Finger 1" },
+    { key: "finger_2", label: "Finger 2" },
+    { key: "trinket_1", label: "Trinket 1" },
+    { key: "trinket_2", label: "Trinket 2" },
+    { key: "off_hand", label: "Off Hand" }
+  ]
+};
+
+function normalizeArmorySlotKey(value) {
+  const raw = String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+  const aliasMap = {
+    mainhand: "main_hand",
+    offhand: "off_hand",
+    finger1: "finger_1",
+    finger2: "finger_2",
+    trinket1: "trinket_1",
+    trinket2: "trinket_2"
+  };
+  return aliasMap[raw] || raw;
+}
+
+function armorySlotBadgeText(label) {
+  const pieces = String(label || "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+  if (pieces.length === 0) return "?";
+  if (pieces.length === 1) return pieces[0].slice(0, 2).toUpperCase();
+  return `${pieces[0][0] || ""}${pieces[1][0] || ""}`.toUpperCase();
+}
+
 function setArmoryStatus(message, isError = false) {
   if (!armoryStatus) return;
   armoryStatus.textContent = String(message || "");
   armoryStatus.classList.toggle("error", Boolean(isError));
+}
+
+function hideArmoryGearTooltip() {
+  if (!armoryGearTooltip) return;
+  armoryGearTooltip.hidden = true;
+  armoryGearTooltip.innerHTML = "";
+}
+
+function moveArmoryGearTooltip(clientX, clientY) {
+  if (!armoryGearTooltip || armoryGearTooltip.hidden) return;
+  const margin = 14;
+  const viewportW = window.innerWidth;
+  const viewportH = window.innerHeight;
+  const rect = armoryGearTooltip.getBoundingClientRect();
+  const width = rect.width || 220;
+  const height = rect.height || 90;
+  let left = clientX + margin;
+  let top = clientY + margin;
+  if (left + width + 8 > viewportW) left = Math.max(8, clientX - width - margin);
+  if (top + height + 8 > viewportH) top = Math.max(8, clientY - height - margin);
+  armoryGearTooltip.style.left = `${left}px`;
+  armoryGearTooltip.style.top = `${top}px`;
+}
+
+function showArmoryGearTooltip(html, clientX, clientY) {
+  if (!armoryGearTooltip) return;
+  armoryGearTooltip.innerHTML = html;
+  armoryGearTooltip.hidden = false;
+  moveArmoryGearTooltip(clientX, clientY);
+}
+
+function buildArmorySlotTooltip(item, slotLabel) {
+  const safeSlot = escapeHtml(slotLabel || "Slot");
+  if (!item) {
+    return `<p class="armory-tooltip-title">${safeSlot}</p><p class="armory-tooltip-line muted">No item equipped.</p>`;
+  }
+  const safeName = escapeHtml(String(item?.name || "Unknown Item"));
+  const safeQuality = escapeHtml(String(item?.quality || "Unknown Quality"));
+  const ilvl = Number(item?.itemLevel);
+  const ilvlText = Number.isFinite(ilvl) && ilvl > 0 ? `Item Level ${ilvl}` : "Item Level Unknown";
+  const itemId = Number(item?.itemId);
+  const itemIdText = Number.isFinite(itemId) ? `Item ID ${itemId}` : "Item ID Unknown";
+  return `
+    <p class="armory-tooltip-title">${safeName}</p>
+    <p class="armory-tooltip-line">${safeSlot}</p>
+    <p class="armory-tooltip-line">${escapeHtml(ilvlText)}</p>
+    <p class="armory-tooltip-line">${safeQuality}</p>
+    <p class="armory-tooltip-line muted">${escapeHtml(itemIdText)}</p>
+  `;
+}
+
+function renderArmorySlotColumn(containerEl, slots, gearBySlot) {
+  if (!containerEl) return;
+  containerEl.innerHTML = "";
+  slots.forEach((slot) => {
+    const item = gearBySlot.get(slot.key) || null;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = `armory-slot-btn${item ? " filled" : " empty"}`;
+    btn.setAttribute("aria-label", item ? `${slot.label}: ${item.name}` : `${slot.label}: Empty`);
+    btn.title = item ? `${slot.label}: ${item.name}` : `${slot.label}: Empty`;
+
+    if (item?.iconUrl) {
+      btn.innerHTML = `<img class="armory-slot-icon" src="${escapeHtml(item.iconUrl)}" alt="" loading="lazy" decoding="async" />`;
+    } else {
+      btn.innerHTML = `<span class="armory-slot-fallback">${escapeHtml(armorySlotBadgeText(slot.label))}</span>`;
+    }
+
+    const tooltipHtml = buildArmorySlotTooltip(item, slot.label);
+    btn.addEventListener("pointerenter", (event) => {
+      showArmoryGearTooltip(tooltipHtml, event.clientX, event.clientY);
+    });
+    btn.addEventListener("pointermove", (event) => {
+      moveArmoryGearTooltip(event.clientX, event.clientY);
+    });
+    btn.addEventListener("pointerleave", hideArmoryGearTooltip);
+    btn.addEventListener("pointercancel", hideArmoryGearTooltip);
+
+    containerEl.appendChild(btn);
+  });
 }
 
 function resetArmoryModelTilt() {
@@ -1171,6 +1302,8 @@ function updateArmoryModelTilt(event) {
 function resetArmoryResult() {
   if (armoryResult) armoryResult.hidden = true;
   if (armorySummary) armorySummary.textContent = "";
+  if (armorySlotsLeft) armorySlotsLeft.innerHTML = "";
+  if (armorySlotsRight) armorySlotsRight.innerHTML = "";
   if (armoryModelCard) armoryModelCard.classList.remove("has-model");
   if (armoryModelImage) {
     armoryModelImage.hidden = true;
@@ -1179,7 +1312,7 @@ function resetArmoryResult() {
   resetArmoryModelTilt();
   if (armoryModelFallback) armoryModelFallback.hidden = false;
   if (armoryGearSummary) armoryGearSummary.textContent = "";
-  if (armoryGearList) armoryGearList.innerHTML = "";
+  hideArmoryGearTooltip();
   if (armoryLoadoutCode) armoryLoadoutCode.value = "";
   if (armoryCopyBtn) {
     armoryCopyBtn.disabled = true;
@@ -1217,6 +1350,15 @@ function renderArmoryResult(payload) {
   }
 
   const gear = Array.isArray(payload?.gear?.items) ? payload.gear.items : [];
+  const gearBySlot = new Map();
+  gear.forEach((item) => {
+    const key = normalizeArmorySlotKey(item?.slotType || item?.slot || "");
+    if (!key || gearBySlot.has(key)) return;
+    gearBySlot.set(key, item);
+  });
+  renderArmorySlotColumn(armorySlotsLeft, ARMORY_SLOT_LAYOUT.left, gearBySlot);
+  renderArmorySlotColumn(armorySlotsRight, ARMORY_SLOT_LAYOUT.right, gearBySlot);
+
   const equippedIlvl = Number(payload?.gear?.equippedItemLevel);
   const averageIlvl = Number(payload?.gear?.averageItemLevel);
   if (armoryGearSummary) {
@@ -1225,15 +1367,6 @@ function renderArmoryResult(payload) {
     if (Number.isFinite(averageIlvl) && averageIlvl > 0) parts.push(`Average iLvl: ${averageIlvl}`);
     if (gear.length > 0) parts.push(`Items: ${gear.length}`);
     armoryGearSummary.textContent = parts.join(" | ") || "Gear data unavailable.";
-  }
-  if (armoryGearList) {
-    armoryGearList.innerHTML = gear.map((item) => {
-      const slot = escapeHtml(String(item?.slot || "Slot"));
-      const itemName = escapeHtml(String(item?.name || "Unknown Item"));
-      const ilvl = Number(item?.itemLevel);
-      const ilvlText = Number.isFinite(ilvl) && ilvl > 0 ? `iLvl ${ilvl}` : "iLvl ?";
-      return `<li class="armory-gear-item"><span class="armory-gear-slot">${slot}</span><span class="armory-gear-name">${itemName}</span><span class="armory-gear-ilvl">${ilvlText}</span></li>`;
-    }).join("");
   }
 
   const codes = Array.isArray(payload?.loadoutCodes) ? payload.loadoutCodes : [];

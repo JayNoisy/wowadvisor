@@ -318,22 +318,61 @@ h1, h2, h3, h4 {
   color: #dceaff;
 }
 
-.armory-preview-grid {
+.armory-paperdoll {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  align-items: start;
+  grid-template-columns: 62px minmax(0, 1fr) 62px;
+  gap: 10px;
+  align-items: center;
 }
 
-.armory-model-card,
-.armory-gear-card {
+.armory-slots {
+  display: grid;
+  gap: 8px;
+}
+
+.armory-slot-btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  border: 1px solid rgba(169, 205, 255, 0.38);
+  background: linear-gradient(180deg, rgba(27, 47, 78, 0.8), rgba(12, 23, 43, 0.84));
+  padding: 0;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 7px 14px rgba(6, 14, 29, 0.36);
+  cursor: default;
+}
+
+.armory-slot-btn.filled {
+  border-color: rgba(205, 228, 255, 0.52);
+}
+
+.armory-slot-btn.empty {
+  border-style: dashed;
+  border-color: rgba(149, 181, 226, 0.28);
+  opacity: 0.74;
+}
+
+.armory-slot-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.armory-slot-fallback {
+  color: #b7cff3;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.armory-model-card {
   border: 1px solid rgba(174, 212, 255, 0.22);
   border-radius: 11px;
   background: rgba(7, 14, 29, 0.58);
   padding: 10px;
-}
-
-.armory-model-card {
   width: min(920px, 100%);
   margin: 0 auto;
   min-height: 380px;
@@ -382,48 +421,37 @@ h1, h2, h3, h4 {
 }
 
 .armory-gear-summary {
-  margin: 0 0 8px 0;
+  margin: 2px 0 0 0;
 }
 
-.armory-gear-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 6px;
+.armory-gear-tooltip {
+  position: fixed;
+  z-index: 2200;
+  max-width: 260px;
+  border: 1px solid rgba(239, 204, 118, 0.55);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(15, 11, 4, 0.96), rgba(9, 7, 2, 0.98));
+  color: #f8e2a9;
+  padding: 8px 9px;
+  pointer-events: none;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.52),
+    0 0 0 1px rgba(255, 217, 126, 0.12) inset;
 }
 
-.armory-gear-item {
-  display: grid;
-  grid-template-columns: 110px minmax(0, 1fr) auto;
-  gap: 8px;
-  align-items: center;
-  border: 1px solid rgba(160, 202, 255, 0.2);
-  border-radius: 9px;
-  background: rgba(8, 16, 31, 0.66);
-  padding: 7px 8px;
-}
-
-.armory-gear-slot {
-  font-size: 11px;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-  color: #aecdff;
-}
-
-.armory-gear-name {
-  min-width: 0;
-  color: #dceaff;
+.armory-tooltip-title {
+  margin: 0 0 4px 0;
+  color: #ffd773;
   font-size: 13px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-.armory-gear-ilvl {
-  color: #e8c682;
+.armory-tooltip-line {
+  margin: 0;
+  color: #f6e2b4;
   font-size: 12px;
-  font-weight: 700;
+  line-height: 1.3;
 }
 
 .armory-loadout {
@@ -1898,8 +1926,20 @@ body.auth-modal-open {
     grid-template-columns: 1fr;
   }
 
-  .armory-preview-grid {
+  .armory-paperdoll {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .armory-slots {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .armory-slot-btn {
+    width: 100%;
+    max-width: 54px;
+    justify-self: center;
   }
 
   .armory-model-card {
@@ -1912,11 +1952,6 @@ body.auth-modal-open {
 
   .armory-model-image {
     max-height: 380px;
-  }
-
-  .armory-gear-item {
-    grid-template-columns: 1fr;
-    gap: 3px;
   }
 
   .builds-hero {
