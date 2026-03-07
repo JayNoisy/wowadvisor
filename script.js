@@ -1546,9 +1546,17 @@ function renderArmoryResult(payload) {
   const className = String(character?.className || "Unknown Class");
   const spec = String(character?.activeSpec || "").trim();
   const level = Number(character?.level);
+  const overallIlvlForSummary = (() => {
+    const equipped = Number(payload?.gear?.equippedItemLevel);
+    const average = Number(payload?.gear?.averageItemLevel);
+    return Number.isFinite(equipped) && equipped > 0 ? equipped : average;
+  })();
   const levelPart = Number.isFinite(level) ? ` | Level ${level}` : "";
   const specPart = spec ? ` (${spec})` : "";
-  armorySummary.textContent = `${name} — ${realm} | ${className}${specPart}${levelPart}`;
+  const ilvlPart = Number.isFinite(overallIlvlForSummary) && overallIlvlForSummary > 0
+    ? ` | Overall iLvl ${Math.round(overallIlvlForSummary)}`
+    : "";
+  armorySummary.textContent = `${name} - ${realm} | ${className}${specPart}${levelPart}${ilvlPart}`;
 
   renderArmoryHeadlineStats(payload);
   const renderUrl = String(payload?.media?.renderUrl || payload?.media?.avatarUrl || "").trim();
