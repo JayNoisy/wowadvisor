@@ -1977,6 +1977,7 @@ const SPELL_ICON_MAP = {
   "Execution Sentence": "spell_paladin_executionsentence",
   "Divine Storm": "ability_paladin_divinestorm",
   "Divine Toll": "spell_kyrian_divinetoll",
+  "Beacon of Light": "ability_paladin_beaconoflight",
   "Barbed Shot": "ability_hunter_barbedshot",
   "Frenzy": "ability_hunter_frenzy",
   "Kill Command": "ability_hunter_killcommand",
@@ -2022,6 +2023,7 @@ const SPELL_ICON_MAP = {
   "Power Word: Radiance": "spell_priest_power-word",
   "Penance": "spell_holy_penance",
   "Mind Blast": "spell_shadow_unholyfrenzy",
+  "Mind Sear": "spell_shadow_mindshear",
   "Smite": "spell_holy_holysmite",
   "Power Word: Shield": "spell_holy_powerwordshield",
   "Rapture": "spell_holy_rapture",
@@ -2123,6 +2125,7 @@ const SPELL_ICON_MAP = {
   "Conflagrate": "spell_fire_fireball",
   "Chaos Bolt": "ability_warlock_chaosbolt",
   "Havoc": "ability_warlock_baneofhavoc",
+  "Infernal": "spell_shadow_summoninfernal",
   "Summon Infernal": "spell_shadow_summoninfernal",
   "Rain of Fire": "spell_shadow_rainoffire",
   "Keg Smash": "achievement_brewery_2",
@@ -2207,13 +2210,39 @@ const SPELL_ICON_MAP = {
   "Breath of Eons": "ability_evoker_breathofeons"
 };
 
-const SORTED_SPELL_NAMES = Object.keys(SPELL_ICON_MAP).sort((a, b) => b.length - a.length);
+const ROTATION_ICON_FALLBACK_URL = "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg";
+const ROTATION_TIP_ICON_URL = "https://wow.zamimg.com/images/wow/icons/large/inv_misc_book_11.jpg";
+
+function normalizeLookupText(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[’`]/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const SORTED_SPELL_NAMES = Object.keys(SPELL_ICON_MAP)
+  .map((name) => ({ name, needle: normalizeLookupText(name) }))
+  .sort((a, b) => b.needle.length - a.needle.length);
+
+const SPELL_ICON_ALIASES = {
+  "beacon": "Beacon of Light",
+  "infernal": "Infernal",
+  "mind sear": "Mind Sear"
+};
+
+const SORTED_SPELL_ALIASES = Object.keys(SPELL_ICON_ALIASES)
+  .map((alias) => ({ alias: normalizeLookupText(alias), spellName: SPELL_ICON_ALIASES[alias] }))
+  .sort((a, b) => b.alias.length - a.alias.length);
 
 function findSpellNameInStep(stepText) {
-  const text = String(stepText || "").toLowerCase();
+  const text = normalizeLookupText(stepText);
   if (!text) return null;
-  for (const spellName of SORTED_SPELL_NAMES) {
-    if (text.includes(spellName.toLowerCase())) return spellName;
+  for (const entry of SORTED_SPELL_NAMES) {
+    if (text.includes(entry.needle)) return entry.name;
+  }
+  for (const entry of SORTED_SPELL_ALIASES) {
+    if (text.includes(entry.alias)) return entry.spellName;
   }
   return null;
 }
@@ -2228,6 +2257,12 @@ function iconUrlFromIconName(iconNameLike) {
   const iconName = String(iconNameLike || "").trim().toLowerCase();
   if (!iconName) return null;
   return `https://wow.zamimg.com/images/wow/icons/large/${iconName}.jpg`;
+}
+
+function renderRotationIcon(iconUrl) {
+  const src = escapeHtml(iconUrl || ROTATION_ICON_FALLBACK_URL);
+  const fallback = escapeHtml(ROTATION_ICON_FALLBACK_URL);
+  return `<img class="rotation-spell-icon" src="${src}" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${fallback}';" />`;
 }
 
 function getRotationSteps(className, specName, mode) {
@@ -2852,9 +2887,7 @@ function renderRotationHelper(className, specName, mode) {
   rotationSteps.innerHTML = steps.map((step) => {
     const spellName = findSpellNameInStep(step);
     const spellIconUrl = spellName ? iconUrlForSpellName(spellName) : null;
-    const iconHtml = spellIconUrl
-      ? `<span class="rotation-spell-icon" style="background-image:url('${escapeHtml(spellIconUrl)}')" aria-hidden="true"></span>`
-      : `<span class="rotation-spell-icon fallback" aria-hidden="true">?</span>`;
+    const iconHtml = renderRotationIcon(spellIconUrl || ROTATION_TIP_ICON_URL);
     const spellHtml = spellName ? `<span class="rotation-spell-name">${escapeHtml(spellName)}</span>` : "";
     return `<li class="rotation-step-item">${iconHtml}<div class="rotation-step-copy">${spellHtml}<span>${escapeHtml(step)}</span></div></li>`;
   }).join("");

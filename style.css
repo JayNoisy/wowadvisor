@@ -1073,22 +1073,14 @@ body.auth-modal-open {
 .rotation-spell-icon {
   width: 26px;
   height: 26px;
+  display: block;
+  object-fit: cover;
   border-radius: 6px;
   border: 1px solid rgba(196, 214, 250, 0.55);
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(160deg, #5d6f96 0%, #253455 100%);
   box-shadow:
     0 0 0 1px rgba(18, 26, 44, 0.82) inset,
     0 0 8px rgba(110, 151, 232, 0.22);
-}
-
-.rotation-spell-icon.fallback {
-  display: grid;
-  place-items: center;
-  background: linear-gradient(160deg, #5d6f96 0%, #253455 100%);
-  color: #d7e7ff;
-  font-size: 12px;
-  font-weight: 700;
 }
 
 /* Build card */
