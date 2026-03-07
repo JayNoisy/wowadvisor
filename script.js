@@ -1451,12 +1451,24 @@ function formatArmoryStatValue(value, suffix = "") {
   return `${text}${suffix}`;
 }
 
+function getArmoryOverallIlvl(payload) {
+  const equippedIlvl = Number(payload?.gear?.equippedItemLevel);
+  if (Number.isFinite(equippedIlvl) && equippedIlvl > 0) return equippedIlvl;
+
+  const averageIlvl = Number(payload?.gear?.averageItemLevel);
+  if (Number.isFinite(averageIlvl) && averageIlvl > 0) return averageIlvl;
+
+  const itemLevels = (Array.isArray(payload?.gear?.items) ? payload.gear.items : [])
+    .map((item) => Number(item?.itemLevel))
+    .filter((value) => Number.isFinite(value) && value > 0);
+  if (itemLevels.length === 0) return null;
+  return itemLevels.reduce((sum, value) => sum + value, 0) / itemLevels.length;
+}
+
 function renderArmoryHeadlineStats(payload) {
   if (!armoryHeadlineStats) return;
 
-  const equippedIlvl = Number(payload?.gear?.equippedItemLevel);
-  const averageIlvl = Number(payload?.gear?.averageItemLevel);
-  const overallIlvl = Number.isFinite(equippedIlvl) && equippedIlvl > 0 ? equippedIlvl : averageIlvl;
+  const overallIlvl = getArmoryOverallIlvl(payload);
   const critPct = Number(payload?.stats?.critPct);
   const hastePct = Number(payload?.stats?.hastePct);
   const masteryPct = Number(payload?.stats?.masteryPct);
@@ -1546,11 +1558,7 @@ function renderArmoryResult(payload) {
   const className = String(character?.className || "Unknown Class");
   const spec = String(character?.activeSpec || "").trim();
   const level = Number(character?.level);
-  const overallIlvlForSummary = (() => {
-    const equipped = Number(payload?.gear?.equippedItemLevel);
-    const average = Number(payload?.gear?.averageItemLevel);
-    return Number.isFinite(equipped) && equipped > 0 ? equipped : average;
-  })();
+  const overallIlvlForSummary = getArmoryOverallIlvl(payload);
   const levelPart = Number.isFinite(level) ? ` | Level ${level}` : "";
   const specPart = spec ? ` (${spec})` : "";
   const ilvlPart = Number.isFinite(overallIlvlForSummary) && overallIlvlForSummary > 0
@@ -1588,8 +1596,10 @@ function renderArmoryResult(payload) {
 
   const equippedIlvl = Number(payload?.gear?.equippedItemLevel);
   const averageIlvl = Number(payload?.gear?.averageItemLevel);
+  const overallIlvl = getArmoryOverallIlvl(payload);
   if (armoryGearSummary) {
     const parts = [];
+    if (Number.isFinite(overallIlvl) && overallIlvl > 0) parts.push(`Overall iLvl: ${Math.round(overallIlvl)}`);
     if (Number.isFinite(equippedIlvl) && equippedIlvl > 0) parts.push(`Equipped iLvl: ${equippedIlvl}`);
     if (Number.isFinite(averageIlvl) && averageIlvl > 0) parts.push(`Average iLvl: ${averageIlvl}`);
     if (gear.length > 0) parts.push(`Items: ${gear.length}`);

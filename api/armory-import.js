@@ -406,8 +406,20 @@ function normalizeGearItems(equipmentPayload, iconByItemId = null) {
 }
 
 function extractGearSummary(equipmentPayload, items) {
-  const equippedItemLevel = Number(equipmentPayload?.equipped_item_level) || null;
-  const averageItemLevel = Number(equipmentPayload?.average_item_level) || null;
+  const parseLevel = (value) => {
+    const num = Number(value?.value ?? value);
+    return Number.isFinite(num) && num > 0 ? num : null;
+  };
+  const equippedItemLevel = parseLevel(equipmentPayload?.equipped_item_level);
+  const averageItemLevelRaw = parseLevel(equipmentPayload?.average_item_level);
+  const itemLevels = (Array.isArray(items) ? items : [])
+    .map((item) => Number(item?.itemLevel))
+    .filter((value) => Number.isFinite(value) && value > 0);
+  const averageItemLevel = averageItemLevelRaw || (
+    itemLevels.length > 0
+      ? Math.round((itemLevels.reduce((sum, value) => sum + value, 0) / itemLevels.length) * 10) / 10
+      : null
+  );
   return {
     equippedItemLevel,
     averageItemLevel,
