@@ -1194,6 +1194,10 @@ function armorySlotBadgeText(label) {
   return `${pieces[0][0] || ""}${pieces[1][0] || ""}`.toUpperCase();
 }
 
+let armoryModelRotateX = 0;
+let armoryModelRotateY = 0;
+let armoryModelZoom = 1;
+
 function setArmoryStatus(message, isError = false) {
   if (!armoryStatus) return;
   armoryStatus.textContent = String(message || "");
@@ -1280,10 +1284,20 @@ function renderArmorySlotColumn(containerEl, slots, gearBySlot) {
   });
 }
 
-function resetArmoryModelTilt() {
+function applyArmoryModelTransform() {
   if (!armoryModelCard || !armoryModelImage) return;
-  armoryModelCard.style.transform = "";
-  armoryModelImage.style.transform = "translateZ(14px)";
+  armoryModelCard.style.transform = `rotateX(${armoryModelRotateX}deg) rotateY(${armoryModelRotateY}deg)`;
+  const imgRotateX = clamp(armoryModelRotateX * -0.14, -3, 3);
+  const imgRotateY = clamp(armoryModelRotateY * 0.14, -4, 4);
+  const scale = clamp(armoryModelZoom * 1.015, 0.75, 2.8);
+  armoryModelImage.style.transform = `translateZ(20px) rotateX(${imgRotateX}deg) rotateY(${imgRotateY}deg) scale(${scale})`;
+}
+
+function resetArmoryModelTilt(resetZoom = false) {
+  armoryModelRotateX = 0;
+  armoryModelRotateY = 0;
+  if (resetZoom) armoryModelZoom = 1;
+  applyArmoryModelTransform();
 }
 
 function updateArmoryModelTilt(event) {
@@ -1293,10 +1307,18 @@ function updateArmoryModelTilt(event) {
   if (!rect.width || !rect.height) return;
   const x = (event.clientX - rect.left) / rect.width - 0.5;
   const y = (event.clientY - rect.top) / rect.height - 0.5;
-  const rotateY = clamp(x * 16, -12, 12);
-  const rotateX = clamp(-y * 14, -10, 10);
-  armoryModelCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  armoryModelImage.style.transform = `translateZ(20px) rotateX(${clamp(rotateX * -0.14, -3, 3)}deg) rotateY(${clamp(rotateY * 0.14, -4, 4)}deg) scale(1.015)`;
+  armoryModelRotateY = clamp(x * 16, -12, 12);
+  armoryModelRotateX = clamp(-y * 14, -10, 10);
+  applyArmoryModelTransform();
+}
+
+function updateArmoryModelZoom(event) {
+  if (!armoryModelCard || !armoryModelImage) return;
+  if (!armoryModelCard.classList.contains("has-model")) return;
+  event.preventDefault();
+  const delta = event.deltaY < 0 ? 0.08 : -0.08;
+  armoryModelZoom = clamp(armoryModelZoom + delta, 0.75, 2.75);
+  applyArmoryModelTransform();
 }
 
 function resetArmoryResult() {
@@ -1309,7 +1331,7 @@ function resetArmoryResult() {
     armoryModelImage.hidden = true;
     armoryModelImage.src = "";
   }
-  resetArmoryModelTilt();
+  resetArmoryModelTilt(true);
   if (armoryModelFallback) armoryModelFallback.hidden = false;
   if (armoryGearSummary) armoryGearSummary.textContent = "";
   hideArmoryGearTooltip();
@@ -1346,7 +1368,7 @@ function renderArmoryResult(payload) {
       armoryModelImage.src = "";
       armoryModelFallback.hidden = false;
     }
-    resetArmoryModelTilt();
+    resetArmoryModelTilt(true);
   }
 
   const gear = Array.isArray(payload?.gear?.items) ? payload.gear.items : [];
@@ -3709,6 +3731,7 @@ armoryCopyBtn?.addEventListener("click", async () => {
 armoryModelCard?.addEventListener("pointermove", updateArmoryModelTilt);
 armoryModelCard?.addEventListener("pointerleave", resetArmoryModelTilt);
 armoryModelCard?.addEventListener("pointercancel", resetArmoryModelTilt);
+armoryModelCard?.addEventListener("wheel", updateArmoryModelZoom, { passive: false });
 
 authOpenBtn?.addEventListener("click", () => {
   if (!supabaseClient) return;
