@@ -1409,7 +1409,10 @@ function updateArmoryModelZoom(event) {
 }
 
 function resetArmoryResult() {
-  if (armoryResult) armoryResult.hidden = true;
+  if (armoryResult) {
+    armoryResult.hidden = true;
+    armoryResult.style.display = "none";
+  }
   if (armorySummary) armorySummary.textContent = "";
   if (armoryWeaponSlots) armoryWeaponSlots.innerHTML = "";
   if (armorySlotsLeft) armorySlotsLeft.innerHTML = "";
@@ -1502,6 +1505,7 @@ function renderArmoryResult(payload) {
   armoryCopyBtn.disabled = !bestCode;
   armoryOpenLink.href = String(payload?.armoryUrl || "#");
   armoryResult.hidden = false;
+  armoryResult.style.display = "grid";
 
   if (bestCode) {
     setArmoryStatus("Armory data loaded. Copy the loadout code and import it in-game.");
@@ -3824,8 +3828,14 @@ armoryForm?.addEventListener("submit", (e) => {
 armoryRealmInput?.addEventListener("input", () => {
   void syncArmoryInputState({ resetResult: true, updateStatus: true });
 });
+armoryRealmInput?.addEventListener("change", () => {
+  void syncArmoryInputState({ resetResult: true, updateStatus: true });
+});
 
 armoryCharacterInput?.addEventListener("input", () => {
+  void syncArmoryInputState({ resetResult: true, updateStatus: true });
+});
+armoryCharacterInput?.addEventListener("change", () => {
   void syncArmoryInputState({ resetResult: true, updateStatus: true });
 });
 
