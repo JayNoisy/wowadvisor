@@ -161,6 +161,115 @@ async function fetchItemIconMap(region, locale, token, itemIds) {
   return new Map(rows);
 }
 
+function textFromAny(value) {
+  if (value == null) return "";
+  if (typeof value === "string") return value.trim();
+  if (typeof value === "number" && Number.isFinite(value)) return String(value);
+  if (typeof value !== "object") return "";
+  return firstNonEmpty(
+    value.display_string,
+    value.display?.display_string,
+    value.description,
+    value.name,
+    value.type,
+    value.value
+  );
+}
+
+function compactTextList(values) {
+  return (Array.isArray(values) ? values : [])
+    .map((value) => textFromAny(value))
+    .map((line) => line.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+}
+
+function extractItemDetailLines(row) {
+  const bindText = firstNonEmpty(row?.binding?.name, row?.binding?.type, row?.binding);
+  const inventoryType = firstNonEmpty(
+    row?.inventory_type?.name,
+    row?.inventory_type?.type,
+    row?.inventoryType?.name,
+    row?.inventoryType?.type
+  );
+  const subclass = firstNonEmpty(row?.item_subclass?.name, row?.item_subclass?.type);
+
+  const armorLine = firstNonEmpty(
+    row?.armor?.display?.display_string,
+    row?.armor?.display_string,
+    Number.isFinite(Number(row?.armor?.value)) ? `${Number(row.armor.value)} Armor` : ""
+  );
+
+  const weaponLines = compactTextList([
+    row?.weapon?.display?.display_string,
+    row?.weapon?.damage?.display_string,
+    row?.weapon?.attack_speed?.display_string,
+    row?.weapon?.dps?.display_string
+  ]);
+
+  const stats = Array.isArray(row?.stats) ? row.stats : [];
+  const statLines = stats
+    .map((stat) => {
+      const displayText = firstNonEmpty(stat?.display?.display_string, stat?.display_string);
+      if (displayText) return displayText;
+      const value = Number(stat?.value);
+      const statName = firstNonEmpty(stat?.type?.name, stat?.stat?.name, stat?.name);
+      if (Number.isFinite(value) && statName) return `${value > 0 ? "+" : ""}${value} ${statName}`;
+      return "";
+    })
+    .filter(Boolean);
+
+  const enchantmentLines = compactTextList(
+    (Array.isArray(row?.enchantments) ? row.enchantments : []).map((enchant) => (
+      firstNonEmpty(enchant?.display_string, enchant?.enchantment?.display_string, enchant?.name)
+    ))
+  );
+
+  const spellLines = compactTextList(
+    (Array.isArray(row?.spells) ? row.spells : []).map((spell) => (
+      firstNonEmpty(spell?.description, spell?.spell_tooltip?.description, spell?.spell?.name)
+    ))
+  );
+
+  const socketLines = compactTextList(
+    (Array.isArray(row?.sockets) ? row.sockets : []).map((socket) => {
+      const socketType = firstNonEmpty(socket?.socket_type?.name, socket?.type?.name, "Socket");
+      const insertedGem = firstNonEmpty(socket?.item?.name, socket?.gem?.name);
+      return insertedGem ? `${socketType}: ${insertedGem}` : socketType;
+    })
+  );
+
+  const durabilityValue = Number(row?.durability?.value);
+  const durabilityMax = Number(row?.durability?.max);
+  const durabilityLine = Number.isFinite(durabilityValue) && Number.isFinite(durabilityMax) && durabilityMax > 0
+    ? `Durability ${durabilityValue} / ${durabilityMax}`
+    : firstNonEmpty(row?.durability?.display_string, row?.durability?.display?.display_string);
+
+  const requirementLines = [];
+  const requiredLevel = Number(row?.requirements?.level?.value ?? row?.requirements?.level);
+  if (Number.isFinite(requiredLevel) && requiredLevel > 0) {
+    requirementLines.push(`Requires Level ${requiredLevel}`);
+  }
+  requirementLines.push(...compactTextList([
+    row?.requirements?.playable_classes?.display_string,
+    row?.requirements?.faction?.display_string,
+    row?.requirements?.achievement?.display_string
+  ]));
+
+  return {
+    bindText: bindText || null,
+    inventoryType: inventoryType || null,
+    subclass: subclass || null,
+    armorLine: armorLine || null,
+    weaponLines,
+    statLines,
+    enchantmentLines,
+    spellLines,
+    socketLines,
+    durabilityLine: durabilityLine || null,
+    requirementLines
+  };
+}
+
 function normalizeGearItems(equipmentPayload, iconByItemId = null) {
   const equippedItems = Array.isArray(equipmentPayload?.equipped_items) ? equipmentPayload.equipped_items : [];
   const slotOrder = [
@@ -190,6 +299,7 @@ function normalizeGearItems(equipmentPayload, iconByItemId = null) {
     const quality = firstNonEmpty(row?.quality?.name, row?.quality?.type);
     const itemId = Number(row?.item?.id ?? parseHrefId(row?.item?.key?.href ?? row?.item?.href));
     const normalizedId = Number.isFinite(itemId) ? itemId : null;
+    const detailLines = extractItemDetailLines(row);
     return {
       slot,
       slotType,
@@ -197,7 +307,8 @@ function normalizeGearItems(equipmentPayload, iconByItemId = null) {
       itemLevel,
       quality: quality || null,
       itemId: normalizedId,
-      iconUrl: normalizedId && iconByItemId instanceof Map ? (iconByItemId.get(normalizedId) || null) : null
+      iconUrl: normalizedId && iconByItemId instanceof Map ? (iconByItemId.get(normalizedId) || null) : null,
+      details: detailLines
     };
   });
   items.sort((a, b) => {

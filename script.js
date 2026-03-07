@@ -1249,6 +1249,14 @@ function showArmoryGearTooltip(html, clientX, clientY) {
   moveArmoryGearTooltip(clientX, clientY);
 }
 
+function renderArmoryTooltipLines(lines, className = "") {
+  const list = Array.isArray(lines) ? lines : [];
+  return list
+    .filter((line) => String(line || "").trim().length > 0)
+    .map((line) => `<p class="armory-tooltip-line${className ? ` ${className}` : ""}">${escapeHtml(String(line))}</p>`)
+    .join("");
+}
+
 function buildArmorySlotTooltip(item, slotLabel) {
   const safeSlot = escapeHtml(slotLabel || "Slot");
   if (!item) {
@@ -1256,15 +1264,39 @@ function buildArmorySlotTooltip(item, slotLabel) {
   }
   const safeName = escapeHtml(String(item?.name || "Unknown Item"));
   const safeQuality = escapeHtml(String(item?.quality || "Unknown Quality"));
+  const qualityClass = armoryItemQualityClass(item?.quality);
   const ilvl = Number(item?.itemLevel);
   const ilvlText = Number.isFinite(ilvl) && ilvl > 0 ? `Item Level ${ilvl}` : "Item Level Unknown";
   const itemId = Number(item?.itemId);
   const itemIdText = Number.isFinite(itemId) ? `Item ID ${itemId}` : "Item ID Unknown";
+  const details = item?.details && typeof item.details === "object" ? item.details : {};
+  const typeLine = [details?.inventoryType, details?.subclass].filter(Boolean).join(" - ");
+  const topLines = [
+    details?.bindText,
+    typeLine,
+    ilvlText,
+    details?.armorLine
+  ].filter(Boolean);
+  const weaponLines = Array.isArray(details?.weaponLines) ? details.weaponLines : [];
+  const statLines = Array.isArray(details?.statLines) ? details.statLines : [];
+  const enchantmentLines = Array.isArray(details?.enchantmentLines) ? details.enchantmentLines : [];
+  const socketLines = Array.isArray(details?.socketLines) ? details.socketLines : [];
+  const durabilityLines = details?.durabilityLine ? [details.durabilityLine] : [];
+  const requirementLines = Array.isArray(details?.requirementLines) ? details.requirementLines : [];
+  const spellLines = Array.isArray(details?.spellLines) ? details.spellLines : [];
+
   return `
     <p class="armory-tooltip-title">${safeName}</p>
-    <p class="armory-tooltip-line">${safeSlot}</p>
-    <p class="armory-tooltip-line">${escapeHtml(ilvlText)}</p>
-    <p class="armory-tooltip-line">${safeQuality}</p>
+    <p class="armory-tooltip-line muted">${safeSlot}</p>
+    ${renderArmoryTooltipLines(topLines)}
+    ${renderArmoryTooltipLines(weaponLines)}
+    ${renderArmoryTooltipLines(statLines, "good")}
+    ${renderArmoryTooltipLines(enchantmentLines, "good")}
+    ${renderArmoryTooltipLines(socketLines)}
+    ${renderArmoryTooltipLines(durabilityLines)}
+    ${renderArmoryTooltipLines(requirementLines, "warn")}
+    ${renderArmoryTooltipLines(spellLines, "good")}
+    <p class="armory-tooltip-line ${qualityClass}">${safeQuality}</p>
     <p class="armory-tooltip-line muted">${escapeHtml(itemIdText)}</p>
   `;
 }
