@@ -123,6 +123,10 @@ const armoryFetchBtn = document.getElementById("armoryFetchBtn");
 const armoryStatus = document.getElementById("armoryStatus");
 const armoryResult = document.getElementById("armoryResult");
 const armorySummary = document.getElementById("armorySummary");
+const armoryModelImage = document.getElementById("armoryModelImage");
+const armoryModelFallback = document.getElementById("armoryModelFallback");
+const armoryGearSummary = document.getElementById("armoryGearSummary");
+const armoryGearList = document.getElementById("armoryGearList");
 const armoryLoadoutCode = document.getElementById("armoryLoadoutCode");
 const armoryCopyBtn = document.getElementById("armoryCopyBtn");
 const armoryOpenLink = document.getElementById("armoryOpenLink");
@@ -1147,6 +1151,13 @@ function setArmoryStatus(message, isError = false) {
 function resetArmoryResult() {
   if (armoryResult) armoryResult.hidden = true;
   if (armorySummary) armorySummary.textContent = "";
+  if (armoryModelImage) {
+    armoryModelImage.hidden = true;
+    armoryModelImage.src = "";
+  }
+  if (armoryModelFallback) armoryModelFallback.hidden = false;
+  if (armoryGearSummary) armoryGearSummary.textContent = "";
+  if (armoryGearList) armoryGearList.innerHTML = "";
   if (armoryLoadoutCode) armoryLoadoutCode.value = "";
   if (armoryCopyBtn) {
     armoryCopyBtn.disabled = true;
@@ -1166,6 +1177,39 @@ function renderArmoryResult(payload) {
   const levelPart = Number.isFinite(level) ? ` | Level ${level}` : "";
   const specPart = spec ? ` (${spec})` : "";
   armorySummary.textContent = `${name} — ${realm} | ${className}${specPart}${levelPart}`;
+
+  const renderUrl = String(payload?.media?.renderUrl || payload?.media?.avatarUrl || "").trim();
+  if (armoryModelImage && armoryModelFallback) {
+    if (renderUrl) {
+      armoryModelImage.src = renderUrl;
+      armoryModelImage.hidden = false;
+      armoryModelFallback.hidden = true;
+    } else {
+      armoryModelImage.hidden = true;
+      armoryModelImage.src = "";
+      armoryModelFallback.hidden = false;
+    }
+  }
+
+  const gear = Array.isArray(payload?.gear?.items) ? payload.gear.items : [];
+  const equippedIlvl = Number(payload?.gear?.equippedItemLevel);
+  const averageIlvl = Number(payload?.gear?.averageItemLevel);
+  if (armoryGearSummary) {
+    const parts = [];
+    if (Number.isFinite(equippedIlvl) && equippedIlvl > 0) parts.push(`Equipped iLvl: ${equippedIlvl}`);
+    if (Number.isFinite(averageIlvl) && averageIlvl > 0) parts.push(`Average iLvl: ${averageIlvl}`);
+    if (gear.length > 0) parts.push(`Items: ${gear.length}`);
+    armoryGearSummary.textContent = parts.join(" | ") || "Gear data unavailable.";
+  }
+  if (armoryGearList) {
+    armoryGearList.innerHTML = gear.map((item) => {
+      const slot = escapeHtml(String(item?.slot || "Slot"));
+      const itemName = escapeHtml(String(item?.name || "Unknown Item"));
+      const ilvl = Number(item?.itemLevel);
+      const ilvlText = Number.isFinite(ilvl) && ilvl > 0 ? `iLvl ${ilvl}` : "iLvl ?";
+      return `<li class="armory-gear-item"><span class="armory-gear-slot">${slot}</span><span class="armory-gear-name">${itemName}</span><span class="armory-gear-ilvl">${ilvlText}</span></li>`;
+    }).join("");
+  }
 
   const codes = Array.isArray(payload?.loadoutCodes) ? payload.loadoutCodes : [];
   const bestCode = String(codes[0]?.code || "").trim();

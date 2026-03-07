@@ -247,6 +247,16 @@
 
         <div id="armoryResult" class="armory-result" hidden>
           <p id="armorySummary" class="armory-summary"></p>
+          <div class="armory-preview-grid">
+            <section class="armory-model-card" aria-label="Character model preview">
+              <img id="armoryModelImage" class="armory-model-image" alt="Character model preview" hidden />
+              <p id="armoryModelFallback" class="muted">Character model preview unavailable for this profile.</p>
+            </section>
+            <section class="armory-gear-card" aria-label="Equipped gear">
+              <p id="armoryGearSummary" class="armory-gear-summary muted"></p>
+              <ul id="armoryGearList" class="armory-gear-list"></ul>
+            </section>
+          </div>
           <textarea id="armoryLoadoutCode" class="armory-loadout" rows="3" readonly placeholder="Loadout code will appear here when available."></textarea>
           <div class="armory-actions">
             <button id="armoryCopyBtn" class="auth-btn" type="button" disabled>Copy Loadout Code</button>

@@ -107,6 +107,90 @@ async function fetchApi(url, token) {
   return res.json();
 }
 
+async function tryFetchApi(url, token) {
+  try {
+    return await fetchApi(url, token);
+  } catch {
+    return null;
+  }
+}
+
+function parseHrefId(href) {
+  const text = String(href || "");
+  const match = text.match(/\/(\d+)(?:\/)?(?:\?|$)/);
+  if (!match) return null;
+  const id = Number(match[1]);
+  return Number.isFinite(id) ? id : null;
+}
+
+function extractCharacterRender(mediaPayload) {
+  const assets = Array.isArray(mediaPayload?.assets) ? mediaPayload.assets : [];
+  const pick = (key) => {
+    const row = assets.find((asset) => String(asset?.key || "").toLowerCase() === key);
+    return String(row?.value || "").trim();
+  };
+  const renderUrl = pick("main-raw") || pick("main") || pick("inset");
+  const avatarUrl = pick("avatar") || pick("head");
+  return { renderUrl: renderUrl || null, avatarUrl: avatarUrl || null };
+}
+
+function normalizeGearItems(equipmentPayload) {
+  const equippedItems = Array.isArray(equipmentPayload?.equipped_items) ? equipmentPayload.equipped_items : [];
+  const slotOrder = [
+    "head",
+    "neck",
+    "shoulder",
+    "back",
+    "chest",
+    "wrist",
+    "hands",
+    "waist",
+    "legs",
+    "feet",
+    "finger_1",
+    "finger_2",
+    "trinket_1",
+    "trinket_2",
+    "main_hand",
+    "off_hand"
+  ];
+  const slotSortIndex = new Map(slotOrder.map((key, idx) => [key, idx]));
+  const items = equippedItems.map((row, idx) => {
+    const slotType = String(row?.slot?.type || "").toLowerCase();
+    const slot = firstNonEmpty(row?.slot?.name, row?.slot?.type, `Slot ${idx + 1}`);
+    const name = firstNonEmpty(row?.name, row?.item?.name, `Item ${idx + 1}`);
+    const itemLevel = Number(row?.level?.value ?? row?.level ?? row?.item_level ?? 0) || null;
+    const quality = firstNonEmpty(row?.quality?.name, row?.quality?.type);
+    const itemId = Number(row?.item?.id ?? parseHrefId(row?.item?.key?.href ?? row?.item?.href));
+    return {
+      slot,
+      slotType,
+      name,
+      itemLevel,
+      quality: quality || null,
+      itemId: Number.isFinite(itemId) ? itemId : null
+    };
+  });
+  items.sort((a, b) => {
+    const ai = slotSortIndex.has(a.slotType) ? slotSortIndex.get(a.slotType) : 999;
+    const bi = slotSortIndex.has(b.slotType) ? slotSortIndex.get(b.slotType) : 999;
+    if (ai !== bi) return ai - bi;
+    return String(a.slot).localeCompare(String(b.slot));
+  });
+  return items;
+}
+
+function extractGearSummary(equipmentPayload, items) {
+  const equippedItemLevel = Number(equipmentPayload?.equipped_item_level) || null;
+  const averageItemLevel = Number(equipmentPayload?.average_item_level) || null;
+  return {
+    equippedItemLevel,
+    averageItemLevel,
+    totalItems: Array.isArray(items) ? items.length : 0,
+    items: Array.isArray(items) ? items : []
+  };
+}
+
 function extractActiveSpecName(payload) {
   const direct = firstNonEmpty(payload?.active_specialization?.name, payload?.active_specialization);
   if (direct) return direct;
@@ -194,12 +278,16 @@ module.exports = async function handler(req, res) {
   const namespace = `profile-${region}`;
   const profileUrl = `https://${region}.api.blizzard.com/profile/wow/character/${realmSlug}/${characterSlug}?namespace=${encodeURIComponent(namespace)}&locale=${encodeURIComponent(locale)}`;
   const specsUrl = `https://${region}.api.blizzard.com/profile/wow/character/${realmSlug}/${characterSlug}/specializations?namespace=${encodeURIComponent(namespace)}&locale=${encodeURIComponent(locale)}`;
+  const mediaUrl = `https://${region}.api.blizzard.com/profile/wow/character/${realmSlug}/${characterSlug}/character-media?namespace=${encodeURIComponent(namespace)}&locale=${encodeURIComponent(locale)}`;
+  const equipmentUrl = `https://${region}.api.blizzard.com/profile/wow/character/${realmSlug}/${characterSlug}/equipment?namespace=${encodeURIComponent(namespace)}&locale=${encodeURIComponent(locale)}`;
 
   try {
     const token = await fetchOAuthToken(region);
-    const [profile, specs] = await Promise.all([
+    const [profile, specs, media, equipment] = await Promise.all([
       fetchApi(profileUrl, token),
-      fetchApi(specsUrl, token)
+      fetchApi(specsUrl, token),
+      tryFetchApi(mediaUrl, token),
+      tryFetchApi(equipmentUrl, token)
     ]);
 
     const characterName = firstNonEmpty(profile?.name, characterSlug);
@@ -211,6 +299,9 @@ module.exports = async function handler(req, res) {
     const armoryLocalePath = ARMORY_PATH_LOCALE_BY_REGION[region] || "en-us";
     const armoryUrl = `https://worldofwarcraft.blizzard.com/${armoryLocalePath}/character/${region}/${realmSlug}/${characterSlug}`;
     const loadoutCodes = collectLoadoutCodes(specs);
+    const mediaPayload = extractCharacterRender(media);
+    const gearItems = normalizeGearItems(equipment);
+    const gearPayload = extractGearSummary(equipment, gearItems);
 
     res.setHeader("cache-control", "public, s-maxage=300, stale-while-revalidate=1200");
     return json(res, 200, {
@@ -227,6 +318,8 @@ module.exports = async function handler(req, res) {
         faction,
         level
       },
+      media: mediaPayload,
+      gear: gearPayload,
       loadoutCodes
     });
   } catch (error) {
