@@ -126,6 +126,7 @@ const armorySummary = document.getElementById("armorySummary");
 const armoryModelCard = document.getElementById("armoryModelCard");
 const armoryModelImage = document.getElementById("armoryModelImage");
 const armoryModelFallback = document.getElementById("armoryModelFallback");
+const armoryWeaponSlots = document.getElementById("armoryWeaponSlots");
 const armorySlotsLeft = document.getElementById("armorySlotsLeft");
 const armorySlotsRight = document.getElementById("armorySlotsRight");
 const armoryGearSummary = document.getElementById("armoryGearSummary");
@@ -1152,18 +1153,22 @@ const ARMORY_SLOT_LAYOUT = {
     { key: "shoulder", label: "Shoulder" },
     { key: "back", label: "Back" },
     { key: "chest", label: "Chest" },
+    { key: "shirt", label: "Shirt" },
+    { key: "tabard", label: "Tabard" },
     { key: "wrist", label: "Wrist" },
-    { key: "main_hand", label: "Main Hand" }
+    { key: "hands", label: "Hands" }
   ],
   right: [
-    { key: "hands", label: "Hands" },
     { key: "waist", label: "Waist" },
     { key: "legs", label: "Legs" },
     { key: "feet", label: "Feet" },
     { key: "finger_1", label: "Finger 1" },
     { key: "finger_2", label: "Finger 2" },
     { key: "trinket_1", label: "Trinket 1" },
-    { key: "trinket_2", label: "Trinket 2" },
+    { key: "trinket_2", label: "Trinket 2" }
+  ],
+  weapon: [
+    { key: "main_hand", label: "Main Hand" },
     { key: "off_hand", label: "Off Hand" }
   ]
 };
@@ -1317,6 +1322,54 @@ function renderArmorySlotColumn(containerEl, slots, gearBySlot) {
   });
 }
 
+function renderArmoryWeaponRow(containerEl, slots, gearBySlot) {
+  if (!containerEl) return;
+  containerEl.innerHTML = "";
+  slots.forEach((slot) => {
+    const item = gearBySlot.get(slot.key) || null;
+    const qualityClass = armoryItemQualityClass(item?.quality);
+    const name = String(item?.name || `${slot.label} Empty`);
+    const ilvl = Number(item?.itemLevel);
+    const ilvlText = Number.isFinite(ilvl) && ilvl > 0 ? `iLvl ${ilvl}` : "Empty";
+
+    const row = document.createElement("div");
+    row.className = `armory-weapon-slot ${item ? "filled" : "empty"}`;
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = `armory-slot-btn ${qualityClass}${item ? " filled" : " empty"}`;
+    btn.setAttribute("aria-label", item ? `${slot.label}: ${item.name}` : `${slot.label}: Empty`);
+    btn.title = item ? `${slot.label}: ${item.name}` : `${slot.label}: Empty`;
+
+    if (item?.iconUrl) {
+      btn.innerHTML = `<img class="armory-slot-icon" src="${escapeHtml(item.iconUrl)}" alt="" loading="lazy" decoding="async" />`;
+    } else {
+      btn.innerHTML = `<span class="armory-slot-fallback">${escapeHtml(armorySlotBadgeText(slot.label))}</span>`;
+    }
+
+    const info = document.createElement("div");
+    info.className = "armory-slot-info";
+    info.innerHTML = `
+      <p class="armory-slot-name ${qualityClass}">${escapeHtml(name)}</p>
+      <p class="armory-slot-ilvl">${escapeHtml(ilvlText)}</p>
+    `;
+
+    const tooltipHtml = buildArmorySlotTooltip(item, slot.label);
+    row.addEventListener("pointerenter", (event) => {
+      showArmoryGearTooltip(tooltipHtml, event.clientX, event.clientY);
+    });
+    row.addEventListener("pointermove", (event) => {
+      moveArmoryGearTooltip(event.clientX, event.clientY);
+    });
+    row.addEventListener("pointerleave", hideArmoryGearTooltip);
+    row.addEventListener("pointercancel", hideArmoryGearTooltip);
+
+    row.appendChild(btn);
+    row.appendChild(info);
+    containerEl.appendChild(row);
+  });
+}
+
 function applyArmoryModelTransform() {
   if (!armoryModelCard || !armoryModelImage) return;
   armoryModelCard.style.transform = `rotateX(${armoryModelRotateX}deg) rotateY(${armoryModelRotateY}deg)`;
@@ -1357,6 +1410,7 @@ function updateArmoryModelZoom(event) {
 function resetArmoryResult() {
   if (armoryResult) armoryResult.hidden = true;
   if (armorySummary) armorySummary.textContent = "";
+  if (armoryWeaponSlots) armoryWeaponSlots.innerHTML = "";
   if (armorySlotsLeft) armorySlotsLeft.innerHTML = "";
   if (armorySlotsRight) armorySlotsRight.innerHTML = "";
   if (armoryModelCard) armoryModelCard.classList.remove("has-model");
@@ -1413,6 +1467,7 @@ function renderArmoryResult(payload) {
   });
   renderArmorySlotColumn(armorySlotsLeft, ARMORY_SLOT_LAYOUT.left, gearBySlot);
   renderArmorySlotColumn(armorySlotsRight, ARMORY_SLOT_LAYOUT.right, gearBySlot);
+  renderArmoryWeaponRow(armoryWeaponSlots, ARMORY_SLOT_LAYOUT.weapon, gearBySlot);
 
   const equippedIlvl = Number(payload?.gear?.equippedItemLevel);
   const averageIlvl = Number(payload?.gear?.averageItemLevel);
