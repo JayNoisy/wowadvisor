@@ -13,7 +13,7 @@ const CLASS_DATA = {
   "Warlock": { classIcon: "assets/class-icons/warlock.png", specs: [{ name: "Affliction", icon: "🕸️" }, { name: "Demonology", icon: "😈" }, { name: "Destruction", icon: "🔥" }] },
   "Monk": { classIcon: "assets/class-icons/monk.png", specs: [{ name: "Brewmaster", icon: "🍺" }, { name: "Mistweaver", icon: "🌫️" }, { name: "Windwalker", icon: "💨" }] },
   "Druid": { classIcon: "assets/class-icons/druid.png", specs: [{ name: "Balance", icon: "🌙" }, { name: "Feral", icon: "🐾" }, { name: "Guardian", icon: "🐻" }, { name: "Restoration", icon: "🌿" }] },
-  "Demon Hunter": { classIcon: "assets/class-icons/demon-hunter.png", specs: [{ name: "Havoc", icon: "🟣" }, { name: "Vengeance", icon: "🛡️" }] },
+  "Demon Hunter": { classIcon: "assets/class-icons/demon-hunter.png", specs: [{ name: "Havoc", icon: "🟣" }, { name: "Vengeance", icon: "🛡️" }, { name: "Devourer", icon: "🔥" }] },
   "Evoker": { classIcon: "assets/class-icons/evoker.png", specs: [{ name: "Devastation", icon: "🔥" }, { name: "Preservation", icon: "💚" }, { name: "Augmentation", icon: "🪄" }] }
 };
 
@@ -76,7 +76,8 @@ const STAT_PRIORITIES = {
   },
   "Demon Hunter": {
     "Havoc": ["Critical Strike", "Mastery", "Versatility", "Haste"],
-    "Vengeance": ["Haste", "Versatility", "Critical Strike", "Mastery"]
+    "Vengeance": ["Haste", "Versatility", "Critical Strike", "Mastery"],
+    "Devourer": ["Mastery", "Haste", "Critical Strike", "Versatility"]
   },
   "Evoker": {
     "Devastation": ["Mastery", "Haste", "Critical Strike", "Versatility"],
@@ -1845,7 +1846,7 @@ function getSpecArchetype(className, specName) {
     "Warlock": { "Affliction": "dot-caster", "Demonology": "caster", "Destruction": "crit-caster" },
     "Monk": { "Brewmaster": "tank", "Mistweaver": "healer", "Windwalker": "melee-burst" },
     "Druid": { "Balance": "caster", "Feral": "dot-melee", "Guardian": "tank", "Restoration": "healer" },
-    "Demon Hunter": { "Havoc": "melee-burst", "Vengeance": "tank" },
+    "Demon Hunter": { "Havoc": "melee-burst", "Vengeance": "tank", "Devourer": "caster" },
     "Evoker": { "Devastation": "caster", "Preservation": "healer", "Augmentation": "support-caster" }
   };
   return map?.[className]?.[specName] || "generic";
