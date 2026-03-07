@@ -113,7 +113,19 @@ const panel = document.getElementById("panel");
 const topTabs = document.getElementById("topTabs");
 const homePanel = document.getElementById("homePanel");
 const buildsPanel = document.getElementById("buildsPanel");
+const armoryPanel = document.getElementById("armoryPanel");
 const goToBuildsBtn = document.getElementById("goToBuildsBtn");
+const armoryForm = document.getElementById("armoryForm");
+const armoryRegionInput = document.getElementById("armoryRegion");
+const armoryRealmInput = document.getElementById("armoryRealm");
+const armoryCharacterInput = document.getElementById("armoryCharacter");
+const armoryFetchBtn = document.getElementById("armoryFetchBtn");
+const armoryStatus = document.getElementById("armoryStatus");
+const armoryResult = document.getElementById("armoryResult");
+const armorySummary = document.getElementById("armorySummary");
+const armoryLoadoutCode = document.getElementById("armoryLoadoutCode");
+const armoryCopyBtn = document.getElementById("armoryCopyBtn");
+const armoryOpenLink = document.getElementById("armoryOpenLink");
 
 const selectedClassTitle = document.getElementById("selectedClassTitle");
 const classBadge = document.getElementById("classBadge");
@@ -372,13 +384,14 @@ function ensureSpecExpansionVisible() {
 }
 
 function switchTopTab(nextTab, options = {}) {
-  const tab = String(nextTab || "").toLowerCase() === "builds" ? "builds" : "home";
+  const normalized = String(nextTab || "").toLowerCase();
+  const tab = normalized === "builds" || normalized === "armory" ? normalized : "home";
   const shouldScroll = options.scroll !== false;
   activeTopTab = tab;
 
-  const showBuilds = tab === "builds";
-  if (homePanel) homePanel.hidden = showBuilds;
-  if (buildsPanel) buildsPanel.hidden = !showBuilds;
+  if (homePanel) homePanel.hidden = tab !== "home";
+  if (buildsPanel) buildsPanel.hidden = tab !== "builds";
+  if (armoryPanel) armoryPanel.hidden = tab !== "armory";
 
   const buttons = topTabs ? topTabs.querySelectorAll(".top-tab-btn") : [];
   buttons.forEach((btn) => {
@@ -387,9 +400,14 @@ function switchTopTab(nextTab, options = {}) {
     btn.setAttribute("aria-selected", selected ? "true" : "false");
   });
 
+  const showBuilds = tab === "builds";
   if (!shouldScroll) return;
   if (showBuilds) {
     ensureElementTopVisible(buildsPanel || classButtons, 14);
+    return;
+  }
+  if (tab === "armory") {
+    ensureElementTopVisible(armoryPanel, 14);
     return;
   }
   ensureElementTopVisible(homePanel, 14);
@@ -1108,6 +1126,92 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+function normalizeArmorySlug(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/['’`]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function setArmoryStatus(message, isError = false) {
+  if (!armoryStatus) return;
+  armoryStatus.textContent = String(message || "");
+  armoryStatus.classList.toggle("error", Boolean(isError));
+}
+
+function resetArmoryResult() {
+  if (armoryResult) armoryResult.hidden = true;
+  if (armorySummary) armorySummary.textContent = "";
+  if (armoryLoadoutCode) armoryLoadoutCode.value = "";
+  if (armoryCopyBtn) {
+    armoryCopyBtn.disabled = true;
+    armoryCopyBtn.textContent = "Copy Loadout Code";
+  }
+  if (armoryOpenLink) armoryOpenLink.href = "#";
+}
+
+function renderArmoryResult(payload) {
+  if (!armoryResult || !armorySummary || !armoryLoadoutCode || !armoryCopyBtn || !armoryOpenLink) return;
+  const character = payload?.character || {};
+  const name = String(character?.name || payload?.characterSlug || "Unknown");
+  const realm = String(character?.realm || payload?.realmSlug || "Unknown Realm");
+  const className = String(character?.className || "Unknown Class");
+  const spec = String(character?.activeSpec || "").trim();
+  const level = Number(character?.level);
+  const levelPart = Number.isFinite(level) ? ` | Level ${level}` : "";
+  const specPart = spec ? ` (${spec})` : "";
+  armorySummary.textContent = `${name} — ${realm} | ${className}${specPart}${levelPart}`;
+
+  const codes = Array.isArray(payload?.loadoutCodes) ? payload.loadoutCodes : [];
+  const bestCode = String(codes[0]?.code || "").trim();
+  armoryLoadoutCode.value = bestCode;
+  armoryCopyBtn.disabled = !bestCode;
+  armoryOpenLink.href = String(payload?.armoryUrl || "#");
+  armoryResult.hidden = false;
+
+  if (bestCode) {
+    setArmoryStatus("Armory data loaded. Copy the loadout code and import it in-game.");
+  } else {
+    setArmoryStatus("Armory loaded, but no loadout code was returned by Blizzard for this character.", true);
+  }
+}
+
+async function fetchArmoryImport() {
+  if (!armoryForm || !armoryRegionInput || !armoryRealmInput || !armoryCharacterInput || !armoryFetchBtn) return;
+  const region = String(armoryRegionInput.value || "us").toLowerCase();
+  const realm = normalizeArmorySlug(armoryRealmInput.value);
+  const character = normalizeArmorySlug(armoryCharacterInput.value);
+
+  if (!realm || !character) {
+    setArmoryStatus("Realm and character are required.", true);
+    resetArmoryResult();
+    return;
+  }
+
+  armoryFetchBtn.disabled = true;
+  resetArmoryResult();
+  setArmoryStatus("Fetching armory profile...");
+
+  try {
+    const params = new URLSearchParams({ region, realm, character });
+    const res = await fetch(`/api/armory-import?${params.toString()}`, { cache: "no-store" });
+    const payload = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      throw new Error(String(payload?.message || payload?.error || `Request failed (${res.status})`));
+    }
+    renderArmoryResult(payload);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    setArmoryStatus(msg || "Could not load armory profile.", true);
+    resetArmoryResult();
+  } finally {
+    armoryFetchBtn.disabled = false;
+  }
 }
 
 function getSupabasePublicConfig() {
@@ -3378,6 +3482,28 @@ goToBuildsBtn?.addEventListener("click", () => {
   switchTopTab("builds");
 });
 
+armoryForm?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  void fetchArmoryImport();
+});
+
+armoryCopyBtn?.addEventListener("click", async () => {
+  const code = String(armoryLoadoutCode?.value || "").trim();
+  if (!code) return;
+  try {
+    await navigator.clipboard.writeText(code);
+    armoryCopyBtn.textContent = "Copied!";
+    setTimeout(() => {
+      armoryCopyBtn.textContent = "Copy Loadout Code";
+    }, 900);
+  } catch {
+    armoryCopyBtn.textContent = "Copy failed";
+    setTimeout(() => {
+      armoryCopyBtn.textContent = "Copy Loadout Code";
+    }, 900);
+  }
+});
+
 authOpenBtn?.addEventListener("click", () => {
   if (!supabaseClient) return;
   openAuthModal();
@@ -3461,8 +3587,14 @@ document.addEventListener("keydown", (e) => {
 
 // Start
 injectTalentTreeStyles();
-const initialTopTab = String(window.location.hash || "").toLowerCase() === "#builds" ? "builds" : "home";
+const initialHash = String(window.location.hash || "").toLowerCase();
+const initialTopTab = initialHash === "#builds"
+  ? "builds"
+  : initialHash === "#armory"
+    ? "armory"
+    : "home";
 switchTopTab(initialTopTab, { scroll: false });
+resetArmoryResult();
 if (talentCard && !ENABLE_TALENT_TREE) talentCard.hidden = true;
 Promise.all([
   loadBuilds(),

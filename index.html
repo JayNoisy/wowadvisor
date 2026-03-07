@@ -31,6 +31,7 @@
     <div class="top-tabs" id="topTabs" role="tablist" aria-label="Primary sections">
       <button id="homeTabBtn" class="top-tab-btn selected" type="button" role="tab" aria-selected="true" aria-controls="homePanel" data-top-tab="home">Home</button>
       <button id="buildsTabBtn" class="top-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="buildsPanel" data-top-tab="builds">Builds</button>
+      <button id="armoryTabBtn" class="top-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="armoryPanel" data-top-tab="armory">Armory</button>
     </div>
     <div id="buildFreshnessAlert" class="build-freshness-alert" hidden></div>
   </header>
@@ -211,6 +212,49 @@
 
       </div>
     </section>
+    </section>
+
+    <section id="armoryPanel" class="top-tab-panel armory-panel" aria-label="Armory import panel" hidden>
+      <section class="armory-card">
+        <div class="armory-head">
+          <p class="armory-kicker">Armory Import</p>
+          <h2>Import your character from WoW Armory</h2>
+          <p class="muted">Enter your character details, pull the active loadout code, then import it in-game.</p>
+        </div>
+
+        <form id="armoryForm" class="armory-form">
+          <label class="armory-field">
+            <span>Region</span>
+            <select id="armoryRegion" class="armory-input">
+              <option value="us">US</option>
+              <option value="eu">EU</option>
+              <option value="kr">KR</option>
+              <option value="tw">TW</option>
+            </select>
+          </label>
+          <label class="armory-field">
+            <span>Realm</span>
+            <input id="armoryRealm" class="armory-input" type="text" placeholder="illidan" required />
+          </label>
+          <label class="armory-field">
+            <span>Character</span>
+            <input id="armoryCharacter" class="armory-input" type="text" placeholder="thrall" required />
+          </label>
+          <button id="armoryFetchBtn" class="auth-btn" type="submit">Fetch Armory</button>
+        </form>
+
+        <p id="armoryStatus" class="armory-status muted">Enter your region, realm, and character name to start.</p>
+
+        <div id="armoryResult" class="armory-result" hidden>
+          <p id="armorySummary" class="armory-summary"></p>
+          <textarea id="armoryLoadoutCode" class="armory-loadout" rows="3" readonly placeholder="Loadout code will appear here when available."></textarea>
+          <div class="armory-actions">
+            <button id="armoryCopyBtn" class="auth-btn" type="button" disabled>Copy Loadout Code</button>
+            <a id="armoryOpenLink" class="auth-btn secondary" href="#" target="_blank" rel="noopener noreferrer">Open Armory Profile</a>
+          </div>
+          <p class="muted armory-help">In-game import: open Talent window, choose Loadout dropdown, click Import, and paste the copied code.</p>
+        </div>
+      </section>
     </section>
   </main>
 
