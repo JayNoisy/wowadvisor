@@ -337,6 +337,70 @@ h1, h2, h3, h4 {
 .home-feature-card:nth-child(2)::after { content: "⟳"; }
 .home-feature-card:nth-child(3)::after { content: "▣"; }
 
+.home-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.home-guide-card {
+  border-radius: 13px;
+  border: 1px solid rgba(158, 199, 255, 0.25);
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(72, 114, 178, 0.2), transparent 60%),
+    linear-gradient(180deg, rgba(16, 30, 53, 0.85), rgba(11, 23, 42, 0.9));
+  padding: 14px;
+  text-align: left;
+  box-shadow: 0 9px 18px rgba(7, 14, 28, 0.28);
+  animation: soft-rise 0.34s ease-out;
+}
+
+.home-guide-card h3 {
+  margin: 0 0 9px 0;
+  color: #e5f0ff;
+  font-size: 15px;
+}
+
+.home-guide-list {
+  margin: 0;
+  padding-left: 19px;
+  display: grid;
+  gap: 8px;
+  color: #c1d2ee;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.home-tip-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.home-tip-card {
+  border-radius: 12px;
+  border: 1px solid rgba(161, 204, 255, 0.28);
+  background:
+    linear-gradient(180deg, rgba(18, 35, 62, 0.8), rgba(12, 24, 43, 0.84));
+  padding: 12px;
+  text-align: left;
+}
+
+.home-tip-card h4 {
+  margin: 0 0 5px 0;
+  font-size: 12px;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+  color: #b7d5ff;
+}
+
+.home-tip-card p {
+  margin: 0;
+  color: #bdd0ec;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .builds-hero {
   width: min(1000px, 100%);
   margin: 0 auto;
@@ -1653,6 +1717,14 @@ body.auth-modal-open {
   }
 
   .home-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-guide-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-tip-strip {
     grid-template-columns: 1fr;
   }
 
