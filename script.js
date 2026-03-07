@@ -1194,6 +1194,15 @@ function armorySlotBadgeText(label) {
   return `${pieces[0][0] || ""}${pieces[1][0] || ""}`.toUpperCase();
 }
 
+function armoryItemQualityClass(qualityValue) {
+  const q = String(qualityValue || "").toLowerCase();
+  if (q.includes("legendary")) return "quality-legendary";
+  if (q.includes("epic")) return "quality-epic";
+  if (q.includes("rare")) return "quality-rare";
+  if (q.includes("uncommon")) return "quality-uncommon";
+  return "quality-common";
+}
+
 let armoryModelRotateX = 0;
 let armoryModelRotateY = 0;
 let armoryModelZoom = 1;
@@ -1255,12 +1264,21 @@ function buildArmorySlotTooltip(item, slotLabel) {
 
 function renderArmorySlotColumn(containerEl, slots, gearBySlot) {
   if (!containerEl) return;
+  const isRight = containerEl.classList.contains("armory-slots-right");
   containerEl.innerHTML = "";
   slots.forEach((slot) => {
     const item = gearBySlot.get(slot.key) || null;
+    const qualityClass = armoryItemQualityClass(item?.quality);
+    const name = String(item?.name || `${slot.label} Empty`);
+    const ilvl = Number(item?.itemLevel);
+    const ilvlText = Number.isFinite(ilvl) && ilvl > 0 ? `iLvl ${ilvl}` : "Empty";
+
+    const row = document.createElement("div");
+    row.className = `armory-slot-row ${isRight ? "right" : "left"} ${item ? "filled" : "empty"}`;
+
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = `armory-slot-btn${item ? " filled" : " empty"}`;
+    btn.className = `armory-slot-btn ${qualityClass}${item ? " filled" : " empty"}`;
     btn.setAttribute("aria-label", item ? `${slot.label}: ${item.name}` : `${slot.label}: Empty`);
     btn.title = item ? `${slot.label}: ${item.name}` : `${slot.label}: Empty`;
 
@@ -1270,17 +1288,32 @@ function renderArmorySlotColumn(containerEl, slots, gearBySlot) {
       btn.innerHTML = `<span class="armory-slot-fallback">${escapeHtml(armorySlotBadgeText(slot.label))}</span>`;
     }
 
+    const info = document.createElement("div");
+    info.className = "armory-slot-info";
+    info.innerHTML = `
+      <p class="armory-slot-name ${qualityClass}">${escapeHtml(name)}</p>
+      <p class="armory-slot-ilvl">${escapeHtml(ilvlText)}</p>
+    `;
+
     const tooltipHtml = buildArmorySlotTooltip(item, slot.label);
-    btn.addEventListener("pointerenter", (event) => {
+    row.addEventListener("pointerenter", (event) => {
       showArmoryGearTooltip(tooltipHtml, event.clientX, event.clientY);
     });
-    btn.addEventListener("pointermove", (event) => {
+    row.addEventListener("pointermove", (event) => {
       moveArmoryGearTooltip(event.clientX, event.clientY);
     });
-    btn.addEventListener("pointerleave", hideArmoryGearTooltip);
-    btn.addEventListener("pointercancel", hideArmoryGearTooltip);
+    row.addEventListener("pointerleave", hideArmoryGearTooltip);
+    row.addEventListener("pointercancel", hideArmoryGearTooltip);
 
-    containerEl.appendChild(btn);
+    if (isRight) {
+      row.appendChild(info);
+      row.appendChild(btn);
+    } else {
+      row.appendChild(btn);
+      row.appendChild(info);
+    }
+
+    containerEl.appendChild(row);
   });
 }
 
