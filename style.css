@@ -337,6 +337,32 @@ h1, h2, h3, h4 {
 .home-feature-card:nth-child(2)::after { content: "⟳"; }
 .home-feature-card:nth-child(3)::after { content: "▣"; }
 
+.home-build-method-card {
+  border-radius: 13px;
+  border: 1px solid rgba(158, 199, 255, 0.25);
+  background:
+    linear-gradient(180deg, rgba(18, 33, 58, 0.8), rgba(12, 25, 45, 0.84));
+  padding: 14px;
+  text-align: left;
+  box-shadow: 0 9px 18px rgba(7, 14, 28, 0.24);
+}
+
+.home-build-method-card h3 {
+  margin: 0 0 8px 0;
+  color: #e5f0ff;
+  font-size: 15px;
+}
+
+.home-build-method-list {
+  margin: 0;
+  padding-left: 19px;
+  display: grid;
+  gap: 7px;
+  color: #bfd1ec;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .builds-hero {
   width: min(1000px, 100%);
   margin: 0 auto;
