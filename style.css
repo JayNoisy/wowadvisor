@@ -461,10 +461,13 @@ h1, h2, h3, h4 {
   width: 100%;
   margin: 0;
   min-height: 380px;
+  height: 100%;
   perspective: 1200px;
   display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   gap: 12px;
-  align-items: start;
+  align-items: stretch;
+  align-self: stretch;
   transform-style: preserve-3d;
   transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
   box-shadow: none;
@@ -480,7 +483,8 @@ h1, h2, h3, h4 {
 
 .armory-model-stage {
   width: 100%;
-  min-height: 340px;
+  min-height: 0;
+  height: 100%;
   border-radius: 0;
   border: 0;
   background:
@@ -2059,6 +2063,7 @@ body.auth-modal-open {
 
   .armory-model-card {
     min-height: 280px;
+    height: auto;
     order: 1;
   }
 
