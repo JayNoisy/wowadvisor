@@ -82,6 +82,19 @@ h1, h2, h3, h4 {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  padding: 4px 10px;
+}
+
+.header .site-title::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background:
+    radial-gradient(70% 120% at 50% 50%, rgba(92, 141, 216, 0.24), transparent 70%),
+    linear-gradient(180deg, rgba(13, 24, 43, 0.35), rgba(10, 19, 34, 0.25));
+  pointer-events: none;
 }
 
 .header .site-logo {
@@ -90,10 +103,15 @@ h1, h2, h3, h4 {
   height: auto;
   display: block;
   object-fit: contain;
-  opacity: 0.95;
+  opacity: 0.97;
+  position: relative;
+  z-index: 1;
+  mix-blend-mode: screen;
   filter:
-    drop-shadow(0 10px 18px rgba(2, 8, 19, 0.46))
-    drop-shadow(0 0 10px rgba(116, 160, 226, 0.18));
+    brightness(1.08)
+    contrast(1.1)
+    drop-shadow(0 10px 18px rgba(2, 8, 19, 0.42))
+    drop-shadow(0 0 10px rgba(116, 160, 226, 0.2));
 }
 .header p { margin: 0; color: var(--muted); }
 
