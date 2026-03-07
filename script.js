@@ -1431,6 +1431,22 @@ function resetArmoryResult() {
   if (armoryOpenLink) armoryOpenLink.href = "#";
 }
 
+function syncArmoryInputState({ resetResult = false, updateStatus = false } = {}) {
+  if (!armoryRealmInput || !armoryCharacterInput || !armoryFetchBtn) return false;
+  const realm = normalizeArmorySlug(armoryRealmInput.value);
+  const character = normalizeArmorySlug(armoryCharacterInput.value);
+  const canFetch = Boolean(realm && character);
+  armoryFetchBtn.disabled = !canFetch;
+
+  if (resetResult) resetArmoryResult();
+  if (!canFetch && updateStatus) {
+    setArmoryStatus("Enter your region, realm, and character name to start.");
+  } else if (canFetch && updateStatus) {
+    setArmoryStatus("Ready to fetch armory profile.");
+  }
+  return canFetch;
+}
+
 function renderArmoryResult(payload) {
   if (!armoryResult || !armorySummary || !armoryLoadoutCode || !armoryCopyBtn || !armoryOpenLink) return;
   const character = payload?.character || {};
@@ -1496,6 +1512,11 @@ function renderArmoryResult(payload) {
 
 async function fetchArmoryImport() {
   if (!armoryForm || !armoryRegionInput || !armoryRealmInput || !armoryCharacterInput || !armoryFetchBtn) return;
+  if (!syncArmoryInputState()) {
+    setArmoryStatus("Realm and character are required.", true);
+    resetArmoryResult();
+    return;
+  }
   const region = String(armoryRegionInput.value || "us").toLowerCase();
   const realm = normalizeArmorySlug(armoryRealmInput.value);
   const character = normalizeArmorySlug(armoryCharacterInput.value);
@@ -1523,7 +1544,7 @@ async function fetchArmoryImport() {
     setArmoryStatus(msg || "Could not load armory profile.", true);
     resetArmoryResult();
   } finally {
-    armoryFetchBtn.disabled = false;
+    void syncArmoryInputState();
   }
 }
 
@@ -3800,6 +3821,14 @@ armoryForm?.addEventListener("submit", (e) => {
   void fetchArmoryImport();
 });
 
+armoryRealmInput?.addEventListener("input", () => {
+  void syncArmoryInputState({ resetResult: true, updateStatus: true });
+});
+
+armoryCharacterInput?.addEventListener("input", () => {
+  void syncArmoryInputState({ resetResult: true, updateStatus: true });
+});
+
 armoryCopyBtn?.addEventListener("click", async () => {
   const code = String(armoryLoadoutCode?.value || "").trim();
   if (!code) return;
@@ -3912,7 +3941,7 @@ const initialTopTab = initialHash === "#builds"
     ? "armory"
     : "home";
 switchTopTab(initialTopTab, { scroll: false });
-resetArmoryResult();
+void syncArmoryInputState({ resetResult: true, updateStatus: true });
 if (talentCard && !ENABLE_TALENT_TREE) talentCard.hidden = true;
 Promise.all([
   loadBuilds(),
