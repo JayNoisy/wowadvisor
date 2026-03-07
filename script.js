@@ -123,6 +123,7 @@ const armoryFetchBtn = document.getElementById("armoryFetchBtn");
 const armoryStatus = document.getElementById("armoryStatus");
 const armoryResult = document.getElementById("armoryResult");
 const armorySummary = document.getElementById("armorySummary");
+const armoryHeadlineStats = document.getElementById("armoryHeadlineStats");
 const armoryModelCard = document.getElementById("armoryModelCard");
 const armoryModelImage = document.getElementById("armoryModelImage");
 const armoryModelFallback = document.getElementById("armoryModelFallback");
@@ -1408,12 +1409,65 @@ function updateArmoryModelZoom(event) {
   applyArmoryModelTransform();
 }
 
+function formatArmoryStatValue(value, suffix = "") {
+  const num = Number(value);
+  if (!Number.isFinite(num)) return "";
+  const rounded = Math.round(num * 10) / 10;
+  const text = Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(1);
+  return `${text}${suffix}`;
+}
+
+function renderArmoryHeadlineStats(payload) {
+  if (!armoryHeadlineStats) return;
+
+  const equippedIlvl = Number(payload?.gear?.equippedItemLevel);
+  const averageIlvl = Number(payload?.gear?.averageItemLevel);
+  const overallIlvl = Number.isFinite(equippedIlvl) && equippedIlvl > 0 ? equippedIlvl : averageIlvl;
+  const critPct = Number(payload?.stats?.critPct);
+  const hastePct = Number(payload?.stats?.hastePct);
+  const masteryPct = Number(payload?.stats?.masteryPct);
+  const versatilityPct = Number(payload?.stats?.versatilityPct);
+  const entries = [];
+
+  if (Number.isFinite(overallIlvl) && overallIlvl > 0) {
+    entries.push({ label: "Overall iLvl", value: String(Math.round(overallIlvl)) });
+  }
+
+  [
+    { label: "Crit", value: critPct },
+    { label: "Haste", value: hastePct },
+    { label: "Mastery", value: masteryPct },
+    { label: "Vers", value: versatilityPct }
+  ].forEach((row) => {
+    if (!Number.isFinite(row.value) || row.value <= 0) return;
+    entries.push({ label: row.label, value: formatArmoryStatValue(row.value, "%") });
+  });
+
+  if (entries.length === 0) {
+    armoryHeadlineStats.hidden = true;
+    armoryHeadlineStats.innerHTML = "";
+    return;
+  }
+
+  armoryHeadlineStats.innerHTML = entries.map((entry, idx) => `
+    <span class="armory-stat-chip${idx === 0 ? " is-primary" : ""}">
+      <span class="armory-stat-label">${escapeHtml(entry.label)}</span>
+      <span class="armory-stat-value">${escapeHtml(entry.value)}</span>
+    </span>
+  `).join("");
+  armoryHeadlineStats.hidden = false;
+}
+
 function resetArmoryResult() {
   if (armoryResult) {
     armoryResult.hidden = true;
     armoryResult.style.display = "none";
   }
   if (armorySummary) armorySummary.textContent = "";
+  if (armoryHeadlineStats) {
+    armoryHeadlineStats.hidden = true;
+    armoryHeadlineStats.innerHTML = "";
+  }
   if (armoryWeaponSlots) armoryWeaponSlots.innerHTML = "";
   if (armorySlotsLeft) armorySlotsLeft.innerHTML = "";
   if (armorySlotsRight) armorySlotsRight.innerHTML = "";
@@ -1462,6 +1516,7 @@ function renderArmoryResult(payload) {
   const specPart = spec ? ` (${spec})` : "";
   armorySummary.textContent = `${name} — ${realm} | ${className}${specPart}${levelPart}`;
 
+  renderArmoryHeadlineStats(payload);
   const renderUrl = String(payload?.media?.renderUrl || payload?.media?.avatarUrl || "").trim();
   if (armoryModelCard && armoryModelImage && armoryModelFallback) {
     if (renderUrl) {

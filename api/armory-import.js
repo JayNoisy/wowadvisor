@@ -220,6 +220,44 @@ function extractGearSummary(equipmentPayload, items) {
   };
 }
 
+function readNumericStat(value) {
+  if (typeof value === "number") return Number.isFinite(value) ? value : null;
+  if (typeof value === "string") {
+    const match = value.match(/-?\d+(?:\.\d+)?/);
+    if (!match) return null;
+    const num = Number(match[0]);
+    return Number.isFinite(num) ? num : null;
+  }
+  return null;
+}
+
+function pickStatValue(statsPayload, keyOptions, valueKeys) {
+  if (!statsPayload || typeof statsPayload !== "object") return null;
+  for (const key of keyOptions) {
+    const row = statsPayload[key];
+    if (row == null) continue;
+
+    const direct = readNumericStat(row);
+    if (Number.isFinite(direct)) return direct;
+    if (typeof row !== "object") continue;
+
+    for (const valueKey of valueKeys) {
+      const numeric = readNumericStat(row[valueKey]);
+      if (Number.isFinite(numeric)) return numeric;
+    }
+  }
+  return null;
+}
+
+function extractCharacterStats(statsPayload) {
+  return {
+    critPct: pickStatValue(statsPayload, ["spell_crit", "melee_crit", "ranged_crit"], ["value", "rating_bonus"]),
+    hastePct: pickStatValue(statsPayload, ["spell_haste", "melee_haste", "ranged_haste"], ["value", "rating_bonus"]),
+    masteryPct: pickStatValue(statsPayload, ["mastery"], ["value", "rating_bonus"]),
+    versatilityPct: pickStatValue(statsPayload, ["versatility"], ["damage_done_bonus", "healing_done_bonus", "rating_bonus", "value"])
+  };
+}
+
 function extractActiveSpecName(payload) {
   const direct = firstNonEmpty(payload?.active_specialization?.name, payload?.active_specialization);
   if (direct) return direct;
@@ -309,14 +347,16 @@ module.exports = async function handler(req, res) {
   const specsUrl = `https://${region}.api.blizzard.com/profile/wow/character/${realmSlug}/${characterSlug}/specializations?namespace=${encodeURIComponent(namespace)}&locale=${encodeURIComponent(locale)}`;
   const mediaUrl = `https://${region}.api.blizzard.com/profile/wow/character/${realmSlug}/${characterSlug}/character-media?namespace=${encodeURIComponent(namespace)}&locale=${encodeURIComponent(locale)}`;
   const equipmentUrl = `https://${region}.api.blizzard.com/profile/wow/character/${realmSlug}/${characterSlug}/equipment?namespace=${encodeURIComponent(namespace)}&locale=${encodeURIComponent(locale)}`;
+  const statsUrl = `https://${region}.api.blizzard.com/profile/wow/character/${realmSlug}/${characterSlug}/statistics?namespace=${encodeURIComponent(namespace)}&locale=${encodeURIComponent(locale)}`;
 
   try {
     const token = await fetchOAuthToken(region);
-    const [profile, specs, media, equipment] = await Promise.all([
+    const [profile, specs, media, equipment, stats] = await Promise.all([
       fetchApi(profileUrl, token),
       fetchApi(specsUrl, token),
       tryFetchApi(mediaUrl, token),
-      tryFetchApi(equipmentUrl, token)
+      tryFetchApi(equipmentUrl, token),
+      tryFetchApi(statsUrl, token)
     ]);
 
     const characterName = firstNonEmpty(profile?.name, characterSlug);
@@ -333,6 +373,7 @@ module.exports = async function handler(req, res) {
     const iconByItemId = await fetchItemIconMap(region, locale, token, rawGearItems.map((item) => item.itemId));
     const gearItems = normalizeGearItems(equipment, iconByItemId);
     const gearPayload = extractGearSummary(equipment, gearItems);
+    const statsPayload = extractCharacterStats(stats);
 
     res.setHeader("cache-control", "public, s-maxage=300, stale-while-revalidate=1200");
     return json(res, 200, {
@@ -351,6 +392,7 @@ module.exports = async function handler(req, res) {
       },
       media: mediaPayload,
       gear: gearPayload,
+      stats: statsPayload,
       loadoutCodes
     });
   } catch (error) {
