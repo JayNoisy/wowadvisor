@@ -1273,7 +1273,7 @@ function buildArmorySlotTooltip(item, slotLabel) {
   const gearTypeLine = details?.gearKindLine ? `Gear Type: ${details.gearKindLine}` : "";
   const upgradeStateLine = details?.upgradeLine ? `Upgrade: ${details.upgradeLine}` : "";
   const topLines = [
-    details?.bindText,
+    details?.difficultyLine,
     gearTypeLine,
     upgradeStateLine,
     ilvlText,

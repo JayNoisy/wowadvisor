@@ -183,8 +183,44 @@ function compactTextList(values) {
     .filter(Boolean);
 }
 
+function normalizeDifficultyLabel(value) {
+  const text = String(value || "").replace(/\s+/g, " ").trim();
+  if (!text) return null;
+  const lower = text.toLowerCase();
+  if (lower.includes("mythic+") || lower.includes("mythic keystone")) return "Mythic+";
+  if (/\bmythic\b/.test(lower)) return "Mythic";
+  if (/\bheroic\b/.test(lower)) return "Heroic";
+  if (/\braid finder\b/.test(lower) || /\blfr\b/.test(lower)) return "Raid Finder";
+  if (/\bnormal\b/.test(lower)) return "Normal";
+  return null;
+}
+
+function extractDifficultyLabel(row) {
+  const candidates = [
+    row?.name_description?.display_string,
+    row?.name_description?.name,
+    row?.difficulty?.name,
+    row?.difficulty,
+    row?.source?.difficulty?.name,
+    row?.source?.difficulty,
+    row?.instance?.difficulty?.name,
+    row?.instance?.difficulty,
+    row?.item?.context,
+    row?.context,
+    row?.source?.name
+  ];
+  for (const candidate of candidates) {
+    const text = textFromAny(candidate);
+    if (!text) continue;
+    const normalized = normalizeDifficultyLabel(text);
+    if (normalized) return normalized;
+  }
+  return null;
+}
+
 function extractItemDetailLines(row) {
-  const bindText = firstNonEmpty(row?.binding?.name, row?.binding?.type, row?.binding);
+  const difficultyLabel = extractDifficultyLabel(row);
+  const difficultyLine = difficultyLabel ? `Difficulty: ${difficultyLabel}` : null;
   const itemClass = firstNonEmpty(
     row?.item_class?.name,
     row?.item_class?.type,
@@ -303,7 +339,7 @@ function extractItemDetailLines(row) {
   }
 
   return {
-    bindText: bindText || null,
+    difficultyLine: difficultyLine || null,
     gearKindLine: gearKindLine || null,
     upgradeLine: upgradeLine || null,
     inventoryType: inventoryType || null,
