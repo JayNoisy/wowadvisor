@@ -77,11 +77,17 @@ h1, h2, h3, h4 {
     0 0 0 1px rgba(196, 217, 255, 0.06) inset;
   backdrop-filter: blur(8px);
 }
-.header h1 {
+.header .site-title {
   margin: 0;
-  font-family: var(--font-title);
-  font-size: clamp(28px, 4.4vw, 42px);
-  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: center;
+}
+
+.header .site-logo {
+  width: clamp(180px, 34vw, 420px);
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 .header p { margin: 0; color: var(--muted); }
 
