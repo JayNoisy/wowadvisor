@@ -330,7 +330,7 @@ h1, h2, h3, h4 {
 
 .armory-paperdoll {
   display: grid;
-  grid-template-columns: minmax(260px, 330px) minmax(0, 1fr) minmax(260px, 330px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.8fr) minmax(0, 0.9fr);
   gap: 14px;
   align-items: start;
   position: relative;
@@ -502,7 +502,7 @@ h1, h2, h3, h4 {
 
 .armory-model-image {
   width: min(100%, 760px);
-  max-height: 520px;
+  max-height: 620px;
   object-fit: contain;
   display: block;
   transform-origin: 50% 50%;
@@ -514,7 +514,7 @@ h1, h2, h3, h4 {
 }
 
 .armory-weapon-slots {
-  width: min(600px, 100%);
+  width: 100%;
   margin: 0 auto 2px auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

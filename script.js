@@ -1210,7 +1210,8 @@ function armoryItemQualityClass(qualityValue) {
 
 let armoryModelRotateX = 0;
 let armoryModelRotateY = 0;
-let armoryModelZoom = 1;
+const ARMORY_MODEL_DEFAULT_ZOOM = 1.24;
+let armoryModelZoom = ARMORY_MODEL_DEFAULT_ZOOM;
 
 function setArmoryStatus(message, isError = false) {
   if (!armoryStatus) return;
@@ -1382,7 +1383,7 @@ function applyArmoryModelTransform() {
 function resetArmoryModelTilt(resetZoom = false) {
   armoryModelRotateX = 0;
   armoryModelRotateY = 0;
-  if (resetZoom) armoryModelZoom = 1;
+  if (resetZoom) armoryModelZoom = ARMORY_MODEL_DEFAULT_ZOOM;
   applyArmoryModelTransform();
 }
 
