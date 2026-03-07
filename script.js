@@ -123,6 +123,7 @@ const armoryFetchBtn = document.getElementById("armoryFetchBtn");
 const armoryStatus = document.getElementById("armoryStatus");
 const armoryResult = document.getElementById("armoryResult");
 const armorySummary = document.getElementById("armorySummary");
+const armoryModelCard = document.getElementById("armoryModelCard");
 const armoryModelImage = document.getElementById("armoryModelImage");
 const armoryModelFallback = document.getElementById("armoryModelFallback");
 const armoryGearSummary = document.getElementById("armoryGearSummary");
@@ -1148,13 +1149,34 @@ function setArmoryStatus(message, isError = false) {
   armoryStatus.classList.toggle("error", Boolean(isError));
 }
 
+function resetArmoryModelTilt() {
+  if (!armoryModelCard || !armoryModelImage) return;
+  armoryModelCard.style.transform = "";
+  armoryModelImage.style.transform = "translateZ(14px)";
+}
+
+function updateArmoryModelTilt(event) {
+  if (!armoryModelCard || !armoryModelImage) return;
+  if (!armoryModelCard.classList.contains("has-model")) return;
+  const rect = armoryModelCard.getBoundingClientRect();
+  if (!rect.width || !rect.height) return;
+  const x = (event.clientX - rect.left) / rect.width - 0.5;
+  const y = (event.clientY - rect.top) / rect.height - 0.5;
+  const rotateY = clamp(x * 16, -12, 12);
+  const rotateX = clamp(-y * 14, -10, 10);
+  armoryModelCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  armoryModelImage.style.transform = `translateZ(20px) rotateX(${clamp(rotateX * -0.14, -3, 3)}deg) rotateY(${clamp(rotateY * 0.14, -4, 4)}deg) scale(1.015)`;
+}
+
 function resetArmoryResult() {
   if (armoryResult) armoryResult.hidden = true;
   if (armorySummary) armorySummary.textContent = "";
+  if (armoryModelCard) armoryModelCard.classList.remove("has-model");
   if (armoryModelImage) {
     armoryModelImage.hidden = true;
     armoryModelImage.src = "";
   }
+  resetArmoryModelTilt();
   if (armoryModelFallback) armoryModelFallback.hidden = false;
   if (armoryGearSummary) armoryGearSummary.textContent = "";
   if (armoryGearList) armoryGearList.innerHTML = "";
@@ -1179,16 +1201,19 @@ function renderArmoryResult(payload) {
   armorySummary.textContent = `${name} — ${realm} | ${className}${specPart}${levelPart}`;
 
   const renderUrl = String(payload?.media?.renderUrl || payload?.media?.avatarUrl || "").trim();
-  if (armoryModelImage && armoryModelFallback) {
+  if (armoryModelCard && armoryModelImage && armoryModelFallback) {
     if (renderUrl) {
+      armoryModelCard.classList.add("has-model");
       armoryModelImage.src = renderUrl;
       armoryModelImage.hidden = false;
       armoryModelFallback.hidden = true;
     } else {
+      armoryModelCard.classList.remove("has-model");
       armoryModelImage.hidden = true;
       armoryModelImage.src = "";
       armoryModelFallback.hidden = false;
     }
+    resetArmoryModelTilt();
   }
 
   const gear = Array.isArray(payload?.gear?.items) ? payload.gear.items : [];
@@ -3547,6 +3572,10 @@ armoryCopyBtn?.addEventListener("click", async () => {
     }, 900);
   }
 });
+
+armoryModelCard?.addEventListener("pointermove", updateArmoryModelTilt);
+armoryModelCard?.addEventListener("pointerleave", resetArmoryModelTilt);
+armoryModelCard?.addEventListener("pointercancel", resetArmoryModelTilt);
 
 authOpenBtn?.addEventListener("click", () => {
   if (!supabaseClient) return;

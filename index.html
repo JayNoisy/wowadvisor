@@ -248,9 +248,11 @@
         <div id="armoryResult" class="armory-result" hidden>
           <p id="armorySummary" class="armory-summary"></p>
           <div class="armory-preview-grid">
-            <section class="armory-model-card" aria-label="Character model preview">
-              <img id="armoryModelImage" class="armory-model-image" alt="Character model preview" hidden />
-              <p id="armoryModelFallback" class="muted">Character model preview unavailable for this profile.</p>
+            <section id="armoryModelCard" class="armory-model-card" aria-label="Character model preview">
+              <div class="armory-model-stage">
+                <img id="armoryModelImage" class="armory-model-image" alt="Character model preview" hidden />
+                <p id="armoryModelFallback" class="muted">Character model preview unavailable for this profile.</p>
+              </div>
             </section>
             <section class="armory-gear-card" aria-label="Equipped gear">
               <p id="armoryGearSummary" class="armory-gear-summary muted"></p>
