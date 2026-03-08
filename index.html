@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css?v=20260308-11" />
+  <link rel="stylesheet" href="style.css?v=20260308-12" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="script.js?v=20260308-11" defer></script>
+  <script src="script.js?v=20260308-12" defer></script>
 </head>
 <body>
   <header class="header">
@@ -31,6 +31,7 @@
     <div class="top-tabs" id="topTabs" role="tablist" aria-label="Primary sections">
       <button id="homeTabBtn" class="top-tab-btn selected" type="button" role="tab" aria-selected="true" aria-controls="homePanel" data-top-tab="home">Home</button>
       <button id="buildsTabBtn" class="top-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="buildsPanel" data-top-tab="builds">Builds</button>
+      <button id="trackerTabBtn" class="top-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="trackerPanel" data-top-tab="tracker">Tracker</button>
       <button id="armoryTabBtn" class="top-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="armoryPanel" data-top-tab="armory">Armory</button>
     </div>
     <div id="buildFreshnessAlert" class="build-freshness-alert" hidden></div>
@@ -214,6 +215,17 @@
     </section>
     </section>
 
+    <section id="trackerPanel" class="top-tab-panel tracker-panel" aria-label="Mythic lockout tracker panel" hidden>
+      <section id="mythicLockoutCard" class="mythic-lockout-card" aria-label="Mythic dungeon lockout tracker">
+        <div class="mythic-lockout-head">
+          <h3>Mythic Lockout Tracker</h3>
+        </div>
+        <p id="mythicLockoutWeekLabel" class="mythic-lockout-week muted"></p>
+        <p id="mythicLockoutHint" class="mythic-lockout-hint muted">Add characters from Armory to track lockout progress.</p>
+        <div id="mythicLockoutCharacters" class="mythic-lockout-characters"></div>
+      </section>
+    </section>
+
     <section id="armoryPanel" class="top-tab-panel armory-panel" aria-label="Armory import panel" hidden>
       <section class="armory-card">
         <div class="armory-head">
@@ -240,19 +252,28 @@
             <span>Character</span>
             <input id="armoryCharacter" class="armory-input" type="text" placeholder="thrall" required />
           </label>
-          <button id="armoryFetchBtn" class="auth-btn" type="submit">Fetch Armory</button>
+          <div class="armory-form-actions">
+            <button id="armoryFetchBtn" class="auth-btn" type="submit">Fetch Armory</button>
+            <button id="armoryAddToTrackerBtn" class="auth-btn secondary" type="button">Add Character To Tracker</button>
+          </div>
         </form>
 
         <p id="armoryStatus" class="armory-status muted">Enter your region, realm, and character name to start.</p>
 
-        <section id="mythicLockoutCard" class="mythic-lockout-card" aria-label="Mythic dungeon weekly lockout tracker">
-          <div class="mythic-lockout-head">
-            <h3>Mythic Weekly Lockouts</h3>
-            <button id="mythicLockoutAddBtn" class="auth-btn secondary" type="button">Add From Armory Fields</button>
+        <section class="armory-characters-card" aria-label="Saved armory characters">
+          <div class="armory-characters-head">
+            <h3>My Characters</h3>
+            <button id="armorySaveCharacterBtn" class="auth-btn secondary" type="button">Save Current</button>
           </div>
-          <p id="mythicLockoutWeekLabel" class="mythic-lockout-week muted"></p>
-          <p id="mythicLockoutHint" class="mythic-lockout-hint muted">Add characters to track weekly Mythic dungeon lockouts.</p>
-          <div id="mythicLockoutCharacters" class="mythic-lockout-characters"></div>
+          <p id="armoryCharactersHint" class="muted">Save characters to quickly load and fetch profiles.</p>
+          <div class="armory-characters-controls">
+            <select id="armoryCharactersSelect" class="armory-input" aria-label="Saved characters">
+              <option value="">Select a character</option>
+            </select>
+            <button id="armoryLoadCharacterBtn" class="auth-btn secondary" type="button">Load</button>
+            <button id="armoryFetchCharacterBtn" class="auth-btn" type="button">Load + Fetch</button>
+            <button id="armoryRemoveCharacterBtn" class="auth-btn secondary" type="button">Remove</button>
+          </div>
         </section>
 
         <div id="armoryResult" class="armory-result" hidden>

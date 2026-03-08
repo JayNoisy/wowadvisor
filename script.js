@@ -106,20 +106,26 @@ const LOCAL_COPIED_BUILDS_KEY = "wowadvisor_copied_builds_v1";
 const AUTH_REMEMBER_KEY = "wowadvisor_auth_remember_v1";
 const LOCAL_MYTHIC_LOCKOUTS_KEY = "wowadvisor_mythic_lockouts_v1";
 const MYTHIC_DUNGEON_POOL = [
-  "Ara-Kara, City of Echoes",
-  "City of Threads",
-  "The Dawnbreaker",
-  "The Stonevault",
-  "Priory of the Sacred Flame",
-  "The Rookery",
-  "Cinderbrew Meadery",
-  "Darkflame Cleft"
+  "Windrunner Spire",
+  "Murder Row",
+  "Maisara Caverns",
+  "The Blinding Vale",
+  "Den of Nalorakk",
+  "Magisters' Terrace",
+  "Nexus-Point Xenas",
+  "Voidscar Arena"
 ];
 const MYTHIC_WEEKLY_RESET_RULES = {
   us: { day: 2, hourUTC: 15 },
   eu: { day: 3, hourUTC: 7 },
   kr: { day: 3, hourUTC: 1 },
   tw: { day: 3, hourUTC: 1 }
+};
+const MYTHIC_DAILY_LOCKOUT_START_BY_REGION = {
+  us: "2026-03-17T15:00:00Z",
+  eu: "2026-03-18T07:00:00Z",
+  kr: "2026-03-18T01:00:00Z",
+  tw: "2026-03-18T01:00:00Z"
 };
 
 // =========================
@@ -130,6 +136,7 @@ const panel = document.getElementById("panel");
 const topTabs = document.getElementById("topTabs");
 const homePanel = document.getElementById("homePanel");
 const buildsPanel = document.getElementById("buildsPanel");
+const trackerPanel = document.getElementById("trackerPanel");
 const armoryPanel = document.getElementById("armoryPanel");
 const goToBuildsBtn = document.getElementById("goToBuildsBtn");
 const armoryForm = document.getElementById("armoryForm");
@@ -137,6 +144,13 @@ const armoryRegionInput = document.getElementById("armoryRegion");
 const armoryRealmInput = document.getElementById("armoryRealm");
 const armoryCharacterInput = document.getElementById("armoryCharacter");
 const armoryFetchBtn = document.getElementById("armoryFetchBtn");
+const armoryAddToTrackerBtn = document.getElementById("armoryAddToTrackerBtn");
+const armorySaveCharacterBtn = document.getElementById("armorySaveCharacterBtn");
+const armoryCharactersHint = document.getElementById("armoryCharactersHint");
+const armoryCharactersSelect = document.getElementById("armoryCharactersSelect");
+const armoryLoadCharacterBtn = document.getElementById("armoryLoadCharacterBtn");
+const armoryFetchCharacterBtn = document.getElementById("armoryFetchCharacterBtn");
+const armoryRemoveCharacterBtn = document.getElementById("armoryRemoveCharacterBtn");
 const armoryStatus = document.getElementById("armoryStatus");
 const armoryResult = document.getElementById("armoryResult");
 const armorySummary = document.getElementById("armorySummary");
@@ -153,7 +167,6 @@ const armoryLoadoutCode = document.getElementById("armoryLoadoutCode");
 const armoryCopyBtn = document.getElementById("armoryCopyBtn");
 const armoryOpenLink = document.getElementById("armoryOpenLink");
 const mythicLockoutCard = document.getElementById("mythicLockoutCard");
-const mythicLockoutAddBtn = document.getElementById("mythicLockoutAddBtn");
 const mythicLockoutWeekLabel = document.getElementById("mythicLockoutWeekLabel");
 const mythicLockoutHint = document.getElementById("mythicLockoutHint");
 const mythicLockoutCharacters = document.getElementById("mythicLockoutCharacters");
@@ -417,12 +430,13 @@ function ensureSpecExpansionVisible() {
 
 function switchTopTab(nextTab, options = {}) {
   const normalized = String(nextTab || "").toLowerCase();
-  const tab = normalized === "builds" || normalized === "armory" ? normalized : "home";
+  const tab = normalized === "builds" || normalized === "tracker" || normalized === "armory" ? normalized : "home";
   const shouldScroll = options.scroll !== false;
   activeTopTab = tab;
 
   if (homePanel) homePanel.hidden = tab !== "home";
   if (buildsPanel) buildsPanel.hidden = tab !== "builds";
+  if (trackerPanel) trackerPanel.hidden = tab !== "tracker";
   if (armoryPanel) armoryPanel.hidden = tab !== "armory";
 
   const buttons = topTabs ? topTabs.querySelectorAll(".top-tab-btn") : [];
@@ -436,6 +450,10 @@ function switchTopTab(nextTab, options = {}) {
   if (!shouldScroll) return;
   if (showBuilds) {
     ensureElementTopVisible(buildsPanel || classButtons, 14);
+    return;
+  }
+  if (tab === "tracker") {
+    ensureElementTopVisible(trackerPanel, 14);
     return;
   }
   if (tab === "armory") {
@@ -1256,15 +1274,24 @@ function createEmptyMythicDungeonLockouts() {
   return out;
 }
 
-function getMythicWeeklyResetRule(region) {
+function getMythicResetRule(region) {
   const normalized = normalizeArmoryRegion(region);
   return MYTHIC_WEEKLY_RESET_RULES[normalized] || MYTHIC_WEEKLY_RESET_RULES.us;
 }
 
-function getCurrentMythicWeekStart(region, nowValue = new Date()) {
-  const rule = getMythicWeeklyResetRule(region);
+function getMythicDailyLockoutStart(region) {
+  const normalized = normalizeArmoryRegion(region);
+  const raw = String(MYTHIC_DAILY_LOCKOUT_START_BY_REGION[normalized] || MYTHIC_DAILY_LOCKOUT_START_BY_REGION.us || "");
+  const parsed = new Date(raw);
+  return Number.isNaN(parsed.getTime()) ? new Date("2026-03-17T15:00:00Z") : parsed;
+}
+
+function getCurrentMythicLockoutPeriod(region, nowValue = new Date()) {
+  const rule = getMythicResetRule(region);
+  const normalized = normalizeArmoryRegion(region);
   const now = nowValue instanceof Date ? nowValue : new Date(nowValue);
-  const nowUtc = now.getTime();
+  const nowMs = now.getTime();
+  const dailyStart = getMythicDailyLockoutStart(normalized);
   const todayResetUtc = Date.UTC(
     now.getUTCFullYear(),
     now.getUTCMonth(),
@@ -1274,19 +1301,40 @@ function getCurrentMythicWeekStart(region, nowValue = new Date()) {
     0,
     0
   );
-  const dayDiff = (now.getUTCDay() - Number(rule.day || 2) + 7) % 7;
+  const dayMs = 24 * 60 * 60 * 1000;
   const weekMs = 7 * 24 * 60 * 60 * 1000;
-  let resetUtc = todayResetUtc - (dayDiff * 24 * 60 * 60 * 1000);
-  if (nowUtc < resetUtc) resetUtc -= weekMs;
-  return new Date(resetUtc);
-}
+  const cadence = nowMs >= dailyStart.getTime() ? "daily" : "weekly";
 
-function getMythicWeekMeta(region, nowValue = new Date()) {
-  const normalized = normalizeArmoryRegion(region);
-  const weekStart = getCurrentMythicWeekStart(normalized, nowValue);
-  const nextReset = new Date(weekStart.getTime() + (7 * 24 * 60 * 60 * 1000));
-  const key = `${normalized}:${weekStart.toISOString().slice(0, 16)}`;
-  return { region: normalized, weekStart, nextReset, key };
+  if (cadence === "daily") {
+    let resetUtc = todayResetUtc;
+    if (nowMs < resetUtc) resetUtc -= dayMs;
+    const periodStart = new Date(resetUtc);
+    const nextReset = new Date(resetUtc + dayMs);
+    return {
+      region: normalized,
+      cadence,
+      cadenceLabel: "Daily",
+      periodStart,
+      nextReset,
+      key: `${normalized}:daily:${periodStart.toISOString().slice(0, 16)}`,
+      switchAt: dailyStart
+    };
+  }
+
+  const dayDiff = (now.getUTCDay() - Number(rule.day || 2) + 7) % 7;
+  let resetUtc = todayResetUtc - (dayDiff * dayMs);
+  if (nowMs < resetUtc) resetUtc -= weekMs;
+  const periodStart = new Date(resetUtc);
+  const nextReset = new Date(resetUtc + weekMs);
+  return {
+    region: normalized,
+    cadence,
+    cadenceLabel: "Weekly",
+    periodStart,
+    nextReset,
+    key: `${normalized}:weekly:${periodStart.toISOString().slice(0, 16)}`,
+    switchAt: dailyStart
+  };
 }
 
 function buildMythicTrackerCharacterId(region, realmSlug, characterSlug) {
@@ -1320,8 +1368,9 @@ function normalizeMythicTrackerCharacter(raw) {
   if (!realmSlug || !characterSlug) return null;
 
   const id = buildMythicTrackerCharacterId(region, realmSlug, characterSlug);
-  const weekMeta = getMythicWeekMeta(region);
-  const incomingLockouts = raw.weekKey === weekMeta.key && raw.lockouts && typeof raw.lockouts === "object"
+  const periodMeta = getCurrentMythicLockoutPeriod(region);
+  const priorPeriodKey = String(raw.periodKey || raw.weekKey || "").trim();
+  const incomingLockouts = priorPeriodKey === periodMeta.key && raw.lockouts && typeof raw.lockouts === "object"
     ? raw.lockouts
     : {};
   const lockouts = createEmptyMythicDungeonLockouts();
@@ -1340,8 +1389,9 @@ function normalizeMythicTrackerCharacter(raw) {
     characterSlug,
     className: String(raw.className || "").trim(),
     specName: String(raw.specName || "").trim(),
-    weekKey: weekMeta.key,
-    weekStart: weekMeta.weekStart.toISOString(),
+    periodKey: periodMeta.key,
+    periodStart: periodMeta.periodStart.toISOString(),
+    cadence: periodMeta.cadence,
     lockouts
   };
 }
@@ -1374,15 +1424,26 @@ function formatMythicTrackerDateTime(value) {
   });
 }
 
-function formatMythicTrackerWeekLabel(region) {
-  const meta = getMythicWeekMeta(region);
-  return `Current weekly lockout: ${formatMythicTrackerDateTime(meta.weekStart)} -> ${formatMythicTrackerDateTime(meta.nextReset)} (${meta.region.toUpperCase()} reset)`;
+function formatMythicTrackerWindowLabel(region) {
+  const meta = getCurrentMythicLockoutPeriod(region);
+  const cadenceText = `${meta.cadenceLabel} lockout`;
+  const switchText = meta.cadence === "weekly"
+    ? ` Daily lockouts start ${formatMythicTrackerDateTime(meta.switchAt)}.`
+    : "";
+  return `Current ${cadenceText}: ${formatMythicTrackerDateTime(meta.periodStart)} -> ${formatMythicTrackerDateTime(meta.nextReset)} (${meta.region.toUpperCase()} reset).${switchText}`;
 }
 
 function setMythicLockoutHintMessage(message, isError = false) {
   if (!mythicLockoutHint) return;
   mythicLockoutHint.textContent = String(message || "");
   mythicLockoutHint.classList.toggle("error", Boolean(isError));
+}
+
+function getTrackedCharacterHintMessage(character) {
+  const region = normalizeArmoryRegion(character?.region || "us");
+  const periodMeta = getCurrentMythicLockoutPeriod(region);
+  const cadence = periodMeta.cadence === "daily" ? "daily" : "weekly";
+  return `Tracking ${String(character?.name || "Character")} - ${String(character?.realm || "Realm")} for the current ${cadence} lockout window.`;
 }
 
 function getMythicLockoutCharactersSorted() {
@@ -1395,14 +1456,42 @@ function getMythicLockoutCharactersSorted() {
   });
 }
 
-function refreshMythicTrackerWeeklyResets() {
+function getSavedArmoryCharacters() {
+  return getMythicLockoutCharactersSorted();
+}
+
+function renderArmorySavedCharacters(selectedId = "") {
+  if (!armoryCharactersSelect) return;
+  const characters = getSavedArmoryCharacters();
+  const preferred = String(selectedId || armoryCharactersSelect.value || "").trim();
+  armoryCharactersSelect.innerHTML = `<option value="">Select a character</option>${
+    characters.map((character) => {
+      const meta = `${character.realm} | ${character.region.toUpperCase()}`;
+      return `<option value="${escapeHtml(character.id)}">${escapeHtml(character.name)} - ${escapeHtml(meta)}</option>`;
+    }).join("")
+  }`;
+  const nextId = preferred && characters.some((c) => c.id === preferred) ? preferred : "";
+  armoryCharactersSelect.value = nextId;
+  const hasSelection = Boolean(nextId);
+  if (armoryLoadCharacterBtn) armoryLoadCharacterBtn.disabled = !hasSelection;
+  if (armoryFetchCharacterBtn) armoryFetchCharacterBtn.disabled = !hasSelection;
+  if (armoryRemoveCharacterBtn) armoryRemoveCharacterBtn.disabled = !hasSelection;
+  if (armoryCharactersHint) {
+    armoryCharactersHint.textContent = characters.length > 0
+      ? `Saved characters: ${characters.length}. Load one to fill Armory fields instantly.`
+      : "Save characters to quickly load and fetch profiles.";
+  }
+}
+
+function refreshMythicTrackerResets() {
   const characters = mythicLockoutState?.characters || {};
   let changed = false;
   Object.values(characters).forEach((character) => {
-    const weekMeta = getMythicWeekMeta(character.region);
-    if (character.weekKey === weekMeta.key) return;
-    character.weekKey = weekMeta.key;
-    character.weekStart = weekMeta.weekStart.toISOString();
+    const periodMeta = getCurrentMythicLockoutPeriod(character.region);
+    if (character.periodKey === periodMeta.key) return;
+    character.periodKey = periodMeta.key;
+    character.periodStart = periodMeta.periodStart.toISOString();
+    character.cadence = periodMeta.cadence;
     character.lockouts = createEmptyMythicDungeonLockouts();
     changed = true;
   });
@@ -1411,9 +1500,10 @@ function refreshMythicTrackerWeeklyResets() {
 
 function renderMythicLockoutTracker() {
   if (!mythicLockoutCard || !mythicLockoutWeekLabel || !mythicLockoutCharacters) return;
-  refreshMythicTrackerWeeklyResets();
+  refreshMythicTrackerResets();
   const activeRegion = normalizeArmoryRegion(armoryRegionInput?.value || "us");
-  mythicLockoutWeekLabel.textContent = formatMythicTrackerWeekLabel(activeRegion);
+  mythicLockoutWeekLabel.textContent = formatMythicTrackerWindowLabel(activeRegion);
+  renderArmorySavedCharacters();
 
   const characters = getMythicLockoutCharactersSorted();
   if (characters.length === 0) {
@@ -1425,12 +1515,14 @@ function renderMythicLockoutTracker() {
     const lockouts = character?.lockouts && typeof character.lockouts === "object"
       ? character.lockouts
       : createEmptyMythicDungeonLockouts();
+    const periodMeta = getCurrentMythicLockoutPeriod(character.region);
     const lockedCount = MYTHIC_DUNGEON_POOL.reduce((sum, dungeon) => sum + (lockouts[dungeon] ? 1 : 0), 0);
-    const summary = `${lockedCount}/${MYTHIC_DUNGEON_POOL.length} locked this week`;
+    const summary = `${lockedCount}/${MYTHIC_DUNGEON_POOL.length} locked this ${periodMeta.cadence}`;
     const classSpec = [character.className, character.specName].filter(Boolean).join(" | ");
     const detailLine = classSpec
       ? `${character.realm} | ${character.region.toUpperCase()} | ${classSpec}`
       : `${character.realm} | ${character.region.toUpperCase()}`;
+    const clearLabel = periodMeta.cadence === "daily" ? "Clear Today" : "Clear Week";
     const dungeonsHtml = MYTHIC_DUNGEON_POOL.map((dungeon) => {
       const locked = Boolean(lockouts[dungeon]);
       return `
@@ -1456,7 +1548,7 @@ function renderMythicLockoutTracker() {
           </div>
           <div class="mythic-lockout-character-actions">
             <span class="mythic-lockout-count">${escapeHtml(summary)}</span>
-            <button type="button" class="mythic-lockout-action-btn" data-action="clear-character" data-char-id="${escapeHtml(character.id)}">Clear Week</button>
+            <button type="button" class="mythic-lockout-action-btn" data-action="clear-character" data-char-id="${escapeHtml(character.id)}">${escapeHtml(clearLabel)}</button>
             <button type="button" class="mythic-lockout-action-btn danger" data-action="remove-character" data-char-id="${escapeHtml(character.id)}">Remove</button>
           </div>
         </div>
@@ -1473,7 +1565,7 @@ function upsertMythicLockoutCharacter(input = {}) {
   if (!realmSlug || !characterSlug) return null;
 
   const id = buildMythicTrackerCharacterId(region, realmSlug, characterSlug);
-  const weekMeta = getMythicWeekMeta(region);
+  const periodMeta = getCurrentMythicLockoutPeriod(region);
   const existing = mythicLockoutState?.characters?.[id];
   const next = normalizeMythicTrackerCharacter({
     ...(existing || {}),
@@ -1482,10 +1574,10 @@ function upsertMythicLockoutCharacter(input = {}) {
     region,
     realmSlug,
     characterSlug,
-    weekKey: weekMeta.key
+    periodKey: periodMeta.key
   });
   if (!next) return null;
-  if (existing && existing.weekKey === weekMeta.key && existing.lockouts && typeof existing.lockouts === "object") {
+  if (existing && existing.periodKey === periodMeta.key && existing.lockouts && typeof existing.lockouts === "object") {
     MYTHIC_DUNGEON_POOL.forEach((dungeon) => {
       next.lockouts[dungeon] = Boolean(existing.lockouts[dungeon]);
     });
@@ -1493,6 +1585,7 @@ function upsertMythicLockoutCharacter(input = {}) {
   mythicLockoutState.characters[id] = next;
   saveMythicTrackerState();
   renderMythicLockoutTracker();
+  renderArmorySavedCharacters(next.id);
   return next;
 }
 
@@ -1509,7 +1602,56 @@ function addMythicLockoutCharacterFromArmoryInputs() {
     setMythicLockoutHintMessage("Could not add this character to the lockout tracker.", true);
     return;
   }
-  setMythicLockoutHintMessage(`Tracking ${tracked.name} - ${tracked.realm} for this week's lockouts.`);
+  setMythicLockoutHintMessage(getTrackedCharacterHintMessage(tracked));
+}
+
+function applyTrackedCharacterToArmoryInputs(characterId) {
+  const id = String(characterId || "").trim();
+  const character = mythicLockoutState?.characters?.[id];
+  if (!character || !armoryRegionInput || !armoryRealmInput || !armoryCharacterInput) return null;
+  armoryRegionInput.value = normalizeArmoryRegion(character.region);
+  armoryRealmInput.value = String(character.realm || character.realmSlug || "");
+  armoryCharacterInput.value = String(character.name || character.characterSlug || "");
+  void syncArmoryInputState({ resetResult: true, updateStatus: true });
+  renderMythicLockoutTracker();
+  return character;
+}
+
+function getSelectedArmoryCharacterId() {
+  return String(armoryCharactersSelect?.value || "").trim();
+}
+
+function loadSelectedArmoryCharacter({ fetchAfterLoad = false } = {}) {
+  const id = getSelectedArmoryCharacterId();
+  if (!id) {
+    if (armoryCharactersHint) armoryCharactersHint.textContent = "Pick a saved character first.";
+    return;
+  }
+  const character = applyTrackedCharacterToArmoryInputs(id);
+  if (!character) {
+    if (armoryCharactersHint) armoryCharactersHint.textContent = "Could not load this saved character.";
+    return;
+  }
+  if (armoryCharactersHint) {
+    armoryCharactersHint.textContent = `Loaded ${character.name} - ${character.realm}.`;
+  }
+  if (fetchAfterLoad) {
+    void fetchArmoryImport();
+  }
+}
+
+function removeSelectedArmoryCharacter() {
+  const id = getSelectedArmoryCharacterId();
+  if (!id) {
+    if (armoryCharactersHint) armoryCharactersHint.textContent = "Pick a saved character first.";
+    return;
+  }
+  const character = mythicLockoutState?.characters?.[id];
+  removeMythicTrackerCharacter(id);
+  if (armoryCharactersHint) {
+    const label = character ? `${character.name} - ${character.realm}` : "character";
+    armoryCharactersHint.textContent = `Removed ${label} from saved characters.`;
+  }
 }
 
 function toggleMythicDungeonLockout(characterId, dungeon) {
@@ -1518,7 +1660,7 @@ function toggleMythicDungeonLockout(characterId, dungeon) {
   if (!id || !MYTHIC_DUNGEON_POOL.includes(dungeonName)) return;
   const character = mythicLockoutState?.characters?.[id];
   if (!character) return;
-  refreshMythicTrackerWeeklyResets();
+  refreshMythicTrackerResets();
   const nextValue = !Boolean(character?.lockouts?.[dungeonName]);
   character.lockouts[dungeonName] = nextValue;
   saveMythicTrackerState();
@@ -1547,6 +1689,7 @@ function initMythicLockoutTracker() {
   mythicLockoutState = normalizeMythicTrackerState(getMythicTrackerStoreRaw());
   saveMythicTrackerState();
   renderMythicLockoutTracker();
+  renderArmorySavedCharacters();
 }
 
 function hideArmoryGearTooltip() {
@@ -1869,6 +2012,8 @@ function syncArmoryInputState({ resetResult = false, updateStatus = false } = {}
   const character = normalizeArmorySlug(armoryCharacterInput.value);
   const canFetch = Boolean(realm && character);
   armoryFetchBtn.disabled = !canFetch;
+  if (armoryAddToTrackerBtn) armoryAddToTrackerBtn.disabled = !canFetch;
+  if (armorySaveCharacterBtn) armorySaveCharacterBtn.disabled = !canFetch;
 
   if (resetResult) resetArmoryResult();
   if (!canFetch && updateStatus) {
@@ -1904,7 +2049,7 @@ function renderArmoryResult(payload) {
     specName: spec
   });
   if (trackedCharacter) {
-    setMythicLockoutHintMessage(`Tracking ${trackedCharacter.name} - ${trackedCharacter.realm} for this week's lockouts.`);
+    setMythicLockoutHintMessage(getTrackedCharacterHintMessage(trackedCharacter));
   }
 
   renderArmoryHeadlineStats(payload);
@@ -4292,8 +4437,28 @@ armoryCharacterInput?.addEventListener("change", () => {
   void syncArmoryInputState({ resetResult: true, updateStatus: true });
 });
 
-mythicLockoutAddBtn?.addEventListener("click", () => {
+armoryAddToTrackerBtn?.addEventListener("click", () => {
   addMythicLockoutCharacterFromArmoryInputs();
+});
+
+armorySaveCharacterBtn?.addEventListener("click", () => {
+  addMythicLockoutCharacterFromArmoryInputs();
+});
+
+armoryCharactersSelect?.addEventListener("change", () => {
+  renderArmorySavedCharacters(getSelectedArmoryCharacterId());
+});
+
+armoryLoadCharacterBtn?.addEventListener("click", () => {
+  loadSelectedArmoryCharacter({ fetchAfterLoad: false });
+});
+
+armoryFetchCharacterBtn?.addEventListener("click", () => {
+  loadSelectedArmoryCharacter({ fetchAfterLoad: true });
+});
+
+armoryRemoveCharacterBtn?.addEventListener("click", () => {
+  removeSelectedArmoryCharacter();
 });
 
 mythicLockoutCharacters?.addEventListener("click", (e) => {
@@ -4424,6 +4589,8 @@ injectTalentTreeStyles();
 const initialHash = String(window.location.hash || "").toLowerCase();
 const initialTopTab = initialHash === "#builds"
   ? "builds"
+  : initialHash === "#tracker"
+    ? "tracker"
   : initialHash === "#armory"
     ? "armory"
     : "home";
