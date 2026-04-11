@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-11T02:33:33.508Z",
+  "generatedAt": "2026-04-11T13:04:58.465Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -7,11 +7,11 @@
     },
     "murlok": {
       "ok": true,
-      "mplusMetaUpdatedAt": "2026-04-11T02:15:08.081943Z",
+      "mplusMetaUpdatedAt": "2026-04-11T10:10:26.381838Z",
       "pvpOk": true,
-      "pvpCount": 1300,
+      "pvpCount": 1327,
       "pveOk": true,
-      "pveCount": 1987
+      "pveCount": 1985
     },
     "peavers": {
       "ok": true,
@@ -40,14 +40,14 @@
     "Warrior": {
       "Arms": {
         "raid": {
-          "title": "Slayer | Raid ST Best",
-          "source": "PeaversTalentsData/WowheadRaidDB",
-          "updated": "2026-04-10 04:00:47",
-          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzMzMDAAAghphxYmxyMzMzgxMDAAAAgZWmZAZMWWGYBMgZYCZGsBMjNz2YwMGgZGAmxwA",
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
+          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzYmZAAAAMMNMzYmxyMzMzgxMDAAAAgZWmZgtMGLLDsAGwMMBmBbAzgZbMYmtBYmBgZMMA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/10 (20.0%), margin=16.0 (21.1%), updated=2026-04-10 04:00:47",
+          "confidenceScore": 54,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=9.0 (10.6%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
           "agreementCount": 2,
           "agreementRatio": 0.2,
@@ -60,11 +60,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "wowhead": {
+            "archon": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 25,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -72,7 +72,7 @@
         "aoe": {
           "title": "Arms — AoE (Mythic+)",
           "source": "Murlok.io (m+) top-player",
-          "updated": "2026-04-11T01:36:11.685027Z",
+          "updated": "2026-04-11T09:29:56.151659Z",
           "exportString": "CcEAjLzRlq54bI5v+r8Sr9Xw4jZmxsMzMzYGAAAghphZGmZbZmZmZYGzMAAAAAGbmB2iBsZGDLwAzoNaMYBMzYbYwsZ2GMzAAYGGA",
           "notes": [
             "Player: bizentein",
@@ -80,7 +80,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/56 (3.6%), margin=3.5 (5.5%), updated=2026-04-11T01:36:11.685027Z",
+          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/56 (3.6%), margin=2.3 (3.7%), updated=2026-04-11T09:29:56.151659Z",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -406,26 +406,26 @@
         "pvp": {
           "title": "Arms — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:48:01.989299Z",
-          "exportString": "CcEAjLzRlq54bI5v+r8Sr9Xw4DzMzsMzMzYAAAAMMhxMzYhZmZYGzMDAAAAgxiZgtMzYZbWMz2wmhhZmZajmZGWAmxiZZMsMz2gZGAwMGGA",
+          "updated": "2026-04-11T08:17:36.663659Z",
+          "exportString": "CcEAjLzRlq54bI5v+r8Sr9Xw4DzMzsMzMzYAAAAMMhxMzYZzMzMYMzMAAAAAGLmB2yMjltZxMbDbGGmZmpNamZYBYGLmlxwyMbDmZAAzYYA",
           "notes": [
-            "Player: bingbingbing",
-            "RankIndex: 3"
+            "Player: toegap",
+            "RankIndex: 5"
           ],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/51 (3.9%), margin=3.5 (3.9%), updated=2026-04-10T16:48:01.989299Z",
+          "confidenceScore": 39,
+          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/51 (5.9%), margin=6.0 (6.5%), updated=2026-04-11T08:17:36.663659Z",
           "sampleSize": 51,
-          "agreementCount": 2,
-          "agreementRatio": 0.039,
+          "agreementCount": 3,
+          "agreementRatio": 0.059,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 2,
+              "contributors": 3,
               "familyBest": 80.4,
-              "popularityBonus": 9.51,
-              "familySupport": 89.91
+              "popularityBonus": 12,
+              "familySupport": 92.4
             }
           },
           "selectedTalents": {
@@ -503,7 +503,7 @@
                 "rank": 1
               },
               {
-                "slug": "rumbling-earth",
+                "slug": "shattering-throw",
                 "rank": 1
               },
               {
@@ -742,12 +742,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDDzMjlZmZmZYMzYGzYmlZmxYmZZMzMAAQYgNYZxoxMAmFMjFAzgZbAwMDghZmZGGM",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 54,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=9.0 (10.6%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=9.0 (10.6%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
           "agreementCount": 2,
           "agreementRatio": 0.2,
@@ -772,12 +772,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjZMz2yMzMjZmxMjZMjZWmZGjZmlxMzAAAhB2glFjGzAYWwMWAMDGDAmZAMMzMDGM",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 49,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=17.1 (20.1%), updated=2026-04-10 21:42:25",
+          "confidenceScore": 48,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=15.5 (18.2%), updated=2026-04-11 05:42:18",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -802,7 +802,7 @@
         "pvp": {
           "title": "Fury — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T01:25:30.752976Z",
+          "updated": "2026-04-11T09:18:22.096842Z",
           "exportString": "CgEAjLzRlq54bI5v+r8Sr9Xw4DAAAAAAgGDzMjZWWMzMjBzMzMjZmxyMGjZmlxMzAAAxMLbjN2ssYmGzMDTmNmZsAYmFjlBAzMAzwYGDzwA",
           "notes": [
             "Player: kragar",
@@ -810,10 +810,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/13 (7.7%), margin=0.0 (0.0%), updated=2026-04-11T01:25:30.752976Z",
-          "sampleSize": 13,
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-04-11T09:18:22.096842Z",
+          "sampleSize": 14,
           "agreementCount": 1,
-          "agreementRatio": 0.077,
+          "agreementRatio": 0.071,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -1133,13 +1133,13 @@
       "Protection": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-04-10 02:02:34",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAA0yAAAzMzYmZGzMzmxsMjxYmGmZYZMzMDzYmBAAAALDAzYAGYDWWMaMDgZDzsBzYmBz2AgZGAAGgB",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 70,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=15.0 (16.5%), updated=2026-04-10 02:02:34",
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=15.0 (16.5%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
           "agreementCount": 4,
           "agreementRatio": 0.4,
@@ -1164,12 +1164,12 @@
         "aoe": {
           "title": "Colossus | Mythic",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzYmZmZmxsZmZZYMmpxMGWGzMzwMmZAAAAwyAwMGAYzMG2IDMDL0YmFGzMzMY2GAgZGAwAMA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 49,
-          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/56 (3.6%), margin=16.0 (21.1%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/56 (3.6%), margin=16.0 (21.1%), updated=2026-04-11 04:00:47",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -1194,12 +1194,12 @@
         "pvp": {
           "title": "Colossus | Delves Best",
           "source": "PeaversTalentsData/WowheadMiscDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzYmZmZmxsZmZZYMmpxMGWGzMzwMmZAAAAwyAwMGAYzMG2IDMDL0YmFGzMzMY2GAgZGAwAMA",
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/1 (100.0%), margin=max, updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/1 (100.0%), margin=max, updated=2026-04-11 04:00:47",
           "sampleSize": 1,
           "agreementCount": 1,
           "agreementRatio": 1,
@@ -1222,12 +1222,12 @@
         "raid": {
           "title": "Herald Of The Sun | Raid",
           "source": "PeaversTalentsData/WowheadRaidDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYBAMAAglZmZGzYmZ2YMGzyYbmZxoJGzYmZYY2yAwAG2AbsMjZWmtZmZrBAAAYBA2MMmxMAAgZGmxY0A",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 54,
-          "confidenceRationale": "support=100.0, families=2, sources=2, agreement=2/9 (22.2%), margin=9.0 (9.0%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=100.0, families=2, sources=2, agreement=2/9 (22.2%), margin=9.0 (9.0%), updated=2026-04-11 04:00:47",
           "sampleSize": 9,
           "agreementCount": 2,
           "agreementRatio": 0.222,
@@ -1252,12 +1252,12 @@
         "aoe": {
           "title": "Herald Of The Sun | Mythic",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYBAMDAwglZmZmZGzMzCMGWGbzMLGNxwYmZYY2yAwAwGYjlZmZWmtZmZrBAAAYhNMDbGYGzAAAmZYGjRD",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 47,
-          "confidenceRationale": "support=100.0, families=2, sources=2, agreement=2/56 (3.6%), margin=15.0 (15.0%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=100.0, families=2, sources=2, agreement=2/56 (3.6%), margin=15.0 (15.0%), updated=2026-04-11 04:00:47",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -1282,7 +1282,7 @@
         "pvp": {
           "title": "Holy — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:58:28.185566Z",
+          "updated": "2026-04-11T08:37:07.908277Z",
           "exportString": "CEEAVg1HmQqr1Dwlv86ljju8vCAAAYBAMDAwglhBzsMzYZmxYGbjNzsw0EzyMMDGslBgBgNwmZzMDACAYmZZbxyMDbsNGGbmZMDzwMAmZAwAaA",
           "notes": [
             "Player: awakenx",
@@ -1290,10 +1290,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/52 (1.9%), margin=0.0 (0.0%), updated=2026-04-10T16:58:28.185566Z",
-          "sampleSize": 52,
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/51 (2.0%), margin=0.0 (0.0%), updated=2026-04-11T08:37:07.908277Z",
+          "sampleSize": 51,
           "agreementCount": 1,
-          "agreementRatio": 0.019,
+          "agreementRatio": 0.02,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -1629,13 +1629,13 @@
       "Protection": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-04-10 02:02:34",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsZm5BYWGLzMjZGbLjxYmFbzYAAGAAAAAAkmZWMjZmxYmt2AwAGwgNAAwMTbzMLzAAsBmBAjZYMAALzAMzAG",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 70,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=15.0 (16.5%), updated=2026-04-10 02:02:34",
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=15.0 (16.5%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
           "agreementCount": 4,
           "agreementRatio": 0.4,
@@ -1660,12 +1660,12 @@
         "aoe": {
           "title": "Templar | Mythic Best",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNjBzyYZMjZmZZbMzwsMLzYAAGAAAAAA00MziZMzwws1GAGYAzgNAAwMTbzMLzAAsZGMAYMDjBAYZGgZGkB",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 49,
-          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/57 (3.5%), margin=16.0 (21.1%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/57 (3.5%), margin=16.0 (21.1%), updated=2026-04-11 04:00:47",
           "sampleSize": 57,
           "agreementCount": 2,
           "agreementRatio": 0.035,
@@ -1690,18 +1690,18 @@
         "pvp": {
           "title": "Protection — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T01:13:14.36845Z",
+          "updated": "2026-04-11T09:05:52.822406Z",
           "exportString": "CIEAVg1HmQqr1Dwlv86ljju8vuNPwMGz2MLjZmZGWYmhZhhBAYAAAAAAQTzMLzMmBjZ2aDADAMwGAAYmptZmlZmZW2WabG2MYGGYwMmZGAMsMDwMDYA",
           "notes": [
             "Player: arbuzno",
             "RankIndex: 3"
           ],
           "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/17 (11.8%), margin=3.5 (3.9%), updated=2026-04-11T01:13:14.36845Z",
-          "sampleSize": 17,
+          "confidenceScore": 42,
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/16 (12.5%), margin=3.5 (3.9%), updated=2026-04-11T09:05:52.822406Z",
+          "sampleSize": 16,
           "agreementCount": 2,
-          "agreementRatio": 0.118,
+          "agreementRatio": 0.125,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -2033,13 +2033,13 @@
       "Retribution": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-04-10 02:02:34",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQz22MzsMMzAAAAAAwoMmhZGbDz2wMbzYMmZYGbsNMAAwMTbzMbzAA2AMAYMDzgZMmNsMDGGzYwA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 70,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=9.0 (9.9%), updated=2026-04-10 02:02:34",
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=9.0 (9.9%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
           "agreementCount": 4,
           "agreementRatio": 0.444,
@@ -2064,12 +2064,12 @@
         "aoe": {
           "title": "Templar | Mythic Best",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAMa22mZmlxMzMDAAAAAwMlhhZGbDz2wMbzYMGDzYjNMAAkZm2mZ2mBAsBYAwYGGYmZYDLzghxMGM",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 49,
-          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/56 (3.6%), margin=18.5 (22.5%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/56 (3.6%), margin=18.5 (22.5%), updated=2026-04-11 04:00:47",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -2094,15 +2094,15 @@
         "pvp": {
           "title": "Retribution — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T17:16:16.752497Z",
-          "exportString": "CYEAVg1HmQqr1Dwlv86ljju8vCAAAAAQzy2MzsMmZGDAAAAAwMlZZGmZsNDbDzsNjHwYmhZsw2AwsMLzMzSzMTbzMbzAAWAMMwYMjBMjhNgZmhxwgB",
+          "updated": "2026-04-11T09:07:28.576742Z",
+          "exportString": "CYEAVg1HmQqr1Dwlv86ljju8vCAAAAAQzy2MzsMMzYAAAAAAmpMLzwMjtBbDzsNjxYmhZsw2wAmlZbmZWaQAAALAGGYMmxAmxwGwMzwYYwA",
           "notes": [
-            "Player: layson",
-            "RankIndex: 5"
+            "Player: metrikx",
+            "RankIndex: 1"
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/52 (1.9%), margin=0.0 (0.0%), updated=2026-04-10T17:16:16.752497Z",
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/52 (1.9%), margin=0.0 (0.0%), updated=2026-04-11T09:07:28.576742Z",
           "sampleSize": 52,
           "agreementCount": 1,
           "agreementRatio": 0.019,
@@ -2243,7 +2243,7 @@
                 "rank": 2
               },
               {
-                "slug": "eye-for-an-eye",
+                "slug": "blessing-of-dawn",
                 "rank": 1
               },
               {
@@ -2310,7 +2310,7 @@
               },
               {
                 "slug": "zealot's-fervor",
-                "rank": 1
+                "rank": 2
               },
               {
                 "slug": "heart-of-the-crusader",
@@ -2322,10 +2322,6 @@
               },
               {
                 "slug": "crusading-strikes",
-                "rank": 1
-              },
-              {
-                "slug": "blessed-champion",
                 "rank": 1
               },
               {
@@ -2375,7 +2371,7 @@
                 "rank": 1
               },
               {
-                "slug": "morning-star",
+                "slug": "gleaming-rays",
                 "rank": 1
               },
               {
@@ -2435,13 +2431,13 @@
       "Beast Mastery": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-04-10 02:02:34",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsAzwQDbAAYG2GzsNzwMmZYYmxYmxMzYGzwMzYGzghmBAAAAAMDAAAzMzMAzsBYYWAbGA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 70,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=9.0 (9.9%), updated=2026-04-10 02:02:34",
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=9.0 (9.9%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
           "agreementCount": 4,
           "agreementRatio": 0.444,
@@ -2466,12 +2462,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAYzsNwAGwMsBMWAAwMjlZmhZYmZGMjZmZYGzMjZmZsNzMMmhlhmBAAAAAMDAAAmxYYmBIMMLgFD",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 44,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.5%), updated=2026-04-10 21:42:25",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.5%), updated=2026-04-11 05:42:18",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -2496,7 +2492,7 @@
         "pvp": {
           "title": "Beast Mastery — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:22:08.025749Z",
+          "updated": "2026-04-11T08:55:43.740613Z",
           "exportString": "C0PAo4YcvOcqUdzB9zV+NhSAcAMmxwCsAzwQDbAAYGz2YmFzwMmZY8AzMGmxMzMGzYxMjZmZMMaGAAAAAwMAAAMDzMgZ2QWwMLgND",
           "notes": [
             "Player: xxy",
@@ -2504,7 +2500,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/52 (5.8%), margin=2.5 (2.7%), updated=2026-04-10T16:22:08.025749Z",
+          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/52 (5.8%), margin=0.0 (0.0%), updated=2026-04-11T08:55:43.740613Z",
           "sampleSize": 52,
           "agreementCount": 3,
           "agreementRatio": 0.058,
@@ -2819,13 +2815,13 @@
       "Marksmanship": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-04-10 02:02:34",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwMGNWGAzgNAAAAAAAAgZMjZYGzMjZwYaGjZmZbbzMzMMzgZmlxYWGmZAAAjZmZAYmx2GMAbYA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 70,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=9.0 (9.9%), updated=2026-04-10 02:02:34",
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=9.0 (9.9%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
           "agreementCount": 4,
           "agreementRatio": 0.444,
@@ -2850,12 +2846,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwMGNWGAzgNAAAAAAAAgZMzMjtZMzMmhlx0MGjZ222MzMDzMsMzsMGzywMDAAgxYAYmxGDDwGG",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 44,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.5%), updated=2026-04-10 21:42:25",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.5%), updated=2026-04-11 05:42:18",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -2880,15 +2876,15 @@
         "pvp": {
           "title": "Marksmanship — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:22:21.58629Z",
+          "updated": "2026-04-11T08:56:51.003129Z",
           "exportString": "C4PAo4YcvOcqUdzB9zV+NhSAcYbZWGDjZMTjlZG2yMMLAAAAAAAAAzwYGLGzMz8ADmRzYGMbLbmxYZmZMbzYhZmlhZAAAmZMzMzMDmZstgZAWwA",
           "notes": [
             "Player: kásúxøxømáyw",
-            "RankIndex: 3"
+            "RankIndex: 4"
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/52 (3.8%), margin=3.5 (3.9%), updated=2026-04-10T16:22:21.58629Z",
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/52 (3.8%), margin=3.5 (3.9%), updated=2026-04-11T08:56:51.003129Z",
           "sampleSize": 52,
           "agreementCount": 2,
           "agreementRatio": 0.038,
@@ -3208,23 +3204,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMgxMG2gFYGGawiZmZmZYZAAAAAAwMmZmhZMmxMsMmmBAAAAMAAWWmZmFzMzMjxYAzsBwixYmZjB",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=0.5 (0.6%), updated=2026-04-10 02:02:19",
+          "confidenceScore": 71,
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/8 (50.0%), margin=3.0 (3.3%), updated=2026-04-11 02:02:31",
           "sampleSize": 8,
-          "agreementCount": 3,
-          "agreementRatio": 0.375,
-          "distinctSourceCount": 3,
+          "agreementCount": 4,
+          "agreementRatio": 0.5,
+          "distinctSourceCount": 4,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 2,
+              "contributors": 3,
               "familyBest": 48,
-              "popularityBonus": 9.51,
-              "familySupport": 57.51
+              "popularityBonus": 12,
+              "familySupport": 60
             },
             "archon": {
               "contributors": 1,
@@ -3238,12 +3234,12 @@
         "aoe": {
           "title": "Pack Leader | Mythic Best",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMgxMG2ILwMM0gFzMzMzwyAAAAAAgZMzMDzYYMDGTzAAAAAGAALLzMziZmZmZGzMgZ2AgxYmZhB",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 52,
-          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/55 (3.6%), margin=28.0 (31.8%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/55 (3.6%), margin=28.0 (31.8%), updated=2026-04-11 04:00:47",
           "sampleSize": 55,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -3268,26 +3264,26 @@
         "pvp": {
           "title": "Survival — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:54:31.362495Z",
+          "updated": "2026-04-11T08:26:12.981763Z",
           "exportString": "C8PAo4YcvOcqUdzB9zV+NhSAcMWwMDzMbjmtlhZwMNYzMzMjxDsMDAAAAAAz4BGDLGjZmZMLGNDAAAAYAAssMzMLmZmxMMzAmxMssgZMmxCD",
           "notes": [
             "Player: haileywelch",
-            "RankIndex: 7"
+            "RankIndex: 10"
           ],
           "confidence": "low",
-          "confidenceScore": 49,
-          "confidenceRationale": "support=93.0, families=1, sources=1, agreement=7/26 (26.9%), margin=6.6 (7.1%), updated=2026-04-10T16:54:31.362495Z",
-          "sampleSize": 26,
-          "agreementCount": 7,
-          "agreementRatio": 0.269,
+          "confidenceScore": 46,
+          "confidenceRationale": "support=91.9, families=1, sources=1, agreement=6/29 (20.7%), margin=5.5 (6.0%), updated=2026-04-11T08:26:12.981763Z",
+          "sampleSize": 29,
+          "agreementCount": 6,
+          "agreementRatio": 0.207,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 7,
+              "contributors": 6,
               "familyBest": 75.04,
-              "popularityBonus": 18,
-              "familySupport": 93.04
+              "popularityBonus": 16.84,
+              "familySupport": 91.88
             }
           },
           "selectedTalents": {
@@ -3588,19 +3584,19 @@
     "Rogue": {
       "Assassination": {
         "raid": {
-          "title": "Deathstalker | Raid Single Target",
-          "source": "PeaversTalentsData/WowheadRaidDB",
-          "updated": "2026-04-10 04:00:47",
-          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmZMbzgBAAAAAmlBLzAAAAAAabbmZmZmZMmZmZ2mZZmZGMmZmZMzYYA2MLDMglglhJwwiBzMADG",
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
+          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmZMbzgBAAAAAmlBLzAAAAAAabbmZmZmZMmZmZ2mZZmZGMmZmZMzYYAMwCMjRjZBwyA2MAYmZwA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 61,
-          "confidenceRationale": "support=94.0, families=2, sources=2, agreement=2/10 (20.0%), margin=36.0 (38.3%), updated=2026-04-10 04:00:47",
+          "confidenceScore": 66,
+          "confidenceRationale": "support=112.0, families=3, sources=3, agreement=3/10 (30.0%), margin=18.0 (16.1%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
-          "agreementCount": 2,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 3,
+          "agreementRatio": 0.3,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 3,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
@@ -3608,11 +3604,17 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "wowhead": {
+            "archon": {
               "contributors": 1,
-              "familyBest": 34,
+              "familyBest": 25,
               "popularityBonus": 6,
-              "familySupport": 40
+              "familySupport": 31
+            },
+            "icyveins": {
+              "contributors": 1,
+              "familyBest": 21,
+              "popularityBonus": 6,
+              "familySupport": 27
             }
           },
           "selectedTalents": null
@@ -3620,15 +3622,15 @@
         "aoe": {
           "title": "Assassination — AoE (Mythic+)",
           "source": "Murlok.io (m+) top-player",
-          "updated": "2026-04-11T01:34:22.246777Z",
-          "exportString": "CMQAByFP3pExAEG41/8+e6b8fbmZmZzgBAAAAAmlBbzAAAAAAyyMzMzMzYMzMzsNzyMjHwDMzMzMGmZMGADsAzY0Y2AZbAbGAMzMGD",
+          "updated": "2026-04-11T09:31:24.213121Z",
+          "exportString": "CMQAByFP3pExAEG41/8+e6b8fbmZmZzMMAAAAAwsAbzAAAAAAabZmZmZmZMmZmZ2mZZmxD4BmZmZGDzMGDDMwCMjRjZDklBsBAmZYMA",
           "notes": [
-            "Player: woxtoxic",
-            "RankIndex: 2"
+            "Player: raeyla",
+            "RankIndex: 5"
           ],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/57 (3.5%), margin=3.5 (5.5%), updated=2026-04-11T01:34:22.246777Z",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=63.5, families=1, sources=1, agreement=2/57 (3.5%), margin=0.0 (0.0%), updated=2026-04-11T09:31:24.213121Z",
           "sampleSize": 57,
           "agreementCount": 2,
           "agreementRatio": 0.035,
@@ -3665,6 +3667,10 @@
                 "rank": 1
               },
               {
+                "slug": "airborne-irritant",
+                "rank": 1
+              },
+              {
                 "slug": "thrill-seeking",
                 "rank": 1
               },
@@ -3681,11 +3687,11 @@
                 "rank": 1
               },
               {
-                "slug": "nimble-fingers",
+                "slug": "improved-wound-poison",
                 "rank": 1
               },
               {
-                "slug": "deadened-nerves",
+                "slug": "nimble-fingers",
                 "rank": 1
               },
               {
@@ -3693,7 +3699,7 @@
                 "rank": 1
               },
               {
-                "slug": "improved-sprint",
+                "slug": "superior-mixture",
                 "rank": 1
               },
               {
@@ -3710,10 +3716,6 @@
               },
               {
                 "slug": "graceful-guile",
-                "rank": 1
-              },
-              {
-                "slug": "featherfoot",
                 "rank": 1
               },
               {
@@ -3893,7 +3895,7 @@
                 "rank": 1
               },
               {
-                "slug": "tempted-fate",
+                "slug": "chosen's-revelry",
                 "rank": 1
               },
               {
@@ -3950,18 +3952,18 @@
         "pvp": {
           "title": "Assassination — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:48:38.413015Z",
-          "exportString": "CMQAByFP3pExAEG41/8+e6b8fbmZMbzMAAAAAAmtZMLzAAAAAAaZZYGmZMmZmZWmZbmZGGzMegZYGjZA2mZZswYGzSjZbZYy2ww2M22mZwMzgB",
+          "updated": "2026-04-11T08:36:12.370432Z",
+          "exportString": "CMQAByFP3pExAEG41/8+e6b8fPzMjZzMAAAAAAmtZMbzAAAAAAaZZMDmZMmZmZWmZZmBzMzMYGzMzMDw2MLjNGzYWaMLbDT2GG2mhtZGMzMYA",
           "notes": [
-            "Player: pvegodx",
-            "RankIndex: 2"
+            "Player: кекичк",
+            "RankIndex: 3"
           ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/25 (4.0%), margin=0.0 (0.0%), updated=2026-04-10T16:48:38.413015Z",
-          "sampleSize": 25,
+          "confidenceScore": 36,
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/35 (2.9%), margin=0.0 (0.0%), updated=2026-04-11T08:36:12.370432Z",
+          "sampleSize": 35,
           "agreementCount": 1,
-          "agreementRatio": 0.04,
+          "agreementRatio": 0.029,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -4015,6 +4017,10 @@
                 "rank": 1
               },
               {
+                "slug": "nimble-fingers",
+                "rank": 1
+              },
+              {
                 "slug": "deadened-nerves",
                 "rank": 1
               },
@@ -4028,10 +4034,6 @@
               },
               {
                 "slug": "evasion",
-                "rank": 1
-              },
-              {
-                "slug": "virulent-poisons",
                 "rank": 1
               },
               {
@@ -4067,7 +4069,7 @@
                 "rank": 1
               },
               {
-                "slug": "improved-ambush",
+                "slug": "tight-spender",
                 "rank": 1
               },
               {
@@ -4113,11 +4115,11 @@
                 "rank": 1
               },
               {
-                "slug": "improved-poisons",
+                "slug": "path-of-blood",
                 "rank": 1
               },
               {
-                "slug": "path-of-blood",
+                "slug": "crimson-tempest",
                 "rank": 1
               },
               {
@@ -4161,10 +4163,6 @@
                 "rank": 1
               },
               {
-                "slug": "fatal-concoction",
-                "rank": 2
-              },
-              {
                 "slug": "finish-the-job",
                 "rank": 1
               },
@@ -4173,11 +4171,7 @@
                 "rank": 2
               },
               {
-                "slug": "secondary-poisoning",
-                "rank": 1
-              },
-              {
-                "slug": "systemic-failure",
+                "slug": "poison-bomb",
                 "rank": 1
               },
               {
@@ -4185,7 +4179,7 @@
                 "rank": 1
               },
               {
-                "slug": "blindside",
+                "slug": "amplifying-poison",
                 "rank": 1
               },
               {
@@ -4201,15 +4195,23 @@
                 "rank": 1
               },
               {
-                "slug": "zoldyck-recipe",
+                "slug": "avulsion",
                 "rank": 1
               },
               {
-                "slug": "poisoner's-drive",
+                "slug": "inspiring-strike",
                 "rank": 1
+              },
+              {
+                "slug": "scent-of-blood",
+                "rank": 2
               },
               {
                 "slug": "dragon-tempered-blades",
+                "rank": 1
+              },
+              {
+                "slug": "sudden-demise",
                 "rank": 1
               },
               {
@@ -4231,7 +4233,7 @@
                 "rank": 1
               },
               {
-                "slug": "death's-arrival",
+                "slug": "inexorable-march",
                 "rank": 1
               },
               {
@@ -4259,7 +4261,7 @@
                 "rank": 1
               },
               {
-                "slug": "overflowing-purse",
+                "slug": "destiny-defined",
                 "rank": 1
               },
               {
@@ -4282,12 +4284,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgx2MGzMzMzsNzMzMz8AzswDwMmWGsNDAAAAAY22mZmhZmZmxMzsNAAAAMAGYDmxoxsBYbgFGAMzMwA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 65,
-          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/10 (30.0%), margin=12.5 (14.1%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/10 (30.0%), margin=12.5 (14.1%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
           "agreementCount": 3,
           "agreementRatio": 0.3,
@@ -4312,12 +4314,12 @@
         "aoe": {
           "title": "Trickster | Mythic",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgx2MGzMzMzsNzMzYmHYmNeAmx0ygtZAAAAAAz22MzMMzMzMmZmtBAAAgxAgxsZYIDMLsQLsxAMzgBG",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 46,
-          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/57 (3.5%), margin=8.8 (11.5%), updated=2026-04-10 04:00:47",
+          "confidenceScore": 47,
+          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/57 (3.5%), margin=10.1 (13.3%), updated=2026-04-11 04:00:47",
           "sampleSize": 57,
           "agreementCount": 2,
           "agreementRatio": 0.035,
@@ -4342,15 +4344,15 @@
         "pvp": {
           "title": "Outlaw — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T17:19:19.343178Z",
-          "exportString": "CQQAByFP3pExAEG41/8+e6b8fDgZYwYGmZZmZmZGPgZZxMzMbTbD2mBAAAAAYZZmZMzMzMzYmZMAAAAmhBGMbzmZmZ0MzGzGLbTLswAMzMzMwA",
+          "updated": "2026-04-11T09:12:45.58242Z",
+          "exportString": "CQQAByFP3pExAEG41/8+e6b8fDgZwwYmxMbzMzMGPgZZbGmZbabw2MAAAAAgZZZMjZmZmZGzMjBAAAwMmBGMbzmZmZ0MzGzGLbTLswAMzMzMDG",
           "notes": [
-            "Player: drewtimbs",
-            "RankIndex: 3"
+            "Player: yessa",
+            "RankIndex: 4"
           ],
           "confidence": "low",
           "confidenceScore": 41,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/8 (12.5%), margin=0.0 (0.0%), updated=2026-04-10T17:19:19.343178Z",
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/8 (12.5%), margin=0.0 (0.0%), updated=2026-04-11T09:12:45.58242Z",
           "sampleSize": 8,
           "agreementCount": 1,
           "agreementRatio": 0.125,
@@ -4366,6 +4368,10 @@
           },
           "selectedTalents": {
             "class": [
+              {
+                "slug": "shiv",
+                "rank": 1
+              },
               {
                 "slug": "blind",
                 "rank": 1
@@ -4384,6 +4390,10 @@
               },
               {
                 "slug": "thrill-seeking",
+                "rank": 1
+              },
+              {
+                "slug": "shadowrunner",
                 "rank": 1
               },
               {
@@ -4427,10 +4437,6 @@
                 "rank": 1
               },
               {
-                "slug": "iron-stomach",
-                "rank": 1
-              },
-              {
                 "slug": "graceful-guile",
                 "rank": 1
               },
@@ -4471,10 +4477,6 @@
                 "rank": 2
               },
               {
-                "slug": "recuperator",
-                "rank": 1
-              },
-              {
                 "slug": "alacrity",
                 "rank": 2
               },
@@ -4509,7 +4511,7 @@
                 "rank": 1
               },
               {
-                "slug": "retractable-hook",
+                "slug": "blinding-powder",
                 "rank": 1
               },
               {
@@ -4553,6 +4555,10 @@
                 "rank": 1
               },
               {
+                "slug": "sleight-of-hand",
+                "rank": 1
+              },
+              {
                 "slug": "improved-between-the-eyes",
                 "rank": 1
               },
@@ -4561,8 +4567,8 @@
                 "rank": 1
               },
               {
-                "slug": "heavy-hitter",
-                "rank": 2
+                "slug": "audacity",
+                "rank": 1
               },
               {
                 "slug": "improved-adrenaline-rush",
@@ -4573,15 +4579,11 @@
                 "rank": 1
               },
               {
-                "slug": "find-an-opening",
-                "rank": 1
-              },
-              {
                 "slug": "acrobatic-strikes",
                 "rank": 1
               },
               {
-                "slug": "heightened-rush",
+                "slug": "menacing-rush",
                 "rank": 1
               },
               {
@@ -4601,7 +4603,11 @@
                 "rank": 2
               },
               {
-                "slug": "preparation",
+                "slug": "hidden-opportunity",
+                "rank": 1
+              },
+              {
+                "slug": "killing-spree",
                 "rank": 1
               },
               {
@@ -4673,13 +4679,13 @@
       "Subtlety": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-04-10 02:02:34",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbbjxMjZwDMzMzYMbjZGbbzMzMzMjBjZ2GAAAAGMGwY2MMwAzCL0iNMDYmBzYA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 68,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=9.0 (9.9%), updated=2026-04-10 02:02:34",
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=9.0 (9.9%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
           "agreementCount": 4,
           "agreementRatio": 0.4,
@@ -4704,12 +4710,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgZ2mBAAAAAmlxYZiZbbMmhZMegZmZGjZbGzYbZMzMzMjBjZ2GAAAAGMGwY2MMwAzCL0iNMDYmBzYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 44,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.5%), updated=2026-04-10 21:42:25",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.5%), updated=2026-04-11 05:42:18",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -4734,26 +4740,26 @@
         "pvp": {
           "title": "Subtlety — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:01:47.17086Z",
+          "updated": "2026-04-11T08:26:51.346325Z",
           "exportString": "CUQAByFP3pExAEG41/8+e6b8fDgZ2mBAAAAAmlZmZZiZZbmxMjZgZmZmlxsNmZssMmBzMGwMGAAAAzwMsY2mxsNDjFG2mZbahWmNmZYmZmBzYA",
           "notes": [
             "Player: whaazz",
             "RankIndex: 5"
           ],
           "confidence": "low",
-          "confidenceScore": 39,
-          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/51 (7.8%), margin=1.9 (2.0%), updated=2026-04-10T16:01:47.17086Z",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=97.2, families=1, sources=1, agreement=6/51 (11.8%), margin=4.8 (5.0%), updated=2026-04-11T08:26:51.346325Z",
           "sampleSize": 51,
-          "agreementCount": 4,
-          "agreementRatio": 0.078,
+          "agreementCount": 6,
+          "agreementRatio": 0.118,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 4,
+              "contributors": 6,
               "familyBest": 80.4,
-              "popularityBonus": 13.93,
-              "familySupport": 94.33
+              "popularityBonus": 16.84,
+              "familySupport": 97.24
             }
           },
           "selectedTalents": {
@@ -5071,13 +5077,13 @@
       "Discipline": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-04-10 02:02:34",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsAzGjZYmZMbzsNzMzMMDAAAAAAAAAgZYZGMzMDzwMwMNTzMAzsghwYWGgxgFAAYMmZMYGgZmhZYA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 70,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=9.0 (9.9%), updated=2026-04-10 02:02:34",
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=9.0 (9.9%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
           "agreementCount": 4,
           "agreementRatio": 0.444,
@@ -5102,12 +5108,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsYY2YMDzMjZbsNzMzMMDAAAAAAAAAgxYZGMzMjNjZGDmmJGgZWwQYMLDwYwCAAMmZmxgZAmZGmhB",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 45,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/55 (3.6%), margin=3.0 (3.5%), updated=2026-04-10 21:42:25",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/55 (3.6%), margin=3.0 (3.5%), updated=2026-04-11 05:42:18",
           "sampleSize": 55,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -5132,26 +5138,26 @@
         "pvp": {
           "title": "Discipline — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:33:02.194311Z",
-          "exportString": "CAQA4VPTJ8eQb8/qEm8PyGu4yADsMzwyMjZmBMbzYmZGjZGAAAAAAAAAAzMzihZMGLzMzMssYamYAmZDDhxsNAjBLAAwYGGDGAzMzEM",
+          "updated": "2026-04-11T09:08:14.488781Z",
+          "exportString": "CAQA4VPTJ8eQb8/qEm8PyGu4yADsMGWmZMmZGmZbGzMzYMzAAAAAAAAAAYmZWgZMzYZmZmhFmmJGMzMzGGCjZbmlZbxYMWMAAMmxMGMwMzMzMBD",
           "notes": [
-            "Player: priestpvp",
-            "RankIndex: 5"
+            "Player: sfÿ",
+            "RankIndex: 3"
           ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/51 (3.9%), margin=0.0 (0.0%), updated=2026-04-10T16:33:02.194311Z",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/51 (7.8%), margin=7.9 (8.4%), updated=2026-04-11T09:08:14.488781Z",
           "sampleSize": 51,
-          "agreementCount": 2,
-          "agreementRatio": 0.039,
+          "agreementCount": 4,
+          "agreementRatio": 0.078,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 2,
+              "contributors": 4,
               "familyBest": 80.4,
-              "popularityBonus": 9.51,
-              "familySupport": 89.91
+              "popularityBonus": 13.93,
+              "familySupport": 94.33
             }
           },
           "selectedTalents": {
@@ -5213,7 +5219,7 @@
                 "rank": 1
               },
               {
-                "slug": "mind-control",
+                "slug": "strength-of-soul",
                 "rank": 1
               },
               {
@@ -5241,10 +5247,6 @@
                 "rank": 1
               },
               {
-                "slug": "binding-heals",
-                "rank": 1
-              },
-              {
                 "slug": "shadow-word:-death",
                 "rank": 1
               },
@@ -5262,6 +5264,10 @@
               },
               {
                 "slug": "angel's-mercy",
+                "rank": 1
+              },
+              {
+                "slug": "mindpierce",
                 "rank": 1
               },
               {
@@ -5343,6 +5349,10 @@
                 "rank": 1
               },
               {
+                "slug": "shadow-tap",
+                "rank": 1
+              },
+              {
                 "slug": "purge-the-wicked",
                 "rank": 1
               },
@@ -5351,8 +5361,8 @@
                 "rank": 1
               },
               {
-                "slug": "pain-and-suffering",
-                "rank": 2
+                "slug": "occultist",
+                "rank": 1
               },
               {
                 "slug": "harsh-discipline",
@@ -5368,10 +5378,6 @@
               },
               {
                 "slug": "archangel",
-                "rank": 1
-              },
-              {
-                "slug": "shadow-mend",
                 "rank": 1
               },
               {
@@ -5392,6 +5398,10 @@
               },
               {
                 "slug": "weal-and-woe",
+                "rank": 1
+              },
+              {
+                "slug": "searing-light",
                 "rank": 1
               },
               {
@@ -5464,12 +5474,12 @@
         "raid": {
           "title": "Archon | Raid Best",
           "source": "PeaversTalentsData/WowheadRaidDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAgZmlxYMzMDzMzYZGmBAAAwwsMDzMzMYGzAYmaAgZWMTmFDAMGsZmZWA0MMjxwMz2yAMDMA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 52,
-          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/10 (20.0%), margin=3.0 (3.4%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/10 (20.0%), margin=3.0 (3.4%), updated=2026-04-11 04:00:47",
           "sampleSize": 10,
           "agreementCount": 2,
           "agreementRatio": 0.2,
@@ -5494,12 +5504,12 @@
         "aoe": {
           "title": "Archon | Mythic",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAgZzwYWGMmZmZMzMjlZmZAAAAYMWmBzMzYzYmxAmpAAzsZmMbGAYMYzYsAoZMzYMMzstMADYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 44,
-          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.4%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.4%), updated=2026-04-11 04:00:47",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -5524,18 +5534,18 @@
         "pvp": {
           "title": "Holy — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:34:17.503711Z",
-          "exportString": "CEQA4VPTJ8eQb8/qEm8PyGu4yADAAAAAAwMzMmlZmxMzYYGMbzMzMAAAAmZmFYGjxyMzMDLLGzUAMzmZZMZ2mZ2GgZmBLmZAQzYGGDGAzMzAfA",
+          "updated": "2026-04-11T08:24:11.264829Z",
+          "exportString": "CEQA4VPTJ8eQb8/qEm8PyGu4yADAAAAAAwYmxsMzMmZGDzgZbmZmBAAAwMzsAzYMWmZmZYZxYmCgZ2MLjJz2Mz2AMzMYxMzAQzYGGDGAzMzAfA",
           "notes": [
-            "Player: fâted",
-            "RankIndex: 4"
+            "Player: mazikeen",
+            "RankIndex: 2"
           ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/38 (5.3%), margin=0.0 (0.0%), updated=2026-04-10T16:34:17.503711Z",
-          "sampleSize": 38,
+          "confidenceScore": 38,
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/37 (5.4%), margin=3.5 (3.9%), updated=2026-04-11T08:24:11.264829Z",
+          "sampleSize": 37,
           "agreementCount": 2,
-          "agreementRatio": 0.053,
+          "agreementRatio": 0.054,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -5723,11 +5733,11 @@
                 "rank": 1
               },
               {
-                "slug": "burning-vehemence",
+                "slug": "uplifting-words",
                 "rank": 1
               },
               {
-                "slug": "uplifting-words",
+                "slug": "cosmic-wave",
                 "rank": 1
               },
               {
@@ -5867,13 +5877,13 @@
       "Shadow": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-04-10 02:02:34",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMMjZGAAAAAAAAAAAgxYxMGLzMMz2MDzw2MzYmZGbIzYxMNAzAMzmZY2MAkxYBAzAMmZmxsNmZbZAmBD",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 76,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=37.0 (40.7%), updated=2026-04-10 02:02:34",
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=37.0 (40.7%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
           "agreementCount": 4,
           "agreementRatio": 0.4,
@@ -5898,12 +5908,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMMjZGAAAAAAAAAAAghZxMGLzMMzyMDjx2MzYmZGbIzYxMNAzAMziZY2MAkxYBAzYgxMzMmtxMbLDwMYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 51,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/57 (3.5%), margin=25.0 (29.4%), updated=2026-04-10 21:42:25",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/57 (3.5%), margin=25.0 (29.4%), updated=2026-04-11 05:42:18",
           "sampleSize": 57,
           "agreementCount": 2,
           "agreementRatio": 0.035,
@@ -5928,18 +5938,18 @@
         "pvp": {
           "title": "Shadow — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:35:00.72997Z",
-          "exportString": "CIQA4VPTJ8eQb8/qEm8PyGu4yMDjBAAAAAAAAAAAADLzMGLzMmZ2mZYMz2MzYmZGLMZYZx0AMzMDmZxMa2MY2mtlMmZjBYMzgxMjxsMmBzMYGMA",
+          "updated": "2026-04-11T09:11:31.911087Z",
+          "exportString": "CIQA4VPTJ8eQb8/qEm8PyGu4yYYMGAAAAAAAAAAAADLzMGLzMmZ2mZYmZMzMmZmxCTGWWMNAzMzgZWMjmNDmtZZJjZ2YAGzMYMzYMLjZ2WmZGMDGA",
           "notes": [
-            "Player: drvyea",
-            "RankIndex: 5"
+            "Player: instantvfplz",
+            "RankIndex: 3"
           ],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/26 (7.7%), margin=0.0 (0.0%), updated=2026-04-10T16:35:00.72997Z",
-          "sampleSize": 26,
+          "confidenceScore": 39,
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/27 (7.4%), margin=3.5 (3.9%), updated=2026-04-11T09:11:31.911087Z",
+          "sampleSize": 27,
           "agreementCount": 2,
-          "agreementRatio": 0.077,
+          "agreementRatio": 0.074,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -6077,7 +6087,7 @@
                 "rank": 1
               },
               {
-                "slug": "focused-power",
+                "slug": "phantom-reach",
                 "rank": 1
               },
               {
@@ -6163,6 +6173,10 @@
                 "rank": 1
               },
               {
+                "slug": "spectral-horrors",
+                "rank": 1
+              },
+              {
                 "slug": "instilled-doubt",
                 "rank": 2
               },
@@ -6192,10 +6206,6 @@
               },
               {
                 "slug": "idol-of-y'shaarj",
-                "rank": 1
-              },
-              {
-                "slug": "idol-of-n'zoth",
                 "rank": 1
               },
               {
@@ -6229,7 +6239,7 @@
                 "rank": 1
               },
               {
-                "slug": "darkening-horizon",
+                "slug": "void-empowerment",
                 "rank": 1
               },
               {
@@ -6270,12 +6280,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWGzMmxMzMMbzMz0MLmZMmxAAAAAzMzMzMzMDzYMAYMzMzAAAwADMjNNW2AsNgNAzwAAAmZwAD",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 55,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=9.0 (10.6%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=9.0 (10.6%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
           "agreementCount": 2,
           "agreementRatio": 0.222,
@@ -6300,12 +6310,12 @@
         "aoe": {
           "title": "Deathbringer | Mythic Best",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwMzyMzMmxMzMMLzMz0MLGjxMGAAAAwMmZmZmZYGjBAjZmZGAAAjZbgBsEsNMBGWAMjZAAYmBwgB",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 48,
-          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/56 (3.6%), margin=12.5 (16.4%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/56 (3.6%), margin=12.5 (16.4%), updated=2026-04-11 04:00:47",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -6330,12 +6340,12 @@
         "pvp": {
           "title": "Deathbringer | Delves Best",
           "source": "PeaversTalentsData/WowheadMiscDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWmZmxMmZmhZZmZmmZxYmxMGAAAAwMzMzMzMDzYMAYMzMzAAAYMbDMglgthJwwCgZMDAAzMAgB",
           "notes": [],
           "confidence": "high",
           "confidenceScore": 78,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/2 (50.0%), margin=40.0 (87.0%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/2 (50.0%), margin=40.0 (87.0%), updated=2026-04-11 04:00:47",
           "sampleSize": 2,
           "agreementCount": 1,
           "agreementRatio": 0.5,
@@ -6356,12 +6366,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMDYmZMzMDY2mZmZmZxMjMjxYYGGMzMzMzMzMDAAAAAAAAAGz2ADYBsMMBGLYmxMzADADzMAzAG",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 52,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=3.0 (3.5%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=3.0 (3.5%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
           "agreementCount": 2,
           "agreementRatio": 0.2,
@@ -6386,15 +6396,15 @@
         "aoe": {
           "title": "Deathbringer | Mythic Best",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMAzMjZmZAz2MzMzMLmZkZMmZmZGYMzwMzMjZAAAAAAAAAwY2GYALglhJkxCmZYmBmBwwMDwMgB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 49,
-          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/43 (4.7%), margin=17.7 (21.5%), updated=2026-04-10 04:00:47",
-          "sampleSize": 43,
+          "confidenceScore": 50,
+          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/41 (4.9%), margin=19.6 (23.9%), updated=2026-04-11 04:00:47",
+          "sampleSize": 41,
           "agreementCount": 2,
-          "agreementRatio": 0.047,
+          "agreementRatio": 0.049,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -6416,15 +6426,15 @@
         "pvp": {
           "title": "Frost — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:52:17.289648Z",
+          "updated": "2026-04-11T08:12:18.995439Z",
           "exportString": "CsPASnrjTdwaLTX9NnLQoJJXfMDYmBjZmZYWmZmZYbGjmZMzMDzwYmZGMzMzMDAAAAAAAAAGz2sZ2mhxCDLzsNN0MWMmZYmBMAGmZAYgB",
           "notes": [
             "Player: toxibusta",
-            "RankIndex: 4"
+            "RankIndex: 3"
           ],
           "confidence": "low",
-          "confidenceScore": 39,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/24 (8.3%), margin=0.0 (0.0%), updated=2026-04-10T16:52:17.289648Z",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/24 (8.3%), margin=2.9 (3.2%), updated=2026-04-11T08:12:18.995439Z",
           "sampleSize": 24,
           "agreementCount": 2,
           "agreementRatio": 0.083,
@@ -6743,13 +6753,13 @@
       "Unholy": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-04-10 02:02:34",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAwMjZMDDz2MzMTzmZmZMjBAAAAAAAgZeAmZAwyMmZ2mZGzYGwmZxwADMbM0YBAzAAzMjZAmZmxMG",
           "notes": [],
           "confidence": "high",
           "confidenceScore": 84,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=57.0 (62.6%), updated=2026-04-10 02:02:34",
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=57.0 (62.6%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
           "agreementCount": 4,
           "agreementRatio": 0.444,
@@ -6774,12 +6784,12 @@
         "aoe": {
           "title": "Rider Of The Apocalypse | Rider M/Delves Best",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmZMjZMDz2MzMTDzMmZGDAAAAAAAAz8AMzAglZMzsNzMGGgFzmhhMwsxQjFMgZAYMzMmBYmZYGD",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 51,
-          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/56 (3.6%), margin=24.5 (27.8%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/56 (3.6%), margin=24.5 (27.8%), updated=2026-04-11 04:00:47",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -6804,7 +6814,7 @@
         "pvp": {
           "title": "Unholy — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T00:14:02.797298Z",
+          "updated": "2026-04-11T08:13:07.852279Z",
           "exportString": "CwPASnrjTdwaLTX9NnLQoJJXfAYmhZMzMDzyYmZa2MzYMMDAAAAAAAgZGmZAwyMmZMzMGmxgtZ2MzMLamlFmNmtpxCDwMAMmZGzgZmZmhZMA",
           "notes": [
             "Player: unholy",
@@ -6812,7 +6822,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/51 (5.9%), margin=2.5 (2.7%), updated=2026-04-11T00:14:02.797298Z",
+          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/51 (5.9%), margin=2.5 (2.7%), updated=2026-04-11T08:13:07.852279Z",
           "sampleSize": 51,
           "agreementCount": 3,
           "agreementRatio": 0.059,
@@ -7138,12 +7148,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMbbzMzMzMLbbDMmZAAAAAgNzYYDWgZYoxGAMLzMzYstYahZYsMzMz8ADLWmxiZGmZBAYYgZGYYYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 55,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=9.0 (10.6%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=9.0 (10.6%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
           "agreementCount": 2,
           "agreementRatio": 0.222,
@@ -7168,12 +7178,12 @@
         "aoe": {
           "title": "Farseer | Mythic",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMLLzMmZmZZbbMmxMAAAAALGbAAwsxEysAAzyMzMGbLmwMjxyMzMzMsMLGLYmZmFAgBAmZMMMA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 49,
-          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/55 (3.6%), margin=16.0 (21.1%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/55 (3.6%), margin=16.0 (21.1%), updated=2026-04-11 04:00:47",
           "sampleSize": 55,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -7198,18 +7208,18 @@
         "pvp": {
           "title": "Elemental — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:07:21.110868Z",
-          "exportString": "CYQARUG2fGwHkLP0T7/MoTNl/AAAAAzMLbzMGjZZZhxMMDAAAAYxMbwAGwsxEysAAz2YmxMbLmWGzMGLGzMmZ2mNmlZYmZWGAYmBAzMwM+A",
+          "updated": "2026-04-11T08:44:04.127879Z",
+          "exportString": "CYQARUG2fGwHkLP0T7/MoTNl/AAAAAzMLbzMGjZZZjxMMDAAAAYxMbwAGwsxEysAA2GzMmZbx0yYmxYxYmxMz2sZmlZGmZWGAYmBAzMwM+A",
           "notes": [
-            "Player: wininmybook",
+            "Player: haumx",
             "RankIndex: 5"
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/44 (2.3%), margin=0.0 (0.0%), updated=2026-04-10T16:07:21.110868Z",
-          "sampleSize": 44,
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/48 (2.1%), margin=0.0 (0.0%), updated=2026-04-11T08:44:04.127879Z",
+          "sampleSize": 48,
           "agreementCount": 1,
-          "agreementRatio": 0.023,
+          "agreementRatio": 0.021,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -7295,15 +7305,15 @@
                 "rank": 1
               },
               {
-                "slug": "capacitor-totem",
-                "rank": 1
-              },
-              {
                 "slug": "spiritual-awakening",
                 "rank": 1
               },
               {
                 "slug": "enhanced-imbues",
+                "rank": 1
+              },
+              {
+                "slug": "windveil",
                 "rank": 1
               },
               {
@@ -7393,7 +7403,7 @@
                 "rank": 1
               },
               {
-                "slug": "tectonic-collapse",
+                "slug": "aftershock",
                 "rank": 1
               },
               {
@@ -7445,11 +7455,11 @@
                 "rank": 1
               },
               {
-                "slug": "storm-infusion",
+                "slug": "echo-chamber",
                 "rank": 1
               },
               {
-                "slug": "echo-chamber",
+                "slug": "everlasting-elements",
                 "rank": 1
               },
               {
@@ -7561,13 +7571,13 @@
       "Enhancement": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-04-10 02:02:34",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMjZmZmZmZmZmZmZGAAAAAAAAAYB2gZsox2AYGwGAzyMmZGLLzAzMbsMzMzwwYGAADwYmJmZAgxA",
           "notes": [],
           "confidence": "high",
           "confidenceScore": 78,
-          "confidenceRationale": "support=130.0, families=3, sources=5, agreement=5/11 (45.5%), margin=48.0 (36.9%), updated=2026-04-10 02:02:34",
+          "confidenceRationale": "support=130.0, families=3, sources=5, agreement=5/11 (45.5%), margin=48.0 (36.9%), updated=2026-04-11 02:02:31",
           "sampleSize": 11,
           "agreementCount": 5,
           "agreementRatio": 0.455,
@@ -7598,12 +7608,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMjZmZmZmZmZmZGzAAAAAAAAAALwGMjFN2GAzA2AY2mxMGLLzAzMbjlZmZGGLjZAAAGjZEzMADGD",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 44,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/58 (3.4%), margin=3.0 (3.5%), updated=2026-04-10 21:42:25",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/58 (3.4%), margin=3.0 (3.5%), updated=2026-04-11 05:42:18",
           "sampleSize": 58,
           "agreementCount": 2,
           "agreementRatio": 0.034,
@@ -7628,26 +7638,26 @@
         "pvp": {
           "title": "Enhancement — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T00:13:11.219042Z",
-          "exportString": "CcQARUG2fGwHkLP0T7/MoTNl/MzMjZGPwMzMzMzMzYGAAAAAAAAAYBbLGzMbLasNMDzMNYDgZbwYssMjlxMzGLmZmhZ2GzAAYYGzYmJmZMDGM+AA",
+          "updated": "2026-04-11T09:02:22.449552Z",
+          "exportString": "CcQARUG2fGwHkLP0T7/MoTNl/MzMjZmZmZmZmxYGzAAAAAAAAAALYbxYmZbRjthZYmpBbAMLzwYssMjFmZ2YzMzMM2YGAADzYGzMNLzMmBDGfA",
           "notes": [
-            "Player: frogtide",
-            "RankIndex: 3"
+            "Player: stuckintbç",
+            "RankIndex: 2"
           ],
           "confidence": "low",
-          "confidenceScore": 42,
-          "confidenceRationale": "support=98.4, families=1, sources=1, agreement=7/51 (13.7%), margin=4.1 (4.1%), updated=2026-04-11T00:13:11.219042Z",
+          "confidenceScore": 38,
+          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/51 (5.9%), margin=0.5 (0.6%), updated=2026-04-11T09:02:22.449552Z",
           "sampleSize": 51,
-          "agreementCount": 7,
-          "agreementRatio": 0.137,
+          "agreementCount": 3,
+          "agreementRatio": 0.059,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 7,
+              "contributors": 3,
               "familyBest": 80.4,
-              "popularityBonus": 18,
-              "familySupport": 98.4
+              "popularityBonus": 12,
+              "familySupport": 92.4
             }
           },
           "selectedTalents": {
@@ -7669,6 +7679,10 @@
                 "rank": 1
               },
               {
+                "slug": "chain-lightning",
+                "rank": 1
+              },
+              {
                 "slug": "earth-shield",
                 "rank": 1
               },
@@ -7677,7 +7691,11 @@
                 "rank": 1
               },
               {
-                "slug": "thunderous-paws",
+                "slug": "spirit-wolf",
+                "rank": 1
+              },
+              {
+                "slug": "frost-shock",
                 "rank": 1
               },
               {
@@ -7705,11 +7723,15 @@
                 "rank": 1
               },
               {
+                "slug": "encasing-cold",
+                "rank": 1
+              },
+              {
                 "slug": "winds-of-al'akir",
                 "rank": 2
               },
               {
-                "slug": "planes-traveler",
+                "slug": "astral-bulwark",
                 "rank": 1
               },
               {
@@ -7761,10 +7783,6 @@
                 "rank": 1
               },
               {
-                "slug": "hex",
-                "rank": 1
-              },
-              {
                 "slug": "totemic-projection",
                 "rank": 1
               },
@@ -7773,19 +7791,11 @@
                 "rank": 1
               },
               {
-                "slug": "totemic-focus",
-                "rank": 1
-              },
-              {
                 "slug": "tremor-totem",
                 "rank": 1
               },
               {
                 "slug": "therazane's-resilience",
-                "rank": 1
-              },
-              {
-                "slug": "voodoo-mastery",
                 "rank": 1
               },
               {
@@ -7847,10 +7857,6 @@
                 "rank": 2
               },
               {
-                "slug": "storm's-wrath",
-                "rank": 1
-              },
-              {
                 "slug": "elemental-tempo",
                 "rank": 1
               },
@@ -7900,7 +7906,7 @@
               },
               {
                 "slug": "static-accumulation",
-                "rank": 1
+                "rank": 2
               },
               {
                 "slug": "feral-spirit",
@@ -7915,7 +7921,7 @@
                 "rank": 1
               },
               {
-                "slug": "primordial-storm",
+                "slug": "thorim's-invocation",
                 "rank": 1
               },
               {
@@ -7988,12 +7994,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAzMzMLLbDzMGzMzMDzYBWgZsox2AYGYzMMwyYmZa2WmZYGzCLzMzMGMLDAAAMzMYmBAGM",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 62,
-          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/10 (30.0%), margin=0.5 (0.6%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/10 (30.0%), margin=0.5 (0.6%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
           "agreementCount": 3,
           "agreementRatio": 0.3,
@@ -8018,12 +8024,12 @@
         "aoe": {
           "title": "Farseer | Mythic Best",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAjZmZbZbYmZGzMGzYmFzsADYCmFmAjFmZGMbzMGNbLzMMjZhFjZGzYZWGAAMAzMDAmZgBD",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 44,
-          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.4%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.4%), updated=2026-04-11 04:00:47",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -8048,7 +8054,7 @@
         "pvp": {
           "title": "Restoration — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T00:47:15.261498Z",
+          "updated": "2026-04-11T08:46:15.251827Z",
           "exportString": "CgQARUG2fGwHkLP0T7/MoTNl/AAAAgBAAAAjZMLbLzMzMmZmxMzYssMWsxYGLasNzCTmhxGzMDmtxMjmlFzsYGDWmxMjZmtZDAAAYmBzMYmhxgB",
           "notes": [
             "Player: lontar",
@@ -8056,7 +8062,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 39,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/34 (5.9%), margin=3.5 (3.9%), updated=2026-04-11T00:47:15.261498Z",
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/34 (5.9%), margin=3.5 (3.9%), updated=2026-04-11T08:46:15.251827Z",
           "sampleSize": 34,
           "agreementCount": 2,
           "agreementRatio": 0.059,
@@ -8406,12 +8412,12 @@
         "raid": {
           "title": "Spellslinger | Raid Best",
           "source": "PeaversTalentsData/WowheadRaidDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMzQzMzAAAwAAgAmZmZZZmZYBAgtxMzMmtFLzMzYmxYMzMGLMzMjZAAGAAAzsAAmBADD",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 53,
-          "confidenceRationale": "support=94.0, families=2, sources=2, agreement=2/9 (22.2%), margin=5.5 (5.8%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=94.0, families=2, sources=2, agreement=2/9 (22.2%), margin=5.5 (5.8%), updated=2026-04-11 04:00:47",
           "sampleSize": 9,
           "agreementCount": 2,
           "agreementRatio": 0.222,
@@ -8436,12 +8442,12 @@
         "aoe": {
           "title": "Spellslinger | Mythic Best",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFmZGamxAAAwAAgAmZmZZZmJWAAYbYmZMbLWmZmxMjxYmZmxCzMzYGAgBAAwMLAgZAwwA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 52,
-          "confidenceRationale": "support=94.0, families=2, sources=2, agreement=2/56 (3.6%), margin=31.6 (33.6%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=94.0, families=2, sources=2, agreement=2/56 (3.6%), margin=31.6 (33.6%), updated=2026-04-11 04:00:47",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -8466,15 +8472,15 @@
         "pvp": {
           "title": "Arcane — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T00:48:53.55229Z",
-          "exportString": "C4DAMhlVtghLZL4RZzExaQoBYNmtlZWmZmZzmZGawMAAAGAAEwMzMLLzMxCAALjZmZMWsMzMjZmZMmZmZswMzMmBAYAAAMzCAMmBgPgB",
+          "updated": "2026-04-11T08:13:08.762219Z",
+          "exportString": "C4DAMhlVtghLZL4RZzExaQoBYNstMzyMzMLWmZGaYmBAAwAAgAmZmZZbmJWAAYZMzMDWsMzMjZmZMmZmZswMzMMAADAAgZWAAzAghB",
           "notes": [
-            "Player: jüker",
+            "Player: aegzy",
             "RankIndex: 3"
           ],
           "confidence": "low",
           "confidenceScore": 44,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-04-11T00:48:53.55229Z",
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-04-11T08:13:08.762219Z",
           "sampleSize": 5,
           "agreementCount": 1,
           "agreementRatio": 0.2,
@@ -8535,15 +8541,7 @@
                 "rank": 1
               },
               {
-                "slug": "improved-spellsteal",
-                "rank": 1
-              },
-              {
-                "slug": "improved-blink",
-                "rank": 1
-              },
-              {
-                "slug": "improved-counterspell",
+                "slug": "shimmer",
                 "rank": 1
               },
               {
@@ -8555,7 +8553,11 @@
                 "rank": 1
               },
               {
-                "slug": "ice-ward",
+                "slug": "improved-frost-nova",
+                "rank": 1
+              },
+              {
+                "slug": "captured-thoughts",
                 "rank": 1
               },
               {
@@ -8565,6 +8567,10 @@
               {
                 "slug": "tome-of-antonidas",
                 "rank": 1
+              },
+              {
+                "slug": "incantation-of-swiftness",
+                "rank": 2
               },
               {
                 "slug": "master-of-escape",
@@ -8583,11 +8589,11 @@
                 "rank": 1
               },
               {
-                "slug": "charm-of-medivh",
+                "slug": "mana-confluence",
                 "rank": 1
               },
               {
-                "slug": "permafrost-bauble",
+                "slug": "charm-of-medivh",
                 "rank": 1
               },
               {
@@ -8616,10 +8622,6 @@
               },
               {
                 "slug": "spatial-manipulation",
-                "rank": 1
-              },
-              {
-                "slug": "improved-prismatic-barrier",
                 "rank": 1
               }
             ],
@@ -8705,10 +8707,6 @@
                 "rank": 1
               },
               {
-                "slug": "impetus",
-                "rank": 1
-              },
-              {
                 "slug": "enlightened",
                 "rank": 1
               },
@@ -8742,7 +8740,7 @@
               },
               {
                 "slug": "touch-of-the-archmage",
-                "rank": 3
+                "rank": 4
               }
             ],
             "hero": [
@@ -8775,7 +8773,7 @@
                 "rank": 1
               },
               {
-                "slug": "reactive-barrier",
+                "slug": "phantasmal-image",
                 "rank": 1
               },
               {
@@ -8810,12 +8808,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMDZmZGAAAGAwMz0sssMDAwmZmx2YmZGAAAAAgFzMzMDAAGzwYmZmZWGAmZgxYMYGG",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 53,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=3.0 (3.5%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=3.0 (3.5%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
           "agreementCount": 2,
           "agreementRatio": 0.222,
@@ -8840,12 +8838,12 @@
         "aoe": {
           "title": "Sunfury | Mythic",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAMzwMLzMzsgZGZmxAAAwAAmZmmlltZAA2MzM2GzMzYDAAAAAWMzMzMAAYMDjZmZmZbAYmhwYMYGG",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/56 (3.6%), margin=22.0 (26.8%), updated=2026-04-10 04:00:47",
+          "confidenceScore": 49,
+          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/56 (3.6%), margin=18.5 (22.5%), updated=2026-04-11 04:00:47",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -8870,26 +8868,26 @@
         "pvp": {
           "title": "Fire — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:02:13.761056Z",
-          "exportString": "C8DAMhlVtghLZL4RZzExaQoBYNstMzyMzMbWegZGZGmBAAwMLzYmZbWmZmmlllZAA2MzY2GGzMLAAAAAwiZmZAAADjZYmxMLzAzMzMkxYAzwA",
+          "updated": "2026-04-11T08:59:44.993722Z",
+          "exportString": "C8DAMhlVtghLZL4RZzExaQoBYNstMzyMzML2MzIzwMAAAmZZGzMLzyMz0sssMDAwmZG2GGzMLAAAAAwiZmZGAAYMjZYmxMLzAYmhMGjBzwA",
           "notes": [
-            "Player: arnoldkelly",
-            "RankIndex: 2"
+            "Player: soloblm",
+            "RankIndex: 10"
           ],
           "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/51 (2.0%), margin=0.0 (0.0%), updated=2026-04-10T16:02:13.761056Z",
+          "confidenceScore": 38,
+          "confidenceRationale": "support=87.0, families=1, sources=1, agreement=3/51 (5.9%), margin=0.6 (0.7%), updated=2026-04-11T08:59:44.993722Z",
           "sampleSize": 51,
-          "agreementCount": 1,
-          "agreementRatio": 0.02,
+          "agreementCount": 3,
+          "agreementRatio": 0.059,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 1,
-              "familyBest": 80.4,
-              "popularityBonus": 6,
-              "familySupport": 86.4
+              "contributors": 3,
+              "familyBest": 75.04,
+              "popularityBonus": 12,
+              "familySupport": 87.04
             }
           },
           "selectedTalents": {
@@ -8943,7 +8941,7 @@
                 "rank": 1
               },
               {
-                "slug": "improved-blink",
+                "slug": "shimmer",
                 "rank": 1
               },
               {
@@ -8951,11 +8949,15 @@
                 "rank": 1
               },
               {
+                "slug": "overflowing-energy",
+                "rank": 1
+              },
+              {
                 "slug": "greater-invisibility",
                 "rank": 1
               },
               {
-                "slug": "improved-frost-nova",
+                "slug": "ice-ward",
                 "rank": 1
               },
               {
@@ -8964,10 +8966,6 @@
               },
               {
                 "slug": "tome-of-antonidas",
-                "rank": 1
-              },
-              {
-                "slug": "incantation-of-swiftness",
                 "rank": 1
               },
               {
@@ -9109,8 +9107,8 @@
                 "rank": 2
               },
               {
-                "slug": "fire's-ire",
-                "rank": 2
+                "slug": "master-of-flame",
+                "rank": 1
               },
               {
                 "slug": "from-the-ashes",
@@ -9118,6 +9116,10 @@
               },
               {
                 "slug": "fiery-rush",
+                "rank": 1
+              },
+              {
+                "slug": "burnout",
                 "rank": 1
               },
               {
@@ -9193,13 +9195,13 @@
       "Frost": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-04-10 02:02:34",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAYGGLzMzsMmZmYmZmZmZmZWMzMjZMDAAAMzMzyyMTbAAAAAAgNA2WGzMzgZbYMDLAAAMzGwMwAmBD",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 72,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=15.0 (16.5%), updated=2026-04-10 02:02:34",
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=15.0 (16.5%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
           "agreementCount": 4,
           "agreementRatio": 0.444,
@@ -9224,12 +9226,12 @@
         "aoe": {
           "title": "Spellslinger | Mythic Best",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFmZmYGmZmZmZWMzMMjZAAAgZmZWWmZaDAAWAAAAWAYbbMzMDmthxMjNAAAmZDYmMGwMYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 49,
-          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/56 (3.6%), margin=16.0 (21.1%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/56 (3.6%), margin=16.0 (21.1%), updated=2026-04-11 04:00:47",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -9254,26 +9256,26 @@
         "pvp": {
           "title": "Frost — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:50:14.61601Z",
-          "exportString": "CAEAMhlVtghLZL4RZzExaQoBYNGLzsMzMziNzMxMMzMzYmFzMjZGzMLz0Mz2sAAmZmZZZmpNAAYBAAAYDgtlxMzMwyMGzMWAAAYmNgZYMADGA",
+          "updated": "2026-04-11T08:37:03.453145Z",
+          "exportString": "CAEAMhlVtghLZL4RZzExaQoBYNmtlZWmZmZDzMxMMzMzYmFzMzMzYmZZmmZ2mFAwMzMLLzMtBAALAAAAbAstMmZmBWMGzMWAAAYmFgZYMADGA",
           "notes": [
-            "Player: dipiku",
-            "RankIndex: 3"
+            "Player: ákì",
+            "RankIndex: 5"
           ],
           "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/52 (1.9%), margin=0.0 (0.0%), updated=2026-04-10T16:50:14.61601Z",
+          "confidenceScore": 38,
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/52 (3.8%), margin=3.5 (3.9%), updated=2026-04-11T08:37:03.453145Z",
           "sampleSize": 52,
-          "agreementCount": 1,
-          "agreementRatio": 0.019,
+          "agreementCount": 2,
+          "agreementRatio": 0.038,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 1,
+              "contributors": 2,
               "familyBest": 80.4,
-              "popularityBonus": 6,
-              "familySupport": 86.4
+              "popularityBonus": 9.51,
+              "familySupport": 89.91
             }
           },
           "selectedTalents": {
@@ -9327,7 +9329,7 @@
                 "rank": 1
               },
               {
-                "slug": "shimmer",
+                "slug": "improved-blink",
                 "rank": 1
               },
               {
@@ -9340,10 +9342,6 @@
               },
               {
                 "slug": "greater-invisibility",
-                "rank": 1
-              },
-              {
-                "slug": "ice-ward",
                 "rank": 1
               },
               {
@@ -9376,6 +9374,10 @@
               },
               {
                 "slug": "permafrost-bauble",
+                "rank": 1
+              },
+              {
+                "slug": "ice-nova",
                 "rank": 1
               },
               {
@@ -9461,7 +9463,7 @@
                 "rank": 1
               },
               {
-                "slug": "flash-freeze",
+                "slug": "frozen-touch",
                 "rank": 1
               },
               {
@@ -9543,7 +9545,7 @@
                 "rank": 1
               },
               {
-                "slug": "shifting-shards",
+                "slug": "attuned-familiar",
                 "rank": 1
               },
               {
@@ -9592,12 +9594,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMzDMzoZjhZmZmlBAAMzMLziZmlxAAjtlBGwAmhtADbDAAAzAAAYmZmZMGzMmBzMzMGmZmZAADYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 55,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=9.0 (10.6%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=9.0 (10.6%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
           "agreementCount": 2,
           "agreementRatio": 0.222,
@@ -9622,12 +9624,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMjZGNbmxmZGzyAAAmZmlZzMzyYAgx22ADYAzwWghtBAAADAAgZmxMmZ2mZMDmZmZMMzMzAAmBG",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 46,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=9.0 (10.6%), updated=2026-04-10 21:42:25",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=9.0 (10.6%), updated=2026-04-11 05:42:18",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -9652,18 +9654,18 @@
         "pvp": {
           "title": "Affliction — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T01:10:56.823229Z",
-          "exportString": "CkQAy0jxIDofkwJmoH7WhvESotMGzMjmlZGLMzMLDAAwMziNzMLmBAmtllxwYWMTjZmhtMbMsNAAAMDAAMzMzMzMmZMzMMjZmZmBzYAAMgB",
+          "updated": "2026-04-11T08:23:55.633198Z",
+          "exportString": "CkQAy0jxIDofkwJmoH7WhvESotMmxMjmtxYhZmZZAAAmZWsZmZZmBAmlllxwYWMTjZmhtMLMsNAAAMDAAMzMzMzMzMjZGMjZmZmBzYGAgBMA",
           "notes": [
-            "Player: goofgg",
-            "RankIndex: 2"
+            "Player: langneur",
+            "RankIndex: 5"
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/40 (5.0%), margin=3.5 (3.9%), updated=2026-04-11T01:10:56.823229Z",
-          "sampleSize": 40,
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/45 (4.4%), margin=2.9 (3.2%), updated=2026-04-11T08:23:55.633198Z",
+          "sampleSize": 45,
           "agreementCount": 2,
-          "agreementRatio": 0.05,
+          "agreementRatio": 0.044,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -9713,6 +9715,10 @@
                 "rank": 1
               },
               {
+                "slug": "infernal-beneficiary",
+                "rank": 1
+              },
+              {
                 "slug": "mortal-coil",
                 "rank": 1
               },
@@ -9741,6 +9747,10 @@
                 "rank": 1
               },
               {
+                "slug": "empowered-healthstone",
+                "rank": 1
+              },
+              {
                 "slug": "abyss-walker",
                 "rank": 1
               },
@@ -9753,7 +9763,11 @@
                 "rank": 1
               },
               {
-                "slug": "ichor-of-devils",
+                "slug": "gorefiend's-avarice",
+                "rank": 1
+              },
+              {
+                "slug": "frequent-donor",
                 "rank": 1
               },
               {
@@ -9782,14 +9796,6 @@
               },
               {
                 "slug": "frequent-traveler",
-                "rank": 1
-              },
-              {
-                "slug": "fel-synergy",
-                "rank": 2
-              },
-              {
-                "slug": "oppressive-darkness",
                 "rank": 1
               },
               {
@@ -9836,6 +9842,10 @@
               },
               {
                 "slug": "absolute-corruption",
+                "rank": 1
+              },
+              {
+                "slug": "cunning-cruelty",
                 "rank": 1
               },
               {
@@ -9896,10 +9906,6 @@
               },
               {
                 "slug": "ravenous-afflictions",
-                "rank": 1
-              },
-              {
-                "slug": "fatal-echoes",
                 "rank": 1
               },
               {
@@ -9978,31 +9984,31 @@
       },
       "Demonology": {
         "raid": {
-          "title": "Diabolist | Raid",
-          "source": "PeaversTalentsData/WowheadRaidDB",
-          "updated": "2026-04-10 04:00:47",
-          "exportString": "CoQAy0jxIDofkwJmoH7WhvESoZmZMzoZjhZmxsMAAAAAAAjllZMzMsYYYmtZpNaGLGjZ2mlZmZYAgZYmZmZGMzMzMmZAAAGzMzMDzYZGDYA",
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
+          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAgZmZGNbmx2MzY2GAAAAAAAwYGDLwAbDL0wiBzsMbzMzYGAYGmZmZmBYMzYGAAgZmZGzwYWmxAGA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/9 (22.2%), margin=3.0 (3.4%), updated=2026-04-10 04:00:47",
+          "confidence": "medium",
+          "confidenceScore": 63,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=0.5 (0.6%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
-          "agreementCount": 2,
-          "agreementRatio": 0.222,
-          "distinctSourceCount": 2,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 1,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
-            "wowhead": {
+            "archon": {
               "contributors": 1,
-              "familyBest": 28,
+              "familyBest": 25,
               "popularityBonus": 6,
-              "familySupport": 34
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -10010,15 +10016,15 @@
         "aoe": {
           "title": "Demonology — AoE (Mythic+)",
           "source": "Murlok.io (m+) top-player",
-          "updated": "2026-04-11T01:45:49.062532Z",
+          "updated": "2026-04-11T09:29:39.296582Z",
           "exportString": "CoQAy0jxIDofkwJmoH7WhvESoxMjZGNbmZ2mZGzyAAAAAAAAGzYYBGYb0CNsYwYZMzMzMDAMjZGzMzAMmxM2AAAzMzMjZGsNzAMA",
           "notes": [
             "Player: lexó",
-            "RankIndex: 4"
+            "RankIndex: 5"
           ],
           "confidence": "low",
           "confidenceScore": 40,
-          "confidenceRationale": "support=66.0, families=1, sources=1, agreement=3/56 (5.4%), margin=6.0 (9.1%), updated=2026-04-11T01:45:49.062532Z",
+          "confidenceRationale": "support=66.0, families=1, sources=1, agreement=3/56 (5.4%), margin=6.0 (9.1%), updated=2026-04-11T09:29:39.296582Z",
           "sampleSize": 56,
           "agreementCount": 3,
           "agreementRatio": 0.054,
@@ -10340,7 +10346,7 @@
         "pvp": {
           "title": "Demonology — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T01:33:17.015416Z",
+          "updated": "2026-04-11T09:16:47.86374Z",
           "exportString": "CoQAy0jxIDofkwJmoH7WhvESotMmxM0sMzYhZmZZAAAAAAAGLLzYmZYzwwMbzWL0MWMzDMjlZbmZGGAwwYmZmBzMzMzMmNAAwMzYGzMDLzYAD",
           "notes": [
             "Player: rikmeyzterz",
@@ -10348,7 +10354,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 37,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/30 (3.3%), margin=0.0 (0.0%), updated=2026-04-11T01:33:17.015416Z",
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/30 (3.3%), margin=0.0 (0.0%), updated=2026-04-11T09:16:47.86374Z",
           "sampleSize": 30,
           "agreementCount": 1,
           "agreementRatio": 0.033,
@@ -10676,12 +10682,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAwMzMzoZjhZmZmlZZMmZxMz2CDAAmxYmZWsADMLGNmBwshNGAAYMYYDAYmBzMjxAAAwMzMAAMzwA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 54,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/8 (25.0%), margin=3.0 (3.5%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/8 (25.0%), margin=3.0 (3.5%), updated=2026-04-11 02:02:31",
           "sampleSize": 8,
           "agreementCount": 2,
           "agreementRatio": 0.25,
@@ -10706,12 +10712,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAwMjZGNLmxmZGzysNzYsYmZZZmBAAzgZmZxCMwsY0YGAzG2YAAgxMMAAYmBjZGzsBAAYmZmBAgZYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 45,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/55 (3.6%), margin=3.0 (3.5%), updated=2026-04-10 21:42:25",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/55 (3.6%), margin=3.0 (3.5%), updated=2026-04-11 05:42:18",
           "sampleSize": 55,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -10736,7 +10742,7 @@
         "pvp": {
           "title": "Destruction — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T01:24:11.896672Z",
+          "updated": "2026-04-11T09:17:23.618053Z",
           "exportString": "CsQAy0jxIDofkwJmoH7WhvESotMGPwMjmlZGLMzMLDmxsMjZbxMAAYMjZmZxCMwsY0YGAzWsxAAADwMbAAzMYmZmxAAAwMmBAgZGG",
           "notes": [
             "Player: callmegoose",
@@ -10744,10 +10750,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/36 (2.8%), margin=0.0 (0.0%), updated=2026-04-11T01:24:11.896672Z",
-          "sampleSize": 36,
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/38 (2.6%), margin=0.0 (0.0%), updated=2026-04-11T09:17:23.618053Z",
+          "sampleSize": 38,
           "agreementCount": 1,
-          "agreementRatio": 0.028,
+          "agreementRatio": 0.026,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -11066,12 +11072,12 @@
         "raid": {
           "title": "Shado Pan | Standard Raid",
           "source": "PeaversTalentsData/WowheadRaidDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAgZbzYGPwYWM2mxMDAAAAAAALLYEmBmhxmZMmZmZMzywMmZZYZzy2sMMLAAwGCAAwsNLNzMziZYDgZGmGDAAYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 56,
-          "confidenceRationale": "support=94.0, families=2, sources=2, agreement=2/8 (25.0%), margin=9.0 (9.6%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=94.0, families=2, sources=2, agreement=2/8 (25.0%), margin=9.0 (9.6%), updated=2026-04-11 04:00:47",
           "sampleSize": 8,
           "agreementCount": 2,
           "agreementRatio": 0.25,
@@ -11096,12 +11102,12 @@
         "aoe": {
           "title": "Shado Pan | Mythic Best",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAwMLbGDzwyM2MmZAAAAAAAYZBmYmBmhBzgZmZGzsNMjZWGW2ssNbzYWAAgNEAAgZbWamZmNG2AYmhpxAGAwA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 52,
-          "confidenceRationale": "support=94.0, families=2, sources=2, agreement=2/55 (3.6%), margin=30.5 (32.4%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=94.0, families=2, sources=2, agreement=2/55 (3.6%), margin=32.8 (34.9%), updated=2026-04-11 04:00:47",
           "sampleSize": 55,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -11126,12 +11132,12 @@
         "pvp": {
           "title": "Shado Pan | Delves",
           "source": "PeaversTalentsData/WowheadMiscDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAgZZzYGzwyM2MmZMAAAAAAALLgYmBmhBzgZmZGzsNMjZWGW2ssNbzYWAAgNEAAgZbWamZmFG2AYmhpxAGAwA",
           "notes": [],
           "confidence": "high",
           "confidenceScore": 78,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/2 (50.0%), margin=40.0 (87.0%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/2 (50.0%), margin=40.0 (87.0%), updated=2026-04-11 04:00:47",
           "sampleSize": 2,
           "agreementCount": 1,
           "agreementRatio": 0.5,
@@ -11151,13 +11157,13 @@
       "Windwalker": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-04-10 02:02:34",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYMghZZmZ2mxAAAAAAAAAAAALDzEmhhBMjhZmZGmthZYWmJAgNzsNGGzMDAgNAYWmlmZmZBYYgZGAYZMgBM",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 72,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=15.0 (16.5%), updated=2026-04-10 02:02:34",
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=15.0 (16.5%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
           "agreementCount": 4,
           "agreementRatio": 0.444,
@@ -11182,12 +11188,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYMghZZmZ2mxAAAAAAAAAAAALDzEmhhBMjhZmZGmthZYWmJAgNzsNGGzMDAgNAYWmlmZmZBYYgZGAYZMgBM",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 48,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=15.5 (18.2%), updated=2026-04-10 21:42:25",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=14.2 (16.7%), updated=2026-04-11 05:42:18",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -11212,15 +11218,15 @@
         "pvp": {
           "title": "Windwalker — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:00:28.112681Z",
+          "updated": "2026-04-11T08:25:26.797404Z",
           "exportString": "C0QAi6cZM+HWADeySjzG9Lwx8PzMjBMYbmZ2mBAAAAAAAAAAAYZYEmZ2wALjZYmZmZMLDGmlZCAYzMLjxMmZGIA2MzysMmmtZpZmZWAGGYmZGAWGAzMzmB",
           "notes": [
             "Player: whaazzwalker",
-            "RankIndex: 3"
+            "RankIndex: 4"
           ],
           "confidence": "low",
           "confidenceScore": 40,
-          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/52 (7.7%), margin=4.4 (4.7%), updated=2026-04-10T16:00:28.112681Z",
+          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/52 (7.7%), margin=4.4 (4.7%), updated=2026-04-11T08:25:26.797404Z",
           "sampleSize": 52,
           "agreementCount": 4,
           "agreementRatio": 0.077,
@@ -11556,12 +11562,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAghx2MwmFzYmZZGbYmZYmlttZGLMjmxMgBDGzyMzMDz2gBLmAAAAAAgFLzsMbzMAAwAGgZAjhxiMmBA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 52,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=3.0 (3.5%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=3.0 (3.5%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
           "agreementCount": 2,
           "agreementRatio": 0.2,
@@ -11586,12 +11592,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAghxyMLjZx2MmZsZstsMjZ2Mz2yyMjFGTzYGwgBMmZmZY2wMMLzEAAAAAAsYbmlZbmBAAgBgZAjBWkxMA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 44,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.5%), updated=2026-04-10 21:42:25",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.5%), updated=2026-04-11 05:42:18",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -11616,26 +11622,26 @@
         "pvp": {
           "title": "Mistweaver — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:01:45.612136Z",
-          "exportString": "C4QAi6cZM+HWADeySjzG9Lwx8DAAAAAAAgxMzyYZMbWMmZsZgZMzmZ2sNzYDjmxMgBDGz2MzMDz2sAmtZCAAAAMLTbz2MLzitZWmlZGQAwgxMzgZADwiMmBA",
+          "updated": "2026-04-11T08:27:01.808709Z",
+          "exportString": "C4QAi6cZM+HWADeySjzG9Lwx8DAAAAAAAgxMzyYZMbWMmZsZmltlZMzmZ2sNzYjZ0MmBMYWMjZbmZmhZbWAzyMBAAAAmlptZbmlZz2MLzyMDIAYAmZwMAAkxMA",
           "notes": [
-            "Player: mazerati",
-            "RankIndex: 5"
+            "Player: chadmw",
+            "RankIndex: 3"
           ],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/51 (3.9%), margin=3.5 (3.9%), updated=2026-04-10T16:01:45.612136Z",
+          "confidenceScore": 36,
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/51 (2.0%), margin=0.0 (0.0%), updated=2026-04-11T08:27:01.808709Z",
           "sampleSize": 51,
-          "agreementCount": 2,
-          "agreementRatio": 0.039,
+          "agreementCount": 1,
+          "agreementRatio": 0.02,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 2,
+              "contributors": 1,
               "familyBest": 80.4,
-              "popularityBonus": 9.51,
-              "familySupport": 89.91
+              "popularityBonus": 6,
+              "familySupport": 86.4
             }
           },
           "selectedTalents": {
@@ -11689,7 +11695,7 @@
                 "rank": 1
               },
               {
-                "slug": "vivacious-vivification",
+                "slug": "jade-walk",
                 "rank": 1
               },
               {
@@ -11709,7 +11715,11 @@
                 "rank": 1
               },
               {
-                "slug": "chi-torpedo",
+                "slug": "celerity",
+                "rank": 1
+              },
+              {
+                "slug": "quick-footed",
                 "rank": 1
               },
               {
@@ -11729,10 +11739,6 @@
                 "rank": 1
               },
               {
-                "slug": "mist-caller",
-                "rank": 1
-              },
-              {
                 "slug": "yu'lon's-grace",
                 "rank": 1
               },
@@ -11745,6 +11751,10 @@
                 "rank": 1
               },
               {
+                "slug": "dance-of-the-wind",
+                "rank": 1
+              },
+              {
                 "slug": "save-them-all",
                 "rank": 1
               },
@@ -11754,10 +11764,6 @@
               },
               {
                 "slug": "expeditious-fortification",
-                "rank": 1
-              },
-              {
-                "slug": "diffuse-magic",
                 "rank": 1
               },
               {
@@ -11887,6 +11893,14 @@
                 "rank": 2
               },
               {
+                "slug": "peaceful-mending",
+                "rank": 1
+              },
+              {
+                "slug": "veil-of-pride",
+                "rank": 1
+              },
+              {
                 "slug": "emperor's-elixir",
                 "rank": 1
               },
@@ -11895,65 +11909,69 @@
                 "rank": 1
               },
               {
-                "slug": "spiritfont",
-                "rank": 4
+                "slug": "tear-of-morning",
+                "rank": 1
+              },
+              {
+                "slug": "emperor's-favor",
+                "rank": 1
               }
             ],
             "hero": [
               {
-                "slug": "celestial-conduit",
+                "slug": "aspect-of-harmony",
                 "rank": 1
               },
               {
-                "slug": "temple-training",
+                "slug": "manifestation",
                 "rank": 1
               },
               {
-                "slug": "courage-of-the-white-tiger",
+                "slug": "harmonic-gambit",
                 "rank": 1
               },
               {
-                "slug": "yu'lon's-knowledge",
+                "slug": "balanced-stratagem",
                 "rank": 1
               },
               {
-                "slug": "heart-of-the-jade-serpent",
+                "slug": "harmonic-surge",
                 "rank": 1
               },
               {
-                "slug": "chi-ji's-swiftness",
+                "slug": "tiger's-vigor",
                 "rank": 1
               },
               {
-                "slug": "strength-of-the-black-ox",
+                "slug": "endless-draught",
                 "rank": 1
               },
               {
-                "slug": "path-of-the-falling-star",
+                "slug": "mantra-of-purity",
                 "rank": 1
               },
               {
-                "slug": "yu'lon's-avatar",
+                "slug": "potential-energy",
                 "rank": 1
               },
               {
-                "slug": "niuzao's-protection",
+                "slug": "overwhelming-force",
                 "rank": 1
               },
               {
-                "slug": "stampede-of-the-ancients",
+                "slug": "way-of-a-thousand-strikes",
                 "rank": 1
               },
               {
-                "slug": "inner-compass",
+                "slug": "clarity-of-purpose",
                 "rank": 1
               },
               {
-                "slug": "flowing-wisdom",
+                "slug": "meditative-focus",
                 "rank": 1
               },
               {
-                "slug": "unity-within",
+                "slug": "coalescence",
                 "rank": 1
               }
             ]
@@ -11966,12 +11984,12 @@
         "raid": {
           "title": "Keeper Of The Grove | Raid Best",
           "source": "PeaversTalentsData/WowheadRaidDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDMmlZmZmBYYWmZbYGzYjlZMzMjZ2wAgBYZbshpZmlRAAAA2MzMzMYzYYMDgZGAYA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 67,
-          "confidenceRationale": "support=103.0, families=3, sources=3, agreement=3/9 (33.3%), margin=18.0 (17.5%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=103.0, families=3, sources=3, agreement=3/9 (33.3%), margin=18.0 (17.5%), updated=2026-04-11 04:00:47",
           "sampleSize": 9,
           "agreementCount": 3,
           "agreementRatio": 0.333,
@@ -12002,12 +12020,12 @@
         "aoe": {
           "title": "Keeper Of The Grove | Mythic",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNMmZgxsMzMzMLMgZZmlZWmxM2GLzsMGjxCGAMALbjNMNzsMCAAAwmZmHYmBbGzYMAMzAADA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 50,
-          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/56 (3.6%), margin=22.0 (26.8%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/56 (3.6%), margin=22.0 (26.8%), updated=2026-04-11 04:00:47",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -12032,7 +12050,7 @@
         "pvp": {
           "title": "Balance — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T00:18:19.700142Z",
+          "updated": "2026-04-11T08:16:34.95927Z",
           "exportString": "CYGA8cL7tpvige+kkmGM9zUPWDAAAAAAAAAAAAAAAAWoMLNjxMDwsZmZmZxMwMLjlZMjZGmlZMzMD2wAgxy2M22mZbWmpZmlZCAAAwmZmZmBbGzYMAMzAADA",
           "notes": [
             "Player: dipii",
@@ -12040,7 +12058,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 40,
-          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/44 (6.8%), margin=6.0 (6.5%), updated=2026-04-11T00:18:19.700142Z",
+          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/44 (6.8%), margin=6.0 (6.5%), updated=2026-04-11T08:16:34.95927Z",
           "sampleSize": 44,
           "agreementCount": 3,
           "agreementRatio": 0.068,
@@ -12368,12 +12386,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZwMzMzMmtl5BWGbzYm5BmZAAAAYJY2MMmZUzYWGzMzYMjBAAAAAgBGAAAAAgZbmlmtZW2AzMALmBDAgZGAMA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 51,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/11 (18.2%), margin=3.0 (3.5%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/11 (18.2%), margin=3.0 (3.5%), updated=2026-04-11 02:02:31",
           "sampleSize": 11,
           "agreementCount": 2,
           "agreementRatio": 0.182,
@@ -12398,12 +12416,12 @@
         "aoe": {
           "title": "Druid Of The Claw | Mythic Best",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZYmZmZMzsZsNz2MzMzDMzAAAAwSwsYMMzomxsYmZmZZMzAAAAAAgBAAAAoZWmtZmZABWAzMALMYAAAMzGG",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 50,
-          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/58 (3.4%), margin=22.0 (26.8%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/58 (3.4%), margin=22.0 (26.8%), updated=2026-04-11 04:00:47",
           "sampleSize": 58,
           "agreementCount": 2,
           "agreementRatio": 0.034,
@@ -12428,7 +12446,7 @@
         "pvp": {
           "title": "Feral — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T00:49:25.042487Z",
+          "updated": "2026-04-11T08:46:31.933655Z",
           "exportString": "CcGA8cL7tpvige+kkmGM9zUPWDAAAAAAjZWYmZmZGz2CLzsMjZMzMAAAAsEMbGYmZqZMbmZmZWGzwAAAAAAAMAAAAamtZbmZmZbmlmtZW2gZmBYhZYAAMzgZ2wA",
           "notes": [
             "Player: tææl",
@@ -12436,10 +12454,10 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/49 (2.0%), margin=0.0 (0.0%), updated=2026-04-11T00:49:25.042487Z",
-          "sampleSize": 49,
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/48 (2.1%), margin=0.0 (0.0%), updated=2026-04-11T08:46:31.933655Z",
+          "sampleSize": 48,
           "agreementCount": 1,
-          "agreementRatio": 0.02,
+          "agreementRatio": 0.021,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -12772,12 +12790,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxsMzMjZ2MLDMWGYYY0ENzMLzMzMjxMmBAAAAAMjlZAAAAQzsMLzMzAAYBzMALmBDYxy2AgZ2gB",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 54,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=9.0 (10.6%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=9.0 (10.6%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
           "agreementCount": 2,
           "agreementRatio": 0.2,
@@ -12802,12 +12820,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZmlhZMziZZMzMWGY2MMaimZmlZmZmZZmZeAAAAAAAzYZGwy2MDGzyAYCAAAYDzAYxMYALYAmZAM",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 46,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=9.0 (10.6%), updated=2026-04-10 21:42:25",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=9.0 (10.6%), updated=2026-04-11 05:42:18",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -12832,12 +12850,12 @@
         "pvp": {
           "title": "Druid Of The Claw | Delves",
           "source": "PeaversTalentsData/WowheadMiscDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxsMPwMjxiZZMPwMLLDMbGGNRzMzyMzMzsMmhBAAAAAMsMDAAAA1MLzyMzMAAWwMPAwiZwgBLbDAmZDG",
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/1 (100.0%), margin=max, updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/1 (100.0%), margin=max, updated=2026-04-11 04:00:47",
           "sampleSize": 1,
           "agreementCount": 1,
           "agreementRatio": 1,
@@ -12858,12 +12876,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMjxMLz2MmZGz2wMzM2MWGzAAAAAAAAAAgtBNbMmmhxMmlZmZmhhZGAAAAAAAMgttxGmmZWGAAAALMmZgZAaGAMzAAA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 52,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=3.0 (3.5%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=3.0 (3.5%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
           "agreementCount": 2,
           "agreementRatio": 0.2,
@@ -12888,15 +12906,15 @@
         "aoe": {
           "title": "Restoration — AoE (Mythic+)",
           "source": "Murlok.io (m+) top-player",
-          "updated": "2026-04-11T01:47:35.604281Z",
-          "exportString": "CkGA8cL7tpvige+kkmGM9zUPWPMmZZMjZmxsN8AMzswsYbGAAAAAAAAAAsMoZbw0MjhHwsYmZmZZGMDAAAAgBAYGAACAAY2mZrZZmFbMzMwMzCoZAAmZAYA",
+          "updated": "2026-04-11T09:22:08.999425Z",
+          "exportString": "CkGA8cL7tpvige+kkmGM9zUPWPMmZZMjZmxsNMMmFmFbzAAAAAAAAAAglBNbGmmZMjxsYmZmZZGeADAAAAAAAGAACAAY2mZpZZmFbMzMwMzCoZAAmZAYA",
           "notes": [
-            "Player: nihaobaobao",
-            "RankIndex: 3"
+            "Player: jawadruid",
+            "RankIndex: 5"
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/56 (1.8%), margin=0.0 (0.0%), updated=2026-04-11T01:47:35.604281Z",
+          "confidenceRationale": "support=60.0, families=1, sources=1, agreement=1/56 (1.8%), margin=0.0 (0.0%), updated=2026-04-11T09:22:08.999425Z",
           "sampleSize": 56,
           "agreementCount": 1,
           "agreementRatio": 0.018,
@@ -12925,11 +12943,11 @@
                 "rank": 1
               },
               {
-                "slug": "starfire",
+                "slug": "grievous-wounds",
                 "rank": 1
               },
               {
-                "slug": "grievous-wounds",
+                "slug": "swipe",
                 "rank": 1
               },
               {
@@ -12949,20 +12967,16 @@
                 "rank": 1
               },
               {
-                "slug": "remove-corruption",
-                "rank": 1
-              },
-              {
                 "slug": "improved-nature's-cure",
                 "rank": 1
               },
               {
-                "slug": "moonkin-form",
+                "slug": "remove-corruption",
                 "rank": 1
               },
               {
                 "slug": "killer-instinct",
-                "rank": 1
+                "rank": 2
               },
               {
                 "slug": "improved-barkskin",
@@ -12971,10 +12985,6 @@
               {
                 "slug": "nurturing-instinct",
                 "rank": 2
-              },
-              {
-                "slug": "sunfire",
-                "rank": 1
               },
               {
                 "slug": "thick-hide",
@@ -13013,6 +13023,10 @@
                 "rank": 1
               },
               {
+                "slug": "typhoon",
+                "rank": 1
+              },
+              {
                 "slug": "ursol's-vortex",
                 "rank": 1
               },
@@ -13045,15 +13059,15 @@
                 "rank": 1
               },
               {
+                "slug": "forestwalk",
+                "rank": 1
+              },
+              {
                 "slug": "fluid-form",
                 "rank": 1
               },
               {
                 "slug": "heart-of-the-wild",
-                "rank": 1
-              },
-              {
-                "slug": "innervate",
                 "rank": 1
               }
             ],
@@ -13155,12 +13169,8 @@
                 "rank": 1
               },
               {
-                "slug": "nature's-bounty",
-                "rank": 1
-              },
-              {
                 "slug": "thriving-vegetation",
-                "rank": 1
+                "rank": 2
               },
               {
                 "slug": "abundance",
@@ -13213,7 +13223,7 @@
                 "rank": 1
               },
               {
-                "slug": "harmonious-constitution",
+                "slug": "bond-with-nature",
                 "rank": 1
               },
               {
@@ -13246,15 +13256,15 @@
         "pvp": {
           "title": "Restoration — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T17:05:30.325261Z",
-          "exportString": "CkGA8cL7tpvige+kkmGM9zUPWPmZmZjZMmxsMmhxYML2mBAAAAAAAAAALDaWMjpZGYMbzMzMzihBAAAAAAAMgttxCmmZWGAAz2MLNbzsYBzMDmBMaGAMzMzAwA",
+          "updated": "2026-04-11T08:50:41.813815Z",
+          "exportString": "CkGA8cL7tpvige+kkmGM9zUPWPMmZjZMzMmlxMjxswsYbAAAAAAAAAAglZIbMmmZmZwsZmZGLGMDAAAAgBAMGw22YDTzMLDAgZZmlmtZWswMz8ADzYB0MAYmZmBgB",
           "notes": [
-            "Player: goldencat",
-            "RankIndex: 4"
+            "Player: qwopp",
+            "RankIndex: 1"
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/51 (2.0%), margin=0.0 (0.0%), updated=2026-04-10T17:05:30.325261Z",
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/51 (2.0%), margin=0.0 (0.0%), updated=2026-04-11T08:50:41.813815Z",
           "sampleSize": 51,
           "agreementCount": 1,
           "agreementRatio": 0.02,
@@ -13283,6 +13293,14 @@
                 "rank": 1
               },
               {
+                "slug": "starfire",
+                "rank": 1
+              },
+              {
+                "slug": "swipe",
+                "rank": 1
+              },
+              {
                 "slug": "ursoc's-spirit",
                 "rank": 1
               },
@@ -13291,11 +13309,15 @@
                 "rank": 1
               },
               {
-                "slug": "verdant-heart",
+                "slug": "starsurge",
                 "rank": 1
               },
               {
-                "slug": "remove-corruption",
+                "slug": "rip",
+                "rank": 1
+              },
+              {
+                "slug": "verdant-heart",
                 "rank": 1
               },
               {
@@ -13303,8 +13325,12 @@
                 "rank": 1
               },
               {
-                "slug": "killer-instinct",
-                "rank": 2
+                "slug": "remove-corruption",
+                "rank": 1
+              },
+              {
+                "slug": "maim",
+                "rank": 1
               },
               {
                 "slug": "improved-barkskin",
@@ -13316,10 +13342,6 @@
               },
               {
                 "slug": "thick-hide",
-                "rank": 1
-              },
-              {
-                "slug": "natural-recovery",
                 "rank": 1
               },
               {
@@ -13339,7 +13361,7 @@
                 "rank": 1
               },
               {
-                "slug": "feline-swiftness",
+                "slug": "starlight-conduit",
                 "rank": 1
               },
               {
@@ -13348,7 +13370,7 @@
               },
               {
                 "slug": "matted-fur",
-                "rank": 2
+                "rank": 1
               },
               {
                 "slug": "stampeding-roar",
@@ -13359,19 +13381,11 @@
                 "rank": 1
               },
               {
-                "slug": "typhoon",
-                "rank": 1
-              },
-              {
-                "slug": "mass-entanglement",
+                "slug": "ursol's-vortex",
                 "rank": 1
               },
               {
                 "slug": "oakskin",
-                "rank": 1
-              },
-              {
-                "slug": "perfectly-honed-instincts",
                 "rank": 1
               },
               {
@@ -13391,15 +13405,23 @@
                 "rank": 1
               },
               {
-                "slug": "improved-stampeding-roar",
+                "slug": "circle-of-the-wild",
                 "rank": 1
               },
               {
-                "slug": "forestwalk",
-                "rank": 2
+                "slug": "symbiotic-relationship",
+                "rank": 1
+              },
+              {
+                "slug": "fluid-form",
+                "rank": 1
               },
               {
                 "slug": "heart-of-the-wild",
+                "rank": 1
+              },
+              {
+                "slug": "innervate",
                 "rank": 1
               }
             ],
@@ -13429,11 +13451,11 @@
                 "rank": 1
               },
               {
-                "slug": "improved-regrowth",
+                "slug": "soul-of-the-forest",
                 "rank": 1
               },
               {
-                "slug": "soul-of-the-forest",
+                "slug": "tranquil-mind",
                 "rank": 1
               },
               {
@@ -13469,6 +13491,10 @@
                 "rank": 1
               },
               {
+                "slug": "rampant-growth",
+                "rank": 1
+              },
+              {
                 "slug": "wild-synthesis",
                 "rank": 1
               },
@@ -13481,14 +13507,6 @@
                 "rank": 1
               },
               {
-                "slug": "regenerative-heartwood",
-                "rank": 1
-              },
-              {
-                "slug": "ysera's-gift",
-                "rank": 1
-              },
-              {
                 "slug": "incarnation:-tree-of-life",
                 "rank": 1
               },
@@ -13497,7 +13515,7 @@
                 "rank": 1
               },
               {
-                "slug": "waking-dream",
+                "slug": "liveliness",
                 "rank": 1
               },
               {
@@ -13514,6 +13532,10 @@
               },
               {
                 "slug": "harmonious-blooming",
+                "rank": 1
+              },
+              {
+                "slug": "reforestation",
                 "rank": 1
               },
               {
@@ -13555,7 +13577,7 @@
                 "rank": 1
               },
               {
-                "slug": "grove's-inspiration",
+                "slug": "potent-enchantments",
                 "rank": 1
               },
               {
@@ -13590,31 +13612,31 @@
     "Demon Hunter": {
       "Havoc": {
         "raid": {
-          "title": "Fel Scarred | Raid Best",
-          "source": "PeaversTalentsData/WowheadRaidDB",
-          "updated": "2026-04-10 04:00:47",
-          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYGMzMzmxMzMmZmMmZAAAAAAAzyDMmtZYmZ2mZGbz28AzwYYsMw2sYGDzmmGzMjhNAAAAAAAAmZwAAAAwA",
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-04-11 02:02:31",
+          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYGMzMzmxMzMmZmMmZAAAAAAAzyDMmtZYmZ2mZGbz28AzwYYsMw2sYGDzGTjZmxwGAAAAAAAAzMYAAAAYA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 52,
-          "confidenceRationale": "support=94.0, families=2, sources=2, agreement=2/10 (20.0%), margin=3.0 (3.2%), updated=2026-04-10 04:00:47",
+          "confidence": "medium",
+          "confidenceScore": 67,
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=3.0 (3.3%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
-          "agreementCount": 2,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 2,
+          "agreementCount": 4,
+          "agreementRatio": 0.4,
+          "distinctSourceCount": 4,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 1,
+              "contributors": 3,
               "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
+              "popularityBonus": 12,
+              "familySupport": 60
             },
-            "wowhead": {
+            "archon": {
               "contributors": 1,
-              "familyBest": 34,
+              "familyBest": 25,
               "popularityBonus": 6,
-              "familySupport": 40
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -13622,12 +13644,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZ2mxMzMGzkxMDAAAAAAYWMmtZYmBmx2sNzMjxALDsNbmxwsw0YmZMjNAAAgBAAAwMDGAAAAG",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 54,
-          "confidenceRationale": "support=112.0, families=3, sources=3, agreement=3/56 (5.4%), margin=18.0 (16.1%), updated=2026-04-10 21:42:25",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=112.0, families=3, sources=3, agreement=3/56 (5.4%), margin=24.0 (21.4%), updated=2026-04-11 05:42:18",
           "sampleSize": 56,
           "agreementCount": 3,
           "agreementRatio": 0.054,
@@ -13658,26 +13680,26 @@
         "pvp": {
           "title": "Havoc — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T00:32:08.507755Z",
-          "exportString": "CEkAG5bbocFKcv+yIq8fPd6ORZGMzMDzMmZmxMZYAAAAAAAmFjZbmZmZmtZmZWmtxMWGmZsNzyMLzyMzMLbzy00MmZMjFAAAAAAEgZmZGMAEAAYA",
+          "updated": "2026-04-11T08:37:15.216544Z",
+          "exportString": "CEkAG5bbocFKcv+yIq8fPd6ORZGMzMjZMzMzMmJDDAAAAAAwsYMmZmZmZbmZsMbzDMzsMYGbzsMzysMzMzy2sMNNjZGzYBAAAAAABYmZmBDABAAG",
           "notes": [
-            "Player: zk",
-            "RankIndex: 4"
+            "Player: jogbestdh",
+            "RankIndex: 3"
           ],
           "confidence": "low",
-          "confidenceScore": 39,
-          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/45 (6.7%), margin=2.5 (2.7%), updated=2026-04-11T00:32:08.507755Z",
-          "sampleSize": 45,
-          "agreementCount": 3,
-          "agreementRatio": 0.067,
+          "confidenceScore": 38,
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/46 (4.3%), margin=3.5 (3.9%), updated=2026-04-11T08:37:15.216544Z",
+          "sampleSize": 46,
+          "agreementCount": 2,
+          "agreementRatio": 0.043,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 80.4,
-              "popularityBonus": 12,
-              "familySupport": 92.4
+              "popularityBonus": 9.51,
+              "familySupport": 89.91
             }
           },
           "selectedTalents": {
@@ -13692,10 +13714,6 @@
               },
               {
                 "slug": "sigil-of-misery",
-                "rank": 1
-              },
-              {
-                "slug": "vengeful-bonds",
                 "rank": 1
               },
               {
@@ -13740,6 +13758,10 @@
               },
               {
                 "slug": "swallowed-anger",
+                "rank": 1
+              },
+              {
+                "slug": "aura-of-pain",
                 "rank": 1
               },
               {
@@ -13791,12 +13813,12 @@
                 "rank": 1
               },
               {
-                "slug": "soul-splitter",
-                "rank": 2
+                "slug": "demon-muzzle",
+                "rank": 1
               },
               {
-                "slug": "pitch-black",
-                "rank": 1
+                "slug": "soul-splitter",
+                "rank": 2
               },
               {
                 "slug": "demonic-resilience",
@@ -13814,6 +13836,10 @@
               },
               {
                 "slug": "burning-hatred",
+                "rank": 1
+              },
+              {
+                "slug": "improved-chaos-strike",
                 "rank": 1
               },
               {
@@ -13861,6 +13887,10 @@
                 "rank": 1
               },
               {
+                "slug": "blind-fury",
+                "rank": 1
+              },
+              {
                 "slug": "furious-gaze",
                 "rank": 1
               },
@@ -13882,14 +13912,6 @@
               },
               {
                 "slug": "serrated-glaive",
-                "rank": 1
-              },
-              {
-                "slug": "unbound-chaos",
-                "rank": 1
-              },
-              {
-                "slug": "chaos-theory",
                 "rank": 1
               },
               {
@@ -13986,12 +14008,12 @@
         "raid": {
           "title": "Aldrachi Reaver | Raid",
           "source": "PeaversTalentsData/WowheadRaidDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjZmZkZmZYYmZGDzYmxMmxMzwMmZsNzMGDAAAAY2mBDjlNmwwMzYBAAAADGACwMDwAAAAYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 53,
-          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/9 (22.2%), margin=3.0 (3.4%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/9 (22.2%), margin=3.0 (3.4%), updated=2026-04-11 04:00:47",
           "sampleSize": 9,
           "agreementCount": 2,
           "agreementRatio": 0.222,
@@ -14016,12 +14038,12 @@
         "aoe": {
           "title": "Aldrachi Reaver | Mythic",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjhZkZmBWMjZwMjZGz8AzMzYYmtZGbjZMGzAAAAwsNDGGLbMhhZmxCAAAAGYAEgZGwMAAAAG",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 52,
-          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/56 (3.6%), margin=28.0 (31.8%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/56 (3.6%), margin=28.0 (31.8%), updated=2026-04-11 04:00:47",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -14046,12 +14068,12 @@
         "pvp": {
           "title": "Aldrachi Reaver | Cleave",
           "source": "PeaversTalentsData/WowheadMiscDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjZmZkZmZYYmZGDzYmxMmxMmxMmZsxMGDAAAAYMDGGwEGmZGLAAAAYwAQAmZAGAAAA",
           "notes": [],
           "confidence": "high",
           "confidenceScore": 100,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/1 (100.0%), margin=max, updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/1 (100.0%), margin=max, updated=2026-04-11 04:00:47",
           "sampleSize": 1,
           "agreementCount": 1,
           "agreementRatio": 1,
@@ -14072,26 +14094,26 @@
         "aoe": {
           "title": "Devourer — AoE (Mythic+)",
           "source": "Murlok.io (m+) top-player",
-          "updated": "2026-04-11T01:45:27.597174Z",
+          "updated": "2026-04-11T09:21:33.31684Z",
           "exportString": "CgcBG5bbocFKcv+yIq8fPd6ORBA2mxMzMzYmxwMAAAAAAAMmthZGAAAAAAAAmxMMmZmZmZmZGzsYGjFtsxMzMzWbzMzAYYAIwMGMmB",
           "notes": [
-            "Player: hyped",
-            "RankIndex: 4"
+            "Player: sos",
+            "RankIndex: 5"
           ],
           "confidence": "low",
           "confidenceScore": 46,
-          "confidenceRationale": "support=75.5, families=1, sources=1, agreement=11/54 (20.4%), margin=4.3 (5.6%), updated=2026-04-11T01:45:27.597174Z",
+          "confidenceRationale": "support=76.2, families=1, sources=1, agreement=12/54 (22.2%), margin=1.8 (2.4%), updated=2026-04-11T09:21:33.31684Z",
           "sampleSize": 54,
-          "agreementCount": 11,
-          "agreementRatio": 0.204,
+          "agreementCount": 12,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 11,
+              "contributors": 12,
               "familyBest": 54,
-              "popularityBonus": 21.51,
-              "familySupport": 75.51
+              "popularityBonus": 22.2,
+              "familySupport": 76.2
             }
           },
           "selectedTalents": {
@@ -14394,26 +14416,26 @@
         "pvp": {
           "title": "Devourer — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T17:03:32.634567Z",
-          "exportString": "CgcBG5bbocFKcv+yIq8fPd6ORBAMzMmZMzMjhZAAAAAAAYMLjxMAAAAAAAAMjZYMzMzMzMzwMLmxYRLbMzMzs12MzMAmxMzYMTzyYbGGGzA",
+          "updated": "2026-04-11T08:41:00.654003Z",
+          "exportString": "CgcBG5bbocFKcv+yIq8fPd6ORBAWmxMzMzMzMGmBAAAAAAYxYMYGAAAAAAAAmxMMzMzMzMzMjZmFz4BsolNmZmZ2abmZGAzYAIgxgxMA",
           "notes": [
-            "Player: devourer",
-            "RankIndex: 4"
+            "Player: írony",
+            "RankIndex: 5"
           ],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/40 (5.0%), margin=3.5 (3.9%), updated=2026-04-10T17:03:32.634567Z",
-          "sampleSize": 40,
-          "agreementCount": 2,
-          "agreementRatio": 0.05,
+          "confidenceScore": 36,
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/42 (2.4%), margin=0.0 (0.0%), updated=2026-04-11T08:41:00.654003Z",
+          "sampleSize": 42,
+          "agreementCount": 1,
+          "agreementRatio": 0.024,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 2,
+              "contributors": 1,
               "familyBest": 80.4,
-              "popularityBonus": 9.51,
-              "familySupport": 89.91
+              "popularityBonus": 6,
+              "familySupport": 86.4
             }
           },
           "selectedTalents": {
@@ -14428,10 +14450,6 @@
               },
               {
                 "slug": "sigil-of-misery",
-                "rank": 1
-              },
-              {
-                "slug": "vengeful-bonds",
                 "rank": 1
               },
               {
@@ -14467,7 +14485,19 @@
                 "rank": 1
               },
               {
+                "slug": "master-of-the-glaive",
+                "rank": 1
+              },
+              {
+                "slug": "disrupting-fury",
+                "rank": 1
+              },
+              {
                 "slug": "blazing-path",
+                "rank": 1
+              },
+              {
+                "slug": "aura-of-pain",
                 "rank": 1
               },
               {
@@ -14483,8 +14513,8 @@
                 "rank": 1
               },
               {
-                "slug": "infernal-armor",
-                "rank": 2
+                "slug": "burn-it-out",
+                "rank": 1
               },
               {
                 "slug": "illidari-knowledge",
@@ -14529,10 +14559,6 @@
               {
                 "slug": "soul-splitter",
                 "rank": 2
-              },
-              {
-                "slug": "long-night",
-                "rank": 1
               },
               {
                 "slug": "demonic-resilience",
@@ -14589,7 +14615,15 @@
                 "rank": 1
               },
               {
+                "slug": "sweet-suffering",
+                "rank": 2
+              },
+              {
                 "slug": "second-helping",
+                "rank": 1
+              },
+              {
+                "slug": "umbral-blade",
                 "rank": 1
               },
               {
@@ -14598,7 +14632,7 @@
               },
               {
                 "slug": "sweet-release",
-                "rank": 2
+                "rank": 1
               },
               {
                 "slug": "voidpurge",
@@ -14613,15 +14647,11 @@
                 "rank": 1
               },
               {
-                "slug": "demonic-instinct",
-                "rank": 2
-              },
-              {
                 "slug": "devourer's-edge",
                 "rank": 2
               },
               {
-                "slug": "voidglare-boon",
+                "slug": "rolling-torment",
                 "rank": 1
               },
               {
@@ -14742,12 +14772,12 @@
         "raid": {
           "title": "Scalecommander | Raid Best",
           "source": "PeaversTalentsData/WowheadRaidDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMDMDzYmBMYMTzMzMNjx2MmZmZmHYmZGwMmxYmZZmZgBGDWglxox2AyMIYDDMzghB",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 68,
-          "confidenceRationale": "support=103.0, families=3, sources=3, agreement=3/8 (37.5%), margin=12.0 (11.7%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=103.0, families=3, sources=3, agreement=3/8 (37.5%), margin=12.0 (11.7%), updated=2026-04-11 04:00:47",
           "sampleSize": 8,
           "agreementCount": 3,
           "agreementRatio": 0.375,
@@ -14778,12 +14808,12 @@
         "aoe": {
           "title": "Scalecommander | Mythic Best",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMDgZGmBGGjZaMzMNDz2MmZmZmZmZGwMzMGzMLzMDMwYwCsMGN2GQmBBbYGMzghB",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 50,
-          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/55 (3.6%), margin=22.0 (26.8%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/55 (3.6%), margin=22.0 (26.8%), updated=2026-04-11 04:00:47",
           "sampleSize": 55,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -14808,18 +14838,18 @@
         "pvp": {
           "title": "Devastation — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-10T16:19:08.050552Z",
+          "updated": "2026-04-11T08:46:14.219151Z",
           "exportString": "CsbBPJc41CfcseY0baneJ1IHrBAAAAAAAAAAwYmZGMDzwMMzwYMTjZmpZmxyMMzMzYmZGwMzMYmZZMDMwYwGsMGN2GQmJAbYgZGgB",
           "notes": [
             "Player: ambú",
-            "RankIndex: 2"
+            "RankIndex: 1"
           ],
           "confidence": "low",
           "confidenceScore": 39,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/30 (6.7%), margin=3.5 (3.9%), updated=2026-04-10T16:19:08.050552Z",
-          "sampleSize": 30,
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/31 (6.5%), margin=3.5 (3.9%), updated=2026-04-11T08:46:14.219151Z",
+          "sampleSize": 31,
           "agreementCount": 2,
-          "agreementRatio": 0.067,
+          "agreementRatio": 0.065,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -15144,12 +15174,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAYmZ2MwMmZegZxYmZmlBAAYmxMmHwYMjwMAAAAzMjMjZmZ2mZGAMwYGbsADMDDNMsAjZGgxA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 53,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=3.0 (3.5%), updated=2026-04-10 02:02:19",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=3.0 (3.5%), updated=2026-04-11 02:02:31",
           "sampleSize": 9,
           "agreementCount": 2,
           "agreementRatio": 0.222,
@@ -15174,12 +15204,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-04-10 21:42:25",
+          "updated": "2026-04-11 05:42:18",
           "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz2yADzMmFzYM2mxAAAzYmZGmhZyMmBAAA2mZmJjZmZGjZAAYMjNWgBmhhGGWgZmZAYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 44,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.5%), updated=2026-04-10 21:42:25",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/56 (3.6%), margin=3.0 (3.5%), updated=2026-04-11 05:42:18",
           "sampleSize": 56,
           "agreementCount": 2,
           "agreementRatio": 0.036,
@@ -15204,7 +15234,7 @@
         "pvp": {
           "title": "Preservation — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T00:22:59.562401Z",
+          "updated": "2026-04-11T08:27:36.726033Z",
           "exportString": "CwbBPJc41CfcseY0baneJ1IHrBAAAAAmZmZ22GYYmZYmxDgthBAAmhZmxYYmYmZAAAgtZmZaGjZmZZMDAMmZMzyGLWYYmZmGa2YsYYMzgZGGA",
           "notes": [
             "Player: wimbledeen",
@@ -15212,7 +15242,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 41,
-          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/51 (7.8%), margin=7.9 (8.4%), updated=2026-04-11T00:22:59.562401Z",
+          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/51 (7.8%), margin=7.9 (8.4%), updated=2026-04-11T08:27:36.726033Z",
           "sampleSize": 51,
           "agreementCount": 4,
           "agreementRatio": 0.078,
@@ -15528,23 +15558,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-04-10 02:02:19",
+          "updated": "2026-04-11 02:02:31",
           "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMmZmZbmZmxyAzsMjxwMAAAAAgBAAzMDMYM1YmZGAAAAMjZmxMz2YmBmZzYwCsMGGbDgZQshZGYmBwA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 62,
-          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/10 (30.0%), margin=0.5 (0.6%), updated=2026-04-10 02:02:19",
+          "confidenceScore": 67,
+          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=3.0 (3.3%), updated=2026-04-11 02:02:31",
           "sampleSize": 10,
-          "agreementCount": 3,
-          "agreementRatio": 0.3,
-          "distinctSourceCount": 3,
+          "agreementCount": 4,
+          "agreementRatio": 0.4,
+          "distinctSourceCount": 4,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 2,
+              "contributors": 3,
               "familyBest": 48,
-              "popularityBonus": 9.51,
-              "familySupport": 57.51
+              "popularityBonus": 12,
+              "familySupport": 60
             },
             "archon": {
               "contributors": 1,
@@ -15558,12 +15588,12 @@
         "aoe": {
           "title": "Chronowarden | Mythic",
           "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-04-10 04:00:47",
+          "updated": "2026-04-11 04:00:47",
           "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMmZmZbmZmxyAzsMjxwMAAAAAAAAYmBmBjHoGzMzAAAAgZmZmxMz2YmBmZzAjZswCMwMM0IWwMzMzAAD",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 52,
-          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/57 (3.5%), margin=28.0 (31.8%), updated=2026-04-10 04:00:47",
+          "confidenceRationale": "support=88.0, families=2, sources=2, agreement=2/57 (3.5%), margin=28.0 (31.8%), updated=2026-04-11 04:00:47",
           "sampleSize": 57,
           "agreementCount": 2,
           "agreementRatio": 0.035,
@@ -15588,15 +15618,15 @@
         "pvp": {
           "title": "Augmentation — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-04-11T00:57:33.634865Z",
+          "updated": "2026-04-11T08:54:42.353806Z",
           "exportString": "CEcBPJc41CfcseY0baneJ1IHrhZGbzMzM2mxMzsMMzMmZDAAAAADAAMzMMzYMUzYmZAAAAwMzMYmZZMDwsYMMbzYbbWGmZbYGmZaELYMmZAgB",
           "notes": [
-            "Player: honeypuu",
-            "RankIndex: 2"
+            "Player: augmentation",
+            "RankIndex: 1"
           ],
           "confidence": "medium",
           "confidenceScore": 70,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/4 (50.0%), margin=43.9 (48.8%), updated=2026-04-11T00:57:33.634865Z",
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/4 (50.0%), margin=43.9 (48.8%), updated=2026-04-11T08:54:42.353806Z",
           "sampleSize": 4,
           "agreementCount": 2,
           "agreementRatio": 0.5,
