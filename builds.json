@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T15:21:06.434Z",
+  "generatedAt": "2026-06-13T04:03:46.172Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/tank/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -46,11 +46,11 @@
           "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzMzMDAAAghphxYGWmZmZGMmZAAAAAMzyMDIjxyyALgBMDTIzgNwMjNz2YwMGgZGAmxwA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 63,
-          "confidenceRationale": "support=95.0, families=3, sources=3, agreement=3/11 (27.3%), margin=10.0 (10.5%), updated=2026-06-12 04:00:50",
-          "sampleSize": 11,
+          "confidenceScore": 71,
+          "confidenceRationale": "support=95.0, families=3, sources=3, agreement=3/10 (30.0%), margin=37.5 (39.5%), updated=2026-06-12 04:00:50",
+          "sampleSize": 10,
           "agreementCount": 3,
-          "agreementRatio": 0.273,
+          "agreementRatio": 0.3,
           "distinctSourceCount": 3,
           "distinctFamilyCount": 3,
           "consensusBreakdown": {
@@ -78,12 +78,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAgZmxsMzMzYGAAAghphZGmZbZmZmZYGzMAAAAAGbmB2iBsZGDLwAzwGNGsAmZYYwsZ2GMzAAMzwA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 64,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=31.0 (36.5%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=31.0 (36.5%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -138,11 +138,11 @@
           "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjxMsMzMzMDjZmZGzMzsMzMGzMbDzMAAQMWWGYBMBzwEYG2AmZ2Y2GAAMzYYMzMMYA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 62,
-          "confidenceRationale": "support=95.0, families=3, sources=3, agreement=3/11 (27.3%), margin=6.5 (6.8%), updated=2026-06-12 04:00:50",
-          "sampleSize": 11,
+          "confidenceScore": 64,
+          "confidenceRationale": "support=95.0, families=3, sources=3, agreement=3/10 (30.0%), margin=10.0 (10.5%), updated=2026-06-12 04:00:50",
+          "sampleSize": 10,
           "agreementCount": 3,
-          "agreementRatio": 0.273,
+          "agreementRatio": 0.3,
           "distinctSourceCount": 3,
           "distinctFamilyCount": 3,
           "consensusBreakdown": {
@@ -170,12 +170,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjhZ2WmZmZmZmxMjZMzMzyMzYMzsNmHYGAAIGLLDsAGwMMBmhNAzgxAAgZGDzMzMMYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 41,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 1,
           "agreementRatio": 0.143,
@@ -218,17 +218,17 @@
       },
       "Protection": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAA0yAAAzMjZmZmZGzmxsMjxY0wMDLzMzMDGzMAAAAYZAYGDwAbwyiRjZAMbYmNYGzMY2GAMzAAwMgB",
+          "title": "Colossus | Raid",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAA0yAAAzMDzMzMzMzmxsMjxYmGmZYZMzMDzYmBAAAALDAzYAgNzYYjMwMsQjZWgZMzgZbAAmZAADwA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=17.0 (20.0%), updated=2026-06-12 02:03:22",
-          "sampleSize": 10,
+          "confidenceScore": 57,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/9 (22.2%), margin=14.0 (20.6%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 2,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -238,11 +238,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -308,23 +308,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYBAMAAglxMzYGzMzGjxYWGbzMLmpJGzYmZYY2yAwAG2AbsMjZWmtZmZrBAAAYBA2MMmxMAAgZGmxYYA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 70,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=9.0 (9.9%), updated=2026-06-12 02:05:38",
-          "sampleSize": 9,
-          "agreementCount": 4,
-          "agreementRatio": 0.444,
-          "distinctSourceCount": 4,
+          "confidenceScore": 67,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=6.5 (7.4%), updated=2026-06-13 02:06:28",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -338,12 +338,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYBAMDAwglxMMzYmZWYMGPwyYbmZxMNxwYmZYY2yAwAwGYjtZmZWmtZmZrBAAAYhNmBbAzYGAAwMDzYMMA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 43,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -388,23 +388,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsZm5BYWGLzMjZGbLjxYmFbzYAAGAAAAAAkmZWMjZmxYmt2AwAGwgNAAwMTbzMLzAAsBmBAjZYMAALzAMzAG",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=23.0 (25.3%), updated=2026-06-12 02:05:38",
-          "sampleSize": 10,
-          "agreementCount": 4,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 4,
+          "confidenceScore": 69,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=20.5 (23.2%), updated=2026-06-13 02:06:28",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -418,12 +418,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNjBzyYbMjZmZZZMzwsMLzYAAGAAAAAA00MzyMjZwwDs1GAGYAzgNAAAAYmZZbplZGLmhZAwYGGDAmZAwMDYA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 60,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=17.0 (20.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=17.0 (20.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -474,23 +474,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQz22MzsMMzAAAAAAwoMmhZGbDz2wMbzYMmZYGbsNMAAwMTbzMbzAA2AMAYMDzgZMmNsMDGGzYwA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 74,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=23.0 (25.3%), updated=2026-06-12 02:05:38",
-          "sampleSize": 9,
-          "agreementCount": 4,
-          "agreementRatio": 0.444,
-          "distinctSourceCount": 4,
+          "confidenceScore": 71,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=20.5 (23.2%), updated=2026-06-13 02:06:28",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -504,12 +504,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQz22MzsMGzMAAAAAAmpMLzwMjthZbYmtZMGjhZsxGAAAzMtNzsNDAYDwAgxMMwMzMzGWmBDjZMYA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 62,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=17.0 (20.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=17.0 (20.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -562,23 +562,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsAzwQDbAAYG2GzsNzwMmZYYmxYmxMzYGzwMzYGzghmBAAAAwMAAAMzMzAMzGghZBsNA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=23.0 (25.3%), updated=2026-06-12 02:05:38",
-          "sampleSize": 10,
-          "agreementCount": 4,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 4,
+          "confidenceScore": 69,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=20.5 (23.2%), updated=2026-06-13 02:06:28",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -646,17 +646,17 @@
       },
       "Marksmanship": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwMGNWGAzgNAAAAAAAAgZMjZwYmZMDGTzYwsttZmZMzMzMzsgZZYmBAAMzMzAgZGbbGGgNmZM",
+          "title": "Sentinel | Raid",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwMGNWGAzgNAAAAAAAAgZMjZYGzMjZwYaGDzstxMzsMzMmZmFMLDmBAAMmZmZAMz0GziBYjZGD",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 54,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=9.0 (10.6%), updated=2026-06-12 02:03:22",
-          "sampleSize": 10,
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/9 (22.2%), margin=22.0 (28.9%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 2,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -666,11 +666,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 16,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 22
             }
           },
           "selectedTalents": null
@@ -678,12 +678,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAYzsMwAGwMsEYWAAAAAAAAAmxMmxmxMzYGWGTzYwssZmZYmZMzMLMzywMDAAwMGzMzMgBGGgNmZM",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 41,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 1,
           "agreementRatio": 0.143,
@@ -726,31 +726,37 @@
       },
       "Survival": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
-          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMgxMG2gFYGGawiZmZmZYZAAAAAAwMmZmx2MGzYGWGTzAAAAwAAjllZmZxMzMYMGwMbAGGjZmNDA",
+          "title": "Pack Leader | Raid Best",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMgxMGWIbwMM0gFjZmZmxyAAAAAAgZMzMDz4BMjZwYaGAAAAAAjllZmZxMzMzYmxAmZDwsMjxM2MA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 69,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=2.0 (2.2%), updated=2026-06-12 02:05:38",
-          "sampleSize": 9,
-          "agreementCount": 4,
-          "agreementRatio": 0.444,
-          "distinctSourceCount": 4,
-          "distinctFamilyCount": 2,
+          "confidenceScore": 65,
+          "confidenceRationale": "support=89.0, families=3, sources=3, agreement=3/8 (37.5%), margin=0.5 (0.6%), updated=2026-06-12 04:00:50",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 3,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
-              "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
-            },
-            "archon": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 48,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 54
+            },
+            "wowhead": {
+              "contributors": 1,
+              "familyBest": 8,
+              "popularityBonus": 6,
+              "familySupport": 14
+            },
+            "method": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -758,12 +764,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMgxMG2gFYGGawiZmZmZYZAAAAAAwMmZmhZMMmhlx0MAAAAMAwYZZmZWMzMDzYMgZ2AMMGzMbGA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 62,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=17.0 (20.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=17.0 (20.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -814,17 +820,17 @@
     "Rogue": {
       "Assassination": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmlZmNDGAAAAAYWGsNDAAAAAIbzMzMzMjxMzMz2MLzMeAPwMjZGDzMmZAMwCMjRjZDw2A2M2AMzMYA",
+          "title": "Deathstalker | Raid Single Target",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmZMbzgBAAAAAmlBLzAAAAAAabbmZmZmZMmZmZ2mZZmZGMmZmZMzYYA2MLDMglglhJwwiBzMADG",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 52,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=3.0 (3.5%), updated=2026-06-12 02:03:22",
-          "sampleSize": 10,
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/9 (22.2%), margin=24.5 (29.9%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 2,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -834,11 +840,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 22,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 28
             }
           },
           "selectedTalents": null
@@ -846,12 +852,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmlZmNDGAAAAAYWGsNDAAAAAotlZmZmZmxYmZmZbmlZGPgHYmZmZMMzYMAGYBmxoxsBYbAbGAMzMYA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 64,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=31.0 (36.5%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=31.0 (36.5%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -906,11 +912,11 @@
           "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgx2MYmZmZmtZmZmZMmNeAmZbaZw2MAAAAAgZbbmZGmZmZGzMz2AAAAwYAwYWMMkBmFWoF2YAmZwAD",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 63,
-          "confidenceRationale": "support=89.0, families=3, sources=3, agreement=3/10 (30.0%), margin=4.0 (4.5%), updated=2026-06-12 04:00:50",
-          "sampleSize": 10,
+          "confidenceScore": 72,
+          "confidenceRationale": "support=89.0, families=3, sources=3, agreement=3/9 (33.3%), margin=31.5 (35.4%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 3,
-          "agreementRatio": 0.3,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 3,
           "distinctFamilyCount": 3,
           "consensusBreakdown": {
@@ -938,12 +944,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgx2MYmZmZmtZmZMzMzsBmZbaZw2MAAAAAAbLzMzwMzMzYmZ2GAAAAGDAGzihBGYWYhWYjBYmBzgB",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 60,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=17.0 (20.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=17.0 (20.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -994,23 +1000,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbbjxMjZwMzMzYMbDzYbbmZmZmZMYMz2AAAAwgxAGzmhBGYWYhWshZAzMYGDA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 68,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=9.0 (9.9%), updated=2026-06-12 02:05:38",
-          "sampleSize": 10,
-          "agreementCount": 4,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 4,
+          "confidenceScore": 65,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=6.5 (7.4%), updated=2026-06-13 02:06:28",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -1024,12 +1030,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbbjxMjZMegZmZGjZbYGbLzMjZmZMYMz2AAAAwMMGwY2MMwAzCL0iNMDYmBzYA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 58,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=3.0 (3.5%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=3.0 (3.5%), updated=2026-06-12 21:42:12",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -1082,23 +1088,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsAz2MzMYmhZbmtZmZmhZAAAAAAAAAAMDLzgZmZYGmBmpZamBYmFMEGzyAMGsAAAjxMjBzAMzMMDD",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/9 (44.4%), margin=15.0 (16.5%), updated=2026-06-12 02:05:38",
-          "sampleSize": 9,
-          "agreementCount": 4,
-          "agreementRatio": 0.444,
-          "distinctSourceCount": 4,
+          "confidenceScore": 68,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/8 (37.5%), margin=12.5 (14.1%), updated=2026-06-13 02:06:28",
+          "sampleSize": 8,
+          "agreementCount": 3,
+          "agreementRatio": 0.375,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -1166,17 +1172,17 @@
       },
       "Holy": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAgZmlxYMzMDzMzYZGmBAAAwMmlZwMzMMDzAYmaAgZWMDziBAGD2MzMLAaGjxYYmZbZAmBG",
+          "title": "Archon | Raid Best",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAgZmlxYMzMDzMzYZGmBAAAwwsMDzMzMYGzAYmaAgZWMTmFDAMGsZmZWA0MMjxwMz2yAMDMA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 56,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=17.0 (20.0%), updated=2026-06-12 02:03:22",
-          "sampleSize": 10,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/9 (22.2%), margin=10.5 (15.4%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 2,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -1186,11 +1192,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -1254,23 +1260,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMMjZGAAAAAAAAAAAgxYxMGLzMMz2MDzw2MzYmZGbIzYxMNAzAMzmZY2MAkxYBAzAMmZmxsNmZbZAmBD",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 76,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=37.0 (40.7%), updated=2026-06-12 02:05:38",
-          "sampleSize": 10,
-          "agreementCount": 4,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 4,
+          "confidenceScore": 73,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=34.5 (39.0%), updated=2026-06-13 02:06:28",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -1284,12 +1290,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMjZMGAAAAAAAAAAAAjZZmxYZmxMz2MDjx2MzYmZmBygtZaMwMzMAQAmtZbDMbMAwgxMzMmtxMYmBzgB",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 41,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 1,
           "agreementRatio": 0.143,
@@ -1336,23 +1342,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonHeroicRaidDB",
-          "updated": "2026-06-12 02:05:37",
+          "updated": "2026-06-13 02:06:14",
           "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWGzMmxMzMMbzMz0MLmZMmxAAAAAzMzMzMzMDzYMAYMzMzAAAYgBmxmGLbA2GwGgZYAAAzMYwA",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/10 (30.0%), margin=12.5 (14.1%), updated=2026-06-12 02:05:37",
-          "sampleSize": 10,
-          "agreementCount": 3,
-          "agreementRatio": 0.3,
-          "distinctSourceCount": 3,
+          "confidence": "low",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=9.0 (10.6%), updated=2026-06-13 02:06:14",
+          "sampleSize": 9,
+          "agreementCount": 2,
+          "agreementRatio": 0.222,
+          "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 2,
+              "contributors": 1,
               "familyBest": 48,
-              "popularityBonus": 9.51,
-              "familySupport": 57.51
+              "popularityBonus": 6,
+              "familySupport": 54
             },
             "archon": {
               "contributors": 1,
@@ -1366,12 +1372,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwMzyMzwMmxYMLzMz0MLzMjZmBAAAAwgZmZmZMzMjBAzMzMzAAAMmtBGwCYZYCMsAYGDAAmZAYMA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 58,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=9.0 (10.6%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=9.0 (10.6%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1426,11 +1432,11 @@
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMDwMjZMDY2mZmZmZZmZkZMmZYGGPgZGMzMzMDAAAAAAAAAjZbgBsAWGmQGLYmxMzAzAYYmBYmBD",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 61,
-          "confidenceRationale": "support=89.0, families=3, sources=3, agreement=3/11 (27.3%), margin=4.0 (4.5%), updated=2026-06-12 04:00:50",
-          "sampleSize": 11,
+          "confidenceScore": 70,
+          "confidenceRationale": "support=89.0, families=3, sources=3, agreement=3/10 (30.0%), margin=31.5 (35.4%), updated=2026-06-12 04:00:50",
+          "sampleSize": 10,
           "agreementCount": 3,
-          "agreementRatio": 0.273,
+          "agreementRatio": 0.3,
           "distinctSourceCount": 3,
           "distinctFamilyCount": 3,
           "consensusBreakdown": {
@@ -1458,12 +1464,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMAzMjZMzYY2mZmZmZxMjmZMmZmZGYMzwMzMjZAAAAAAAAAYMbDMgFwywEYsgZGmZgZAMMzAAM",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 60,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=17.0 (20.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=17.0 (20.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1514,23 +1520,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAwMjZMDDz2MzMTzmZmZMjBAAAAAAAgZGmZAw2MmZ2mZGjZAbmFDDMwsxQjFAMDAjZmxMAzMzYMA",
           "notes": [],
-          "confidence": "high",
-          "confidenceScore": 80,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=52.0 (57.1%), updated=2026-06-12 02:05:38",
-          "sampleSize": 10,
-          "agreementCount": 4,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 4,
+          "confidence": "medium",
+          "confidenceScore": 77,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=49.5 (55.9%), updated=2026-06-13 02:06:28",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -1600,17 +1606,17 @@
     "Shaman": {
       "Elemental": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMbbzMzMzMLbbDMmZAAAAAgNzYYDWgZYoxGAMLzMzYstYahZmlxyMzMjhlZZYxMDzsAAMAmZghhB",
+          "title": "Farseer | Raid",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAmZZZmxMzMbbbjxMmZAAAAAbmZDGwAmNmQmFAYWmZmxYbxEmZWGLzMzMGWsMjFMzMzCAwMAYmxwwA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=17.0 (20.0%), updated=2026-06-12 02:03:22",
-          "sampleSize": 10,
+          "confidenceScore": 57,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/9 (22.2%), margin=14.0 (20.6%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 2,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -1620,11 +1626,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -1687,30 +1693,30 @@
       "Enhancement": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAAsBYzMG2gFYGGawCAz2MmxYZZGLMzsNWmZmZYsMmBAYGGzMMCMzgBjB",
+          "source": "PeaversTalentsData/ArchonNormalRaidDB",
+          "updated": "2026-06-13 02:06:28",
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMjZmZmZmZmZmZmZGAAAAAAAAAYB2gZsox2AYGwGAzyMmZGLLzAzMbsMzMzwwYGAADwYmJmZAgxA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/11 (18.2%), margin=0.5 (0.6%), updated=2026-06-12 02:03:22",
-          "sampleSize": 11,
-          "agreementCount": 2,
-          "agreementRatio": 0.182,
-          "distinctSourceCount": 2,
+          "confidence": "medium",
+          "confidenceScore": 64,
+          "confidenceRationale": "support=84.5, families=2, sources=3, agreement=3/10 (30.0%), margin=8.5 (10.1%), updated=2026-06-13 02:06:28",
+          "sampleSize": 10,
+          "agreementCount": 3,
+          "agreementRatio": 0.3,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 1,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
-            "archon": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 21,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 27
             }
           },
           "selectedTalents": null
@@ -1718,12 +1724,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAAsBYzMG2gFYGGawCAz2MmxYZZGYmZbsMzMzwYZMDAwMMmZYmAzMYwYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 56,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/8 (25.0%), margin=9.0 (10.6%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/8 (25.0%), margin=9.0 (10.6%), updated=2026-06-12 21:42:12",
           "sampleSize": 8,
           "agreementCount": 2,
           "agreementRatio": 0.25,
@@ -1774,23 +1780,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAzMzMLLbDzMGzMzMDzYBWgZsox2AYGYzMMYWGjZa2WmZWMjZhFzMzYwsMAAAwMzgZGAYwA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=23.0 (25.3%), updated=2026-06-12 02:05:38",
-          "sampleSize": 10,
-          "agreementCount": 4,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 4,
+          "confidenceScore": 69,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=20.5 (23.2%), updated=2026-06-13 02:06:28",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -1804,12 +1810,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAjZmZZbZMzMzYmZGzYYB2gZsox2AYGYDzMY2mZMTzyyMDzY2YxYmxwysMAAYAMzgZGAGDG",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 62,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=17.0 (20.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=17.0 (20.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -1862,23 +1868,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMzQzMzAAAwAAAAzMzssMzELAAsNMzMmtFLzMzYmxYMzMzYhZmZMDAwAAAYmFAwMAYYA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 70,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=15.0 (16.5%), updated=2026-06-12 02:05:38",
-          "sampleSize": 10,
-          "agreementCount": 4,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 4,
+          "confidenceScore": 69,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=20.5 (23.2%), updated=2026-06-13 02:06:28",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -1892,12 +1898,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzQzMzAAAwAAAAzMzssMzELAAsNjZmxsZWmZmxMjxwMzMWYmZmHYGAgBAAwMLAgZAwwA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 58,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=9.0 (10.6%), updated=2026-06-12 13:42:20",
+          "confidenceScore": 60,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=17.0 (20.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1946,17 +1952,17 @@
       },
       "Fire": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMDZmZGAAAGAwMz0sssMDAwmZmx2YmZGAAAAAgFzMzMDAAGzYGzMzMzyAwMDMGjBGG",
+          "title": "Sunfury | Raid",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMDZmZGAAAGAwMz0sssMDAwmZmx2YmZGAAAAAgFzMzMDAAGzwYmZmZ2GAmZIjxYwMMA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 56,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=17.0 (20.0%), updated=2026-06-12 02:03:22",
-          "sampleSize": 10,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/9 (22.2%), margin=10.5 (15.4%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 2,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -1966,11 +1972,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -2034,23 +2040,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAYGGLzMzsMmZmYmZGzMzMziZmZMjZAAAgZmZWWmZaDAA2AAAA2AYbZMzMDmthxMsAAAwMbAzADYGMA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=23.0 (25.3%), updated=2026-06-12 02:05:38",
-          "sampleSize": 10,
-          "agreementCount": 4,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 4,
+          "confidenceScore": 69,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=20.5 (23.2%), updated=2026-06-13 02:06:28",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -2120,17 +2126,17 @@
     "Warlock": {
       "Affliction": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAgZmZGNbMMzMmlBAAYmZxyMzsMzAAjllBGwAmhtADbDAAAzAAAYmhZmZmNMMzMzMmBzMzMAgZgB",
+          "title": "Hellcaller | Raid",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMzMzoZjhZmZmlBAAYmZZ2mZmlxAAWgBmFjGzAysBWGAAAmBAAmZgZGjxwwMjZmZGMzMzAAmBG",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=17.0 (20.0%), updated=2026-06-12 02:03:22",
-          "sampleSize": 10,
+          "confidenceScore": 57,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/9 (22.2%), margin=14.0 (20.6%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 2,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -2140,11 +2146,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -2152,12 +2158,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMjZGNbmZ2mZGzyAAAmZmlZzMzyYAgx2yADYAzwWghtBAAgZAAAMzMmxM2GjZMmZmZMMzMDAwAG",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 60,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=17.0 (20.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=17.0 (20.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -2208,23 +2214,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMmZGNbM2mZGzyAAAAAAAAGzYYBGYbYhGWMYmlZbmZGzAAzwMzMzMAjZMzsBAAmZmZGDjZZGDYA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=23.0 (25.3%), updated=2026-06-12 02:05:38",
-          "sampleSize": 10,
-          "agreementCount": 4,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 4,
+          "confidenceScore": 69,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=20.5 (23.2%), updated=2026-06-13 02:06:28",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -2238,12 +2244,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMmZGNbMz2MzYWGAAAAAAAwYGDLwAbDL0wixMjlZbmZGzAAzMGzMzMAjZMjNAAwYmZGDDLzYAD",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 64,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=31.0 (36.5%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=31.0 (36.5%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -2292,17 +2298,17 @@
       },
       "Destruction": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAwMmZGNbM2mZmZWmlZmZmFjZbxMAAYGjZmZxCMwsY0YGAzG2YAAgxAsBAMzgZmxYAAAYmZGAAGDD",
+          "title": "Diabolist | Raid Best",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAwMzMzoZjhZmZmlZjZmZxgFzAAgZmxMzsAGzYYhMw2wGNWYAAgxAjNAMzAYmxYAAAYmZmBAwMDD",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 57,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=17.0 (20.0%), updated=2026-06-12 02:03:22",
-          "sampleSize": 9,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/8 (25.0%), margin=10.5 (15.4%), updated=2026-06-12 04:00:50",
+          "sampleSize": 8,
           "agreementCount": 2,
-          "agreementRatio": 0.222,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -2312,11 +2318,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -2382,23 +2388,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonHeroicRaidDB",
-          "updated": "2026-06-12 02:05:37",
+          "updated": "2026-06-13 02:06:14",
           "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAwMbbGzYGWmxGmZMAAAAAAALLYEzMwMMzGDmZmZY2GmxMLDLb22GzYWAAgNAAAwsNLNzMziZYDgZGmGDAAYA",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=6.5 (7.4%), updated=2026-06-12 02:05:37",
-          "sampleSize": 9,
-          "agreementCount": 3,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 3,
+          "confidence": "low",
+          "confidenceScore": 54,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/8 (25.0%), margin=3.0 (3.5%), updated=2026-06-13 02:06:14",
+          "sampleSize": 8,
+          "agreementCount": 2,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 2,
+              "contributors": 1,
               "familyBest": 48,
-              "popularityBonus": 9.51,
-              "familySupport": 57.51
+              "popularityBonus": 6,
+              "familySupport": 54
             },
             "archon": {
               "contributors": 1,
@@ -2412,12 +2418,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAgZbzYGGzyMzGzMjBAAAAAAYZBmYmBmhZ2MwMzMDzGzMmZZYZ7BW2mNMLAAwysMtMbzsMAAAAG2AzMgpxAAAG",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 58,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=3.0 (3.5%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=3.0 (3.5%), updated=2026-06-12 21:42:12",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -2472,11 +2478,11 @@
           "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYw2MGsNzMbzAAAAAAAAAAAAsMMCzYbYAzYYmZmhZZYGmlZCAYzMbjhZmZGAAbAwsMLNzMzCAGYmBAWGDxAG",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 64,
-          "confidenceRationale": "support=95.0, families=3, sources=3, agreement=3/9 (33.3%), margin=4.0 (4.2%), updated=2026-06-12 04:00:50",
-          "sampleSize": 9,
+          "confidenceScore": 67,
+          "confidenceRationale": "support=95.0, families=3, sources=3, agreement=3/8 (37.5%), margin=6.5 (6.8%), updated=2026-06-12 04:00:50",
+          "sampleSize": 8,
           "agreementCount": 3,
-          "agreementRatio": 0.333,
+          "agreementRatio": 0.375,
           "distinctSourceCount": 3,
           "distinctFamilyCount": 3,
           "consensusBreakdown": {
@@ -2504,12 +2510,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYMYMYbmZ2mxAAAAAAAAAAAALDzEmhhBMMjZmZGmNMDzyMBAsYmtxwYmZAAsBAzys0MzMLAjZgZGAGLDgBM",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 58,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=4.0 (4.7%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=4.0 (4.7%), updated=2026-06-12 21:42:12",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -2560,23 +2566,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
+          "updated": "2026-06-13 02:06:28",
           "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAghx2MwmFzYmZZGbYmZYmltlZGLMjmxMgBDGzyMzMDz2gBLmAAAAAAgFLzsMbzMAAwAGgZAjhxiMmBA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 68,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=9.0 (9.9%), updated=2026-06-12 02:05:38",
-          "sampleSize": 10,
-          "agreementCount": 4,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 4,
+          "confidenceScore": 65,
+          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/9 (33.3%), margin=6.5 (7.4%), updated=2026-06-13 02:06:28",
+          "sampleSize": 9,
+          "agreementCount": 3,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 3,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             },
             "archon": {
               "contributors": 1,
@@ -2646,17 +2652,17 @@
     "Druid": {
       "Balance": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDMmlZmZmBYGjZWGbzYGbsMzyYmZMLYYAGgltxGmmZWGAAAAsxMzMD2MwYGAzMAwA",
+          "title": "Keeper Of The Grove | Raid Best",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDMmlZmZmBYYWmZZsNjZsxyMGzMzYBDAGgltxGmmZWGBAAAYzMzMzgNjhxMAmZAgB",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 54,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=9.0 (10.6%), updated=2026-06-12 02:03:22",
-          "sampleSize": 10,
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/9 (22.2%), margin=22.0 (28.9%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 2,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -2666,11 +2672,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 16,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 22
             }
           },
           "selectedTalents": null
@@ -2678,12 +2684,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDwsYmZmZhBjZZmlZWMzM2YZmlxMjxCGGgx22MDGz2AYCAAAwiZmZmBbGGjBAgZGYA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 58,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=9.0 (10.6%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=9.0 (10.6%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -2732,17 +2738,17 @@
       },
       "Feral": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZwMzMzMmtl5BWGbzYm5BmZAAAAYLY2MMmZUzYWmZmZGjZMAAAAAAMwAAAAAAMbzs0sNzyGYmHAYxMYAAMzAgB",
+          "title": "Druid Of The Claw | Raid",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAghZ2YmZmZGzmx2MbzMzMmZAAAAYJYWMGmZUzYWMzMzsMmZAAAAAAwADAAAgmZZ2mZmBEYBMzAswgBAAwMbYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 55,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/11 (18.2%), margin=17.0 (20.0%), updated=2026-06-12 02:03:22",
-          "sampleSize": 11,
+          "confidenceScore": 56,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/10 (20.0%), margin=14.0 (20.6%), updated=2026-06-12 04:00:50",
+          "sampleSize": 10,
           "agreementCount": 2,
-          "agreementRatio": 0.182,
+          "agreementRatio": 0.2,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -2752,11 +2758,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -2818,17 +2824,17 @@
       },
       "Guardian": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxsMPwYMzmZZGMWGgZGjmoZmZZmZmZMMPgBAAAAwgZsMDYZbmBjZbAMBAAAshZMgFzgBsYZbAmZAM",
+          "title": "Druid Of The Claw | Raid Best",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxsMmZMzmZZm5BMWGY2gRT0MzsMzMzMGzYGAAAAAwMWmBAAAgamlZZmZGAALYmBYxMYALYAwMbwA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 56,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=17.0 (20.0%), updated=2026-06-12 02:03:22",
-          "sampleSize": 10,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/9 (22.2%), margin=10.5 (15.4%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 2,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -2838,11 +2844,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -2850,12 +2856,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZmFzMjZWmZxMPwMLLDMbGGNRmZWmZmZmlxMMAAAAAAjNzALbzMYMLDgJAAAgNMzAsYMMwsYBgZGAA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 62,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=17.0 (20.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=17.0 (20.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -2904,31 +2910,31 @@
       },
       "Restoration": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
-          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMjxMbz2MmZGz2wDwMzmxCzAAAAAAAAAAgtBNbMmmZM8AmlZmZmhhZAAAAAAAAAAAAAY2mZpZbmNbMmZGmZgRzAAMzAwA",
+          "title": "Keeper Of The Grove | Raid",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMjxMbz2MmZGzywDYmZYswMAAAAAAAAAAYbQzGjpZYMjZZmZmZYYmBAAAAAAAAbbjFMNzsMAAABswYmBzMANDAmZAAD",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 68,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=9.0 (9.9%), updated=2026-06-12 02:05:38",
-          "sampleSize": 10,
-          "agreementCount": 4,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 4,
+          "confidenceScore": 59,
+          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/9 (22.2%), margin=24.5 (29.9%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
+          "agreementCount": 2,
+          "agreementRatio": 0.222,
+          "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
-              "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
-            },
-            "archon": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 48,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 54
+            },
+            "wowhead": {
+              "contributors": 1,
+              "familyBest": 22,
+              "popularityBonus": 6,
+              "familySupport": 28
             }
           },
           "selectedTalents": null
@@ -2936,12 +2942,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMMmZZMjZmxsN8AMzswsYbGAAAAAAAAAAsMoZzw0MjxMmFzMzMmhxAAAAAAAgBAAAAAz2MbNLzsYjZmBmZWANDAwMDAD",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 58,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=3.0 (3.5%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=3.0 (3.5%), updated=2026-06-12 21:42:12",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -2992,17 +2998,17 @@
     "Demon Hunter": {
       "Havoc": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZGzMz2MmZmZmZmwMDAAAAAAY2MmtZYmBzM2mt5BmZMGDLDsNLmxwsx0YmZMsBAAAAAAAwMDGAAAAG",
+          "title": "Fel Scarred | Raid Best",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYGMzMzmxMzMmZmMmZAAAAAAAzyDMmtZYmZ2mZGbz28AzwYYsMw2sYGDzmmGzMjhNAAAAAAAAmZwAAAAwA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 56,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=17.0 (20.0%), updated=2026-06-12 02:03:22",
-          "sampleSize": 10,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/9 (22.2%), margin=10.5 (15.4%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 2,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -3012,11 +3018,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -3024,12 +3030,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZ2mxMzMmZmMmZAAAAAAAzixsNDzMwM2mtZmZMGYZgtZzMGmFmGzMjhNAAAgBAAAwMDGAAAAG",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 62,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=17.0 (20.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=17.0 (20.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -3078,17 +3084,17 @@
       },
       "Vengeance": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAMjZmZMzMkZmBziZMDmZMzYGzMzYYmlZGbmZ2GDAAAAAAAAYmZsBAAAgBzMzMzs12MzMAwAAAAYA",
+          "title": "Aldrachi Reaver | Raid",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjZmZkZmZYYmZGDzYmxMmxMzwMmZsNzMGDAAAAY2mBDjlNmwwMzYBAAAADGACwMDwAAAAYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=17.0 (20.0%), updated=2026-06-12 02:03:22",
-          "sampleSize": 10,
+          "confidenceScore": 57,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/9 (22.2%), margin=14.0 (20.6%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 2,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.222,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -3098,11 +3104,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -3110,12 +3116,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAMjZmZMMjMzMYWMjZwMjZGz8AzMzYwsNzYzMz2YMDAAAAAAAAzMjNAAAAMwMzMzs12MzMAwAAAAYA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 60,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=17.0 (20.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=17.0 (20.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -3220,31 +3226,37 @@
     "Evoker": {
       "Devastation": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonNormalRaidDB",
-          "updated": "2026-06-12 02:05:38",
-          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMDMDzYmBMYMTzMzMNjx2MmZmZmHYmZGwMmxYmZZmZgBGDWglxox2AYGA2wAzMYYA",
+          "title": "Scalecommander | Raid Best",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMDMDzYmBMYMTzMzMNjx2MmZmZmHYmZGwMmxYmZZmZgBGDWglxox2AyMIYDDMzghB",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 71,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/8 (50.0%), margin=2.0 (2.2%), updated=2026-06-12 02:05:38",
-          "sampleSize": 8,
-          "agreementCount": 4,
-          "agreementRatio": 0.5,
-          "distinctSourceCount": 4,
-          "distinctFamilyCount": 2,
+          "confidenceScore": 67,
+          "confidenceRationale": "support=89.0, families=3, sources=3, agreement=3/7 (42.9%), margin=0.5 (0.6%), updated=2026-06-12 04:00:50",
+          "sampleSize": 7,
+          "agreementCount": 3,
+          "agreementRatio": 0.429,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 3,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
-              "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
-            },
-            "archon": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 48,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 54
+            },
+            "wowhead": {
+              "contributors": 1,
+              "familyBest": 8,
+              "popularityBonus": 6,
+              "familySupport": 14
+            },
+            "method": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -3252,12 +3264,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-06-12 13:42:20",
+          "updated": "2026-06-12 21:42:12",
           "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMDgZGmhxMzYMTMzMNDz2MmZmZmZmZGAzMzYmxYGYgxgFYZMasNAmBgNMDmZAG",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 65,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/5 (40.0%), margin=17.0 (20.0%), updated=2026-06-12 13:42:20",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/5 (40.0%), margin=17.0 (20.0%), updated=2026-06-12 21:42:12",
           "sampleSize": 5,
           "agreementCount": 2,
           "agreementRatio": 0.4,
@@ -3306,17 +3318,17 @@
       },
       "Preservation": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-06-12 02:03:22",
-          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAYmZ2MPAGmZMbGzMzsMDAAwMmxMGjZEmBAAAYmZkZMzMzyMzAgBGzYjFYgZYohhFYMzAMGA",
+          "title": "Flameshaper | Raid",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-06-12 04:00:50",
+          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAYmZ2MDGmZMbGzMzsMDAAwMmxgZMjMzMAAAAzMzkZmZGz2MzAgZMDsAWAzwEyGsZYAMzMGA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=3.0 (3.5%), updated=2026-06-12 02:03:22",
-          "sampleSize": 9,
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/8 (25.0%), margin=24.5 (29.9%), updated=2026-06-12 04:00:50",
+          "sampleSize": 8,
           "agreementCount": 2,
-          "agreementRatio": 0.222,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -3326,11 +3338,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 22,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 28
             }
           },
           "selectedTalents": null
@@ -3398,11 +3410,11 @@
           "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMmZmZbmZmxyAzsMjxwMAAAAAgBAAzMDMYM1YmZGAAAAMjZmxMzyYmBmZzAjZswCMwMM0IWwMjZGAYA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 63,
-          "confidenceRationale": "support=89.0, families=3, sources=3, agreement=3/10 (30.0%), margin=4.0 (4.5%), updated=2026-06-12 04:00:50",
-          "sampleSize": 10,
+          "confidenceScore": 72,
+          "confidenceRationale": "support=89.0, families=3, sources=3, agreement=3/9 (33.3%), margin=31.5 (35.4%), updated=2026-06-12 04:00:50",
+          "sampleSize": 9,
           "agreementCount": 3,
-          "agreementRatio": 0.3,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 3,
           "distinctFamilyCount": 3,
           "consensusBreakdown": {
