@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-24T03:51:50.618Z",
+  "generatedAt": "2026-06-24T14:36:53.747Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -2108,14 +2108,14 @@
     "Druid": {
       "Balance": {
         "raid": {
-          "title": "Keeper Of The Grove | Raid Best",
-          "source": "PeaversTalentsData/WowheadRaidDB",
-          "updated": "2026-06-22 04:00:52",
-          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDMmlZmZmBYYWmZZsNjZsxyMGzMzYBDAGgltxGmmZWGBAAAYzMzMzgNjhxMAmZAgB",
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ArchonMythicRaidDB",
+          "updated": "2026-06-22 02:02:18",
+          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDMmlZmZmBYGjZWGbzYGbsMzyYmZMLYYAGgltxGmmZWGAAAAsxMzMD2MwYGAzMAwA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 55,
-          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/10 (20.0%), margin=10.5 (15.4%), updated=2026-06-22 04:00:52",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/10 (20.0%), margin=17.0 (20.0%), updated=2026-06-22 02:02:18",
           "sampleSize": 10,
           "agreementCount": 2,
           "agreementRatio": 0.2,
@@ -2128,11 +2128,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "wowhead": {
+            "archon": {
               "contributors": 1,
-              "familyBest": 8,
+              "familyBest": 25,
               "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 31
             }
           },
           "selectedTalents": null
