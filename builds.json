@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T14:19:21.948Z",
+  "generatedAt": "2026-07-09T03:38:24.101Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/tank/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -416,14 +416,14 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-07-08 05:42:31",
-          "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNjBzyYbMjZmZZZMzwsMLDDAwAAAAAAgmmZWmZMDGmt2AwADYGsBAAAAzMLbLtMzYxMYAMGzwYAwMDAmZAD",
+          "title": "Templar | Mythic Best",
+          "source": "PeaversTalentsData/WowheadMythicDB",
+          "updated": "2026-07-08 04:00:50",
+          "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNjBzyYZMjZmZZbMzwsMLzYAAGAAAAAA00MziZMzwws1GAGYAzgNAAwMTbzMLzAAsZGMAYMDjBAYZGgZGkB",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 58,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/8 (25.0%), margin=17.0 (20.0%), updated=2026-07-08 05:42:31",
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/8 (25.0%), margin=14.0 (20.6%), updated=2026-07-08 04:00:50",
           "sampleSize": 8,
           "agreementCount": 2,
           "agreementRatio": 0.25,
@@ -436,11 +436,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -1376,14 +1376,14 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Deathbringer | Mythic Best",
-          "source": "PeaversTalentsData/WowheadMythicDB",
-          "updated": "2026-07-08 04:00:50",
-          "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwMzyMzMmxMzMMLzMz0MLGjxMGAAAAwMmZmZmZYGjBAjZmZGAAgxsNwAWC2GmADLAmhZAAMzAYYA",
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ArchonMythicDB",
+          "updated": "2026-07-08 05:42:31",
+          "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwMzyMzMmxMGMLzMz0MLzMjZmBAAAAwgZmZmZMzMjBAzMzMzAAAMmtBGwCYZYCMsAYGDAAmZAYMA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 58,
-          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/8 (25.0%), margin=14.0 (20.6%), updated=2026-07-08 04:00:50",
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/8 (25.0%), margin=17.0 (20.0%), updated=2026-07-08 05:42:31",
           "sampleSize": 8,
           "agreementCount": 2,
           "agreementRatio": 0.25,
@@ -1396,11 +1396,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "wowhead": {
+            "archon": {
               "contributors": 1,
-              "familyBest": 8,
+              "familyBest": 25,
               "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -2508,14 +2508,14 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ArchonMythicDB",
-          "updated": "2026-07-08 05:42:31",
-          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYMYMYbmZ2mxAAAAAAAAAAAALDzEmhhBMjhZmZGmNMDzyMBAsYmtxwYmZAAsBAzys0MzMLAjZgZGAYZMgBM",
+          "title": "Shado Pan | Mythic Best",
+          "source": "PeaversTalentsData/WowheadMythicDB",
+          "updated": "2026-07-08 04:00:50",
+          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYMYMYbmZ2mxAAAAAAAAAAAALDzEmhhBMjhZmZGmthZYWmJAgFzsNGGzMDAgNAYWmlmZmZBYYgZGAYZMEDYA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=4.0 (4.7%), updated=2026-07-08 05:42:31",
+          "confidence": "medium",
+          "confidenceScore": 63,
+          "confidenceRationale": "support=81.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (33.3%), updated=2026-07-08 04:00:50",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -2528,11 +2528,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 21,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 27
             }
           },
           "selectedTalents": null
