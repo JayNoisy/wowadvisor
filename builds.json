@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T03:38:24.101Z",
+  "generatedAt": "2026-07-09T15:15:03.147Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/tank/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -2738,14 +2738,14 @@
       },
       "Feral": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-07-08 02:03:15",
-          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZwMzMzMmtl5BWGbzYm5BmZAAAAYLY2MMmZUzYWmZmZGjZMAAAAAAMwAAAAAAMbzs0sNzyGYmHAYxMYAAMzAgB",
+          "title": "Druid Of The Claw | Raid",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-07-08 04:00:50",
+          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAghZ2YmZmZGzmx2MbzMzMmZAAAAYJYWMGmZUzYWMzMzsMmZAAAAAAwADAAAgmZZ2mZmBEYBMzAswgBAAwMbYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 55,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/11 (18.2%), margin=17.0 (20.0%), updated=2026-07-08 02:03:15",
+          "confidenceScore": 54,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/11 (18.2%), margin=10.5 (15.4%), updated=2026-07-08 04:00:50",
           "sampleSize": 11,
           "agreementCount": 2,
           "agreementRatio": 0.182,
@@ -2758,11 +2758,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -3318,14 +3318,14 @@
       },
       "Preservation": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ArchonMythicRaidDB",
-          "updated": "2026-07-08 02:03:15",
-          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAYmZ2MzMmxMjhxMzMbYAAgZMj5BMGzIMDAAAwMzIzYmZmlZmBAzYGYDsAmhJwCsZYAMzMGA",
+          "title": "Flameshaper | Raid",
+          "source": "PeaversTalentsData/WowheadRaidDB",
+          "updated": "2026-07-08 04:00:50",
+          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAYmZ2MzMGmZMMmZmZxAAAMjZMYGzIzMDAAAwMzMZmZmxsNzMAYGzALgFwMMhsBbGGAzMjB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 57,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/9 (22.2%), margin=17.0 (20.0%), updated=2026-07-08 02:03:15",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/9 (22.2%), margin=10.5 (15.4%), updated=2026-07-08 04:00:50",
           "sampleSize": 9,
           "agreementCount": 2,
           "agreementRatio": 0.222,
@@ -3338,11 +3338,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
