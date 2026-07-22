@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T13:57:24.716Z",
+  "generatedAt": "2026-07-22T02:50:36.253Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/tank/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -318,14 +318,14 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Pack Leader | Mythic Best",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-20 04:00:50",
-          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsBzwQDbAAYGPwyMzsYGmZmZGzMMzMmhZGzMzYbmZYMDLDNDAAAAAAAAYegxMDYmNEwsA2GA",
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/TopPlayersMythicDB",
+          "updated": "2026-07-20 21:42:35",
+          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsAzwQDbAAYGPwyMzsYGmZmZGzMMzMmhZGzMzYzMjZMDGTzAAAAAAAAAMjxAmZDAzsA2GA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 62,
-          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/7 (28.6%), margin=22.0 (28.9%), updated=2026-07-20 04:00:50",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=9.0 (10.6%), updated=2026-07-20 21:42:35",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -338,11 +338,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "wowhead": {
+            "archon": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 25,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -1104,14 +1104,14 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/TopPlayersMythicDB",
-          "updated": "2026-07-20 21:42:35",
-          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAAsBYzMG2gFYGGawCAz2MmxYZZGYmZbsMzMzwYZMDAwMMmZYmAzMYwYA",
+          "title": "Stormbringer | Mythic",
+          "source": "PeaversTalentsData/MostPopularMythicDB",
+          "updated": "2026-07-20 04:00:50",
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzYMzMzMzMzMzMzAAAAAAAAAsBYzMG2ILwMM0gFAmlZMjxyiBmZ2GLzMzMDWGzAAYYMDmJwMDGMuAA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 58,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/8 (25.0%), margin=17.0 (20.0%), updated=2026-07-20 21:42:35",
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/8 (25.0%), margin=14.0 (20.6%), updated=2026-07-20 04:00:50",
           "sampleSize": 8,
           "agreementCount": 2,
           "agreementRatio": 0.25,
@@ -1124,11 +1124,11 @@
               "popularityBonus": 6,
               "familySupport": 54
             },
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 14
             }
           },
           "selectedTalents": null
@@ -1715,26 +1715,20 @@
           "updated": "2026-07-20 21:42:35",
           "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMmZGNbMz2MzY2GAAAAAAAwYGDLwAbDL0wixMjlZbmZGzAAzMGzMzMAjZMjNAAwYmZGDDLzYAD",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 64,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=31.0 (36.5%), updated=2026-07-20 21:42:35",
+          "confidence": "low",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-07-20 21:42:35",
           "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.143,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
             }
           },
           "selectedTalents": null
