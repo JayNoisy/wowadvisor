@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T02:50:36.253Z",
+  "generatedAt": "2026-07-22T14:01:13.072Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/tank/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -874,31 +874,31 @@
           "selectedTalents": null
         },
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/TopPlayersNormalRaidDB",
-          "updated": "2026-07-20 02:03:36",
-          "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWGzMmxMzMMbzMz0MLmZMmxAAAAAzMzMzMzMDzYMAYMzMzAAAYgBmxmGLbA2GwGgZYAAAzMYwA",
+          "title": "Deathbringer | Raid",
+          "source": "PeaversTalentsData/MostPopularRaidDB",
+          "updated": "2026-07-20 04:00:50",
+          "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWGzMmxMjhZZmZmmZxYmxMmBAAAAzMzMzMzMDzYMAgZmZGAAgxsNwAWCWGmADLAmhZAAMzAYYA",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/10 (40.0%), margin=23.0 (25.3%), updated=2026-07-20 02:03:36",
+          "confidence": "low",
+          "confidenceScore": 54,
+          "confidenceRationale": "support=68.0, families=2, sources=2, agreement=2/10 (20.0%), margin=8.0 (11.8%), updated=2026-07-20 04:00:50",
           "sampleSize": 10,
-          "agreementCount": 4,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 4,
+          "agreementCount": 2,
+          "agreementRatio": 0.2,
+          "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
-              "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
-            },
-            "archon": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 48,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 54
+            },
+            "wowhead": {
+              "contributors": 1,
+              "familyBest": 8,
+              "popularityBonus": 6,
+              "familySupport": 14
             }
           },
           "selectedTalents": null
