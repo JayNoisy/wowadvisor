@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-05T14:13:19.014Z",
+  "generatedAt": "2026-08-06T02:45:36.732Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -19,8 +19,8 @@
     },
     "archon": {
       "ok": true,
-      "count": 79,
-      "localCount": 79,
+      "count": 80,
+      "localCount": 80,
       "remote": []
     },
     "curatedGuides": {
@@ -236,8 +236,8 @@
           "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAMa22mZmlxYmBAAAAAwMlZZGmZsNMbDzsNjxYMMjN2AAAYmptZmtZAAbAGAMmhBmZmZ2wyMYYMMYA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 60,
-          "confidenceRationale": "support=79.0, families=2, sources=2, agreement=2/7 (28.6%), margin=25.0 (31.6%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=79.0, families=2, sources=2, agreement=2/7 (28.6%), margin=29.0 (36.7%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -2255,24 +2255,30 @@
         },
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-05 02:00:55",
-          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZwMzMzMmtl5BWGbzYGzMDAAAALBzmhxMjaGzyYmZGjZAAAAAAgBGAAAAAgZbmlmtZW2AzMALmZYAAMzAgHA",
+          "source": "PeaversTalentsData/TopPlayersMythicRaidDB",
+          "updated": "2026-07-31 02:03:01",
+          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZwMzMzMmtl5BWGbzYGzMDAAAALBzmhxMjaGzyYmZGjZAAAAAAgBGAAAAAgZbmlmtZW2AzMALmZYAAMzAgB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-05 02:00:55",
-          "sampleSize": 14,
-          "agreementCount": 1,
-          "agreementRatio": 0.071,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "confidenceScore": 53,
+          "confidenceRationale": "support=79.0, families=2, sources=2, agreement=2/15 (13.3%), margin=25.0 (31.6%), updated=2026-07-31 02:03:01",
+          "sampleSize": 15,
+          "agreementCount": 2,
+          "agreementRatio": 0.133,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
-              "familyBest": 48,
+              "familyBest": 42,
               "popularityBonus": 6,
-              "familySupport": 54
+              "familySupport": 48
+            },
+            "archon": {
+              "contributors": 1,
+              "familyBest": 25,
+              "popularityBonus": 6,
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -2340,8 +2346,8 @@
           "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZmFzMjZWmZxMPwMLLDMbGGNRmZWmZmZmlxMMAAAAAAjNzALbzMYMLDgJAAAgNMzAsYMMwsYBgZGAA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 60,
-          "confidenceRationale": "support=79.0, families=2, sources=2, agreement=2/7 (28.6%), margin=25.0 (31.6%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=79.0, families=2, sources=2, agreement=2/7 (28.6%), margin=29.0 (36.7%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -3028,25 +3034,31 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-03 02:00:44",
-          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsYYWmZMmZmhZbGzMzYMzAAAAAAAAAAYYWmBzMzwMMD2MNTMAzshhwYWGgxgFAAYMzMjhZGgZmB4BA",
+          "title": "Oracle | Mythic Best",
+          "source": "PeaversTalentsData/MostPopularMythicDB",
+          "updated": "2026-07-22 04:00:52",
+          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsYwyMjZmZGMbzYmZmZMzAAAAAAAAAAYMWmBzMzYzYmBbmmJGgZ2wQYMLDwYwCAAMmZmxgZAmZGBD",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 44,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=4.0 (7.4%), updated=2026-08-03 02:00:44",
+          "confidenceScore": 48,
+          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/6 (33.3%), margin=2.0 (4.0%), updated=2026-07-22 04:00:52",
           "sampleSize": 6,
-          "agreementCount": 1,
-          "agreementRatio": 0.167,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "agreementCount": 2,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
-              "familyBest": 48,
+              "familyBest": 30,
               "popularityBonus": 6,
-              "familySupport": 54
+              "familySupport": 36
+            },
+            "wowhead": {
+              "contributors": 1,
+              "familyBest": 8,
+              "popularityBonus": 6,
+              "familySupport": 14
             }
           },
           "selectedTalents": null
