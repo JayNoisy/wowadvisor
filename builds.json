@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-09T01:54:26.583Z",
+  "generatedAt": "2026-08-09T12:55:28.187Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -15,7 +15,7 @@
     },
     "peavers": {
       "ok": true,
-      "count": 602
+      "count": 603
     },
     "archon": {
       "ok": true,
@@ -1735,13 +1735,13 @@
         },
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-08 02:00:51",
-          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAgZmZGNbmx2MzY2GAAAAAAAwYGDLwAbDL0wiBzsMbzMzYGAYGmZmZmBYMzYGAAgZmZGzwYWmxAeAA",
+          "source": "PeaversTalentsData/ParsesHeroicRaidDB",
+          "updated": "2026-08-09 02:00:45",
+          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAYmxMzoZjZ2mZGzyAAAAAAAAGzYYBGYbYhGWMGjlZZmZGzAAzMmZmZmBwMjZAAAMmZmxwwyMGwDA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-08 02:00:51",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-09 02:00:45",
           "sampleSize": 14,
           "agreementCount": 1,
           "agreementRatio": 0.071,
@@ -3182,8 +3182,8 @@
           "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMjZMGAAAAAAAAAAAAjZZmxYZmxMz2MDDz2MzYmZGbIDLmpxAzMzAABY2mtNwsxAADGzMzY2GzgZGMDGA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 62,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=37.0 (50.7%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (37.0%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -3381,30 +3381,24 @@
         },
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/TopPlayersNormalRaidDB",
-          "updated": "2026-07-31 02:05:09",
-          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAMjZmZmhZkZmBziZMDmZMzYmHYmZGDmtZGbzMz2YYAAAAAAAAYmhNAAAAMwMzMzs12MzMAAAAAAD",
+          "source": "PeaversTalentsData/ParsesHeroicRaidDB",
+          "updated": "2026-08-09 02:00:45",
+          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjZmZkZmZYWMzMjhZMzYGzYmZYGmx2MzYMAAAAAAAAgZmxGAAAAGMmZmZWabmZGAYAAAA8AA",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 64,
-          "confidenceRationale": "support=79.0, families=2, sources=4, agreement=4/13 (30.8%), margin=25.0 (31.6%), updated=2026-07-31 02:05:09",
-          "sampleSize": 13,
-          "agreementCount": 4,
-          "agreementRatio": 0.308,
-          "distinctSourceCount": 4,
-          "distinctFamilyCount": 2,
+          "confidence": "low",
+          "confidenceScore": 38,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-09 02:00:45",
+          "sampleSize": 14,
+          "agreementCount": 1,
+          "agreementRatio": 0.071,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
-              "familyBest": 36,
-              "popularityBonus": 12,
-              "familySupport": 48
-            },
-            "archon": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 48,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 54
             }
           },
           "selectedTalents": null
