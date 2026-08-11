@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T13:13:53.110Z",
+  "generatedAt": "2026-08-11T01:54:43.445Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/tank/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -25,8 +25,8 @@
     },
     "curatedGuides": {
       "ok": true,
-      "count": 222,
-      "localCount": 222,
+      "count": 224,
+      "localCount": 224,
       "remote": []
     },
     "externalJson": {
@@ -64,25 +64,27 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/TopPlayersMythicDB",
-          "updated": "2026-07-31 13:44:15",
-          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYBAMDAwglxMMzYmZWYMGPwyYbmZxMNxwYmZYY2yAwAwGYjlZmZWmtZmZrBAAAYhNmBbAzYGAAwMDzYMMA",
-          "notes": [],
+          "title": "Holy - AoE (Mythic+)",
+          "source": "Wowhead",
+          "updated": "2026-08-10T20:47:13-05:00",
+          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAAwyMzMjZ2mZmNYMsM2MziZaixMmZGGzWGAGwwGYjlZMzysNzMbNAAAALAwmhxMmhZAAMzwMY0A",
+          "notes": [
+            "Guide URL: https://www.wowhead.com/guide/classes/paladin/holy/talent-builds-pve-healer"
+          ],
           "confidence": "low",
-          "confidenceScore": 40,
-          "confidenceRationale": "support=42.0, families=1, sources=1, agreement=1/6 (16.7%), margin=6.0 (14.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=4.0 (8.7%), updated=2026-08-10T20:47:13-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 36,
+              "familyBest": 40,
               "popularityBonus": 6,
-              "familySupport": 42
+              "familySupport": 46
             }
           },
           "selectedTalents": null
@@ -149,9 +151,9 @@
           "updated": "2026-07-31 13:44:15",
           "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNjBzyYbMjZmZZZMzwsMLzYAAGAAAAAA00MzyMjZGGegt2AwADYGsBAAAAzMLbLtMzYxMYAMYGGDAmZAwMDYA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 57,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=23.0 (31.5%), updated=2026-07-31 13:44:15",
+          "confidence": "medium",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -318,31 +320,27 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Pack Leader | Mythic Best",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsBzwQDbAAYGPwyMzsYGmZmZGzMMzMmhZGzMzYbmZYMDLDNDAAAAAAAAYegxMDYmNEwsA2GA",
-          "notes": [],
+          "title": "Beast Mastery - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-08-10T19:20:00+00:00",
+          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsAzwQDbAAYGzMzsYGzMzMjZGMzYmhZGzMzYbmZMjZYZMNDAAAAAAAA8AjxAmZjAmFw2AwA",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/beast-mastery-hunter-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 49,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/7 (28.6%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/7 (14.3%), margin=3.0 (6.7%), updated=2026-08-10T19:20:00+00:00",
           "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.143,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 45
             }
           },
           "selectedTalents": null
@@ -410,8 +408,8 @@
           "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAYzsMwAGwMsEYWAAAAAAAAAmxMmhZMzMmhlx0MGMLbmZGmZGzMzCzsMMzAAAMjxMzMDYghBYhZGD",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 62,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=37.0 (50.7%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -584,8 +582,8 @@
           "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmlZmNDGAAAAAYWGsNDAAAAAotlZmZmZmxYmZmZbmlZGPgHYmZmZMMzYMAGYBmxoxsBYbAbGAMzMYA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 62,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=37.0 (50.7%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -670,8 +668,8 @@
           "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgx2MYmZmZmtZmZMzMzsBmZbaZw2MAAAAAgZbbmZGmZmZGzMz2AAAAwYAwYWMMkBmFWoF2YAmZwAD",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 49,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/7 (28.6%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 47,
+          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/7 (28.6%), margin=5.0 (10.0%), updated=2026-07-22 04:00:52",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -786,8 +784,8 @@
           "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbbjxMjZMegZmZGjZbYGbLzMzMzMjBjZ2GAAAAGMGwY2MMwAzCL0iNMDYmBzYA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 59,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/6 (33.3%), margin=23.0 (31.5%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/6 (33.3%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -905,9 +903,9 @@
           "updated": "2026-07-31 02:05:09",
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMDwMjZMDY2mZmZmZZmZkZMmZYGGPgZGMzMzMDAAAAAAAAAjZbgBsAWGmAjFMzYmZgZAMMzAMzgB",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 57,
-          "confidenceRationale": "support=79.0, families=2, sources=4, agreement=4/15 (26.7%), margin=8.0 (10.1%), updated=2026-07-31 02:05:09",
+          "confidence": "medium",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=79.0, families=2, sources=4, agreement=4/15 (26.7%), margin=22.0 (27.8%), updated=2026-07-31 02:05:09",
           "sampleSize": 15,
           "agreementCount": 4,
           "agreementRatio": 0.267,
@@ -959,9 +957,9 @@
           "updated": "2026-07-31 13:44:15",
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMAzMjZMGDzyMzMzMbzY0MjxMzMzAjZGmZmZMDAAAAAAAAAjZbgBsAWGmAjFMzwMDMDghZGAGM",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 57,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=23.0 (31.5%), updated=2026-07-31 13:44:15",
+          "confidence": "medium",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1104,8 +1102,8 @@
           "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAAsBYzMG2gFYGGawCAz2MmxYZZGbMzsNWmZmZYswMAAzwYmhZCMzgBjB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 55,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/8 (25.0%), margin=23.0 (31.5%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 57,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/8 (25.0%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 8,
           "agreementCount": 2,
           "agreementRatio": 0.25,
@@ -1220,8 +1218,8 @@
           "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMLLzMmZmZZbbMmxMAAAAALmZDGwAmNmQmFAYWmZmxYbxEmZMWmZmZmhlZxYBzMzsAAMAwMjhhB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 51,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/6 (33.3%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 50,
+          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/6 (33.3%), margin=5.0 (10.0%), updated=2026-07-22 04:00:52",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -1252,8 +1250,8 @@
           "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAzMzMLLbDzMGzMzMDzYB2gZsox2AYGYzMMYWGjZa2WmZWMjZhFzMzYwsMAAAwMzgZGAYwA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 48,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/14 (14.3%), margin=15.0 (20.5%), updated=2026-07-31 02:03:01",
+          "confidenceScore": 49,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/14 (14.3%), margin=19.0 (26.0%), updated=2026-07-31 02:03:01",
           "sampleSize": 14,
           "agreementCount": 2,
           "agreementRatio": 0.143,
@@ -1305,9 +1303,9 @@
           "updated": "2026-07-31 13:44:15",
           "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAjZmZZbZMzMzYmZGzYYB2gZsox2AYGYDzMY2mZmRzyyMDzY2YZGzMGMLDAAGAzMYmBgxgB",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 54,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=15.0 (20.5%), updated=2026-07-31 13:44:15",
+          "confidence": "medium",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (37.0%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1363,9 +1361,9 @@
           "updated": "2026-07-31 13:44:15",
           "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzQzMGAAAGAAAYmZmllZmYBAgtZMzMmNzyMzMmZMGmZmxCzMz8AzAAMAAAmZBAmZAwwA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 57,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=23.0 (31.5%), updated=2026-07-31 13:44:15",
+          "confidence": "medium",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1444,31 +1442,27 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Sunfury | Mythic",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAMzwMLzMzsgZGZmxAAAwAAmZmmlltZAA2MzM2GzMzYDAAAAAWMzMzMAAYMDjZmZmZbAYmhwYMYGG",
-          "notes": [],
+          "title": "Fire - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-08-10T19:20:00+00:00",
+          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzsgZGZmZGAAAAAmZmmltlZAA2MzM2mZmZGbAAAAAYzMjZGAAMjxMzMjZmlBgZGMjxAmhxA",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/fire-mage-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 49,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/7 (28.6%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/7 (14.3%), margin=3.0 (6.7%), updated=2026-08-10T19:20:00+00:00",
           "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.143,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 45
             }
           },
           "selectedTalents": null
@@ -1530,31 +1524,27 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Spellslinger | Mythic Best",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFmZmYGmZmZmZWMzMMjZAAAgZmZWWmZaDAAWAAAAWAYbbMzMDmthxMjNAAAmZDYmMGwMYA",
-          "notes": [],
+          "title": "Frost - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-08-10T19:20:00+00:00",
+          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAYGGLzMzsMmZmYmZGzMzMziZmZMjZAAAgZmZWWmZaDAAAAAA2AYbbMzMDmthxMsAAAwMbAzADYGMMA",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/frost-mage-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 49,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/7 (28.6%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/7 (14.3%), margin=3.0 (6.7%), updated=2026-08-10T19:20:00+00:00",
           "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.143,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 45
             }
           },
           "selectedTalents": null
@@ -1623,9 +1613,9 @@
           "updated": "2026-07-31 13:44:15",
           "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMMzoZzMz2MzMzyAAAmZmlZzMzyYAgx2yADYAzwWghtBAAgZAAAMzMmxM2GjZMmZmZMMzMDAwAG",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 57,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=23.0 (31.5%), updated=2026-07-31 13:44:15",
+          "confidence": "medium",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1710,8 +1700,8 @@
           "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMmZGNbMz2MzY2GAAAAAAAwYGDLwAbDL0wixMjlZbmZGzAAzMGzMzMAjZMjNAAwYmZGDDLzYAD",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 62,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=37.0 (50.7%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1874,31 +1864,27 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Shado Pan | Mythic Best",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAwMLbGDzwyM2MmZAAAAAAAYZBmYmBmhBzgZmZGzsNMjZWGW2ssNbzYWAAgNEAAgZbWamZmNG2AYmhpxAGAwA",
-          "notes": [],
+          "title": "Brewmaster - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-08-10T19:20:00+00:00",
+          "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAwMLbGDzwyM2MmZMAAAAAAALLgYmBmhBzgZmZGzsNMjZWGW2stNbzYWAAgNAAAwsNLNzMzGDbAMzw0YADAYA",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/brewmaster-monk-pve-tank-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 51,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/6 (33.3%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 44,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/6 (16.7%), margin=3.0 (6.7%), updated=2026-08-10T19:20:00+00:00",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 45
             }
           },
           "selectedTalents": null
@@ -1996,8 +1982,8 @@
           "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYMYMYbmZ2mxAAAAAAAAAAAALDjwMMMgZMMzMzwsMMDzyMBAsYmtxwYmZAAsBAzys0MzMLADDMzAwYZMgBM",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 61,
-          "confidenceRationale": "support=79.0, families=2, sources=4, agreement=4/13 (30.8%), margin=16.0 (20.3%), updated=2026-07-31 02:05:09",
+          "confidenceScore": 63,
+          "confidenceRationale": "support=79.0, families=2, sources=4, agreement=4/13 (30.8%), margin=21.5 (27.2%), updated=2026-07-31 02:05:09",
           "sampleSize": 13,
           "agreementCount": 4,
           "agreementRatio": 0.308,
@@ -2076,31 +2062,25 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Conduit Of The Celestials | Mythic Best",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMWmZZML2mxMjNjtllZMzmZ2WWmZswQzYGwgBjZZmZmhZDzwsMTAAAAAEgFbzsMbzMAAwAAMDYMwiMmBA",
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/TopPlayersMythicDB",
+          "updated": "2026-07-31 13:44:15",
+          "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAghxyMLjZx2MmZsYstsMjZ2Mz2yyMjFGaGzAGMALzMzMMbYGmlZCAAAAAAWsNzysNzAAADAwMgxgZRGzA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 51,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/6 (33.3%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=42.0, families=1, sources=1, agreement=1/6 (16.7%), margin=6.0 (14.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 36,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 42
             }
           },
           "selectedTalents": null
@@ -2140,13 +2120,13 @@
           "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDwsMzMzMLMYMLzsMziZmxGLzsMmZMWwwAM22mZwY2GATAAAAWYmZmBbGGjBAgZGYA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=86.0, families=3, sources=3, agreement=3/7 (42.9%), margin=36.0 (41.9%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
-          "agreementCount": 3,
-          "agreementRatio": 0.429,
-          "distinctSourceCount": 3,
-          "distinctFamilyCount": 3,
+          "agreementCount": 2,
+          "agreementRatio": 0.286,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
@@ -2159,12 +2139,6 @@
               "familyBest": 25,
               "popularityBonus": 6,
               "familySupport": 31
-            },
-            "icyveins": {
-              "contributors": 1,
-              "familyBest": 7,
-              "popularityBonus": 6,
-              "familySupport": 13
             }
           },
           "selectedTalents": null
@@ -2226,31 +2200,27 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Druid Of The Claw | Mythic Best",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZYmZmZMzsZsNz2MzMzDMzAAAAwSwsYMMzomxsYmZmZZMzAAAAAAgBAAAAoZWmtZmZABWAzMALMYAAAMzGG",
-          "notes": [],
+          "title": "Feral - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-08-10T19:20:00+00:00",
+          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZMzGzMzMGz2yYZsNjZmHYmBAAAgtgZzwYmRNjZZmZmZMmxAAAAAAwADAAAAAwsNzSzyMLbgZeAgFzgBAwMDAGA",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/feral-druid-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 47,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/8 (25.0%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/8 (12.5%), margin=3.0 (6.7%), updated=2026-08-10T19:20:00+00:00",
           "sampleSize": 8,
-          "agreementCount": 2,
-          "agreementRatio": 0.25,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.125,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 45
             }
           },
           "selectedTalents": null
@@ -2347,9 +2317,9 @@
           "updated": "2026-07-31 13:44:15",
           "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZmFzMjZWmZxMPwMLLDMbGGNRmZWmZmZmlxMMAAAAAAjNzALbzMYMLDgJAAAgNMzAsYMMwsYBgZGAA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 57,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=23.0 (31.5%), updated=2026-07-31 13:44:15",
+          "confidence": "medium",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -2428,31 +2398,25 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Keeper Of The Grove | Mythic",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMMmZZMjZmxsN8AMzsNjFbzAAAAAAAAAAgFDNbzw0MAmFzMzMLGGAAAAAMAAzA22GLYamZZAAACYhZmZGMzGoZAwMDAYA",
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/TopPlayersMythicDB",
+          "updated": "2026-07-31 13:44:15",
+          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMMmZZMjZmxsN8AMzswsYbGAAAAAAAAAAsMoZbGmmZM8AmFzMzwMMGAAAAADAwMAAAAAY2mZrZZmFbMzMwMzCoZAAmZAYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 51,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/6 (33.3%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=42.0, families=1, sources=1, agreement=1/6 (16.7%), margin=6.0 (14.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 36,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 42
             }
           },
           "selectedTalents": null
@@ -2486,31 +2450,27 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Scalecommander | Mythic Best",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMDgZGmBGGjZaMzMNDz2MmZmZmZmZGwMzMGzMLzMDMwYwCsMGN2GQmBBbYGMzghB",
-          "notes": [],
+          "title": "Devastation - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-08-10T19:20:00+00:00",
+          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZAMzwMwMYMTjZmpZmZ2mhZmZmZmZGwMzMGzMLzMDMwYwGsMGN2GAzAwGGYmBDD",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/devastation-evoker-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 54,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/5 (40.0%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "confidenceScore": 44,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/6 (16.7%), margin=3.0 (6.7%), updated=2026-08-10T19:20:00+00:00",
+          "sampleSize": 6,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 45
             }
           },
           "selectedTalents": null
@@ -2522,25 +2482,19 @@
           "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMDMDzYmBMYMTzMzMNjx2MmZmZmHYmZGwMmxYmZZmZgBGDWglxox2AyMIYDDMzghB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=71.0, families=3, sources=3, agreement=3/11 (27.3%), margin=17.0 (23.9%), updated=2026-07-22 04:00:52",
-          "sampleSize": 11,
-          "agreementCount": 3,
-          "agreementRatio": 0.273,
-          "distinctSourceCount": 3,
-          "distinctFamilyCount": 3,
+          "confidenceScore": 41,
+          "confidenceRationale": "support=57.0, families=2, sources=2, agreement=2/12 (16.7%), margin=3.0 (5.3%), updated=2026-07-22 04:00:52",
+          "sampleSize": 12,
+          "agreementCount": 2,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 30,
               "popularityBonus": 6,
               "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
             },
             "method": {
               "contributors": 1,
@@ -2584,8 +2538,8 @@
           "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMmZmZbmZmxyAzsMjxwMAAAAAAAAYmBmBjHoGzMzAAAAgZmZmxMz2YmBmZzAjZswCMwMM0IWwMzMzAAD",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 49,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/7 (28.6%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 47,
+          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/7 (28.6%), margin=5.0 (10.0%), updated=2026-07-22 04:00:52",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -2664,31 +2618,25 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Flameshaper | Mythic",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ2WGYYmxsZGjx2wAAAzYmZmZMMTMmBAAA2mZmJjZmZGjZAgxMwCYDMDTIbwmhZAmZYA",
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/TopPlayersMythicDB",
+          "updated": "2026-07-31 13:44:15",
+          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz2yADzMzsZGjx2wAAAzYGzwMMTjZmBAAAMzMTGzMjxMzAAwYGbsADMDDNMsAjZGgxA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 51,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/6 (33.3%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=42.0, families=1, sources=1, agreement=1/6 (16.7%), margin=6.0 (14.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 36,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 42
             }
           },
           "selectedTalents": null
@@ -2728,39 +2676,31 @@
     "Warrior": {
       "Arms": {
         "raid": {
-          "title": "Arms - Raid",
-          "source": "Wowhead",
-          "updated": "2026-08-10T08:13:44-05:00",
-          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzMzMDAAAghphxYGWmZmZGMmZAAAAAMzyMDIjxyyALgBMDTIzgNwMjNz2YwMGgZGAmxwA",
-          "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/warrior/arms/talent-builds-pve-dps"
-          ],
-          "confidence": "medium",
-          "confidenceScore": 63,
-          "confidenceRationale": "support=95.0, families=3, sources=3, agreement=3/15 (20.0%), margin=22.0 (23.2%), updated=2026-08-10T08:13:44-05:00",
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/TopPlayersMythicRaidDB",
+          "updated": "2026-07-31 02:03:01",
+          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzMzMDAAAghphZGzwyMzMzgxMDAAAAgZWmZAZMWWGYBMgZYCMD2AzMY2GDmxAMzAwMGGA",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 46,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/15 (13.3%), margin=13.0 (17.8%), updated=2026-07-31 02:03:01",
           "sampleSize": 15,
-          "agreementCount": 3,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 3,
-          "distinctFamilyCount": 3,
+          "agreementCount": 2,
+          "agreementRatio": 0.133,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 36,
               "popularityBonus": 6,
-              "familySupport": 36
+              "familySupport": 42
             },
-            "wowhead": {
+            "archon": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 25,
               "popularityBonus": 6,
-              "familySupport": 46
-            },
-            "icyveins": {
-              "contributors": 1,
-              "familyBest": 7,
-              "popularityBonus": 6,
-              "familySupport": 13
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -2822,39 +2762,31 @@
       },
       "Fury": {
         "raid": {
-          "title": "Fury - Raid",
-          "source": "Wowhead",
-          "updated": "2026-08-10T07:53:04-05:00",
-          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjxMsMzMzMDjZmZGzMzsMzMGzMbDzMAAQMWWGYBMBzwEYG2AmZ2Y2GAAMzYYMzMMYA",
-          "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/warrior/fury/talent-builds-pve-dps"
-          ],
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/TopPlayersHeroicRaidDB",
+          "updated": "2026-07-31 02:05:02",
+          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDzMmhlZmZmZYMzMzYGzsMzMGzMbjZmBAAixyyALgBMDTgZYDYmBz2AAgZGDjZmhBD",
+          "notes": [],
           "confidence": "medium",
-          "confidenceScore": 62,
-          "confidenceRationale": "support=95.0, families=3, sources=3, agreement=3/15 (20.0%), margin=18.5 (19.5%), updated=2026-08-10T07:53:04-05:00",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=76.5, families=2, sources=3, agreement=3/15 (20.0%), margin=22.5 (29.4%), updated=2026-07-31 02:05:02",
           "sampleSize": 15,
           "agreementCount": 3,
           "agreementRatio": 0.2,
           "distinctSourceCount": 3,
-          "distinctFamilyCount": 3,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 1,
-              "familyBest": 30,
-              "popularityBonus": 6,
-              "familySupport": 36
+              "contributors": 2,
+              "familyBest": 36,
+              "popularityBonus": 9.51,
+              "familySupport": 45.51
             },
-            "wowhead": {
+            "archon": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 25,
               "popularityBonus": 6,
-              "familySupport": 46
-            },
-            "icyveins": {
-              "contributors": 1,
-              "familyBest": 7,
-              "popularityBonus": 6,
-              "familySupport": 13
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -2887,13 +2819,13 @@
           "title": "Fury - AoE (Mythic+)",
           "source": "Wowhead",
           "updated": "2026-08-10T07:53:04-05:00",
-          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjxMsMzMzMDjZmZGzYmlZmxYmZbMzMAAQMWWGYBMBzwEYG2AmZ2Y2GAAMzYYMzMMYA",
+          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjxMzmZmZmZYMzMzMzYmlZMmZMbmZmBAAixy2ALgJYGmAzwGwMzmxGAAMzwYWGGDGD",
           "notes": [
             "Guide URL: https://www.wowhead.com/guide/classes/warrior/fury/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 44,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/7 (14.3%), margin=4.0 (8.7%), updated=2026-08-10T07:53:04-05:00",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/7 (14.3%), margin=1.0 (2.2%), updated=2026-08-10T07:53:04-05:00",
           "sampleSize": 7,
           "agreementCount": 1,
           "agreementRatio": 0.143,
@@ -2966,31 +2898,27 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Colossus | Mythic",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzYmZmZmxsZmZZGjxMNmxwyYmZGmxMDAAAAWGAmxAAbmxwGZgZYhGzsAzMzMY2GAgZGAwAMA",
-          "notes": [],
+          "title": "Protection - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-08-10T19:20:00+00:00",
+          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAA0yAAAjZYmZmZGziZmlZMGz0YGDLmZmZMDzMAAAAYZAYGDwAbw2iRjZAMLYmNYmZmhxCAMzAAwAGD",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/protection-warrior-pve-tank-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 51,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/6 (33.3%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 44,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/6 (16.7%), margin=3.0 (6.7%), updated=2026-08-10T19:20:00+00:00",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 45
             }
           },
           "selectedTalents": null
@@ -3054,31 +2982,25 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Oracle | Mythic Best",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsYwyMjZmZGMbzYmZmZMzAAAAAAAAAAYMWmBzMzYzYmBbmmJGgZ2wQYMLDwYwCAAMmZmxgZAmZGBD",
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-03 02:00:44",
+          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsYYWmZMmZmhZbGzMzYMzAAAAAAAAAAYYWmBzMzwMMD2MNTMAzshhwYWGgxgFAAYMzMjhZGgZmB4BA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 51,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/6 (33.3%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=42.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-03 02:00:44",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 36,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 42
             }
           },
           "selectedTalents": null
@@ -3140,31 +3062,25 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Archon | Mythic",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAgZzwYWGMmZmZMzMjlZmZAAAAYMWmBzMzYzYmxAmpAAzsZmMbGAYMYzYsBoZMzYMMzstMADYA",
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/TopPlayersMythicDB",
+          "updated": "2026-07-31 13:44:15",
+          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAbGzYWGzwMjhZYsMzMzAAAAYYWmhZmZGmhZAMTBwMLYIMmlBYMwiZmBAzYmxYYmBYmZGYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 51,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/6 (33.3%), margin=8.0 (16.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=42.0, families=1, sources=1, agreement=1/6 (16.7%), margin=6.0 (14.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 36,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 42
             }
           },
           "selectedTalents": null
@@ -3314,31 +3230,27 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Fel Scarred | Mythic Best",
-          "source": "PeaversTalentsData/MostPopularMythicDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZ2mxMzMGzkxMDAAAAAAYWMmtZYmBmx2sNzMjxALDsMbmxwsopxMzYGbAAAADAAAgZGMAAAAM",
-          "notes": [],
+          "title": "Havoc - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-08-10T19:20:00+00:00",
+          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZGzMz2MmZmxYmMmZAAAAAAAzixsNDzMwMWmZmZYmBzyAbzmZMMbMNmZGzYDAAAYAAAAMzgBAAAgB",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/havoc-demon-hunter-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=50.0, families=2, sources=2, agreement=2/6 (33.3%), margin=6.0 (12.0%), updated=2026-07-22 04:00:52",
+          "confidenceScore": 44,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/6 (16.7%), margin=3.0 (6.7%), updated=2026-08-10T19:20:00+00:00",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 36
-            },
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 8,
-              "popularityBonus": 6,
-              "familySupport": 14
+              "familySupport": 45
             }
           },
           "selectedTalents": null
@@ -3375,9 +3287,9 @@
           "updated": "2026-07-31 13:44:15",
           "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAWmxMzMGmRmZGMLmxMYmxMjZegZmZMY2mZsZmZbMMAAAAAAAAMzM2AAAAwAzMzMzWbzMzAADAAAgB",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 57,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=23.0 (31.5%), updated=2026-07-31 13:44:15",
+          "confidence": "medium",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/7 (28.6%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -3433,52 +3345,52 @@
       "Devourer": {
         "aoe": {
           "title": "Devourer - AoE (Mythic+)",
-          "source": "Archon.gg",
-          "updated": null,
-          "exportString": "CgcBAAAAAAAAAAAAAAAAAAAAAAA2mxMzMzMzMGmBAAAAAAgxsNYGAAAAAAAAmxMMzMzMzMzMDzsYGjFZhZmZmt2mZmBwwAAwMGMmB",
+          "source": "Wowhead",
+          "updated": "2026-08-10T20:45:33-05:00",
+          "exportString": "CgcBAAAAAAAAAAAAAAAAAAAAAAAWmZmZmZGjxwMAAAAAAALGz2gZAAAAAAAAYGzw8AzMzMzMzMMz2MjxmsAgAGgZMzMbzMTzyMLzMDzMA",
           "notes": [
-            "Source URL: https://www.archon.gg/wow/builds/devourer/demon-hunter/mythic-plus/overview/10/all-dungeons/this-week"
+            "Guide URL: https://www.wowhead.com/guide/classes/demon-hunter/devourer/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 44,
-          "confidenceRationale": "support=31.0, families=1, sources=1, agreement=1/4 (25.0%), margin=10.0 (32.3%), updated=unknown",
+          "confidenceScore": 47,
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (2.2%), updated=2026-08-10T20:45:33-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 40,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 46
             }
           },
           "selectedTalents": null
         },
         "raid": {
           "title": "Devourer - Raid",
-          "source": "Archon.gg",
-          "updated": null,
-          "exportString": "CgcBAAAAAAAAAAAAAAAAAAAAAAA2mxMzMzMzMGmBAAAAAAgxsNYGAAAAAAAAmxMMzMzMzMzMDzsYGjFZhZmZmt2mZmBwwAAwMGMmB",
+          "source": "Wowhead",
+          "updated": "2026-08-10T20:45:33-05:00",
+          "exportString": "CgcBAAAAAAAAAAAAAAAAAAAAAAAWMzMzMzMzMwMAAAAAAAegxsNYGAAAAAAAAmxMMPwMzMzMzMzYmtZGjNttAgAGAjZmZbmZa2mZZmZMmBA",
           "notes": [
-            "Source URL: https://www.archon.gg/wow/builds/devourer/demon-hunter/raid/overview/mythic/all-bosses"
+            "Guide URL: https://www.wowhead.com/guide/classes/demon-hunter/devourer/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 44,
-          "confidenceRationale": "support=31.0, families=1, sources=1, agreement=1/4 (25.0%), margin=10.0 (32.3%), updated=unknown",
+          "confidenceScore": 47,
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (2.2%), updated=2026-08-10T20:45:33-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "archon": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 40,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 46
             }
           },
           "selectedTalents": null
