@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T13:14:17.984Z",
+  "generatedAt": "2026-08-13T02:09:13.302Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/tank/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -238,8 +238,8 @@
           "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAMa22mZmlxYmBAAAAAwMlZZGmZsNMbDzsNjxYMMjN2AAAYmptZmtZAAbAGAMmhBmZmZ2wyMYYMMYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/8 (25.0%), margin=27.0 (37.0%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 49,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/8 (25.0%), margin=6.0 (8.2%), updated=2026-07-31 13:44:15",
           "sampleSize": 8,
           "agreementCount": 2,
           "agreementRatio": 0.25,
@@ -327,20 +327,26 @@
           "notes": [
             "Guide URL: https://www.wowhead.com/guide/classes/hunter/beast-mastery/talent-builds-pve-dps"
           ],
-          "confidence": "low",
-          "confidenceScore": 42,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/7 (14.3%), margin=1.0 (2.2%), updated=2026-08-11T23:32:45-05:00",
+          "confidence": "medium",
+          "confidenceScore": 63,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=22.0 (32.8%), updated=2026-08-11T23:32:45-05:00",
           "sampleSize": 7,
-          "agreementCount": 1,
-          "agreementRatio": 0.143,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "agreementCount": 2,
+          "agreementRatio": 0.286,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
               "familyBest": 40,
               "popularityBonus": 6,
               "familySupport": 46
+            },
+            "method": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -669,20 +675,26 @@
           "notes": [
             "Guide URL: https://www.wowhead.com/guide/classes/rogue/outlaw/talent-builds-pve-dps"
           ],
-          "confidence": "low",
-          "confidenceScore": 42,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/7 (14.3%), margin=1.0 (2.2%), updated=2026-08-10T21:29:10-05:00",
+          "confidence": "medium",
+          "confidenceScore": 63,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=22.0 (32.8%), updated=2026-08-10T21:29:10-05:00",
           "sampleSize": 7,
-          "agreementCount": 1,
-          "agreementRatio": 0.143,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "agreementCount": 2,
+          "agreementRatio": 0.286,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
               "familyBest": 40,
               "popularityBonus": 6,
               "familySupport": 46
+            },
+            "method": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -694,8 +706,8 @@
           "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgx2MYmZmZmtZmZmZMmNeAmZbaZw2MAAAAAgZbbmZGmZmZGzMz2AAAAwYAwYWMMwAzCL0CbMAzMYgB",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 62,
-          "confidenceRationale": "support=79.0, families=2, sources=4, agreement=4/14 (28.6%), margin=22.0 (27.8%), updated=2026-07-31 02:05:09",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=79.0, families=2, sources=4, agreement=4/14 (28.6%), margin=12.0 (15.2%), updated=2026-07-31 02:05:09",
           "sampleSize": 14,
           "agreementCount": 4,
           "agreementRatio": 0.286,
@@ -1774,8 +1786,8 @@
           "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAgxMzoZjZ2mZmZ2mNzMzsYmZZZMAAYGjZmZBMmxwCMw2wCNWYAAgxgBAYmBYMjZsBAAYmZGAAMDD",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 60,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/6 (33.3%), margin=27.0 (37.0%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/6 (33.3%), margin=28.0 (38.4%), updated=2026-07-31 13:44:15",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -1806,8 +1818,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/warlock/destruction/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 52,
-          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/13 (15.4%), margin=9.0 (11.0%), updated=2026-08-09T09:48:52-05:00",
+          "confidenceScore": 47,
+          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/13 (15.4%), margin=3.0 (3.9%), updated=2026-08-09T09:48:52-05:00",
           "sampleSize": 13,
           "agreementCount": 2,
           "agreementRatio": 0.154,
@@ -1822,9 +1834,9 @@
             },
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -1943,7 +1955,7 @@
           "title": "Windwalker - AoE (Mythic+)",
           "source": "Wowhead",
           "updated": "2026-08-11T20:00:10-05:00",
-          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYMYMYbmZ2mxAAAAAAAAAAAALDjwMMMgZMMzMzwsMMDzyMBAsYmtxwYmZAAsBAzys0MzMLADDMzAwYZMEDYA",
+          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYMYMYbmZ2mxAAAAAAAAAAAALDjwMMMgZMMzMzwsNMDzyMBAsYmtxwYmZAAsBAzys0MzMLADDMzAwYZMEDYA",
           "notes": [
             "Guide URL: https://www.wowhead.com/guide/classes/monk/windwalker/talent-builds-pve-dps"
           ],
@@ -2453,56 +2465,56 @@
         },
         "aoe": {
           "title": "Devastation - AoE (Mythic+)",
-          "source": "Wowhead",
-          "updated": "2026-08-10T21:31:36-05:00",
-          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZAPgZGmBGGjZaMzMNjx2MmZmZmZmZGwMzMGzMLzMDMwYwGsMGN2GQmBBbYGMzghB",
+          "source": "Icy-Veins",
+          "updated": "2026-08-10T19:20:00+00:00",
+          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZAMzwMwMYMTjZmpZmZ2mhZmZmZmZGwMzMGzMLzMDMwYwGsMGN2GAzAwGGYmBDD",
           "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/evoker/devastation/talent-builds-pve-dps"
+            "Guide URL: https://www.icy-veins.com/wow/devastation-evoker-pve-dps-spec-builds-talents"
           ],
-          "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (2.2%), updated=2026-08-10T21:31:36-05:00",
+          "confidence": "medium",
+          "confidenceScore": 65,
+          "confidenceRationale": "support=66.0, families=2, sources=2, agreement=2/6 (33.3%), margin=20.0 (30.3%), updated=2026-08-10T19:20:00+00:00",
           "sampleSize": 6,
-          "agreementCount": 1,
-          "agreementRatio": 0.167,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 40,
-              "popularityBonus": 6,
-              "familySupport": 46
-            }
-          },
-          "selectedTalents": null
-        },
-        "raid": {
-          "title": "Scalecommander | Raid Best",
-          "source": "PeaversTalentsData/MostPopularRaidDB",
-          "updated": "2026-07-22 04:00:52",
-          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMDMDzYmBMYMTzMzMNjx2MmZmZmHYmZGwMmxYmZZmZgBGDWglxox2AyMIYDDMzghB",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=57.0, families=2, sources=2, agreement=2/12 (16.7%), margin=3.0 (5.3%), updated=2026-07-22 04:00:52",
-          "sampleSize": 12,
           "agreementCount": 2,
-          "agreementRatio": 0.167,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 30,
-              "popularityBonus": 6,
-              "familySupport": 36
-            },
             "method": {
               "contributors": 1,
               "familyBest": 15,
               "popularityBonus": 6,
               "familySupport": 21
+            },
+            "icyveins": {
+              "contributors": 1,
+              "familyBest": 39,
+              "popularityBonus": 6,
+              "familySupport": 45
+            }
+          },
+          "selectedTalents": null
+        },
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesHeroicRaidDB",
+          "updated": "2026-08-12 02:00:59",
+          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwMzMzgZYGGMzwYMTjZmJzMWmZmZGzYmZGwMzMYmZZMDMwYwGsMGN2GAzggNMwMDwDA",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 39,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/12 (8.3%), margin=0.0 (0.0%), updated=2026-08-12 02:00:59",
+          "sampleSize": 12,
+          "agreementCount": 1,
+          "agreementRatio": 0.083,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
             }
           },
           "selectedTalents": null
@@ -2566,8 +2578,8 @@
           "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMmZmZbmZGMYmZZGjhZ2AAAAAgBAAzMDMYM1YmZGAAAAMjZmxMzyYmBmZxAjZswCMwMM0ALYmxMDAM",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 48,
-          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/14 (14.3%), margin=16.0 (21.9%), updated=2026-07-31 02:03:01",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=73.0, families=2, sources=2, agreement=2/14 (14.3%), margin=7.0 (9.6%), updated=2026-07-31 02:03:01",
           "sampleSize": 14,
           "agreementCount": 2,
           "agreementRatio": 0.143,
