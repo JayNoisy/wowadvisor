@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T01:26:20.798Z",
+  "generatedAt": "2026-08-16T12:42:18.918Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -72,8 +72,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/paladin/holy/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 48,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=10.0 (21.7%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=4.0 (10.0%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -82,9 +82,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -92,12 +92,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesHeroicRaidDB",
-          "updated": "2026-08-15 02:00:47",
+          "updated": "2026-08-16 02:00:45",
           "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYBAMAAglxMzYGzMzGjxYWGbzMLmpJGzYmZYY2yAwAG2AbsMjZWmtZmZrBAAAYBA2MMmxMAAgZGmxY4BA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 50,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/13 (15.4%), margin=3.5 (6.1%), updated=2026-08-15 02:00:47",
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/13 (15.4%), margin=3.5 (6.1%), updated=2026-08-16 02:00:45",
           "sampleSize": 13,
           "agreementCount": 2,
           "agreementRatio": 0.154,
@@ -146,8 +146,8 @@
           "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNjBzyYbMjZmZZZMzwsMLzYAAGAAAAAA00MzyMjZGGegt2AwADYGsBAAAAzMLbLtMzYxMYAMYGGDAmZAwMDYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -172,12 +172,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
+          "updated": "2026-08-16 02:00:46",
           "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNj5BYWGLjZMzMLLjZGmlZZGDAAAAAAAA00MziZMzwwsFAMgBMYbAAgZm2mZWmBAYzMYAwYGGDAwyMgZmB8AA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 39,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/12 (8.3%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/12 (8.3%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 12,
           "agreementCount": 1,
           "agreementRatio": 0.083,
@@ -220,33 +220,31 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Retribution - AoE (Mythic+)",
-          "source": "Wowhead",
-          "updated": "2026-08-12T22:54:47-05:00",
-          "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAwoZbbmZWGzMzAAAAAAYmyYGmZsNmthZ2mxYMGmxGbAAAZmptZmtZAAbAGAMmhBmxMzGWmBDjZMYA",
-          "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/paladin/retribution/talent-builds-pve-dps"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/TopPlayersMythicDB",
+          "updated": "2026-07-31 13:44:15",
+          "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAMa22mZmlxYmBAAAAAwMlZZGmZsNMbDzsNjxYMMjN2AAAYmptZmtZAAbAGAMmhBmZmZ2wyMYYMMYA",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/8 (25.0%), margin=0.0 (0.0%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/8 (25.0%), margin=6.0 (9.0%), updated=2026-07-31 13:44:15",
           "sampleSize": 8,
           "agreementCount": 2,
           "agreementRatio": 0.25,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "wowhead": {
+            "peavers": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 30,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 36
             },
-            "method": {
+            "archon": {
               "contributors": 1,
-              "familyBest": 15,
+              "familyBest": 25,
               "popularityBonus": 6,
-              "familySupport": 21
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -311,26 +309,26 @@
         },
         "aoe": {
           "title": "Beast Mastery - AoE (Mythic+)",
-          "source": "Wowhead",
-          "updated": "2026-08-12T22:54:49-05:00",
-          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsBzwQDbAAYGPwMzsMzwMzMjZGMzYmhZGzMzYbmZYMDLDNDAAAAAAAAmHYMzAmZjAmFw2AwA",
+          "source": "Icy-Veins",
+          "updated": "2026-08-15T17:01:00+00:00",
+          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsAzwQDbAAYGzMzsYGzMzMjZGMzYmhZGzMzYbmZMjZYZMNDAAAAAAAA8AjxAmZjAmFw2AwA",
           "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/hunter/beast-mastery/talent-builds-pve-dps"
+            "Guide URL: https://www.icy-veins.com/wow/beast-mastery-hunter-pve-dps-spec-builds-talents"
           ],
           "confidence": "low",
-          "confidenceScore": 42,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/7 (14.3%), margin=1.0 (2.2%), updated=2026-08-12T22:54:49-05:00",
+          "confidenceScore": 44,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/7 (14.3%), margin=5.0 (11.1%), updated=2026-08-15T17:01:00+00:00",
           "sampleSize": 7,
           "agreementCount": 1,
           "agreementRatio": 0.143,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "wowhead": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 45
             }
           },
           "selectedTalents": null
@@ -338,12 +336,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesHeroicRaidDB",
-          "updated": "2026-08-15 02:00:47",
+          "updated": "2026-08-16 02:00:45",
           "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsAzwQDbAAYGMmZbmhZMzwMmZMmZMzMmxMMzMmxMYoZAAAAAMDAAAzMzMAzsBYYWAbPAA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 50,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/13 (15.4%), margin=3.5 (6.1%), updated=2026-08-15 02:00:47",
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/13 (15.4%), margin=3.5 (6.1%), updated=2026-08-16 02:00:45",
           "sampleSize": 13,
           "agreementCount": 2,
           "agreementRatio": 0.154,
@@ -392,8 +390,8 @@
           "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAYzsMwAGwMsEYWAAAAAAAAAmxMmhZMzMmhlx0MGMLbmZGmZGzMzCzsMMzAAAMjxMzMDYghBYhZGD",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -418,12 +416,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
+          "updated": "2026-08-16 02:00:46",
           "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAYxsMwAGwMsFYWAAAAAAAAAmxMmhZMzMzM4BMNjZmx2GjZWmZmZmZWGzsMYAAAGzMzMzMDQYWMA4BGA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/11 (9.1%), margin=8.0 (14.8%), updated=2026-08-15 02:00:48",
+          "confidenceScore": 46,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/11 (9.1%), margin=14.0 (25.9%), updated=2026-08-16 02:00:46",
           "sampleSize": 11,
           "agreementCount": 1,
           "agreementRatio": 0.091,
@@ -498,12 +496,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
+          "updated": "2026-08-16 02:00:46",
           "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMgxMG2gFYGGawiZmZmZYZAAAAAAwMmZmx2MGzYGWGTzAAAAwAAjllZmZxMzMYMGwMbAGGjZmNPAA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 61,
-          "confidenceRationale": "support=60.0, families=1, sources=3, agreement=3/13 (23.1%), margin=6.0 (10.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=60.0, families=1, sources=3, agreement=3/13 (23.1%), margin=6.0 (10.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 13,
           "agreementCount": 3,
           "agreementRatio": 0.231,
@@ -579,13 +577,13 @@
         },
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmlxsZwAAAAAAzyglZAAAAAAttNzMzMzMGzMzMbzsMzMDzMzMzMMDzMAGYBmxoxsAYbAbGAMzAPA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAMzsMmFjtZAAAAAgZbw2MAAAAAg22mZmhZGjZmZmlZWmZMmZGDmxMzMGADsBzY0YWAsMgNDAmZG8AA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/13 (7.7%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/13 (7.7%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 13,
           "agreementCount": 1,
           "agreementRatio": 0.077,
@@ -636,8 +634,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/rogue/outlaw/talent-builds-pve-dps"
           ],
           "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=28.0 (41.8%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 61,
+          "confidenceRationale": "support=61.0, families=2, sources=2, agreement=2/7 (28.6%), margin=22.0 (36.1%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -646,9 +644,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             },
             "method": {
               "contributors": 1,
@@ -668,8 +666,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/rogue/outlaw/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/14 (14.3%), margin=13.0 (19.4%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 48,
+          "confidenceRationale": "support=61.0, families=2, sources=2, agreement=2/14 (14.3%), margin=7.0 (11.5%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 14,
           "agreementCount": 2,
           "agreementRatio": 0.143,
@@ -678,9 +676,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             },
             "method": {
               "contributors": 1,
@@ -695,13 +693,13 @@
       "Subtlety": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
           "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbbjxMjZMegZmZGjZbYGbbzMzMzMjBjZWGAAAAGMGwY2MMwAzCL0iNMDYmBz4BA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 48,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/14 (14.3%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/14 (14.3%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 14,
           "agreementCount": 2,
           "agreementRatio": 0.143,
@@ -748,8 +746,8 @@
           "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbbjxMjZMegZmZGjZbYGbLzMzMzMjBjZ2GAAAAGMGwY2MMwAzCL0iNMDYmBzYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 55,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/6 (33.3%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 57,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/6 (33.3%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -806,8 +804,8 @@
           "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwMzyMzMmxMGMLzMz0MLzMjZmBAAAAwgZmZmZMzMjBAzMzMzAAAMmtBGwCYZYCMsAYGDAAmZAYMA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -832,12 +830,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesHeroicRaidDB",
-          "updated": "2026-08-15 02:00:47",
+          "updated": "2026-08-16 02:00:45",
           "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWGzMmxMjhZZmZmmZxMjxMGAAAAYmZmZmZmZYGjBAjZmZGAAADMwMW0YZDw2A2AMDDAAYmBzwDA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 50,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/14 (14.3%), margin=3.5 (6.1%), updated=2026-08-15 02:00:47",
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/14 (14.3%), margin=3.5 (6.1%), updated=2026-08-16 02:00:45",
           "sampleSize": 14,
           "agreementCount": 2,
           "agreementRatio": 0.143,
@@ -857,13 +855,13 @@
       "Frost": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMDwMjZMGDz2MzMzMbmZ0MjxYYGGMzMzMzMzMDAAAAAAAAAjZbgBsAWGmAjFMzYmZgBghZGgZgHA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMDwMjZmZGDz2MzMzMLmZmMjxMDzw4BMzgZmZmZAAAAAAAAAYMbDMgFwywEYsgZGzMDMDghZGAgHA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/15 (6.7%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/15 (6.7%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 15,
           "agreementCount": 1,
           "agreementRatio": 0.067,
@@ -910,8 +908,8 @@
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMAzMjZMGDzyMzMzMbzY0MjxMzMzAjZGmZmZMDAAAAAAAAAjZbgBsAWGmAjFMzwMDMDghZGAGM",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -997,9 +995,9 @@
           "notes": [
             "Guide URL: https://www.wowhead.com/guide/classes/death-knight/unholy/talent-builds-pve-dps"
           ],
-          "confidence": "medium",
-          "confidenceScore": 59,
-          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/7 (28.6%), margin=15.0 (18.3%), updated=2026-08-12T22:54:47-05:00",
+          "confidence": "low",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/7 (28.6%), margin=9.0 (11.8%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1014,9 +1012,9 @@
             },
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -1056,8 +1054,8 @@
           "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAAsBYzMG2gFYGGawCAz2MmxYZZGbMzsNWmZmZYswMAAzwYmhZCMzgBjB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 51,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/8 (25.0%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 53,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/8 (25.0%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 8,
           "agreementCount": 2,
           "agreementRatio": 0.25,
@@ -1081,13 +1079,13 @@
         },
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMjZmZmZmZmZmZGzAAAAAAAAAALwGMjFNMAmBsBwsMjZMWWmBmZMWMzMzYswMAAGYMGCzAAjHA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAAsBYzMG2gFYGGawCAz2MmxYZZGLMzsNWmZmZYsMmBAYGGzMMCMzgBjHA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/15 (6.7%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/15 (6.7%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 15,
           "agreementCount": 1,
           "agreementRatio": 0.067,
@@ -1107,13 +1105,13 @@
       "Elemental": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMbLzMzMzMLbbDMmZAAAAAgNzYYDWgZYoxGAMLzMzYstYCzMLjlZmZGDLzywiZGmZBAMDgZGYY4BA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMLLzMzMzMLLLzAzMAAAAAbmZDGwAmNmAzCAMLzMzMsYkBWMLmZmZmZMLDLGzYmFAgZMAmZMM8AA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 14,
           "agreementCount": 1,
           "agreementRatio": 0.071,
@@ -1162,8 +1160,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/shaman/elemental/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 46,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=7.0 (15.2%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (2.5%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -1172,9 +1170,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -1183,13 +1181,13 @@
       "Restoration": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAjZmZZbZMzMzYmZGzYYB2gZsox2AYGYDzMY2mZMaWWmZYGzGLGzMGjZZGAAGAzMYmBgxgHA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAjZMLLLjZmxMzMzMzYYB2gZsox2AYGYjZmBz2YMaWWmZWGzALGzMmZ2mNDAAAMzgZGAGDeA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 39,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/12 (8.3%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/12 (8.3%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 12,
           "agreementCount": 1,
           "agreementRatio": 0.083,
@@ -1236,8 +1234,8 @@
           "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAjZmZZbZMzMzYmZGzYYB2gZsox2AYGYDzMY2mZmRzyyMDzY2YZGzMGMLDAAGAzMYmBgxgB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 54,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=25.0 (37.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1294,8 +1292,8 @@
           "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzQzMGAAAGAAAYmZmllZmYBAgtZMzMmNzyMzMmZMGmZmxCzMz8AzAAMAAAmZBAmZAwwA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1320,12 +1318,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
+          "updated": "2026-08-16 02:00:46",
           "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMGGLzMzswMzQzMGAAAGAAAYmZmllZmYBAgtZMzMmNzyMzMmZMGmZmxCzMz8AGAgBAAwMLAwMDAeAG",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 39,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/12 (8.3%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/12 (8.3%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 12,
           "agreementCount": 1,
           "agreementRatio": 0.083,
@@ -1458,8 +1456,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/mage/frost/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 45,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/7 (14.3%), margin=7.0 (15.2%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 39,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/7 (14.3%), margin=1.0 (2.5%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 7,
           "agreementCount": 1,
           "agreementRatio": 0.143,
@@ -1468,9 +1466,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -1540,8 +1538,8 @@
           "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMMzoZzMz2MzMzyAAAmZmlZzMzyYAgx2yADYAzwWghtBAAgZAAAMzMmxM2GjZMmZmZMMzMDAwAG",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1565,13 +1563,13 @@
         },
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAsMmxMjmtZGLMzMLDAAwMziNzMLzMAwYZZgBMgZYLww2AAAwMAAAmZmZmZmxMzwMmZmxgZYAAGwDA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMjZGNbmZ2mZGzyAAAmZmlZzMzyYAgx2yADYAzwWghtBAAgZAAAMzMmxM2GjZMmZmZMMzMDAwAeA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 14,
           "agreementCount": 1,
           "agreementRatio": 0.071,
@@ -1620,8 +1618,8 @@
           "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMmZGNbMz2MzY2GAAAAAAAwYGDLwAbDL0wixMjlZbmZGzAAzMGzMzMAjZMjNAAwYmZGDDLzYAD",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1646,12 +1644,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesHeroicRaidDB",
-          "updated": "2026-08-15 02:00:47",
+          "updated": "2026-08-16 02:00:45",
           "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMjZGNbM2mZGzyAAAAAAAAGzYYBGYbYhGWMYmlZZmZGzAAzwMzMzMAzMzYGAAgZmZmZGGzyMGwDA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 50,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/14 (14.3%), margin=3.5 (6.1%), updated=2026-08-15 02:00:47",
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/14 (14.3%), margin=3.5 (6.1%), updated=2026-08-16 02:00:45",
           "sampleSize": 14,
           "agreementCount": 2,
           "agreementRatio": 0.143,
@@ -1700,8 +1698,8 @@
           "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAgxMzoZjZ2mZmZ2mNzMzsYmZZZMAAYGjZmZBMmxwCMw2wCNWYAAgxgBAYmBYMjZsBAAYmZGAAMDD",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 55,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/6 (33.3%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 57,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/6 (33.3%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -1732,8 +1730,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/warlock/destruction/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 57,
-          "confidenceRationale": "support=82.0, families=2, sources=2, agreement=2/13 (15.4%), margin=28.0 (34.1%), updated=2026-08-12T22:54:46-05:00",
+          "confidenceScore": 53,
+          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/13 (15.4%), margin=22.0 (28.9%), updated=2026-08-12T22:54:46-05:00",
           "sampleSize": 13,
           "agreementCount": 2,
           "agreementRatio": 0.154,
@@ -1748,9 +1746,9 @@
             },
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -1812,12 +1810,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesHeroicRaidDB",
-          "updated": "2026-08-15 02:00:47",
+          "updated": "2026-08-16 02:00:45",
           "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAwMbbzYGzwyM2wMjBAAAAAAYZBjYmBmhZ2YwMzMDz2wMmZZYZ7B22GDzCAAsBAAAmtZpZmZWYYDgZGmGDAA4BA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 50,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/13 (15.4%), margin=3.5 (6.1%), updated=2026-08-15 02:00:47",
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/13 (15.4%), margin=3.5 (6.1%), updated=2026-08-16 02:00:45",
           "sampleSize": 13,
           "agreementCount": 2,
           "agreementRatio": 0.154,
@@ -1988,8 +1986,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/monk/mistweaver/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 48,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=10.0 (21.7%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=4.0 (10.0%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -1998,9 +1996,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -2040,8 +2038,8 @@
           "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDwsMzMzMLMYMLzsMziZmxGLzsMmZMWwwAM22mZwY2GATAAAAWYmZmBbGGjBAgZGYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -2065,13 +2063,13 @@
         },
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2omZLjZmZAmlZmZmhBMzyYZsZmZsxyMLzMzMshBAjltZGMmlBwEAAAgFzMzMD2MmxYAAYmBeAA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2oMbNzMmZgxsMzMzMYAjZ2mxMmxCbzsMzYMzGGAM22mZwYWGATAAAAWYmZMYzYYMDAgZGs8AA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 14,
           "agreementCount": 1,
           "agreementRatio": 0.071,
@@ -2122,8 +2120,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/druid/feral/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 44,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/8 (12.5%), margin=7.0 (15.2%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 38,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/8 (12.5%), margin=1.0 (2.5%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 8,
           "agreementCount": 1,
           "agreementRatio": 0.125,
@@ -2132,22 +2130,22 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
         },
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZwMzMzMmtl5BWGbzYGzMDAAAALBzmhxMjaGzyYmZGjZAAAAAAgBGAAAAAgZbmlmtZW2AzMALmZYAAMzAgHA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZwMzMzMmtlxyMbzYGzMDAAAAbBzmhxMjaGzyMzMzYMjBAAAAAgBGAAAAAgZbmlmtZW2Az8AALmBDAgZGA8AA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/15 (6.7%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/15 (6.7%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 15,
           "agreementCount": 1,
           "agreementRatio": 0.067,
@@ -2226,8 +2224,8 @@
           "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZmFzMjZWmZxMPwMLLDMbGGNRmZWmZmZmlxMMAAAAAAjNzALbzMYMLDgJAAAgNMzAsYMMwsYBgZGAA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 54,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=25.0 (37.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -2253,13 +2251,13 @@
       "Restoration": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMjxMLz2MmZGz2wDwMzmxCzAAAAAAAAAAgNDNbmx0MgHwswMzMMZGAAAAAGwAAAAAAAmtZWa2mZzGjZmhZmNDaGAgZGAeAA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMjZmZb2mZmZmHYWGegZMw4BWmBAAAAAAAAAAbzQz2MmHohZGPwMbMmZYyDMDAAAAgBAMDwyyYDTzMLDAAAgFGzAjxyY0MAYmBA8AA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 14,
           "agreementCount": 1,
           "agreementRatio": 0.071,
@@ -2308,8 +2306,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/druid/restoration/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 48,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=10.0 (21.7%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=4.0 (10.0%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -2318,9 +2316,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -2362,8 +2360,8 @@
             "Guide URL: https://www.icy-veins.com/wow/devastation-evoker-pve-dps-spec-builds-talents"
           ],
           "confidence": "medium",
-          "confidenceScore": 60,
-          "confidenceRationale": "support=60.0, families=2, sources=2, agreement=2/6 (33.3%), margin=14.0 (23.3%), updated=2026-08-10T19:20:00+00:00",
+          "confidenceScore": 62,
+          "confidenceRationale": "support=60.0, families=2, sources=2, agreement=2/6 (33.3%), margin=20.0 (33.3%), updated=2026-08-10T19:20:00+00:00",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -2387,13 +2385,13 @@
         },
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesHeroicRaidDB",
-          "updated": "2026-08-15 02:00:47",
-          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwMzMzgZYGGMzwYMTjZmJzMWmZmZGzYmZGwMzMYmZZMDMwYwGsMGN2GAzggNMwMDwDA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzYmZGzwMMmhZmZaGzMZmxygZGGzMzAMGDzMLzMDmBYwCsMGN2GAzggNMwMDGeA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 39,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/12 (8.3%), margin=0.0 (0.0%), updated=2026-08-15 02:00:47",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/12 (8.3%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 12,
           "agreementCount": 1,
           "agreementRatio": 0.083,
@@ -2444,8 +2442,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/evoker/augmentation/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 45,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/7 (14.3%), margin=7.0 (15.2%), updated=2026-08-12T22:54:46-05:00",
+          "confidenceScore": 39,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/7 (14.3%), margin=1.0 (2.5%), updated=2026-08-12T22:54:46-05:00",
           "sampleSize": 7,
           "agreementCount": 1,
           "agreementRatio": 0.143,
@@ -2454,9 +2452,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -2526,8 +2524,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/evoker/preservation/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 48,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=10.0 (21.7%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=4.0 (10.0%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -2536,22 +2534,22 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
         },
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ2WGzYYmxsAwyMGAAMzMzYGMegZamxMAAAgZmRGmZmZZMDAAjZsxCMwMM0wMWgxMDAPA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAYmZ2WmHADzMmNjZmZWmxAAAzYGDmxMyMzAAAAMzMTmxMjZbmZAwAjZsxCMwMM0AWgxMDw4BA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/13 (7.7%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/13 (7.7%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 13,
           "agreementCount": 1,
           "agreementRatio": 0.077,
@@ -2574,12 +2572,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesLfrRaidDB",
-          "updated": "2026-08-15 02:00:47",
+          "updated": "2026-08-16 02:00:46",
           "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzMzMDAAAghphxYGWmZmZGMmZAAAAAMzyMDIjxyyALgBMDTgZwGYmxmZbMYGDwMDAzY4BA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 50,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/15 (13.3%), margin=3.5 (6.1%), updated=2026-08-15 02:00:47",
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/15 (13.3%), margin=3.5 (6.1%), updated=2026-08-16 02:00:46",
           "sampleSize": 15,
           "agreementCount": 2,
           "agreementRatio": 0.133,
@@ -2626,8 +2624,8 @@
           "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAgZmxsMzMzYGAAAghphZGzMbmZmZGmxMDAAAAgxmZgtYAbmxwCMwMsRjBLgZGGGMbmtBzMAAzMMA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -2653,13 +2651,13 @@
       "Fury": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDzMjZWMzMzMjZ8AzYGzYmlZmxYmZZMzMAAQYgNYZzohBwsgZsAAmxAAGADzMDMA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDzMjZ2WmZmZmxMmZMjZmZWmZGjxsMmZGAAIMwGssZ0YGAzCmxCgZwAAmZAMMzMDG8A",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/13 (7.7%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/13 (7.7%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 13,
           "agreementCount": 1,
           "agreementRatio": 0.077,
@@ -2708,8 +2706,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/warrior/fury/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 45,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/7 (14.3%), margin=7.0 (15.2%), updated=2026-08-12T22:54:46-05:00",
+          "confidenceScore": 39,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/7 (14.3%), margin=1.0 (2.5%), updated=2026-08-12T22:54:46-05:00",
           "sampleSize": 7,
           "agreementCount": 1,
           "agreementRatio": 0.143,
@@ -2718,9 +2716,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -2730,12 +2728,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
+          "updated": "2026-08-16 02:00:46",
           "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAmZmxMzMmxsZMLDjxMNMzwyYmZGmxMDAAAAWGDwMbDwAbwyiRjZAMbYmNMzYmBz2AgZGAAGgHA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/11 (9.1%), margin=8.0 (14.8%), updated=2026-08-15 02:00:48",
+          "confidenceScore": 46,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/11 (9.1%), margin=14.0 (25.9%), updated=2026-08-16 02:00:46",
           "sampleSize": 11,
           "agreementCount": 1,
           "agreementRatio": 0.091,
@@ -2784,8 +2782,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/warrior/protection/talent-builds-pve-tank"
           ],
           "confidence": "low",
-          "confidenceScore": 46,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=7.0 (15.2%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (2.5%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -2794,9 +2792,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -2860,27 +2858,25 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Discipline - AoE (Mythic+)",
-          "source": "Wowhead",
-          "updated": "2026-08-12T22:54:47-05:00",
-          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMDWmZMmBmZbmtZmZmxMDAAAAAAAAAgxYZGMzMjNjZGsZamYAmZDDhxsMAjBLAAwYmZGDmBYmZEMD",
-          "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/priest/discipline/talent-builds-pve-healer"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-03 02:00:44",
+          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsYYWmZMmZmhZbGzMzYMzAAAAAAAAAAYYWmBzMzwMMD2MNTMAzshhwYWGgxgFAAYMzMjhZGgZmB4BA",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 45,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=4.0 (8.7%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 38,
+          "confidenceRationale": "support=42.0, families=1, sources=1, agreement=1/6 (16.7%), margin=2.0 (4.8%), updated=2026-08-03 02:00:44",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "wowhead": {
+            "peavers": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 36,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 42
             }
           },
           "selectedTalents": null
@@ -2950,8 +2946,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/priest/holy/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 48,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=10.0 (21.7%), updated=2026-08-12T22:54:47-05:00",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=4.0 (10.0%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -2960,9 +2956,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -3000,8 +2996,8 @@
           "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMjZMGAAAAAAAAAAAAjZZmxYZmxMz2MDDz2MzYmZGbIDLmpxAzMzAABY2mtNwsxAADGzMzY2GzgZGMDGA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -3026,12 +3022,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
+          "updated": "2026-08-16 02:00:46",
           "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMMjZGAAAAAAAAAAAgxMMjxyMDzsNzwMsNzMmZmxGyMWMTDwMAzsZGmNDAZMWAwMAjZmZMbjZ2WGgZwDA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 60,
-          "confidenceRationale": "support=60.0, families=1, sources=3, agreement=3/14 (21.4%), margin=6.0 (10.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=60.0, families=1, sources=3, agreement=3/14 (21.4%), margin=6.0 (10.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 14,
           "agreementCount": 3,
           "agreementRatio": 0.214,
@@ -3053,13 +3049,13 @@
       "Havoc": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZ2mxMzMGzkxMDAAAAAAYWMmtZYmh5BmBbzMzYMwyAbzmZMMLMNmZGzYDAAAYAAAAMzgBAAAgHA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZ2mxMzMGzkxMDAAAAAAYWMmtZYmBmx2sNzMjxALDsNbmxwsw0YmZMjNAAAgBAAAwMDGAAAAeA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 14,
           "agreementCount": 1,
           "agreementRatio": 0.071,
@@ -3108,8 +3104,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/demon-hunter/havoc/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 46,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=7.0 (15.2%), updated=2026-08-13T00:12:07-05:00",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (2.5%), updated=2026-08-13T00:12:07-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -3118,9 +3114,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -3158,8 +3154,8 @@
           "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAWmxMzMGmRmZGMLmxMYmxMjZegZmZMY2mZsZmZbMMAAAAAAAAMzM2AAAAwAzMzMzWbzMzAADAAAgB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -3183,13 +3179,13 @@
         },
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesMythicRaidDB",
-          "updated": "2026-08-15 02:00:48",
-          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAA2mxMzMGmRmZGMLmxMYmxMjZMzMjhZ2mZs9AzMbjhBAAAAAAAgZmxGAAAAGYmZmZ2abmZGAAAAAgHA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-16 02:00:46",
+          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAMjZmZMzMjMzMDziZmZMMjZGzYGzMDzwM2MzsNGAAAAAAAAwMzYDAAAADGzMzMbtNzMDAMAAAAeA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-15 02:00:48",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/14 (7.1%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
           "sampleSize": 14,
           "agreementCount": 1,
           "agreementRatio": 0.071,
