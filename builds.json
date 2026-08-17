@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T12:42:18.918Z",
+  "generatedAt": "2026-08-17T01:23:05.051Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -251,30 +251,24 @@
         },
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/TopPlayersNormalRaidDB",
-          "updated": "2026-07-31 02:05:09",
-          "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQz22MzsMMzAAAAAAwoMmhZGbDz2wMbzYMmZYGbsNMAAwMTbzMbzAA2AMAYMDzgZMmNsMDGGzYwA",
+          "source": "PeaversTalentsData/ParsesHeroicRaidDB",
+          "updated": "2026-08-16 02:00:45",
+          "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAAMa22mZmlxMzMDAAAAAwMlxMMzYbY2GmZbGjxYYGbsBAAwMTbzMbzAA2AMAYMjBMjZshlZwwYGDeA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=73.0, families=2, sources=4, agreement=4/14 (28.6%), margin=15.5 (21.2%), updated=2026-07-31 02:05:09",
+          "confidenceScore": 50,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/14 (14.3%), margin=3.5 (6.1%), updated=2026-08-16 02:00:45",
           "sampleSize": 14,
-          "agreementCount": 4,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 4,
-          "distinctFamilyCount": 2,
+          "agreementCount": 2,
+          "agreementRatio": 0.143,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
-              "familyBest": 30,
-              "popularityBonus": 12,
-              "familySupport": 42
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
+              "contributors": 2,
+              "familyBest": 48,
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             }
           },
           "selectedTalents": null
@@ -470,8 +464,8 @@
           "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMgxMG2gFYGGawiZmZmZYZAAAAAAwMmxMMjxMmhlx0MAAAAMAwYZZmZWMzMDzYMgZ2AMMGzMbGA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 55,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/6 (33.3%), margin=21.0 (31.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 57,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/6 (33.3%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -854,25 +848,33 @@
       },
       "Frost": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesLfrRaidDB",
-          "updated": "2026-08-16 02:00:46",
-          "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMDwMjZmZGDz2MzMzMLmZmMjxMDzw4BMzgZmZmZAAAAAAAAAYMbDMgFwywEYsgZGzMDMDghZGAgHA",
-          "notes": [],
+          "title": "Frost - Raid",
+          "source": "Wowhead",
+          "updated": "2026-08-12T22:54:47-05:00",
+          "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMAmZMjZAz2MzMzMLzMjMjxYYmxgZmZmZmZmZAAAAAAAAAYMbDMgFwywEyYBzMmZGYAYYmBYmBD",
+          "notes": [
+            "Guide URL: https://www.wowhead.com/guide/classes/death-knight/frost/talent-builds-pve-dps"
+          ],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/15 (6.7%), margin=0.0 (0.0%), updated=2026-08-16 02:00:46",
+          "confidenceScore": 48,
+          "confidenceRationale": "support=61.0, families=2, sources=2, agreement=2/15 (13.3%), margin=7.0 (11.5%), updated=2026-08-12T22:54:47-05:00",
           "sampleSize": 15,
-          "agreementCount": 1,
-          "agreementRatio": 0.067,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
+          "agreementCount": 2,
+          "agreementRatio": 0.133,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
-            "peavers": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 48,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 54
+              "familySupport": 40
+            },
+            "method": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -908,8 +910,8 @@
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMAzMjZMGDzyMzMzMbzY0MjxMzMzAjZGmZmZMDAAAAAAAAAjZbgBsAWGmAjFMzwMDMDghZGAGM",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 55,
-          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (40.3%), updated=2026-07-31 13:44:15",
+          "confidenceScore": 47,
+          "confidenceRationale": "support=67.0, families=2, sources=2, agreement=2/7 (28.6%), margin=6.0 (9.0%), updated=2026-07-31 13:44:15",
           "sampleSize": 7,
           "agreementCount": 2,
           "agreementRatio": 0.286,
@@ -1374,8 +1376,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/mage/fire/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 45,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/7 (14.3%), margin=7.0 (15.2%), updated=2026-08-13T17:48:51-05:00",
+          "confidenceScore": 39,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/7 (14.3%), margin=1.0 (2.5%), updated=2026-08-13T17:48:51-05:00",
           "sampleSize": 7,
           "agreementCount": 1,
           "agreementRatio": 0.143,
@@ -1384,9 +1386,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -1790,8 +1792,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/monk/brewmaster/talent-builds-pve-tank"
           ],
           "confidence": "low",
-          "confidenceScore": 46,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=7.0 (15.2%), updated=2026-08-13T14:12:02-05:00",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (2.5%), updated=2026-08-13T14:12:02-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -1800,9 +1802,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -1866,8 +1868,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/monk/windwalker/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 46,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=7.0 (15.2%), updated=2026-08-13T09:46:56-05:00",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (2.5%), updated=2026-08-13T09:46:56-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -1876,9 +1878,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -1892,8 +1894,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/monk/windwalker/talent-builds-pve-dps"
           ],
           "confidence": "medium",
-          "confidenceScore": 70,
-          "confidenceRationale": "support=106.0, families=3, sources=3, agreement=3/13 (23.1%), margin=48.5 (45.7%), updated=2026-08-13T09:46:56-05:00",
+          "confidenceScore": 66,
+          "confidenceRationale": "support=100.0, families=3, sources=3, agreement=3/13 (23.1%), margin=42.5 (42.5%), updated=2026-08-13T09:46:56-05:00",
           "sampleSize": 13,
           "agreementCount": 3,
           "agreementRatio": 0.231,
@@ -1902,9 +1904,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             },
             "method": {
               "contributors": 1,
@@ -3212,8 +3214,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/demon-hunter/devourer/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (15.2%), updated=2026-08-13T13:05:54-05:00",
+          "confidenceScore": 44,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (2.5%), updated=2026-08-13T13:05:54-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -3222,9 +3224,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
@@ -3238,8 +3240,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/demon-hunter/devourer/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (15.2%), updated=2026-08-13T13:05:54-05:00",
+          "confidenceScore": 44,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (2.5%), updated=2026-08-13T13:05:54-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -3248,9 +3250,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 40,
+              "familyBest": 34,
               "popularityBonus": 6,
-              "familySupport": 46
+              "familySupport": 40
             }
           },
           "selectedTalents": null
