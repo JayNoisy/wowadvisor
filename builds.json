@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T01:25:27.839Z",
+  "generatedAt": "2026-08-26T12:56:02.975Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,18 +9,18 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/tank/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
       "pveOk": true,
       "pveCount": 0
     },
     "peavers": {
       "ok": true,
-      "count": 152
+      "count": 155
     },
     "archon": {
       "ok": true,
-      "count": 79,
-      "localCount": 79,
+      "count": 0,
+      "localCount": 0,
       "remote": []
     },
     "curatedGuides": {
@@ -41,30 +41,24 @@
       "Arms": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesHeroicRaidDB",
-          "updated": "2026-08-25 02:00:47",
-          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzYmZGAAAghphZGzMWmZmZGMmZAAAAAMzyMDMhxy2ALgBMDTgZwGYmhx2ALzsNAzMAYGGA",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzYmZGAAAghphxYmxyMzMzgxMDAAAAgZWmZgJMW2GYBMgZYCMD2AzM2GbDsMz2AMzAgZYA",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 64,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=31.0 (36.5%), updated=2026-08-25 02:00:47",
-          "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "confidence": "low",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -78,11 +72,11 @@
             "Guide URL: https://www.icy-veins.com/wow/arms-warrior-pve-dps-spec-builds-talents"
           ],
           "confidence": "medium",
-          "confidenceScore": 68,
-          "confidenceRationale": "support=79.0, families=2, sources=2, agreement=2/5 (40.0%), margin=25.0 (31.6%), updated=2026-08-25T17:54:00+01:00",
-          "sampleSize": 5,
+          "confidenceScore": 72,
+          "confidenceRationale": "support=79.0, families=2, sources=2, agreement=2/4 (50.0%), margin=25.0 (31.6%), updated=2026-08-25T17:54:00+01:00",
+          "sampleSize": 4,
           "agreementCount": 2,
-          "agreementRatio": 0.4,
+          "agreementRatio": 0.5,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -106,29 +100,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjxMzmZmZmZYMzMzMzYmlZMmZMbmZmBAAixy2ALgBMDTgZYDYmZzYDAAmZYMLDjBjB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDzMmZ2MzMzMDjZmZGzMzsMzMmZmZzYmBAAixy2ALgBMDTgZYDYmhxGAAMzwYMMGMG",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 64,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=31.0 (36.5%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "confidence": "low",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -136,120 +124,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjZMz2yMzMjZmxMzMzMjZWmZmZmxsYmZGAAIMwGssY0YGAzCmxCgZwAAmZAYYxMAjB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 48,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=9.0 (16.7%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        }
-      },
-      "Protection": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzwMzMzMmNzMLzYMGNmxMWmxMzYGmZAAAAwyMDwMGgB2glFjGzAYWwMbwYmZYsBAzMAAYgxA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 1,
-          "agreementRatio": 0.143,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzwMzMzMmNzMLzYMGNmxMWmxMzYGmZAAAAwyMDwMGgB2glFjGzAYWwMbwYmZYsBAzMAAYgxA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        }
-      }
-    },
-    "Paladin": {
-      "Holy": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAAw2MzMjZMzYxYmZYZwMLmpJGGzMDjZLDADYYDsxyMmZZ2mZmtGAAAgFAYzwYGzwMAAmZYGjhB",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 94,
-          "confidenceRationale": "support=91.0, families=2, sources=4, agreement=4/6 (66.7%), margin=57.0 (62.6%), updated=2026-08-25 02:00:53",
-          "sampleSize": 6,
-          "agreementCount": 4,
-          "agreementRatio": 0.667,
-          "distinctSourceCount": 4,
-          "distinctFamilyCount": 2,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 3,
-              "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAAD2GzMzMjZmZBmZYZsZmFjmYYMzMMmtMAMAsB2YZmZmlZbmZ2aAAAAWAGsZgZMDzAAYmhZMGGA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
+          "confidenceScore": 50,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=9.0 (16.7%), updated=2026-08-26 02:02:16",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -270,15 +150,117 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNzYWmZYGzM2WGDLzithBAYAAAAAAQamZxMmZGjZrNAMgBMYbAAgZm2mZWmBAYzyGzAgxMMGAgtZAmZAjN",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzwMzMzMmNzMLzYMGNmxMWmxMzYGmZAAAAwyMDwMGgB2glFjGzAYWwMbwYmZYsBAzMAAYgxA",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzwMzMzMmNzMLzYMGNmxMWmxMzYGmZAAAAwyMDwMGgB2glFjGzAYWwMbwYmZYsBAzMAAYgxA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 56,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/7 (28.6%), margin=3.5 (6.1%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      }
+    },
+    "Paladin": {
+      "Holy": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAAw2MzMjZMzYxYmZYZwMLmpJGGzMDjZLDADYYDsxyMmZZ2mZmtGAAAgFAYzwYGzwMAAmZYGjhB",
+          "notes": [],
+          "confidence": "high",
+          "confidenceScore": 86,
+          "confidenceRationale": "support=60.0, families=1, sources=3, agreement=3/5 (60.0%), margin=26.0 (43.3%), updated=2026-08-26 02:01:50",
+          "sampleSize": 5,
+          "agreementCount": 3,
+          "agreementRatio": 0.6,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 3,
+              "familyBest": 48,
+              "popularityBonus": 12,
+              "familySupport": 60
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAAD2GzMzMjZmZBmZYZsZmFjmYYMzMMmtMAMAsB2YZmZmlZbmZ2aAAAAWAGsZgZMDzAAYmhZMGGA",
+          "notes": [],
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/3 (33.3%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 3,
+          "agreementCount": 1,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      },
+      "Protection": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNzYWmZYGzM2WGDLzithBAYAAAAAAQamZxMmZGjZrNAMgBMYbAAgZm2mZWmBAYzyGzAgxMMGAgtZAmZAjN",
+          "notes": [],
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
           "agreementCount": 2,
-          "agreementRatio": 0.286,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -294,15 +276,15 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsZeAzyYGzYmZWWGjZZWmlZMAADAAAAAAaamhZMzwY2aDADMgZw2AAAAgZmttlWmZsYZBDAYGGDAmZAYmZQGL",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
+          "confidenceScore": 56,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
           "agreementCount": 1,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -320,15 +302,15 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAANbbzMzywMDAAAAAAzUGzwMjtxsNMz2MGjZGmxCbDAAgZm2mZ2mBAsBYAwYGmBzYMbYbGMMmxgB",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 63,
-          "confidenceRationale": "support=81.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.0 (33.3%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
+          "confidenceScore": 65,
+          "confidenceRationale": "support=81.0, families=2, sources=2, agreement=2/6 (33.3%), margin=27.0 (33.3%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
           "agreementCount": 2,
-          "agreementRatio": 0.286,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -350,15 +332,15 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAwoZbbmZWGzMzAAAAAAYmyYGmZsNmthZ2mxYMGmxGbAAAMz02Mz2MAgNADAGzwAzYmZDLzghxMGMA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 64,
-          "confidenceRationale": "support=81.0, families=2, sources=2, agreement=2/5 (40.0%), margin=14.0 (17.3%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
+          "confidenceScore": 69,
+          "confidenceRationale": "support=81.0, families=2, sources=2, agreement=2/4 (50.0%), margin=14.0 (17.3%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
           "agreementCount": 2,
-          "agreementRatio": 0.4,
+          "agreementRatio": 0.5,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -384,23 +366,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsAzwQDbAAYGGzsMzwMmZMDzMGzMMzYGzwMzYGzghmBAAAAMDAAAzMzMAzsBMMLgtBgB",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=60.0, families=1, sources=3, agreement=3/7 (42.9%), margin=21.0 (35.0%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 3,
-          "agreementRatio": 0.429,
-          "distinctSourceCount": 3,
+          "confidenceScore": 59,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 2,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 2,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 3,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             }
           },
           "selectedTalents": null
@@ -413,12 +395,12 @@
           "notes": [
             "Guide URL: https://www.wowhead.com/guide/classes/hunter/beast-mastery/talent-builds-pve-dps"
           ],
-          "confidence": "low",
-          "confidenceScore": 54,
-          "confidenceRationale": "support=55.0, families=2, sources=2, agreement=2/5 (40.0%), margin=1.0 (1.8%), updated=2026-08-12T22:54:49-05:00",
-          "sampleSize": 5,
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=55.0, families=2, sources=2, agreement=2/4 (50.0%), margin=1.0 (1.8%), updated=2026-08-12T22:54:49-05:00",
+          "sampleSize": 4,
           "agreementCount": 2,
-          "agreementRatio": 0.4,
+          "agreementRatio": 0.5,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -442,29 +424,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwMGNWGAzgNAAAAAAAAwMmxMLbzYmZMDeATzYwstZmZmZmZmZWYmlhZAAAGzMjBwM2YYA2YmtZMA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 77,
-          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/7 (42.9%), margin=34.5 (39.0%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 3,
-          "agreementRatio": 0.429,
-          "distinctSourceCount": 3,
-          "distinctFamilyCount": 2,
+          "confidenceScore": 59,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 2,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 2,
               "familyBest": 48,
               "popularityBonus": 9.51,
               "familySupport": 57.51
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -472,29 +448,23 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwGMwMGNWGAzgNAAAAAAAAwMmZmx2MmZGzwyYaGDmltlZmZmZmZmZhZWGmBAAwDMGDAzYDMAbMz2MG",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 74,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/5 (40.0%), margin=46.0 (54.1%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "confidence": "low",
+          "confidenceScore": 53,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=15.0 (27.8%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -504,12 +474,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxoxyAYGw2MmZGjZZAAAAAAYGzYmFzYMjZwYaGAAAgBAzYZZmZWMmZmxMzAgZssBjhxmBA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 43,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-25 02:00:53",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -528,29 +498,23 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxoxyAYGw2MzMzMjZbeAAAAAAAzYmZGbzYMjZYZMNDAAAwAAjllZGLYmZ8AjxAwM2AjxMzmBA",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 75,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/5 (40.0%), margin=51.0 (60.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "confidence": "low",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -558,33 +522,85 @@
       }
     },
     "Rogue": {
-      "Outlaw": {
+      "Assassination": {
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgx2MMzMzMzsNzMjZmxsAmZbaZw2MAAAAAAbbzMzwMzMziZmZbAAAAYmBAjZxwADMLsQLsxAMzgBG",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmlZmFDGAAAAAYWGsNDAAAAAIbzMzMzMjxyMzMbzsMzMPgZMzYMMzYMAbmlBGwCYZYCMsYwMDwYMA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 64,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=30.0 (35.3%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
+          "confidenceScore": 59,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
           "agreementCount": 2,
-          "agreementRatio": 0.286,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 2,
+              "familyBest": 48,
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmlZmFDGAAAAAYWGsNDAAAAAILjZmZmZMWmZmZbmlZm5BMjZGjhZGjBYzsMwAWALDTghFDmZAmZMA",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 50,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=8.0 (14.8%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
-            },
-            "archon": {
+            }
+          },
+          "selectedTalents": null
+        }
+      },
+      "Outlaw": {
+        "raid": {
+          "title": "Outlaw - Raid",
+          "source": "Wowhead",
+          "updated": "2026-08-12T22:54:47-05:00",
+          "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgx2MMzMmZmtZmZmZMmF4BmZbaZw2MAAAAAAbbzMzwMzMziZmZbAAAAYmBAjZxwQGYWYhWYjBYmBDMA",
+          "notes": [
+            "Guide URL: https://www.wowhead.com/guide/classes/rogue/outlaw/talent-builds-pve-dps"
+          ],
+          "confidence": "low",
+          "confidenceScore": 51,
+          "confidenceRationale": "support=55.0, families=2, sources=2, agreement=2/6 (33.3%), margin=1.0 (1.8%), updated=2026-08-12T22:54:47-05:00",
+          "sampleSize": 6,
+          "agreementCount": 2,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
+          "consensusBreakdown": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 25,
+              "familyBest": 28,
               "popularityBonus": 6,
-              "familySupport": 31
+              "familySupport": 34
+            },
+            "method": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -597,12 +613,12 @@
           "notes": [
             "Guide URL: https://www.wowhead.com/guide/classes/rogue/outlaw/talent-builds-pve-dps"
           ],
-          "confidence": "low",
-          "confidenceScore": 54,
-          "confidenceRationale": "support=55.0, families=2, sources=2, agreement=2/5 (40.0%), margin=1.0 (1.8%), updated=2026-08-12T22:54:47-05:00",
-          "sampleSize": 5,
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=55.0, families=2, sources=2, agreement=2/4 (50.0%), margin=1.0 (1.8%), updated=2026-08-12T22:54:47-05:00",
+          "sampleSize": 4,
           "agreementCount": 2,
-          "agreementRatio": 0.4,
+          "agreementRatio": 0.5,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -626,29 +642,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbbjxMDDzMzMzw8AbzYGbbzMzMzMjBjZ2GAAAAGMmFzyADYBsMMBmFMDzMAzYA",
           "notes": [],
-          "confidence": "high",
-          "confidenceScore": 80,
-          "confidenceRationale": "support=112.0, families=3, sources=3, agreement=3/7 (42.9%), margin=58.0 (51.8%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 3,
-          "agreementRatio": 0.429,
-          "distinctSourceCount": 3,
-          "distinctFamilyCount": 3,
+          "confidence": "medium",
+          "confidenceScore": 65,
+          "confidenceRationale": "support=81.0, families=2, sources=2, agreement=2/6 (33.3%), margin=27.0 (33.3%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 2,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 2,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
             },
             "icyveins": {
               "contributors": 1,
@@ -662,71 +672,15 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbbjxMjZMzMzMzAbzYGbbzMzMzMjBjZ2GAAAAGMmFzyADYBsMMBmFMDzMAzYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=14.0 (25.9%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
+          "confidenceScore": 53,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=14.0 (25.9%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
           "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        }
-      },
-      "Assassination": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesLfrRaidDB",
-          "updated": "2026-08-25 02:00:50",
-          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmlZmFDGAAAAAYWGsNDAAAAAIbzMzMzMjxyMzMbzsMzMPgZMzYMMzYMAbmlBGwCYZYCMsYwMDwYMA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 66,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=31.0 (36.5%), updated=2026-08-25 02:00:50",
-          "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmlZmFDGAAAAAYWGsNDAAAAAotlZmZmZmxYZmZmtZWmZmHYegxMjxwMjxAsZWGYALglhJwwCYmBYMGA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 48,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=8.0 (14.8%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -745,16 +699,16 @@
       "Discipline": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMmxyYmBzgZbmtZmZmZmBAAAAAAAAAgZYZGMzMDzwMgpZamBzMAAAz2stAGbGAAGjZGDzMYmBjgB",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-26 02:01:13",
+          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMmxyYmBzgZbmtZmZmZmBAAAAAAAAAgZYZGMzMDzYmBMNTzMYmBAAY2mtFwYzAAwYMzYwMYmBjgB",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 59,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-25 02:00:53",
-          "sampleSize": 6,
+          "confidenceScore": 62,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=3.5 (6.1%), updated=2026-08-26 02:01:13",
+          "sampleSize": 5,
           "agreementCount": 2,
-          "agreementRatio": 0.333,
+          "agreementRatio": 0.4,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -770,15 +724,15 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMDWmZMmBmZbmtZmZmxMDAAAAAAAAAgxYZGMzMjNjZGsZamYAmZDDhxsMAjBLAAwYmZGDmBYmZAmB",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 4,
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/3 (33.3%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 3,
           "agreementCount": 1,
-          "agreementRatio": 0.25,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -796,12 +750,62 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAgZmlxMjZmZYmZYZGmBAAAwwsMDzMzMYGzAYmaAgZWMDziBAGD2MzMbAaGmxYYmZbZAmBGA",
+          "notes": [],
+          "confidence": "high",
+          "confidenceScore": 81,
+          "confidenceRationale": "support=60.0, families=1, sources=3, agreement=3/5 (60.0%), margin=14.0 (23.3%), updated=2026-08-26 02:01:50",
+          "sampleSize": 5,
+          "agreementCount": 3,
+          "agreementRatio": 0.6,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 3,
+              "familyBest": 48,
+              "popularityBonus": 12,
+              "familySupport": 60
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAMzMmlxMjZGDzALzMzMAAAAGzsMDmZmx2MmZAMTBwMLYIMmtBYMwiZmBAzYmxYwMAzMDYA",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 54,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/3 (33.3%), margin=8.0 (14.8%), updated=2026-08-26 02:02:16",
+          "sampleSize": 3,
+          "agreementCount": 1,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      },
+      "Shadow": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMMjZGAAAAAAAAAAAgxMMjx2MDzsNzwMjtZMmZmBmMwMNzAzAMzmZY2MAkxYBAzAMmZmxsNmZbZAmBDA",
           "notes": [],
           "confidence": "medium",
           "confidenceScore": 59,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-25 02:00:53",
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -820,12 +824,12 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAMzMmlxMjZGDzALzMzMAAAAGzsMDmZmx2MmZAMTBwMLYIMmtBYMwiZmBAzYmxYwMAzMDYA",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMMDDAAAAAAAAAAAAmZxMmZbmxMzyMGzw2MzYmZGbIzYxMNAzAMzmZY2MAkxYBAzMgxMzMmNmZbZAmBDA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=8.0 (14.8%), updated=2026-08-25 02:00:57",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -841,74 +845,6 @@
           },
           "selectedTalents": null
         }
-      },
-      "Shadow": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMMDDAAAAAAAAAAAAmZxMmZbmxMz2MGzw2MzYmZGbIzYxMNAzAMzmZY2MAkxYBAzMgxMzMmNmZbZAmBDA",
-          "notes": [],
-          "confidence": "high",
-          "confidenceScore": 80,
-          "confidenceRationale": "support=106.0, families=3, sources=3, agreement=3/7 (42.9%), margin=52.0 (49.1%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 3,
-          "agreementRatio": 0.429,
-          "distinctSourceCount": 3,
-          "distinctFamilyCount": 3,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
-            },
-            "method": {
-              "contributors": 1,
-              "familyBest": 15,
-              "popularityBonus": 6,
-              "familySupport": 21
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMMDDAAAAAAAAAAAAmZxMmZbmxMzyMGzw2MzYmZGbIzYxMNAzAMzmZY2MAkxYBAzMgxMzMmNmZbZAmBDA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 75,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/5 (40.0%), margin=51.0 (60.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
-            }
-          },
-          "selectedTalents": null
-        }
       }
     },
     "Death Knight": {
@@ -916,23 +852,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWmZmxMmZmhZZmZmmZxYMmxAAAAAmZmZmZmZYGjZAYMzMzAAAYgBmxiGLLAWGwGgZYAAAzMwwA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/7 (28.6%), margin=3.5 (6.1%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
+          "confidenceScore": 43,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 2,
+              "contributors": 1,
               "familyBest": 48,
-              "popularityBonus": 9.51,
-              "familySupport": 57.51
+              "popularityBonus": 6,
+              "familySupport": 54
             }
           },
           "selectedTalents": null
@@ -940,15 +876,15 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwMzyMzMmxMzMMLzMz0MLGjxMGAAAAwMmZmZmZYGDAYmZmZGAAADMwMW0YZBwyA2AMjZAAAzMwwA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=14.0 (25.9%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
+          "confidenceScore": 53,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=14.0 (25.9%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
           "agreementCount": 1,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -972,11 +908,11 @@
             "Guide URL: https://www.wowhead.com/guide/classes/death-knight/frost/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 49,
-          "confidenceRationale": "support=55.0, families=2, sources=2, agreement=2/7 (28.6%), margin=1.0 (1.8%), updated=2026-08-12T22:54:47-05:00",
-          "sampleSize": 7,
+          "confidenceScore": 51,
+          "confidenceRationale": "support=55.0, families=2, sources=2, agreement=2/6 (33.3%), margin=1.0 (1.8%), updated=2026-08-12T22:54:47-05:00",
+          "sampleSize": 6,
           "agreementCount": 2,
-          "agreementRatio": 0.286,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -1003,12 +939,12 @@
           "notes": [
             "Guide URL: https://www.wowhead.com/guide/classes/death-knight/frost/talent-builds-pve-dps"
           ],
-          "confidence": "low",
-          "confidenceScore": 54,
-          "confidenceRationale": "support=55.0, families=2, sources=2, agreement=2/5 (40.0%), margin=1.0 (1.8%), updated=2026-08-12T22:54:47-05:00",
-          "sampleSize": 5,
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=55.0, families=2, sources=2, agreement=2/4 (50.0%), margin=1.0 (1.8%), updated=2026-08-12T22:54:47-05:00",
+          "sampleSize": 4,
           "agreementCount": 2,
-          "agreementRatio": 0.4,
+          "agreementRatio": 0.5,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
@@ -1032,15 +968,15 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAwMjZMDDz2MzMTzmZmZMjBAAAAAAAgZGmZAwyMmZ2mZGzMDYzsYYgBmNGasAgZAgZmxMAzMzYMA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/7 (28.6%), margin=3.5 (6.1%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
           "agreementCount": 2,
-          "agreementRatio": 0.286,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -1056,15 +992,15 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmZMjZYY2mZmZa2MmZMjBAAAAAAAgZGDDAWmxMzmZGzMDYzsZYgBmNGasgBMDAjZmxMAzMzYMA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 48,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=9.0 (16.7%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
+          "confidenceScore": 50,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=9.0 (16.7%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
           "agreementCount": 1,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -1083,30 +1019,24 @@
       "Elemental": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMbLzMmZmZZbZMMjBAAAAsYmNYADY2YCMLAwsMzMjx2iJMzsMWmZmZMsMLzYxMDzsMAgBAmZMMMA",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-26 02:01:13",
+          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMbLzMmZmZZbZMMjBAAAAsYmNYADY2YCMLAwsNzMjZ2WmJMzsxyMzMjZwyMWMzwMLDAYAgZGDDD",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 63,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.5 (32.3%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
+          "confidenceScore": 59,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:13",
+          "sampleSize": 6,
           "agreementCount": 2,
-          "agreementRatio": 0.286,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 1,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             }
           },
           "selectedTalents": null
@@ -1114,15 +1044,15 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMbLzMGjZZZZMmhBAAAAsYmNYADY2YCMLAwsMzMjx2ipNmZMWmZmZMsMLGLzMjZmFAgZAwMjhhB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=14.0 (25.9%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
+          "confidenceScore": 53,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=14.0 (25.9%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
           "agreementCount": 1,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -1138,33 +1068,25 @@
       },
       "Enhancement": {
         "raid": {
-          "title": "Enhancement - Raid",
-          "source": "Icy-Veins",
-          "updated": "2026-08-23T19:20:00+00:00",
-          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbwCMDDNYBgZZGzMjllZgZmNWmZmZYYMDAwMMmZMzEYmBDGDA",
-          "notes": [
-            "Guide URL: https://www.icy-veins.com/wow/enhancement-shaman-pve-dps-spec-builds-talents"
-          ],
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbwCMDDNYBgZZGzYssYsxMz2YZmZmZwCzAAMDjZGmJwMDGMGA",
+          "notes": [],
           "confidence": "medium",
-          "confidenceScore": 62,
-          "confidenceRationale": "support=76.0, families=2, sources=2, agreement=2/7 (28.6%), margin=22.0 (28.9%), updated=2026-08-23T19:20:00+00:00",
-          "sampleSize": 7,
+          "confidenceScore": 59,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
           "agreementCount": 2,
-          "agreementRatio": 0.286,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
-            },
-            "icyveins": {
-              "contributors": 1,
-              "familyBest": 39,
-              "popularityBonus": 6,
-              "familySupport": 45
+            "peavers": {
+              "contributors": 2,
+              "familyBest": 48,
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             }
           },
           "selectedTalents": null
@@ -1172,15 +1094,15 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbwCMDDNYBgZZGzYssMjNmZ2GLzMzMjxCDAgZYMzwIwMDGMGA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 48,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=8.0 (14.8%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
+          "confidenceScore": 50,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=9.0 (16.7%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
           "agreementCount": 1,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -1198,29 +1120,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAzMzsssNjZGjZGzMDjFYDmxiGbDgZgNzwMYbMmpZbZmZzMmFWMPwMjZYWGAAAYmZwMDAMYG",
           "notes": [],
           "confidence": "high",
-          "confidenceScore": 80,
-          "confidenceRationale": "support=88.5, families=2, sources=3, agreement=3/6 (50.0%), margin=34.5 (39.0%), updated=2026-08-25 02:00:53",
-          "sampleSize": 6,
+          "confidenceScore": 86,
+          "confidenceRationale": "support=60.0, families=1, sources=3, agreement=3/5 (60.0%), margin=26.0 (43.3%), updated=2026-08-26 02:01:50",
+          "sampleSize": 5,
           "agreementCount": 3,
-          "agreementRatio": 0.5,
+          "agreementRatio": 0.6,
           "distinctSourceCount": 3,
-          "distinctFamilyCount": 2,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 2,
+              "contributors": 3,
               "familyBest": 48,
-              "popularityBonus": 9.51,
-              "familySupport": 57.51
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
+              "popularityBonus": 12,
+              "familySupport": 60
             }
           },
           "selectedTalents": null
@@ -1228,15 +1144,15 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAzMzsstMmZmZmZGjZMsBbwMW0YbAMDshxMMLzMGNLLzMbmxsxixMjhlZZAAAAzMYmBgxgZA",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAzMzsstMzMzMjZGjZgFYDmxiGbDgZgNmZGMbzMGNbLzMbmxswixMjhlZZAAAgZmBzMAwgZA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 4,
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/3 (33.3%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 3,
           "agreementCount": 1,
-          "agreementRatio": 0.25,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -1256,288 +1172,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMDamZGAAAGAwMz0sssMDAgNAAAzMDbWmxMLzYMzMzMswMmZmBAYAAAGgZGwMAYYmZA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 63,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=27.5 (32.3%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzQzMGAAAGAwMz0sssMDAgNAA2gZmhNLzYmlZMmZmZGWYmZmZGAgBAAYAmZAGAMMzM",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 75,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/5 (40.0%), margin=51.0 (60.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
-            }
-          },
-          "selectedTalents": null
-        }
-      },
-      "Frost": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAMzwMLzMzsMegZmYmxYmZmZWMzMMjZAAAgZmZWWmZaDAA2AAAALAstMmZmBz2wYmxGAAAzsBMDMgZwAA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 1,
-          "agreementRatio": 0.143,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAwsZsMzMzysZmJmZmZmZmZmFzMzYGzAAAAzMzssMz0GAAsBAAA2AYbbMjZwsNMmhNAAAmZDYGYAzghB",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=14.0 (25.9%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        }
-      },
-      "Fire": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzsgZGZmZGAAAGAwMz0sssMDAwmZmx2wYmZBAAAAAbmZmZGAAMmxMmZGzsNAMzAjxYwMMA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 44,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-08-25 02:00:53",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzIzMzMAAAGAwMz0sstNDAwmZmx2MzMzYDAAAAALmZmZAAgZMmZmZMzsMAMzAMGwMMGA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 75,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/5 (40.0%), margin=51.0 (60.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
-            }
-          },
-          "selectedTalents": null
-        }
-      }
-    },
-    "Warlock": {
-      "Demonology": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAYmxMzoZjZ2mZGzyAAAAAAAAGzYYBGYbYhGWMGjlZZmZGzAAzMmZmZmBwMjZAAAMmZmxwwyMGwA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/7 (28.6%), margin=3.5 (6.1%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 2,
-              "familyBest": 48,
-              "popularityBonus": 9.51,
-              "familySupport": 57.51
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAYmxMzoZjZ2mZGzyAAAAAAAAGzYYBGYbYhGWMGjlZZmZGzAAzMmZmZmBwMjZAAAMmZmxwwyMGwA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        }
-      },
-      "Destruction": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesHeroicRaidDB",
-          "updated": "2026-08-25 02:00:47",
-          "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAwMmZGNbMMzMzsMLzMzMLGz2iZAAwMGzMziFYgZxoxMAmNsxAAAjBYDAYmBzMjxsBAAYmZGAAGDD",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 64,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=31.0 (36.5%), updated=2026-08-25 02:00:47",
-          "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAYmxMzoZbMz2MzYWmtZmZmFzMLLjBAAzYMzMbgxMGWgB2GWoxCDAAMmhBAYmBYMDDAAAmZmBAAGG",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 51,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=15.0 (27.8%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        }
-      },
-      "Affliction": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMzMzoZhhZmZmlBAAYmZZ2mZmlxAAjllBGwAmhtADbDAAAzAAAYmhZmxgZYmZmZGDmZmZAAzAD",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 67,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=23.5 (40.9%), updated=2026-08-25 02:00:53",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -1556,15 +1196,267 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMMzoZzMz2MzMz2AAAmZmlZxMz2YAgx22ADYAzwWghtBAAgZAAAMzMmxM2GjZMmZmZMMzMDAwAG",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzQzMGAAAGAwMz0sssMDAgNAA2gZmhNLzYmlZMmZmZGWYmZmZGAgBAAYAmZAGAMMzM",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      },
+      "Frost": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAMzwMLzMzsMegZmYmxYmZmZWMzMMjZAAAgZmZWWmZaDAA2AAAALAstMmZmBz2wYmxGAAAzsBMDMgZwAA",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAwsZsMzMzysZmJmZmZmZmZmFzMzYGzAAAAzMzssMz0GAAsBAAA2AYbbMjZwsNMmhNAAAmZDYGYAzghB",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 53,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=14.0 (25.9%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      },
+      "Fire": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzsgZGZmZGAAAGAwMz0sssMDAwmZmx2wYmZBAAAAAbmZmZGAAMmxMmZGzsNAMzAjxYwMMA",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 44,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
           "sampleSize": 5,
           "agreementCount": 1,
           "agreementRatio": 0.2,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzIzMzMAAAGAwMz0sstNDAwmZmx2MzMzYDAAAAALmZmZAAgZMmZmZMzsMAMzAMGwMMGA",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      }
+    },
+    "Warlock": {
+      "Affliction": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMzMzMNbMMzMmlBAAYmZZWmZmlxAAjllBGwAmhtADbDAAAzAAAYmxMDzwMDzMmZGDmZmZAAzAD",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMMzoZzMz2MzMz2AAAmZmlZxMz2YAgx22ADYAzwWghtBAAgZAAAMzMmxM2GjZMmZmZMMzMDAwAG",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      },
+      "Demonology": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAYmxMzoZjZ2mZGzyAAAAAAAAGzYYBGYbYhGWMGjlZZmZGzAAzMmZmZmBwMjZAAAMmZmxwwyMGwA",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAYmxMzoZjZ2mZGzyAAAAAAAAGzYYBGYbYhGWMGjlZZmZGzAAzMmZmZmBwMjZAAAMmZmxwwyMGwA",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      },
+      "Destruction": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAwMmZGNLMzmZmZWmlZmZmFjZbxDMAAYGjZmZxGMwsY0YGAzG2YAAgxAjNAgZGMmxM2AAAMzMDAAjhB",
+          "notes": [],
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 2,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 2,
+              "familyBest": 48,
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAYmxMzoZbMz2MzYWmtZmZmFzMLLjBAAzYMzMbgxMGWgB2GWoxCDAAMmhBAYmBYMDDAAAmZmBAAGG",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 53,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=15.0 (27.8%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -1584,118 +1476,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAwMLbGDzwyM2MmZMAAAAAAALLwEzMwMMYGMzMzwsNMjZWGW2stNbzYWAAgNAAAwsNLNzMzGDbAMzw0YADAYA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 1,
-          "agreementRatio": 0.143,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAwMLbGDzwyM2MmZMAAAAAAALLwEzMwMMYGMzMzwsNMjZWGW2stNbzYWAAgNAAAwsNLNzMzGDbAMzw0YADAYA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        }
-      },
-      "Windwalker": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesLfrRaidDB",
-          "updated": "2026-08-25 02:00:50",
-          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYM2GmhlZGbzAAAAAAAAAAAAsMMaGzAGwMGmZmZY2GmhZZmAAWMz2MjZmZmBAwGAMLzSzMzsAgBmZAYsMAGwFA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 64,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/7 (28.6%), margin=31.0 (36.5%), updated=2026-08-25 02:00:50",
-          "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYAMGbzMz2MAAAAAAAAAAAALDzEmhhBMjhZmZGmNMDzyMBAsYmtZmxMzMDAgNAYWmlmZmZBgZgZGAYZMgBM",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        }
-      },
-      "Mistweaver": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAghx2YZYzixMzyyM2wYGmZZZbmxCzoZMDYwgxYmZmhZbMGsYCAAAAAAWsMzysNzEAAGwAMDYMMWkxMA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 43,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-25 02:00:53",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -1714,15 +1500,115 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAghxyMLjZx2MmZsZstsMjZ2Mz2yyMjFmRzYGwgBMLzMzMMbYGmlHYCAAAAMbTbz2MLzGAAAADwMDAMGYBDA",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAwMLbGDzwyM2MmZMAAAAAAALLwEzMwMMYGMzMzwsNMjZWGW2stNbzYWAAgNAAAwsNLNzMzGDbAMzw0YADAYA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 56,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      },
+      "Windwalker": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYM2GmhlZGbzAAAAAAAAAAAAsMMaGzAGwMGmZmZY2GmhZZmAAWMz2MjZmZmBAwGAMLzSzMzsAgBmZAYsMAGwFA",
+          "notes": [],
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 2,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 2,
+              "familyBest": 48,
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYAMGbzMz2MAAAAAAAAAAAALDzEmhhBMjhZmZGmNMDzyMBAsYmtZmxMzMDAgNAYWmlmZmZBgZgZGAYZMgBM",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      },
+      "Mistweaver": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAghx2YZYzixMzyyM2wYGmZZZbmxCzoZMDYwgxYmZmhZbMGsYCAAAAAAWsMzysNzEAAGwAMDYMMWkxMA",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 44,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
+          "sampleSize": 5,
+          "agreementCount": 1,
+          "agreementRatio": 0.2,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAghxyMLjZx2MmZsZstsMjZ2Mz2yyMjFmRzYGwgBMLzMzMMbYGmlHYCAAAAMbTbz2MLzGAAAADwMDAMGYBDA",
+          "notes": [],
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/3 (33.3%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 3,
+          "agreementCount": 1,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -1742,168 +1628,12 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDwsMzMzMYYGjZWmhxMWYZmlZGjZ2wAgx2yMDGz2AYCAAAwiZmZmBbGGjZAAMzglBA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 72,
-          "confidenceRationale": "support=60.0, families=1, sources=3, agreement=3/7 (42.9%), margin=26.0 (43.3%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 3,
-          "agreementRatio": 0.429,
-          "distinctSourceCount": 3,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 3,
-              "familyBest": 48,
-              "popularityBonus": 12,
-              "familySupport": 60
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNMmZgxsMzMzMLMgxMLzsYmZswyMLjxMjNMAYstNzgxsNAmAAAAswMzMD2MmxYAAYmBLDA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 75,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/5 (40.0%), margin=51.0 (60.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
-            }
-          },
-          "selectedTalents": null
-        }
-      },
-      "Feral": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAwghxYmZmxsxDsMz2MzMmZGAAAAWCmNYMzomxswMzMGzMDAAAAAAgBAAAQzsMLzMzAAWAzMALmZYAAAMzGGA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 1,
-          "agreementRatio": 0.143,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZ2MzMzMGzmx2YbGzMmZAAAAYJY2M8AmZUzYWGzMzsMmxMAAAAAAGYAAAA0MLzyMzMAgFwMDwCDGAAAzshB",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        }
-      },
-      "Guardian": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxsMPwMjZWMLGmZZZgZzwoJamZWmZmZmlxMAAAAAAMjlZALbzMYMLDgJAAAgNMzAsYGMgNLAMzAYA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 1,
-          "agreementRatio": 0.143,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        },
-        "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxsMPwMjZWMLGmZZZgZzwoJamZWGzMzsMmBAAAAAgZsMDYZbmBjZZAMBAAAshZGgFzMMgNLAMzAYA",
-          "notes": [],
-          "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "peavers": {
-              "contributors": 1,
-              "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            }
-          },
-          "selectedTalents": null
-        }
-      },
-      "Restoration": {
-        "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMjxMLzMjZmxsNMYmNjNmBAAAAAAAAAAbDa2YMNzY4BMLzMzMDTmBAAAAAAAAAAAAgZbmlmtZ2sxYmZYmBGNDAwMDADA",
           "notes": [],
           "confidence": "high",
           "confidenceScore": 81,
-          "confidenceRationale": "support=60.0, families=1, sources=3, agreement=3/6 (50.0%), margin=26.0 (43.3%), updated=2026-08-25 02:00:53",
+          "confidenceRationale": "support=60.0, families=1, sources=3, agreement=3/6 (50.0%), margin=26.0 (43.3%), updated=2026-08-26 02:01:50",
           "sampleSize": 6,
           "agreementCount": 3,
           "agreementRatio": 0.5,
@@ -1922,15 +1652,165 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMMmZZMzMzMmthHgZmlhNbzAAAAAAAAAAgtBNbzw0MMwsMzMzMLmMDAAAAADAwAAAAAAz2MbNbzsZjxMDmZAaGAgZGAGA",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNMmZgxsMzMzMLMgxMLzsYmZswyMLjxMjNMAYstNzgxsNAmAAAAswMzMD2MmxYAAYmBLDA",
           "notes": [],
           "confidence": "low",
           "confidenceScore": 56,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      },
+      "Feral": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZ2MzMzMzY2MWGbzYm5BmZAAAAYJY2MMmZUzYWGzMzYMzDMDAAAAAAwAAAAoZWmlZmZAALgZeAglNDGAAAzshB",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZ2MzMzMGzmx2YbGzMmZAAAAYJY2M8AmZUzYWGzMzsMmxMAAAAAAGYAAAA0MLzyMzMAgFwMDwCDGAAAzshB",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      },
+      "Guardian": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxsMPwYMzmZZGMWGY2gRT0MzsMzMzMGzYGAAAAAwMWmBAAAANzysMzMDAgFMzAsYGMgNLbDAmZDG",
+          "notes": [],
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 2,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 2,
+              "familyBest": 48,
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxsMPwMjZWMLGmZZZgZzwoJamZWGzMzsMmBAAAAAgZsMDYZbmBjZZAMBAAAshZGgFzMMgNLAMzAYA",
+          "notes": [],
+          "confidence": "low",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 1,
+              "familyBest": 48,
+              "popularityBonus": 6,
+              "familySupport": 54
+            }
+          },
+          "selectedTalents": null
+        }
+      },
+      "Restoration": {
+        "raid": {
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-26 02:01:13",
+          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMjxMLzMjZmxsNMYmNjNmBAAAAAAAAAAbDa2YMNzY4BMLzMzMDTmBAAAAAAAAAAAAgZbmlmtZ2sxYmZYmBGNDAwMDADA",
+          "notes": [],
+          "confidence": "medium",
+          "confidenceScore": 62,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=3.5 (6.1%), updated=2026-08-26 02:01:13",
+          "sampleSize": 5,
+          "agreementCount": 2,
+          "agreementRatio": 0.4,
+          "distinctSourceCount": 2,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "peavers": {
+              "contributors": 2,
+              "familyBest": 48,
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
+            }
+          },
+          "selectedTalents": null
+        },
+        "aoe": {
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMMmZZMzMzMmthHgZmlhNbzAAAAAAAAAAgtBNbzw0MMwsMzMzMLmMDAAAAADAwAAAAAAz2MbNbzsZjxMDmZAaGAgZGAGA",
+          "notes": [],
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/3 (33.3%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 3,
+          "agreementCount": 1,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -1949,24 +1829,24 @@
       "Havoc": {
         "raid": {
           "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesLfrRaidDB",
-          "updated": "2026-08-25 02:00:50",
-          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZGzMz2MmZmxYmMmZAAAAAAAzixsNDzMwMWmZmZYmBzyALzmZMMLMNmZGzYDAAAYAAAAMzgBAAAgB",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYgZmZ2MmZmxMzkxMDAAAAAAYWegxsNDzMz2MzYZmxMWmZYmlZ2mBDjlNmwYmxwCAAAAAAAYmBYAAAAYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/7 (28.6%), margin=3.5 (6.1%), updated=2026-08-25 02:00:50",
-          "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
+          "confidenceScore": 43,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 2,
+              "contributors": 1,
               "familyBest": 48,
-              "popularityBonus": 9.51,
-              "familySupport": 57.51
+              "popularityBonus": 6,
+              "familySupport": 54
             }
           },
           "selectedTalents": null
@@ -1974,29 +1854,23 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZGzMz2MmZmxYmMmZAAAAAAAzixsNDzMwMWmZmZYmBzyALzmZMMLMNmZGzYDAAAYAAAAMzgBAAAgB",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 73,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/5 (40.0%), margin=45.0 (52.9%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "confidence": "low",
+          "confidenceScore": 53,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=14.0 (25.9%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -2006,23 +1880,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAWmxMzMGmZyMzgZxMjBmxMjZMzMzMMzMzYzMjxwAAAAAAAAwMzYDAAAADMzMzMbtNzMDAMAAAAG",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/7 (28.6%), margin=3.5 (6.1%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 2,
-          "agreementRatio": 0.286,
-          "distinctSourceCount": 2,
+          "confidenceScore": 43,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 2,
+              "contributors": 1,
               "familyBest": 48,
-              "popularityBonus": 9.51,
-              "familySupport": 57.51
+              "popularityBonus": 6,
+              "familySupport": 54
             }
           },
           "selectedTalents": null
@@ -2030,29 +1904,23 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjhZkZmBWMjZwMjZGz8AzMzYYmZmx2YGjxMAAAAAAAAMzM2AAAAwAzMzMzSbzMzAgZAAAAMA",
           "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 75,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/5 (40.0%), margin=51.0 (60.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "confidence": "low",
+          "confidenceScore": 56,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
+          "agreementCount": 1,
+          "agreementRatio": 0.25,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -2068,11 +1936,11 @@
             "Guide URL: https://www.wowhead.com/guide/classes/demon-hunter/devourer/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (2.9%), updated=2026-08-17T11:21:21-05:00",
-          "sampleSize": 4,
+          "confidenceScore": 45,
+          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/3 (33.3%), margin=1.0 (2.9%), updated=2026-08-17T11:21:21-05:00",
+          "sampleSize": 3,
           "agreementCount": 1,
-          "agreementRatio": 0.25,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -2094,11 +1962,11 @@
             "Guide URL: https://www.wowhead.com/guide/classes/demon-hunter/devourer/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (2.9%), updated=2026-08-17T11:21:21-05:00",
-          "sampleSize": 4,
+          "confidenceScore": 45,
+          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/3 (33.3%), margin=1.0 (2.9%), updated=2026-08-17T11:21:21-05:00",
+          "sampleSize": 3,
           "agreementCount": 1,
-          "agreementRatio": 0.25,
+          "agreementRatio": 0.333,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -2118,23 +1986,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
-          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZwMDGMDMMjZaGzMZMWmZmZGmZmZGwMmZ8AzMLzMDmBMmB2ALgZYCsAWGGAzMDD",
+          "updated": "2026-08-26 02:01:50",
+          "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZgZYGzMgBjZamZmpZM2mxMzMzMzMzAmxMGzMLzMDMwYwGsMGN2GAzggNMwMDGG",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
-          "agreementCount": 1,
-          "agreementRatio": 0.143,
-          "distinctSourceCount": 1,
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
+          "agreementCount": 2,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 2,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 1,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             }
           },
           "selectedTalents": null
@@ -2142,15 +2010,15 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMDMDzwMwYGjZaMzMNjZWmxMzMzYmZGwMzMGzMmZGYgxgFYZMasNAmBBbYGMzghB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 47,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=6.0 (11.1%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
+          "confidenceScore": 49,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=6.0 (11.1%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
           "agreementCount": 1,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -2168,29 +2036,23 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMDmZMYGzmhZmZbAAAMjZMYGzIzMDAAAwMzMZmZmxsMzMAYGzALgFwMMB2MsZYAMzMGA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 66,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/6 (33.3%), margin=31.0 (36.5%), updated=2026-08-25 02:00:53",
-          "sampleSize": 6,
+          "confidenceScore": 62,
+          "confidenceRationale": "support=57.5, families=1, sources=2, agreement=2/5 (40.0%), margin=3.5 (6.1%), updated=2026-08-26 02:01:50",
+          "sampleSize": 5,
           "agreementCount": 2,
-          "agreementRatio": 0.333,
+          "agreementRatio": 0.4,
           "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
-              "contributors": 1,
+              "contributors": 2,
               "familyBest": 48,
-              "popularityBonus": 6,
-              "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
+              "popularityBonus": 9.51,
+              "familySupport": 57.51
             }
           },
           "selectedTalents": null
@@ -2198,29 +2060,23 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
-          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ2WmZGDjxsZGw2wAAAzYmZmZMMTMmBAAAMzMTGzMzMGzAAjZgFwGYGmAbM2MMDwMDD",
+          "updated": "2026-08-26 02:02:16",
+          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ2WGzYYmxsZGw2wAAAzYGzMjhZiZmBAAAMzMTGzMjxMzAAjZgFwCYGmAbM2MMAmZGD",
           "notes": [],
-          "confidence": "high",
-          "confidenceScore": 80,
-          "confidenceRationale": "support=85.0, families=2, sources=2, agreement=2/4 (50.0%), margin=51.0 (60.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 4,
-          "agreementCount": 2,
-          "agreementRatio": 0.5,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "confidence": "medium",
+          "confidenceScore": 59,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/3 (33.3%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 3,
+          "agreementCount": 1,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
               "familyBest": 48,
               "popularityBonus": 6,
               "familySupport": 54
-            },
-            "archon": {
-              "contributors": 1,
-              "familyBest": 25,
-              "popularityBonus": 6,
-              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -2230,15 +2086,15 @@
         "raid": {
           "title": "All Bosses",
           "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-25 02:00:53",
+          "updated": "2026-08-26 02:01:50",
           "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMMzMbzMzgZYmZZGzMjZ2AAAAAAAAYmhxMYM1YmZGAAAAMjZMmZ2GzMwMMwYGLsADMDDNwCGjZGAYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/7 (14.3%), margin=0.0 (0.0%), updated=2026-08-25 02:00:53",
-          "sampleSize": 7,
+          "confidenceScore": 43,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-26 02:01:50",
+          "sampleSize": 6,
           "agreementCount": 1,
-          "agreementRatio": 0.143,
+          "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -2254,15 +2110,15 @@
         "aoe": {
           "title": "All Dungeons",
           "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-25 02:00:57",
+          "updated": "2026-08-26 02:02:16",
           "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMMzMbjZGMDzMLzYmZMzGAAAAAAAAmhZGYM1YmZGAAAAMzMjxMz2YmBmZzYwCsMGN2GAzgYDjZwMDgB",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/5 (20.0%), margin=20.0 (37.0%), updated=2026-08-25 02:00:57",
-          "sampleSize": 5,
+          "confidenceScore": 56,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-08-26 02:02:16",
+          "sampleSize": 4,
           "agreementCount": 1,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
