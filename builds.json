@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T03:33:30.982Z",
+  "generatedAt": "2026-09-03T16:00:44.029Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": true,
-      "pvpCount": 1573,
+      "pvpCount": 1159,
       "pveOk": true,
       "pveCount": 0
     },
@@ -98,26 +98,26 @@
         "pvp": {
           "title": "Arms — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T01:07:25.591246Z",
-          "exportString": "CcEASWsDSHNyPDXnbxuIhH3ZdDzMzsMzMmZAAAAMMNMzYGLMzMzwYmZAAAAAMWmZgJMW2GYDMgZYCZGsBMjFzyMYZmtBYmBgZGGA",
+          "updated": "2026-09-03T09:06:41.586297Z",
+          "exportString": "CcEASWsDSHNyPDXnbxuIhH3ZdDzMzsMzMmZAAAAMMNMGzYhZmZGzYmZAAAAAMWmZgJMW2mFzsNsZYYmZm2oZGsBMjFzyMYZmtBzMzMAMzwA",
           "notes": [
-            "Player: colard",
-            "RankIndex: 3"
+            "Player: gewyon",
+            "RankIndex: 2"
           ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=0.0 (0.0%), updated=2026-09-03T01:07:25.591246Z",
+          "confidenceScore": 38,
+          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/50 (6.0%), margin=2.5 (2.7%), updated=2026-09-03T09:06:41.586297Z",
           "sampleSize": 50,
-          "agreementCount": 2,
-          "agreementRatio": 0.04,
+          "agreementCount": 3,
+          "agreementRatio": 0.06,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 2,
+              "contributors": 3,
               "familyBest": 80.4,
-              "popularityBonus": 9.51,
-              "familySupport": 89.91
+              "popularityBonus": 12,
+              "familySupport": 92.4
             }
           },
           "selectedTalents": {
@@ -167,10 +167,6 @@
                 "rank": 1
               },
               {
-                "slug": "second-wind",
-                "rank": 1
-              },
-              {
                 "slug": "bounding-stride",
                 "rank": 1
               },
@@ -196,6 +192,10 @@
               },
               {
                 "slug": "spell-reflection",
+                "rank": 1
+              },
+              {
+                "slug": "rumbling-earth",
                 "rank": 1
               },
               {
@@ -474,332 +474,6 @@
             }
           },
           "selectedTalents": null
-        },
-        "pvp": {
-          "title": "Fury — PvP (Solo Shuffle)",
-          "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:01:45.847891Z",
-          "exportString": "CgEASWsDSHNyPDXnbxuIhH3ZdDAAAAAAgGDzMjZW2MzMjBzMzMzMzMzywYmZmFzMzAAAxMbbjN2ssYmGzMDTmNmZsAYmFjFAYmBghFMmhxA",
-          "notes": [
-            "Player: bajheera",
-            "RankIndex: 5"
-          ],
-          "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=3.5 (3.9%), updated=2026-09-03T00:01:45.847891Z",
-          "sampleSize": 50,
-          "agreementCount": 2,
-          "agreementRatio": 0.04,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "murlok": {
-              "contributors": 2,
-              "familyBest": 80.4,
-              "popularityBonus": 9.51,
-              "familySupport": 89.91
-            }
-          },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "berserker-stance",
-                "rank": 1
-              },
-              {
-                "slug": "defensive-stance",
-                "rank": 1
-              },
-              {
-                "slug": "war-machine",
-                "rank": 1
-              },
-              {
-                "slug": "thunder-clap",
-                "rank": 1
-              },
-              {
-                "slug": "impending-victory",
-                "rank": 1
-              },
-              {
-                "slug": "heroic-leap",
-                "rank": 1
-              },
-              {
-                "slug": "crackling-thunder",
-                "rank": 1
-              },
-              {
-                "slug": "storm-bolt",
-                "rank": 1
-              },
-              {
-                "slug": "storm-of-blood",
-                "rank": 1
-              },
-              {
-                "slug": "second-wind",
-                "rank": 1
-              },
-              {
-                "slug": "bounding-stride",
-                "rank": 1
-              },
-              {
-                "slug": "pain-and-gain",
-                "rank": 1
-              },
-              {
-                "slug": "intervene",
-                "rank": 1
-              },
-              {
-                "slug": "rallying-cry",
-                "rank": 1
-              },
-              {
-                "slug": "field-dressing",
-                "rank": 1
-              },
-              {
-                "slug": "spell-reflection",
-                "rank": 1
-              },
-              {
-                "slug": "shattering-throw",
-                "rank": 1
-              },
-              {
-                "slug": "berserker-shout",
-                "rank": 1
-              },
-              {
-                "slug": "intimidating-shout",
-                "rank": 1
-              },
-              {
-                "slug": "honed-reflexes",
-                "rank": 1
-              },
-              {
-                "slug": "armored-to-the-teeth",
-                "rank": 2
-              },
-              {
-                "slug": "double-time",
-                "rank": 1
-              },
-              {
-                "slug": "reinforced-plates",
-                "rank": 2
-              },
-              {
-                "slug": "barbaric-training",
-                "rank": 1
-              },
-              {
-                "slug": "resonant-voice",
-                "rank": 1
-              },
-              {
-                "slug": "cruel-strikes",
-                "rank": 2
-              },
-              {
-                "slug": "dual-wield-specialization",
-                "rank": 2
-              },
-              {
-                "slug": "wild-strikes",
-                "rank": 2
-              },
-              {
-                "slug": "anger-management",
-                "rank": 1
-              },
-              {
-                "slug": "champion's-spear",
-                "rank": 1
-              },
-              {
-                "slug": "battlefield-commander",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "bloodthirst",
-                "rank": 1
-              },
-              {
-                "slug": "raging-blow",
-                "rank": 1
-              },
-              {
-                "slug": "sudden-death",
-                "rank": 1
-              },
-              {
-                "slug": "frenzied-enrage",
-                "rank": 1
-              },
-              {
-                "slug": "improved-execute",
-                "rank": 1
-              },
-              {
-                "slug": "focus-in-chaos",
-                "rank": 1
-              },
-              {
-                "slug": "enraged-regeneration",
-                "rank": 1
-              },
-              {
-                "slug": "warpaint",
-                "rank": 1
-              },
-              {
-                "slug": "improved-whirlwind",
-                "rank": 1
-              },
-              {
-                "slug": "massacre",
-                "rank": 1
-              },
-              {
-                "slug": "fresh-meat",
-                "rank": 1
-              },
-              {
-                "slug": "invigorating-fury",
-                "rank": 1
-              },
-              {
-                "slug": "rampage",
-                "rank": 1
-              },
-              {
-                "slug": "improved-raging-blow",
-                "rank": 1
-              },
-              {
-                "slug": "rampaging-ruin",
-                "rank": 1
-              },
-              {
-                "slug": "spite",
-                "rank": 2
-              },
-              {
-                "slug": "hack-and-slash",
-                "rank": 1
-              },
-              {
-                "slug": "cruelty",
-                "rank": 2
-              },
-              {
-                "slug": "meat-cleaver",
-                "rank": 1
-              },
-              {
-                "slug": "recklessness",
-                "rank": 1
-              },
-              {
-                "slug": "wrath-and-fury",
-                "rank": 1
-              },
-              {
-                "slug": "frenzy",
-                "rank": 1
-              },
-              {
-                "slug": "critical-thinking",
-                "rank": 2
-              },
-              {
-                "slug": "odyn's-fury",
-                "rank": 1
-              },
-              {
-                "slug": "surge-of-adrenaline",
-                "rank": 1
-              },
-              {
-                "slug": "reckless-abandon",
-                "rank": 1
-              },
-              {
-                "slug": "avatar",
-                "rank": 1
-              },
-              {
-                "slug": "rampaging-berserker",
-                "rank": 4
-              }
-            ],
-            "hero": [
-              {
-                "slug": "lightning-strikes",
-                "rank": 1
-              },
-              {
-                "slug": "crashing-thunder",
-                "rank": 1
-              },
-              {
-                "slug": "ground-current",
-                "rank": 1
-              },
-              {
-                "slug": "strength-of-the-mountain",
-                "rank": 1
-              },
-              {
-                "slug": "storm-surge",
-                "rank": 1
-              },
-              {
-                "slug": "thunder-blast",
-                "rank": 1
-              },
-              {
-                "slug": "storm-shield",
-                "rank": 1
-              },
-              {
-                "slug": "keep-your-feet-on-the-ground",
-                "rank": 1
-              },
-              {
-                "slug": "conductivity",
-                "rank": 1
-              },
-              {
-                "slug": "flashing-skies",
-                "rank": 1
-              },
-              {
-                "slug": "thorim's-might",
-                "rank": 1
-              },
-              {
-                "slug": "burst-of-power",
-                "rank": 1
-              },
-              {
-                "slug": "capacitance",
-                "rank": 1
-              },
-              {
-                "slug": "avatar-of-the-storm",
-                "rank": 1
-              }
-            ]
-          }
         }
       },
       "Protection": {
@@ -850,344 +524,6 @@
             }
           },
           "selectedTalents": null
-        },
-        "pvp": {
-          "title": "Protection — PvP (Solo Shuffle)",
-          "source": "Murlok.io top-player",
-          "updated": "2026-09-03T01:08:25.410941Z",
-          "exportString": "CkEASWsDSHNyPDXnbxuIhH3Zd32AAAzMDmZmZGz2MzsMMGz0MzYstYmZGmxMzAAAAglxAMjBYwy2MmlllRzMDzwys1YmNmBGYWAgZmZGAwAGD",
-          "notes": [
-            "Player: shangochosen",
-            "RankIndex: 2"
-          ],
-          "confidence": "medium",
-          "confidenceScore": 58,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/2 (50.0%), margin=0.0 (0.0%), updated=2026-09-03T01:08:25.410941Z",
-          "sampleSize": 2,
-          "agreementCount": 1,
-          "agreementRatio": 0.5,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "murlok": {
-              "contributors": 1,
-              "familyBest": 80.4,
-              "popularityBonus": 6,
-              "familySupport": 86.4
-            }
-          },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "battle-stance",
-                "rank": 1
-              },
-              {
-                "slug": "battle-stance",
-                "rank": 1
-              },
-              {
-                "slug": "defensive-stance",
-                "rank": 1
-              },
-              {
-                "slug": "war-machine",
-                "rank": 1
-              },
-              {
-                "slug": "thunder-clap",
-                "rank": 1
-              },
-              {
-                "slug": "impending-victory",
-                "rank": 1
-              },
-              {
-                "slug": "heroic-leap",
-                "rank": 1
-              },
-              {
-                "slug": "crackling-thunder",
-                "rank": 1
-              },
-              {
-                "slug": "storm-bolt",
-                "rank": 1
-              },
-              {
-                "slug": "blood-and-thunder",
-                "rank": 1
-              },
-              {
-                "slug": "second-wind",
-                "rank": 1
-              },
-              {
-                "slug": "bounding-stride",
-                "rank": 1
-              },
-              {
-                "slug": "pain-and-gain",
-                "rank": 1
-              },
-              {
-                "slug": "intervene",
-                "rank": 1
-              },
-              {
-                "slug": "shockwave",
-                "rank": 1
-              },
-              {
-                "slug": "rallying-cry",
-                "rank": 1
-              },
-              {
-                "slug": "spell-reflection",
-                "rank": 1
-              },
-              {
-                "slug": "wrecking-throw",
-                "rank": 1
-              },
-              {
-                "slug": "rumbling-earth",
-                "rank": 1
-              },
-              {
-                "slug": "fearless",
-                "rank": 1
-              },
-              {
-                "slug": "intimidating-shout",
-                "rank": 1
-              },
-              {
-                "slug": "honed-reflexes",
-                "rank": 1
-              },
-              {
-                "slug": "armored-to-the-teeth",
-                "rank": 2
-              },
-              {
-                "slug": "double-time",
-                "rank": 1
-              },
-              {
-                "slug": "reinforced-plates",
-                "rank": 2
-              },
-              {
-                "slug": "javelineer",
-                "rank": 1
-              },
-              {
-                "slug": "crushing-force",
-                "rank": 1
-              },
-              {
-                "slug": "cruel-strikes",
-                "rank": 2
-              },
-              {
-                "slug": "one-handed-weapon-specialization",
-                "rank": 2
-              },
-              {
-                "slug": "wild-strikes",
-                "rank": 2
-              },
-              {
-                "slug": "anger-management",
-                "rank": 1
-              },
-              {
-                "slug": "champion's-spear",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "ignore-pain",
-                "rank": 1
-              },
-              {
-                "slug": "demoralizing-shout",
-                "rank": 1
-              },
-              {
-                "slug": "revenge",
-                "rank": 1
-              },
-              {
-                "slug": "brace-for-impact",
-                "rank": 1
-              },
-              {
-                "slug": "armor-specialization",
-                "rank": 1
-              },
-              {
-                "slug": "devastator",
-                "rank": 1
-              },
-              {
-                "slug": "strategist",
-                "rank": 1
-              },
-              {
-                "slug": "devastating-focus",
-                "rank": 1
-              },
-              {
-                "slug": "brutal-vitality",
-                "rank": 1
-              },
-              {
-                "slug": "shield-wall",
-                "rank": 1
-              },
-              {
-                "slug": "best-served-cold",
-                "rank": 1
-              },
-              {
-                "slug": "thunderlord",
-                "rank": 1
-              },
-              {
-                "slug": "defender's-aegis",
-                "rank": 1
-              },
-              {
-                "slug": "last-stand",
-                "rank": 1
-              },
-              {
-                "slug": "sudden-death",
-                "rank": 1
-              },
-              {
-                "slug": "punish",
-                "rank": 1
-              },
-              {
-                "slug": "fueled-by-violence",
-                "rank": 1
-              },
-              {
-                "slug": "enduring-defenses",
-                "rank": 2
-              },
-              {
-                "slug": "unyielding-stance",
-                "rank": 1
-              },
-              {
-                "slug": "into-the-fray",
-                "rank": 1
-              },
-              {
-                "slug": "shield-specialization",
-                "rank": 1
-              },
-              {
-                "slug": "avatar",
-                "rank": 1
-              },
-              {
-                "slug": "massacre",
-                "rank": 1
-              },
-              {
-                "slug": "booming-voice",
-                "rank": 1
-              },
-              {
-                "slug": "violent-outburst",
-                "rank": 1
-              },
-              {
-                "slug": "heavy-handed",
-                "rank": 1
-              },
-              {
-                "slug": "shield-charge",
-                "rank": 1
-              },
-              {
-                "slug": "battle-scarred-veteran",
-                "rank": 1
-              },
-              {
-                "slug": "whirling-blade",
-                "rank": 1
-              },
-              {
-                "slug": "phalanx",
-                "rank": 4
-              }
-            ],
-            "hero": [
-              {
-                "slug": "lightning-strikes",
-                "rank": 1
-              },
-              {
-                "slug": "crashing-thunder",
-                "rank": 1
-              },
-              {
-                "slug": "ground-current",
-                "rank": 1
-              },
-              {
-                "slug": "strength-of-the-mountain",
-                "rank": 1
-              },
-              {
-                "slug": "storm-surge",
-                "rank": 1
-              },
-              {
-                "slug": "thunder-blast",
-                "rank": 1
-              },
-              {
-                "slug": "storm-shield",
-                "rank": 1
-              },
-              {
-                "slug": "keep-your-feet-on-the-ground",
-                "rank": 1
-              },
-              {
-                "slug": "conductivity",
-                "rank": 1
-              },
-              {
-                "slug": "flashing-skies",
-                "rank": 1
-              },
-              {
-                "slug": "thorim's-might",
-                "rank": 1
-              },
-              {
-                "slug": "burst-of-power",
-                "rank": 1
-              },
-              {
-                "slug": "capacitance",
-                "rank": 1
-              },
-              {
-                "slug": "avatar-of-the-storm",
-                "rank": 1
-              }
-            ]
-          }
         }
       }
     },
@@ -1244,15 +580,15 @@
         "pvp": {
           "title": "Holy — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:09:01.195794Z",
-          "exportString": "CEEAzbn3egSOtoSwvPw1U1vTLAAAgZBAGAAwyYmZMzyMjFjZMsM2mZWGTTMLzYmZYYLAYAYBsZWmxMLzyMzs1AAmZW2WsNzwCAjNzMmZMDGAAzMGDoB",
+          "updated": "2026-09-03T08:23:26.994631Z",
+          "exportString": "CEEAzbn3egSOtoSwvPw1U1vTLAAAALAwMAADWGGMzyMzsYMjhtx2MziZaiZZGmZYYLDADAbgNzyMzAgAAmZW2WsNzwGbMM2MzwwMYAMzAgB0A",
           "notes": [
-            "Player: miswalkpally",
-            "RankIndex: 1"
+            "Player: airbuss",
+            "RankIndex: 5"
           ],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=3.5 (3.9%), updated=2026-09-03T00:09:01.195794Z",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=0.0 (0.0%), updated=2026-09-03T08:23:26.994631Z",
           "sampleSize": 50,
           "agreementCount": 2,
           "agreementRatio": 0.04,
@@ -1277,6 +613,10 @@
                 "rank": 1
               },
               {
+                "slug": "hammer-of-wrath",
+                "rank": 1
+              },
+              {
                 "slug": "improved-cleanse",
                 "rank": 1
               },
@@ -1297,15 +637,15 @@
                 "rank": 2
               },
               {
-                "slug": "afterimage",
-                "rank": 1
-              },
-              {
                 "slug": "divine-steed",
                 "rank": 1
               },
               {
                 "slug": "light's-countenance",
+                "rank": 1
+              },
+              {
+                "slug": "greater-judgment",
                 "rank": 1
               },
               {
@@ -1337,7 +677,7 @@
                 "rank": 1
               },
               {
-                "slug": "divine-resonance",
+                "slug": "quickened-invocation",
                 "rank": 1
               },
               {
@@ -1345,7 +685,7 @@
                 "rank": 1
               },
               {
-                "slug": "fear-no-evil",
+                "slug": "consecrated-ground",
                 "rank": 1
               },
               {
@@ -1373,23 +713,15 @@
                 "rank": 1
               },
               {
-                "slug": "inspired-guard",
-                "rank": 1
-              },
-              {
                 "slug": "light's-revocation",
                 "rank": 1
               },
               {
-                "slug": "faith's-armor",
-                "rank": 1
-              },
-              {
-                "slug": "stoicism",
-                "rank": 1
-              },
-              {
                 "slug": "seal-of-might",
+                "rank": 2
+              },
+              {
+                "slug": "vengeful-wrath",
                 "rank": 2
               },
               {
@@ -1447,15 +779,15 @@
                 "rank": 1
               },
               {
+                "slug": "divine-favor",
+                "rank": 1
+              },
+              {
                 "slug": "unwavering-spirit",
                 "rank": 1
               },
               {
-                "slug": "imbued-infusions",
-                "rank": 1
-              },
-              {
-                "slug": "light-of-the-martyr",
+                "slug": "righteous-judgment",
                 "rank": 1
               },
               {
@@ -1464,6 +796,10 @@
               },
               {
                 "slug": "light's-protection",
+                "rank": 1
+              },
+              {
+                "slug": "crusader's-might",
                 "rank": 1
               },
               {
@@ -1483,19 +819,19 @@
                 "rank": 1
               },
               {
-                "slug": "bestow-light",
-                "rank": 1
-              },
-              {
                 "slug": "beacon-of-faith",
                 "rank": 1
               },
               {
-                "slug": "avenging-wrath",
+                "slug": "avenging-crusader",
                 "rank": 1
               },
               {
                 "slug": "reclamation",
+                "rank": 1
+              },
+              {
+                "slug": "seek-deliverance",
                 "rank": 1
               },
               {
@@ -1515,10 +851,6 @@
                 "rank": 1
               },
               {
-                "slug": "seraphic-barrier",
-                "rank": 1
-              },
-              {
                 "slug": "hand-of-divinity",
                 "rank": 1
               },
@@ -1533,59 +865,59 @@
             ],
             "hero": [
               {
-                "slug": "dawnlight",
+                "slug": "holy-armaments",
                 "rank": 1
               },
               {
-                "slug": "morning-star",
+                "slug": "rite-of-sanctification",
                 "rank": 1
               },
               {
-                "slug": "eternal-flame",
+                "slug": "solidarity",
                 "rank": 1
               },
               {
-                "slug": "luminosity",
+                "slug": "blessed-assurance",
                 "rank": 1
               },
               {
-                "slug": "endless-gleam",
+                "slug": "masterwork",
                 "rank": 1
               },
               {
-                "slug": "will-of-the-dawn",
+                "slug": "laying-down-arms",
                 "rank": 1
               },
               {
-                "slug": "blessing-of-an'she",
+                "slug": "divine-inspiration",
                 "rank": 1
               },
               {
-                "slug": "sun-sear",
+                "slug": "tempered-in-battle",
                 "rank": 1
               },
               {
-                "slug": "solar-grace",
+                "slug": "hammer-and-anvil",
                 "rank": 1
               },
               {
-                "slug": "aurora",
+                "slug": "shared-resolve",
                 "rank": 1
               },
               {
-                "slug": "walk-into-light",
+                "slug": "valiance",
                 "rank": 1
               },
               {
-                "slug": "second-sunrise",
+                "slug": "reflection-of-radiance",
                 "rank": 1
               },
               {
-                "slug": "born-in-sunlight",
+                "slug": "resounding-strike",
                 "rank": 1
               },
               {
-                "slug": "sun's-avatar",
+                "slug": "blessing-of-the-forge",
                 "rank": 1
               }
             ]
@@ -1640,348 +972,6 @@
             }
           },
           "selectedTalents": null
-        },
-        "pvp": {
-          "title": "Protection — PvP (Solo Shuffle)",
-          "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:26:27.912263Z",
-          "exportString": "CIEAzbn3egSOtoSwvPw1U1vTLsZYWmZGzMzMjNMz2sYZYAAGAAAAAA00MzyMjZGG2aDADAMD2AAAIAzMLbLtMzYx2CGGYmxMmZGAMzAgZAGL",
-          "notes": [
-            "Player: wheyprot",
-            "RankIndex: 2"
-          ],
-          "confidence": "low",
-          "confidenceScore": 42,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/16 (12.5%), margin=3.5 (3.9%), updated=2026-09-03T00:26:27.912263Z",
-          "sampleSize": 16,
-          "agreementCount": 2,
-          "agreementRatio": 0.125,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "murlok": {
-              "contributors": 2,
-              "familyBest": 80.4,
-              "popularityBonus": 9.51,
-              "familySupport": 89.91
-            }
-          },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "lay-on-hands",
-                "rank": 1
-              },
-              {
-                "slug": "auras-of-the-resolute",
-                "rank": 1
-              },
-              {
-                "slug": "hammer-of-wrath",
-                "rank": 1
-              },
-              {
-                "slug": "empyreal-ward",
-                "rank": 1
-              },
-              {
-                "slug": "fist-of-justice",
-                "rank": 1
-              },
-              {
-                "slug": "blinding-light",
-                "rank": 1
-              },
-              {
-                "slug": "afterimage",
-                "rank": 1
-              },
-              {
-                "slug": "divine-steed",
-                "rank": 1
-              },
-              {
-                "slug": "light's-countenance",
-                "rank": 1
-              },
-              {
-                "slug": "greater-judgment",
-                "rank": 1
-              },
-              {
-                "slug": "holy-reprieve",
-                "rank": 1
-              },
-              {
-                "slug": "cavalier",
-                "rank": 1
-              },
-              {
-                "slug": "blessing-of-freedom",
-                "rank": 1
-              },
-              {
-                "slug": "rebuke",
-                "rank": 1
-              },
-              {
-                "slug": "divine-toll",
-                "rank": 1
-              },
-              {
-                "slug": "unbound-freedom",
-                "rank": 1
-              },
-              {
-                "slug": "sanctified-plates",
-                "rank": 2
-              },
-              {
-                "slug": "blessing-of-sacrifice",
-                "rank": 1
-              },
-              {
-                "slug": "divine-resonance",
-                "rank": 1
-              },
-              {
-                "slug": "blessing-of-protection",
-                "rank": 1
-              },
-              {
-                "slug": "consecrated-ground",
-                "rank": 1
-              },
-              {
-                "slug": "holy-aegis",
-                "rank": 1
-              },
-              {
-                "slug": "sacrifice-of-the-just",
-                "rank": 1
-              },
-              {
-                "slug": "divine-purpose",
-                "rank": 1
-              },
-              {
-                "slug": "unbreakable-spirit",
-                "rank": 1
-              },
-              {
-                "slug": "lead-the-charge",
-                "rank": 1
-              },
-              {
-                "slug": "holy-ritual",
-                "rank": 1
-              },
-              {
-                "slug": "blessed-calling",
-                "rank": 1
-              },
-              {
-                "slug": "inspired-guard",
-                "rank": 1
-              },
-              {
-                "slug": "light's-revocation",
-                "rank": 1
-              },
-              {
-                "slug": "seal-of-might",
-                "rank": 2
-              },
-              {
-                "slug": "vengeful-wrath",
-                "rank": 2
-              },
-              {
-                "slug": "lightbearer",
-                "rank": 1
-              },
-              {
-                "slug": "blessing-of-dusk",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "avenger's-shield",
-                "rank": 1
-              },
-              {
-                "slug": "shining-light",
-                "rank": 1
-              },
-              {
-                "slug": "blessed-hammer",
-                "rank": 1
-              },
-              {
-                "slug": "grand-crusader",
-                "rank": 1
-              },
-              {
-                "slug": "redoubt",
-                "rank": 1
-              },
-              {
-                "slug": "blessing-of-spellwarding",
-                "rank": 1
-              },
-              {
-                "slug": "ardent-defender",
-                "rank": 1
-              },
-              {
-                "slug": "hand-of-the-protector",
-                "rank": 1
-              },
-              {
-                "slug": "refining-fire",
-                "rank": 1
-              },
-              {
-                "slug": "bulwark-of-order",
-                "rank": 1
-              },
-              {
-                "slug": "avenging-wrath",
-                "rank": 1
-              },
-              {
-                "slug": "light-of-the-titans",
-                "rank": 1
-              },
-              {
-                "slug": "instrument-of-the-divine",
-                "rank": 1
-              },
-              {
-                "slug": "undying-embers",
-                "rank": 1
-              },
-              {
-                "slug": "relentless-inquisitor",
-                "rank": 1
-              },
-              {
-                "slug": "seal-of-reprisal",
-                "rank": 1
-              },
-              {
-                "slug": "crusader's-judgment",
-                "rank": 1
-              },
-              {
-                "slug": "soaring-shield",
-                "rank": 1
-              },
-              {
-                "slug": "guardian-of-ancient-kings",
-                "rank": 1
-              },
-              {
-                "slug": "sanctuary",
-                "rank": 1
-              },
-              {
-                "slug": "gift-of-the-golden-val'kyr",
-                "rank": 1
-              },
-              {
-                "slug": "empyrean-authority",
-                "rank": 1
-              },
-              {
-                "slug": "seal-of-charity",
-                "rank": 1
-              },
-              {
-                "slug": "ferren-marcus's-fervor",
-                "rank": 2
-              },
-              {
-                "slug": "zealot's-paragon",
-                "rank": 2
-              },
-              {
-                "slug": "sweeping-verdict",
-                "rank": 1
-              },
-              {
-                "slug": "bulwark-of-righteous-fury",
-                "rank": 1
-              },
-              {
-                "slug": "righteous-protector",
-                "rank": 1
-              },
-              {
-                "slug": "glory-of-the-vanguard",
-                "rank": 4
-              }
-            ],
-            "hero": [
-              {
-                "slug": "holy-bulwark",
-                "rank": 1
-              },
-              {
-                "slug": "rite-of-sanctification",
-                "rank": 1
-              },
-              {
-                "slug": "solidarity",
-                "rank": 1
-              },
-              {
-                "slug": "divine-guidance",
-                "rank": 1
-              },
-              {
-                "slug": "masterwork",
-                "rank": 1
-              },
-              {
-                "slug": "laying-down-arms",
-                "rank": 1
-              },
-              {
-                "slug": "divine-inspiration",
-                "rank": 1
-              },
-              {
-                "slug": "tempered-in-battle",
-                "rank": 1
-              },
-              {
-                "slug": "hammer-and-anvil",
-                "rank": 1
-              },
-              {
-                "slug": "shared-resolve",
-                "rank": 1
-              },
-              {
-                "slug": "valiance",
-                "rank": 1
-              },
-              {
-                "slug": "reflection-of-radiance",
-                "rank": 1
-              },
-              {
-                "slug": "resounding-strike",
-                "rank": 1
-              },
-              {
-                "slug": "blessing-of-the-forge",
-                "rank": 1
-              }
-            ]
-          }
         }
       },
       "Retribution": {
@@ -2044,7 +1034,7 @@
         "pvp": {
           "title": "Retribution — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T01:00:06.131534Z",
+          "updated": "2026-09-03T08:58:49.874643Z",
           "exportString": "CYEAzbn3egSOtoSwvPw1U1vTLAAAAAANLbzMzyYmZMAAAAAAzUmlZYG2G2GmZZGPgxMDzYhtBgZZWmZmtmZmWMjZAALAGAzMmxMDmxwGMzMzwYYwA",
           "notes": [
             "Player: ðentaßîlis",
@@ -2052,7 +1042,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=3.5 (3.9%), updated=2026-09-03T01:00:06.131534Z",
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=3.5 (3.9%), updated=2026-09-03T08:58:49.874643Z",
           "sampleSize": 50,
           "agreementCount": 2,
           "agreementRatio": 0.04,
@@ -2442,7 +1432,7 @@
         "pvp": {
           "title": "Beast Mastery — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:54:00.601548Z",
+          "updated": "2026-09-03T08:50:57.51403Z",
           "exportString": "C0PAD57yiELKEty14ekTDtZEqAMmxwCsAzwQDbAAYGzYmFzwMmZY8AzMGmxMzMGzYxMjZmZMMaGAAAAwMAAAMDzMgZ2ILYmFw2AwA",
           "notes": [
             "Player: xxy",
@@ -2450,7 +1440,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 41,
-          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/50 (8.0%), margin=7.9 (8.4%), updated=2026-09-03T00:54:00.601548Z",
+          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/50 (8.0%), margin=7.9 (8.4%), updated=2026-09-03T08:50:57.51403Z",
           "sampleSize": 50,
           "agreementCount": 4,
           "agreementRatio": 0.08,
@@ -2814,26 +1804,26 @@
         "pvp": {
           "title": "Marksmanship — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:04:15.751724Z",
-          "exportString": "C4PAD57yiELKEty14ekTDtZEqYbZWGDjZMTjlZG2yMMbAAAAAAAAgZgZsYMzMzMYGNjZmZ2W2mZYmhZmtxYZYmBAAMzYmhZGMjtFMDwCzsMjB",
+          "updated": "2026-09-03T08:18:45.420557Z",
+          "exportString": "C4PAD57yiELKEty14ekTDtZEqYbZWGDjZMTjlZG2yMMbAAAAAAAAgZYMzyyMmxMzAjmxMzMbWmBmZmZmlxMLDzAAAMzYmhZGMjtFMDwCzsMjB",
           "notes": [
-            "Player: ilidariban",
-            "RankIndex: 2"
+            "Player: kanlaomei",
+            "RankIndex: 1"
           ],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=3.5 (3.9%), updated=2026-09-03T00:04:15.751724Z",
+          "confidenceScore": 39,
+          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/50 (6.0%), margin=6.0 (6.5%), updated=2026-09-03T08:18:45.420557Z",
           "sampleSize": 50,
-          "agreementCount": 2,
-          "agreementRatio": 0.04,
+          "agreementCount": 3,
+          "agreementRatio": 0.06,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 2,
+              "contributors": 3,
               "familyBest": 80.4,
-              "popularityBonus": 9.51,
-              "familySupport": 89.91
+              "popularityBonus": 12,
+              "familySupport": 92.4
             }
           },
           "selectedTalents": {
@@ -2887,7 +1877,7 @@
                 "rank": 1
               },
               {
-                "slug": "pathfinding",
+                "slug": "disruptive-rounds",
                 "rank": 1
               },
               {
@@ -2897,6 +1887,10 @@
               {
                 "slug": "trigger-finger",
                 "rank": 2
+              },
+              {
+                "slug": "tar-trap",
+                "rank": 1
               },
               {
                 "slug": "touch-of-grass",
@@ -2935,10 +1929,6 @@
                 "rank": 1
               },
               {
-                "slug": "born-to-be-wild",
-                "rank": 2
-              },
-              {
                 "slug": "keen-eyesight",
                 "rank": 2
               },
@@ -2952,6 +1942,10 @@
               },
               {
                 "slug": "roar-of-sacrifice",
+                "rank": 1
+              },
+              {
+                "slug": "unnatural-causes",
                 "rank": 1
               }
             ],
@@ -2985,7 +1979,7 @@
                 "rank": 1
               },
               {
-                "slug": "cunning",
+                "slug": "tenacious",
                 "rank": 1
               },
               {
@@ -2993,7 +1987,7 @@
                 "rank": 1
               },
               {
-                "slug": "on-target",
+                "slug": "obsidian-arrowhead",
                 "rank": 1
               },
               {
@@ -3033,10 +2027,6 @@
                 "rank": 1
               },
               {
-                "slug": "master-marksman",
-                "rank": 1
-              },
-              {
                 "slug": "eagle's-accuracy",
                 "rank": 1
               },
@@ -3045,15 +2035,11 @@
                 "rank": 2
               },
               {
-                "slug": "calling-the-shots",
-                "rank": 1
+                "slug": "small-game-hunter",
+                "rank": 2
               },
               {
                 "slug": "focused-aim",
-                "rank": 1
-              },
-              {
-                "slug": "bulletstorm",
                 "rank": 1
               },
               {
@@ -3061,15 +2047,19 @@
                 "rank": 1
               },
               {
+                "slug": "focus-fire",
+                "rank": 1
+              },
+              {
                 "slug": "windrunner-quiver",
                 "rank": 1
               },
               {
-                "slug": "accuracy-by-volume",
+                "slug": "salvo",
                 "rank": 1
               },
               {
-                "slug": "salvo",
+                "slug": "unload",
                 "rank": 1
               },
               {
@@ -3186,324 +2176,6 @@
             }
           },
           "selectedTalents": null
-        },
-        "pvp": {
-          "title": "Survival — PvP (Solo Shuffle)",
-          "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:54:39.748456Z",
-          "exportString": "C8PAD57yiELKEty14ekTDtZEqM2wMzYmZb0stMMDzMNYbGzMMmtZAAAAAAMDzMjFjxMjBzoZAAAAGAgltZMLmZmZmZMzAmZbGbLYGjZmFDA",
-          "notes": [
-            "Player: bubbahubbà",
-            "RankIndex: 3"
-          ],
-          "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=0.0 (0.0%), updated=2026-09-03T00:54:39.748456Z",
-          "sampleSize": 50,
-          "agreementCount": 2,
-          "agreementRatio": 0.04,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "murlok": {
-              "contributors": 2,
-              "familyBest": 80.4,
-              "popularityBonus": 9.51,
-              "familySupport": 89.91
-            }
-          },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "rejuvenating-wind",
-                "rank": 1
-              },
-              {
-                "slug": "survival-of-the-fittest",
-                "rank": 1
-              },
-              {
-                "slug": "posthaste",
-                "rank": 1
-              },
-              {
-                "slug": "natural-mending",
-                "rank": 2
-              },
-              {
-                "slug": "padded-armor",
-                "rank": 1
-              },
-              {
-                "slug": "hunter's-avoidance",
-                "rank": 1
-              },
-              {
-                "slug": "combat-experience",
-                "rank": 1
-              },
-              {
-                "slug": "improved-aspect-of-the-cheetah",
-                "rank": 1
-              },
-              {
-                "slug": "concussive-shot",
-                "rank": 1
-              },
-              {
-                "slug": "precision-strikes",
-                "rank": 1
-              },
-              {
-                "slug": "muzzle",
-                "rank": 1
-              },
-              {
-                "slug": "tranquilizing-shot",
-                "rank": 1
-              },
-              {
-                "slug": "pathfinding",
-                "rank": 1
-              },
-              {
-                "slug": "improved-feign-death",
-                "rank": 2
-              },
-              {
-                "slug": "trigger-finger",
-                "rank": 2
-              },
-              {
-                "slug": "touch-of-grass",
-                "rank": 2
-              },
-              {
-                "slug": "camouflage",
-                "rank": 1
-              },
-              {
-                "slug": "improved-aspect-of-the-turtle",
-                "rank": 1
-              },
-              {
-                "slug": "specialized-arsenal",
-                "rank": 1
-              },
-              {
-                "slug": "scout's-instincts",
-                "rank": 1
-              },
-              {
-                "slug": "intimidation",
-                "rank": 1
-              },
-              {
-                "slug": "lone-survivor",
-                "rank": 1
-              },
-              {
-                "slug": "binding-shot",
-                "rank": 1
-              },
-              {
-                "slug": "territorial-instincts",
-                "rank": 1
-              },
-              {
-                "slug": "born-to-be-wild",
-                "rank": 2
-              },
-              {
-                "slug": "tar-coated-bindings",
-                "rank": 1
-              },
-              {
-                "slug": "improved-traps",
-                "rank": 1
-              },
-              {
-                "slug": "emergency-salve",
-                "rank": 1
-              },
-              {
-                "slug": "roar-of-sacrifice",
-                "rank": 1
-              },
-              {
-                "slug": "unnatural-causes",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "kill-command",
-                "rank": 1
-              },
-              {
-                "slug": "wildfire-bomb",
-                "rank": 1
-              },
-              {
-                "slug": "raptor-strike",
-                "rank": 1
-              },
-              {
-                "slug": "guerrilla-tactics",
-                "rank": 1
-              },
-              {
-                "slug": "tip-of-the-spear",
-                "rank": 1
-              },
-              {
-                "slug": "lunge",
-                "rank": 1
-              },
-              {
-                "slug": "boomstick",
-                "rank": 1
-              },
-              {
-                "slug": "strike-as-one",
-                "rank": 1
-              },
-              {
-                "slug": "flamebreak",
-                "rank": 1
-              },
-              {
-                "slug": "quick-reload",
-                "rank": 1
-              },
-              {
-                "slug": "two-against-many",
-                "rank": 1
-              },
-              {
-                "slug": "mongoose-fury",
-                "rank": 1
-              },
-              {
-                "slug": "mongoose-rounds",
-                "rank": 1
-              },
-              {
-                "slug": "shellshock",
-                "rank": 1
-              },
-              {
-                "slug": "primal-surge",
-                "rank": 1
-              },
-              {
-                "slug": "bloody-claws",
-                "rank": 1
-              },
-              {
-                "slug": "improved-wildfire-bomb",
-                "rank": 2
-              },
-              {
-                "slug": "bonding",
-                "rank": 1
-              },
-              {
-                "slug": "sweeping-spear",
-                "rank": 2
-              },
-              {
-                "slug": "blackrock-munitions",
-                "rank": 1
-              },
-              {
-                "slug": "explosives-expert",
-                "rank": 2
-              },
-              {
-                "slug": "takedown",
-                "rank": 1
-              },
-              {
-                "slug": "bombardier",
-                "rank": 1
-              },
-              {
-                "slug": "twin-fangs",
-                "rank": 1
-              },
-              {
-                "slug": "savagery",
-                "rank": 2
-              },
-              {
-                "slug": "flanked",
-                "rank": 1
-              },
-              {
-                "slug": "raptor-swipe",
-                "rank": 4
-              }
-            ],
-            "hero": [
-              {
-                "slug": "sentinel",
-                "rank": 1
-              },
-              {
-                "slug": "don't-look-back",
-                "rank": 1
-              },
-              {
-                "slug": "moon's-blessing",
-                "rank": 1
-              },
-              {
-                "slug": "sanctified-armaments",
-                "rank": 1
-              },
-              {
-                "slug": "moonlight-chakram",
-                "rank": 1
-              },
-              {
-                "slug": "open-fire",
-                "rank": 1
-              },
-              {
-                "slug": "can't-miss,-won't-miss",
-                "rank": 1
-              },
-              {
-                "slug": "invigorating-pulse",
-                "rank": 1
-              },
-              {
-                "slug": "stalk-and-strike",
-                "rank": 1
-              },
-              {
-                "slug": "arcane-talons",
-                "rank": 1
-              },
-              {
-                "slug": "lunar-calling",
-                "rank": 1
-              },
-              {
-                "slug": "conditioning",
-                "rank": 1
-              },
-              {
-                "slug": "radiant-edge",
-                "rank": 1
-              },
-              {
-                "slug": "lunar-storm",
-                "rank": 1
-              }
-            ]
-          }
         }
       }
     },
@@ -3576,7 +2248,7 @@
         "pvp": {
           "title": "Outlaw — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:43:14.265302Z",
+          "updated": "2026-09-03T08:46:32.62774Z",
           "exportString": "CQQA5HmDzx68KWyrW/8Y781L7DgZAzYGmZbmZmZGjZZzYmZbaZGz2MAAAAAALLzMDmZMziZmxAAAAYGGYwsNLmZmRzMbMbssNtwmZAmZmZGYA",
           "notes": [
             "Player: сашаволкова",
@@ -3584,7 +2256,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 37,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=0.0 (0.0%), updated=2026-09-03T00:43:14.265302Z",
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=0.0 (0.0%), updated=2026-09-03T08:46:32.62774Z",
           "sampleSize": 50,
           "agreementCount": 2,
           "agreementRatio": 0.04,
@@ -3938,8 +2610,8 @@
           "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbbjxMjZMzMzMzAbzYGbbzMzMzMjBjZ2GAAAAGMmFzyADYBsMMBmFMDzMAzYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 45,
-          "confidenceRationale": "support=42.0, families=1, sources=1, agreement=1/4 (25.0%), margin=8.0 (19.0%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 49,
+          "confidenceRationale": "support=42.0, families=1, sources=1, agreement=1/4 (25.0%), margin=14.0 (33.3%), updated=2026-08-24 15:46:50",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -3958,26 +2630,26 @@
         "pvp": {
           "title": "Subtlety — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:42:24.746614Z",
+          "updated": "2026-09-03T08:45:33.088346Z",
           "exportString": "CUQA5HmDzx68KWyrW/8Y781L7DgZ2mBAAAAAmtZmZZiZZbmxMjZgZmZmlxsNjZmllhBzMGwMGAAAAGmhNzyMmlZYsww2MbTL0yswMDzMzMYmZA",
           "notes": [
             "Player: poohpumpah",
             "RankIndex: 2"
           ],
           "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=97.2, families=1, sources=1, agreement=6/50 (12.0%), margin=10.2 (10.5%), updated=2026-09-03T00:42:24.746614Z",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/50 (8.0%), margin=7.3 (7.7%), updated=2026-09-03T08:45:33.088346Z",
           "sampleSize": 50,
-          "agreementCount": 6,
-          "agreementRatio": 0.12,
+          "agreementCount": 4,
+          "agreementRatio": 0.08,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 6,
+              "contributors": 4,
               "familyBest": 80.4,
-              "popularityBonus": 16.84,
-              "familySupport": 97.24
+              "popularityBonus": 13.93,
+              "familySupport": 94.33
             }
           },
           "selectedTalents": {
@@ -4346,7 +3018,7 @@
         "pvp": {
           "title": "Assassination — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:38:30.096804Z",
+          "updated": "2026-09-03T08:40:21.714342Z",
           "exportString": "CMQA5HmDzx68KWyrW/8Y781L7bmlxsZGAAAAAAz2MmtZAAAAAAtsMMDzMGLzMzsNzyMzYmZmZwMmxMGGYgFYGjGzCIbDYbG2AmZGMA",
           "notes": [
             "Player: cdadiontadi",
@@ -4354,7 +3026,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=3.5 (3.9%), updated=2026-09-03T00:38:30.096804Z",
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=3.5 (3.9%), updated=2026-09-03T08:40:21.714342Z",
           "sampleSize": 50,
           "agreementCount": 2,
           "agreementRatio": 0.04,
@@ -4728,7 +3400,7 @@
         "pvp": {
           "title": "Discipline — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T01:00:35.910713Z",
+          "updated": "2026-09-03T08:59:21.818181Z",
           "exportString": "CAQAR03Gt7xPmcDNOjs2Zlb3yCDsMGWmZMzMwMbzYmZGjZGAAAAAAAAAAzMzyMYmxYZmZmhlFTzEDmZmZDDhxsMzystZMGLGAAGzwYwAYmxEMA",
           "notes": [
             "Player: hoffster",
@@ -4736,7 +3408,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/50 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T01:00:35.910713Z",
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/50 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T08:59:21.818181Z",
           "sampleSize": 50,
           "agreementCount": 1,
           "agreementRatio": 0.02,
@@ -5108,7 +3780,7 @@
         "pvp": {
           "title": "Holy — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T01:01:02.821867Z",
+          "updated": "2026-09-03T08:59:55.979739Z",
           "exportString": "CEQAR03Gt7xPmcDNOjs2Zlb3yyYAAAAAAAmZmxsNzMmZGDzgZbmZmBAAAwMjFDzYMWMmZMLLGzUAMz2MbzMZ2mZWGgZmBLGDAaGzYGDGLbDmZmB+AA",
           "notes": [
             "Player: shwayzee",
@@ -5116,7 +3788,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/49 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T01:01:02.821867Z",
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/49 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T08:59:55.979739Z",
           "sampleSize": 49,
           "agreementCount": 1,
           "agreementRatio": 0.02,
@@ -5508,15 +4180,15 @@
         "pvp": {
           "title": "Shadow — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T01:01:46.151379Z",
-          "exportString": "CIQAR03Gt7xPmcDNOjs2Zlb3yODjBAAAAAAAAAAAAjZZmxMLzMmZ2mZYMz2MzYmZGLMZYZx0AMzMDmZxMa2MY2mtlMmZjBAzgxMjxsMmZbZmZwMYA",
+          "updated": "2026-09-03T09:00:38.047519Z",
+          "exportString": "CIQAR03Gt7xPmcDNOjs2Zlb3yaYMAAAAAAAAAAAAYMLzMmZZmxMz2MzYMz2MzYmZGLMZYZx0AMzMDmZzMa2MY2mtlMmZjBAzgxMjxsMzYbZmZwMYA",
           "notes": [
-            "Player: miraz",
-            "RankIndex: 3"
+            "Player: thulsh",
+            "RankIndex: 5"
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/50 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T01:01:46.151379Z",
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/50 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T09:00:38.047519Z",
           "sampleSize": 50,
           "agreementCount": 1,
           "agreementRatio": 0.02,
@@ -5597,6 +4269,10 @@
                 "rank": 1
               },
               {
+                "slug": "mental-agility",
+                "rank": 1
+              },
+              {
                 "slug": "twin-disciplines",
                 "rank": 1
               },
@@ -5610,10 +4286,6 @@
               },
               {
                 "slug": "shadow-word:-death",
-                "rank": 1
-              },
-              {
-                "slug": "sanguine-teachings",
                 "rank": 1
               },
               {
@@ -5695,6 +4367,10 @@
                 "rank": 1
               },
               {
+                "slug": "descending-darkness",
+                "rank": 1
+              },
+              {
                 "slug": "surge-of-insanity",
                 "rank": 1
               },
@@ -5772,10 +4448,6 @@
               },
               {
                 "slug": "idol-of-y'shaarj",
-                "rank": 1
-              },
-              {
-                "slug": "idol-of-n'zoth",
                 "rank": 1
               },
               {
@@ -5894,6 +4566,340 @@
             }
           },
           "selectedTalents": null
+        },
+        "pvp": {
+          "title": "Blood — PvP (Solo Shuffle)",
+          "source": "Murlok.io top-player",
+          "updated": "2026-09-03T08:36:45.6925Z",
+          "exportString": "CoPAkXBWxkyfx9CbGaHonEAhLxYWmZGmxYmhZZmZmmZzMjxMmBAAAAmZmZmZmZGzMDAYMzMzAAAMzsNGGzYZpxy2ywkthhlBYGGAAmZAgB",
+          "notes": [
+            "Player: arthaslegend",
+            "RankIndex: 3"
+          ],
+          "confidence": "low",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/8 (12.5%), margin=0.0 (0.0%), updated=2026-09-03T08:36:45.6925Z",
+          "sampleSize": 8,
+          "agreementCount": 1,
+          "agreementRatio": 0.125,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "murlok": {
+              "contributors": 1,
+              "familyBest": 80.4,
+              "popularityBonus": 6,
+              "familySupport": 86.4
+            }
+          },
+          "selectedTalents": {
+            "class": [
+              {
+                "slug": "icebound-fortitude",
+                "rank": 1
+              },
+              {
+                "slug": "death-strike",
+                "rank": 1
+              },
+              {
+                "slug": "raise-dead",
+                "rank": 1
+              },
+              {
+                "slug": "runic-attenuation",
+                "rank": 1
+              },
+              {
+                "slug": "improved-death-strike",
+                "rank": 1
+              },
+              {
+                "slug": "cleaving-strikes",
+                "rank": 1
+              },
+              {
+                "slug": "mind-freeze",
+                "rank": 1
+              },
+              {
+                "slug": "blinding-sleet",
+                "rank": 1
+              },
+              {
+                "slug": "gloom-ward",
+                "rank": 2
+              },
+              {
+                "slug": "wraith-walk",
+                "rank": 1
+              },
+              {
+                "slug": "unholy-momentum",
+                "rank": 2
+              },
+              {
+                "slug": "proliferating-chill",
+                "rank": 1
+              },
+              {
+                "slug": "permafrost",
+                "rank": 1
+              },
+              {
+                "slug": "veteran-of-the-third-war",
+                "rank": 1
+              },
+              {
+                "slug": "brittle",
+                "rank": 1
+              },
+              {
+                "slug": "icy-talons",
+                "rank": 1
+              },
+              {
+                "slug": "anti-magic-zone",
+                "rank": 1
+              },
+              {
+                "slug": "unholy-bond",
+                "rank": 1
+              },
+              {
+                "slug": "asphyxiate",
+                "rank": 1
+              },
+              {
+                "slug": "anti-magic-barrier",
+                "rank": 1
+              },
+              {
+                "slug": "grip-of-the-dead",
+                "rank": 1
+              },
+              {
+                "slug": "suppression",
+                "rank": 1
+              },
+              {
+                "slug": "blood-scent",
+                "rank": 1
+              },
+              {
+                "slug": "unholy-endurance",
+                "rank": 1
+              },
+              {
+                "slug": "osmosis",
+                "rank": 1
+              },
+              {
+                "slug": "insidious-chill",
+                "rank": 1
+              },
+              {
+                "slug": "blood-draw",
+                "rank": 1
+              },
+              {
+                "slug": "rune-mastery",
+                "rank": 2
+              },
+              {
+                "slug": "will-of-the-necropolis",
+                "rank": 2
+              },
+              {
+                "slug": "null-magic",
+                "rank": 1
+              },
+              {
+                "slug": "death's-echo",
+                "rank": 1
+              }
+            ],
+            "spec": [
+              {
+                "slug": "heart-strike",
+                "rank": 1
+              },
+              {
+                "slug": "marrowrend",
+                "rank": 1
+              },
+              {
+                "slug": "blood-boil",
+                "rank": 1
+              },
+              {
+                "slug": "vampiric-blood",
+                "rank": 1
+              },
+              {
+                "slug": "bone-collector",
+                "rank": 1
+              },
+              {
+                "slug": "ossuary",
+                "rank": 1
+              },
+              {
+                "slug": "improved-heart-strike",
+                "rank": 2
+              },
+              {
+                "slug": "heartbreaker",
+                "rank": 1
+              },
+              {
+                "slug": "dancing-rune-weapon",
+                "rank": 1
+              },
+              {
+                "slug": "hemostasis",
+                "rank": 1
+              },
+              {
+                "slug": "gorefiend's-grasp",
+                "rank": 1
+              },
+              {
+                "slug": "improved-bone-shield",
+                "rank": 1
+              },
+              {
+                "slug": "insatiable-blade",
+                "rank": 1
+              },
+              {
+                "slug": "deadly-reach",
+                "rank": 1
+              },
+              {
+                "slug": "rapid-decomposition",
+                "rank": 1
+              },
+              {
+                "slug": "boiling-point",
+                "rank": 1
+              },
+              {
+                "slug": "lifeblood",
+                "rank": 1
+              },
+              {
+                "slug": "everlasting-bond",
+                "rank": 1
+              },
+              {
+                "slug": "voracious",
+                "rank": 1
+              },
+              {
+                "slug": "plague-infusion",
+                "rank": 1
+              },
+              {
+                "slug": "bloody-reflection",
+                "rank": 1
+              },
+              {
+                "slug": "iron-heart",
+                "rank": 1
+              },
+              {
+                "slug": "coagulopathy",
+                "rank": 1
+              },
+              {
+                "slug": "blood-mist",
+                "rank": 1
+              },
+              {
+                "slug": "sanguine-ground",
+                "rank": 1
+              },
+              {
+                "slug": "bloodshot",
+                "rank": 1
+              },
+              {
+                "slug": "red-thirst",
+                "rank": 1
+              },
+              {
+                "slug": "sanguinary-burst",
+                "rank": 1
+              },
+              {
+                "slug": "purgatory",
+                "rank": 1
+              },
+              {
+                "slug": "dance-of-midnight",
+                "rank": 4
+              }
+            ],
+            "hero": [
+              {
+                "slug": "reaper's-mark",
+                "rank": 1
+              },
+              {
+                "slug": "wave-of-souls",
+                "rank": 1
+              },
+              {
+                "slug": "wither-away",
+                "rank": 1
+              },
+              {
+                "slug": "bind-in-darkness",
+                "rank": 1
+              },
+              {
+                "slug": "frigid-resolve",
+                "rank": 1
+              },
+              {
+                "slug": "soul-rupture",
+                "rank": 1
+              },
+              {
+                "slug": "grim-reaper",
+                "rank": 1
+              },
+              {
+                "slug": "rune-carved-plates",
+                "rank": 1
+              },
+              {
+                "slug": "deathly-blows",
+                "rank": 1
+              },
+              {
+                "slug": "swift-and-painful",
+                "rank": 1
+              },
+              {
+                "slug": "dark-talons",
+                "rank": 1
+              },
+              {
+                "slug": "death's-messenger",
+                "rank": 1
+              },
+              {
+                "slug": "echoing-fury",
+                "rank": 1
+              },
+              {
+                "slug": "exterminate",
+                "rank": 1
+              }
+            ]
+          }
         }
       },
       "Frost": {
@@ -5960,332 +4966,6 @@
             }
           },
           "selectedTalents": null
-        },
-        "pvp": {
-          "title": "Frost — PvP (Solo Shuffle)",
-          "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:41:03.430538Z",
-          "exportString": "CsPAkXBWxkyfx9CbGaHonEAhLNDYmBjZGDzyMzMDbzYmmZMzMDzYGzMzgZmZMDAAAAAAAAAjZbgBsAWGmQGLGzMMzAGADzMAMYA",
-          "notes": [
-            "Player: melandecay",
-            "RankIndex: 2"
-          ],
-          "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=95.9, families=1, sources=1, agreement=5/50 (10.0%), margin=6.0 (6.3%), updated=2026-09-03T00:41:03.430538Z",
-          "sampleSize": 50,
-          "agreementCount": 5,
-          "agreementRatio": 0.1,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "murlok": {
-              "contributors": 5,
-              "familyBest": 80.4,
-              "popularityBonus": 15.51,
-              "familySupport": 95.91
-            }
-          },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "icebound-fortitude",
-                "rank": 1
-              },
-              {
-                "slug": "death-strike",
-                "rank": 1
-              },
-              {
-                "slug": "runic-attenuation",
-                "rank": 1
-              },
-              {
-                "slug": "improved-death-strike",
-                "rank": 1
-              },
-              {
-                "slug": "mind-freeze",
-                "rank": 1
-              },
-              {
-                "slug": "blinding-sleet",
-                "rank": 1
-              },
-              {
-                "slug": "gloom-ward",
-                "rank": 2
-              },
-              {
-                "slug": "wraith-walk",
-                "rank": 1
-              },
-              {
-                "slug": "unholy-momentum",
-                "rank": 2
-              },
-              {
-                "slug": "coldthirst",
-                "rank": 1
-              },
-              {
-                "slug": "proliferating-chill",
-                "rank": 1
-              },
-              {
-                "slug": "permafrost",
-                "rank": 1
-              },
-              {
-                "slug": "veteran-of-the-third-war",
-                "rank": 1
-              },
-              {
-                "slug": "death-pact",
-                "rank": 1
-              },
-              {
-                "slug": "brittle",
-                "rank": 1
-              },
-              {
-                "slug": "icy-talons",
-                "rank": 1
-              },
-              {
-                "slug": "anti-magic-zone",
-                "rank": 1
-              },
-              {
-                "slug": "death-defiance",
-                "rank": 1
-              },
-              {
-                "slug": "unholy-bond",
-                "rank": 1
-              },
-              {
-                "slug": "asphyxiate",
-                "rank": 1
-              },
-              {
-                "slug": "anti-magic-barrier",
-                "rank": 1
-              },
-              {
-                "slug": "suppression",
-                "rank": 1
-              },
-              {
-                "slug": "unholy-endurance",
-                "rank": 1
-              },
-              {
-                "slug": "osmosis",
-                "rank": 1
-              },
-              {
-                "slug": "runic-protection",
-                "rank": 1
-              },
-              {
-                "slug": "blood-draw",
-                "rank": 1
-              },
-              {
-                "slug": "rune-mastery",
-                "rank": 2
-              },
-              {
-                "slug": "subduing-grasp",
-                "rank": 1
-              },
-              {
-                "slug": "will-of-the-necropolis",
-                "rank": 2
-              },
-              {
-                "slug": "null-magic",
-                "rank": 1
-              },
-              {
-                "slug": "death's-echo",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "frost-strike",
-                "rank": 1
-              },
-              {
-                "slug": "obliterate",
-                "rank": 1
-              },
-              {
-                "slug": "howling-blast",
-                "rank": 1
-              },
-              {
-                "slug": "killing-machine",
-                "rank": 1
-              },
-              {
-                "slug": "empower-rune-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "arctic-assault",
-                "rank": 1
-              },
-              {
-                "slug": "runic-overflow",
-                "rank": 2
-              },
-              {
-                "slug": "frostbound-will",
-                "rank": 1
-              },
-              {
-                "slug": "inexorable-assault",
-                "rank": 1
-              },
-              {
-                "slug": "frostreaper",
-                "rank": 1
-              },
-              {
-                "slug": "pillar-of-frost",
-                "rank": 1
-              },
-              {
-                "slug": "icy-onslaught",
-                "rank": 1
-              },
-              {
-                "slug": "rage-of-the-frozen-champion",
-                "rank": 1
-              },
-              {
-                "slug": "enduring-strength",
-                "rank": 1
-              },
-              {
-                "slug": "frozen-dominion",
-                "rank": 1
-              },
-              {
-                "slug": "frigid-executioner",
-                "rank": 1
-              },
-              {
-                "slug": "howling-blades",
-                "rank": 1
-              },
-              {
-                "slug": "frostwyrm's-fury",
-                "rank": 1
-              },
-              {
-                "slug": "northwinds",
-                "rank": 1
-              },
-              {
-                "slug": "bonegrinder",
-                "rank": 2
-              },
-              {
-                "slug": "smothering-offense",
-                "rank": 1
-              },
-              {
-                "slug": "avalanche",
-                "rank": 1
-              },
-              {
-                "slug": "icebreaker",
-                "rank": 2
-              },
-              {
-                "slug": "obliteration",
-                "rank": 1
-              },
-              {
-                "slug": "hyperpyrexia",
-                "rank": 1
-              },
-              {
-                "slug": "killing-streak",
-                "rank": 1
-              },
-              {
-                "slug": "breath-of-sindragosa",
-                "rank": 1
-              },
-              {
-                "slug": "chosen-of-frostbrood",
-                "rank": 4
-              }
-            ],
-            "hero": [
-              {
-                "slug": "reaper's-mark",
-                "rank": 1
-              },
-              {
-                "slug": "wave-of-souls",
-                "rank": 1
-              },
-              {
-                "slug": "wither-away",
-                "rank": 1
-              },
-              {
-                "slug": "bind-in-darkness",
-                "rank": 1
-              },
-              {
-                "slug": "frigid-resolve",
-                "rank": 1
-              },
-              {
-                "slug": "soul-rupture",
-                "rank": 1
-              },
-              {
-                "slug": "grim-reaper",
-                "rank": 1
-              },
-              {
-                "slug": "rune-carved-plates",
-                "rank": 1
-              },
-              {
-                "slug": "deathly-blows",
-                "rank": 1
-              },
-              {
-                "slug": "swift-and-painful",
-                "rank": 1
-              },
-              {
-                "slug": "dark-talons",
-                "rank": 1
-              },
-              {
-                "slug": "death's-messenger",
-                "rank": 1
-              },
-              {
-                "slug": "echoing-fury",
-                "rank": 1
-              },
-              {
-                "slug": "exterminate",
-                "rank": 1
-              }
-            ]
-          }
         }
       },
       "Unholy": {
@@ -6340,15 +5020,15 @@
         "pvp": {
           "title": "Unholy — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:37:41.704492Z",
+          "updated": "2026-09-03T08:37:32.847136Z",
           "exportString": "CwPAkXBWxkyfx9CbGaHonEAhLBYmBjZGDzyYmZa2mxYmhZAAAAAAAAMzwMDAWmxMjZmxMzYw2MbmxsoZgZjZbaswAMDAjZmxMYmZmZMjB",
           "notes": [
             "Player: кромгон",
             "RankIndex: 4"
           ],
           "confidence": "low",
-          "confidenceScore": 39,
-          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/50 (8.0%), margin=1.9 (2.0%), updated=2026-09-03T00:37:41.704492Z",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/50 (8.0%), margin=4.4 (4.7%), updated=2026-09-03T08:37:32.847136Z",
           "sampleSize": 50,
           "agreementCount": 4,
           "agreementRatio": 0.08,
@@ -6722,7 +5402,7 @@
         "pvp": {
           "title": "Elemental — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T01:03:44.498193Z",
+          "updated": "2026-09-03T09:02:43.596166Z",
           "exportString": "CYQALMl7AwW51MWzGneuHE3tPCAAAAzMLbzMGjZZZhxMMDAAAAsYmNYADY2YCZWAgZbMzYmtFTLjZGjFjZGzMbzGzyMYmZZAgZGAMzYYGfA",
           "notes": [
             "Player: langedinho",
@@ -6730,7 +5410,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/50 (6.0%), margin=2.5 (2.7%), updated=2026-09-03T01:03:44.498193Z",
+          "confidenceRationale": "support=92.4, families=1, sources=1, agreement=3/50 (6.0%), margin=0.0 (0.0%), updated=2026-09-03T09:02:43.596166Z",
           "sampleSize": 50,
           "agreementCount": 3,
           "agreementRatio": 0.06,
@@ -7130,364 +5810,6 @@
             }
           },
           "selectedTalents": null
-        },
-        "pvp": {
-          "title": "Enhancement — PvP (Solo Shuffle)",
-          "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:32:17.859512Z",
-          "exportString": "CcQALMl7AwW51MWzGneuHE3tPOzMDMzMzMzMMzMDAAAAAAAAwGWw2yMmZ2W0ssNMDzMNYBgZbwYmllZsMmZ2Yx8AzMMz2YGAgZYmZGzMxMzMDGMGA",
-          "notes": [
-            "Player: laabuubuu",
-            "RankIndex: 5"
-          ],
-          "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=3.5 (3.9%), updated=2026-09-03T00:32:17.859512Z",
-          "sampleSize": 50,
-          "agreementCount": 2,
-          "agreementRatio": 0.04,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "murlok": {
-              "contributors": 2,
-              "familyBest": 80.4,
-              "popularityBonus": 9.51,
-              "familySupport": 89.91
-            }
-          },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "chain-heal",
-                "rank": 1
-              },
-              {
-                "slug": "lava-lash",
-                "rank": 1
-              },
-              {
-                "slug": "chain-lightning",
-                "rank": 1
-              },
-              {
-                "slug": "chain-lightning",
-                "rank": 1
-              },
-              {
-                "slug": "earth-shield",
-                "rank": 1
-              },
-              {
-                "slug": "fire-and-ice",
-                "rank": 1
-              },
-              {
-                "slug": "thunderous-paws",
-                "rank": 1
-              },
-              {
-                "slug": "maelstrom-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "maelstrom-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-orbit",
-                "rank": 1
-              },
-              {
-                "slug": "spirit-walk",
-                "rank": 1
-              },
-              {
-                "slug": "astral-shift",
-                "rank": 1
-              },
-              {
-                "slug": "nature's-guardian",
-                "rank": 1
-              },
-              {
-                "slug": "healing-stream-totem",
-                "rank": 1
-              },
-              {
-                "slug": "winds-of-al'akir",
-                "rank": 1
-              },
-              {
-                "slug": "planes-traveler",
-                "rank": 1
-              },
-              {
-                "slug": "brimming-with-life",
-                "rank": 2
-              },
-              {
-                "slug": "wind-shear",
-                "rank": 1
-              },
-              {
-                "slug": "earthgrab-totem",
-                "rank": 1
-              },
-              {
-                "slug": "capacitor-totem",
-                "rank": 1
-              },
-              {
-                "slug": "spiritual-awakening",
-                "rank": 1
-              },
-              {
-                "slug": "enhanced-imbues",
-                "rank": 1
-              },
-              {
-                "slug": "windveil",
-                "rank": 1
-              },
-              {
-                "slug": "refreshing-waters",
-                "rank": 1
-              },
-              {
-                "slug": "wind-rush-totem",
-                "rank": 1
-              },
-              {
-                "slug": "greater-purge",
-                "rank": 1
-              },
-              {
-                "slug": "nature's-fury",
-                "rank": 2
-              },
-              {
-                "slug": "jet-stream",
-                "rank": 1
-              },
-              {
-                "slug": "hex",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-projection",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-warding",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-focus",
-                "rank": 1
-              },
-              {
-                "slug": "tremor-totem",
-                "rank": 1
-              },
-              {
-                "slug": "therazane's-resilience",
-                "rank": 1
-              },
-              {
-                "slug": "voodoo-mastery",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-surge",
-                "rank": 1
-              },
-              {
-                "slug": "instinctive-imbuements",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "maelstrom-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "windfury-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "flametongue-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "forceful-winds",
-                "rank": 1
-              },
-              {
-                "slug": "crash-lightning",
-                "rank": 1
-              },
-              {
-                "slug": "molten-assault",
-                "rank": 1
-              },
-              {
-                "slug": "unruly-winds",
-                "rank": 1
-              },
-              {
-                "slug": "overflowing-maelstrom",
-                "rank": 1
-              },
-              {
-                "slug": "stormblast",
-                "rank": 1
-              },
-              {
-                "slug": "raging-maelstrom",
-                "rank": 1
-              },
-              {
-                "slug": "flurry",
-                "rank": 1
-              },
-              {
-                "slug": "storm's-wrath",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-tempo",
-                "rank": 1
-              },
-              {
-                "slug": "voltaic-blaze",
-                "rank": 1
-              },
-              {
-                "slug": "chaining-storms",
-                "rank": 1
-              },
-              {
-                "slug": "converging-storms",
-                "rank": 1
-              },
-              {
-                "slug": "stormflurry",
-                "rank": 1
-              },
-              {
-                "slug": "stormbind",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-weapons",
-                "rank": 1
-              },
-              {
-                "slug": "fire-nova",
-                "rank": 1
-              },
-              {
-                "slug": "ride-the-lightning",
-                "rank": 1
-              },
-              {
-                "slug": "doom-winds",
-                "rank": 1
-              },
-              {
-                "slug": "lightning-strikes",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-assault",
-                "rank": 1
-              },
-              {
-                "slug": "static-accumulation",
-                "rank": 2
-              },
-              {
-                "slug": "feral-spirit",
-                "rank": 1
-              },
-              {
-                "slug": "thunder-capacitor",
-                "rank": 1
-              },
-              {
-                "slug": "ascendance",
-                "rank": 1
-              },
-              {
-                "slug": "thorim's-invocation",
-                "rank": 1
-              },
-              {
-                "slug": "storm-unleashed",
-                "rank": 4
-              }
-            ],
-            "hero": [
-              {
-                "slug": "tempest",
-                "rank": 1
-              },
-              {
-                "slug": "unlimited-power",
-                "rank": 1
-              },
-              {
-                "slug": "stormcaller",
-                "rank": 1
-              },
-              {
-                "slug": "electroshock",
-                "rank": 1
-              },
-              {
-                "slug": "stormwell",
-                "rank": 1
-              },
-              {
-                "slug": "supercharge",
-                "rank": 1
-              },
-              {
-                "slug": "arc-discharge",
-                "rank": 1
-              },
-              {
-                "slug": "rolling-thunder",
-                "rank": 1
-              },
-              {
-                "slug": "natural-gift",
-                "rank": 1
-              },
-              {
-                "slug": "voltaic-surge",
-                "rank": 1
-              },
-              {
-                "slug": "conductive-energy",
-                "rank": 1
-              },
-              {
-                "slug": "nature's-protection",
-                "rank": 1
-              },
-              {
-                "slug": "descending-skies",
-                "rank": 1
-              },
-              {
-                "slug": "awakening-storms",
-                "rank": 1
-              }
-            ]
-          }
         }
       },
       "Restoration": {
@@ -7538,356 +5860,6 @@
             }
           },
           "selectedTalents": null
-        },
-        "pvp": {
-          "title": "Restoration — PvP (Solo Shuffle)",
-          "source": "Murlok.io top-player",
-          "updated": "2026-09-03T01:05:14.82151Z",
-          "exportString": "CgQALMl7AwW51MWzGneuHE3tPCAAAAAAAAYmxsstMMzMzMzMzMjxyyML2YMjlpx2MbMZGGbYmBzyDYMaWWMziZMYxYmZmZ2mNDAADgZGMzgZGGDG",
-          "notes": [
-            "Player: dntgetfooled",
-            "RankIndex: 2"
-          ],
-          "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=3.5 (3.9%), updated=2026-09-03T01:05:14.82151Z",
-          "sampleSize": 50,
-          "agreementCount": 2,
-          "agreementRatio": 0.04,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "murlok": {
-              "contributors": 2,
-              "familyBest": 80.4,
-              "popularityBonus": 9.51,
-              "familySupport": 89.91
-            }
-          },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "chain-heal",
-                "rank": 1
-              },
-              {
-                "slug": "chain-heal",
-                "rank": 1
-              },
-              {
-                "slug": "lava-burst",
-                "rank": 1
-              },
-              {
-                "slug": "lava-burst",
-                "rank": 1
-              },
-              {
-                "slug": "chain-heal",
-                "rank": 1
-              },
-              {
-                "slug": "lava-burst",
-                "rank": 1
-              },
-              {
-                "slug": "earth-shield",
-                "rank": 1
-              },
-              {
-                "slug": "spirit-wolf",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-orbit",
-                "rank": 1
-              },
-              {
-                "slug": "spirit-walk",
-                "rank": 1
-              },
-              {
-                "slug": "astral-shift",
-                "rank": 1
-              },
-              {
-                "slug": "nature's-guardian",
-                "rank": 1
-              },
-              {
-                "slug": "healing-stream-totem",
-                "rank": 1
-              },
-              {
-                "slug": "planes-traveler",
-                "rank": 1
-              },
-              {
-                "slug": "brimming-with-life",
-                "rank": 1
-              },
-              {
-                "slug": "wind-shear",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-resistance",
-                "rank": 1
-              },
-              {
-                "slug": "earthgrab-totem",
-                "rank": 1
-              },
-              {
-                "slug": "capacitor-totem",
-                "rank": 1
-              },
-              {
-                "slug": "spiritual-awakening",
-                "rank": 1
-              },
-              {
-                "slug": "enhanced-imbues",
-                "rank": 1
-              },
-              {
-                "slug": "windveil",
-                "rank": 1
-              },
-              {
-                "slug": "improved-purify-spirit",
-                "rank": 1
-              },
-              {
-                "slug": "static-charge",
-                "rank": 2
-              },
-              {
-                "slug": "greater-purge",
-                "rank": 1
-              },
-              {
-                "slug": "nature's-fury",
-                "rank": 2
-              },
-              {
-                "slug": "hex",
-                "rank": 1
-              },
-              {
-                "slug": "spiritwalker's-grace",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-projection",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-warding",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-focus",
-                "rank": 1
-              },
-              {
-                "slug": "spiritwalker's-aegis",
-                "rank": 1
-              },
-              {
-                "slug": "tremor-totem",
-                "rank": 1
-              },
-              {
-                "slug": "therazane's-resilience",
-                "rank": 1
-              },
-              {
-                "slug": "nature's-swiftness",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-surge",
-                "rank": 1
-              },
-              {
-                "slug": "instinctive-imbuements",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "riptide",
-                "rank": 1
-              },
-              {
-                "slug": "healing-rain",
-                "rank": 1
-              },
-              {
-                "slug": "healing-stream-totem",
-                "rank": 1
-              },
-              {
-                "slug": "healing-tide-totem",
-                "rank": 1
-              },
-              {
-                "slug": "water-totem-mastery",
-                "rank": 1
-              },
-              {
-                "slug": "ancestral-vigor",
-                "rank": 2
-              },
-              {
-                "slug": "first-ascendant",
-                "rank": 1
-              },
-              {
-                "slug": "living-stream",
-                "rank": 1
-              },
-              {
-                "slug": "white-water",
-                "rank": 1
-              },
-              {
-                "slug": "quickstream",
-                "rank": 1
-              },
-              {
-                "slug": "unleash-life",
-                "rank": 1
-              },
-              {
-                "slug": "torrent",
-                "rank": 1
-              },
-              {
-                "slug": "earthliving-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "earthweaver",
-                "rank": 1
-              },
-              {
-                "slug": "deluge",
-                "rank": 1
-              },
-              {
-                "slug": "earthen-accord",
-                "rank": 1
-              },
-              {
-                "slug": "tidal-waves",
-                "rank": 1
-              },
-              {
-                "slug": "improved-earthliving-weapon",
-                "rank": 1
-              },
-              {
-                "slug": "ancestral-reach",
-                "rank": 1
-              },
-              {
-                "slug": "echo-of-the-elements",
-                "rank": 1
-              },
-              {
-                "slug": "spirit-link-totem",
-                "rank": 1
-              },
-              {
-                "slug": "earthen-harmony",
-                "rank": 1
-              },
-              {
-                "slug": "ancestral-awakening",
-                "rank": 2
-              },
-              {
-                "slug": "undercurrent",
-                "rank": 2
-              },
-              {
-                "slug": "spouting-spirits",
-                "rank": 1
-              },
-              {
-                "slug": "coalescing-water",
-                "rank": 1
-              },
-              {
-                "slug": "deeply-rooted-elements",
-                "rank": 1
-              },
-              {
-                "slug": "stormstream-totem",
-                "rank": 4
-              }
-            ],
-            "hero": [
-              {
-                "slug": "surging-totem",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-rebound",
-                "rank": 1
-              },
-              {
-                "slug": "amplification-core",
-                "rank": 1
-              },
-              {
-                "slug": "lively-totems",
-                "rank": 1
-              },
-              {
-                "slug": "totemic-momentum",
-                "rank": 1
-              },
-              {
-                "slug": "oversized-totems",
-                "rank": 1
-              },
-              {
-                "slug": "wind-barrier",
-                "rank": 1
-              },
-              {
-                "slug": "splitstream",
-                "rank": 1
-              },
-              {
-                "slug": "elemental-attunement",
-                "rank": 1
-              },
-              {
-                "slug": "imbuement-mastery",
-                "rank": 1
-              },
-              {
-                "slug": "supportive-imbuements",
-                "rank": 1
-              },
-              {
-                "slug": "earthsurge",
-                "rank": 1
-              },
-              {
-                "slug": "primal-catalyst",
-                "rank": 1
-              },
-              {
-                "slug": "whirling-elements",
-                "rank": 1
-              }
-            ]
-          }
         }
       }
     },
@@ -7948,26 +5920,26 @@
         "pvp": {
           "title": "Arcane — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:38:06.5083Z",
-          "exportString": "C4DAche08tHz49KSVf7iKFnyuNmtlZWmxMbDzgGjZAAAMAgZmpZZZZmZmZWWmZiNAAWwMzMsZZmZmlZMmHwMzwCzMzMzAAMAAAzMLYmBGDAGGzA",
+          "updated": "2026-09-03T08:02:57.585058Z",
+          "exportString": "C4DAche08tHz49KSVf7iKFnyuNstMzyMzMbYG0MjZAAAMAgZmpZZZZmZmZWWmZiNAAWwMzMsZZmZmlZMmHwMzwCzYmZGAgBAAYmZBzMwYAwwYG",
           "notes": [
-            "Player: arnoldkelly",
-            "RankIndex: 1"
+            "Player: numbing",
+            "RankIndex: 2"
           ],
           "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/50 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T00:38:06.5083Z",
+          "confidenceScore": 38,
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=3.5 (3.9%), updated=2026-09-03T08:02:57.585058Z",
           "sampleSize": 50,
-          "agreementCount": 1,
-          "agreementRatio": 0.02,
+          "agreementCount": 2,
+          "agreementRatio": 0.04,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 1,
+              "contributors": 2,
               "familyBest": 80.4,
-              "popularityBonus": 6,
-              "familySupport": 86.4
+              "popularityBonus": 9.51,
+              "familySupport": 89.91
             }
           },
           "selectedTalents": {
@@ -7993,8 +5965,8 @@
                 "rank": 2
               },
               {
-                "slug": "frost-conditioning",
-                "rank": 1
+                "slug": "winter's-protection",
+                "rank": 2
               },
               {
                 "slug": "arcane-warding",
@@ -8049,10 +6021,6 @@
                 "rank": 1
               },
               {
-                "slug": "master-of-escape",
-                "rank": 1
-              },
-              {
                 "slug": "charm-of-aegwynn",
                 "rank": 1
               },
@@ -8069,10 +6037,6 @@
                 "rank": 1
               },
               {
-                "slug": "permafrost-bauble",
-                "rank": 1
-              },
-              {
                 "slug": "ice-nova",
                 "rank": 1
               },
@@ -8082,6 +6046,10 @@
               },
               {
                 "slug": "ring-of-frost",
+                "rank": 1
+              },
+              {
+                "slug": "energized-barriers",
                 "rank": 1
               },
               {
@@ -8328,344 +6296,6 @@
             }
           },
           "selectedTalents": null
-        },
-        "pvp": {
-          "title": "Frost — PvP (Solo Shuffle)",
-          "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:57:10.271676Z",
-          "exportString": "CAEAche08tHz49KSVf7iKFnyuNmtlZWmZmZbYmJmhZmZmZmFzMzYGzMLz0Mz2sAAmZmZZZmpNAAYBAAAsBw2yYmZALzDYMzYBAAgZWAmhxAMYA",
-          "notes": [
-            "Player: кайлиджэннер",
-            "RankIndex: 6"
-          ],
-          "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=87.0, families=1, sources=1, agreement=3/50 (6.0%), margin=0.6 (0.7%), updated=2026-09-03T00:57:10.271676Z",
-          "sampleSize": 50,
-          "agreementCount": 3,
-          "agreementRatio": 0.06,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "murlok": {
-              "contributors": 3,
-              "familyBest": 75.04,
-              "popularityBonus": 12,
-              "familySupport": 87.04
-            }
-          },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "ice-barrier",
-                "rank": 1
-              },
-              {
-                "slug": "alter-time",
-                "rank": 1
-              },
-              {
-                "slug": "ice-block",
-                "rank": 1
-              },
-              {
-                "slug": "time-walk",
-                "rank": 1
-              },
-              {
-                "slug": "master-of-time",
-                "rank": 2
-              },
-              {
-                "slug": "winter's-protection",
-                "rank": 2
-              },
-              {
-                "slug": "frost-conditioning",
-                "rank": 1
-              },
-              {
-                "slug": "arcane-warding",
-                "rank": 2
-              },
-              {
-                "slug": "inspired-intellect",
-                "rank": 1
-              },
-              {
-                "slug": "spellsteal",
-                "rank": 1
-              },
-              {
-                "slug": "quick-witted",
-                "rank": 1
-              },
-              {
-                "slug": "dragon's-breath",
-                "rank": 1
-              },
-              {
-                "slug": "remove-curse",
-                "rank": 1
-              },
-              {
-                "slug": "improved-blink",
-                "rank": 1
-              },
-              {
-                "slug": "improved-counterspell",
-                "rank": 1
-              },
-              {
-                "slug": "greater-invisibility",
-                "rank": 1
-              },
-              {
-                "slug": "tome-of-rhonin",
-                "rank": 1
-              },
-              {
-                "slug": "tome-of-antonidas",
-                "rank": 1
-              },
-              {
-                "slug": "master-of-escape",
-                "rank": 1
-              },
-              {
-                "slug": "charm-of-aegwynn",
-                "rank": 1
-              },
-              {
-                "slug": "brainstorm",
-                "rank": 1
-              },
-              {
-                "slug": "flow-of-time",
-                "rank": 1
-              },
-              {
-                "slug": "charm-of-medivh",
-                "rank": 1
-              },
-              {
-                "slug": "permafrost-bauble",
-                "rank": 1
-              },
-              {
-                "slug": "ice-nova",
-                "rank": 1
-              },
-              {
-                "slug": "time-manipulation",
-                "rank": 1
-              },
-              {
-                "slug": "ring-of-frost",
-                "rank": 1
-              },
-              {
-                "slug": "energized-barriers",
-                "rank": 1
-              },
-              {
-                "slug": "mass-invisibility",
-                "rank": 1
-              },
-              {
-                "slug": "barrier-diffusion",
-                "rank": 1
-              },
-              {
-                "slug": "spatial-manipulation",
-                "rank": 1
-              },
-              {
-                "slug": "improved-ice-barrier",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "ice-lance",
-                "rank": 1
-              },
-              {
-                "slug": "blizzard",
-                "rank": 1
-              },
-              {
-                "slug": "fingers-of-frost",
-                "rank": 1
-              },
-              {
-                "slug": "frostbite",
-                "rank": 1
-              },
-              {
-                "slug": "icicles",
-                "rank": 1
-              },
-              {
-                "slug": "flurry",
-                "rank": 1
-              },
-              {
-                "slug": "glacial-bulwark",
-                "rank": 1
-              },
-              {
-                "slug": "frozen-orb",
-                "rank": 1
-              },
-              {
-                "slug": "brain-freeze",
-                "rank": 1
-              },
-              {
-                "slug": "ray-of-frost",
-                "rank": 1
-              },
-              {
-                "slug": "everlasting-frost",
-                "rank": 1
-              },
-              {
-                "slug": "permafrost-lances",
-                "rank": 1
-              },
-              {
-                "slug": "frozen-touch",
-                "rank": 1
-              },
-              {
-                "slug": "splitting-ice",
-                "rank": 1
-              },
-              {
-                "slug": "flash-freeze",
-                "rank": 1
-              },
-              {
-                "slug": "frigid-focus",
-                "rank": 1
-              },
-              {
-                "slug": "winter's-blessing",
-                "rank": 1
-              },
-              {
-                "slug": "freezing-rain",
-                "rank": 1
-              },
-              {
-                "slug": "fractured-frost",
-                "rank": 1
-              },
-              {
-                "slug": "improved-shatter",
-                "rank": 1
-              },
-              {
-                "slug": "wintertide",
-                "rank": 1
-              },
-              {
-                "slug": "glacial-attunement",
-                "rank": 2
-              },
-              {
-                "slug": "heart-of-ice",
-                "rank": 1
-              },
-              {
-                "slug": "rimecaster",
-                "rank": 1
-              },
-              {
-                "slug": "improved-flurry",
-                "rank": 1
-              },
-              {
-                "slug": "crystalline-refraction",
-                "rank": 1
-              },
-              {
-                "slug": "summon-water-elemental",
-                "rank": 1
-              },
-              {
-                "slug": "thermal-void",
-                "rank": 1
-              },
-              {
-                "slug": "glaciate",
-                "rank": 1
-              },
-              {
-                "slug": "hand-of-frost",
-                "rank": 4
-              }
-            ],
-            "hero": [
-              {
-                "slug": "splintering-sorcery",
-                "rank": 1
-              },
-              {
-                "slug": "augury-abounds",
-                "rank": 1
-              },
-              {
-                "slug": "force-of-will",
-                "rank": 1
-              },
-              {
-                "slug": "splintering-orbs",
-                "rank": 1
-              },
-              {
-                "slug": "attuned-familiar",
-                "rank": 1
-              },
-              {
-                "slug": "slippery-slinging",
-                "rank": 1
-              },
-              {
-                "slug": "controlled-instincts",
-                "rank": 1
-              },
-              {
-                "slug": "reactive-barrier",
-                "rank": 1
-              },
-              {
-                "slug": "infused-splinters",
-                "rank": 1
-              },
-              {
-                "slug": "archmage's-wrath",
-                "rank": 1
-              },
-              {
-                "slug": "signature-spell",
-                "rank": 1
-              },
-              {
-                "slug": "spellfrost-teachings",
-                "rank": 1
-              },
-              {
-                "slug": "polished-focus",
-                "rank": 1
-              },
-              {
-                "slug": "splinterstorm",
-                "rank": 1
-              }
-            ]
-          }
         }
       },
       "Fire": {
@@ -8720,26 +6350,26 @@
         "pvp": {
           "title": "Fire — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:56:08.754412Z",
+          "updated": "2026-09-03T08:55:23.647031Z",
           "exportString": "C8DAche08tHz49KSVf7iKFnyuNmtlZWmZmZDzMyMMDAAgZWmxMzysMzMNbLLzAAsZmxsNjxMzCAAAAAWMzMDAAYGjZwwMLzAYmhMmZYYGGA",
           "notes": [
             "Player: äswög",
             "RankIndex: 10"
           ],
           "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=91.9, families=1, sources=1, agreement=6/50 (12.0%), margin=2.0 (2.1%), updated=2026-09-03T00:56:08.754412Z",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=90.5, families=1, sources=1, agreement=5/50 (10.0%), margin=0.6 (0.7%), updated=2026-09-03T08:55:23.647031Z",
           "sampleSize": 50,
-          "agreementCount": 6,
-          "agreementRatio": 0.12,
+          "agreementCount": 5,
+          "agreementRatio": 0.1,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 6,
+              "contributors": 5,
               "familyBest": 75.04,
-              "popularityBonus": 16.84,
-              "familySupport": 91.88
+              "popularityBonus": 15.51,
+              "familySupport": 90.55
             }
           },
           "selectedTalents": {
@@ -9094,336 +6724,6 @@
             }
           },
           "selectedTalents": null
-        },
-        "pvp": {
-          "title": "Demonology — PvP (Solo Shuffle)",
-          "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:34:29.664535Z",
-          "exportString": "CoQAMrNP5kak+EBqLfUa3dMm+uMGmZ0sNzYhZmZZAAAAAAAGbLzYmZYzwwMbzWL0M2MzYsMLzMzwAAmxMzMzMYmZmZmZGAAgxMmxYGWmxAGA",
-          "notes": [
-            "Player: chazzlock",
-            "RankIndex: 4"
-          ],
-          "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/50 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T00:34:29.664535Z",
-          "sampleSize": 50,
-          "agreementCount": 1,
-          "agreementRatio": 0.02,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "murlok": {
-              "contributors": 1,
-              "familyBest": 80.4,
-              "popularityBonus": 6,
-              "familySupport": 86.4
-            }
-          },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "fel-domination",
-                "rank": 1
-              },
-              {
-                "slug": "soul-leech",
-                "rank": 1
-              },
-              {
-                "slug": "demon-skin",
-                "rank": 2
-              },
-              {
-                "slug": "fel-armor",
-                "rank": 2
-              },
-              {
-                "slug": "demonic-embrace",
-                "rank": 1
-              },
-              {
-                "slug": "nightmare",
-                "rank": 1
-              },
-              {
-                "slug": "demonic-fortitude",
-                "rank": 1
-              },
-              {
-                "slug": "curse-of-exhaustion",
-                "rank": 1
-              },
-              {
-                "slug": "curse-of-tongues",
-                "rank": 1
-              },
-              {
-                "slug": "infernal-beneficiary",
-                "rank": 1
-              },
-              {
-                "slug": "mortal-coil",
-                "rank": 1
-              },
-              {
-                "slug": "pact-of-the-annihilan",
-                "rank": 1
-              },
-              {
-                "slug": "demonic-circle",
-                "rank": 1
-              },
-              {
-                "slug": "pact-of-the-satyr",
-                "rank": 1
-              },
-              {
-                "slug": "improved-mortal-coil",
-                "rank": 1
-              },
-              {
-                "slug": "dark-pact",
-                "rank": 1
-              },
-              {
-                "slug": "foul-mouth",
-                "rank": 1
-              },
-              {
-                "slug": "empowered-healthstone",
-                "rank": 1
-              },
-              {
-                "slug": "abyss-walker",
-                "rank": 1
-              },
-              {
-                "slug": "fortified-soul",
-                "rank": 1
-              },
-              {
-                "slug": "teachings-of-the-black-harvest",
-                "rank": 1
-              },
-              {
-                "slug": "frequent-donor",
-                "rank": 1
-              },
-              {
-                "slug": "pact-of-the-eredar",
-                "rank": 1
-              },
-              {
-                "slug": "demonic-resilience",
-                "rank": 1
-              },
-              {
-                "slug": "strength-of-will",
-                "rank": 1
-              },
-              {
-                "slug": "demonic-gateway",
-                "rank": 1
-              },
-              {
-                "slug": "howl-of-terror",
-                "rank": 1
-              },
-              {
-                "slug": "soul-link",
-                "rank": 2
-              },
-              {
-                "slug": "frequent-traveler",
-                "rank": 1
-              },
-              {
-                "slug": "oppressive-darkness",
-                "rank": 1
-              },
-              {
-                "slug": "pact-of-gluttony",
-                "rank": 1
-              },
-              {
-                "slug": "soulburn",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "hand-of-gul'dan",
-                "rank": 1
-              },
-              {
-                "slug": "demoniac",
-                "rank": 1
-              },
-              {
-                "slug": "call-dreadstalkers",
-                "rank": 1
-              },
-              {
-                "slug": "fel-intellect",
-                "rank": 1
-              },
-              {
-                "slug": "practiced-rituals",
-                "rank": 1
-              },
-              {
-                "slug": "imp-erator",
-                "rank": 1
-              },
-              {
-                "slug": "implosion",
-                "rank": 1
-              },
-              {
-                "slug": "summon-felguard",
-                "rank": 1
-              },
-              {
-                "slug": "infernal-rapidity",
-                "rank": 1
-              },
-              {
-                "slug": "rune-of-shadows",
-                "rank": 2
-              },
-              {
-                "slug": "carnivorous-stalkers",
-                "rank": 2
-              },
-              {
-                "slug": "imp-gang-boss",
-                "rank": 1
-              },
-              {
-                "slug": "inner-demons",
-                "rank": 1
-              },
-              {
-                "slug": "summon-demonic-tyrant",
-                "rank": 1
-              },
-              {
-                "slug": "blighted-maw",
-                "rank": 1
-              },
-              {
-                "slug": "spiteful-reconstitution",
-                "rank": 1
-              },
-              {
-                "slug": "tyrant's-oblation",
-                "rank": 1
-              },
-              {
-                "slug": "flametouched",
-                "rank": 1
-              },
-              {
-                "slug": "sacrificed-souls",
-                "rank": 1
-              },
-              {
-                "slug": "reign-of-tyranny",
-                "rank": 1
-              },
-              {
-                "slug": "master-summoner",
-                "rank": 1
-              },
-              {
-                "slug": "demonic-calling",
-                "rank": 2
-              },
-              {
-                "slug": "hellbent-commander",
-                "rank": 1
-              },
-              {
-                "slug": "grimoire:-imp-lord",
-                "rank": 1
-              },
-              {
-                "slug": "summon-vilefiend",
-                "rank": 1
-              },
-              {
-                "slug": "to-hell-and-back",
-                "rank": 1
-              },
-              {
-                "slug": "mark-of-shatug",
-                "rank": 1
-              },
-              {
-                "slug": "dominion-of-argus",
-                "rank": 4
-              }
-            ],
-            "hero": [
-              {
-                "slug": "demonic-soul",
-                "rank": 1
-              },
-              {
-                "slug": "necrolyte-teachings",
-                "rank": 1
-              },
-              {
-                "slug": "soul-anathema",
-                "rank": 1
-              },
-              {
-                "slug": "demoniac's-fervor",
-                "rank": 1
-              },
-              {
-                "slug": "manifested-avarice",
-                "rank": 1
-              },
-              {
-                "slug": "friends-in-dark-places",
-                "rank": 1
-              },
-              {
-                "slug": "feast-of-souls",
-                "rank": 1
-              },
-              {
-                "slug": "eternal-servitude",
-                "rank": 1
-              },
-              {
-                "slug": "shared-vessel",
-                "rank": 1
-              },
-              {
-                "slug": "wicked-reaping",
-                "rank": 1
-              },
-              {
-                "slug": "quietus",
-                "rank": 1
-              },
-              {
-                "slug": "sataiel's-volition",
-                "rank": 1
-              },
-              {
-                "slug": "eternal-hunger",
-                "rank": 1
-              },
-              {
-                "slug": "shadow-of-death",
-                "rank": 1
-              }
-            ]
-          }
         }
       },
       "Destruction": {
@@ -9474,6 +6774,332 @@
             }
           },
           "selectedTalents": null
+        },
+        "pvp": {
+          "title": "Destruction — PvP (Solo Shuffle)",
+          "source": "Murlok.io top-player",
+          "updated": "2026-09-03T09:06:00.2777Z",
+          "exportString": "CsQAMrNP5kak+EBqLfUa3dMm+uMmxMjmlZGLMzMLDmxsMjZZxMAAYmZMzMLWwMzYmllRzMDLDLzWjNGAAYMAbAYmZmBzMzMGAAAmhZAAMzwA",
+          "notes": [
+            "Player: hyöká",
+            "RankIndex: 1"
+          ],
+          "confidence": "low",
+          "confidenceScore": 36,
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/50 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T09:06:00.2777Z",
+          "sampleSize": 50,
+          "agreementCount": 1,
+          "agreementRatio": 0.02,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "murlok": {
+              "contributors": 1,
+              "familyBest": 80.4,
+              "popularityBonus": 6,
+              "familySupport": 86.4
+            }
+          },
+          "selectedTalents": {
+            "class": [
+              {
+                "slug": "fel-domination",
+                "rank": 1
+              },
+              {
+                "slug": "soul-leech",
+                "rank": 1
+              },
+              {
+                "slug": "demon-skin",
+                "rank": 2
+              },
+              {
+                "slug": "fel-armor",
+                "rank": 2
+              },
+              {
+                "slug": "demonic-embrace",
+                "rank": 1
+              },
+              {
+                "slug": "nightmare",
+                "rank": 1
+              },
+              {
+                "slug": "demonic-fortitude",
+                "rank": 1
+              },
+              {
+                "slug": "curse-of-exhaustion",
+                "rank": 1
+              },
+              {
+                "slug": "infernal-beneficiary",
+                "rank": 1
+              },
+              {
+                "slug": "mortal-coil",
+                "rank": 1
+              },
+              {
+                "slug": "pact-of-the-annihilan",
+                "rank": 1
+              },
+              {
+                "slug": "demonic-circle",
+                "rank": 1
+              },
+              {
+                "slug": "pact-of-the-satyr",
+                "rank": 1
+              },
+              {
+                "slug": "improved-mortal-coil",
+                "rank": 1
+              },
+              {
+                "slug": "dark-pact",
+                "rank": 1
+              },
+              {
+                "slug": "foul-mouth",
+                "rank": 1
+              },
+              {
+                "slug": "empowered-healthstone",
+                "rank": 1
+              },
+              {
+                "slug": "abyss-walker",
+                "rank": 1
+              },
+              {
+                "slug": "teachings-of-the-black-harvest",
+                "rank": 1
+              },
+              {
+                "slug": "gorefiend's-avarice",
+                "rank": 1
+              },
+              {
+                "slug": "ichor-of-devils",
+                "rank": 1
+              },
+              {
+                "slug": "pact-of-the-eredar",
+                "rank": 1
+              },
+              {
+                "slug": "demonic-resilience",
+                "rank": 1
+              },
+              {
+                "slug": "empowered-drain-life",
+                "rank": 1
+              },
+              {
+                "slug": "strength-of-will",
+                "rank": 1
+              },
+              {
+                "slug": "demonic-gateway",
+                "rank": 1
+              },
+              {
+                "slug": "howl-of-terror",
+                "rank": 1
+              },
+              {
+                "slug": "soul-link",
+                "rank": 2
+              },
+              {
+                "slug": "frequent-traveler",
+                "rank": 1
+              },
+              {
+                "slug": "oppressive-darkness",
+                "rank": 1
+              },
+              {
+                "slug": "pact-of-gluttony",
+                "rank": 1
+              },
+              {
+                "slug": "soulburn",
+                "rank": 1
+              }
+            ],
+            "spec": [
+              {
+                "slug": "chaos-bolt",
+                "rank": 1
+              },
+              {
+                "slug": "conflagrate",
+                "rank": 1
+              },
+              {
+                "slug": "rain-of-fire",
+                "rank": 1
+              },
+              {
+                "slug": "backdraft",
+                "rank": 1
+              },
+              {
+                "slug": "roaring-blaze",
+                "rank": 1
+              },
+              {
+                "slug": "explosive-potential",
+                "rank": 1
+              },
+              {
+                "slug": "mayhem",
+                "rank": 1
+              },
+              {
+                "slug": "scalding-flames",
+                "rank": 1
+              },
+              {
+                "slug": "shadowburn",
+                "rank": 1
+              },
+              {
+                "slug": "backlash",
+                "rank": 2
+              },
+              {
+                "slug": "ashen-remains",
+                "rank": 2
+              },
+              {
+                "slug": "fiendish-cruelty",
+                "rank": 1
+              },
+              {
+                "slug": "chaotic-inferno",
+                "rank": 1
+              },
+              {
+                "slug": "flashpoint",
+                "rank": 1
+              },
+              {
+                "slug": "summon-infernal",
+                "rank": 1
+              },
+              {
+                "slug": "emberstorm",
+                "rank": 1
+              },
+              {
+                "slug": "reverse-entropy",
+                "rank": 1
+              },
+              {
+                "slug": "summoner's-embrace",
+                "rank": 1
+              },
+              {
+                "slug": "ruin",
+                "rank": 2
+              },
+              {
+                "slug": "improved-chaos-bolt",
+                "rank": 1
+              },
+              {
+                "slug": "devastation",
+                "rank": 2
+              },
+              {
+                "slug": "soul-fire",
+                "rank": 1
+              },
+              {
+                "slug": "chaos-incarnate",
+                "rank": 1
+              },
+              {
+                "slug": "conflagration-of-chaos",
+                "rank": 1
+              },
+              {
+                "slug": "avatar-of-destruction",
+                "rank": 1
+              },
+              {
+                "slug": "inferno",
+                "rank": 1
+              },
+              {
+                "slug": "embers-of-nihilam",
+                "rank": 4
+              }
+            ],
+            "hero": [
+              {
+                "slug": "wither",
+                "rank": 1
+              },
+              {
+                "slug": "xalan's-ferocity",
+                "rank": 1
+              },
+              {
+                "slug": "blackened-soul",
+                "rank": 1
+              },
+              {
+                "slug": "xalan's-cruelty",
+                "rank": 1
+              },
+              {
+                "slug": "through-the-felvine",
+                "rank": 1
+              },
+              {
+                "slug": "curse-of-the-satyr",
+                "rank": 1
+              },
+              {
+                "slug": "bleakheart-tactics",
+                "rank": 1
+              },
+              {
+                "slug": "zevrim's-resilience",
+                "rank": 1
+              },
+              {
+                "slug": "devil-fruit",
+                "rank": 1
+              },
+              {
+                "slug": "mark-of-xavius",
+                "rank": 1
+              },
+              {
+                "slug": "seeds-of-their-demise",
+                "rank": 1
+              },
+              {
+                "slug": "mark-of-peroth'arn",
+                "rank": 1
+              },
+              {
+                "slug": "alzzin's-iniquity",
+                "rank": 1
+              },
+              {
+                "slug": "malevolence",
+                "rank": 1
+              }
+            ]
+          }
         }
       },
       "Affliction": {
@@ -9530,7 +7156,7 @@
         "pvp": {
           "title": "Affliction — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:47:18.006741Z",
+          "updated": "2026-09-03T08:52:40.774897Z",
           "exportString": "CkQAMrNP5kak+EBqLfUa3dMm+uMGmZ0sNzYhZmZZAAAmZWsZmZxMAwsstMGGziZaMzMslZhhtBAAgZAAgZmZmZmZmZMzMMjZmZmBzYGAgBMA",
           "notes": [
             "Player: chobitas",
@@ -9538,7 +7164,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 41,
-          "confidenceRationale": "support=95.9, families=1, sources=1, agreement=5/50 (10.0%), margin=6.0 (6.3%), updated=2026-09-03T00:47:18.006741Z",
+          "confidenceRationale": "support=95.9, families=1, sources=1, agreement=5/50 (10.0%), margin=6.0 (6.3%), updated=2026-09-03T08:52:40.774897Z",
           "sampleSize": 50,
           "agreementCount": 5,
           "agreementRatio": 0.1,
@@ -9962,7 +7588,7 @@
         "pvp": {
           "title": "Windwalker — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:40:38.276651Z",
+          "updated": "2026-09-03T08:43:19.20015Z",
           "exportString": "C0QAQnG51S19isUJoJoTeJ/IKbmZMYMDbzMz2MAAAAAAAAAAAALDjwMzGGDGzMmZmZYWmFGmlZCAYzMLzMMzMzABwGAa2mlmZmZBYYgZGAwAYAfA",
           "notes": [
             "Player: rezuzz",
@@ -9970,7 +7596,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 40,
-          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/50 (8.0%), margin=4.4 (4.7%), updated=2026-09-03T00:40:38.276651Z",
+          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/50 (8.0%), margin=4.4 (4.7%), updated=2026-09-03T08:43:19.20015Z",
           "sampleSize": 50,
           "agreementCount": 4,
           "agreementRatio": 0.08,
@@ -10362,15 +7988,15 @@
         "pvp": {
           "title": "Mistweaver — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:57:59.434827Z",
+          "updated": "2026-09-03T08:56:47.046628Z",
           "exportString": "C4QAQnG51S19isUJoJoTeJ/IKDAAAAAAAgxMzyMLjZzixMDGLbLzgNzsZbmxGGNjZADGMmtZmZGmtZBMbzEAAAAYWmWmtZWmNbzsMLzMgAgBjZmBzAGgFZMDA",
           "notes": [
             "Player: zyzz",
-            "RankIndex: 1"
+            "RankIndex: 2"
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/50 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T00:57:59.434827Z",
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/50 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T08:56:47.046628Z",
           "sampleSize": 50,
           "agreementCount": 1,
           "agreementRatio": 0.02,
@@ -10760,336 +8386,6 @@
             }
           },
           "selectedTalents": null
-        },
-        "pvp": {
-          "title": "Balance — PvP (Solo Shuffle)",
-          "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:50:17.621451Z",
-          "exportString": "CYGADBD3hSPCL9Y9gz68WcKvMAAAAAAAAAAAAAAAAAWoMLNjxMDwsZmZmZjxwMLjlZMjZGzsYMzMD2wAgx22M22mZbWmpZmlZCAAAwmZmZMYzwYMDgZGYGYA",
-          "notes": [
-            "Player: berjanprime",
-            "RankIndex: 3"
-          ],
-          "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/49 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T00:50:17.621451Z",
-          "sampleSize": 49,
-          "agreementCount": 1,
-          "agreementRatio": 0.02,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "murlok": {
-              "contributors": 1,
-              "familyBest": 80.4,
-              "popularityBonus": 6,
-              "familySupport": 86.4
-            }
-          },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "frenzied-regeneration",
-                "rank": 1
-              },
-              {
-                "slug": "starfire",
-                "rank": 1
-              },
-              {
-                "slug": "ursoc's-spirit",
-                "rank": 1
-              },
-              {
-                "slug": "starsurge",
-                "rank": 1
-              },
-              {
-                "slug": "verdant-heart",
-                "rank": 1
-              },
-              {
-                "slug": "remove-corruption",
-                "rank": 1
-              },
-              {
-                "slug": "moonkin-form",
-                "rank": 1
-              },
-              {
-                "slug": "improved-barkskin",
-                "rank": 1
-              },
-              {
-                "slug": "nurturing-instinct",
-                "rank": 2
-              },
-              {
-                "slug": "sunfire",
-                "rank": 1
-              },
-              {
-                "slug": "thick-hide",
-                "rank": 1
-              },
-              {
-                "slug": "light-of-the-sun",
-                "rank": 1
-              },
-              {
-                "slug": "natural-recovery",
-                "rank": 1
-              },
-              {
-                "slug": "astral-influence",
-                "rank": 1
-              },
-              {
-                "slug": "wild-charge",
-                "rank": 1
-              },
-              {
-                "slug": "cyclone",
-                "rank": 1
-              },
-              {
-                "slug": "aessina's-renewal",
-                "rank": 1
-              },
-              {
-                "slug": "starlight-conduit",
-                "rank": 1
-              },
-              {
-                "slug": "feline-swiftness",
-                "rank": 1
-              },
-              {
-                "slug": "well-honed-instincts",
-                "rank": 1
-              },
-              {
-                "slug": "matted-fur",
-                "rank": 2
-              },
-              {
-                "slug": "stampeding-roar",
-                "rank": 1
-              },
-              {
-                "slug": "typhoon",
-                "rank": 1
-              },
-              {
-                "slug": "mass-entanglement",
-                "rank": 1
-              },
-              {
-                "slug": "oakskin",
-                "rank": 1
-              },
-              {
-                "slug": "lycara's-teachings",
-                "rank": 2
-              },
-              {
-                "slug": "lore-of-the-grove",
-                "rank": 1
-              },
-              {
-                "slug": "gift-of-the-wild",
-                "rank": 1
-              },
-              {
-                "slug": "mighty-bash",
-                "rank": 1
-              },
-              {
-                "slug": "ursine-vigor",
-                "rank": 1
-              },
-              {
-                "slug": "circle-of-the-heavens",
-                "rank": 1
-              },
-              {
-                "slug": "forestwalk",
-                "rank": 2
-              },
-              {
-                "slug": "heart-of-the-wild",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "eclipse",
-                "rank": 1
-              },
-              {
-                "slug": "shooting-stars",
-                "rank": 1
-              },
-              {
-                "slug": "solar-beam",
-                "rank": 1
-              },
-              {
-                "slug": "solstice",
-                "rank": 1
-              },
-              {
-                "slug": "force-of-nature",
-                "rank": 1
-              },
-              {
-                "slug": "twin-moons",
-                "rank": 1
-              },
-              {
-                "slug": "improved-eclipse",
-                "rank": 1
-              },
-              {
-                "slug": "nature's-balance",
-                "rank": 1
-              },
-              {
-                "slug": "umbral-intensity",
-                "rank": 1
-              },
-              {
-                "slug": "celestial-alignment",
-                "rank": 1
-              },
-              {
-                "slug": "soul-of-the-forest",
-                "rank": 1
-              },
-              {
-                "slug": "sunseeker-mushroom",
-                "rank": 1
-              },
-              {
-                "slug": "stellar-amplification",
-                "rank": 1
-              },
-              {
-                "slug": "whirling-stars",
-                "rank": 1
-              },
-              {
-                "slug": "cosmic-rapidity",
-                "rank": 2
-              },
-              {
-                "slug": "celestial-fire",
-                "rank": 1
-              },
-              {
-                "slug": "sculpt-the-stars",
-                "rank": 1
-              },
-              {
-                "slug": "starlord",
-                "rank": 2
-              },
-              {
-                "slug": "astral-communion",
-                "rank": 1
-              },
-              {
-                "slug": "balance-of-all-things",
-                "rank": 2
-              },
-              {
-                "slug": "total-eclipse",
-                "rank": 2
-              },
-              {
-                "slug": "rattle-the-stars",
-                "rank": 1
-              },
-              {
-                "slug": "incarnation:-chosen-of-elune",
-                "rank": 1
-              },
-              {
-                "slug": "harmony-of-the-heavens",
-                "rank": 1
-              },
-              {
-                "slug": "elune's-guidance",
-                "rank": 1
-              },
-              {
-                "slug": "denizen-of-the-dream",
-                "rank": 1
-              },
-              {
-                "slug": "ascendant-eclipses",
-                "rank": 4
-              }
-            ],
-            "hero": [
-              {
-                "slug": "dream-surge",
-                "rank": 1
-              },
-              {
-                "slug": "treants-of-the-moon",
-                "rank": 1
-              },
-              {
-                "slug": "expansiveness",
-                "rank": 1
-              },
-              {
-                "slug": "protective-growth",
-                "rank": 1
-              },
-              {
-                "slug": "sylvan-beckoning",
-                "rank": 1
-              },
-              {
-                "slug": "power-of-nature",
-                "rank": 1
-              },
-              {
-                "slug": "cenarius'-might",
-                "rank": 1
-              },
-              {
-                "slug": "potent-enchantments",
-                "rank": 1
-              },
-              {
-                "slug": "dryad's-dance",
-                "rank": 1
-              },
-              {
-                "slug": "early-spring",
-                "rank": 1
-              },
-              {
-                "slug": "control-of-the-dream",
-                "rank": 1
-              },
-              {
-                "slug": "blooming-infusion",
-                "rank": 1
-              },
-              {
-                "slug": "spirit-of-the-thicket",
-                "rank": 1
-              },
-              {
-                "slug": "harmony-of-the-grove",
-                "rank": 1
-              }
-            ]
-          }
         }
       },
       "Feral": {
@@ -11140,344 +8436,6 @@
             }
           },
           "selectedTalents": null
-        },
-        "pvp": {
-          "title": "Feral — PvP (Solo Shuffle)",
-          "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:50:52.037425Z",
-          "exportString": "CcGADBD3hSPCL9Y9gz68WcKvMAAAAAAAjZwwMzMmtlxyMLzMzMzMDAAAALBzmBmZmaGzmZmZmtxMjBAAAAAAYAAAA0MLz2MzMz2MLNbzssBmZAWYwAAYmBzshB",
-          "notes": [
-            "Player: mxydischarge",
-            "RankIndex: 2"
-          ],
-          "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/50 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T00:50:52.037425Z",
-          "sampleSize": 50,
-          "agreementCount": 1,
-          "agreementRatio": 0.02,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "murlok": {
-              "contributors": 1,
-              "familyBest": 80.4,
-              "popularityBonus": 6,
-              "familySupport": 86.4
-            }
-          },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "rake",
-                "rank": 1
-              },
-              {
-                "slug": "frenzied-regeneration",
-                "rank": 1
-              },
-              {
-                "slug": "grievous-wounds",
-                "rank": 1
-              },
-              {
-                "slug": "swipe",
-                "rank": 1
-              },
-              {
-                "slug": "ursoc's-spirit",
-                "rank": 1
-              },
-              {
-                "slug": "rip",
-                "rank": 1
-              },
-              {
-                "slug": "verdant-heart",
-                "rank": 1
-              },
-              {
-                "slug": "remove-corruption",
-                "rank": 1
-              },
-              {
-                "slug": "maim",
-                "rank": 1
-              },
-              {
-                "slug": "killer-instinct",
-                "rank": 2
-              },
-              {
-                "slug": "improved-barkskin",
-                "rank": 1
-              },
-              {
-                "slug": "primal-fury",
-                "rank": 1
-              },
-              {
-                "slug": "thick-hide",
-                "rank": 1
-              },
-              {
-                "slug": "skull-bash",
-                "rank": 1
-              },
-              {
-                "slug": "natural-recovery",
-                "rank": 1
-              },
-              {
-                "slug": "wild-charge",
-                "rank": 1
-              },
-              {
-                "slug": "cyclone",
-                "rank": 1
-              },
-              {
-                "slug": "aessina's-renewal",
-                "rank": 1
-              },
-              {
-                "slug": "feline-swiftness",
-                "rank": 1
-              },
-              {
-                "slug": "well-honed-instincts",
-                "rank": 1
-              },
-              {
-                "slug": "matted-fur",
-                "rank": 2
-              },
-              {
-                "slug": "stampeding-roar",
-                "rank": 1
-              },
-              {
-                "slug": "typhoon",
-                "rank": 1
-              },
-              {
-                "slug": "ursol's-vortex",
-                "rank": 1
-              },
-              {
-                "slug": "oakskin",
-                "rank": 1
-              },
-              {
-                "slug": "instincts-of-the-claw",
-                "rank": 1
-              },
-              {
-                "slug": "lycara's-teachings",
-                "rank": 2
-              },
-              {
-                "slug": "gift-of-the-wild",
-                "rank": 1
-              },
-              {
-                "slug": "mighty-bash",
-                "rank": 1
-              },
-              {
-                "slug": "circle-of-the-wild",
-                "rank": 1
-              },
-              {
-                "slug": "forestwalk",
-                "rank": 2
-              },
-              {
-                "slug": "fluid-form",
-                "rank": 1
-              },
-              {
-                "slug": "heart-of-the-wild",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "tiger's-fury",
-                "rank": 1
-              },
-              {
-                "slug": "omen-of-clarity",
-                "rank": 1
-              },
-              {
-                "slug": "primal-wrath",
-                "rank": 1
-              },
-              {
-                "slug": "predator",
-                "rank": 1
-              },
-              {
-                "slug": "sabertooth",
-                "rank": 1
-              },
-              {
-                "slug": "tireless-energy",
-                "rank": 2
-              },
-              {
-                "slug": "pouncing-strikes",
-                "rank": 1
-              },
-              {
-                "slug": "taste-for-blood",
-                "rank": 1
-              },
-              {
-                "slug": "survival-instincts",
-                "rank": 1
-              },
-              {
-                "slug": "dreadful-bleeding",
-                "rank": 1
-              },
-              {
-                "slug": "sudden-ambush",
-                "rank": 1
-              },
-              {
-                "slug": "moment-of-clarity",
-                "rank": 1
-              },
-              {
-                "slug": "berserk",
-                "rank": 1
-              },
-              {
-                "slug": "merciless-claws",
-                "rank": 1
-              },
-              {
-                "slug": "panther's-guile",
-                "rank": 1
-              },
-              {
-                "slug": "infected-wounds",
-                "rank": 1
-              },
-              {
-                "slug": "tiger's-tenacity",
-                "rank": 1
-              },
-              {
-                "slug": "berserk:-heart-of-the-lion",
-                "rank": 1
-              },
-              {
-                "slug": "soul-of-the-forest",
-                "rank": 1
-              },
-              {
-                "slug": "frantic-momentum",
-                "rank": 2
-              },
-              {
-                "slug": "apex-predator's-craving",
-                "rank": 1
-              },
-              {
-                "slug": "feral-frenzy",
-                "rank": 1
-              },
-              {
-                "slug": "incarnation:-avatar-of-ashamane",
-                "rank": 1
-              },
-              {
-                "slug": "lacerating-claws",
-                "rank": 1
-              },
-              {
-                "slug": "lunar-inspiration",
-                "rank": 1
-              },
-              {
-                "slug": "focused-frenzy",
-                "rank": 1
-              },
-              {
-                "slug": "ashamane's-guidance",
-                "rank": 1
-              },
-              {
-                "slug": "circle-of-life-and-death",
-                "rank": 1
-              },
-              {
-                "slug": "unseen-predator",
-                "rank": 4
-              }
-            ],
-            "hero": [
-              {
-                "slug": "thriving-growth",
-                "rank": 1
-              },
-              {
-                "slug": "hunt-beneath-the-open-skies",
-                "rank": 1
-              },
-              {
-                "slug": "strategic-infusion",
-                "rank": 1
-              },
-              {
-                "slug": "wildstalker's-power",
-                "rank": 1
-              },
-              {
-                "slug": "green-thumb",
-                "rank": 1
-              },
-              {
-                "slug": "lethal-preservation",
-                "rank": 1
-              },
-              {
-                "slug": "flower-walk",
-                "rank": 1
-              },
-              {
-                "slug": "bond-with-nature",
-                "rank": 1
-              },
-              {
-                "slug": "bursting-growth",
-                "rank": 1
-              },
-              {
-                "slug": "resilient-flourishing",
-                "rank": 1
-              },
-              {
-                "slug": "patient-custodian",
-                "rank": 1
-              },
-              {
-                "slug": "implant",
-                "rank": 1
-              },
-              {
-                "slug": "rampancy",
-                "rank": 1
-              },
-              {
-                "slug": "vigorous-creepers",
-                "rank": 1
-              }
-            ]
-          }
         }
       },
       "Guardian": {
@@ -11528,336 +8486,6 @@
             }
           },
           "selectedTalents": null
-        },
-        "pvp": {
-          "title": "Guardian — PvP (Solo Shuffle)",
-          "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:50:55.015435Z",
-          "exportString": "CgGADBD3hSPCL9Y9gz68WcKvMAAAAAAAAAAAAgZmhl5BGzMzyMwMzyyAzmZMaiMzsNmZmZZMzDAAAAAAALGwy2MDGzyAYqZWmlxYAAsZmZGAYYwMLjNAzMAG",
-          "notes": [
-            "Player: themoose",
-            "RankIndex: 5"
-          ],
-          "confidence": "low",
-          "confidenceScore": 44,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-09-03T00:50:55.015435Z",
-          "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
-          "distinctFamilyCount": 1,
-          "consensusBreakdown": {
-            "murlok": {
-              "contributors": 1,
-              "familyBest": 80.4,
-              "popularityBonus": 6,
-              "familySupport": 86.4
-            }
-          },
-          "selectedTalents": {
-            "class": [
-              {
-                "slug": "rake",
-                "rank": 1
-              },
-              {
-                "slug": "frenzied-regeneration",
-                "rank": 1
-              },
-              {
-                "slug": "grievous-wounds",
-                "rank": 1
-              },
-              {
-                "slug": "swipe",
-                "rank": 1
-              },
-              {
-                "slug": "ursoc's-spirit",
-                "rank": 1
-              },
-              {
-                "slug": "verdant-heart",
-                "rank": 1
-              },
-              {
-                "slug": "remove-corruption",
-                "rank": 1
-              },
-              {
-                "slug": "killer-instinct",
-                "rank": 2
-              },
-              {
-                "slug": "ironfur",
-                "rank": 1
-              },
-              {
-                "slug": "improved-barkskin",
-                "rank": 1
-              },
-              {
-                "slug": "nurturing-instinct",
-                "rank": 2
-              },
-              {
-                "slug": "thick-hide",
-                "rank": 1
-              },
-              {
-                "slug": "skull-bash",
-                "rank": 1
-              },
-              {
-                "slug": "natural-recovery",
-                "rank": 1
-              },
-              {
-                "slug": "astral-influence",
-                "rank": 1
-              },
-              {
-                "slug": "wild-charge",
-                "rank": 1
-              },
-              {
-                "slug": "cyclone",
-                "rank": 1
-              },
-              {
-                "slug": "aessina's-renewal",
-                "rank": 1
-              },
-              {
-                "slug": "feline-swiftness",
-                "rank": 1
-              },
-              {
-                "slug": "well-honed-instincts",
-                "rank": 1
-              },
-              {
-                "slug": "matted-fur",
-                "rank": 2
-              },
-              {
-                "slug": "stampeding-roar",
-                "rank": 1
-              },
-              {
-                "slug": "typhoon",
-                "rank": 1
-              },
-              {
-                "slug": "ursol's-vortex",
-                "rank": 1
-              },
-              {
-                "slug": "oakskin",
-                "rank": 1
-              },
-              {
-                "slug": "perfectly-honed-instincts",
-                "rank": 1
-              },
-              {
-                "slug": "lycara's-teachings",
-                "rank": 2
-              },
-              {
-                "slug": "gift-of-the-wild",
-                "rank": 1
-              },
-              {
-                "slug": "incapacitating-roar",
-                "rank": 1
-              },
-              {
-                "slug": "ursine-vigor",
-                "rank": 1
-              },
-              {
-                "slug": "improved-stampeding-roar",
-                "rank": 1
-              },
-              {
-                "slug": "symbiotic-relationship",
-                "rank": 1
-              },
-              {
-                "slug": "forestwalk",
-                "rank": 1
-              }
-            ],
-            "spec": [
-              {
-                "slug": "maul",
-                "rank": 1
-              },
-              {
-                "slug": "gore",
-                "rank": 1
-              },
-              {
-                "slug": "survival-instincts",
-                "rank": 1
-              },
-              {
-                "slug": "front-of-the-pack",
-                "rank": 1
-              },
-              {
-                "slug": "dream-of-cenarius",
-                "rank": 1
-              },
-              {
-                "slug": "infected-wounds",
-                "rank": 1
-              },
-              {
-                "slug": "innate-resolve",
-                "rank": 1
-              },
-              {
-                "slug": "berserk",
-                "rank": 1
-              },
-              {
-                "slug": "vulnerable-flesh",
-                "rank": 1
-              },
-              {
-                "slug": "survival-of-the-fittest",
-                "rank": 2
-              },
-              {
-                "slug": "reinvigoration",
-                "rank": 2
-              },
-              {
-                "slug": "after-the-wildfire",
-                "rank": 1
-              },
-              {
-                "slug": "memory-of-ysera",
-                "rank": 2
-              },
-              {
-                "slug": "scintillating-moonlight",
-                "rank": 2
-              },
-              {
-                "slug": "brambles",
-                "rank": 1
-              },
-              {
-                "slug": "reinforced-fur",
-                "rank": 1
-              },
-              {
-                "slug": "ursoc's-endurance",
-                "rank": 1
-              },
-              {
-                "slug": "ursol's-warding",
-                "rank": 1
-              },
-              {
-                "slug": "raze",
-                "rank": 1
-              },
-              {
-                "slug": "lunar-beam",
-                "rank": 1
-              },
-              {
-                "slug": "ursoc's-fury",
-                "rank": 1
-              },
-              {
-                "slug": "fury-of-nature",
-                "rank": 1
-              },
-              {
-                "slug": "twin-moonfire",
-                "rank": 1
-              },
-              {
-                "slug": "incarnation:-guardian-of-ursoc",
-                "rank": 1
-              },
-              {
-                "slug": "waking-nightmare",
-                "rank": 1
-              },
-              {
-                "slug": "galactic-guardian",
-                "rank": 1
-              },
-              {
-                "slug": "wild-guardian",
-                "rank": 4
-              }
-            ],
-            "hero": [
-              {
-                "slug": "boundless-moonlight",
-                "rank": 1
-              },
-              {
-                "slug": "moon-guardian",
-                "rank": 1
-              },
-              {
-                "slug": "lunar-insight",
-                "rank": 1
-              },
-              {
-                "slug": "glistening-fur",
-                "rank": 1
-              },
-              {
-                "slug": "star-cascade",
-                "rank": 1
-              },
-              {
-                "slug": "stellar-command",
-                "rank": 1
-              },
-              {
-                "slug": "atmospheric-exposure",
-                "rank": 1
-              },
-              {
-                "slug": "moondust",
-                "rank": 1
-              },
-              {
-                "slug": "penumbral-swell",
-                "rank": 1
-              },
-              {
-                "slug": "lunar-calling",
-                "rank": 1
-              },
-              {
-                "slug": "the-light-of-elune",
-                "rank": 1
-              },
-              {
-                "slug": "lunation",
-                "rank": 1
-              },
-              {
-                "slug": "bask-in-moonlight",
-                "rank": 1
-              },
-              {
-                "slug": "the-eternal-moon",
-                "rank": 1
-              }
-            ]
-          }
         }
       },
       "Restoration": {
@@ -11912,7 +8540,7 @@
         "pvp": {
           "title": "Restoration — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:37:32.976524Z",
+          "updated": "2026-09-03T08:37:24.731071Z",
           "exportString": "CkGADBD3hSPCL9Y9gz68WcKvMMMmZDjZmZmlxMDmNmNbDAAAAAAAAAAsMDZjx0MzMDmNzMzYzgZAAAAAMAgxA22GLYamZZAAMbzs0sNziFGzMDzYD0MAYmZmBgB",
           "notes": [
             "Player: håbibibanned",
@@ -11920,7 +8548,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 37,
-          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=0.0 (0.0%), updated=2026-09-03T00:37:32.976524Z",
+          "confidenceRationale": "support=89.9, families=1, sources=1, agreement=2/50 (4.0%), margin=0.0 (0.0%), updated=2026-09-03T08:37:24.731071Z",
           "sampleSize": 50,
           "agreementCount": 2,
           "agreementRatio": 0.04,
@@ -12310,15 +8938,15 @@
         "pvp": {
           "title": "Havoc — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:37:48.838508Z",
+          "updated": "2026-09-03T08:38:20.538535Z",
           "exportString": "CEkAp/epaxe7D0A403L+Tvk0iygZmZMjxMjZmJDzAAAAAAAmFjZbMzMzsNzMWmZMjlZGmZbmlZWmlZmZW2mlppZMzYGLAAAAAAIAzMzMYAIAAwA",
           "notes": [
-            "Player: scys",
-            "RankIndex: 10"
+            "Player: scyz",
+            "RankIndex: 8"
           ],
           "confidence": "low",
           "confidenceScore": 48,
-          "confidenceRationale": "support=97.2, families=1, sources=1, agreement=12/50 (24.0%), margin=7.3 (7.5%), updated=2026-09-03T00:37:48.838508Z",
+          "confidenceRationale": "support=97.2, families=1, sources=1, agreement=12/50 (24.0%), margin=7.3 (7.5%), updated=2026-09-03T08:38:20.538535Z",
           "sampleSize": 50,
           "agreementCount": 12,
           "agreementRatio": 0.24,
@@ -12678,6 +9306,324 @@
             }
           },
           "selectedTalents": null
+        },
+        "pvp": {
+          "title": "Vengeance — PvP (Solo Shuffle)",
+          "source": "Murlok.io top-player",
+          "updated": "2026-09-03T08:37:19.532339Z",
+          "exportString": "CUkAp/epaxe7D0A403L+Tvk0iCAYMzMjxMzEzMY2MzMzMMjZYGzYGDzMzMWmxYMmBAAAgZbGMMW2YCDzYmFAAAAMYGABYmBAAAAgB",
+          "notes": [
+            "Player: dhyatt",
+            "RankIndex: 1"
+          ],
+          "confidence": "high",
+          "confidenceScore": 100,
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/1 (100.0%), margin=max, updated=2026-09-03T08:37:19.532339Z",
+          "sampleSize": 1,
+          "agreementCount": 1,
+          "agreementRatio": 1,
+          "distinctSourceCount": 1,
+          "distinctFamilyCount": 1,
+          "consensusBreakdown": {
+            "murlok": {
+              "contributors": 1,
+              "familyBest": 80.4,
+              "popularityBonus": 6,
+              "familySupport": 86.4
+            }
+          },
+          "selectedTalents": {
+            "class": [
+              {
+                "slug": "vengeful-retreat",
+                "rank": 1
+              },
+              {
+                "slug": "felblade",
+                "rank": 1
+              },
+              {
+                "slug": "sigil-of-misery",
+                "rank": 1
+              },
+              {
+                "slug": "unrestrained-fury",
+                "rank": 1
+              },
+              {
+                "slug": "shattered-restoration",
+                "rank": 1
+              },
+              {
+                "slug": "improved-sigil-of-misery",
+                "rank": 1
+              },
+              {
+                "slug": "bouncing-glaives",
+                "rank": 1
+              },
+              {
+                "slug": "imprison",
+                "rank": 1
+              },
+              {
+                "slug": "chaos-nova",
+                "rank": 1
+              },
+              {
+                "slug": "improved-disrupt",
+                "rank": 1
+              },
+              {
+                "slug": "consume-magic",
+                "rank": 1
+              },
+              {
+                "slug": "focused-ire",
+                "rank": 1
+              },
+              {
+                "slug": "master-of-the-glaive",
+                "rank": 1
+              },
+              {
+                "slug": "blazing-path",
+                "rank": 1
+              },
+              {
+                "slug": "aura-of-pain",
+                "rank": 1
+              },
+              {
+                "slug": "pursuit",
+                "rank": 1
+              },
+              {
+                "slug": "soul-rending",
+                "rank": 2
+              },
+              {
+                "slug": "infernal-armor",
+                "rank": 2
+              },
+              {
+                "slug": "illidari-knowledge",
+                "rank": 2
+              },
+              {
+                "slug": "felbound",
+                "rank": 1
+              },
+              {
+                "slug": "will-of-the-illidari",
+                "rank": 2
+              },
+              {
+                "slug": "internal-struggle",
+                "rank": 1
+              },
+              {
+                "slug": "furious",
+                "rank": 1
+              },
+              {
+                "slug": "remorseless",
+                "rank": 1
+              },
+              {
+                "slug": "first-in,-last-out",
+                "rank": 1
+              },
+              {
+                "slug": "erratic-felheart",
+                "rank": 2
+              },
+              {
+                "slug": "darkness",
+                "rank": 1
+              },
+              {
+                "slug": "soul-splitter",
+                "rank": 2
+              },
+              {
+                "slug": "demonic-resilience",
+                "rank": 1
+              }
+            ],
+            "spec": [
+              {
+                "slug": "fel-devastation",
+                "rank": 1
+              },
+              {
+                "slug": "spirit-bomb",
+                "rank": 1
+              },
+              {
+                "slug": "fiery-brand",
+                "rank": 1
+              },
+              {
+                "slug": "perfectly-balanced-glaive",
+                "rank": 1
+              },
+              {
+                "slug": "quickened-sigils",
+                "rank": 1
+              },
+              {
+                "slug": "ascending-flame",
+                "rank": 1
+              },
+              {
+                "slug": "tempered-steel",
+                "rank": 1
+              },
+              {
+                "slug": "calcified-spikes",
+                "rank": 1
+              },
+              {
+                "slug": "feed-the-demon",
+                "rank": 1
+              },
+              {
+                "slug": "sigil-of-spite",
+                "rank": 1
+              },
+              {
+                "slug": "agonizing-flames",
+                "rank": 1
+              },
+              {
+                "slug": "burning-blood",
+                "rank": 1
+              },
+              {
+                "slug": "frailty",
+                "rank": 1
+              },
+              {
+                "slug": "volatile-flameblood",
+                "rank": 1
+              },
+              {
+                "slug": "soul-sigils",
+                "rank": 1
+              },
+              {
+                "slug": "fel-flame-fortification",
+                "rank": 1
+              },
+              {
+                "slug": "void-reaver",
+                "rank": 1
+              },
+              {
+                "slug": "fiery-demise",
+                "rank": 2
+              },
+              {
+                "slug": "chains-of-anger",
+                "rank": 1
+              },
+              {
+                "slug": "focused-cleave",
+                "rank": 1
+              },
+              {
+                "slug": "burning-alive",
+                "rank": 1
+              },
+              {
+                "slug": "cycle-of-binding",
+                "rank": 1
+              },
+              {
+                "slug": "vulnerability",
+                "rank": 2
+              },
+              {
+                "slug": "vengeful-beast",
+                "rank": 1
+              },
+              {
+                "slug": "charred-flesh",
+                "rank": 2
+              },
+              {
+                "slug": "soulcrush",
+                "rank": 1
+              },
+              {
+                "slug": "down-in-flames",
+                "rank": 1
+              },
+              {
+                "slug": "untethered-rage",
+                "rank": 4
+              }
+            ],
+            "hero": [
+              {
+                "slug": "art-of-the-glaive",
+                "rank": 1
+              },
+              {
+                "slug": "fury-of-the-aldrachi",
+                "rank": 1
+              },
+              {
+                "slug": "unhindered-assault",
+                "rank": 1
+              },
+              {
+                "slug": "reaver's-mark",
+                "rank": 1
+              },
+              {
+                "slug": "broken-spirit",
+                "rank": 1
+              },
+              {
+                "slug": "aldrachi-tactics",
+                "rank": 1
+              },
+              {
+                "slug": "incorruptible-spirit",
+                "rank": 1
+              },
+              {
+                "slug": "wounded-quarry",
+                "rank": 1
+              },
+              {
+                "slug": "keen-edge",
+                "rank": 1
+              },
+              {
+                "slug": "incisive-blade",
+                "rank": 1
+              },
+              {
+                "slug": "keen-engagement",
+                "rank": 1
+              },
+              {
+                "slug": "bladecraft",
+                "rank": 1
+              },
+              {
+                "slug": "warblade's-hunger",
+                "rank": 1
+              },
+              {
+                "slug": "thrill-of-the-fight",
+                "rank": 1
+              }
+            ]
+          }
         }
       },
       "Devourer": {
@@ -12796,7 +9742,7 @@
         "pvp": {
           "title": "Devastation — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:51:38.768331Z",
+          "updated": "2026-09-03T08:47:16.196533Z",
           "exportString": "CsbBPJc41CfcseY0baneJ1IHrBAAAAAAAAAAwYMzgZYGmhZGGjZaMzMNzM2GMzMzMzMzAMjZYmZZMDMwYmxGsMmlGbzMMZmsA2GGYmxMGD",
           "notes": [
             "Player: trucky",
@@ -12804,7 +9750,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 36,
-          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/50 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T00:51:38.768331Z",
+          "confidenceRationale": "support=86.4, families=1, sources=1, agreement=1/50 (2.0%), margin=0.0 (0.0%), updated=2026-09-03T08:47:16.196533Z",
           "sampleSize": 50,
           "agreementCount": 1,
           "agreementRatio": 0.02,
@@ -13176,26 +10122,26 @@
         "pvp": {
           "title": "Preservation — PvP (Solo Shuffle)",
           "source": "Murlok.io top-player",
-          "updated": "2026-09-03T00:38:00.78154Z",
+          "updated": "2026-09-03T08:38:00.75253Z",
           "exportString": "CwbBPJc41CfcseY0baneJ1IHrBAAAAAmZmZ22GYYmZYmBmthBAAmhZmxYYmYmZAAAgtZmZaGjZmZZMDAMmZMzyGLWYYmZmGa2MsZYMzgZGGA",
           "notes": [
-            "Player: siniejderha",
-            "RankIndex: 5"
+            "Player: øßämábïñlãðñ",
+            "RankIndex: 2"
           ],
           "confidence": "low",
-          "confidenceScore": 42,
-          "confidenceRationale": "support=95.9, families=1, sources=1, agreement=5/50 (10.0%), margin=9.5 (9.9%), updated=2026-09-03T00:38:00.78154Z",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=94.3, families=1, sources=1, agreement=4/50 (8.0%), margin=7.9 (8.4%), updated=2026-09-03T08:38:00.75253Z",
           "sampleSize": 50,
-          "agreementCount": 5,
-          "agreementRatio": 0.1,
+          "agreementCount": 4,
+          "agreementRatio": 0.08,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
             "murlok": {
-              "contributors": 5,
+              "contributors": 4,
               "familyBest": 80.4,
-              "popularityBonus": 15.51,
-              "familySupport": 95.91
+              "popularityBonus": 13.93,
+              "familySupport": 94.33
             }
           },
           "selectedTalents": {
