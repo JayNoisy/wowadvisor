@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T03:40:28.823Z",
+  "generatedAt": "2026-09-11T16:05:29.600Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -19,8 +19,8 @@
     },
     "archon": {
       "ok": true,
-      "count": 0,
-      "localCount": 0,
+      "count": 1,
+      "localCount": 1,
       "remote": []
     },
     "curatedGuides": {
@@ -778,11 +778,11 @@
           "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAMzMmlxMjZGDzALzMzMAAAAGzsMDmZmx2MmZAMTBwMLYIMmtBYMwiZmBAzYmxYwMAzMDYA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 46,
-          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/3 (33.3%), margin=8.0 (22.2%), updated=2026-08-24 15:46:50",
-          "sampleSize": 3,
+          "confidenceScore": 40,
+          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=5.0 (13.9%), updated=2026-08-24 15:46:50",
+          "sampleSize": 4,
           "agreementCount": 1,
-          "agreementRatio": 0.333,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
