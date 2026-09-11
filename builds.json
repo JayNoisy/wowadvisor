@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T16:02:04.389Z",
+  "generatedAt": "2026-09-11T03:40:28.823Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/tank/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -498,8 +498,8 @@
           "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxoxyAYGw2MzMzMjZbeAAAAAAAzYmZGbzYMjZYZMNDAAAwAAjllZGLYmZ8AjxAwM2AjxMzmBA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=2.0 (5.6%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=8.0 (22.2%), updated=2026-08-24 15:46:50",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -973,52 +973,52 @@
       "Unholy": {
         "raid": {
           "title": "Unholy - Raid",
-          "source": "Wowhead",
-          "updated": "2026-09-05T14:22:03-05:00",
-          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAwMjZMDDz2MzMTzmZmZMjBAAAAAAAgZGmZAwyMmZ2mZGzMDYzsYYIDMbM0YBAzAAzMjZAmZmxYA",
+          "source": "Icy-Veins",
+          "updated": "2026-09-08T19:20:00+00:00",
+          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAwMjZMzYY2mZmZa2MzMjZAAAAAAAAgZGGDAWmxMz2MzYmZAbmFDDMwsxQjFAMDAjZmxMAzMzYMA",
           "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/death-knight/unholy/talent-builds-pve-dps"
+            "Guide URL: https://www.icy-veins.com/wow/unholy-death-knight-pve-dps-spec-builds-talents"
           ],
           "confidence": "low",
-          "confidenceScore": 40,
-          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.5 (1.2%), updated=2026-09-05T14:22:03-05:00",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/6 (16.7%), margin=5.0 (11.1%), updated=2026-09-08T19:20:00+00:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "wowhead": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 34,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 40
+              "familySupport": 45
             }
           },
           "selectedTalents": null
         },
         "aoe": {
           "title": "Unholy - AoE (Mythic+)",
-          "source": "Wowhead",
-          "updated": "2026-09-05T14:22:03-05:00",
-          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmhZMDDz2MzMTzmxMzMjBAAAAAAAgZGzYAwyMmZ2MzYMDYzsZYIDMbM0YBDYGAGzMjZAmZmxYA",
+          "source": "Icy-Veins",
+          "updated": "2026-09-08T19:20:00+00:00",
+          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmhZMzMDz2MzMTzmZGjZAAAAAAAAgZGzYAwyMmZ2MzYMjBGYGbassAYbwGGwMAMmZGzgZGMjxA",
           "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/death-knight/unholy/talent-builds-pve-dps"
+            "Guide URL: https://www.icy-veins.com/wow/unholy-death-knight-pve-dps-spec-builds-talents"
           ],
           "confidence": "low",
-          "confidenceScore": 44,
-          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (2.5%), updated=2026-09-05T14:22:03-05:00",
+          "confidenceScore": 49,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/4 (25.0%), margin=5.0 (11.1%), updated=2026-09-08T19:20:00+00:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "wowhead": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 34,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 40
+              "familySupport": 45
             }
           },
           "selectedTalents": null
