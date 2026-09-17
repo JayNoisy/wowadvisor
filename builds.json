@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T04:01:46.603Z",
+  "generatedAt": "2026-09-17T16:30:59.819Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -19,8 +19,8 @@
     },
     "archon": {
       "ok": true,
-      "count": 1,
-      "localCount": 1,
+      "count": 0,
+      "localCount": 0,
       "remote": []
     },
     "curatedGuides": {
@@ -284,11 +284,11 @@
             "Guide URL: https://www.wowhead.com/guide/classes/paladin/protection/talent-builds-pve-tank"
           ],
           "confidence": "low",
-          "confidenceScore": 48,
-          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/5 (20.0%), margin=7.0 (15.2%), updated=2026-09-14T23:59:24-05:00",
-          "sampleSize": 5,
+          "confidenceScore": 50,
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (15.2%), updated=2026-09-14T23:59:24-05:00",
+          "sampleSize": 4,
           "agreementCount": 1,
-          "agreementRatio": 0.2,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
@@ -472,49 +472,53 @@
       },
       "Survival": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxoxyAYGw2MmZGjZZAAAAAAYGzYmFzYMjZwYaGAAAgBAzYZZmZWMmZmxMzAgZssBjhxmBA",
-          "notes": [],
+          "title": "Survival - Raid",
+          "source": "Icy-Veins",
+          "updated": "2026-09-15T15:35:00+00:00",
+          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxoxyAYmgtZMzMGzyAAAAAAwMmxMLmxYGzgx0MAAAADAmxyyMzsYMzMjZmBAzYZDGDjNDAA",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/survival-hunter-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 34,
-          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 49,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/5 (20.0%), margin=9.0 (20.0%), updated=2026-09-15T15:35:00+00:00",
           "sampleSize": 5,
           "agreementCount": 1,
           "agreementRatio": 0.2,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 36
+              "familySupport": 45
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxoxyAYGw2MzMzMjZbeAAAAAAAzYmZGbzYMjZYZMNDAAAwAAjllZGLYmZ8AjxAwM2AjxMzmBA",
-          "notes": [],
+          "title": "Survival - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-09-15T15:35:00+00:00",
+          "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxoxyAYmgNjZmxwyAAAAAAwMmxMLmxYGzgx0MAAAADAmxyyMzswMzMjZmBAzYZDGjZmNDAA",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/survival-hunter-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 42,
-          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=8.0 (22.2%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 51,
+          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/4 (25.0%), margin=9.0 (20.0%), updated=2026-09-15T15:35:00+00:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 39,
               "popularityBonus": 6,
-              "familySupport": 36
+              "familySupport": 45
             }
           },
           "selectedTalents": null
