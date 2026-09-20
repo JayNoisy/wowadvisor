@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T15:34:49.160Z",
+  "generatedAt": "2026-09-20T04:01:04.126Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/tank/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -890,8 +890,8 @@
           "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwMzyMzMmxMzMMLzMz0MLGjxMGAAAAwMmZmZmZYGDAYmZmZGAAADMwMW0YZBwyA2AMjZAAAzMwwA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 42,
-          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=8.0 (22.2%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 46,
+          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=14.0 (38.9%), updated=2026-08-24 15:46:50",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -911,64 +911,76 @@
       "Frost": {
         "raid": {
           "title": "Frost - Raid",
-          "source": "Wowhead",
-          "updated": "2026-09-05T11:10:34-05:00",
+          "source": "Icy-Veins",
+          "updated": "2026-09-14T19:20:00+00:00",
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMAmZMjZAz2MzMzMLzMjMjxYYmxgZmZmZmZmZAAAAAAAAAYMbDMgFwywEyYBzMmZGYAYYmBYmBD",
           "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/death-knight/frost/talent-builds-pve-dps"
+            "Guide URL: https://www.icy-veins.com/wow/frost-death-knight-pve-dps-spec-builds-talents"
           ],
-          "confidence": "medium",
-          "confidenceScore": 60,
-          "confidenceRationale": "support=55.0, families=2, sources=2, agreement=2/6 (33.3%), margin=19.0 (34.5%), updated=2026-09-05T11:10:34-05:00",
+          "confidence": "high",
+          "confidenceScore": 82,
+          "confidenceRationale": "support=88.0, families=3, sources=3, agreement=3/6 (50.0%), margin=52.0 (59.1%), updated=2026-09-14T19:20:00+00:00",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 3,
+          "agreementRatio": 0.5,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 3,
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 28,
+              "familyBest": 22,
               "popularityBonus": 6,
-              "familySupport": 34
+              "familySupport": 28
             },
             "method": {
               "contributors": 1,
               "familyBest": 15,
               "popularityBonus": 6,
               "familySupport": 21
+            },
+            "icyveins": {
+              "contributors": 1,
+              "familyBest": 33,
+              "popularityBonus": 6,
+              "familySupport": 39
             }
           },
           "selectedTalents": null
         },
         "aoe": {
           "title": "Frost - AoE (Mythic+)",
-          "source": "Wowhead",
-          "updated": "2026-09-05T11:10:34-05:00",
+          "source": "Icy-Veins",
+          "updated": "2026-09-14T19:20:00+00:00",
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMAzMMjZAz2MzMzMLzMjMjxYYmxgZmZmZmZmZAAAAAAAAAYMbDMgFwywEyYBzMmZGYAYYmBYmBD",
           "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/death-knight/frost/talent-builds-pve-dps"
+            "Guide URL: https://www.icy-veins.com/wow/frost-death-knight-pve-dps-spec-builds-talents"
           ],
-          "confidence": "medium",
-          "confidenceScore": 67,
-          "confidenceRationale": "support=55.0, families=2, sources=2, agreement=2/4 (50.0%), margin=19.0 (34.5%), updated=2026-09-05T11:10:34-05:00",
+          "confidence": "high",
+          "confidenceScore": 94,
+          "confidenceRationale": "support=88.0, families=3, sources=3, agreement=3/4 (75.0%), margin=52.0 (59.1%), updated=2026-09-14T19:20:00+00:00",
           "sampleSize": 4,
-          "agreementCount": 2,
-          "agreementRatio": 0.5,
-          "distinctSourceCount": 2,
-          "distinctFamilyCount": 2,
+          "agreementCount": 3,
+          "agreementRatio": 0.75,
+          "distinctSourceCount": 3,
+          "distinctFamilyCount": 3,
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 28,
+              "familyBest": 22,
               "popularityBonus": 6,
-              "familySupport": 34
+              "familySupport": 28
             },
             "method": {
               "contributors": 1,
               "familyBest": 15,
               "popularityBonus": 6,
               "familySupport": 21
+            },
+            "icyveins": {
+              "contributors": 1,
+              "familyBest": 33,
+              "popularityBonus": 6,
+              "familySupport": 39
             }
           },
           "selectedTalents": null
@@ -1007,7 +1019,7 @@
           "notes": [],
           "confidence": "low",
           "confidenceScore": 38,
-          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=2.0 (5.6%), updated=2026-08-24 15:46:50",
+          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=3.0 (8.3%), updated=2026-08-24 15:46:50",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
