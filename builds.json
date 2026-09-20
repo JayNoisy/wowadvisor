@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T04:01:04.126Z",
+  "generatedAt": "2026-09-20T15:40:50.891Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -200,49 +200,53 @@
     "Paladin": {
       "Holy": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAAw2MzMjZMzYxYmZYZwMLmpJGGzMDjZLDADYYDsxyMmZZ2mZmtGAAAgFAYzwYGzwMAAmZYGjhB",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 77,
-          "confidenceRationale": "support=42.0, families=1, sources=3, agreement=3/5 (60.0%), margin=20.0 (47.6%), updated=2026-08-24 15:46:47",
+          "title": "Holy - Raid",
+          "source": "Wowhead",
+          "updated": "2026-09-20T09:28:45-05:00",
+          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAAw2MzMjZMzYxYmZYZwMLmpJGGzMDjZLDADYYDsxyMmZZ2mZmtGAAAgFAYzwYGzwMAAmZYGjRDA",
+          "notes": [
+            "Guide URL: https://www.wowhead.com/guide/classes/paladin/holy/talent-builds-pve-healer"
+          ],
+          "confidence": "low",
+          "confidenceScore": 46,
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/5 (20.0%), margin=4.0 (8.7%), updated=2026-09-20T09:28:45-05:00",
           "sampleSize": 5,
-          "agreementCount": 3,
-          "agreementRatio": 0.6,
-          "distinctSourceCount": 3,
+          "agreementCount": 1,
+          "agreementRatio": 0.2,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 3,
-              "familyBest": 30,
-              "popularityBonus": 12,
-              "familySupport": 42
+            "wowhead": {
+              "contributors": 1,
+              "familyBest": 40,
+              "popularityBonus": 6,
+              "familySupport": 46
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAAD2GzMzMjZmZBmZYZsZmFjmYYMzMMmtMAMAsB2YZmZmlZbmZ2aAAAAWAGsZgZMDzAAYmhZMGGA",
-          "notes": [],
+          "title": "Holy - AoE (Mythic+)",
+          "source": "Wowhead",
+          "updated": "2026-09-20T09:28:45-05:00",
+          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAAwyMzMjZ2mZmNYMsM2MziZaihxMzwY2yAwAG2AbsMjZWmtZmZrBAAAYBA2MMmxMMDAgZGmxY0A",
+          "notes": [
+            "Guide URL: https://www.wowhead.com/guide/classes/paladin/holy/talent-builds-pve-healer"
+          ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/3 (33.3%), margin=14.0 (38.9%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/3 (33.3%), margin=10.0 (21.7%), updated=2026-09-20T09:28:45-05:00",
           "sampleSize": 3,
           "agreementCount": 1,
           "agreementRatio": 0.333,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 40,
               "popularityBonus": 6,
-              "familySupport": 36
+              "familySupport": 46
             }
           },
           "selectedTalents": null
@@ -680,8 +684,8 @@
           "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmlZmFDGAAAAAYWGsNDAAAAAotlZmZmZmxYZmZmtZWmZmHYegxMjxwMjxAsZWGYALglhJwwCYmBYMGA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=2.0 (5.6%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=8.0 (22.2%), updated=2026-08-24 15:46:50",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
