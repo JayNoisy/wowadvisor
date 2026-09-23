@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T16:32:27.875Z",
+  "generatedAt": "2026-09-23T03:53:49.240Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -698,49 +698,53 @@
     "Priest": {
       "Discipline": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMmxyYmBzgZbmtZmZmZmBAAAAAAAAAgZYZGMzMDzwMgpZamBzMAAAz2stAGbGAAGjZGDzMYmBjgB",
-          "notes": [],
+          "title": "Discipline - Raid",
+          "source": "Wowhead",
+          "updated": "2026-09-22T15:12:39-05:00",
+          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMGWmZmBDmZbmtZmZmxMDAAAAAAAAAgZYZGMzMDmxMgpZamBYmNMEGzyAMGsAAAjxMjBzAMzMTwA",
+          "notes": [
+            "Guide URL: https://www.wowhead.com/guide/classes/priest/discipline/talent-builds-pve-healer"
+          ],
           "confidence": "low",
-          "confidenceScore": 34,
-          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 49,
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/5 (20.0%), margin=10.0 (21.7%), updated=2026-09-22T15:12:39-05:00",
           "sampleSize": 5,
           "agreementCount": 1,
           "agreementRatio": 0.2,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 40,
               "popularityBonus": 6,
-              "familySupport": 36
+              "familySupport": 46
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMDWmZMmBmZbmtZmZmxMDAAAAAAAAAgxYZGMzMjNjZGsZamYAmZDDhxsMAjBLAAwYmZGDmBYmZAmB",
-          "notes": [],
+          "title": "Discipline - AoE (Mythic+)",
+          "source": "Wowhead",
+          "updated": "2026-09-22T15:12:39-05:00",
+          "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMDWmZMmBmZbmtZmZmxMDAAAAAAAAAgxYZGMzMjNjZGsZamYAmZDDhxsMAjBLAAwYmZGDmBYmZEMD",
+          "notes": [
+            "Guide URL: https://www.wowhead.com/guide/classes/priest/discipline/talent-builds-pve-healer"
+          ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/3 (33.3%), margin=14.0 (38.9%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/3 (33.3%), margin=10.0 (21.7%), updated=2026-09-22T15:12:39-05:00",
           "sampleSize": 3,
           "agreementCount": 1,
           "agreementRatio": 0.333,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 30,
+              "familyBest": 40,
               "popularityBonus": 6,
-              "familySupport": 36
+              "familySupport": 46
             }
           },
           "selectedTalents": null
@@ -1018,8 +1022,8 @@
           "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmZMjZYY2mZmZa2MmZMjBAAAAAAAgZGDDAWmxMzmZGzMDYzsZYgBmNGasgBMDAjZmxMAzMzYMA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=3.0 (8.3%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=8.0 (22.2%), updated=2026-08-24 15:46:50",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -1120,8 +1124,8 @@
           "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbwCMDDNYBgZZGzYssMjNmZ2GLzMzMjxCDAgZYMzwIwMDGMGA",
           "notes": [],
           "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=9.0 (25.0%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 46,
+          "confidenceRationale": "support=36.0, families=1, sources=1, agreement=1/4 (25.0%), margin=14.0 (38.9%), updated=2026-08-24 15:46:50",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
