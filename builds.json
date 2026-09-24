@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T16:22:22.881Z",
+  "generatedAt": "2026-09-24T03:46:32.637Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -19,8 +19,8 @@
     },
     "archon": {
       "ok": true,
-      "count": 0,
-      "localCount": 0,
+      "count": 1,
+      "localCount": 1,
       "remote": []
     },
     "curatedGuides": {
@@ -772,27 +772,25 @@
       },
       "Holy": {
         "raid": {
-          "title": "Holy - Raid",
-          "source": "Wowhead",
-          "updated": "2026-08-24T16:38:01-05:00",
-          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAgZmlxMjZmZYmZYZGmBAAAwwsMDzMzMYGzAYmaAgZWMTmFDAMGsZmZ2A0MMjxwMz2yAMDMA",
-          "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/priest/holy/talent-builds-pve-healer"
-          ],
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-24 15:46:47",
+          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAgZmlxMjZmZYmZYZGmBAAAwwsMDzMzMYGzAYmaAgZWMDziBAGD2MzMbAaGmxYYmZbZAmBGA",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/5 (20.0%), margin=2.5 (8.9%), updated=2026-08-24T16:38:01-05:00",
+          "confidenceScore": 53,
+          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/5 (40.0%), margin=3.5 (13.8%), updated=2026-08-24 15:46:47",
           "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
+          "agreementCount": 2,
+          "agreementRatio": 0.4,
+          "distinctSourceCount": 2,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 22,
-              "popularityBonus": 6,
-              "familySupport": 28
+            "peavers": {
+              "contributors": 2,
+              "familyBest": 16,
+              "popularityBonus": 9.51,
+              "familySupport": 25.51
             }
           },
           "selectedTalents": null
@@ -806,8 +804,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/priest/holy/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 45,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/3 (33.3%), margin=6.0 (21.4%), updated=2026-08-24T16:38:01-05:00",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/3 (33.3%), margin=0.0 (0.0%), updated=2026-08-24T16:38:01-05:00",
           "sampleSize": 3,
           "agreementCount": 1,
           "agreementRatio": 0.333,
@@ -816,9 +814,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 22,
+              "familyBest": 16,
               "popularityBonus": 6,
-              "familySupport": 28
+              "familySupport": 22
             }
           },
           "selectedTalents": null
@@ -1803,26 +1801,26 @@
       "Guardian": {
         "raid": {
           "title": "Guardian - Raid",
-          "source": "Wowhead",
-          "updated": "2026-08-28T11:29:35-05:00",
-          "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxsMPwYMzmZZGMWGY2gRT0MzsMzMzMGzYGAAAAAwMWmBAAAgamlZZmZGAALYmBYxMYAbW2GAMzGMA",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "C0ICmDkNTY0InVceMxvXvPYP8Zpk0mWoZuBXIv7L4",
           "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/druid/guardian/talent-builds-pve-tank"
+            "Source URL: https://www.archon.gg/wow/builds/guardian/druid/raid/overview/mythic/all-bosses"
           ],
           "confidence": "low",
-          "confidenceScore": 38,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/6 (16.7%), margin=6.0 (21.4%), updated=2026-08-28T11:29:35-05:00",
-          "sampleSize": 6,
+          "confidenceScore": 34,
+          "confidenceRationale": "support=31.0, families=1, sources=1, agreement=1/7 (14.3%), margin=3.0 (9.7%), updated=unknown",
+          "sampleSize": 7,
           "agreementCount": 1,
-          "agreementRatio": 0.167,
+          "agreementRatio": 0.143,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "wowhead": {
+            "archon": {
               "contributors": 1,
-              "familyBest": 22,
+              "familyBest": 25,
               "popularityBonus": 6,
-              "familySupport": 28
+              "familySupport": 31
             }
           },
           "selectedTalents": null
