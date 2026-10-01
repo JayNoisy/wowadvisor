@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T17:46:22.648Z",
+  "generatedAt": "2026-10-01T04:50:44.322Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -1222,27 +1222,25 @@
     "Mage": {
       "Arcane": {
         "raid": {
-          "title": "Arcane - Raid",
-          "source": "Wowhead",
-          "updated": "2026-08-31T21:03:17-05:00",
-          "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMDamZGAAAGAAEwMzMLLzMxCAAwMzMjNLzMzsMjxYmZwCzYmZGAgBAAYmZBAMDAGmZG",
-          "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/mage/arcane/talent-builds-pve-dps"
-          ],
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesLfrRaidDB",
+          "updated": "2026-08-24 15:46:45",
+          "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzQzMGAAAGAwMz0sssMDAgNAA2gZmhNLzYmlZMmZmZGWYmZmZGAgBAAYAmZAGAMMzM",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 35,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/6 (16.7%), margin=2.5 (8.9%), updated=2026-08-31T21:03:17-05:00",
+          "confidenceScore": 50,
+          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (13.8%), updated=2026-08-24 15:46:45",
           "sampleSize": 6,
-          "agreementCount": 1,
-          "agreementRatio": 0.167,
-          "distinctSourceCount": 1,
+          "agreementCount": 2,
+          "agreementRatio": 0.333,
+          "distinctSourceCount": 2,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 22,
-              "popularityBonus": 6,
-              "familySupport": 28
+            "peavers": {
+              "contributors": 2,
+              "familyBest": 16,
+              "popularityBonus": 9.51,
+              "familySupport": 25.51
             }
           },
           "selectedTalents": null
@@ -1256,8 +1254,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/mage/arcane/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 42,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/4 (25.0%), margin=6.0 (21.4%), updated=2026-08-31T21:03:17-05:00",
+          "confidenceScore": 36,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=0.0 (0.0%), updated=2026-08-31T21:03:17-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -1266,9 +1264,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 22,
+              "familyBest": 16,
               "popularityBonus": 6,
-              "familySupport": 28
+              "familySupport": 22
             }
           },
           "selectedTalents": null
@@ -1482,53 +1480,49 @@
       },
       "Affliction": {
         "raid": {
-          "title": "Affliction - Raid",
-          "source": "Icy-Veins",
-          "updated": "2026-08-31T19:41:00+00:00",
-          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMzMzoZhhZmZmlBAAYmZZ2mZmlxAAjllBGwEMDbBG2GAAAmBAAwMDzMjBzwMzMzMGMzMzAAmBG",
-          "notes": [
-            "Guide URL: https://www.icy-veins.com/wow/affliction-warlock-pve-dps-spec-builds-talents"
-          ],
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-24 15:46:47",
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMzMzoZhhZmZmlBAAYmZZ2mZmlxAAjllBGwAmhtADbDAAAzAAAYmhZmxgZYmZmZGDmZmZAAzAD",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 35,
-          "confidenceRationale": "support=27.0, families=1, sources=1, agreement=1/5 (20.0%), margin=1.5 (5.5%), updated=2026-08-31T19:41:00+00:00",
+          "confidenceScore": 54,
+          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/5 (40.0%), margin=4.5 (17.7%), updated=2026-08-24 15:46:47",
           "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
+          "agreementCount": 2,
+          "agreementRatio": 0.4,
+          "distinctSourceCount": 2,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "icyveins": {
-              "contributors": 1,
-              "familyBest": 21,
-              "popularityBonus": 6,
-              "familySupport": 27
+            "peavers": {
+              "contributors": 2,
+              "familyBest": 16,
+              "popularityBonus": 9.51,
+              "familySupport": 25.51
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "Affliction - AoE (Mythic+)",
-          "source": "Icy-Veins",
-          "updated": "2026-08-31T19:41:00+00:00",
-          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMjZGNLmxyMzYWGAAwMzsMLzMzyYAgx2yADYCmhtADbDAAAzAAAYmZMzwsxwYmZmZYYmZmBAMDMA",
-          "notes": [
-            "Guide URL: https://www.icy-veins.com/wow/affliction-warlock-pve-dps-spec-builds-talents"
-          ],
+          "title": "All Dungeons",
+          "source": "PeaversTalentsData/ParsesMythicDB",
+          "updated": "2026-08-24 15:46:50",
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMMzoZzMz2MzMz2AAAmZmlZxMz2YAgx22ADYAzwWghtBAAgZAAAMzMmxM2GjZMmZmZMMzMDAwAG",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=27.0, families=1, sources=1, agreement=1/4 (25.0%), margin=5.0 (18.5%), updated=2026-08-31T19:41:00+00:00",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "icyveins": {
+            "peavers": {
               "contributors": 1,
-              "familyBest": 21,
+              "familyBest": 16,
               "popularityBonus": 6,
-              "familySupport": 27
+              "familySupport": 22
             }
           },
           "selectedTalents": null
