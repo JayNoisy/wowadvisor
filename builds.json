@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T04:42:24.548Z",
+  "generatedAt": "2026-10-05T20:21:11.057Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -19,8 +19,8 @@
     },
     "archon": {
       "ok": true,
-      "count": 0,
-      "localCount": 0,
+      "count": 1,
+      "localCount": 1,
       "remote": []
     },
     "curatedGuides": {
@@ -148,49 +148,53 @@
       },
       "Protection": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzwMzMzMmNzMLzYMGNmxMWmxMzYGmZAAAAwyMDwMGgB2glFjGzAYWwMbwYmZYsBAzMAAYgxA",
-          "notes": [],
+          "title": "Protection - Raid",
+          "source": "Icy-Veins",
+          "updated": "2026-10-02T09:20:00+00:00",
+          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAA02AAAzMDzMzMzMzmxsMMGz0wYYZmZmZwYmBAAAALDAzYAgFzYYDGYGWoxMLMmxMDmNAAzMAgZgxA",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/protection-warrior-pve-tank-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 33,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 50,
+          "confidenceRationale": "support=39.0, families=1, sources=1, agreement=1/6 (16.7%), margin=17.0 (43.6%), updated=2026-10-02T09:20:00+00:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 33,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 39
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzwMzMzMmNzMLzYMGNmxMWmxMzYGmZAAAAwyMDwMGgB2glFjGzAYWwMbwYmZYsBAzMAAYgxA",
-          "notes": [],
+          "title": "Protection - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-10-02T09:20:00+00:00",
+          "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAA0yAAAjZYmZmZGziZmlZMGz0YGDLmZmZMDzMAAAAYZAYGDwAbw2iRjZAMLYmNYmZmhxCAMzAAwAGD",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/protection-warrior-pve-tank-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 54,
+          "confidenceRationale": "support=39.0, families=1, sources=1, agreement=1/4 (25.0%), margin=17.0 (43.6%), updated=2026-10-02T09:20:00+00:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 33,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 39
             }
           },
           "selectedTalents": null
@@ -253,52 +257,52 @@
       "Protection": {
         "raid": {
           "title": "Protection - Raid",
-          "source": "Icy-Veins",
-          "updated": "2026-09-21T20:00:00+00:00",
-          "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNDzyYGzMzMz2yYMLzilZMAADAAAAAAaamhZMzwY2aDADMgZw2AAAAgZmltlWmZsYZDDAGzwYAwMDAmZAjF",
+          "source": "Wowhead",
+          "updated": "2026-09-14T23:59:24-05:00",
+          "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNzYWmZYGzM2WGDLzithBAYAAAAAAQamZxMmZGjZrNAMgBMYbAAgZm2mZWmBAYzyGzYAMmhxAAsNDwMDyYD",
           "notes": [
-            "Guide URL: https://www.icy-veins.com/wow/protection-paladin-pve-tank-spec-builds-talents"
+            "Guide URL: https://www.wowhead.com/guide/classes/paladin/protection/talent-builds-pve-tank"
           ],
           "confidence": "low",
-          "confidenceScore": 40,
-          "confidenceRationale": "support=33.0, families=1, sources=1, agreement=1/6 (16.7%), margin=5.0 (15.2%), updated=2026-09-21T20:00:00+00:00",
+          "confidenceScore": 33,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (3.6%), updated=2026-09-14T23:59:24-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "icyveins": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 27,
+              "familyBest": 22,
               "popularityBonus": 6,
-              "familySupport": 33
+              "familySupport": 28
             }
           },
           "selectedTalents": null
         },
         "aoe": {
           "title": "Protection - AoE (Mythic+)",
-          "source": "Icy-Veins",
-          "updated": "2026-09-21T20:00:00+00:00",
-          "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsZsMLjZMzMzMLbjxsMmlZMAADAAAAAAaamhZMzwY2aDADMgZw2AAAAgZmltlWmZsYZBDAGzwYAwMDAmZAjF",
+          "source": "Wowhead",
+          "updated": "2026-09-14T23:59:24-05:00",
+          "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsZeAzyYGzYmZWWGjZZWmlZMAADAAAAAAaamhZMzwY2aDADMgZw2AAAzMtNzsMDAwmlFMAgZYMAALzAmZGkxC",
           "notes": [
-            "Guide URL: https://www.icy-veins.com/wow/protection-paladin-pve-tank-spec-builds-talents"
+            "Guide URL: https://www.wowhead.com/guide/classes/paladin/protection/talent-builds-pve-tank"
           ],
           "confidence": "low",
-          "confidenceScore": 44,
-          "confidenceRationale": "support=33.0, families=1, sources=1, agreement=1/4 (25.0%), margin=5.0 (15.2%), updated=2026-09-21T20:00:00+00:00",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (3.6%), updated=2026-09-14T23:59:24-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "icyveins": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 27,
+              "familyBest": 22,
               "popularityBonus": 6,
-              "familySupport": 33
+              "familySupport": 28
             }
           },
           "selectedTalents": null
@@ -880,8 +884,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/death-knight/blood/talent-builds-pve-tank"
           ],
           "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/6 (16.7%), margin=8.5 (25.0%), updated=2026-09-21T13:24:58-05:00",
+          "confidenceScore": 35,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/6 (16.7%), margin=2.5 (8.9%), updated=2026-09-21T13:24:58-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -890,9 +894,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 28,
+              "familyBest": 22,
               "popularityBonus": 6,
-              "familySupport": 34
+              "familySupport": 28
             }
           },
           "selectedTalents": null
@@ -906,8 +910,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/death-knight/blood/talent-builds-pve-tank"
           ],
           "confidence": "low",
-          "confidenceScore": 49,
-          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/4 (25.0%), margin=12.0 (35.3%), updated=2026-09-21T13:24:58-05:00",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/4 (25.0%), margin=6.0 (21.4%), updated=2026-09-21T13:24:58-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -916,9 +920,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 28,
+              "familyBest": 22,
               "popularityBonus": 6,
-              "familySupport": 34
+              "familySupport": 28
             }
           },
           "selectedTalents": null
@@ -927,15 +931,15 @@
       "Frost": {
         "raid": {
           "title": "Frost - Raid",
-          "source": "Wowhead",
-          "updated": "2026-09-05T11:10:34-05:00",
+          "source": "Icy-Veins",
+          "updated": "2026-09-14T19:20:00+00:00",
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMAmZMjZAz2MzMzMLzMjMjxYYmxgZmZmZmZmZAAAAAAAAAYMbDMgFwywEyYBzMmZGYAYYmBYmBD",
           "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/death-knight/frost/talent-builds-pve-dps"
+            "Guide URL: https://www.icy-veins.com/wow/frost-death-knight-pve-dps-spec-builds-talents"
           ],
           "confidence": "high",
           "confidenceScore": 78,
-          "confidenceRationale": "support=76.0, families=3, sources=3, agreement=3/6 (50.0%), margin=54.0 (71.1%), updated=2026-09-05T11:10:34-05:00",
+          "confidenceRationale": "support=70.0, families=3, sources=3, agreement=3/6 (50.0%), margin=48.0 (68.6%), updated=2026-09-14T19:20:00+00:00",
           "sampleSize": 6,
           "agreementCount": 3,
           "agreementRatio": 0.5,
@@ -944,9 +948,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 22,
+              "familyBest": 16,
               "popularityBonus": 6,
-              "familySupport": 28
+              "familySupport": 22
             },
             "method": {
               "contributors": 1,
@@ -965,15 +969,15 @@
         },
         "aoe": {
           "title": "Frost - AoE (Mythic+)",
-          "source": "Wowhead",
-          "updated": "2026-09-05T11:10:34-05:00",
+          "source": "Icy-Veins",
+          "updated": "2026-09-14T19:20:00+00:00",
           "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMAzMMjZAz2MzMzMLzMjMjxYYmxgZmZmZmZmZAAAAAAAAAYMbDMgFwywEyYBzMmZGYAYYmBYmBD",
           "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/death-knight/frost/talent-builds-pve-dps"
+            "Guide URL: https://www.icy-veins.com/wow/frost-death-knight-pve-dps-spec-builds-talents"
           ],
           "confidence": "high",
-          "confidenceScore": 90,
-          "confidenceRationale": "support=76.0, families=3, sources=3, agreement=3/4 (75.0%), margin=54.0 (71.1%), updated=2026-09-05T11:10:34-05:00",
+          "confidenceScore": 89,
+          "confidenceRationale": "support=70.0, families=3, sources=3, agreement=3/4 (75.0%), margin=48.0 (68.6%), updated=2026-09-14T19:20:00+00:00",
           "sampleSize": 4,
           "agreementCount": 3,
           "agreementRatio": 0.75,
@@ -982,9 +986,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 22,
+              "familyBest": 16,
               "popularityBonus": 6,
-              "familySupport": 28
+              "familySupport": 22
             },
             "method": {
               "contributors": 1,
@@ -1005,52 +1009,52 @@
       "Unholy": {
         "raid": {
           "title": "Unholy - Raid",
-          "source": "Wowhead",
-          "updated": "2026-09-05T14:22:03-05:00",
-          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAwMjZMDDz2MzMTzmZmZMjBAAAAAAAgZGmZAwyMmZ2mZGzMDYzsYYIDMbM0YBAzAAzMjZAmZmxYA",
+          "source": "Icy-Veins",
+          "updated": "2026-09-08T19:20:00+00:00",
+          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAwMjZMDDz2MzMTjZmxYGDAAAAAAAAzDMMGAsMDzsZmxMzYgBmxiGLbA2GsBgZAMzMzMmBzMYmZMA",
           "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/death-knight/unholy/talent-builds-pve-dps"
+            "Guide URL: https://www.icy-veins.com/wow/unholy-death-knight-pve-dps-spec-builds-talents"
           ],
           "confidence": "low",
-          "confidenceScore": 33,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (3.6%), updated=2026-09-05T14:22:03-05:00",
+          "confidenceScore": 34,
+          "confidenceRationale": "support=27.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.5 (5.5%), updated=2026-09-08T19:20:00+00:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "wowhead": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 22,
+              "familyBest": 21,
               "popularityBonus": 6,
-              "familySupport": 28
+              "familySupport": 27
             }
           },
           "selectedTalents": null
         },
         "aoe": {
           "title": "Unholy - AoE (Mythic+)",
-          "source": "Wowhead",
-          "updated": "2026-09-05T14:22:03-05:00",
-          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmhZMDDz2MzMTzmxMzMjBAAAAAAAgZGzYAwyMmZ2MzYMDYzsZYIDMbM0YBDYGAGzMjZAmZmxYA",
+          "source": "Icy-Veins",
+          "updated": "2026-09-08T19:20:00+00:00",
+          "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmhZMzMDz2MzMTzmZGjZAAAAAAAAgZGzYAwyMmZ2MzYMjBGYGbassAYbwGGwMAMmZGzgZGMjxA",
           "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/death-knight/unholy/talent-builds-pve-dps"
+            "Guide URL: https://www.icy-veins.com/wow/unholy-death-knight-pve-dps-spec-builds-talents"
           ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (3.6%), updated=2026-09-05T14:22:03-05:00",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=27.0, families=1, sources=1, agreement=1/4 (25.0%), margin=5.0 (18.5%), updated=2026-09-08T19:20:00+00:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "wowhead": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 22,
+              "familyBest": 21,
               "popularityBonus": 6,
-              "familySupport": 28
+              "familySupport": 27
             }
           },
           "selectedTalents": null
@@ -1160,27 +1164,25 @@
       },
       "Restoration": {
         "raid": {
-          "title": "Restoration - Raid",
-          "source": "Wowhead",
-          "updated": "2026-09-05T02:50:18-05:00",
-          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAzMzsssNjZGjZGzMMWMzGMgJY2YCMWMDzgtxYmmtlZmNzYWYxMzMmhZZAAAgZmBAzMwgZA",
-          "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/shaman/restoration/talent-builds-pve-healer"
-          ],
+          "title": "All Bosses",
+          "source": "PeaversTalentsData/ParsesNormalRaidDB",
+          "updated": "2026-08-24 15:46:47",
+          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAzMzsssNjZGjZGzMDjFYDmxiGbDgZgNzwMYbMmpZbZmZzMmFWMPwMjZYWGAAAYmZwMDAMYG",
+          "notes": [],
           "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/5 (20.0%), margin=2.5 (8.9%), updated=2026-09-05T02:50:18-05:00",
+          "confidenceScore": 53,
+          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/5 (40.0%), margin=3.5 (13.8%), updated=2026-08-24 15:46:47",
           "sampleSize": 5,
-          "agreementCount": 1,
-          "agreementRatio": 0.2,
-          "distinctSourceCount": 1,
+          "agreementCount": 2,
+          "agreementRatio": 0.4,
+          "distinctSourceCount": 2,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "wowhead": {
-              "contributors": 1,
-              "familyBest": 22,
-              "popularityBonus": 6,
-              "familySupport": 28
+            "peavers": {
+              "contributors": 2,
+              "familyBest": 16,
+              "popularityBonus": 9.51,
+              "familySupport": 25.51
             }
           },
           "selectedTalents": null
@@ -1194,8 +1196,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/shaman/restoration/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 45,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/3 (33.3%), margin=6.0 (21.4%), updated=2026-09-05T02:50:18-05:00",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/3 (33.3%), margin=0.0 (0.0%), updated=2026-09-05T02:50:18-05:00",
           "sampleSize": 3,
           "agreementCount": 1,
           "agreementRatio": 0.333,
@@ -1204,9 +1206,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 22,
+              "familyBest": 16,
               "popularityBonus": 6,
-              "familySupport": 28
+              "familySupport": 22
             }
           },
           "selectedTalents": null
@@ -1241,26 +1243,26 @@
         },
         "aoe": {
           "title": "Arcane - AoE (Mythic+)",
-          "source": "Wowhead",
-          "updated": "2026-08-31T21:03:17-05:00",
-          "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzQzMGAAAGAAEwMzMLLzMxCAAbDmZG2sMjZMjxMzMzwCzMzMzAAMAAAzMbAADAGmZG",
+          "source": "Archon.gg",
+          "updated": null,
+          "exportString": "CoXBw7j2jn55TAS8ZBBEmvctxZIhWPVuqu6SmMcr1SgPNS8AA38WwEaayFrdSJq9kPgTcCMnbFEB",
           "notes": [
-            "Guide URL: https://www.wowhead.com/guide/classes/mage/arcane/talent-builds-pve-dps"
+            "Source URL: https://www.archon.gg/wow/builds/arcane/mage/mythic-plus/overview/10/all-dungeons/this-week"
           ],
           "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=0.0 (0.0%), updated=2026-08-31T21:03:17-05:00",
-          "sampleSize": 4,
+          "confidenceScore": 41,
+          "confidenceRationale": "support=31.0, families=1, sources=1, agreement=1/5 (20.0%), margin=9.0 (29.0%), updated=unknown",
+          "sampleSize": 5,
           "agreementCount": 1,
-          "agreementRatio": 0.25,
+          "agreementRatio": 0.2,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "wowhead": {
+            "archon": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 25,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 31
             }
           },
           "selectedTalents": null
@@ -1634,8 +1636,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/monk/mistweaver/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 39,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/5 (20.0%), margin=6.0 (21.4%), updated=2026-09-05T00:05:10-05:00",
+          "confidenceScore": 34,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-09-05T00:05:10-05:00",
           "sampleSize": 5,
           "agreementCount": 1,
           "agreementRatio": 0.2,
@@ -1644,9 +1646,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 22,
+              "familyBest": 16,
               "popularityBonus": 6,
-              "familySupport": 28
+              "familySupport": 22
             }
           },
           "selectedTalents": null
@@ -1660,8 +1662,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/monk/mistweaver/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 45,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/3 (33.3%), margin=6.0 (21.4%), updated=2026-09-05T00:05:10-05:00",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/3 (33.3%), margin=0.0 (0.0%), updated=2026-09-05T00:05:10-05:00",
           "sampleSize": 3,
           "agreementCount": 1,
           "agreementRatio": 0.333,
@@ -1670,9 +1672,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 22,
+              "familyBest": 16,
               "popularityBonus": 6,
-              "familySupport": 28
+              "familySupport": 22
             }
           },
           "selectedTalents": null
@@ -2056,8 +2058,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/evoker/devastation/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (2.9%), updated=2026-09-23T01:20:29-05:00",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/6 (16.7%), margin=7.0 (20.6%), updated=2026-09-23T01:20:29-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -2082,8 +2084,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/evoker/devastation/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (2.9%), updated=2026-09-23T01:20:29-05:00",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (20.6%), updated=2026-09-23T01:20:29-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
