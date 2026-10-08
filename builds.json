@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T05:08:56.275Z",
+  "generatedAt": "2026-10-08T18:36:15.995Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/tank/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -40,25 +40,27 @@
     "Warrior": {
       "Arms": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzYmZGAAAghphxYmxyMzMzgxMDAAAAgZWmZgJMW2GYBMgZYCMD2AzM2GbDsMz2AMzAgZYA",
-          "notes": [],
+          "title": "Arms - Raid",
+          "source": "Icy-Veins",
+          "updated": "2026-08-25T19:20:00+00:00",
+          "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzMmZGAAAghphxYmZzMzMzgxMDAAAAgZWmZAhxyyALgBMDTgZwGYmx2YbglZWGgZGAMDDA",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/arms-warrior-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
           "confidenceScore": 33,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-24 15:46:47",
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-25T19:20:00+00:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -72,8 +74,8 @@
             "Guide URL: https://www.icy-veins.com/wow/arms-warrior-pve-dps-spec-builds-talents"
           ],
           "confidence": "medium",
-          "confidenceScore": 64,
-          "confidenceRationale": "support=35.0, families=2, sources=2, agreement=2/4 (50.0%), margin=13.0 (37.1%), updated=2026-08-25T19:20:00+00:00",
+          "confidenceScore": 65,
+          "confidenceRationale": "support=35.0, families=2, sources=2, agreement=2/4 (50.0%), margin=14.0 (40.0%), updated=2026-08-25T19:20:00+00:00",
           "sampleSize": 4,
           "agreementCount": 2,
           "agreementRatio": 0.5,
@@ -98,49 +100,53 @@
       },
       "Fury": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjxMzmZmZmZYMzMzMzYmlZMmZMbmZmBAAixy2ALgBMDTgZYDYmZzYDAAmZYMLDjBjB",
-          "notes": [],
+          "title": "Fury - Raid",
+          "source": "Icy-Veins",
+          "updated": "2026-08-25T19:20:00+00:00",
+          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDzMmZ2MzMzMDjZmZGzYmlZmxMzMbmZmBAAixy2ALgJYGmAzwGwMDjNAAYmhxYYMYM",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/fury-warrior-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
           "confidenceScore": 33,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-24 15:46:47",
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-25T19:20:00+00:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjZMz2yMzMjZmxMzMzMjZWmZmZmxsYmZGAAIMwGssY0YGAzCmxCgZwAAmZAYYxMAjB",
-          "notes": [],
+          "title": "Fury - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-08-25T19:20:00+00:00",
+          "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjxMzmZmZmZmZMzMzMzYmlZMmZMbmZmBAAixy2ALgJYGmAzwGwMzmBAAYmhxsMwgxA",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/fury-warrior-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 36,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=0.0 (0.0%), updated=2026-08-25T19:20:00+00:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -156,8 +162,8 @@
             "Guide URL: https://www.icy-veins.com/wow/protection-warrior-pve-tank-spec-builds-talents"
           ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=39.0, families=1, sources=1, agreement=1/6 (16.7%), margin=17.0 (43.6%), updated=2026-10-02T09:20:00+00:00",
+          "confidenceScore": 51,
+          "confidenceRationale": "support=39.0, families=1, sources=1, agreement=1/6 (16.7%), margin=18.0 (46.2%), updated=2026-10-02T09:20:00+00:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -182,8 +188,8 @@
             "Guide URL: https://www.icy-veins.com/wow/protection-warrior-pve-tank-spec-builds-talents"
           ],
           "confidence": "low",
-          "confidenceScore": 54,
-          "confidenceRationale": "support=39.0, families=1, sources=1, agreement=1/4 (25.0%), margin=17.0 (43.6%), updated=2026-10-02T09:20:00+00:00",
+          "confidenceScore": 55,
+          "confidenceRationale": "support=39.0, families=1, sources=1, agreement=1/4 (25.0%), margin=18.0 (46.2%), updated=2026-10-02T09:20:00+00:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -204,24 +210,26 @@
     "Paladin": {
       "Holy": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAAw2MzMjZMzYxYmZYZwMLmpJGGzMDjZLDADYYDsxyMmZZ2mZmtGAAAgFAYzwYGzwMAAmZYGjhB",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 65,
-          "confidenceRationale": "support=28.0, families=1, sources=3, agreement=3/5 (60.0%), margin=0.0 (0.0%), updated=2026-08-24 15:46:47",
+          "title": "Holy - Raid",
+          "source": "Wowhead",
+          "updated": "2026-09-20T09:28:45-05:00",
+          "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAAw2MzMjZMzYxYmZYZwMLmpJGGzMDjZLDADYYDsxyMmZZ2mZmtGAAAgFAYzwYGzwMAAmZYGjRDA",
+          "notes": [
+            "Guide URL: https://www.wowhead.com/guide/classes/paladin/holy/talent-builds-pve-healer"
+          ],
+          "confidence": "low",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/5 (20.0%), margin=7.0 (25.0%), updated=2026-09-20T09:28:45-05:00",
           "sampleSize": 5,
-          "agreementCount": 3,
-          "agreementRatio": 0.6,
-          "distinctSourceCount": 3,
+          "agreementCount": 1,
+          "agreementRatio": 0.2,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 3,
-              "familyBest": 16,
-              "popularityBonus": 12,
+            "wowhead": {
+              "contributors": 1,
+              "familyBest": 22,
+              "popularityBonus": 6,
               "familySupport": 28
             }
           },
@@ -236,8 +244,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/paladin/holy/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 45,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/3 (33.3%), margin=6.0 (21.4%), updated=2026-09-20T09:28:45-05:00",
+          "confidenceScore": 46,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/3 (33.3%), margin=7.0 (25.0%), updated=2026-09-20T09:28:45-05:00",
           "sampleSize": 3,
           "agreementCount": 1,
           "agreementRatio": 0.333,
@@ -318,8 +326,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/paladin/retribution/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 33,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-25T15:52:03-05:00",
+          "confidenceScore": 34,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (4.5%), updated=2026-08-25T15:52:03-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -345,7 +353,7 @@
           ],
           "confidence": "medium",
           "confidenceScore": 67,
-          "confidenceRationale": "support=43.0, families=2, sources=2, agreement=2/4 (50.0%), margin=21.0 (48.8%), updated=2026-08-25T15:52:03-05:00",
+          "confidenceRationale": "support=43.0, families=2, sources=2, agreement=2/4 (50.0%), margin=22.0 (51.2%), updated=2026-08-25T15:52:03-05:00",
           "sampleSize": 4,
           "agreementCount": 2,
           "agreementRatio": 0.5,
@@ -372,25 +380,27 @@
     "Hunter": {
       "Beast Mastery": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsAzwQDbAAYGGzsMzwMmZMDzMGzMMzYGzwMzYGzghmBAAAAMDAAAzMzMAzsBMMLgtBgB",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 67,
-          "confidenceRationale": "support=28.0, families=1, sources=3, agreement=3/6 (50.0%), margin=7.0 (25.0%), updated=2026-08-24 15:46:47",
+          "title": "Beast Mastery - Raid",
+          "source": "Icy-Veins",
+          "updated": "2026-08-30T11:04:00+00:00",
+          "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsAzwwMsBAgZYMzyMDzYmhhZGjZGzMjZMziZmxMmBjpZAAAAAzAAAwYmZAmZjxGMLgtBgB",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/beast-mastery-hunter-pve-dps-spec-builds-talents"
+          ],
+          "confidence": "low",
+          "confidenceScore": 33,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-30T11:04:00+00:00",
           "sampleSize": 6,
-          "agreementCount": 3,
-          "agreementRatio": 0.5,
-          "distinctSourceCount": 3,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 3,
-              "familyBest": 16,
-              "popularityBonus": 12,
-              "familySupport": 28
+            "icyveins": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -404,8 +414,8 @@
             "Guide URL: https://www.method.gg/guides/beast-mastery-hunter/talents"
           ],
           "confidence": "medium",
-          "confidenceScore": 64,
-          "confidenceRationale": "support=35.0, families=2, sources=2, agreement=2/4 (50.0%), margin=13.0 (37.1%), updated=unknown",
+          "confidenceScore": 65,
+          "confidenceRationale": "support=35.0, families=2, sources=2, agreement=2/4 (50.0%), margin=14.0 (40.0%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 2,
           "agreementRatio": 0.5,
@@ -430,49 +440,53 @@
       },
       "Marksmanship": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwMGNWGAzgNAAAAAAAAwMmxMLbzYmZMDeATzYwstZmZmZmZmZWYmlhZAAAGzMjBwM2YYA2YmtZMA",
-          "notes": [],
+          "title": "Marksmanship - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwMGzYZAMD2AAAAAAAAAzYGzwMmZGzgx0MGM2WmZmZmZmZmFmZZwMAAg5BmZGDgZajhBYjZ2mxA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/marksmanship-hunter/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (13.8%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/6 (16.7%), margin=3.5 (16.6%), updated=unknown",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 2,
-              "familyBest": 16,
-              "popularityBonus": 9.51,
-              "familySupport": 25.51
+            "method": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwGMwMGNWGAzgNAAAAAAAAwMmZmx2MmZGzwyYaGDmltlZmZmZmZmZhZWGmBAAwDMGDAzYDMAbMz2MG",
-          "notes": [],
+          "title": "Marksmanship - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwMGzYZAMD2AAAAAAAAAzYGzwMmZGzgx0MGMbbmZmZmZmZmFmZZYGAAg5BmZGDgZajhBYjZ2mxA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/marksmanship-hunter/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -543,9 +557,9 @@
           "notes": [
             "Guide URL: https://www.method.gg/guides/outlaw-rogue/talents"
           ],
-          "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=35.0, families=2, sources=2, agreement=2/6 (33.3%), margin=13.0 (37.1%), updated=unknown",
+          "confidence": "medium",
+          "confidenceScore": 62,
+          "confidenceRationale": "support=35.0, families=2, sources=2, agreement=2/6 (33.3%), margin=21.0 (60.0%), updated=unknown",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -576,8 +590,8 @@
             "Guide URL: https://www.method.gg/guides/outlaw-rogue/talents"
           ],
           "confidence": "medium",
-          "confidenceScore": 64,
-          "confidenceRationale": "support=35.0, families=2, sources=2, agreement=2/4 (50.0%), margin=13.0 (37.1%), updated=unknown",
+          "confidenceScore": 70,
+          "confidenceRationale": "support=35.0, families=2, sources=2, agreement=2/4 (50.0%), margin=21.0 (60.0%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 2,
           "agreementRatio": 0.5,
@@ -610,8 +624,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/rogue/subtlety/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=5.0 (12.5%), updated=2026-10-03T12:26:46-05:00",
+          "confidenceScore": 48,
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/6 (16.7%), margin=13.0 (32.5%), updated=2026-10-03T12:26:46-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -637,7 +651,7 @@
           ],
           "confidence": "low",
           "confidenceScore": 55,
-          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/4 (25.0%), margin=18.0 (45.0%), updated=2026-10-03T12:26:46-05:00",
+          "confidenceRationale": "support=40.0, families=1, sources=1, agreement=1/4 (25.0%), margin=19.0 (47.5%), updated=2026-10-03T12:26:46-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -664,8 +678,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/rogue/assassination/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 34,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-09-06T05:17:37-05:00",
+          "confidenceScore": 35,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/5 (20.0%), margin=1.0 (4.5%), updated=2026-09-06T05:17:37-05:00",
           "sampleSize": 5,
           "agreementCount": 1,
           "agreementRatio": 0.2,
@@ -690,8 +704,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/rogue/assassination/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=0.0 (0.0%), updated=2026-09-06T05:17:37-05:00",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-09-06T05:17:37-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -720,8 +734,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/priest/discipline/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 39,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/5 (20.0%), margin=6.0 (21.4%), updated=2026-09-22T15:12:39-05:00",
+          "confidenceScore": 40,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/5 (20.0%), margin=7.0 (25.0%), updated=2026-09-22T15:12:39-05:00",
           "sampleSize": 5,
           "agreementCount": 1,
           "agreementRatio": 0.2,
@@ -746,8 +760,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/priest/discipline/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 45,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/3 (33.3%), margin=6.0 (21.4%), updated=2026-09-22T15:12:39-05:00",
+          "confidenceScore": 46,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/3 (33.3%), margin=7.0 (25.0%), updated=2026-09-22T15:12:39-05:00",
           "sampleSize": 3,
           "agreementCount": 1,
           "agreementRatio": 0.333,
@@ -766,25 +780,27 @@
       },
       "Holy": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAgZmlxMjZmZYmZYZGmBAAAwwsMDzMzMYGzAYmaAgZWMDziBAGD2MzMbAaGmxYYmZbZAmBGA",
-          "notes": [],
+          "title": "Holy - Raid",
+          "source": "Wowhead",
+          "updated": "2026-08-24T16:38:01-05:00",
+          "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAgZmlxMjZmZYmZYZGmBAAAwwsMDzMzMYGzAYmaAgZWMTmFDAMGsZmZ2A0MMjxwMz2yAMDMA",
+          "notes": [
+            "Guide URL: https://www.wowhead.com/guide/classes/priest/holy/talent-builds-pve-healer"
+          ],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/5 (40.0%), margin=3.5 (13.8%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 35,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/5 (20.0%), margin=1.0 (4.5%), updated=2026-08-24T16:38:01-05:00",
           "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.2,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 2,
+            "wowhead": {
+              "contributors": 1,
               "familyBest": 16,
-              "popularityBonus": 9.51,
-              "familySupport": 25.51
+              "popularityBonus": 6,
+              "familySupport": 22
             }
           },
           "selectedTalents": null
@@ -798,8 +814,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/priest/holy/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 40,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/3 (33.3%), margin=0.0 (0.0%), updated=2026-08-24T16:38:01-05:00",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/3 (33.3%), margin=1.0 (4.5%), updated=2026-08-24T16:38:01-05:00",
           "sampleSize": 3,
           "agreementCount": 1,
           "agreementRatio": 0.333,
@@ -818,14 +834,16 @@
       },
       "Shadow": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
+          "title": "Shadow - Raid",
+          "source": "Method",
+          "updated": null,
           "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMMDDAAAAAAAAAAAAmZxMmZbmxMz2MGzw2MzYmZGbIzYxMNAzAMzmZY2MAkxYBAzMgxMzMmNmZbZAmBDA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 59,
-          "confidenceRationale": "support=43.0, families=2, sources=2, agreement=2/6 (33.3%), margin=21.0 (48.8%), updated=2026-08-24 15:46:47",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/shadow-priest/talents"
+          ],
+          "confidence": "low",
+          "confidenceScore": 57,
+          "confidenceRationale": "support=35.0, families=2, sources=2, agreement=2/6 (33.3%), margin=14.0 (40.0%), updated=unknown",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -834,9 +852,9 @@
           "consensusBreakdown": {
             "peavers": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 8,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 14
             },
             "method": {
               "contributors": 1,
@@ -848,25 +866,27 @@
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMMDDAAAAAAAAAAAAmZxMmZbmxMzyMGzw2MzYmZGbIzYxMNAzAMzmZY2MAkxYBAzMgxMzMmNmZbZAmBDA",
-          "notes": [],
+          "title": "Shadow - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-09-01T20:15:00+00:00",
+          "exportString": "CIQAR03Gt7xPmcDNOjs2Zlb3yOMjZGAAAAAAAAAAAghZxMGbzMmZWmZYmx2MGzMzYDZGLmpBYGgZ2MjmNDAZMWAwMAjZmZMbjZ2WGgZwA",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/shadow-priest-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 36,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=0.0 (0.0%), updated=2026-09-01T20:15:00+00:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -884,8 +904,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/death-knight/blood/talent-builds-pve-tank"
           ],
           "confidence": "low",
-          "confidenceScore": 35,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/6 (16.7%), margin=2.5 (8.9%), updated=2026-09-21T13:24:58-05:00",
+          "confidenceScore": 39,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/6 (16.7%), margin=7.0 (25.0%), updated=2026-09-21T13:24:58-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -910,8 +930,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/death-knight/blood/talent-builds-pve-tank"
           ],
           "confidence": "low",
-          "confidenceScore": 42,
-          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/4 (25.0%), margin=6.0 (21.4%), updated=2026-09-21T13:24:58-05:00",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (25.0%), updated=2026-09-21T13:24:58-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -938,8 +958,8 @@
             "Guide URL: https://www.icy-veins.com/wow/frost-death-knight-pve-dps-spec-builds-talents"
           ],
           "confidence": "high",
-          "confidenceScore": 78,
-          "confidenceRationale": "support=70.0, families=3, sources=3, agreement=3/6 (50.0%), margin=48.0 (68.6%), updated=2026-09-14T19:20:00+00:00",
+          "confidenceScore": 81,
+          "confidenceRationale": "support=70.0, families=3, sources=3, agreement=3/6 (50.0%), margin=56.0 (80.0%), updated=2026-09-14T19:20:00+00:00",
           "sampleSize": 6,
           "agreementCount": 3,
           "agreementRatio": 0.5,
@@ -976,8 +996,8 @@
             "Guide URL: https://www.icy-veins.com/wow/frost-death-knight-pve-dps-spec-builds-talents"
           ],
           "confidence": "high",
-          "confidenceScore": 89,
-          "confidenceRationale": "support=70.0, families=3, sources=3, agreement=3/4 (75.0%), margin=48.0 (68.6%), updated=2026-09-14T19:20:00+00:00",
+          "confidenceScore": 92,
+          "confidenceRationale": "support=70.0, families=3, sources=3, agreement=3/4 (75.0%), margin=56.0 (80.0%), updated=2026-09-14T19:20:00+00:00",
           "sampleSize": 4,
           "agreementCount": 3,
           "agreementRatio": 0.75,
@@ -1016,8 +1036,8 @@
             "Guide URL: https://www.icy-veins.com/wow/unholy-death-knight-pve-dps-spec-builds-talents"
           ],
           "confidence": "low",
-          "confidenceScore": 34,
-          "confidenceRationale": "support=27.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.5 (5.5%), updated=2026-09-08T19:20:00+00:00",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=27.0, families=1, sources=1, agreement=1/6 (16.7%), margin=5.0 (18.5%), updated=2026-09-08T19:20:00+00:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -1064,49 +1084,53 @@
     "Shaman": {
       "Elemental": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesLfrRaidDB",
-          "updated": "2026-08-24 15:46:45",
-          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMbLzMmZmZZbZMMjBAAAAsYmNYADY2YCMLAwsNzMjZ2WmJMzsxyMzMjZwyMWMzwMLDAYAgZGDDD",
-          "notes": [],
+          "title": "Elemental - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMbLzMmZmZZbZMMjZAAAAgFzsBDYAzGTIzCAYZmZGjtlZahZmFWmZmZMDzyMWMzwMLAADAMzYYYA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/elemental-shaman/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (13.8%), updated=2026-08-24 15:46:45",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/6 (16.7%), margin=3.5 (16.6%), updated=unknown",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 2,
-              "familyBest": 16,
-              "popularityBonus": 9.51,
-              "familySupport": 25.51
+            "method": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMbLzMGjZZZZMmhBAAAAsYmNYADY2YCMLAwsMzMjx2ipNmZMWmZmZMsMLGLzMjZmFAgZAwMjhhB",
-          "notes": [],
+          "title": "Elemental - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAzMbLzMGjZZbZMmhZAAAAgFzsBDYAzGTIzCAYZmZGjtlZahZmFWmZmZMDzyMWmxYmZBAYAgZGDDD",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/elemental-shaman/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -1114,49 +1138,53 @@
       },
       "Enhancement": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLwCMDDNYBgZZGzMjllZgZmNWmZmZYYMDAwMMmZMzEYmBDGDA",
-          "notes": [],
+          "title": "Enhancement - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAz2MmxYZZGbMzsNWmZmZYsMGAAzwYmhZCMzgBjB",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/enhancement-shaman/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 33,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/6 (16.7%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbwCMDDNYBgZZGzYssMjNmZ2GLzMzMjxCDAgZYMzwIwMDGMGA",
-          "notes": [],
+          "title": "Enhancement - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbkFYGGawCAz2MmxYZZGbMzYsMzMzMGLjBAwMMmZYEYmBDGDA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/enhancement-shaman/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -1164,25 +1192,27 @@
       },
       "Restoration": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAzMzsssNjZGjZGzMDjFYDmxiGbDgZgNzwMYbMmpZbZmZzMmFWMPwMjZYWGAAAYmZwMDAMYG",
-          "notes": [],
+          "title": "Restoration - Raid",
+          "source": "Wowhead",
+          "updated": "2026-09-05T02:50:18-05:00",
+          "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAzMzsssNjZGjZGzMMWMzGMgJY2YCMWMDzgtxYmmtlZmNzYWYxMzMmhZZAAAgZmBAzMwgZA",
+          "notes": [
+            "Guide URL: https://www.wowhead.com/guide/classes/shaman/restoration/talent-builds-pve-healer"
+          ],
           "confidence": "low",
-          "confidenceScore": 53,
-          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/5 (40.0%), margin=3.5 (13.8%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 35,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/5 (20.0%), margin=1.0 (4.5%), updated=2026-09-05T02:50:18-05:00",
           "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.2,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 2,
+            "wowhead": {
+              "contributors": 1,
               "familyBest": 16,
-              "popularityBonus": 9.51,
-              "familySupport": 25.51
+              "popularityBonus": 6,
+              "familySupport": 22
             }
           },
           "selectedTalents": null
@@ -1196,8 +1226,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/shaman/restoration/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 40,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/3 (33.3%), margin=0.0 (0.0%), updated=2026-09-05T02:50:18-05:00",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/3 (33.3%), margin=1.0 (4.5%), updated=2026-09-05T02:50:18-05:00",
           "sampleSize": 3,
           "agreementCount": 1,
           "agreementRatio": 0.333,
@@ -1218,25 +1248,27 @@
     "Mage": {
       "Arcane": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesLfrRaidDB",
-          "updated": "2026-08-24 15:46:45",
-          "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzQzMGAAAGAwMz0sssMDAgNAA2gZmhNLzYmlZMmZmZGWYmZmZGAgBAAYAmZAGAMMzM",
-          "notes": [],
+          "title": "Arcane - Raid",
+          "source": "Wowhead",
+          "updated": "2026-08-31T21:03:17-05:00",
+          "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMDamZGAAAGAAEwMzMLLzMxCAAwMzMjNLzMzsMjxYmZwCzYmZGAgBAAYmZBAMDAGmZG",
+          "notes": [
+            "Guide URL: https://www.wowhead.com/guide/classes/mage/arcane/talent-builds-pve-dps"
+          ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (13.8%), updated=2026-08-24 15:46:45",
+          "confidenceScore": 34,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (4.5%), updated=2026-08-31T21:03:17-05:00",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 2,
+            "wowhead": {
+              "contributors": 1,
               "familyBest": 16,
-              "popularityBonus": 9.51,
-              "familySupport": 25.51
+              "popularityBonus": 6,
+              "familySupport": 22
             }
           },
           "selectedTalents": null
@@ -1250,8 +1282,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/mage/arcane/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=0.0 (0.0%), updated=2026-08-31T21:03:17-05:00",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-31T21:03:17-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -1270,49 +1302,53 @@
       },
       "Frost": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAMzwMLzMzsMegZmYmxYmZmZWMzMMjZAAAgZmZWWmZaDAA2AAAALAstMmZmBz2wYmxGAAAzsBMDMgZwAA",
-          "notes": [],
+          "title": "Frost - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAMzwYZm5BmFMzEzMGzMzMziZmZMjZAAAgZmZWWmZaDAA2AAAALAstMmZmZY2GGzwCAAAzsBMTGDYGMMA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/frost-mage/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 34,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/5 (20.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 5,
           "agreementCount": 1,
           "agreementRatio": 0.2,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAwsZsMzMzysZmJmZmZmZmZmFzMzYGzAAAAzMzssMz0GAAsBAAA2AYbbMjZwsNMmhNAAAmZDYGYAzghB",
-          "notes": [],
+          "title": "Frost - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAMzwYZm5BmFMzEzMGzMzMziZmZMjZgAAAzMzssMz0GAAsBAAAWAYbZMzMzwsNMmhFAAAmZDYGGDYGMMA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/frost-mage/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -1320,49 +1356,53 @@
       },
       "Fire": {
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzIzMzMAAAGAwMz0sstNDAwmZmx2MzMzYDAAAAALmZmZAAgZMmZmZMzsMAMzAMGwMMGA",
-          "notes": [],
+          "title": "Fire - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMzIzMGAAAGAwMz0sstMDAwmZmx2MzMzYBAAAAALmZmZAAgZMmZmZMzsMAMzQGjBMDjB",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/fire-mage/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzsgZGZmZGAAAGAwMz0sssMDAwmZmx2wYmZBAAAAAbmZmZGAAMmxMmZGzsNAMzAjxYwMMA",
-          "notes": [],
+          "title": "Fire - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMzIzMGAAAGAwMz0sstMDAwmZmx2YmZGLAAAAAYxMzMDAAMmxMmZmZmFAMzQGjxgZYMA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/fire-mage/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -1372,49 +1412,53 @@
     "Warlock": {
       "Demonology": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAYmxMzoZjZ2mZGzyAAAAAAAAGzYYBGYbYhGWMGjlZZmZGzAAzMmZmZmBwMjZAAAMmZmxwwyMGwA",
-          "notes": [],
+          "title": "Demonology - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMzMzoZjxmZGzyAAAAAAAAGzYYBGYb0GNsYwMLzyMzMmBAmhZmZmZAGzYMbAAgZmZmZGzwyMGwA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/demonology-warlock/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (13.8%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/6 (16.7%), margin=3.5 (16.6%), updated=unknown",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 2,
-              "familyBest": 16,
-              "popularityBonus": 9.51,
-              "familySupport": 25.51
+            "method": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAYmxMzoZjZ2mZGzyAAAAAAAAGzYYBGYbYhGWMGjlZZmZGzAAzMmZmZmBwMjZAAAMmZmxwwyMGwA",
-          "notes": [],
+          "title": "Demonology - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMzMzoZjxmZGzyAAAAAAAAGzYYBGYb0GNsYYmZZ2mZmxMAwMMmZmZAGzYMbAAgZmZmZGzwyMGwA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/demonology-warlock/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -1430,8 +1474,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/warlock/destruction/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 33,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-29T17:53:28-05:00",
+          "confidenceScore": 34,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (4.5%), updated=2026-08-29T17:53:28-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -1456,8 +1500,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/warlock/destruction/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=0.0 (0.0%), updated=2026-08-29T17:53:28-05:00",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-29T17:53:28-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -1476,49 +1520,53 @@
       },
       "Affliction": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMzMzoZhhZmZmlBAAYmZZ2mZmlxAAjllBGwAmhtADbDAAAzAAAYmhZmxgZYmZmZGDmZmZAAzAD",
-          "notes": [],
+          "title": "Affliction - Raid",
+          "source": "Icy-Veins",
+          "updated": "2026-08-31T19:41:00+00:00",
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMzMzoZhhZmZmlBAAYmZZ2mZmlxAAjllBGwEMDbBG2GAAAmBAAwMDzMjBzwMzMzMGMzMzAAmBG",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/affliction-warlock-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 54,
-          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/5 (40.0%), margin=4.5 (17.7%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 34,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-08-31T19:41:00+00:00",
           "sampleSize": 5,
-          "agreementCount": 2,
-          "agreementRatio": 0.4,
-          "distinctSourceCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.2,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 2,
-              "familyBest": 16,
-              "popularityBonus": 9.51,
-              "familySupport": 25.51
+            "icyveins": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMMzoZzMz2MzMz2AAAmZmlZxMz2YAgx22ADYAzwWghtBAAgZAAAMzMmxM2GjZMmZmZMMzMDAwAG",
-          "notes": [],
+          "title": "Affliction - AoE (Mythic+)",
+          "source": "Icy-Veins",
+          "updated": "2026-08-31T19:41:00+00:00",
+          "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMjZGNLmxyMzYWGAAwMzsMLzMzyYAgx2yADYCmhtADbDAAAzAAAYmZMzwsxwYmZmZYYmZmBAMDMA",
+          "notes": [
+            "Guide URL: https://www.icy-veins.com/wow/affliction-warlock-pve-dps-spec-builds-talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 36,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=0.0 (0.0%), updated=2026-08-31T19:41:00+00:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "icyveins": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -1528,49 +1576,53 @@
     "Monk": {
       "Brewmaster": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAwMLbGDzwyM2MmZMAAAAAAALLwEzMwMMYGMzMzwsNMjZWGW2stNbzYWAAgNAAAwsNLNzMzGDbAMzw0YADAYA",
-          "notes": [],
+          "title": "Brewmaster - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CwQAQnG51S19isUJoJoTeJ/IKDAAAwMbbGzwwyM2YmZMAAAAAAALLYmYmBmhZ2YwMzMDz2wMmZ5BYZbW2mNmZBAA2QAAAmtZpZmZ2YYDgZGmGDAAYA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/brewmaster-monk/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 33,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/6 (16.7%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAwMLbGDzwyM2MmZMAAAAAAALLwEzMwMMYGMzMzwsNMjZWGW2stNbzYWAAgNAAAwsNLNzMzGDbAMzw0YADAYA",
-          "notes": [],
+          "title": "Brewmaster - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CwQAQnG51S19isUJoJoTeJ/IKDAAAwMLbGzYGWmxGmZMAAAAAAALLYEzMwMM2MjxMzMDz2YmxMLYZz22YGzCAAsNLTLz2MLDAwsNLNzMziZYDMzMzw0YAAAD",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/brewmaster-monk/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -1578,49 +1630,53 @@
       },
       "Windwalker": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYMYMYbmZ2mxAAAAAAAAAAAALDjwMMMgZMMzMzwsNMDzyMBAsYmtxwYmZAAsBAzys0MzMLADDMzAwYZMgBM",
-          "notes": [],
+          "title": "Windwalker - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYM2GmhlZGbzAAAAAAAAAAAAsMMaGzAGwMGmZmZY2GmhZZmAAWMz2MjZmZmBAwGAMLzSzMzsAgBmZAYsMQMgLA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/windwalker-monk/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 33,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/6 (16.7%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYAMGbzMz2MAAAAAAAAAAAALDzEmxywAmxwMzMDz2wMMLzEAwiZ2mZGzMzMAA2AgZZWamZmFAMwMDAswAGwA",
-          "notes": [],
+          "title": "Windwalker - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYAMGbzMz2MAAAAAAAAAAAALDz0MmhhBMMMzMzwsNMDzyDMBAsYmtZmxMzMDAgNAYWmlmZmZBADMzAwYZgYAD",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/windwalker-monk/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -1636,8 +1692,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/monk/mistweaver/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 34,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-09-05T00:05:10-05:00",
+          "confidenceScore": 35,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/5 (20.0%), margin=1.0 (4.5%), updated=2026-09-05T00:05:10-05:00",
           "sampleSize": 5,
           "agreementCount": 1,
           "agreementRatio": 0.2,
@@ -1662,8 +1718,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/monk/mistweaver/talent-builds-pve-healer"
           ],
           "confidence": "low",
-          "confidenceScore": 40,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/3 (33.3%), margin=0.0 (0.0%), updated=2026-09-05T00:05:10-05:00",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/3 (33.3%), margin=1.0 (4.5%), updated=2026-09-05T00:05:10-05:00",
           "sampleSize": 3,
           "agreementCount": 1,
           "agreementRatio": 0.333,
@@ -1684,49 +1740,53 @@
     "Druid": {
       "Balance": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDwsMzMzMYYGjZWmhxMWYZmlZGjZ2wAgx2yMDGz2AYCAAAwiZmZmBbGGjZAAMzglBA",
-          "notes": [],
+          "title": "Balance - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDwsMzMzMYYGjZWmhxMWYZmlZGjZ2wAgx2yMDGz2IwEAAAgFzMzMD2MMGzAAYmBLDA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/balance-druid/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (13.8%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/6 (16.7%), margin=3.5 (16.6%), updated=unknown",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 2,
-              "familyBest": 16,
-              "popularityBonus": 9.51,
-              "familySupport": 25.51
+            "method": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNMmZgxsMzMzMLMgxMLzsYmZswyMLjxMjNMAYstNzgxsNAmAAAAswMzMD2MmxYAAYmBLDA",
-          "notes": [],
+          "title": "Balance - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDwswMzMYYGjZWmZxMzYhlZWGjZGLYYAGbbzMYMbjATAAAAWMzMzMYzYGjZAAMzADA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/balance-druid/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -1734,49 +1794,53 @@
       },
       "Feral": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAwghxYmZmxsxDsMz2MzMmZGAAAAWCmNYMzomxswMzMGzMDAAAAAAgBAAAQzsMLzMzAAWAzMALmZYAAAMzGGA",
-          "notes": [],
+          "title": "Feral - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CcGADBD3hSPCL9Y9gz68WcKvMAAAAAAwghxYmZmxsxDsMz2MzMmZGAAAAWCmNYMzomxsMzMzMGzYGAAAAAAgBAAAQzsMLzMzACsAmZAWMDGAAAzshB",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/feral-druid/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 33,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 41,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/6 (16.7%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZ2MzMzMGzmx2YbGzMmZAAAAYJY2M8AmZUzYWGzMzsMmxMAAAAAAGYAAAA0MLzyMzMAgFwMDwCDGAAAzshB",
-          "notes": [],
+          "title": "Feral - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAwYMDGzMjxstMPwyYbmZGzMDAAAALBzGMmZUzYWmZmZGjZMDAAAAAAwAAAAoZWmlZmZmlZWaWmZZDMzAsYGMAAmZwMbYA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/feral-druid/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -1792,8 +1856,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/druid/guardian/talent-builds-pve-tank"
           ],
           "confidence": "low",
-          "confidenceScore": 33,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=0.0 (0.0%), updated=2026-08-28T11:29:35-05:00",
+          "confidenceScore": 34,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (4.5%), updated=2026-08-28T11:29:35-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -1818,8 +1882,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/druid/guardian/talent-builds-pve-tank"
           ],
           "confidence": "low",
-          "confidenceScore": 36,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=0.0 (0.0%), updated=2026-08-28T11:29:35-05:00",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-28T11:29:35-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -1838,49 +1902,53 @@
       },
       "Restoration": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMjxMLzMjZmxsNMYmNjNmBAAAAAAAAAAbDa2YMNzY4BMLzMzMDTmBAAAAAAAAAAAAgZbmlmtZ2sxYmZYmBGNDAwMDADA",
-          "notes": [],
-          "confidence": "medium",
-          "confidenceScore": 71,
-          "confidenceRationale": "support=28.0, families=1, sources=3, agreement=3/5 (60.0%), margin=7.0 (25.0%), updated=2026-08-24 15:46:47",
+          "title": "Restoration - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAYMmZZmZMzMmthZwsZsNmBAAAAAAAAAALDa2MjpZGDjZZmZmZYYGAAAAAAAAAABAAMbzs0sNzmNGzMwMANDAwMDADA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/restoration-druid/talents"
+          ],
+          "confidence": "low",
+          "confidenceScore": 35,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/5 (20.0%), margin=1.0 (4.8%), updated=unknown",
           "sampleSize": 5,
-          "agreementCount": 3,
-          "agreementRatio": 0.6,
-          "distinctSourceCount": 3,
+          "agreementCount": 1,
+          "agreementRatio": 0.2,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 3,
-              "familyBest": 16,
-              "popularityBonus": 12,
-              "familySupport": 28
+            "method": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMMmZZMzMzMmthHgZmlhNbzAAAAAAAAAAgtBNbzw0MMwsMzMzMLmMDAAAAADAwAAAAAAz2MbNbzsZjxMDmZAaGAgZGAGA",
-          "notes": [],
+          "title": "Restoration - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMjxMbzMjZmxsN8AzYGGbMDAAAAAAAAAAWG0sZGTzMGGzyMzMzwwMAAAAAAAAw2yYDTzMLDAAQALMmZwMDQzAgZGAwA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/restoration-druid/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/3 (33.3%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 48,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/3 (33.3%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 3,
           "agreementCount": 1,
           "agreementRatio": 0.333,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -1898,8 +1966,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/demon-hunter/havoc/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 43,
-          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/6 (16.7%), margin=8.5 (25.0%), updated=2026-09-24T00:50:42-05:00",
+          "confidenceScore": 39,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/6 (16.7%), margin=7.0 (25.0%), updated=2026-09-24T00:50:42-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
@@ -1908,9 +1976,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 28,
+              "familyBest": 22,
               "popularityBonus": 6,
-              "familySupport": 34
+              "familySupport": 28
             }
           },
           "selectedTalents": null
@@ -1924,8 +1992,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/demon-hunter/havoc/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 49,
-          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/4 (25.0%), margin=12.0 (35.3%), updated=2026-09-24T00:50:42-05:00",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (25.0%), updated=2026-09-24T00:50:42-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -1934,9 +2002,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 28,
+              "familyBest": 22,
               "popularityBonus": 6,
-              "familySupport": 34
+              "familySupport": 28
             }
           },
           "selectedTalents": null
@@ -1944,49 +2012,53 @@
       },
       "Vengeance": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAWmxMzMGmZyMzgZxMjBmxMjZMzMzMMzMzYzMjxwAAAAAAAAwMzYDAAAADMzMzMbtNzMDAMAAAAG",
-          "notes": [],
+          "title": "Vengeance - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAMjZmZMzMjMzMYWMzMjBjZGzYGzMDzMzM2MzsNGAAAAAAAIgZmxGAAAAGMmZmZ2abmZGAYAAAAMA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/vengeance-demon-hunter/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=25.5, families=1, sources=2, agreement=2/6 (33.3%), margin=3.5 (13.8%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 37,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/6 (16.7%), margin=3.5 (16.6%), updated=unknown",
           "sampleSize": 6,
-          "agreementCount": 2,
-          "agreementRatio": 0.333,
-          "distinctSourceCount": 2,
+          "agreementCount": 1,
+          "agreementRatio": 0.167,
+          "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
-              "contributors": 2,
-              "familyBest": 16,
-              "popularityBonus": 9.51,
-              "familySupport": 25.51
+            "method": {
+              "contributors": 1,
+              "familyBest": 15,
+              "popularityBonus": 6,
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjhZkZmBWMjZwMjZGz8AzMzYYmZmx2YGjxMAAAAAAAAMzM2AAAAwAzMzMzSbzMzAgZAAAAMA",
-          "notes": [],
+          "title": "Vengeance - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAMjZmZMzMjMzMYWMzMjBjZGzYGzMDzMzM2MzsNGAAAAwsNDGGLLMhhZmxCAAAAGMAEgZGgBAAAwA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/vengeance-demon-hunter/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 37,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 45,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -2104,49 +2176,53 @@
       },
       "Preservation": {
         "raid": {
-          "title": "All Bosses",
-          "source": "PeaversTalentsData/ParsesNormalRaidDB",
-          "updated": "2026-08-24 15:46:47",
-          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMDmZMYGzmhZmZbAAAMjZMYGzIzMDAAAwMzMZmZmxsMzMAYGzALgFwMMB2MsZYAMzMGA",
-          "notes": [],
+          "title": "Preservation - Raid",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ2WmZGDjxsMDw2wAAAzYGzYMMTMmBAAAMzMTzYmZmZZMDAMmBWAbgZYCZjxmhZAmZYA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/preservation-evoker/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 34,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/5 (20.0%), margin=0.0 (0.0%), updated=2026-08-24 15:46:47",
+          "confidenceScore": 42,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/5 (20.0%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 5,
           "agreementCount": 1,
           "agreementRatio": 0.2,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
         },
         "aoe": {
-          "title": "All Dungeons",
-          "source": "PeaversTalentsData/ParsesMythicDB",
-          "updated": "2026-08-24 15:46:50",
-          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ2WmZGDjxsZGw2wAAAzYmZmZMMTMmBAAAMzMTGzMzMGzAAjZgFwGYGmAbM2MMDwMDD",
-          "notes": [],
+          "title": "Preservation - AoE (Mythic+)",
+          "source": "Method",
+          "updated": null,
+          "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ22mZGDjxsZGw2wAAAzYGzYMMTMmBAAAMzMTzYmZmZZMDAMmBWAbgZYCZjxmhZAmZYA",
+          "notes": [
+            "Guide URL: https://www.method.gg/guides/preservation-evoker/talents"
+          ],
           "confidence": "low",
-          "confidenceScore": 41,
-          "confidenceRationale": "support=22.0, families=1, sources=1, agreement=1/3 (33.3%), margin=1.0 (4.5%), updated=2026-08-24 15:46:50",
+          "confidenceScore": 48,
+          "confidenceRationale": "support=21.0, families=1, sources=1, agreement=1/3 (33.3%), margin=7.0 (33.3%), updated=unknown",
           "sampleSize": 3,
           "agreementCount": 1,
           "agreementRatio": 0.333,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "peavers": {
+            "method": {
               "contributors": 1,
-              "familyBest": 16,
+              "familyBest": 15,
               "popularityBonus": 6,
-              "familySupport": 22
+              "familySupport": 21
             }
           },
           "selectedTalents": null
@@ -2194,8 +2270,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/evoker/augmentation/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 49,
-          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/4 (25.0%), margin=12.0 (35.3%), updated=2026-09-28T19:59:28-05:00",
+          "confidenceScore": 50,
+          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/4 (25.0%), margin=13.0 (38.2%), updated=2026-09-28T19:59:28-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
