@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T21:03:03.032Z",
+  "generatedAt": "2026-10-13T06:00:30.948Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/tank/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -1133,52 +1133,52 @@
       "Enhancement": {
         "raid": {
           "title": "Enhancement - Raid",
-          "source": "Icy-Veins",
-          "updated": "2026-10-12T05:00:00+00:00",
-          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbwCMDDNYBgZZGzMjllZgZmNWmZmZYYMDAwMMmZMzEYmBDGDA",
+          "source": "Wowhead",
+          "updated": "2026-10-12T21:01:56-05:00",
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAzyMmZGLLzAzMbsMzMzwwYGAgZYMzYmJwMDGMGA",
           "notes": [
-            "Guide URL: https://www.icy-veins.com/wow/enhancement-shaman-pve-dps-spec-builds-talents"
+            "Guide URL: https://www.wowhead.com/guide/classes/shaman/enhancement/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/6 (16.7%), margin=24.0 (53.3%), updated=2026-10-12T05:00:00+00:00",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/6 (16.7%), margin=1.0 (2.2%), updated=2026-10-12T21:01:56-05:00",
           "sampleSize": 6,
           "agreementCount": 1,
           "agreementRatio": 0.167,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "icyveins": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 39,
+              "familyBest": 40,
               "popularityBonus": 6,
-              "familySupport": 45
+              "familySupport": 46
             }
           },
           "selectedTalents": null
         },
         "aoe": {
           "title": "Enhancement - AoE (Mythic+)",
-          "source": "Icy-Veins",
-          "updated": "2026-10-12T05:00:00+00:00",
-          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAAsBYzMG2gFYGGawCAzyMmxYZxYjZmtxyMzMzYswMAAzwYmhRgZGMYMA",
+          "source": "Wowhead",
+          "updated": "2026-10-12T21:01:56-05:00",
+          "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbkFYGGawCAzyMmZGLLzAzMbsMzMzwwYGAgZYMzYmJwMDGMGA",
           "notes": [
-            "Guide URL: https://www.icy-veins.com/wow/enhancement-shaman-pve-dps-spec-builds-talents"
+            "Guide URL: https://www.wowhead.com/guide/classes/shaman/enhancement/talent-builds-pve-dps"
           ],
-          "confidence": "medium",
-          "confidenceScore": 60,
-          "confidenceRationale": "support=45.0, families=1, sources=1, agreement=1/4 (25.0%), margin=24.0 (53.3%), updated=2026-10-12T05:00:00+00:00",
+          "confidence": "low",
+          "confidenceScore": 47,
+          "confidenceRationale": "support=46.0, families=1, sources=1, agreement=1/4 (25.0%), margin=1.0 (2.2%), updated=2026-10-12T21:01:56-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
           "distinctSourceCount": 1,
           "distinctFamilyCount": 1,
           "consensusBreakdown": {
-            "icyveins": {
+            "wowhead": {
               "contributors": 1,
-              "familyBest": 39,
+              "familyBest": 40,
               "popularityBonus": 6,
-              "familySupport": 45
+              "familySupport": 46
             }
           },
           "selectedTalents": null
@@ -2232,8 +2232,8 @@
             "Guide URL: https://www.method.gg/guides/augmentation-evoker/talents"
           ],
           "confidence": "low",
-          "confidenceScore": 47,
-          "confidenceRationale": "support=34.0, families=2, sources=2, agreement=2/6 (33.3%), margin=0.0 (0.0%), updated=unknown",
+          "confidenceScore": 51,
+          "confidenceRationale": "support=34.0, families=2, sources=2, agreement=2/6 (33.3%), margin=6.0 (17.6%), updated=unknown",
           "sampleSize": 6,
           "agreementCount": 2,
           "agreementRatio": 0.333,
@@ -2264,8 +2264,8 @@
             "Guide URL: https://www.wowhead.com/guide/classes/evoker/augmentation/talent-builds-pve-dps"
           ],
           "confidence": "low",
-          "confidenceScore": 50,
-          "confidenceRationale": "support=34.0, families=1, sources=1, agreement=1/4 (25.0%), margin=13.0 (38.2%), updated=2026-09-28T19:59:28-05:00",
+          "confidenceScore": 43,
+          "confidenceRationale": "support=28.0, families=1, sources=1, agreement=1/4 (25.0%), margin=7.0 (25.0%), updated=2026-09-28T19:59:28-05:00",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -2274,9 +2274,9 @@
           "consensusBreakdown": {
             "wowhead": {
               "contributors": 1,
-              "familyBest": 28,
+              "familyBest": 22,
               "popularityBonus": 6,
-              "familySupport": 34
+              "familySupport": 28
             }
           },
           "selectedTalents": null
