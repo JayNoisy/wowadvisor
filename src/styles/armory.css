@@ -1,0 +1,144 @@
+/* Armory lookup + paperdoll */
+.armory-form {
+  display: grid;
+  grid-template-columns: 110px 1fr 1fr auto;
+  gap: var(--s-3);
+  align-items: end;
+  padding: var(--s-5);
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+}
+.armory-actions { display: flex; align-items: center; gap: var(--s-4); }
+.armory-actions .btn { min-height: 46px; }
+.armory-actions .link-btn { font-size: var(--step--1); }
+
+.saved-chars { margin-top: var(--s-4); display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); }
+.saved-label { color: var(--muted); font-size: var(--step--1); margin-right: var(--s-2); }
+.char-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  min-height: 36px;
+  padding: var(--s-1) var(--s-3);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+}
+.char-chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cc); align-self: center; }
+.char-chip:hover { border-color: var(--line-strong); background: var(--surface-2); }
+.char-chip-name { font-weight: 700; color: var(--ink); }
+.char-chip-realm { font-size: var(--step--1); color: var(--muted); }
+
+.armory-status { margin-top: var(--s-4); color: var(--ink-2); }
+.armory-status[data-tone="error"] { color: var(--bad); }
+.armory-status[data-tone="ok"] { color: var(--good); }
+.armory-status[data-tone="busy"] { color: var(--muted); }
+
+.armory-result { margin-top: var(--s-6); display: grid; gap: var(--s-5); }
+.armory-result[aria-busy="true"] { opacity: 0.5; }
+
+.hero-char { display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; }
+.hero-char-crest { width: 72px; height: 72px; border-radius: 18px; box-shadow: 0 0 0 2px var(--cc), 0 0 26px color-mix(in srgb, var(--cc) 40%, transparent); }
+.hero-char-id { flex: 1; min-width: 12rem; }
+.hero-char-id h2 { font-size: var(--step-4); color: var(--cc); }
+.hero-char-id p { color: var(--ink-2); }
+.ilvl { display: grid; justify-items: end; line-height: 1; }
+.ilvl strong { font-family: var(--font-display); font-weight: var(--display-weight); font-size: var(--step-5); color: var(--ink); }
+.ilvl span { color: var(--muted); font-size: var(--step--1); margin-top: var(--s-1); }
+
+.char-stats { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-2); }
+.char-stats div { padding: var(--s-3) var(--s-4); background: color-mix(in srgb, var(--surface) 85%, transparent); border: 1px solid var(--line); border-radius: var(--r-md); }
+.char-stats dt { color: var(--muted); font-size: var(--step--1); }
+.char-stats dd { margin: 0; font-family: var(--font-display); font-weight: var(--display-weight); font-size: var(--step-2); color: var(--ink); }
+
+/* Paperdoll: two gear columns flanking the model, weapons beneath it. */
+.paperdoll {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 300px) minmax(0, 1fr);
+  grid-template-areas: "left model right" "left weapons right";
+  gap: var(--s-3) var(--s-5);
+  padding: var(--s-5);
+  border-radius: var(--r-lg);
+  background:
+    radial-gradient(ellipse at 50% 40%, color-mix(in srgb, var(--cc) 14%, transparent), transparent 60%),
+    var(--bg-deep);
+  border: 1px solid var(--line);
+}
+.gear-left { grid-area: left; }
+.gear-right { grid-area: right; }
+.gear-weapons { grid-area: weapons; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); align-self: end; }
+.gear-col { display: grid; gap: var(--s-2); align-content: start; }
+
+.gear-slot {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-1);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  text-align: left;
+  color: var(--ink);
+}
+.gear-slot:hover, .gear-slot:focus-visible { background: rgba(255, 255, 255, 0.03); border-color: var(--line); }
+.gear-right { text-align: right; }
+.gear-right .gear-slot { flex-direction: row-reverse; text-align: right; }
+.gear-icon {
+  flex: none;
+  width: 44px; height: 44px;
+  border-radius: var(--r-xs);
+  background: var(--surface);
+  border: 2px solid currentColor;
+  color: var(--q-common);
+  overflow: hidden;
+}
+.gear-icon img { width: 100%; height: 100%; object-fit: cover; }
+.gear-text { display: grid; min-width: 0; line-height: 1.25; }
+.gear-name { font-size: 0.95rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gear-ilvl { font-size: var(--step--1); color: var(--muted); }
+.gear-slot.is-empty .gear-icon { color: rgba(255, 255, 255, 0.08); border-style: dashed; }
+.gear-slot.is-empty .gear-name { color: var(--muted); }
+
+.q-common .gear-icon, .q-common.tt-title { color: var(--q-common); }
+.q-uncommon .gear-icon, .q-uncommon .gear-name, .tt-title.q-uncommon { color: var(--q-uncommon); }
+.q-rare .gear-icon, .q-rare .gear-name, .tt-title.q-rare { color: var(--q-rare); }
+.q-epic .gear-icon, .q-epic .gear-name, .tt-title.q-epic { color: var(--q-epic); }
+.q-legendary .gear-icon, .q-legendary .gear-name, .tt-title.q-legendary { color: var(--q-legendary); }
+
+.model {
+  grid-area: model;
+  margin: 0;
+  min-height: 380px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+}
+.model img { max-height: 520px; width: auto; transition: transform 0.12s linear; transform-origin: 50% 40%; }
+.model figcaption { text-align: center; padding: var(--s-5); }
+
+.armory-loadout .loadout-label { margin-top: 0; }
+.armory-loadout .link-btn { display: inline-block; margin-top: var(--s-3); }
+
+@media (max-width: 900px) {
+  .armory-form { grid-template-columns: 100px 1fr 1fr; }
+  .armory-actions { grid-column: 1 / -1; }
+  .paperdoll {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "model model" "left right" "weapons weapons";
+  }
+  .model { min-height: 280px; }
+  .model img { max-height: 340px; }
+}
+@media (max-width: 560px) {
+  .armory-form { grid-template-columns: 1fr; padding: var(--s-4); }
+  .armory-actions { flex-direction: column; align-items: stretch; }
+  .char-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .paperdoll { grid-template-columns: 1fr; grid-template-areas: "model" "left" "right" "weapons"; padding: var(--s-3); }
+  .gear-right .gear-slot { flex-direction: row; text-align: left; }
+  .gear-right { text-align: left; }
+  .gear-weapons { grid-template-columns: 1fr; }
+  .ilvl { justify-items: start; }
+}

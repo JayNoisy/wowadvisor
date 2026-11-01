@@ -1,0 +1,104 @@
+/* Design tokens.
+   Two editions share one component system and swap palettes + display type:
+   - Retail: twilight indigo, crisp grotesque headlines, the chosen class color tints the whole page.
+   - Forever: warm umber and old gold, Cinzel headlines that nod to the classic UI. */
+
+/* Registered so the class color can animate when you switch classes. */
+@property --cc {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #8e9bff;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Retail palette (default) */
+  --bg: #0f1124;
+  --bg-deep: #0a0c1b;
+  --surface: #161936;
+  --surface-2: #1f2347;
+  --line: rgba(166, 172, 255, 0.12);
+  --line-strong: rgba(166, 172, 255, 0.26);
+  --ink: #ecebfa;
+  --ink-2: #c9c8e6;
+  --muted: #9092b8;
+  --accent: #8e9bff;
+  --accent-ink: #0d1030;
+  --good: #6fd8a0;
+  --warn: #ffb36b;
+  --bad: #ff7a85;
+  --focus: #b9c2ff;
+
+  /* Class color, set per class by JS. Falls back to the edition accent. */
+  --cc: var(--accent);
+
+  /* Item quality (game colors, same in both editions) */
+  --q-common: #e6e6e6;
+  --q-uncommon: #1eff00;
+  --q-rare: #3a9dff;
+  --q-epic: #c06cff;
+  --q-legendary: #ff8000;
+
+  /* Type */
+  --font-display: "Bricolage Grotesque Variable", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Instrument Sans Variable", "Segoe UI", system-ui, sans-serif;
+  --display-weight: 750;
+  --display-tracking: -0.025em;
+
+  /* Modular scale, ratio 1.25 */
+  --step--1: 0.84rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.5625rem;
+  --step-3: 1.953rem;
+  --step-4: 2.441rem;
+  --step-5: 3.052rem;
+  --step-6: 3.815rem;
+
+  /* Space */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+
+  /* Radius follows hierarchy: big containers are soft, controls are tighter. */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-pill: 999px;
+
+  --page-max: 1200px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --topbar-h: 68px;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root[data-edition="forever"] {
+  --bg: #16120c;
+  --bg-deep: #0f0c08;
+  --surface: #1f1912;
+  --surface-2: #2a2219;
+  --line: rgba(232, 181, 74, 0.13);
+  --line-strong: rgba(232, 181, 74, 0.3);
+  --ink: #f3e8d2;
+  --ink-2: #d9ccb2;
+  --muted: #a8997e;
+  --accent: #e8b54a;
+  --accent-ink: #231804;
+  --good: #8fcf7a;
+  --warn: #f0a35a;
+  --bad: #f07c6c;
+  --focus: #ffd47a;
+
+  --font-display: "Cinzel", "Trajan Pro", "Palatino Linotype", Georgia, serif;
+  --display-weight: 700;
+  --display-tracking: 0.01em;
+}

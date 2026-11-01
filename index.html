@@ -1,332 +1,262 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-edition="retail">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WoW Talent Advisor</title>
+  <title>WoW Advisor</title>
+  <meta name="description" content="Talent builds for every World of Warcraft spec, plus a full guide to WoW Forever: classes, talent trees, races, dungeons and raids." />
+  <meta name="theme-color" content="#0f1124" />
+  <!-- Optional: Supabase public config. Leave empty to load it from /api/auth-config. -->
   <meta name="wowadvisor-supabase-url" content="" />
   <meta name="wowadvisor-supabase-anon-key" content="" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23171723'/%3E%3Ctext x='50%25' y='56%25' font-size='34' text-anchor='middle' fill='%23fff'%3E%E2%9A%94%3C/text%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="style.css?v=20260308-12" />
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="script.js?v=20260308-12" defer></script>
+  <link rel="icon" type="image/png" href="/assets/logo/favicon-64.png" />
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" />
+  <script>
+    // Set the edition before first paint so Forever links don't flash the Retail palette.
+    (function () {
+      var h = location.hash.replace(/^#\/?/, "").split("/")[0];
+      if (h === "forever" || h === "atlas") document.documentElement.dataset.edition = "forever";
+    })();
+  </script>
+  <script type="module" src="/src/main.js"></script>
 </head>
-<body>
-  <header class="header">
-    <div class="header-auth-row">
-      <p class="muted auth-status-text" id="authStatusText">Sign in to save copied builds and get outdated alerts.</p>
-      <div class="auth-actions">
-        <span id="authUserEmail" class="auth-user-email" hidden></span>
-        <button id="authOpenBtn" class="auth-btn" type="button">Sign in</button>
-        <button id="authLogoutBtn" class="auth-btn secondary" type="button" hidden>Sign out</button>
+<body data-view="builds">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#builds" data-brand aria-label="WoW Advisor home">
+        <img src="/assets/logo/logo-96.webp" alt="" width="36" height="36" />
+        <span class="brand-name">WoW Advisor</span>
+      </a>
+
+      <nav class="nav" aria-label="Main">
+        <a href="#builds" data-nav="builds" data-for="retail">Builds</a>
+        <a href="#tracker" data-nav="tracker" data-for="retail">Tracker</a>
+        <a href="#armory" data-nav="armory" data-for="retail">Armory</a>
+        <a href="#forever" data-nav="forever" data-for="forever">Classes</a>
+        <a href="#atlas" data-nav="atlas" data-for="forever">Dungeons &amp; raids</a>
+      </nav>
+
+      <div class="edition" id="editionSwitch" role="group" aria-label="Game version">
+        <button type="button" data-edition="retail" aria-pressed="true">Retail</button>
+        <button type="button" data-edition="forever" aria-pressed="false">Forever</button>
       </div>
+
+      <div class="account" id="account"></div>
     </div>
-    <h1 class="site-title">
-      <img class="site-logo" src="assets/logo/WowadvisorLogo.png" alt="WoW Talent Advisor" />
-    </h1>
-    <div class="top-tabs" id="topTabs" role="tablist" aria-label="Primary sections">
-      <button id="homeTabBtn" class="top-tab-btn selected" type="button" role="tab" aria-selected="true" aria-controls="homePanel" data-top-tab="home">Home</button>
-      <button id="buildsTabBtn" class="top-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="buildsPanel" data-top-tab="builds">Builds</button>
-      <button id="trackerTabBtn" class="top-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="trackerPanel" data-top-tab="tracker">Tracker</button>
-      <button id="armoryTabBtn" class="top-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="armoryPanel" data-top-tab="armory">Armory</button>
-    </div>
-    <div id="buildFreshnessAlert" class="build-freshness-alert" hidden></div>
   </header>
 
-  <main class="container">
-    <section id="homePanel" class="top-tab-panel home-panel" aria-label="Homepage">
-      <div class="home-hero-card">
-        <p class="home-kicker">WoW Advisor</p>
-        <h2>Build faster. Play cleaner.</h2>
-        <p class="muted">Pick your spec, copy a build, and track if your setup goes out of date after data refreshes.</p>
-        <button id="goToBuildsBtn" class="auth-btn" type="button">Open Builds</button>
-      </div>
-      <div class="home-feature-grid">
-        <article class="home-feature-card">
-          <h3>Spec-Based Picks</h3>
-          <p>Get recommended builds for Mythic+, Raid, and PvP in one place.</p>
-        </article>
-        <article class="home-feature-card">
-          <h3>Track Your Copies</h3>
-          <p>Signed-in users can monitor copied builds and quickly open latest versions.</p>
-        </article>
-        <article class="home-feature-card">
-          <h3>Stat Priorities</h3>
-          <p>See stat order and role-based explanations without leaving the page.</p>
-        </article>
-      </div>
-      <article class="home-build-method-card" aria-label="How builds are created">
-        <h3>How builds are created</h3>
-        <ul class="home-build-method-list">
-          <li>Build data is merged from high-performing public sources across PvE and PvP.</li>
-          <li>Talent choices are weighted by how commonly they appear for each class/spec/mode.</li>
-          <li>The app surfaces the strongest consensus build and flags copied builds when updates land.</li>
-        </ul>
-      </article>
-    </section>
+  <div id="freshness" class="freshness" role="status" hidden></div>
 
-    <section id="buildsPanel" class="top-tab-panel" aria-label="Builds panel" hidden>
-    <section class="builds-hero" aria-label="Builds overview">
-      <div class="builds-hero-copy">
-        <p class="builds-kicker">Build Studio</p>
-        <h2>Curated picks for your spec and content type</h2>
-        <p class="muted">Choose a class, lock in a spec, then compare your setup across Mythic+, Raid, and PvP workflows.</p>
+  <main id="main">
+    <!-- ================= RETAIL: BUILDS ================= -->
+    <section id="view-builds" class="view view-builds" data-state="pick" aria-labelledby="buildsHeading">
+      <div class="hall" id="buildsHero">
+        <h1 id="buildsHeading" class="hall-title">Pick a class.<br />Copy the build.</h1>
+        <p class="hall-lede">Talent loadouts drawn from what top Mythic+, raid and PvP players are running right now, refreshed twice a day.</p>
+        <div class="crest-grid" id="classGrid" aria-label="Classes"></div>
       </div>
-      <div class="builds-hero-stats" aria-hidden="true">
-        <div class="builds-stat">
-          <span class="builds-stat-value">13</span>
-          <span class="builds-stat-label">Classes</span>
-        </div>
-        <div class="builds-stat">
-          <span class="builds-stat-value">39</span>
-          <span class="builds-stat-label">Specs</span>
-        </div>
-        <div class="builds-stat">
-          <span class="builds-stat-value">3</span>
-          <span class="builds-stat-label">Modes</span>
-        </div>
-      </div>
-    </section>
 
-    <section id="myBuildsCard" class="my-builds-card" hidden aria-label="My tracked builds">
-      <div class="my-builds-head">
-        <h2>My Builds</h2>
-        <button id="myBuildsRefreshBtn" class="auth-btn secondary" type="button">Refresh</button>
-      </div>
-      <p id="myBuildsHint" class="muted">Sign in to track copied builds.</p>
-      <div id="myBuildsList" class="my-builds-list"></div>
-    </section>
-
-    <section class="class-section" aria-label="Class selection">
-      <div class="section-headline">
-        <h3>Class Library</h3>
-        <p class="muted">Start by selecting your class to unlock tailored recommendations.</p>
-      </div>
-      <div class="class-buttons" id="classButtons">
-        <button class="class-btn" data-class="Warrior" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/warrior.png" alt="" /></span><span class="class-name">Warrior</span></button>
-        <button class="class-btn" data-class="Paladin" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/paladin.png" alt="" /></span><span class="class-name">Paladin</span></button>
-        <button class="class-btn" data-class="Hunter" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/hunter.png" alt="" /></span><span class="class-name">Hunter</span></button>
-        <button class="class-btn" data-class="Rogue" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/rogue.png" alt="" /></span><span class="class-name">Rogue</span></button>
-        <button class="class-btn" data-class="Priest" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/priest.png" alt="" /></span><span class="class-name">Priest</span></button>
-        <button class="class-btn" data-class="Death Knight" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/death-knight.png" alt="" /></span><span class="class-name">Death Knight</span></button>
-        <button class="class-btn" data-class="Shaman" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/shaman.png" alt="" /></span><span class="class-name">Shaman</span></button>
-        <button class="class-btn" data-class="Mage" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/mage.png" alt="" /></span><span class="class-name">Mage</span></button>
-        <button class="class-btn" data-class="Warlock" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/warlock.png" alt="" /></span><span class="class-name">Warlock</span></button>
-        <button class="class-btn" data-class="Monk" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/monk.png" alt="" /></span><span class="class-name">Monk</span></button>
-        <button class="class-btn" data-class="Druid" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/druid.png" alt="" /></span><span class="class-name">Druid</span></button>
-        <button class="class-btn" data-class="Demon Hunter" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/demon-hunter.png" alt="" /></span><span class="class-name">Demon Hunter</span></button>
-        <button class="class-btn" data-class="Evoker" aria-pressed="false"><span class="class-glyph" aria-hidden="true"><img class="class-icon-img" src="assets/class-icons/evoker.png" alt="" /></span><span class="class-name">Evoker</span></button>
-      </div>
-    </section>
-
-    <section class="panel" id="panel" hidden aria-label="Spec selection and build">
-      <div class="panel-header">
-        <div class="panel-head-left">
-          <div class="panel-title">
-            <button id="backToClassesBtn" class="back-btn" type="button" aria-label="Back to class selection">Back</button>
-            <h2 id="selectedClassTitle">Choose a class</h2>
+      <section id="classSheet" class="sheet" hidden aria-labelledby="sheetName">
+        <header class="sheet-head">
+          <img id="sheetCrest" class="sheet-crest" src="" alt="" width="96" height="96" />
+          <div class="sheet-id">
+            <h2 id="sheetName" class="sheet-name"></h2>
+            <p id="sheetRoles" class="sheet-roles"></p>
           </div>
-          <p class="muted" id="panelSubtitle">Then choose a spec.</p>
-        </div>
-        <span class="badge" id="classBadge" aria-hidden="true">?</span>
-      </div>
+          <button type="button" id="changeClassBtn" class="btn btn-quiet btn-sm sheet-change">All classes</button>
+        </header>
 
-      <div class="panel-body">
-        <div class="specs">
-          <h3 class="section-title">Specs</h3>
-          <div class="spec-buttons" id="specButtons" aria-label="Spec selection"></div>
+        <div class="sheet-controls">
+          <div id="specTabs" class="spec-tabs" role="tablist" aria-label="Specialization"></div>
+          <div id="modeSwitch" class="segmented mode-switch" role="radiogroup" aria-label="Content type" hidden></div>
         </div>
 
-        <div class="build-type" id="buildTypeWrap" hidden>
-          <h3 class="section-title">Build type</h3>
-          <div class="build-tabs" id="buildTabs" aria-label="Build type selection">
-            <button class="tab-btn" data-mode="aoe" type="button">AoE (Mythic+)</button>
-            <button class="tab-btn" data-mode="raid" type="button">Raid</button>
-            <button class="tab-btn" data-mode="pvp" type="button">PvP</button>
+        <p id="pickSpecPrompt" class="pick-spec">Pick a specialization to see its build.</p>
+
+        <div id="sheetBody" class="sheet-body" hidden>
+          <div class="sheet-main">
+            <article id="loadoutPlate" class="loadout-plate" aria-live="polite"></article>
+            <section id="rotationPanel" class="panel panel-rotation"></section>
           </div>
-          <div class="mythic-context-card" id="mythicContextCard" hidden>
-            <h4 class="mythic-context-title">Mythic+ Context</h4>
-            <p class="muted" id="mythicContextHint">Set key level and affixes to tune AoE recommendations.</p>
-            <div class="mythic-context-controls">
-              <label class="mythic-level-label" for="mythicKeyLevel">Key level</label>
-              <input id="mythicKeyLevel" class="mythic-level-input" type="number" min="2" max="35" step="1" value="10" />
-              <button id="mythicQuickFortifiedBtn" class="mythic-quick-btn" type="button">Fortified week</button>
-              <button id="mythicQuickTyrannicalBtn" class="mythic-quick-btn" type="button">Tyrannical week</button>
-              <button id="mythicClearAffixesBtn" class="mythic-quick-btn" type="button">Clear affixes</button>
-            </div>
-            <div id="mythicAffixList" class="mythic-affix-list" aria-label="Affix selection"></div>
-            <ul id="mythicContextNotes" class="notes" hidden></ul>
-          </div>
-          <button id="rotationToggleBtn" class="rotation-toggle-btn" type="button" hidden aria-expanded="false" aria-controls="rotationHelperPanel">Show Rotation Helper</button>
+          <aside class="sheet-side">
+            <section id="statsPanel" class="panel"></section>
+            <section id="mythicPanel" class="panel" hidden></section>
+          </aside>
         </div>
-
-        <div class="rotation-card" id="rotationHelperPanel" hidden>
-          <h3 id="rotationTitle">Rotation Helper</h3>
-          <p class="muted" id="rotationHint">Pick a spec to see rotation guidance.</p>
-          <ol id="rotationSteps" class="rotation-steps"></ol>
-        </div>
-
-        <div class="build-card">
-          <h3 id="buildTitle">Best Talent Build</h3>
-          <p class="muted" id="buildMeta"></p>
-          <p class="muted" id="buildHint">Pick a spec, then a build type.</p>
-
-          <ul id="buildNotes" class="notes" hidden></ul>
-
-          <div class="export-row">
-            <input id="exportString" type="text" placeholder="Export string will appear here…" readonly />
-            <button id="copyBtn" type="button" disabled>Copy</button>
-          </div>
-        </div>
-
-        <div class="stat-card" id="statCard">
-          <h3>Stat Priorities</h3>
-          <p class="muted" id="statHint">Pick a spec to view stat priorities.</p>
-          <div id="statPills" class="stat-pills" hidden></div>
-          <div id="statExplain" class="stat-explain" hidden></div>
-        </div>
-
-        <div class="talent-card" id="talentCard" hidden>
-          <h3>Talent Tree (Blizzard API)</h3>
-          <p class="muted" id="talentTreeHint" hidden>Pick a spec to load talent nodes.</p>
-          <div id="talentTreeWrap" class="talent-tree-wrap" hidden>
-            <div id="talent-system">
-              <div class="talent-points-header">
-                Points Spent: <span id="pointsSpent">0</span> / <span id="maxPoints">10</span>
-              </div>
-
-              <div class="talent-tree" id="talentTree"></div>
-            </div>
-
-            <div class="talent-tooltip" id="talentTooltip" style="display: none;"></div>
-          </div>
-          <div id="talentNodeInspector" class="talent-node-inspector" hidden>
-            <h4 class="talent-node-title">Talent Details</h4>
-            <p class="muted" id="talentNodeHint">Click a talent node to inspect it.</p>
-            <div id="talentNodeBody" class="talent-node-body"></div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-    </section>
-
-    <section id="trackerPanel" class="top-tab-panel tracker-panel" aria-label="Mythic lockout tracker panel" hidden>
-      <section id="mythicLockoutCard" class="mythic-lockout-card" aria-label="Mythic dungeon lockout tracker">
-        <div class="mythic-lockout-head">
-          <h3>Mythic Lockout Tracker</h3>
-        </div>
-        <p id="mythicLockoutWeekLabel" class="mythic-lockout-week muted"></p>
-        <p id="mythicLockoutHint" class="mythic-lockout-hint muted">Add characters from Armory to track lockout progress.</p>
-        <div id="mythicLockoutCharacters" class="mythic-lockout-characters"></div>
       </section>
+
+      <section id="myBuilds" class="my-builds" hidden aria-labelledby="myBuildsHeading">
+        <header class="section-head">
+          <div>
+            <h2 id="myBuildsHeading">Your builds</h2>
+            <p id="myBuildsSub" class="muted"></p>
+          </div>
+          <button type="button" id="myBuildsRefresh" class="btn btn-quiet btn-sm">Check for updates</button>
+        </header>
+        <ul id="myBuildsList" class="tracked-list"></ul>
+      </section>
+
+      <details class="method">
+        <summary>How builds are chosen</summary>
+        <div class="method-body">
+          <p>Every 12 hours we collect builds from top-ranked players and curated guides: Murlok, Peavers, Archon, Wowhead, Method and Icy Veins.</p>
+          <p>Each talent is weighted by how often it appears for that spec and content type, and the loadout with the strongest overall agreement wins. The confidence ring shows how much the sources agree.</p>
+          <p>Copy a build and we remember it. If the recommended loadout changes later, you'll see a notice here. Sign in to keep that history across devices.</p>
+        </div>
+      </details>
     </section>
 
-    <section id="armoryPanel" class="top-tab-panel armory-panel" aria-label="Armory import panel" hidden>
-      <section class="armory-card">
-        <div class="armory-head">
-          <p class="armory-kicker">Armory Import</p>
-          <h2>Import your character from WoW Armory</h2>
-          <p class="muted">Enter your character details, pull the active loadout code, then import it in-game.</p>
+    <!-- ================= RETAIL: TRACKER ================= -->
+    <section id="view-tracker" class="view view-tracker" hidden aria-labelledby="trackerHeading">
+      <header class="page-head">
+        <h1 id="trackerHeading">Lockout tracker</h1>
+        <p class="muted">Mark off Mythic dungeons as you clear them on each character. Everything resets automatically.</p>
+        <p id="trackerWindow" class="tracker-window"></p>
+      </header>
+      <div id="trackerList" class="char-list"></div>
+    </section>
+
+    <!-- ================= RETAIL: ARMORY ================= -->
+    <section id="view-armory" class="view view-armory" hidden aria-labelledby="armoryHeading">
+      <header class="page-head">
+        <h1 id="armoryHeading">Armory</h1>
+        <p class="muted">Look up any character to see their gear and copy the talent loadout they're using right now.</p>
+      </header>
+
+      <form id="armoryForm" class="armory-form" novalidate>
+        <label class="field field-region">
+          <span>Region</span>
+          <select id="armoryRegion">
+            <option value="us">US</option>
+            <option value="eu">EU</option>
+            <option value="kr">KR</option>
+            <option value="tw">TW</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Realm</span>
+          <input id="armoryRealm" type="text" placeholder="Illidan" autocomplete="off" autocapitalize="words" required />
+        </label>
+        <label class="field">
+          <span>Character</span>
+          <input id="armoryName" type="text" placeholder="Thrall" autocomplete="off" autocapitalize="words" required />
+        </label>
+        <div class="armory-actions">
+          <button id="armorySubmit" type="submit" class="btn btn-primary">Look up</button>
+          <button id="armorySaveOnly" type="button" class="link-btn">Save without lookup</button>
+        </div>
+      </form>
+
+      <div id="savedChars" class="saved-chars" hidden></div>
+      <p id="armoryStatus" class="armory-status" role="status" hidden></p>
+      <div id="armoryResult" class="armory-result" hidden></div>
+    </section>
+
+    <!-- ================= FOREVER: CLASSES ================= -->
+    <section id="view-forever" class="view view-forever" data-state="pick" hidden aria-labelledby="foreverHeading">
+      <div class="fv-hero" id="foreverHero">
+        <h1 id="foreverHeading" class="fv-title">World of Warcraft<span>Forever</span></h1>
+        <p class="fv-lede">The original Azeroth with reworked talents, new dungeons and a level cap that stays at 60. Pick a class to see its three talent trees, what each one is for, and which races can play it.</p>
+        <div id="foreverClock" class="fv-clock" role="timer" aria-live="off"></div>
+        <div class="crest-grid" id="foreverGrid" aria-label="Classes"></div>
+      </div>
+
+      <section id="foreverSheet" class="sheet" hidden aria-labelledby="fvSheetName">
+        <header class="sheet-head">
+          <img id="fvSheetCrest" class="sheet-crest" src="" alt="" width="96" height="96" />
+          <div class="sheet-id">
+            <h2 id="fvSheetName" class="sheet-name"></h2>
+            <p id="fvSheetRoles" class="sheet-roles"></p>
+          </div>
+          <button type="button" id="fvChangeClassBtn" class="btn btn-quiet btn-sm sheet-change">All classes</button>
+        </header>
+
+        <div class="sheet-controls">
+          <div id="treeTabs" class="spec-tabs" role="tablist" aria-label="Talent tree"></div>
         </div>
 
-        <form id="armoryForm" class="armory-form">
-          <label class="armory-field">
-            <span>Region</span>
-            <select id="armoryRegion" class="armory-input">
-              <option value="us">US</option>
-              <option value="eu">EU</option>
-              <option value="kr">KR</option>
-              <option value="tw">TW</option>
-            </select>
-          </label>
-          <label class="armory-field">
-            <span>Realm</span>
-            <input id="armoryRealm" class="armory-input" type="text" placeholder="illidan" required />
-          </label>
-          <label class="armory-field">
-            <span>Character</span>
-            <input id="armoryCharacter" class="armory-input" type="text" placeholder="thrall" required />
-          </label>
-          <div class="armory-form-actions">
-            <button id="armoryFetchBtn" class="auth-btn" type="submit">Fetch Armory</button>
-            <button id="armoryAddToTrackerBtn" class="auth-btn secondary" type="button">Add Character To Tracker</button>
+        <div class="sheet-body">
+          <div class="sheet-main">
+            <article id="treePlate" class="tree-plate" aria-live="polite"></article>
           </div>
-        </form>
-
-        <p id="armoryStatus" class="armory-status muted">Enter your region, realm, and character name to start.</p>
-
-        <section class="armory-characters-card" aria-label="Saved armory characters">
-          <div class="armory-characters-head">
-            <h3>My Characters</h3>
-            <button id="armorySaveCharacterBtn" class="auth-btn secondary" type="button">Save Current</button>
-          </div>
-          <p id="armoryCharactersHint" class="muted">Save characters to quickly load and fetch profiles.</p>
-          <div class="armory-characters-controls">
-            <select id="armoryCharactersSelect" class="armory-input" aria-label="Saved characters">
-              <option value="">Select a character</option>
-            </select>
-            <button id="armoryLoadCharacterBtn" class="auth-btn secondary" type="button">Load</button>
-            <button id="armoryFetchCharacterBtn" class="auth-btn" type="button">Load + Fetch</button>
-            <button id="armoryRemoveCharacterBtn" class="auth-btn secondary" type="button">Remove</button>
-          </div>
-        </section>
-
-        <div id="armoryResult" class="armory-result" hidden>
-          <p id="armorySummary" class="armory-summary"></p>
-          <div id="armoryHeadlineStats" class="armory-headline-stats" hidden></div>
-          <div class="armory-paperdoll">
-            <div id="armorySlotsLeft" class="armory-slots armory-slots-left" aria-label="Left-side equipped slots"></div>
-            <section id="armoryModelCard" class="armory-model-card" aria-label="Character model preview">
-              <div class="armory-model-stage">
-                <img id="armoryModelImage" class="armory-model-image" alt="Character model preview" hidden />
-                <p id="armoryModelFallback" class="muted">Character model preview unavailable for this profile.</p>
-              </div>
-            </section>
-            <div id="armoryWeaponSlots" class="armory-weapon-slots" aria-label="Weapon slots under character"></div>
-            <div id="armorySlotsRight" class="armory-slots armory-slots-right" aria-label="Right-side equipped slots"></div>
-          </div>
-          <p id="armoryGearSummary" class="armory-gear-summary muted"></p>
-          <div id="armoryGearTooltip" class="armory-gear-tooltip" hidden></div>
-          <textarea id="armoryLoadoutCode" class="armory-loadout" rows="3" readonly placeholder="Loadout code will appear here when available."></textarea>
-          <div class="armory-actions">
-            <button id="armoryCopyBtn" class="auth-btn" type="button" disabled>Copy Loadout Code</button>
-            <a id="armoryOpenLink" class="auth-btn secondary" href="#" target="_blank" rel="noopener noreferrer">Open Armory Profile</a>
-          </div>
-          <p class="muted armory-help">In-game import: open Talent window, choose Loadout dropdown, click Import, and paste the copied code.</p>
+          <aside class="sheet-side">
+            <section id="fvStats" class="panel"></section>
+            <section id="fvRaces" class="panel"></section>
+            <section id="fvBaseline" class="panel"></section>
+          </aside>
         </div>
+      </section>
+
+      <p class="fv-source">Talent details come from Blizzard's beta class deep dives (September and October 2026). Blizzard has said talents can still change, so check in game after launch.</p>
+    </section>
+
+    <!-- ================= FOREVER: DUNGEONS & RAIDS ================= -->
+    <section id="view-atlas" class="view view-atlas" hidden aria-labelledby="atlasHeading">
+      <header class="page-head">
+        <h1 id="atlasHeading">Dungeons and raids</h1>
+        <p class="muted">Set your level to see which dungeons fit right now. Tap a dungeon to mark it done on this device.</p>
+      </header>
+
+      <div class="atlas-controls">
+        <label class="level-dial" for="atlasLevel">
+          <span>Your level</span>
+          <output id="atlasLevelOut" for="atlasLevel">20</output>
+          <input id="atlasLevel" type="range" min="1" max="60" step="1" value="20" />
+        </label>
+        <div id="atlasFilter" class="segmented" role="radiogroup" aria-label="Which dungeons"></div>
+      </div>
+
+      <div id="atlasRuler" class="ruler"></div>
+
+      <section class="raids-wrap" aria-labelledby="raidsHeading">
+        <header class="section-head">
+          <div>
+            <h2 id="raidsHeading">Raids</h2>
+            <p id="raidsSub" class="muted"></p>
+          </div>
+        </header>
+        <div id="atlasRaids" class="raids"></div>
       </section>
     </section>
   </main>
 
-  <div id="authModal" class="auth-modal" hidden>
-    <button class="auth-modal-backdrop" type="button" data-auth-close="true" aria-label="Close sign in"></button>
-    <section class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
-      <div class="auth-modal-head">
-        <h2 id="authModalTitle">Sign in</h2>
-        <button id="authCloseBtn" type="button" class="auth-close-btn" aria-label="Close sign in">Close</button>
-      </div>
-      <p class="muted">Creating an account is optional. You can continue without signing in.</p>
-      <label class="auth-label" for="authEmail">Email</label>
-      <input id="authEmail" class="auth-input" type="email" autocomplete="email" placeholder="you@example.com" />
-      <label class="auth-label" for="authPassword">Password</label>
-      <input id="authPassword" class="auth-input" type="password" autocomplete="current-password" placeholder="At least 8 characters" />
-      <label class="auth-remember" for="authRemember">
-        <input id="authRemember" type="checkbox" checked />
-        <span>Remember me on this device</span>
+  <footer class="footer">
+    <p id="dataStamp"></p>
+    <p>WoW Advisor is a fan project and isn't affiliated with Blizzard Entertainment. World of Warcraft is a trademark of Blizzard Entertainment, Inc.</p>
+  </footer>
+
+  <dialog id="authDialog" class="auth-dialog" aria-labelledby="authTitle">
+    <form id="authForm" class="auth-form" method="dialog" novalidate>
+      <header class="auth-head">
+        <h2 id="authTitle">Sign in</h2>
+        <button type="button" id="authCloseBtn" class="icon-btn" aria-label="Close">×</button>
+      </header>
+      <p class="muted">Optional. An account keeps the builds you copy in sync across devices.</p>
+      <label class="field">
+        <span>Email</span>
+        <input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com" />
       </label>
-      <div class="auth-modal-actions">
-        <button id="authSignInBtn" class="auth-btn" type="button">Sign in</button>
-        <button id="authSignUpBtn" class="auth-btn secondary" type="button">Create account</button>
+      <label class="field">
+        <span>Password</span>
+        <input id="authPassword" type="password" autocomplete="current-password" placeholder="At least 8 characters" />
+      </label>
+      <label class="check">
+        <input id="authRemember" type="checkbox" checked />
+        <span>Keep me signed in on this device</span>
+      </label>
+      <p id="authMessage" class="auth-message" role="alert" hidden></p>
+      <div class="auth-actions">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="button" id="authSignUpBtn" class="btn btn-quiet">Create account</button>
       </div>
-      <button id="authGoogleBtn" class="auth-btn google" type="button">Continue with Google</button>
-      <button id="authGuestBtn" class="auth-btn ghost" type="button">Continue without account</button>
-      <p id="authMessage" class="auth-message" hidden></p>
-    </section>
-  </div>
+      <div class="auth-or"><span>or</span></div>
+      <button type="button" id="authGoogleBtn" class="btn btn-quiet btn-block">Continue with Google</button>
+    </form>
+  </dialog>
+
+  <div id="itemTooltip" class="item-tooltip" role="tooltip" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 </body>
 </html>

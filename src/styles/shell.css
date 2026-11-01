@@ -1,0 +1,238 @@
+/* Top bar, edition switch, banner, page frame, footer, dialog, toast, tooltip. */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  min-height: var(--topbar-h);
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  text-decoration: none;
+  color: var(--ink);
+  flex: none;
+}
+.brand img { width: 36px; height: 36px; border-radius: 10px; }
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--display-tracking);
+  font-size: 1.15rem;
+}
+
+.nav { display: flex; gap: var(--s-1); min-width: 0; }
+.nav a {
+  position: relative;
+  padding: var(--s-2) var(--s-3);
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+  transition: color 0.15s, background-color 0.15s;
+}
+.nav a:hover { color: var(--ink); background: color-mix(in srgb, var(--surface-2) 70%, transparent); }
+.nav a.is-active { color: var(--ink); background: var(--surface-2); }
+
+/* Edition switch: the doorway between Retail and WoW Forever. */
+.edition {
+  margin-left: auto;
+  display: inline-flex;
+  padding: 4px;
+  gap: 2px;
+  border-radius: var(--r-pill);
+  background: var(--bg-deep);
+  border: 1px solid var(--line-strong);
+  flex: none;
+}
+.edition button {
+  min-height: 34px;
+  padding: 0 var(--s-4);
+  border: 0;
+  border-radius: var(--r-pill);
+  background: none;
+  color: var(--muted);
+  font-weight: 650;
+  font-size: var(--step--1);
+  transition: background-color 0.25s, color 0.25s;
+}
+.edition button:hover { color: var(--ink); }
+.edition button[data-edition="forever"] { font-family: "Cinzel", Georgia, serif; font-weight: 700; letter-spacing: 0.02em; }
+.edition button[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: 0 4px 18px -6px color-mix(in srgb, var(--accent) 80%, transparent);
+}
+
+.account { display: flex; align-items: center; gap: var(--s-3); min-width: 0; flex: none; }
+.account:empty { display: none; }
+.account-email { color: var(--muted); font-size: var(--step--1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 20ch; }
+
+/* The edition palette swap uses a circular view transition (set up in main.js). */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { z-index: 2; }
+
+/* Outdated build banner */
+.freshness {
+  max-width: calc(var(--page-max) - 2 * var(--gutter));
+  margin: var(--s-4) auto 0;
+  width: calc(100% - 2 * var(--gutter));
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-3) var(--s-3) var(--s-3) var(--s-5);
+  background: color-mix(in srgb, var(--warn) 10%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent);
+  border-radius: var(--r-md);
+}
+.freshness p { flex: 1; }
+.freshness .link-btn { color: var(--ink); text-align: left; }
+.banner-close { background: none; border: 0; color: var(--muted); font-size: 1.5rem; width: 36px; height: 36px; border-radius: var(--r-sm); }
+.banner-close:hover { color: var(--ink); background: var(--surface-2); }
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter) var(--s-8);
+}
+
+.page-head { padding: var(--s-7) 0 var(--s-5); display: grid; gap: var(--s-3); max-width: 64ch; }
+.page-head h1 { font-size: clamp(2.2rem, 6vw, var(--step-5)); }
+
+.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; margin-bottom: var(--s-4); }
+.section-head h2 { font-size: var(--step-2); }
+
+.empty-state {
+  text-align: center;
+  padding: var(--s-7) var(--s-5);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-lg);
+  display: grid;
+  justify-items: center;
+  gap: var(--s-3);
+}
+.empty-state h3 { font-size: var(--step-2); }
+.empty-state p { color: var(--muted); max-width: 48ch; }
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: var(--s-6) var(--gutter);
+  text-align: center;
+  color: var(--muted);
+  font-size: var(--step--1);
+  display: grid;
+  gap: var(--s-1);
+}
+
+/* Sign-in dialog */
+.auth-dialog {
+  width: min(420px, calc(100vw - 32px));
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55);
+}
+.auth-dialog::backdrop { background: color-mix(in srgb, var(--bg-deep) 75%, transparent); backdrop-filter: blur(4px); }
+.auth-form { padding: var(--s-5) var(--s-5) var(--s-6); display: grid; gap: var(--s-4); }
+.auth-head { display: flex; align-items: center; justify-content: space-between; }
+.auth-head h2 { font-size: var(--step-3); }
+.auth-actions { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+.auth-message { font-size: var(--step--1); padding: var(--s-2) var(--s-3); border-radius: var(--r-xs); background: color-mix(in srgb, var(--good) 12%, transparent); color: var(--good); }
+.auth-message.is-error { background: color-mix(in srgb, var(--bad) 12%, transparent); color: var(--bad); }
+.auth-or { display: flex; align-items: center; gap: var(--s-3); color: var(--muted); font-size: var(--step--1); }
+.auth-or::before, .auth-or::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+/* Toast */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: var(--s-5);
+  z-index: 60;
+  max-width: min(560px, calc(100vw - 32px));
+  padding: var(--s-3) var(--s-5) var(--s-3) var(--s-6);
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  transform: translate(-50%, 16px);
+  opacity: 0;
+  transition: transform 0.3s var(--ease-out), opacity 0.25s;
+}
+.toast::before {
+  content: "";
+  position: absolute;
+  left: var(--s-4); top: 50%;
+  width: 8px; height: 8px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--good);
+}
+.toast.is-shown { transform: translate(-50%, 0); opacity: 1; }
+.toast[data-tone="error"]::before { background: var(--bad); }
+
+/* Item tooltip, styled after the in-game tooltip frame. */
+.item-tooltip {
+  position: fixed;
+  left: 0; top: 0;
+  z-index: 70;
+  width: max-content;
+  max-width: 320px;
+  padding: var(--s-3) var(--s-4);
+  background: rgba(6, 9, 20, 0.97);
+  border: 1px solid #6b7287;
+  outline: 1px solid #000;
+  border-radius: var(--r-xs);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+.tt-title { font-size: var(--step-1); font-weight: 650; margin-bottom: var(--s-1); }
+.tt-line { color: #fff; }
+.tt-gold { color: #ffd100; }
+.tt-good { color: #1eff00; }
+.tt-muted { color: #9a9a9a; }
+
+@media (max-width: 860px) {
+  :root { --topbar-h: 108px; }
+  .topbar-inner {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "brand edition account" "nav nav nav";
+    row-gap: 0;
+    column-gap: var(--s-3);
+    padding-top: var(--s-2);
+  }
+  .brand { grid-area: brand; }
+  .brand-name { display: none; }
+  .edition { grid-area: edition; justify-self: end; margin-left: 0; }
+  .account { grid-area: account; }
+  .account-email { display: none; }
+  .nav {
+    grid-area: nav;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin: 0 calc(var(--gutter) * -1);
+    padding: var(--s-2) var(--gutter);
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .freshness { padding-left: var(--s-4); }
+}
