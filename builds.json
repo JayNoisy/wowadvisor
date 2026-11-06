@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T05:41:07.058Z",
+  "generatedAt": "2026-11-06T19:01:46.823Z",
   "sources": {
     "weightConfig": {
       "ok": true,
@@ -9,7 +9,7 @@
       "ok": false,
       "error": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/m%2B",
       "pvpOk": false,
-      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/dps/solo",
+      "pvpError": "Error: Murlok fetch failed 401: https://murlok.io/api/meta/healer/solo",
       "pveOk": true,
       "pveCount": 0
     },
@@ -19,8 +19,8 @@
     },
     "archon": {
       "ok": true,
-      "count": 0,
-      "localCount": 0,
+      "count": 1,
+      "localCount": 1,
       "remote": []
     },
     "curatedGuides": {
@@ -481,9 +481,9 @@
           "updated": "2026-11-06 02:01:02",
           "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxoxyAYGw2MzMzMjZbeAAAAAAAzYmZGbzYMjZYZMNDAAAwAAjllZGLYmZ8AjxAwM2AjxMzmBA",
           "notes": [],
-          "confidence": "low",
-          "confidenceScore": 56,
-          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=20.0 (37.0%), updated=2026-11-06 02:01:02",
+          "confidence": "medium",
+          "confidenceScore": 58,
+          "confidenceRationale": "support=54.0, families=1, sources=1, agreement=1/4 (25.0%), margin=26.0 (48.1%), updated=2026-11-06 02:01:02",
           "sampleSize": 4,
           "agreementCount": 1,
           "agreementRatio": 0.25,
@@ -1056,11 +1056,11 @@
           "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbwCMDDNYBgZZGzMjllZgZmNWmZmZYYMDAwMMmZMzEYmBDGDA",
           "notes": [],
           "confidence": "medium",
-          "confidenceScore": 62,
-          "confidenceRationale": "support=81.0, families=2, sources=2, agreement=2/7 (28.6%), margin=23.5 (29.0%), updated=2026-11-06 02:05:46",
-          "sampleSize": 7,
+          "confidenceScore": 61,
+          "confidenceRationale": "support=81.0, families=2, sources=2, agreement=2/8 (25.0%), margin=23.5 (29.0%), updated=2026-11-06 02:05:46",
+          "sampleSize": 8,
           "agreementCount": 2,
-          "agreementRatio": 0.286,
+          "agreementRatio": 0.25,
           "distinctSourceCount": 2,
           "distinctFamilyCount": 2,
           "consensusBreakdown": {
