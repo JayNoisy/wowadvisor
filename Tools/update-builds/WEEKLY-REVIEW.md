@@ -25,3 +25,12 @@ How picks are chosen:
 - **Raid**: there is no per-talent sample of raiders, so the pick is the guide's raid build on the hero tree top raiders
   use (or the consensus when the guide agrees with it).
 - **PvP** is not reviewed; the site shows the top-player consensus there.
+
+## WoW Forever
+
+Forever has no loadout codes or player data yet, so its trees and builds are kept by hand in `Tools/forever/`:
+`trees.txt` (every talent, max rank, points its tier needs) and `builds.txt` (one recommended build per tree, with
+the guide it is credited to). Both come from timesaver.gg's WoW Forever talent calculator pages
+(`/tools/wow-forever/talent-calculator/<class>` and `/<class>/<tree>`). After editing either file run
+`node Tools/forever/build-forever-talents.mjs`; it refuses to write if a build names a missing talent, overspends a
+talent, skips a tier requirement or doesn't add up to its stated split.
