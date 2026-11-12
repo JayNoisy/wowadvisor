@@ -5,7 +5,9 @@ import { $, html, raw, copyText, flashLabel, escapeHtml } from "../../lib/dom.js
 import { slugify, clamp } from "../../lib/format.js";
 import { on } from "../../lib/events.js";
 import { toast } from "../../lib/toast.js";
+import { setClassColor } from "../../lib/color.js";
 import { listCharacters, getCharacter, upsertCharacter, normalizeRegion } from "../tracker/store.js";
+import { showRio } from "./rio.js";
 
 const SLOTS = {
   left: [["head", "Head"], ["neck", "Neck"], ["shoulder", "Shoulder"], ["back", "Back"], ["chest", "Chest"], ["shirt", "Shirt"], ["tabard", "Tabard"], ["wrist", "Wrist"]],
@@ -29,6 +31,7 @@ export function initArmoryView() {
     status: $("#armoryStatus"),
     saved: $("#savedChars"),
     result: $("#armoryResult"),
+    rio: $("#armoryRio"),
     tooltip: $("#itemTooltip")
   };
 
@@ -129,6 +132,8 @@ async function lookup() {
   syncSubmit();
   hideTooltip();
   setStatus(`Looking up ${els.name.value.trim()} on ${els.realm.value.trim()}…`, "busy");
+  // Raider.IO runs alongside the Armory lookup and fills in its own card when it answers.
+  showRio(els.rio, { region, realm, name: els.name.value.trim() });
   els.result.setAttribute("aria-busy", "true");
   try {
     const params = new URLSearchParams({ region, realm, character });
@@ -205,7 +210,7 @@ function renderResult(p, region) {
     ["Versatility", pct(p?.stats?.versatilityPct)]
   ].filter(([, v]) => v);
 
-  els.result.style.setProperty("--cc", cls?.color || "var(--accent)");
+  setClassColor(els.result, cls?.color || "#8f96a3");
   els.result.hidden = false;
   els.result.innerHTML = html`
     <header class="hero-char">
@@ -234,9 +239,9 @@ function renderResult(p, region) {
       <label class="loadout-label" for="armoryLoadout">Active loadout code</label>
       ${code
         ? raw(html`
-          <div class="loadout-row">
+          <div class="codebox loadout-row">
             <input id="armoryLoadout" class="loadout-code" type="text" readonly spellcheck="false" value="${code}" />
-            <button type="button" class="btn btn-primary" data-action="copy-loadout">Copy code</button>
+            <button type="button" class="btn btn-primary btn-lg" data-action="copy-loadout">Copy code</button>
           </div>
           <p class="plate-help">In game: open Talents, choose the loadout dropdown, Import, then paste.</p>`)
         : raw(`<p class="muted">Blizzard didn't return a loadout code for this character. Log in once on the character so the Armory refreshes, then try again.</p>`)}

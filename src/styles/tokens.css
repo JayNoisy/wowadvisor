@@ -1,50 +1,61 @@
 /* Design tokens.
-   Two editions share one component system and swap palettes + display type:
-   - Retail: twilight indigo, crisp grotesque headlines, the chosen class color tints the whole page.
-   - Forever: warm umber and old gold, Cinzel headlines that nod to the classic UI. */
+   The chrome is neutral on purpose: the 13 class colors are the palette, so they get to be loud.
+   Two axes swap values, and every component reads only these tokens:
+   - data-theme:   dark (default) | light
+   - data-edition: retail | forever (warmer neutrals, gold accent, serif headlines) */
 
-/* Registered so the class color can animate when you switch classes. */
 @property --cc {
   syntax: "<color>";
   inherits: true;
-  initial-value: #8e9bff;
+  initial-value: #8f96a3;
 }
 
 :root {
   color-scheme: dark;
 
-  /* Retail palette (default) */
-  --bg: #0f1124;
-  --bg-deep: #0a0c1b;
-  --surface: #161936;
-  --surface-2: #1f2347;
-  --line: rgba(166, 172, 255, 0.12);
-  --line-strong: rgba(166, 172, 255, 0.26);
-  --ink: #ecebfa;
-  --ink-2: #c9c8e6;
-  --muted: #9092b8;
-  --accent: #8e9bff;
-  --accent-ink: #0d1030;
-  --good: #6fd8a0;
-  --warn: #ffb36b;
-  --bad: #ff7a85;
-  --focus: #b9c2ff;
+  /* Surfaces, darkest to lightest */
+  --bg: #0e0f12;
+  --surface: #16181c;
+  --surface-2: #1e2025;
+  --surface-3: #292c33;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.18);
 
-  /* Class color, set per class by JS. Falls back to the edition accent. */
-  --cc: var(--accent);
+  /* Ink */
+  --ink: #f5f5f6;
+  --ink-2: #c5c8cf;
+  --muted: #8d919b;
 
-  /* Item quality (game colors, same in both editions) */
+  /* Primary action is inverted ink. Accent marks selection and links. */
+  --primary: #f5f5f6;
+  --primary-ink: #0e0f12;
+  --accent: #9db4ff;
+  --accent-ink: #0b1026;
+  --good: #58d68d;
+  --warn: #f5b84c;
+  --bad: #ff7b7b;
+  --focus: #9db4ff;
+
+  /* Class color (set per class by JS) and the ink that reads on top of it. */
+  --cc: #8f96a3;
+  --cc-ink: #0e0f12;
+
+  /* Item quality, tuned per theme for contrast */
   --q-common: #e6e6e6;
   --q-uncommon: #1eff00;
-  --q-rare: #3a9dff;
-  --q-epic: #c06cff;
-  --q-legendary: #ff8000;
+  --q-rare: #4aa8ff;
+  --q-epic: #c77dff;
+  --q-legendary: #ff8c1a;
 
-  /* Type */
-  --font-display: "Bricolage Grotesque Variable", "Segoe UI", system-ui, sans-serif;
-  --font-body: "Instrument Sans Variable", "Segoe UI", system-ui, sans-serif;
-  --display-weight: 750;
-  --display-tracking: -0.025em;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+
+  /* Type: one family, two widths. Headlines run wide and heavy, text runs normal. */
+  --font-display: "Archivo Variable", "Arial Black", system-ui, sans-serif;
+  --font-body: "Archivo Variable", "Segoe UI", system-ui, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+  --display-stretch: 122%;
+  --display-weight: 800;
+  --display-tracking: -0.03em;
 
   /* Modular scale, ratio 1.25 */
   --step--1: 0.84rem;
@@ -56,7 +67,6 @@
   --step-5: 3.052rem;
   --step-6: 3.815rem;
 
-  /* Space */
   --s-1: 0.25rem;
   --s-2: 0.5rem;
   --s-3: 0.75rem;
@@ -66,39 +76,89 @@
   --s-7: 3rem;
   --s-8: 4.5rem;
 
-  /* Radius follows hierarchy: big containers are soft, controls are tighter. */
+  /* Radius follows size: tiles are soft, controls are tighter. */
   --r-xs: 6px;
   --r-sm: 10px;
-  --r-md: 14px;
-  --r-lg: 22px;
+  --r-md: 16px;
+  --r-lg: 24px;
   --r-pill: 999px;
 
-  --page-max: 1200px;
-  --gutter: clamp(16px, 4vw, 40px);
-  --topbar-h: 68px;
+  --side-w: 248px;
+  --page-max: 1160px;
+  --gutter: clamp(16px, 3.4vw, 40px);
+  /* Height of whatever is stuck to the top (mobile bar + nav). 0 on desktop, where nav lives in the sidebar. */
+  --topbar-h: 0px;
 
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f2f2ef;
+  --surface: #ffffff;
+  --surface-2: #ebebe7;
+  --surface-3: #dcdcd6;
+  --line: rgba(14, 15, 18, 0.1);
+  --line-strong: rgba(14, 15, 18, 0.24);
+  --ink: #111215;
+  --ink-2: #3a3d45;
+  --muted: #666a74;
+  --primary: #111215;
+  --primary-ink: #ffffff;
+  --accent: #2f4fd8;
+  --accent-ink: #ffffff;
+  --good: #14804a;
+  --warn: #a35f00;
+  --bad: #c62f3b;
+  --focus: #2f4fd8;
+  --q-common: #4b4f58;
+  --q-uncommon: #188a0b;
+  --q-rare: #0b63c9;
+  --q-epic: #8a2fd0;
+  --q-legendary: #c45f00;
+  --shadow: 0 1px 2px rgba(14, 15, 18, 0.06), 0 12px 28px -14px rgba(14, 15, 18, 0.22);
+}
+
 :root[data-edition="forever"] {
-  --bg: #16120c;
-  --bg-deep: #0f0c08;
-  --surface: #1f1912;
-  --surface-2: #2a2219;
-  --line: rgba(232, 181, 74, 0.13);
-  --line-strong: rgba(232, 181, 74, 0.3);
-  --ink: #f3e8d2;
-  --ink-2: #d9ccb2;
-  --muted: #a8997e;
-  --accent: #e8b54a;
-  --accent-ink: #231804;
-  --good: #8fcf7a;
-  --warn: #f0a35a;
-  --bad: #f07c6c;
+  --bg: #13110d;
+  --surface: #1c1914;
+  --surface-2: #26221b;
+  --surface-3: #332d23;
+  --line: rgba(255, 236, 200, 0.09);
+  --line-strong: rgba(255, 236, 200, 0.2);
+  --ink: #f6eedd;
+  --ink-2: #d5c9b1;
+  --muted: #a09480;
+  --primary: #edb64d;
+  --primary-ink: #201503;
+  --accent: #edb64d;
+  --accent-ink: #201503;
   --focus: #ffd47a;
 
-  --font-display: "Cinzel", "Trajan Pro", "Palatino Linotype", Georgia, serif;
-  --display-weight: 700;
-  --display-tracking: 0.01em;
+  --font-display: "Fraunces Variable", "Iowan Old Style", Palatino, Georgia, serif;
+  --display-stretch: 100%;
+  --display-weight: 650;
+  --display-tracking: -0.02em;
+}
+
+:root[data-edition="forever"][data-theme="light"] {
+  --bg: #f1eadb;
+  --surface: #fbf7ee;
+  --surface-2: #e9e0cc;
+  --surface-3: #dacfb6;
+  --line: rgba(50, 36, 12, 0.12);
+  --line-strong: rgba(50, 36, 12, 0.28);
+  --ink: #23190b;
+  --ink-2: #4a3d28;
+  --muted: #76684f;
+  --primary: #23190b;
+  --primary-ink: #fbf7ee;
+  --accent: #8f5d08;
+  --accent-ink: #fffaf0;
+  --focus: #8f5d08;
+}
+
+@media (max-width: 1079px) {
+  :root { --topbar-h: 108px; }
 }

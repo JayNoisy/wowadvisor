@@ -1,0 +1,111 @@
+/* Mythic+ season guide, the shared "Your key" controls, Raider.IO blocks and the token price chip. */
+
+/* ---------- Your key (also used on build pages) ---------- */
+.key-week { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--s-2) var(--s-3); margin-top: var(--s-4); }
+.key-week-label { color: var(--ink-2); font-weight: 650; }
+.key-bargain { margin-top: var(--s-4); }
+.key-live { margin-top: var(--s-2); color: var(--good); font-size: var(--step--1); }
+.key-active { margin-top: var(--s-5); padding-top: var(--s-4); border-top: 1px solid var(--line); }
+.key-active-label { margin-bottom: var(--s-2); color: var(--ink-2); font-weight: 650; }
+li.affix { display: inline-flex; align-items: center; cursor: default; background: var(--ink); color: var(--bg); font-weight: 650; }
+li.affix:hover { background: var(--ink); color: var(--bg); }
+
+/* ---------- Page layout ---------- */
+.mplus-top { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: start; gap: var(--s-4); }
+.mplus-section { margin-top: var(--s-7); }
+
+/* Ladder: one row per affix tier; rows that apply to your key are lit. */
+.ladder { display: grid; gap: var(--s-2); margin-top: var(--s-5); }
+.rung {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: var(--s-4);
+  align-items: start;
+  padding: var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+  color: var(--muted);
+  transition: background-color 0.2s, color 0.2s;
+}
+.rung-range { font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); font-size: var(--step-1); line-height: 1.2; white-space: nowrap; }
+.rung-name { font-weight: 750; color: var(--ink-2); }
+.rung-text { margin-top: 2px; font-size: 0.94rem; line-height: 1.45; }
+.rung.is-on { background: var(--ink); color: color-mix(in srgb, var(--bg) 78%, var(--ink)); }
+.rung.is-on .rung-range, .rung.is-on .rung-name { color: var(--bg); }
+
+/* Bargains */
+.bargains { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); }
+.bargain {
+  display: grid;
+  align-content: start;
+  gap: var(--s-2);
+  padding: var(--s-5);
+  text-align: left;
+  background: var(--surface);
+  border: 2px solid transparent;
+  border-radius: var(--r-lg);
+  color: var(--ink-2);
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.bargain:hover { background: var(--surface-2); }
+.bargain.is-active { border-color: var(--ink); background: var(--surface-2); }
+.bargain-name { font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); font-size: var(--step-1); color: var(--ink); }
+.bargain-todo { line-height: 1.45; }
+.bargain-reward { color: var(--muted); font-size: var(--step--1); }
+
+/* Timers table */
+.table-wrap { padding: var(--s-2) var(--s-5); overflow-x: auto; }
+.timers { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.timers th, .timers td { padding: var(--s-3) var(--s-2); text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.timers tbody tr:last-child th, .timers tbody tr:last-child td { border-bottom: 0; }
+.timers thead th { color: var(--muted); font-size: var(--step--1); font-weight: 650; }
+.timers th:first-child { text-align: left; white-space: normal; }
+.timers td { font-weight: 650; font-size: var(--step-1); }
+.timers td:nth-child(2) { color: var(--muted); }
+.timer-name { display: block; font-weight: 750; }
+.timer-from { display: block; color: var(--muted); font-size: var(--step--1); font-weight: 500; }
+.fine { margin-top: var(--s-3); max-width: 70ch; color: var(--muted); font-size: var(--step--1); line-height: 1.5; }
+
+/* Rewards */
+.milestones-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); }
+.milestone-card .stat-card-num { font-size: var(--step-4); }
+.milestone-card .muted { margin-top: var(--s-1); font-size: var(--step--1); }
+.mplus-notes { display: grid; gap: var(--s-2); margin-top: var(--s-5); padding-left: 1.2em; list-style: disc; max-width: 72ch; color: var(--ink-2); line-height: 1.5; }
+
+/* ---------- Raider.IO blocks (Armory and This week) ---------- */
+.rio { display: grid; gap: var(--s-4); }
+.rio-head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: var(--s-3); }
+.rio-rating { display: flex; align-items: baseline; gap: var(--s-3); }
+.rio-rating strong { font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); font-size: var(--step-5); line-height: 1; }
+.rio-rating span { color: var(--muted); font-weight: 650; }
+.rio-cols { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--s-5); align-items: start; }
+.rio-sub { margin-bottom: var(--s-2); color: var(--ink-2); font-weight: 700; }
+.runs { display: grid; gap: 2px; }
+.run { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr) auto; align-items: center; gap: var(--s-3); padding: var(--s-2) 0; border-bottom: 1px solid var(--line); }
+.run:last-child { border-bottom: 0; }
+.run-level { font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); font-size: var(--step-1); }
+.run-name { font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.run-time { color: var(--muted); font-size: var(--step--1); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.run.is-timed .run-time { color: var(--good); }
+.raid-prog { display: grid; gap: var(--s-3); }
+.raid-prog-row { display: grid; gap: 6px; }
+.raid-prog-top { display: flex; justify-content: space-between; gap: var(--s-3); font-weight: 650; }
+.raid-prog-top span:last-child { color: var(--muted); white-space: nowrap; }
+.raid-bar { height: 8px; border-radius: var(--r-pill); background: var(--surface-3); overflow: hidden; }
+.raid-bar i { display: block; height: 100%; border-radius: inherit; background: var(--ink); }
+.vault-import { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-2) var(--s-3); margin-top: var(--s-3); }
+.vault-import .muted { font-size: var(--step--1); }
+
+/* ---------- WoW Token ---------- */
+.token-price strong { font-variant-numeric: tabular-nums; }
+
+@media (max-width: 900px) {
+  .mplus-top, .rio-cols { grid-template-columns: 1fr; }
+  .bargains, .milestones-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .rung { grid-template-columns: 1fr; gap: var(--s-1); }
+  .bargains { grid-template-columns: 1fr; }
+  .table-wrap { padding: var(--s-1) var(--s-3); }
+  .timers td { font-size: var(--step-0); }
+}

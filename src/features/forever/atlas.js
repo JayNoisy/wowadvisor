@@ -62,6 +62,9 @@ export function initAtlasView() {
 }
 
 export function showAtlas() {
+  // The Level guide shares this setting, so pick up any change made there.
+  level = clamp(Number(readString(KEYS.foreverLevel, String(level))) || level, 1, AXIS_MAX);
+  els.level.value = String(level);
   renderFilter();
   renderRuler();
   renderRaids();
@@ -107,7 +110,7 @@ function renderRuler() {
                 <span class="ruler-zone">${d.zone}${side ? `, ${side.toLowerCase()}` : ""}</span>
               </span>
               <span class="ruler-track">
-                <span class="ruler-bar" style="left:${pos(d.min)}%;width:${Math.max(pos(d.max) - pos(d.min), 2.4)}%">
+                <span class="ruler-bar" style="${d.max >= AXIS_MAX ? "right:0" : `left:${pos(d.min)}%`};width:${Math.max(pos(d.max) - pos(d.min), 2.4)}%">
                   <span class="ruler-range">${d.min}–${d.max}</span>
                 </span>
               </span>

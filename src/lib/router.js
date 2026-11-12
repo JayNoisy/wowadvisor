@@ -2,18 +2,24 @@
 //   #builds                       Retail class picker
 //   #builds/shaman                Retail class chosen
 //   #builds/shaman/elemental/aoe  Retail build view
-//   #tracker, #armory             Retail tools
+//   #weekly, #tracker, #mplus, #party,
+//   #armory, #links               Retail tools
+//   #macros                       Macro builder (works in both editions)
 //   #forever                      WoW Forever class picker
 //   #forever/shaman/enhancement   WoW Forever class + talent tree
 //   #atlas                        WoW Forever dungeons and raids
+//   #levels                       WoW Forever level guide
+//   #todo                         WoW Forever to-do list
 
 import { emit } from "./events.js";
 
-export const VIEWS = ["builds", "tracker", "armory", "forever", "atlas"];
+export const VIEWS = ["builds", "weekly", "tracker", "mplus", "party", "armory", "links", "macros", "forever", "atlas", "levels", "todo"];
 const CLASS_VIEWS = ["builds", "forever"];
-const FOREVER_VIEWS = ["forever", "atlas"];
+const FOREVER_VIEWS = ["forever", "atlas", "levels", "todo"];
+const SHARED_VIEWS = ["macros"];
 
-export const editionOf = (view) => (FOREVER_VIEWS.includes(view) ? "forever" : "retail");
+/** Which edition a view belongs to. Shared views return null: they keep whichever edition you're in. */
+export const editionOf = (view) => (SHARED_VIEWS.includes(view) ? null : FOREVER_VIEWS.includes(view) ? "forever" : "retail");
 
 export function parseHash(hash = window.location.hash) {
   const parts = String(hash || "")

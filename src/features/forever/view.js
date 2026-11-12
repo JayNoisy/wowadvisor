@@ -1,6 +1,7 @@
 // WoW Forever classes view: class hall, launch clock, class sheet with talent trees, races and class changes.
 
-import { $, $$, html, raw, scrollToEl } from "../../lib/dom.js";
+import { $, $$, html, raw } from "../../lib/dom.js";
+import { classStyle, setClassColor } from "../../lib/color.js";
 import { navigate } from "../../lib/router.js";
 import { KEYS, readString, writeJson, writeString } from "../../lib/storage.js";
 import {
@@ -24,6 +25,7 @@ export function initForeverView() {
     view: $("#view-forever"),
     hero: $("#foreverHero"),
     grid: $("#foreverGrid"),
+    strip: $("#foreverStrip"),
     clock: $("#foreverClock"),
     sheet: $("#foreverSheet"),
     crest: $("#fvSheetCrest"),
@@ -36,19 +38,24 @@ export function initForeverView() {
     baseline: $("#fvBaseline")
   };
 
+  // Tiles and strip items are real links, so the router handles them.
   els.grid.innerHTML = FOREVER_CLASSES.map((c) => html`
-    <button type="button" class="crest" data-class="${c.slug}" style="--cc:${c.color}" aria-pressed="false">
-      <img class="crest-art" src="${c.icon}" alt="" width="128" height="128" decoding="async" />
-      <span class="crest-name">${c.name}</span>
-    </button>`).join("");
+    <article class="tile" data-class="${c.slug}" style="${classStyle(c.color)}">
+      <a class="tile-link" href="#forever/${c.slug}"><span class="tile-name">${c.name}</span></a>
+      <img class="tile-art" src="${c.icon}" alt="" width="96" height="96" decoding="async" />
+      <ul class="tile-specs" aria-label="${c.name} talent trees">
+        ${c.trees.map((tr) => raw(html`<li><a href="#forever/${c.slug}/${tr.slug}" title="${tr.name} ${c.name}, ${roleLabel(tr.roles)}">${tr.name}</a></li>`))}
+      </ul>
+    </article>`).join("") + html`
+    <a class="tile tile-promo" href="#builds">
+      <span class="tile-name">Playing Retail?</span>
+      <span class="tile-promo-text">Live talent builds, Great Vault planner, group check and more for Midnight.</span>
+    </a>`;
 
-  els.grid.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-class]");
-    if (!btn) return;
-    const cls = findForeverClass(btn.dataset.class);
-    if (!cls) return;
-    navigate({ view: "forever", classSlug: cls.slug, specSlug: cls.trees[0].slug });
-  });
+  els.strip.innerHTML = FOREVER_CLASSES.map((c) => html`
+    <a class="strip-item" href="#forever/${c.slug}" data-class="${c.slug}" style="${classStyle(c.color)}" title="${c.name}" aria-label="${c.name}">
+      <img src="${c.icon}" alt="" width="40" height="40" decoding="async" />
+    </a>`).join("");
 
   els.tabs.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-tree]");
@@ -71,10 +78,7 @@ export function initForeverView() {
     items[next].click();
   });
 
-  $("#fvChangeClassBtn").addEventListener("click", () => {
-    navigate({ view: "forever" });
-    requestAnimationFrame(() => scrollToEl(els.hero));
-  });
+  $("#fvChangeClassBtn").addEventListener("click", () => navigate({ view: "forever" }));
 
   els.races.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-faction]");
@@ -93,21 +97,23 @@ export function showForeverRoute(route) {
   sel.tree = tree;
   writeJson(KEYS.foreverLast, cls ? { view: "forever", classSlug: cls.slug, specSlug: tree.slug } : { view: "forever" });
 
-  if (cls) document.documentElement.style.setProperty("--cc", cls.color);
-  else document.documentElement.style.removeProperty("--cc");
+  setClassColor(document.documentElement, cls?.color);
 
   els.view.dataset.state = cls ? "class" : "pick";
-  $$(".crest", els.grid).forEach((b) => {
-    const active = b.dataset.class === cls?.slug;
-    b.classList.toggle("is-active", active);
-    b.setAttribute("aria-pressed", String(active));
+  els.hero.hidden = Boolean(cls);
+  els.strip.hidden = !cls;
+  $$(".strip-item", els.strip).forEach((a) => {
+    const active = a.dataset.class === cls?.slug;
+    a.classList.toggle("is-active", active);
+    if (active) a.setAttribute("aria-current", "true");
+    else a.removeAttribute("aria-current");
   });
 
   startClock();
   els.sheet.hidden = !cls;
   if (!cls) { rendered = true; return; }
   renderSheet();
-  if (changedClass && rendered) requestAnimationFrame(() => scrollToEl(els.sheet));
+  if (changedClass && rendered) window.scrollTo({ top: 0 });
   rendered = true;
 }
 
@@ -152,7 +158,7 @@ function renderClock() {
 
 function renderSheet() {
   const { cls, tree } = sel;
-  els.sheet.style.setProperty("--cc", cls.color);
+  setClassColor(els.sheet, cls.color);
   els.crest.src = cls.icon;
   els.name.textContent = cls.name;
   els.roles.textContent = cls.summary;

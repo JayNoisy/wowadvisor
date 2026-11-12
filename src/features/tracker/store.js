@@ -47,6 +47,22 @@ export function lockoutPeriod(region, now = new Date()) {
   };
 }
 
+/** The game week that contains `now` for a region (Great Vault, weekly quests, raid lockouts). */
+export function weeklyPeriod(region, now = new Date()) {
+  const reg = normalizeRegion(region);
+  const rule = WEEKLY_RESET_RULES[reg];
+  const todayReset = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), rule.hourUTC);
+  const dayDiff = (now.getUTCDay() - rule.day + 7) % 7;
+  let start = todayReset - dayDiff * DAY;
+  if (now.getTime() < start) start -= WEEK;
+  return {
+    region: reg,
+    start: new Date(start),
+    next: new Date(start + WEEK),
+    key: `${reg}:week:${new Date(start).toISOString().slice(0, 13)}`
+  };
+}
+
 export const characterId = (region, realm, name) => `${normalizeRegion(region)}:${slugify(realm)}:${slugify(name)}`;
 
 const emptyLockouts = () => Object.fromEntries(DUNGEON_POOL.map((d) => [d, false]));

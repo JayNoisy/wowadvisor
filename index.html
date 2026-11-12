@@ -1,21 +1,27 @@
 <!doctype html>
-<html lang="en" data-edition="retail">
+<html lang="en" data-edition="retail" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WoW Advisor</title>
-  <meta name="description" content="Talent builds for every World of Warcraft spec, plus a full guide to WoW Forever: classes, talent trees, races, dungeons and raids." />
-  <meta name="theme-color" content="#0f1124" />
+  <meta name="description" content="Everything you need for World of Warcraft in one place: talent builds, Great Vault and lockout tracking, group checks, macros, Armory lookups, and a full guide to WoW Forever." />
+  <meta name="theme-color" content="#0e0f12" />
   <!-- Optional: Supabase public config. Leave empty to load it from /api/auth-config. -->
   <meta name="wowadvisor-supabase-url" content="" />
   <meta name="wowadvisor-supabase-anon-key" content="" />
   <link rel="icon" type="image/png" href="/assets/logo/favicon-64.png" />
   <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" />
   <script>
-    // Set the edition before first paint so Forever links don't flash the Retail palette.
+    // Set edition and theme before first paint so nothing flashes the wrong palette.
     (function () {
-      var h = location.hash.replace(/^#\/?/, "").split("/")[0];
-      if (h === "forever" || h === "atlas") document.documentElement.dataset.edition = "forever";
+      var root = document.documentElement;
+      var view = location.hash.replace(/^#\/?/, "").split("/")[0];
+      var stored = function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } };
+      if (view === "forever" || view === "atlas" || view === "levels" || view === "todo") root.dataset.edition = "forever";
+      else if ((view === "macros" || !view) && stored("wowadvisor_edition_v1") === "forever") root.dataset.edition = "forever";
+      var theme = stored("wowadvisor_theme_v1");
+      if (theme !== "light" && theme !== "dark") theme = window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      root.dataset.theme = theme;
     })();
   </script>
   <script type="module" src="/src/main.js"></script>
@@ -23,209 +29,329 @@
 <body data-view="builds">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="topbar">
-    <div class="topbar-inner">
+  <div class="app">
+    <aside class="side" id="side">
       <a class="brand" href="#builds" data-brand aria-label="WoW Advisor home">
         <img src="/assets/logo/logo-96.webp" alt="" width="36" height="36" />
         <span class="brand-name">WoW Advisor</span>
       </a>
 
-      <nav class="nav" aria-label="Main">
-        <a href="#builds" data-nav="builds" data-for="retail">Builds</a>
-        <a href="#tracker" data-nav="tracker" data-for="retail">Tracker</a>
-        <a href="#armory" data-nav="armory" data-for="retail">Armory</a>
-        <a href="#forever" data-nav="forever" data-for="forever">Classes</a>
-        <a href="#atlas" data-nav="atlas" data-for="forever">Dungeons &amp; raids</a>
-      </nav>
-
-      <div class="edition" id="editionSwitch" role="group" aria-label="Game version">
+      <div class="segmented edition" id="editionSwitch" role="group" aria-label="Game version">
         <button type="button" data-edition="retail" aria-pressed="true">Retail</button>
         <button type="button" data-edition="forever" aria-pressed="false">Forever</button>
       </div>
 
-      <div class="account" id="account"></div>
+      <nav class="nav" aria-label="Main">
+        <a href="#builds" data-nav="builds" data-for="retail" data-icon="builds"><span>Builds</span></a>
+        <a href="#weekly" data-nav="weekly" data-for="retail" data-icon="weekly"><span>This week</span></a>
+        <a href="#tracker" data-nav="tracker" data-for="retail" data-icon="tracker"><span>Lockouts</span></a>
+        <a href="#mplus" data-nav="mplus" data-for="retail" data-icon="mplus"><span>Mythic+</span></a>
+        <a href="#party" data-nav="party" data-for="retail" data-icon="party"><span>Group check</span></a>
+        <a href="#armory" data-nav="armory" data-for="retail" data-icon="armory"><span>Armory</span></a>
+        <a href="#forever" data-nav="forever" data-for="forever" data-icon="forever"><span>Classes</span></a>
+        <a href="#atlas" data-nav="atlas" data-for="forever" data-icon="atlas"><span>Dungeons &amp; raids</span></a>
+        <a href="#levels" data-nav="levels" data-for="forever" data-icon="levels"><span>Level guide</span></a>
+        <a href="#todo" data-nav="todo" data-for="forever" data-icon="weekly"><span>To-do list</span></a>
+        <a href="#macros" data-nav="macros" data-icon="macros"><span>Macros</span></a>
+        <a href="#links" data-nav="links" data-for="retail" data-icon="links"><span>Resources</span></a>
+      </nav>
+
+      <div class="side-tools">
+        <button type="button" class="side-search" data-action="open-search" aria-label="Search" aria-keyshortcuts="Control+K Meta+K">
+          <span data-icon="search"></span><span class="side-search-label">Search</span><kbd>Ctrl K</kbd>
+        </button>
+        <button type="button" class="side-theme" id="themeToggle"></button>
+        <div class="account" id="account"></div>
+      </div>
+    </aside>
+
+    <div class="stage">
+      <div id="freshness" class="freshness" role="status" hidden></div>
+
+      <main id="main">
+        <!-- ================= RETAIL: BUILDS ================= -->
+        <section id="view-builds" class="view view-builds" data-state="pick" aria-labelledby="buildsHeading">
+          <div class="home" id="buildsHero">
+            <h1 id="buildsHeading" class="home-title">What are you playing?</h1>
+            <p class="home-lede">Talent builds drawn from what top Mythic+, raid and PvP players run right now. Pick a spec, copy the code, paste it in game.</p>
+            <div class="home-bar">
+              <button type="button" class="searchbar" data-action="open-search">
+                <span data-icon="search"></span><span>Search a spec, tool or character</span><kbd>Ctrl K</kbd>
+              </button>
+              <div id="roleFilter" class="segmented" role="radiogroup" aria-label="Show roles"></div>
+            </div>
+            <div class="mosaic" id="classGrid" aria-label="Classes"></div>
+          </div>
+
+          <nav class="class-strip" id="classStrip" aria-label="Switch class" hidden></nav>
+
+          <section id="classSheet" class="sheet" hidden aria-labelledby="sheetName">
+            <header class="slab">
+              <div class="slab-top">
+                <img id="sheetCrest" class="slab-crest" src="" alt="" width="88" height="88" />
+                <div class="slab-id">
+                  <h2 id="sheetName" class="slab-name"></h2>
+                  <p id="sheetRoles" class="slab-sub"></p>
+                </div>
+                <button type="button" id="changeClassBtn" class="slab-back">All classes</button>
+              </div>
+              <div class="slab-controls">
+                <div id="specTabs" class="spec-tabs" role="tablist" aria-label="Specialization"></div>
+                <div id="modeSwitch" class="mode-switch" role="radiogroup" aria-label="Content type" hidden></div>
+              </div>
+            </header>
+
+            <p id="pickSpecPrompt" class="pick-spec">Pick a specialization above to see its build.</p>
+
+            <div id="sheetBody" class="sheet-body" hidden>
+              <div class="sheet-main">
+                <article id="loadoutPlate" class="loadout-plate" aria-live="polite"></article>
+                <section id="rotationPanel" class="panel panel-rotation"></section>
+              </div>
+              <aside class="sheet-side">
+                <section id="statsPanel" class="panel"></section>
+                <section id="mythicPanel" class="panel" hidden></section>
+              </aside>
+            </div>
+          </section>
+
+          <section id="toolkit" class="toolkit" aria-labelledby="toolkitHeading">
+            <h2 id="toolkitHeading" class="section-title">Everything else you need</h2>
+            <div id="toolkitGrid" class="toolkit-grid"></div>
+          </section>
+
+          <section id="myBuilds" class="my-builds" hidden aria-labelledby="myBuildsHeading">
+            <header class="section-head">
+              <div>
+                <h2 id="myBuildsHeading" class="section-title">Your builds</h2>
+                <p id="myBuildsSub" class="muted"></p>
+              </div>
+              <button type="button" id="myBuildsRefresh" class="btn btn-quiet btn-sm">Check for updates</button>
+            </header>
+            <ul id="myBuildsList" class="tracked-list"></ul>
+          </section>
+
+          <details class="method">
+            <summary>How builds are chosen</summary>
+            <div class="method-body">
+              <p>Every 12 hours we collect builds from top-ranked players and curated guides: Murlok, Peavers, Archon, Wowhead, Method and Icy Veins.</p>
+              <p>Each talent is weighted by how often it appears for that spec and content type, and the loadout with the strongest overall agreement wins. The confidence ring shows how much the sources agree.</p>
+              <p>Copy a build and we remember it. If the recommended loadout changes later, you'll see a notice here. Sign in to keep that history across devices.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- ================= RETAIL: THIS WEEK ================= -->
+        <section id="view-weekly" class="view view-weekly" hidden aria-labelledby="weeklyHeading">
+          <header class="page-head">
+            <h1 id="weeklyHeading">This week</h1>
+            <p class="muted">Plan your Great Vault and tick off the weekly chores for each character. Everything clears itself at the weekly reset.</p>
+          </header>
+          <div id="weeklyResets" class="reset-row"></div>
+          <div id="weeklyChars" class="char-picker"></div>
+          <div id="weeklyBody" class="weekly-body"></div>
+        </section>
+
+        <!-- ================= RETAIL: LOCKOUTS ================= -->
+        <section id="view-tracker" class="view view-tracker" hidden aria-labelledby="trackerHeading">
+          <header class="page-head">
+            <h1 id="trackerHeading">Lockouts</h1>
+            <p class="muted">Mark off Mythic dungeons as you clear them on each character. Everything resets automatically.</p>
+            <p id="trackerWindow" class="tracker-window"></p>
+          </header>
+          <div id="trackerList" class="char-list"></div>
+        </section>
+
+        <!-- ================= RETAIL: MYTHIC+ ================= -->
+        <section id="view-mplus" class="view view-mplus" hidden aria-labelledby="mplusHeading">
+          <header class="page-head">
+            <h1 id="mplusHeading">Mythic+</h1>
+            <p class="muted">The season at a glance: what each key level adds, this week's mechanic, and the timer to beat in every dungeon.</p>
+          </header>
+          <div class="mplus-top">
+            <section id="mplusLadder" class="card"></section>
+            <section id="mplusKey" class="card"></section>
+          </div>
+          <section id="mplusBargains" class="mplus-section"></section>
+          <section id="mplusDungeons" class="mplus-section"></section>
+          <section id="mplusRewards" class="mplus-section"></section>
+        </section>
+
+        <!-- ================= RETAIL: GROUP CHECK ================= -->
+        <section id="view-party" class="view view-party" hidden aria-labelledby="partyHeading">
+          <header class="page-head">
+            <h1 id="partyHeading">Group check</h1>
+            <p class="muted">Build your party and see what it covers before the key goes in: Bloodlust, battle res, dispels, interrupts and raid buffs.</p>
+          </header>
+          <div id="partyBody" class="party-body"></div>
+        </section>
+
+        <!-- ================= RETAIL: ARMORY ================= -->
+        <section id="view-armory" class="view view-armory" hidden aria-labelledby="armoryHeading">
+          <header class="page-head">
+            <h1 id="armoryHeading">Armory</h1>
+            <p class="muted">Look up any character to see their gear and copy the talent loadout they're using right now.</p>
+          </header>
+
+          <form id="armoryForm" class="armory-form card" novalidate>
+            <label class="field field-region">
+              <span>Region</span>
+              <select id="armoryRegion">
+                <option value="us">US</option>
+                <option value="eu">EU</option>
+                <option value="kr">KR</option>
+                <option value="tw">TW</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Realm</span>
+              <input id="armoryRealm" type="text" placeholder="Illidan" autocomplete="off" autocapitalize="words" required />
+            </label>
+            <label class="field">
+              <span>Character</span>
+              <input id="armoryName" type="text" placeholder="Thrall" autocomplete="off" autocapitalize="words" required />
+            </label>
+            <div class="armory-actions">
+              <button id="armorySubmit" type="submit" class="btn btn-primary">Look up</button>
+              <button id="armorySaveOnly" type="button" class="link-btn">Save without lookup</button>
+            </div>
+          </form>
+
+          <div id="savedChars" class="saved-chars" hidden></div>
+          <p id="armoryStatus" class="armory-status" role="status" hidden></p>
+          <div id="armoryResult" class="armory-result" hidden></div>
+          <section id="armoryRio" class="card rio armory-rio" aria-label="Mythic+ and raid progress" hidden></section>
+        </section>
+
+        <!-- ================= RETAIL: RESOURCES ================= -->
+        <section id="view-links" class="view view-links" hidden aria-labelledby="linksHeading">
+          <header class="page-head">
+            <h1 id="linksHeading">Resources</h1>
+            <p class="muted">The sites worth knowing, sorted by what you're trying to do. Pick a character and the links open straight on their profile.</p>
+          </header>
+          <div id="linksBody" class="links-body"></div>
+        </section>
+
+        <!-- ================= SHARED: MACROS ================= -->
+        <section id="view-macros" class="view view-macros" hidden aria-labelledby="macrosHeading">
+          <header class="page-head">
+            <h1 id="macrosHeading">Macros</h1>
+            <p class="muted">Pick what you want the button to do, type your spell, and copy the macro. In game, type /macro, make a new one and paste.</p>
+          </header>
+          <div id="macrosBody" class="macros-body"></div>
+        </section>
+
+        <!-- ================= FOREVER: CLASSES ================= -->
+        <section id="view-forever" class="view view-forever" data-state="pick" hidden aria-labelledby="foreverHeading">
+          <div class="home fv-home" id="foreverHero">
+            <h1 id="foreverHeading" class="home-title fv-title">World of Warcraft <span>Forever</span></h1>
+            <p class="home-lede">The original Azeroth with reworked talents, new dungeons and a level cap that stays at 60. Pick a class to see its three talent trees, what each one is for, and which races can play it.</p>
+            <div id="foreverClock" class="fv-clock" role="timer" aria-live="off"></div>
+            <div class="mosaic" id="foreverGrid" aria-label="Classes"></div>
+          </div>
+
+          <nav class="class-strip" id="foreverStrip" aria-label="Switch class" hidden></nav>
+
+          <section id="foreverSheet" class="sheet" hidden aria-labelledby="fvSheetName">
+            <header class="slab">
+              <div class="slab-top">
+                <img id="fvSheetCrest" class="slab-crest" src="" alt="" width="88" height="88" />
+                <div class="slab-id">
+                  <h2 id="fvSheetName" class="slab-name"></h2>
+                  <p id="fvSheetRoles" class="slab-sub"></p>
+                </div>
+                <button type="button" id="fvChangeClassBtn" class="slab-back">All classes</button>
+              </div>
+              <div class="slab-controls">
+                <div id="treeTabs" class="spec-tabs" role="tablist" aria-label="Talent tree"></div>
+              </div>
+            </header>
+
+            <div class="sheet-body">
+              <div class="sheet-main">
+                <article id="treePlate" class="tree-plate" aria-live="polite"></article>
+              </div>
+              <aside class="sheet-side">
+                <section id="fvStats" class="panel"></section>
+                <section id="fvRaces" class="panel"></section>
+                <section id="fvBaseline" class="panel"></section>
+              </aside>
+            </div>
+          </section>
+
+          <section id="fvToolkit" class="toolkit" aria-labelledby="fvToolkitHeading">
+            <h2 id="fvToolkitHeading" class="section-title">Everything else you need</h2>
+            <div id="fvToolkitGrid" class="toolkit-grid"></div>
+          </section>
+
+          <p class="fv-source">Talent details come from Blizzard's beta class deep dives (September and October 2026). Blizzard has said talents can still change, so check in game.</p>
+        </section>
+
+        <!-- ================= FOREVER: DUNGEONS & RAIDS ================= -->
+        <section id="view-atlas" class="view view-atlas" hidden aria-labelledby="atlasHeading">
+          <header class="page-head">
+            <h1 id="atlasHeading">Dungeons and raids</h1>
+            <p class="muted">Set your level to see which dungeons fit right now. Tap a dungeon to mark it done on this device.</p>
+          </header>
+
+          <div class="atlas-controls card">
+            <label class="level-dial" for="atlasLevel">
+              <span>Your level</span>
+              <output id="atlasLevelOut" for="atlasLevel">20</output>
+              <input id="atlasLevel" type="range" min="1" max="60" step="1" value="20" />
+            </label>
+            <div id="atlasFilter" class="segmented" role="radiogroup" aria-label="Which dungeons"></div>
+          </div>
+
+          <div id="atlasRuler" class="ruler"></div>
+
+          <section class="raids-wrap" aria-labelledby="raidsHeading">
+            <header class="section-head">
+              <div>
+                <h2 id="raidsHeading" class="section-title">Raids</h2>
+                <p id="raidsSub" class="muted"></p>
+              </div>
+            </header>
+            <div id="atlasRaids" class="raids"></div>
+          </section>
+        </section>
+
+        <!-- ================= FOREVER: LEVEL GUIDE ================= -->
+        <section id="view-levels" class="view view-levels" hidden aria-labelledby="levelsHeading">
+          <header class="page-head">
+            <h1 id="levelsHeading">Level guide</h1>
+            <p class="muted">Set your level to see how many talent points you have, what unlocks next, and which dungeons to run.</p>
+          </header>
+          <div id="levelsBody" class="levels-body"></div>
+        </section>
+
+        <!-- ================= FOREVER: TO-DO ================= -->
+        <section id="view-todo" class="view view-todo" hidden aria-labelledby="todoPageHeading">
+          <header class="page-head">
+            <h1 id="todoPageHeading">To-do list</h1>
+            <p class="muted">The small chores that are easy to forget between quests. Tick them off as you go, and make the list your own.</p>
+          </header>
+          <div id="todoBody" class="todo-body"></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p id="dataStamp"></p>
+        <p>WoW Advisor is a fan project and isn't affiliated with Blizzard Entertainment. World of Warcraft is a trademark of Blizzard Entertainment, Inc.</p>
+      </footer>
     </div>
-  </header>
+  </div>
 
-  <div id="freshness" class="freshness" role="status" hidden></div>
-
-  <main id="main">
-    <!-- ================= RETAIL: BUILDS ================= -->
-    <section id="view-builds" class="view view-builds" data-state="pick" aria-labelledby="buildsHeading">
-      <div class="hall" id="buildsHero">
-        <h1 id="buildsHeading" class="hall-title">Pick a class.<br />Copy the build.</h1>
-        <p class="hall-lede">Talent loadouts drawn from what top Mythic+, raid and PvP players are running right now, refreshed twice a day.</p>
-        <div class="crest-grid" id="classGrid" aria-label="Classes"></div>
-      </div>
-
-      <section id="classSheet" class="sheet" hidden aria-labelledby="sheetName">
-        <header class="sheet-head">
-          <img id="sheetCrest" class="sheet-crest" src="" alt="" width="96" height="96" />
-          <div class="sheet-id">
-            <h2 id="sheetName" class="sheet-name"></h2>
-            <p id="sheetRoles" class="sheet-roles"></p>
-          </div>
-          <button type="button" id="changeClassBtn" class="btn btn-quiet btn-sm sheet-change">All classes</button>
-        </header>
-
-        <div class="sheet-controls">
-          <div id="specTabs" class="spec-tabs" role="tablist" aria-label="Specialization"></div>
-          <div id="modeSwitch" class="segmented mode-switch" role="radiogroup" aria-label="Content type" hidden></div>
-        </div>
-
-        <p id="pickSpecPrompt" class="pick-spec">Pick a specialization to see its build.</p>
-
-        <div id="sheetBody" class="sheet-body" hidden>
-          <div class="sheet-main">
-            <article id="loadoutPlate" class="loadout-plate" aria-live="polite"></article>
-            <section id="rotationPanel" class="panel panel-rotation"></section>
-          </div>
-          <aside class="sheet-side">
-            <section id="statsPanel" class="panel"></section>
-            <section id="mythicPanel" class="panel" hidden></section>
-          </aside>
-        </div>
-      </section>
-
-      <section id="myBuilds" class="my-builds" hidden aria-labelledby="myBuildsHeading">
-        <header class="section-head">
-          <div>
-            <h2 id="myBuildsHeading">Your builds</h2>
-            <p id="myBuildsSub" class="muted"></p>
-          </div>
-          <button type="button" id="myBuildsRefresh" class="btn btn-quiet btn-sm">Check for updates</button>
-        </header>
-        <ul id="myBuildsList" class="tracked-list"></ul>
-      </section>
-
-      <details class="method">
-        <summary>How builds are chosen</summary>
-        <div class="method-body">
-          <p>Every 12 hours we collect builds from top-ranked players and curated guides: Murlok, Peavers, Archon, Wowhead, Method and Icy Veins.</p>
-          <p>Each talent is weighted by how often it appears for that spec and content type, and the loadout with the strongest overall agreement wins. The confidence ring shows how much the sources agree.</p>
-          <p>Copy a build and we remember it. If the recommended loadout changes later, you'll see a notice here. Sign in to keep that history across devices.</p>
-        </div>
-      </details>
-    </section>
-
-    <!-- ================= RETAIL: TRACKER ================= -->
-    <section id="view-tracker" class="view view-tracker" hidden aria-labelledby="trackerHeading">
-      <header class="page-head">
-        <h1 id="trackerHeading">Lockout tracker</h1>
-        <p class="muted">Mark off Mythic dungeons as you clear them on each character. Everything resets automatically.</p>
-        <p id="trackerWindow" class="tracker-window"></p>
-      </header>
-      <div id="trackerList" class="char-list"></div>
-    </section>
-
-    <!-- ================= RETAIL: ARMORY ================= -->
-    <section id="view-armory" class="view view-armory" hidden aria-labelledby="armoryHeading">
-      <header class="page-head">
-        <h1 id="armoryHeading">Armory</h1>
-        <p class="muted">Look up any character to see their gear and copy the talent loadout they're using right now.</p>
-      </header>
-
-      <form id="armoryForm" class="armory-form" novalidate>
-        <label class="field field-region">
-          <span>Region</span>
-          <select id="armoryRegion">
-            <option value="us">US</option>
-            <option value="eu">EU</option>
-            <option value="kr">KR</option>
-            <option value="tw">TW</option>
-          </select>
-        </label>
-        <label class="field">
-          <span>Realm</span>
-          <input id="armoryRealm" type="text" placeholder="Illidan" autocomplete="off" autocapitalize="words" required />
-        </label>
-        <label class="field">
-          <span>Character</span>
-          <input id="armoryName" type="text" placeholder="Thrall" autocomplete="off" autocapitalize="words" required />
-        </label>
-        <div class="armory-actions">
-          <button id="armorySubmit" type="submit" class="btn btn-primary">Look up</button>
-          <button id="armorySaveOnly" type="button" class="link-btn">Save without lookup</button>
-        </div>
-      </form>
-
-      <div id="savedChars" class="saved-chars" hidden></div>
-      <p id="armoryStatus" class="armory-status" role="status" hidden></p>
-      <div id="armoryResult" class="armory-result" hidden></div>
-    </section>
-
-    <!-- ================= FOREVER: CLASSES ================= -->
-    <section id="view-forever" class="view view-forever" data-state="pick" hidden aria-labelledby="foreverHeading">
-      <div class="fv-hero" id="foreverHero">
-        <h1 id="foreverHeading" class="fv-title">World of Warcraft<span>Forever</span></h1>
-        <p class="fv-lede">The original Azeroth with reworked talents, new dungeons and a level cap that stays at 60. Pick a class to see its three talent trees, what each one is for, and which races can play it.</p>
-        <div id="foreverClock" class="fv-clock" role="timer" aria-live="off"></div>
-        <div class="crest-grid" id="foreverGrid" aria-label="Classes"></div>
-      </div>
-
-      <section id="foreverSheet" class="sheet" hidden aria-labelledby="fvSheetName">
-        <header class="sheet-head">
-          <img id="fvSheetCrest" class="sheet-crest" src="" alt="" width="96" height="96" />
-          <div class="sheet-id">
-            <h2 id="fvSheetName" class="sheet-name"></h2>
-            <p id="fvSheetRoles" class="sheet-roles"></p>
-          </div>
-          <button type="button" id="fvChangeClassBtn" class="btn btn-quiet btn-sm sheet-change">All classes</button>
-        </header>
-
-        <div class="sheet-controls">
-          <div id="treeTabs" class="spec-tabs" role="tablist" aria-label="Talent tree"></div>
-        </div>
-
-        <div class="sheet-body">
-          <div class="sheet-main">
-            <article id="treePlate" class="tree-plate" aria-live="polite"></article>
-          </div>
-          <aside class="sheet-side">
-            <section id="fvStats" class="panel"></section>
-            <section id="fvRaces" class="panel"></section>
-            <section id="fvBaseline" class="panel"></section>
-          </aside>
-        </div>
-      </section>
-
-      <p class="fv-source">Talent details come from Blizzard's beta class deep dives (September and October 2026). Blizzard has said talents can still change, so check in game after launch.</p>
-    </section>
-
-    <!-- ================= FOREVER: DUNGEONS & RAIDS ================= -->
-    <section id="view-atlas" class="view view-atlas" hidden aria-labelledby="atlasHeading">
-      <header class="page-head">
-        <h1 id="atlasHeading">Dungeons and raids</h1>
-        <p class="muted">Set your level to see which dungeons fit right now. Tap a dungeon to mark it done on this device.</p>
-      </header>
-
-      <div class="atlas-controls">
-        <label class="level-dial" for="atlasLevel">
-          <span>Your level</span>
-          <output id="atlasLevelOut" for="atlasLevel">20</output>
-          <input id="atlasLevel" type="range" min="1" max="60" step="1" value="20" />
-        </label>
-        <div id="atlasFilter" class="segmented" role="radiogroup" aria-label="Which dungeons"></div>
-      </div>
-
-      <div id="atlasRuler" class="ruler"></div>
-
-      <section class="raids-wrap" aria-labelledby="raidsHeading">
-        <header class="section-head">
-          <div>
-            <h2 id="raidsHeading">Raids</h2>
-            <p id="raidsSub" class="muted"></p>
-          </div>
-        </header>
-        <div id="atlasRaids" class="raids"></div>
-      </section>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p id="dataStamp"></p>
-    <p>WoW Advisor is a fan project and isn't affiliated with Blizzard Entertainment. World of Warcraft is a trademark of Blizzard Entertainment, Inc.</p>
-  </footer>
+  <dialog id="searchDialog" class="palette" aria-label="Search">
+    <div class="palette-box">
+      <label class="palette-input">
+        <span data-icon="search"></span>
+        <input id="searchInput" type="text" placeholder="Try &quot;resto druid&quot;, &quot;macros&quot; or a character name" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="searchResults" aria-autocomplete="list" />
+        <kbd>Esc</kbd>
+      </label>
+      <ul id="searchResults" class="palette-results" role="listbox"></ul>
+    </div>
+  </dialog>
 
   <dialog id="authDialog" class="auth-dialog" aria-labelledby="authTitle">
     <form id="authForm" class="auth-form" method="dialog" novalidate>

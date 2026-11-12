@@ -1,8 +1,7 @@
-// Builds view: class crests, class sheet (spec + mode), loadout plate, stats, rotation, Mythic+ context.
+// Builds view: class mosaic with one-click spec links, class sheet (spec + mode), loadout, stats, rotation, Mythic+ context.
 
 import { CLASSES, MODES, ROLE_LABELS, findClass, findSpec, findMode, modeLabel } from "../../data/classes.js";
-import { AFFIXES } from "../../data/mythic.js";
-import { $, $$, html, raw, copyText, flashLabel, scrollToEl } from "../../lib/dom.js";
+import { $, $$, html, raw, copyText, flashLabel } from "../../lib/dom.js";
 import { timeAgo, plural } from "../../lib/format.js";
 import { navigate } from "../../lib/router.js";
 import { on } from "../../lib/events.js";
@@ -10,10 +9,19 @@ import { KEYS, writeJson } from "../../lib/storage.js";
 import { toast } from "../../lib/toast.js";
 import { getBuild, getBuildsMeta } from "./data.js";
 import { resolveStatPriority, explainStat, rotationFor, rotationModeTip, spellInStep, TIP_ICON, FALLBACK_ICON } from "./guidance.js";
-import { getMythicContext, setKeyLevel, toggleAffix, clearAffixes, adaptStatsForMythic, mythicBuildReminders } from "./mythic-context.js";
+import { adaptStatsForMythic, mythicBuildReminders } from "./mythic-context.js";
+import { keyPanelHtml, bindKeyPanel } from "../mplus/key-panel.js";
 import { recordCopy } from "./tracking.js";
+import { classStyle, setClassColor } from "../../lib/color.js";
 
 const sel = { cls: null, spec: null, mode: "aoe", statIndex: 0 };
+const ROLE_FILTERS = [
+  { key: "all", label: "All" },
+  { key: "tank", label: "Tank" },
+  { key: "healer", label: "Healer" },
+  { key: "dps", label: "Damage" }
+];
+let roleFilter = "all";
 let els = {};
 let rendered = false; // deep links shouldn't jump the page on first load
 
@@ -22,6 +30,8 @@ export function initBuildsView() {
     view: $("#view-builds"),
     hero: $("#buildsHero"),
     grid: $("#classGrid"),
+    strip: $("#classStrip"),
+    roles: $("#roleFilter"),
     sheet: $("#classSheet"),
     sheetCrest: $("#sheetCrest"),
     sheetName: $("#sheetName"),
@@ -37,14 +47,14 @@ export function initBuildsView() {
   };
 
   renderClassGrid();
+  renderRoleFilter();
 
-  els.grid.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-class]");
+  // Tiles and strip items are real links, so the router handles them. The role filter is the only control here.
+  els.roles.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-role]");
     if (!btn) return;
-    const cls = findClass(btn.dataset.class);
-    if (!cls) return;
-    const sameClass = sel.cls?.slug === cls.slug;
-    navigate({ view: "builds", classSlug: cls.slug, specSlug: sameClass ? sel.spec?.slug : null, mode: sameClass ? sel.mode : null });
+    roleFilter = btn.dataset.role;
+    renderRoleFilter();
   });
 
   els.specTabs.addEventListener("click", (e) => {
@@ -77,10 +87,7 @@ export function initBuildsView() {
     });
   });
 
-  $("#changeClassBtn").addEventListener("click", () => {
-    navigate({ view: "builds" });
-    requestAnimationFrame(() => scrollToEl(els.hero));
-  });
+  $("#changeClassBtn").addEventListener("click", () => navigate({ view: "builds" }));
 
   els.loadout.addEventListener("click", async (e) => {
     const btn = e.target.closest("[data-action='copy-build']");
@@ -109,16 +116,7 @@ export function initBuildsView() {
     renderStats();
   });
 
-  els.mythic.addEventListener("click", (e) => {
-    const affixBtn = e.target.closest("[data-affix]");
-    if (affixBtn) toggleAffix(affixBtn.dataset.affix);
-    if (e.target.closest("[data-action='clear-affixes']")) clearAffixes();
-    const step = e.target.closest("[data-key-step]");
-    if (step) setKeyLevel(getMythicContext().keyLevel + Number(step.dataset.keyStep));
-  });
-  els.mythic.addEventListener("change", (e) => {
-    if (e.target.matches("#keyLevelInput")) setKeyLevel(e.target.value);
-  });
+  bindKeyPanel(els.mythic);
 
   on("mythic:changed", () => {
     if (!sel.spec) return;
@@ -142,7 +140,7 @@ export function showBuildsRoute(route) {
   if (changedSpec) sel.statIndex = 0;
   if (cls && spec) writeJson(KEYS.lastBuild, { classSlug: cls.slug, specSlug: spec.slug, mode });
   renderSelection();
-  if (changedClass && cls && rendered) requestAnimationFrame(() => scrollToEl(els.sheet));
+  if (changedClass && rendered) window.scrollTo({ top: 0 });
   rendered = true;
 }
 
@@ -161,27 +159,57 @@ function currentBuild() {
 
 function renderClassGrid() {
   els.grid.innerHTML = CLASSES.map((c) => html`
-    <button type="button" class="crest" data-class="${c.slug}" style="--cc:${c.color}" aria-pressed="false">
-      <img class="crest-art" src="${c.icon}" alt="" width="128" height="128" decoding="async" />
-      <span class="crest-name">${c.name}</span>
-    </button>`).join("");
+    <article class="tile" data-class="${c.slug}" style="${classStyle(c.color)}">
+      <a class="tile-link" href="#builds/${c.slug}"><span class="tile-name">${c.name}</span></a>
+      <img class="tile-art" src="${c.icon}" alt="" width="96" height="96" decoding="async" />
+      <ul class="tile-specs" aria-label="${c.name} specs">
+        ${c.specs.map((s) => raw(html`<li><a href="#builds/${c.slug}/${s.slug}/aoe" data-role="${s.role}" title="${s.name} ${c.name}, ${ROLE_LABELS[s.role]}">${s.name}</a></li>`))}
+      </ul>
+    </article>`).join("") + html`
+    <a class="tile tile-promo" href="#forever">
+      <span class="tile-name">Playing WoW Forever?</span>
+      <span class="tile-promo-text">Talent trees, dungeons by level and a leveling guide for the level-60 servers.</span>
+    </a>`;
+
+  els.strip.innerHTML = CLASSES.map((c) => html`
+    <a class="strip-item" href="#builds/${c.slug}" data-class="${c.slug}" style="${classStyle(c.color)}" title="${c.name}" aria-label="${c.name}">
+      <img src="${c.icon}" alt="" width="40" height="40" decoding="async" />
+    </a>`).join("");
+}
+
+function renderRoleFilter() {
+  els.roles.innerHTML = ROLE_FILTERS.map((r) => html`
+    <button type="button" role="radio" data-role="${r.key}" aria-checked="${String(r.key === roleFilter)}">${r.label}</button>`).join("");
+  els.grid.classList.toggle("is-filtered", roleFilter !== "all");
+  $$(".tile", els.grid).forEach((tile) => {
+    const links = $$(".tile-specs a", tile);
+    let any = false;
+    links.forEach((a) => {
+      const match = roleFilter === "all" || a.dataset.role === roleFilter;
+      a.classList.toggle("is-dim", !match);
+      any = any || match;
+    });
+    if (links.length) tile.hidden = !any;
+  });
 }
 
 function renderSelection() {
   const { cls, spec } = sel;
-  if (cls) document.documentElement.style.setProperty("--cc", cls.color);
-  else document.documentElement.style.removeProperty("--cc");
+  setClassColor(document.documentElement, cls?.color);
   els.view.dataset.state = cls ? "class" : "pick";
-  $$(".crest", els.grid).forEach((b) => {
-    const active = b.dataset.class === cls?.slug;
-    b.classList.toggle("is-active", active);
-    b.setAttribute("aria-pressed", String(active));
+  els.hero.hidden = Boolean(cls);
+  els.strip.hidden = !cls;
+  $$(".strip-item", els.strip).forEach((a) => {
+    const active = a.dataset.class === cls?.slug;
+    a.classList.toggle("is-active", active);
+    if (active) a.setAttribute("aria-current", "true");
+    else a.removeAttribute("aria-current");
   });
 
   els.sheet.hidden = !cls;
   if (!cls) return;
 
-  els.sheet.style.setProperty("--cc", cls.color);
+  setClassColor(els.sheet, cls.color);
   els.sheetCrest.src = cls.icon;
   els.sheetName.textContent = cls.name;
   const roles = [...new Set(cls.specs.map((s) => ROLE_LABELS[s.role]))];
@@ -262,9 +290,9 @@ function renderLoadout() {
     </header>
 
     <label class="loadout-label" for="loadoutCode">Loadout code</label>
-    <div class="loadout-row">
+    <div class="codebox loadout-row">
       <input id="loadoutCode" class="loadout-code" type="text" readonly spellcheck="false" value="${build.exportString}" />
-      <button type="button" class="btn btn-primary" data-action="copy-build">Copy code</button>
+      <button type="button" class="btn btn-primary btn-lg" data-action="copy-build">Copy code</button>
     </div>
     <p class="plate-help">In game: open Talents, choose the loadout dropdown, Import, then paste.</p>
 
@@ -319,26 +347,20 @@ function renderMythic() {
   const show = sel.mode === "aoe";
   els.mythic.hidden = !show;
   if (!show) return;
-  const { keyLevel, affixes } = getMythicContext();
+  // Re-rendering replaces the inputs, so put focus back where it was.
+  const focused = document.activeElement?.closest?.("#mythicPanel") ? document.activeElement : null;
+  const focusKey = focused?.dataset.keyStep ? `[data-key-step="${focused.dataset.keyStep}"]`
+    : focused?.dataset.weekAffix ? `[data-week-affix="${focused.dataset.weekAffix}"]`
+    : focused?.matches("[data-bargain]") ? "[data-bargain]" : focused?.matches("[data-key-level]") ? "[data-key-level]" : null;
   els.mythic.innerHTML = html`
     <h3 class="panel-title">Your key</h3>
-    <p class="panel-sub">Tunes stat order and reminders for the key you're running.</p>
-    <div class="key-level">
-      <label for="keyLevelInput">Key level</label>
-      <div class="stepper">
-        <button type="button" class="stepper-btn" data-key-step="-1" aria-label="Lower key level">−</button>
-        <input id="keyLevelInput" type="number" inputmode="numeric" min="2" max="35" value="${keyLevel}" />
-        <button type="button" class="stepper-btn" data-key-step="1" aria-label="Raise key level">+</button>
-      </div>
-    </div>
-    <fieldset class="affixes">
-      <legend>Affixes this week</legend>
-      <div class="affix-list">
-        ${AFFIXES.map((a) => raw(html`<button type="button" class="affix${affixes.includes(a) ? " is-on" : ""}" data-affix="${a}" aria-pressed="${String(affixes.includes(a))}">${a}</button>`))}
-      </div>
-      ${affixes.length ? raw(`<button type="button" class="link-btn" data-action="clear-affixes">Clear affixes</button>`) : ""}
-    </fieldset>
+    <p class="panel-sub">Tunes stat order and reminders for the key you're running. <a href="#mplus">See the full season guide</a>.</p>
+    ${raw(keyPanelHtml("buildKey"))}
   `;
+  if (focusKey) {
+    const next = $(focusKey, els.mythic);
+    (next && !next.disabled ? next : $("[data-key-level]", els.mythic))?.focus();
+  }
 }
 
 function renderRotation() {

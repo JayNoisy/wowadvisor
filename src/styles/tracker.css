@@ -1,96 +1,55 @@
-/* Lockout tracker */
-.tracker-window {
-  margin-top: var(--s-2);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-2) var(--s-4);
-  align-items: center;
-  color: var(--ink-2);
-}
-.tracker-window strong { color: var(--ink); font-weight: 700; }
-.window-cadence {
-  padding: 3px var(--s-3);
-  border-radius: var(--r-pill);
-  background: color-mix(in srgb, var(--accent) 18%, transparent);
-  color: var(--ink);
-  font-weight: 650;
-  font-size: var(--step--1);
-}
+/* Lockouts: one card per character, a toggle per dungeon. */
+.tracker-window { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-4); color: var(--ink-2); }
+.tracker-window strong { color: var(--ink); font-weight: 750; }
+.window-cadence { padding: 3px var(--s-3); background: var(--ink); border-radius: var(--r-pill); color: var(--bg); font-size: var(--step--1); font-weight: 650; }
 
-.char-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); gap: var(--s-5); }
-
-.char-card {
-  position: relative;
-  background: color-mix(in srgb, var(--surface) 85%, transparent);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  padding: var(--s-5);
-  display: grid;
-  gap: var(--s-4);
-  overflow: hidden;
-}
-.char-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 120px;
-  background: radial-gradient(80% 100% at 0% 0%, color-mix(in srgb, var(--cc) 18%, transparent), transparent 70%);
-  pointer-events: none;
-}
-.char-head { position: relative; display: flex; align-items: center; gap: var(--s-4); }
-.char-crest { width: 52px; height: 52px; border-radius: 14px; flex: none; box-shadow: 0 0 0 1px var(--cc); }
+.char-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr)); gap: var(--s-4); }
+.char-card { display: grid; gap: var(--s-4); padding: var(--s-5); background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow); }
+.char-head { display: flex; align-items: center; gap: var(--s-4); }
+.char-crest { width: 52px; height: 52px; flex: none; border-radius: 14px; }
 .char-crest-blank { background: var(--surface-2); }
 .char-id { flex: 1; min-width: 0; }
-.char-id h3 { font-size: var(--step-2); color: var(--cc); }
+.char-id h3 { font-size: var(--step-2); }
 .char-id p { color: var(--muted); font-size: var(--step--1); }
-.char-progress { display: grid; justify-items: end; gap: var(--s-2); }
-.char-count { color: var(--muted); }
-.char-count strong { font-family: var(--font-display); font-weight: var(--display-weight); font-size: var(--step-3); color: var(--ink); line-height: 1; }
-.char-bar { width: 96px; height: 6px; border-radius: 3px; background: color-mix(in srgb, var(--ink) 10%, transparent); overflow: hidden; }
-.char-bar span { display: block; height: 100%; border-radius: 3px; background: var(--cc); transition: width 0.3s var(--ease-out); }
+.char-progress { display: grid; justify-items: end; gap: var(--s-1); }
+.char-count { color: var(--muted); font-weight: 600; }
+.char-count strong { color: var(--ink); font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); font-size: var(--step-3); line-height: 1; }
+.char-bar { width: 88px; height: 6px; background: var(--surface-2); border-radius: 3px; overflow: hidden; }
+.char-bar span { display: block; height: 100%; background: var(--cc); border-radius: 3px; transition: width 0.3s var(--ease-out); }
 
 .dungeons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
 .dungeon {
   width: 100%;
-  min-height: 48px;
   display: flex;
   align-items: center;
   gap: var(--s-3);
+  min-height: 48px;
   padding: var(--s-2) var(--s-3);
-  background: var(--bg-deep);
-  border: 1px solid var(--line);
+  background: var(--surface-2);
+  border: 0;
   border-radius: var(--r-sm);
-  text-align: left;
   color: var(--ink);
-  transition: border-color 0.15s, background-color 0.15s;
+  text-align: left;
+  transition: background-color 0.15s;
 }
-.dungeon:hover { border-color: var(--line-strong); }
-.dungeon-mark {
-  flex: none;
-  position: relative;
-  width: 20px; height: 20px;
-  border: 2px solid var(--line-strong);
-  border-radius: 6px;
-  transition: background-color 0.15s, border-color 0.15s;
-}
+.dungeon:hover { background: var(--surface-3); }
+.dungeon-mark { position: relative; width: 22px; height: 22px; flex: none; border: 2px solid var(--line-strong); border-radius: 7px; transition: background-color 0.15s, border-color 0.15s; }
 .dungeon-mark::after {
   content: "";
   position: absolute;
-  left: 5px; top: 1px;
-  width: 5px; height: 10px;
-  border: solid var(--bg-deep);
-  border-width: 0 2px 2px 0;
+  left: 6px; top: 2px;
+  width: 6px; height: 11px;
+  border: solid var(--surface);
+  border-width: 0 2.5px 2.5px 0;
   transform: rotate(45deg) scale(0);
   transition: transform 0.2s var(--ease-out);
 }
-.dungeon.is-done { background: color-mix(in srgb, var(--cc) 8%, var(--bg-deep)); border-color: color-mix(in srgb, var(--cc) 40%, transparent); }
-.dungeon.is-done .dungeon-mark { background: var(--cc); border-color: var(--cc); }
+.dungeon.is-done .dungeon-mark { background: var(--good); border-color: var(--good); }
 .dungeon.is-done .dungeon-mark::after { transform: rotate(45deg) scale(1); }
-.dungeon.is-done .dungeon-name { color: var(--muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--cc) 60%, transparent); }
-
+.dungeon.is-done .dungeon-name { color: var(--muted); text-decoration: line-through; }
+.dungeon-name { font-weight: 550; }
 .char-actions { display: flex; justify-content: space-between; gap: var(--s-4); font-size: var(--step--1); }
 
 @media (max-width: 520px) {
-  .char-card { padding: var(--s-4); }
   .dungeons { grid-template-columns: 1fr; }
 }

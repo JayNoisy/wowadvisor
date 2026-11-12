@@ -1,11 +1,10 @@
 // App shell: wires features together, switches views from the URL hash, and flips between
 // the Retail and WoW Forever editions.
 
-// Self-hosted fonts (no third-party requests).
-import "@fontsource-variable/bricolage-grotesque/opsz.css";
-import "@fontsource-variable/instrument-sans/index.css";
-import "@fontsource/cinzel/latin-500.css";
-import "@fontsource/cinzel/latin-700.css";
+// Self-hosted fonts (no third-party requests). Archivo carries a width axis, so one family
+// covers wide headlines and normal-width text. Fraunces is the WoW Forever headline face.
+import "@fontsource-variable/archivo/wdth.css";
+import "@fontsource-variable/fraunces/opsz.css";
 
 import "./styles/tokens.css";
 import "./styles/base.css";
@@ -14,6 +13,8 @@ import "./styles/builds.css";
 import "./styles/tracker.css";
 import "./styles/armory.css";
 import "./styles/forever.css";
+import "./styles/tools.css";
+import "./styles/mplus.css";
 
 import { $, $$, prefersReducedMotion } from "./lib/dom.js";
 import { on } from "./lib/events.js";
@@ -29,16 +30,33 @@ import { initSession } from "./features/auth/session.js";
 import { initAuthView } from "./features/auth/view.js";
 import { initForeverView, showForeverRoute } from "./features/forever/view.js";
 import { initAtlasView, showAtlas } from "./features/forever/atlas.js";
+import { initLevelsView, showLevels } from "./features/levels/view.js";
+import { initTodoView, showTodo } from "./features/forever/todo.js";
+import { initWeeklyView, showWeekly } from "./features/weekly/view.js";
+import { initPartyView, showParty } from "./features/party/view.js";
+import { initMplusView, showMplus } from "./features/mplus/view.js";
+import { initMacrosView, showMacros } from "./features/macros/view.js";
+import { initLinksView, showLinks } from "./features/links/view.js";
+import { initSearch } from "./features/search/palette.js";
+import { initToolkit, renderToolkit } from "./features/home/toolkit.js";
+import { initTheme, getTheme, toggleTheme } from "./lib/theme.js";
+import { icon } from "./lib/icons.js";
+import { setClassColor } from "./lib/color.js";
 
 const VIEW_TITLES = {
   builds: "Builds",
-  tracker: "Lockout tracker",
+  weekly: "This week",
+  tracker: "Lockouts",
+  mplus: "Mythic+ season guide",
+  party: "Group check",
   armory: "Armory",
+  links: "Resources",
+  macros: "Macros",
   forever: "WoW Forever classes",
-  atlas: "WoW Forever dungeons and raids"
+  atlas: "WoW Forever dungeons and raids",
+  levels: "WoW Forever level guide",
+  todo: "WoW Forever to-do list"
 };
-
-const THEME_COLOR = { retail: "#0f1124", forever: "#16120c" };
 
 // Where each edition was last left, so the switch returns you to the same page.
 const lastRoute = { retail: null, forever: null };
@@ -61,12 +79,25 @@ function setEdition(next) {
   edition = next;
   const root = document.documentElement;
   root.dataset.edition = next;
-  $('meta[name="theme-color"]')?.setAttribute("content", THEME_COLOR[next]);
+  syncThemeColor();
   $$("[data-for]").forEach((el) => { el.hidden = el.dataset.for !== next; });
   $$("#editionSwitch [data-edition]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.edition === next)));
   $("[data-brand]")?.setAttribute("href", next === "forever" ? "#forever" : "#builds");
   writeString(KEYS.edition, next);
   renderFooterStamp();
+}
+
+/** Keeps the browser chrome (mobile address bar) matched to the page background. */
+function syncThemeColor() {
+  const bg = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim();
+  if (bg) $('meta[name="theme-color"]')?.setAttribute("content", bg);
+}
+
+function renderThemeToggle() {
+  const btn = $("#themeToggle");
+  const dark = getTheme() === "dark";
+  btn.innerHTML = `${icon(dark ? "sun" : "moon")}<span>${dark ? "Light mode" : "Dark mode"}</span>`;
+  btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
 }
 
 function renderFooterStamp() {
@@ -127,17 +158,28 @@ on("route", (route) => {
 
   const viewChanged = lastView !== route.view;
   lastView = route.view;
-  lastRoute[route.edition] = route;
-  setEdition(route.edition);
+  // Shared pages (Macros) have no edition of their own: stay in the one you're in.
+  const routeEdition = route.edition || edition || (readString(KEYS.edition, "") === "forever" ? "forever" : "retail");
+  if (route.edition) lastRoute[route.edition] = route;
+  setEdition(routeEdition);
   showView(route.view);
-  // Class color only applies on class pages; elsewhere the edition accent takes over.
-  if (!["builds", "forever"].includes(route.view)) document.documentElement.style.removeProperty("--cc");
+  // Class color only applies on class pages; elsewhere the neutral chrome takes over.
+  if (!["builds", "forever"].includes(route.view)) setClassColor(document.documentElement, null);
   document.title = `${VIEW_TITLES[route.view]} | WoW Advisor`;
-  if (route.view === "builds") showBuildsRoute(route);
+  if (route.view === "builds") { showBuildsRoute(route); renderToolkit(); }
+  if (route.view === "weekly") showWeekly();
   if (route.view === "tracker") showTracker();
-  if (route.view === "forever") showForeverRoute(route);
+  if (route.view === "mplus") showMplus();
+  if (route.view === "party") showParty();
+  if (route.view === "links") showLinks();
+  if (route.view === "macros") showMacros();
+  if (route.view === "forever") { showForeverRoute(route); renderToolkit(); }
   if (route.view === "atlas") showAtlas();
+  if (route.view === "levels") showLevels();
+  if (route.view === "todo") showTodo();
   if (viewChanged && !["builds", "forever"].includes(route.view)) window.scrollTo({ top: 0 });
+  // The mobile nav scrolls sideways; keep the current page's link in view.
+  $(".nav a.is-active")?.scrollIntoView({ block: "nearest", inline: "nearest" });
 });
 
 on("builds:loaded", renderFooterStamp);
@@ -147,6 +189,18 @@ $("#editionSwitch").addEventListener("click", (e) => {
   if (btn) switchEdition(btn.dataset.edition, btn);
 });
 
+// Static markup marks where icons go with data-icon; fill them in once.
+$$("[data-icon]").forEach((el) => el.insertAdjacentHTML("afterbegin", icon(el.dataset.icon)));
+
+initTheme();
+renderThemeToggle();
+syncThemeColor();
+$("#themeToggle").addEventListener("click", () => {
+  const apply = () => { toggleTheme(); renderThemeToggle(); syncThemeColor(); };
+  if (document.startViewTransition && !prefersReducedMotion()) document.startViewTransition(apply);
+  else apply();
+});
+
 initBuildsView();
 initMyBuilds();
 initTrackerView();
@@ -154,6 +208,15 @@ initArmoryView();
 initAuthView();
 initForeverView();
 initAtlasView();
+initLevelsView();
+initTodoView();
+initWeeklyView();
+initPartyView();
+initMplusView();
+initMacrosView();
+initLinksView();
+initSearch();
+initToolkit();
 startRouter();
 
 loadBuilds();
