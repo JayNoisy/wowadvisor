@@ -8,7 +8,7 @@
 .tree-panels {
   --gap: var(--s-6);
   /* sidebar + page gutters + card padding, then split what's left between every column */
-  --cell: clamp(30px, calc((100vw - 248px - 152px - 2 * var(--gap)) / var(--total-cols, 23)), 46px);
+  --cell: clamp(24px, calc((100vw - 248px - 152px - 2 * var(--gap)) / var(--total-cols, 23)), 46px);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -89,12 +89,18 @@
 
 /* No sidebar below 1080px. */
 @media (max-width: 1079px) {
-  .tree-panels { --cell: clamp(30px, calc((100vw - 120px - 2 * var(--gap)) / var(--total-cols, 23)), 46px); }
+  .tree-panels { --cell: clamp(24px, calc((100vw - 120px - 2 * var(--gap)) / var(--total-cols, 23)), 46px); }
 }
 /* Too narrow for three across: stack, and size each panel to its own columns. */
-@media (max-width: 900px) {
+@media (max-width: 1280px) {
   .tree-panels { flex-direction: column; align-items: center; gap: var(--s-6); }
   .tree-panel { width: 100%; }
   .tree-panel-head { justify-content: center; }
   .tree-grid { --cell: min(46px, calc((100vw - 76px) / var(--cols))); margin: 0 auto; }
 }
+
+/* Never let a wide tree push the page sideways; scroll inside the card instead. */
+.tree-card { min-width: 0; }
+.tree-panels { max-width: 100%; overflow-x: auto; }
+.tree-panel { flex: none; width: min-content; }
+@media (max-width: 1280px) { .tree-panel { flex: initial; width: 100%; } }
