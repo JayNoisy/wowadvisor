@@ -101,7 +101,9 @@ async function main() {
     let missingIcons = 0;
     for (const id of visible) {
       // Rows with no spell are placeholders in the game data.
-      const list = (byNode.get(id) || []).filter((t) => forSpec(t) && t.spellId > 0 && t.name && t.name !== "0");
+      // Hero trees are shared by two specs, but the trait table often tags their rows with only one of them,
+      // so hero rows are matched by hero tree, not by spec.
+      const list = (byNode.get(id) || []).filter((t) => (t.tree === "hero" || forSpec(t)) && t.spellId > 0 && t.name && t.name !== "0");
       if (!list.length) continue;
       const first = list[0];
       if (first.tree === "selection" || first.row < 1 || first.col < 1) continue;
@@ -126,6 +128,24 @@ async function main() {
         next: [...(next.get(id) || [])].filter((to) => visible.has(to)),
         _explicit: list.some((t) => t.specIds.includes(spec.specId))
       });
+    }
+
+    // A hero tree's top talent can differ per spec (two nodes in the top row). Keep the one for this spec,
+    // drawn where the tree's usual top talent sits.
+    for (const hero of heroChoices) {
+      const top = nodes.filter((n) => n.tree === "hero" && n.hero === hero.id && n.row === 1);
+      if (top.length < 2) continue;
+      const tagOf = (n) => (byNode.get(n.id) || [])[0]?.specIds.join(",") || "";
+      const tags = nodes.filter((n) => n.tree === "hero" && n.hero === hero.id).map(tagOf);
+      const common = [...new Set(tags)].sort((x, y) => tags.filter((t) => t === y).length - tags.filter((t) => t === x).length)[0];
+      const usual = top.find((n) => tagOf(n) === common) || top[0];
+      const keep = top.find((n) => n._explicit) || usual;
+      keep.col = usual.col;
+      for (const n of top) {
+        if (n === keep) continue;
+        keep.next = [...new Set([...keep.next, ...n.next])];
+        nodes.splice(nodes.indexOf(n), 1);
+      }
     }
 
     // Some talents exist as two nodes in the same cell (one per group of specs). Keep the better match for this
