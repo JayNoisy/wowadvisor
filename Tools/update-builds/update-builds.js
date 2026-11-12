@@ -596,6 +596,14 @@ async function main() {
     // ignore
   }
 
+  // 7) Put the weekly AI review's picks on top of the consensus. Never let this step break the refresh.
+  try {
+    const { applyAiPicks, readAiPicks } = await import("./apply-ai-picks.js");
+    out.sources.aiPicks = applyAiPicks(out, await readAiPicks());
+  } catch (err) {
+    out.sources.aiPicks = { ok: false, error: String(err?.message || err) };
+  }
+
   await writeProjectBuildsJson(out);
 }
 

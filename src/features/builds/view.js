@@ -92,6 +92,14 @@ export function initBuildsView() {
   $("#changeClassBtn").addEventListener("click", () => navigate({ view: "builds" }));
 
   els.loadout.addEventListener("click", async (e) => {
+    const flip = e.target.closest("[data-action='show-pick'], [data-action='show-consensus']");
+    if (flip) {
+      showConsensusFor = flip.dataset.action === "show-consensus" ? selectionKey() : "";
+      renderLoadout();
+      renderTree();
+      els.loadout.querySelector(`[data-action='${flip.dataset.action}']`)?.focus();
+      return;
+    }
     const btn = e.target.closest("[data-action='copy-build']");
     if (!btn) return;
     const build = currentBuild();
@@ -104,7 +112,8 @@ export function initBuildsView() {
     }
     flashLabel(btn, "Copied");
     toast(`${sel.spec.name} ${sel.cls.name} loadout copied. Paste it into Import in your talent window.`);
-    recordCopy(sel.cls, sel.spec, sel.mode, build);
+    // Update alerts follow the site's recommendation, so only track copies of that one.
+    if (!build.isConsensusView) recordCopy(sel.cls, sel.spec, sel.mode, build);
   });
 
   els.loadout.addEventListener("focusin", (e) => {
@@ -154,9 +163,29 @@ export function openBuild(className, specName, mode) {
   return true;
 }
 
-function currentBuild() {
+/** "today", "yesterday" or "N days ago" for a YYYY-MM-DD review date. */
+function daysAgo(date) {
+  const then = Date.parse(`${String(date).slice(0, 10)}T00:00:00`);
+  if (!Number.isFinite(then)) return "";
+  const days = Math.max(0, Math.floor((Date.now() - then) / 86400000));
+  return days === 0 ? "today" : days === 1 ? "yesterday" : `${days} days ago`;
+}
+
+/** The site's recommendation for the current selection (the AI pick when there is one). */
+function recommendedBuild() {
   if (!sel.cls || !sel.spec) return null;
   return getBuild(sel.cls.name, sel.spec.name, sel.mode);
+}
+
+// When the AI pick and the top-player consensus differ, the player can flip to the consensus.
+let showConsensusFor = "";
+const selectionKey = () => `${sel.cls?.name}/${sel.spec?.name}/${sel.mode}`;
+
+/** The build on screen right now: the recommendation, or the consensus if the player switched to it. */
+function currentBuild() {
+  const build = recommendedBuild();
+  if (build?.consensus && showConsensusFor === selectionKey()) return { ...build.consensus, isConsensusView: true, pick: build };
+  return build;
 }
 
 function renderClassGrid() {
@@ -273,17 +302,48 @@ function renderLoadout() {
     return;
   }
 
-  const conf = confidenceTier(build);
-  const updated = timeAgo(build.updated);
+  const updated = build.ai ? daysAgo(build.updated) : timeAgo(build.updated);
   const reminders = mode === "aoe" ? mythicBuildReminders() : [];
   const notes = [...build.notes, ...reminders];
   const families = build.sourceFamilies.length ? build.sourceFamilies.map(prettySource).join(" and ") : null;
+  const ai = build.ai;
+  const conf = ai ? null : confidenceTier(build);
+  const other = build.isConsensusView ? build.pick : build.consensus; // the build you could switch to
+  const diff = (build.isConsensusView ? build.pick.ai : ai)?.differs;
+
+  const basis = build.sampleSize != null || families ? html`
+      <p class="plate-basis">
+        Chosen from ${build.sampleSize != null ? plural(Number(build.sampleSize), "top-player build") : "top-player builds"}${families ? ` across ${families}` : ""}${build.agreementCount != null && build.sampleSize ? `; ${build.agreementCount} matched this exact loadout` : ""}.
+      </p>` : "";
+
+  const switcher = other ? html`
+      <div class="segmented pick-switch" role="group" aria-label="Which build to show">
+        <button type="button" class="${build.isConsensusView ? "" : "is-active"}" data-action="show-pick" aria-pressed="${String(!build.isConsensusView)}">AI pick</button>
+        <button type="button" class="${build.isConsensusView ? "is-active" : ""}" data-action="show-consensus" aria-pressed="${String(Boolean(build.isConsensusView))}">Most-copied build</button>
+      </div>` : "";
+
+  const names = (list) => list.slice(0, 6).join(", ") + (list.length > 6 ? ` and ${list.length - 6} more` : "");
+  const diffLine = diff && (diff.takes.length || diff.skips.length || !diff.sameHero) ? html`
+      <p class="pick-diff">
+        ${!diff.sameHero && diff.consensusHero ? `The most-copied build plays ${diff.consensusHero} instead of ${(build.isConsensusView ? build.pick.ai : ai).hero}. ` : ""}${diff.sameHero && diff.takes.length ? `The AI pick adds ${names(diff.takes)}. ` : ""}${diff.sameHero && diff.skips.length ? `The most-copied build has ${names(diff.skips)} instead.` : ""}${diff.sameHero ? "" : "Use the switch above to compare the two trees."}
+      </p>` : "";
+
+  const aiBlock = ai ? html`
+      <div class="pick-why">
+        <p class="pick-headline">${ai.headline}</p>
+        <ul class="pick-reasons">${ai.why.map((w) => raw(html`<li>${w}</li>`))}</ul>
+        ${ai.players ? raw(html`<p class="pick-players">${ai.players}</p>`) : ""}
+        ${build.matchesConsensus ? raw(html`<p class="pick-players">This is also the loadout most top players run in our data${build.consensusSample ? ` (${plural(Number(build.consensusSample), "build")} sampled)` : ""}.</p>`) : ""}
+        ${raw(diffLine)}
+        ${ai.sources.length ? raw(html`<p class="pick-sources">Checked against ${ai.sources.map((src, i) => raw(html`${i ? ", " : ""}<a href="${src.url}" target="_blank" rel="noopener noreferrer">${src.name}</a>`))}${ai.reviewedAt ? `, reviewed ${daysAgo(ai.reviewedAt) || ai.reviewedAt}` : ""}.</p>`) : ""}
+      </div>` : "";
 
   els.loadout.innerHTML = html`
     <header class="plate-head">
       <div>
+        ${ai ? raw(`<p class="pick-badge">AI pick</p>`) : build.isConsensusView ? raw(`<p class="pick-badge is-plain">Most-copied build</p>`) : ""}
         <h3 class="plate-title">${build.title || `${spec.name} ${modeLabel(mode)}`}</h3>
-        <p class="plate-sub">${spec.name} ${cls.name}, ${modeLabel(mode)}${updated ? raw(html`<span class="plate-sep" aria-hidden="true"></span>updated ${updated}`) : ""}</p>
+        <p class="plate-sub">${spec.name} ${cls.name}, ${modeLabel(mode)}${updated ? raw(html`<span class="plate-sep" aria-hidden="true"></span>${ai ? "reviewed" : "updated"} ${updated}`) : ""}</p>
       </div>
       ${conf ? raw(html`
         <div class="confidence tier-${conf.tier}" title="${build.confidenceRationale || ""}">
@@ -291,6 +351,7 @@ function renderLoadout() {
           <span class="confidence-copy"><strong>${conf.text}</strong>${conf.score != null ? raw(html`<span>${conf.score}/100 confidence</span>`) : ""}</span>
         </div>`) : ""}
     </header>
+    ${raw(switcher)}
 
     <label class="loadout-label" for="loadoutCode">Loadout code</label>
     <div class="codebox loadout-row">
@@ -299,10 +360,9 @@ function renderLoadout() {
     </div>
     <p class="plate-help">In game: open Talents, choose the loadout dropdown, Import, then paste.</p>
 
-    ${build.sampleSize != null || families ? raw(html`
-      <p class="plate-basis">
-        Chosen from ${build.sampleSize != null ? plural(Number(build.sampleSize), "top-player build") : "top-player builds"}${families ? ` across ${families}` : ""}${build.agreementCount != null && build.sampleSize ? `; ${build.agreementCount} matched this exact loadout` : ""}.
-      </p>`) : ""}
+    ${raw(aiBlock)}
+    ${build.isConsensusView ? raw(diffLine) : ""}
+    ${ai ? "" : raw(basis)}
 
     ${notes.length ? raw(html`<ul class="plate-notes">${notes.map((n) => raw(html`<li>${n}</li>`))}</ul>`) : ""}
   `;
