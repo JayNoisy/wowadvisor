@@ -15,6 +15,7 @@ import "./styles/armory.css";
 import "./styles/forever.css";
 import "./styles/tools.css";
 import "./styles/mplus.css";
+import "./styles/talents.css";
 
 import { $, $$, prefersReducedMotion } from "./lib/dom.js";
 import { on } from "./lib/events.js";

@@ -11,6 +11,7 @@ import { getBuild, getBuildsMeta } from "./data.js";
 import { resolveStatPriority, explainStat, rotationFor, rotationModeTip, spellInStep, TIP_ICON, FALLBACK_ICON } from "./guidance.js";
 import { adaptStatsForMythic, mythicBuildReminders } from "./mythic-context.js";
 import { keyPanelHtml, bindKeyPanel } from "../mplus/key-panel.js";
+import { loadSpecTree, readBuild, treeHtml, activateTree } from "../talents/tree.js";
 import { recordCopy } from "./tracking.js";
 import { classStyle, setClassColor } from "../../lib/color.js";
 
@@ -43,7 +44,8 @@ export function initBuildsView() {
     loadout: $("#loadoutPlate"),
     stats: $("#statsPanel"),
     mythic: $("#mythicPanel"),
-    rotation: $("#rotationPanel")
+    rotation: $("#rotationPanel"),
+    tree: $("#treePanel")
   };
 
   renderClassGrid();
@@ -241,6 +243,7 @@ function renderSelection() {
   renderStats();
   renderMythic();
   renderRotation();
+  renderTree();
 }
 
 function confidenceTier(build) {
@@ -361,6 +364,55 @@ function renderMythic() {
     const next = $(focusKey, els.mythic);
     (next && !next.disabled ? next : $("[data-key-level]", els.mythic))?.focus();
   }
+}
+
+let treeRequest = 0;
+
+/** The talent tree for the build on screen. Loads the spec's tree file on first use. */
+async function renderTree() {
+  const { cls, spec, mode } = sel;
+  const build = currentBuild();
+  const mine = ++treeRequest;
+  if (!build?.exportString) {
+    els.tree.hidden = true;
+    return;
+  }
+  const head = html`
+    <header class="card-head">
+      <div>
+        <h3 id="treeHeading" class="card-title">Talent tree</h3>
+        <p class="card-sub">Every talent this ${modeLabel(mode)} loadout takes. Point at a talent to see what it does.</p>
+      </div>
+    </header>`;
+  els.tree.hidden = false;
+  if (!els.tree.dataset.key) els.tree.innerHTML = head + `<p class="tree-state">Loading the ${spec.name} tree…</p>`;
+
+  const tree = await loadSpecTree(cls.slug, spec.slug);
+  if (mine !== treeRequest) return; // the selection changed while loading
+  const key = `${cls.slug}/${spec.slug}/${build.exportString}`;
+  if (els.tree.dataset.key === key) return;
+  els.tree.dataset.key = key;
+
+  if (!tree) {
+    els.tree.innerHTML = head + `<p class="tree-state">The talent tree for this spec couldn't be loaded. The loadout code above still works in game.</p>`;
+    return;
+  }
+  const read = readBuild(tree, build.exportString);
+  if (!read) {
+    els.tree.innerHTML = head + `<p class="tree-state">This code doesn't match the current talent tree, which usually means a patch changed the talents. It should update with the next data refresh.</p>`;
+    return;
+  }
+  const cols = (name, hero) => {
+    const nodes = tree.nodes.filter((n) => n.tree === name && (name !== "hero" || n.hero === hero));
+    return nodes.length ? Math.max(...nodes.map((n) => n.col)) - Math.min(...nodes.map((n) => n.col)) + 1 : 0;
+  };
+  const total = cols("class") + cols("hero", read.activeHero) + cols("spec");
+  els.tree.innerHTML = head + html`
+    <div style="--total-cols:${total}">${raw(treeHtml(tree, read))}</div>
+    <p class="tree-foot">Tree data for game build ${tree.build}. Talent details open on Wowhead.</p>`;
+  // --total-cols has to sit on the panels element itself for the cell-size maths.
+  els.tree.querySelector(".tree-panels").style.setProperty("--total-cols", total);
+  activateTree(els.tree);
 }
 
 function renderRotation() {
