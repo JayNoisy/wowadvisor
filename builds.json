@@ -34,6 +34,12 @@
       "count": 0,
       "localCount": 0,
       "remote": []
+    },
+    "aiPicks": {
+      "ok": true,
+      "reviewedAt": "2026-11-12",
+      "applied": 80,
+      "skipped": []
     }
   },
   "builds": {
@@ -61,7 +67,47 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Slayer Raid",
+            "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzMmZGAAAghphZGzMWmZmZGMmZAAAAAMzyMDIMWWGYBMgZYCZGsBmZYsNwyMLDwMDAmhBA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Slayer",
+              "headline": "Slayer for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Slayer, and this is Method's Slayer Single Target build for it (Patch 12.1.5, 25 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/arms-warrior/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Bloodborne (spec)",
+                  "Fierce Followthrough (hero)",
+                  "Just Warming Up (spec)"
+                ],
+                "skips": [
+                  "Dreadnaught (spec)",
+                  "Powerful Momentum (spec)",
+                  "Opportunist (hero)",
+                  "Broad Strokes (spec)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Slayer"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -85,7 +131,34 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Slayer Mythic+",
+            "exportString": "CcEAAAAAAAAAAAAAAAAAAAAAAgZmZmFzYmZGAAAghphxYmZzMzMzYmxMDAAAAgxyMDMhxy2AbgBMDTgZwGYmhhBzyMbDwMDAmhBA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Slayer",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run Slayer, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Arms Warriors on Murlok.io play Slayer.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Storm Bolt (43 of 50), Fast Footwork (36 of 50) and Fearless (36 of 50).",
+                "Skips the ones few of them take: Bloodborne (1 of 50), Bloodsurge (3 of 50) and Piercing Howl (10 of 50)."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/warrior/arms/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Fury": {
@@ -111,7 +184,44 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Slayer Raid",
+            "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDzMmZ2MzMzMDjZmZGzYmlZmxMzMbmZmBAAixy2ALgJYGmAzwGwMDjNAAYmhxYYMYM",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Slayer",
+              "headline": "Slayer for raid, following Icy Veins' current build.",
+              "why": [
+                "Top raiders in our data play Slayer, and this is Icy Veins' Slayer Single-Target Raid build for it (Patch 12.1.5, 12 Oct 2026).",
+                "It is within 4 talents of the most-copied raid loadout, which comes from only 7 sampled builds; the guide build is the safer default.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Icy Veins",
+                  "url": "https://www.icy-veins.com/wow/fury-warrior-pve-dps-spec-builds-talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Cold Steel, Hot Blood (spec)",
+                  "Massacre (spec)"
+                ],
+                "skips": [
+                  "Rampaging Ruin (spec)",
+                  "Enraged Regeneration (spec)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Slayer"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -135,7 +245,35 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Slayer Mythic+",
+            "exportString": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGDjxMzmZmZmZmZMzMzMzMzDsMjxMjZzMzMAAQMW2GYBMgZYCMDbAzMMAAAzMMmlhxgxA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Slayer",
+              "headline": "35 of the top 50 Mythic+ players sampled run Slayer, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "35 of the top 50 Mythic+ Fury Warriors on Murlok.io play Slayer.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Enraged Regeneration (44 of 50), Storm Bolt (43 of 50) and Fearless (40 of 50).",
+                "Skips the ones few of them take: Javelineer (14 of 50), Thunder Clap (15 of 50) and Crackling Thunder (15 of 50).",
+                "Goes against the majority on Wrecking Throw (33 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Mountain Thane is the alternative: 15 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/warrior/fury/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Protection": {
@@ -161,7 +299,33 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Colossus Raid",
+            "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAA02AAAzMzYmZGzMzmxsMjxY0wMjtlZmZmBMzAAAAglBgZMAwiZMsBDMDL0YmFYGzMY2AAMzAAmBGD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Colossus",
+              "headline": "Colossus for raid, matching what top raiders in our data run.",
+              "why": [
+                "Top raiders in our data play Colossus, and this is the exact loadout most of them run.",
+                "Method's raid builds use Mountain Thane instead, so treat that as the alternative.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/protection-warrior/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -185,7 +349,35 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Mountain Thane Mythic+",
+            "exportString": "CkEAAAAAAAAAAAAAAAAAAAAAAkBAAGzYmZmZmxsZmZZGjxoxMGWMzMzYGmZAAAAwyMDwMGgB2glFjGzAYWwMbAzMDmNAYmBAgZgxA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Mountain Thane",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run Mountain Thane, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Protection Warriors on Murlok.io play Mountain Thane.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Storm Bolt (43 of 50), Rumbling Earth (43 of 50) and Javelineer (43 of 50).",
+                "Skips the ones few of them take: Barbaric Training (8 of 50) and Frothing Berserker (12 of 50).",
+                "Goes against the majority on Enduring Alacrity (37 of 50 take it); swap if your group needs it."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/warrior/protection/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       }
     },
@@ -213,7 +405,42 @@
               "familySupport": 61.93
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Herald of the Sun Raid",
+            "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAAw2MzMjZMzYxYmZYZwMLmpJGzYmZYMbZAYADbgNWmxMLz2Mzs1AAAAsAAbGGzYGmBAwMDzghB",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Herald of the Sun",
+              "headline": "Herald of the Sun for raid, following Icy Veins' current build.",
+              "why": [
+                "Top raiders in our data play Herald of the Sun, and this is Icy Veins' Herald of the Sun Raid build for it (Patch 12.1.5, 12 Oct 2026).",
+                "It is within 2 talents of the most-copied raid loadout, which comes from only 6 sampled builds; the guide build is the safer default.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Icy Veins",
+                  "url": "https://www.icy-veins.com/wow/holy-paladin-pve-healing-spec-builds-talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Light's Revocation (class)"
+                ],
+                "skips": [
+                  "Guided Prayer (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Herald of the Sun"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -237,7 +464,49 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Herald of the Sun Mythic+",
+            "exportString": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAALAwMAADWGzMzMjZmZBGDLjNzsY0EDjZmhxslBgBgNwGLzMzsMbzMzWDAAAwCLMzwmHAmxgZAAMzwMGjGA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Herald of the Sun",
+              "headline": "A guide-backed Herald of the Sun loadout. Most top players run a different hero tree, but no checked loadout for it was available this week.",
+              "why": [
+                "49 of the top 50 Mythic+ Holy Paladins on Murlok.io play Lightsmith, but no Lightsmith loadout passed our checks this week (guide codes for it were missing or out of date).",
+                "This is Method's Mythic+ build (Patch 12.1.5, 13 Oct 2026), the best-supported loadout we could verify."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/paladin/holy/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/holy-paladin/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Beacon of Faith (spec)",
+                  "Liberation (spec)",
+                  "Vengeful Wrath (class)"
+                ],
+                "skips": [
+                  "Beacon of Virtue (spec)",
+                  "Pillars of Light (spec)",
+                  "Lead the Charge (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Herald of the Sun"
+              }
+            }
+          }
         }
       },
       "Protection": {
@@ -263,7 +532,33 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Templar Raid",
+            "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsNzYWmZYGzM2WGDLzithBAYAAAAAAQamZxMmZGjZrNAMgBMYbAAgZm2mZWmBAYzyGzAgxMMGAgtZAmZAjN",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Templar",
+              "headline": "Templar for raid, matching what top raiders in our data run.",
+              "why": [
+                "Top raiders in our data play Templar, and this is the exact loadout most of them run.",
+                "Method's raid builds use Lightsmith instead, so treat that as the alternative.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/protection-paladin/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -287,7 +582,59 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Lightsmith Mythic+",
+            "exportString": "CIEAAAAAAAAAAAAAAAAAAAAAAsZsNLjZMzMzMLLjxYWmlZMAADAAAAAAaamZZmxMDzMbtBgBGwAbAAAEgZmltlWmZsYbBDAYGGDAmZAwMDyYB",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Lightsmith",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run Lightsmith, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Protection Paladins on Murlok.io play Lightsmith.",
+                "This is Method's Lightsmith Mythic+ build (Patch 12.1.5, 14 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Unbound Freedom (44 of 50), Light's Revocation (44 of 50) and Obduracy (43 of 50).",
+                "Skips the ones few of them take: Blessing of Dawn (2 of 50), Brought to Light (3 of 50) and Tyr's Enforcer (3 of 50)."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/paladin/protection/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/protection-paladin/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Blessed Word (spec)",
+                  "Sanctuary (spec)",
+                  "Sacrifice of the Just (class)",
+                  "Light's Revocation (class)",
+                  "Eye for an Eye (class)",
+                  "Divine Inspiration (hero)",
+                  "Instrument of the Divine (spec)"
+                ],
+                "skips": [
+                  "Tyr's Enforcer (spec)",
+                  "Searing Sunlight (spec)",
+                  "Afterimage (class)",
+                  "Blessing of Dawn (class)",
+                  "Forewarning (hero)",
+                  "Solace (spec)",
+                  "Brought to Light (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Lightsmith"
+              }
+            }
+          }
         }
       },
       "Retribution": {
@@ -313,7 +660,33 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Herald of the Sun Raid",
+            "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAwoZbbmZWGzMzAAAAAAYmyYGmZsNmthZ2mxYMGmxCbAYWmtZmZrBAAAWAMAYMDDMjZmNgZmhxMGMA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Herald of the Sun",
+              "headline": "Herald of the Sun for raid, matching what top raiders in our data run.",
+              "why": [
+                "Top raiders in our data play Herald of the Sun, and this is the exact loadout most of them run.",
+                "Method's raid builds use Templar instead, so treat that as the alternative.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/retribution-paladin/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -337,7 +710,43 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Herald of the Sun Mythic+",
+            "exportString": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAAwoZbbmZWGzMzAAAAAAYmyYGmZsNmthZ2mxYMGmxCbAYWmtZmZrBBAAsAYAwYGGYGzMbAzMDjZMYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Herald of the Sun",
+              "headline": "49 of the top 50 Mythic+ players sampled run Herald of the Sun, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "49 of the top 50 Mythic+ Retribution Paladins on Murlok.io play Herald of the Sun.",
+                "This is Method's Herald of the Sun raid cleave and Mythic+ build (Patch 12.1.5, 13 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Lightbearer (39 of 50) and Punishment (33 of 50).",
+                "Skips the ones few of them take: Light's Guidance (1 of 50) and Zealous Vindication (1 of 50)."
+              ],
+              "players": "Templar is the alternative: 1 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/paladin/retribution/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/retribution-paladin/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [],
+                "skips": [],
+                "sameHero": true,
+                "consensusHero": "Herald of the Sun"
+              }
+            }
+          }
         }
       }
     },
@@ -365,7 +774,47 @@
               "familySupport": 60
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Pack Leader Raid",
+            "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsAzwQDbAAYGGzsMzwMmZYYmxYmxMzYmZGmxYGzgx0MAAAAgZAAAYMzMDYmNCDzCYbAYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Pack Leader",
+              "headline": "Pack Leader for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Pack Leader, and this is Method's Pack Leader Single Target / Raid build for it (Patch 12.1.5, 13 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/beast-mastery-hunter/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Dire Beast (spec)",
+                  "Emergency Salve (class)",
+                  "Misdirection (class)",
+                  "Tranquilizing Shot (class)"
+                ],
+                "skips": [
+                  "Razor Sharp (spec)",
+                  "Intimidation (class)",
+                  "Improved Feign Death (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Pack Leader"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -389,7 +838,35 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Pack Leader Mythic+",
+            "exportString": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsAzwQDbAAYGzMzsYGzMzMjZGMzYmhZGzMzYbmZYMDLDNDAAAAAAAAmHYMzAmZDAzCYbAYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Pack Leader",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run Pack Leader, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Beast Mastery Hunters on Murlok.io play Pack Leader.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Guttural Roar (38 of 50) and Disruptive Rounds (31 of 50).",
+                "Skips the ones few of them take: Dire Beast (1 of 50), Dire Command (1 of 50) and Dire Frenzy (1 of 50).",
+                "Goes against the majority on Scout's Instincts (11 of 50 take it) and Aspect of the Beast (14 of 50 take it); swap if your group needs it."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/hunter/beast-mastery/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Marksmanship": {
@@ -415,7 +892,27 @@
               "familySupport": 60
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Sentinel Raid",
+            "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwCMwMGNWGAzgNAAAAAAAAwMmxMLbzYmZMDeATzYwstZmZmZmZmZWYmlhZAAAGzMjBwM2YYA2YmtZMA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Sentinel",
+              "headline": "Sentinel for raid, matching what top raiders in our data run.",
+              "why": [
+                "It is the exact loadout most top raiders in our data run.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -439,7 +936,35 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Sentinel Mythic+",
+            "exportString": "C4PAAAAAAAAAAAAAAAAAAAAAAwGMwMGNWGAzgNAAAAAAAAwMmZmx2MmZGzwyYaGDmltlZmZmZmZmZhZWGmBAAwDMGDAzYDMAbMz2MG",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Sentinel",
+              "headline": "49 of the top 50 Mythic+ players sampled run Sentinel, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "49 of the top 50 Mythic+ Marksmanship Hunters on Murlok.io play Sentinel.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Disruptive Rounds (39 of 50), Intimidation (37 of 50) and Improved Feign Death (36 of 50).",
+                "Skips the ones few of them take: Deathblow (1 of 50), Horsehair Tether (5 of 50) and Kill Shot (7 of 50).",
+                "Goes against the majority on Kodo Tranquilizer (14 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Dark Ranger is the alternative: 1 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/hunter/marksmanship/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Survival": {
@@ -465,7 +990,33 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Sentinel Raid",
+            "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxoxyAYGwmxMzYYZAAAAAAYGzYGMGzYGMmmBAAAYAwMWWmZmFmZmZmZGAYGLMLGjZmNDA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Sentinel",
+              "headline": "Sentinel for raid, matching what top raiders in our data run.",
+              "why": [
+                "Top raiders in our data play Sentinel, and this is the exact loadout most of them run.",
+                "Method's raid builds use Pack Leader instead, so treat that as the alternative.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/survival-hunter/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -489,7 +1040,35 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Sentinel Mythic+",
+            "exportString": "C8PAAAAAAAAAAAAAAAAAAAAAAMWgBmxoxyAYGw2MzMzMjZbeAAAAAAAzYmZGbzYMjZYZMNDAAAwAAjllZGLYmZ8AjxAwM2AjxMzmBA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Sentinel",
+              "headline": "46 of the top 50 Mythic+ players sampled run Sentinel, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "46 of the top 50 Mythic+ Survival Hunters on Murlok.io play Sentinel.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Improved Wildfire Bomb (43 of 50), Explosives Expert (43 of 50) and Bombardier (43 of 50).",
+                "Skips the ones few of them take: Camouflage (7 of 50), Sweeping Spear (8 of 50) and Savagery (8 of 50).",
+                "Goes against the majority on Bloodseeker (7 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Pack Leader is the alternative: 4 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/hunter/survival/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       }
     },
@@ -517,7 +1096,38 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Fatebound Raid",
+            "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmlxsZwAAAAAAzygtZAAAAAAttNzMzMzMGLzMzsNzyMz8AjxMjxYmZmxAYgFYGjGzGIbDYzAgZmBD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Fatebound",
+              "headline": "Fatebound for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Fatebound, and this is Method's Raid build for it (Patch 12.1.5, 18 Oct 2026).",
+                "It is within 0 talents of the most-copied raid loadout, which comes from only 7 sampled builds; the guide build is the safer default.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/assassination-rogue/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [],
+                "skips": [],
+                "sameHero": true,
+                "consensusHero": "Fatebound"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -541,7 +1151,35 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Fatebound Mythic+",
+            "exportString": "CMQAAAAAAAAAAAAAAAAAAAAAAYmlZmFDGAAAAAYWGsNDAAAAAotlxMzMzMGLzMzsNzyMz8AmxMjxwMjxAYgFYGjGzCgtBsZAwMzYMA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Fatebound",
+              "headline": "27 of the top 50 Mythic+ players sampled run Fatebound, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "27 of the top 50 Mythic+ Assassination Rogues on Murlok.io play Fatebound.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Thrown Precision (43 of 50), Toxic Stiletto (40 of 50) and Recuperator (40 of 50).",
+                "Skips the ones few of them take: Sudden Demise (8 of 50) and Shadowrunner (9 of 50).",
+                "Goes against the majority on Iron Stomach (38 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Deathstalker is the alternative: 23 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/rogue/assassination/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Outlaw": {
@@ -567,7 +1205,44 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Trickster Raid",
+            "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgx2MMzMmZmtZmZmZMmF4BmZbaZw2MAAAAAAbbzMzwMzMziZmZbAAAAYmBAjZxwQGYWYhWYjBYmBDMA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Trickster",
+              "headline": "Trickster for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Trickster, and this is Method's Trickster Single Target build for it (Patch 12.1.5, 18 Oct 2026).",
+                "It is within 4 talents of the most-copied raid loadout, which comes from only 7 sampled builds; the guide build is the safer default.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/outlaw-rogue/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Acrobatic Strikes (spec)",
+                  "Heavy Hitter (spec)"
+                ],
+                "skips": [
+                  "Blade Rush (spec)",
+                  "Grand Melee (spec)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Trickster"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -591,7 +1266,34 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Trickster Mythic+",
+            "exportString": "CQQAAAAAAAAAAAAAAAAAAAAAAAgx2MMzMjZmtZmZMzMzsAmZbaZw2MAAAAAgZbZmZGmZmZWMzMbDAAAAjBAjZxwADMLsQLsxAMzgBG",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Trickster",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run Trickster, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Outlaw Rogues on Murlok.io play Trickster.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Airborne Irritant (44 of 50), Dancing Steel (44 of 50) and Elusiveness (34 of 50).",
+                "Skips the ones few of them take: Stillshroud (9 of 50)."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/rogue/outlaw/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Subtlety": {
@@ -623,7 +1325,33 @@
               "familySupport": 21
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Deathstalker Raid",
+            "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbbjxMDDzMzMzw8AbzYGbbzMzMzMjBjZ2GAAAAGMmFzyADYBsMMBmFMDzMAzYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Deathstalker",
+              "headline": "Deathstalker for raid, matching what top raiders in our data run.",
+              "why": [
+                "Top raiders in our data play Deathstalker, and this is the exact loadout most of them run.",
+                "Method's raid builds use Trickster instead, so treat that as the alternative.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/subtlety-rogue/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -647,7 +1375,78 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Trickster Mythic+",
+            "exportString": "CUQAAAAAAAAAAAAAAAAAAAAAAAgx2MAAAAAwsMGLTMbLjxMjZMMzMzwMbzYGbbzMzMzMjBjZ2GAAAAGMGwYWMMwAziWoFbYGwMDmxA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Trickster",
+              "headline": "49 of the top 50 Mythic+ players sampled run Trickster, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "49 of the top 50 Mythic+ Subtlety Rogues on Murlok.io play Trickster.",
+                "This is Method's Trickster Mythic+ build (Patch 12.1.5, 16 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Exhilarating Execution (44 of 50), Potent Powder (38 of 50) and Featherfoot (37 of 50).",
+                "Skips the ones few of them take: Finality (1 of 50) and Dark Brew (1 of 50).",
+                "Goes against the majority on Veiltouched (14 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Deathstalker is the alternative: 1 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/rogue/subtlety/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/subtlety-rogue/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Improved Secret Technique (spec)",
+                  "Dark Shadow (spec)",
+                  "Flawless Form (hero)",
+                  "Coup de Grace (hero)",
+                  "Cloud Cover (hero)",
+                  "Disorienting Strikes (hero)",
+                  "Surprising Strikes (hero)",
+                  "Nimble Flurry (hero)",
+                  "Devious Distractions (hero)",
+                  "So Tricky (hero)",
+                  "Thousand Cuts (hero)",
+                  "Unseen Blade (hero)",
+                  "Smoke (hero)",
+                  "Clever Combatant (hero)",
+                  "Flashing Steel (hero)",
+                  "Hoodwink (hero)"
+                ],
+                "skips": [
+                  "Dark Brew (spec)",
+                  "Finality (spec)",
+                  "Ethereal Cloak (hero)",
+                  "Corrupt the Blood (hero)",
+                  "Lingering Darkness (hero)",
+                  "Clear the Witnesses (hero)",
+                  "Singular Focus (hero)",
+                  "Shadewalker (hero)",
+                  "Momentum of Despair (hero)",
+                  "Hunt Them Down (hero)",
+                  "Unshakeable Drive (hero)",
+                  "Deathstalker's Mark (hero)",
+                  "Darkest Night (hero)",
+                  "Mass Casualty (hero)",
+                  "Quietus Celeris (hero)",
+                  "Precise Killer (hero)"
+                ],
+                "sameHero": false,
+                "consensusHero": "Deathstalker"
+              }
+            }
+          }
         }
       }
     },
@@ -675,7 +1474,47 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Voidweaver Raid",
+            "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMmxywMYmhZzsNzMzMzMAAAAAAAAAAMDLzgZmZYGmBMNTzMYmBABwsNbbgxmBAgxYmxgZwMDmJYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Voidweaver",
+              "headline": "Voidweaver for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Voidweaver, and this is Method's Raid Voidweaver build for it (Patch 12.1.5, 13 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 6 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/discipline-priest/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Abyssal Reverie (spec)",
+                  "Embrace the Shadow (hero)",
+                  "Body and Soul (class)"
+                ],
+                "skips": [
+                  "Castigation (spec)",
+                  "Shield Discipline (spec)",
+                  "Void Leech (hero)",
+                  "Mental Agility (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Voidweaver"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -699,7 +1538,54 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Oracle Mythic+",
+            "exportString": "CAQAAAAAAAAAAAAAAAAAAAAAAADsMDWmZMPwMwMbzYmZmZMzAAAAAAAAAAYGWmBzMzgxMD2MNTMAzsghwYWGgxgFAAYMzMjBzAMzMTwM",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Oracle",
+              "headline": "36 of the top 50 Mythic+ players sampled run Oracle, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "36 of the top 50 Mythic+ Discipline Priests on Murlok.io play Oracle.",
+                "This is Method's Mythic+ Oracle build (Patch 12.1.5, 13 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Psychic Scream (44 of 50), Shadow Word: Death (44 of 50) and Dark Indulgence (42 of 50).",
+                "Skips the ones few of them take: Petrifying Scream (5 of 50), Shadowfiend (11 of 50) and Enduring Luminescence (14 of 50).",
+                "Goes against the majority on Dominate Mind (15 of 50 take it), Shadow Tap (35 of 50 take it) and Pain and Suffering (15 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Voidweaver is the alternative: 14 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/priest/discipline/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/discipline-priest/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Pain and Suffering (spec)",
+                  "Phantom Reach (class)",
+                  "Divine Feathers (hero)",
+                  "Body and Soul (class)"
+                ],
+                "skips": [
+                  "Enduring Luminescence (spec)",
+                  "Phantasm (class)",
+                  "Petrifying Scream (class)",
+                  "Save the Day (hero)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Oracle"
+              }
+            }
+          }
         }
       },
       "Holy": {
@@ -725,7 +1611,42 @@
               "familySupport": 60
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Oracle Raid",
+            "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAADAAAAAAYBmZWGzMmZMMDzsMzYGAAAAzYWmBzMzwMMDgZqBwMLYIMmlBYMwiZmZBQzYMGDzMAzMzAD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Oracle",
+              "headline": "Oracle for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Oracle, and this is Method's Raid Oracle build for it (Patch 12.1.5, 13 Oct 2026).",
+                "It is within 2 talents of the most-copied raid loadout, which comes from only 6 sampled builds; the guide build is the safer default.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/holy-priest/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Divine Feathers (hero)"
+                ],
+                "skips": [
+                  "Save the Day (hero)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Oracle"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -749,7 +1670,52 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Oracle Mythic+",
+            "exportString": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAMzMmlxMjZGDzALzMzMAAAAGzsMzYmZmhhZGAzUAMzCGCjZbAGDsYMzCgmxMjxgZAmZmBGA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Oracle",
+              "headline": "49 of the top 50 Mythic+ players sampled run Oracle, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "49 of the top 50 Mythic+ Holy Priests on Murlok.io play Oracle.",
+                "This is Method's Mythic+ Oracle build (Patch 12.1.5, 13 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Psychic Scream (43 of 50), Inspiration (43 of 50) and Empyreal Blaze (42 of 50).",
+                "Skips the ones few of them take: Prayer of Healing (1 of 50), Prayerful Litany (1 of 50) and Efficient Prayers (1 of 50)."
+              ],
+              "players": "Archon is the alternative: 1 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/priest/holy/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/holy-priest/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Light's Inspiration (class)",
+                  "Angel's Mercy (class)",
+                  "Eternal Sanctity (spec)",
+                  "Body and Soul (class)"
+                ],
+                "skips": [
+                  "Petrifying Scream (class)",
+                  "Unwavering Will (class)",
+                  "Lasting Words (spec)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Oracle"
+              }
+            }
+          }
         }
       },
       "Shadow": {
@@ -781,7 +1747,32 @@
               "familySupport": 21
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Archon Raid",
+            "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMMDDAAAAAAAAAAAAmZxMmZbmxMz2MGzw2MzYmZGbIzYxMNAzAMzmZY2MAkxYBAzMgxMzMmNmZbZAmBDA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Archon",
+              "headline": "Archon for raid, matching what top raiders in our data run.",
+              "why": [
+                "Top raiders and Method agree: this is the exact loadout most top raiders in our data run, and it matches Method's Archon Raid build.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/shadow-priest/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -805,7 +1796,34 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Archon Mythic+",
+            "exportString": "CIQAAAAAAAAAAAAAAAAAAAAAAMMDDAAAAAAAAAAAAmZxMmZbmxMzyMGzw2MzYmZGbIzYxMNAzAMzmZY2MAkxYBAzMgxMzMmNmZbZAmBDA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Archon",
+              "headline": "38 of the top 50 Mythic+ players sampled run Archon, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "38 of the top 50 Mythic+ Shadow Priests on Murlok.io play Archon.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Tithe Evasion (40 of 50), Mental Decay (38 of 50) and Insidious Ire (37 of 50).",
+                "Skips the ones few of them take: Spectral Horrors (1 of 50)."
+              ],
+              "players": "Voidweaver is the alternative: 12 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/priest/shadow/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       }
     },
@@ -833,7 +1851,50 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "San'layn Raid",
+            "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwYWmZGmxMzMMbzMz0MbGzMmxAAAAAmZmZmZmZYGjBAjZmZGAAADMwMW0YZDklBsBYGzAAAmZghB",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "San'layn",
+              "headline": "San'layn for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play San'layn, and this is Method's San'layn Single Target build for it (Patch 12.1.5, 13 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/blood-death-knight/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Death's Reach (class)",
+                  "Wraith Walk (class)",
+                  "Subduing Grasp (class)",
+                  "Bloody Fortitude (hero)",
+                  "Bloodied Blade (spec)"
+                ],
+                "skips": [
+                  "Assimilation (class)",
+                  "Asphyxiate (class)",
+                  "March of Darkness (class)",
+                  "Bloodworms (spec)",
+                  "Vampiric Aura (hero)"
+                ],
+                "sameHero": true,
+                "consensusHero": "San'layn"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -857,7 +1918,88 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "San'layn Mythic+",
+            "exportString": "CoPAAAAAAAAAAAAAAAAAAAAAAwMzyMzMmxMzMMLzMz0MLGjxMGAAAAwMmZmZmZYGDAYmZmZGAAADMwMW0YZBklBsBYGzAAAmZghB",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "San'layn",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run San'layn, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Blood Death Knights on Murlok.io play San'layn.",
+                "This is Method's San'layn Mythic+ build (Patch 12.1.5, 13 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: March of Darkness (44 of 50).",
+                "Skips the ones few of them take: Relish in Blood (2 of 50), Death Defiance (6 of 50) and Subduing Grasp (8 of 50).",
+                "Goes against the majority on Assimilation (10 of 50 take it) and Suppression (12 of 50 take it); swap if your group needs it."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/death-knight/blood/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/blood-death-knight/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Blood Draw (class)",
+                  "Unholy Endurance (class)",
+                  "Suppression (class)",
+                  "Improved Heart Strike (spec)",
+                  "Blood Mist (spec)",
+                  "Infliction of Sorrow (hero)",
+                  "Incite Terror (hero)",
+                  "Inevitable (hero)",
+                  "The Blood is Life (hero)",
+                  "Blood-Soaked Ground (hero)",
+                  "Vampiric Strike (hero)",
+                  "Gift of the San'layn (hero)",
+                  "Pact of the San'layn (hero)",
+                  "Vampiric Aura (hero)",
+                  "Newly Turned (hero)",
+                  "Frenzied Bloodthirst (hero)",
+                  "Plague Infusion (spec)",
+                  "Transfusion (hero)",
+                  "Thrill of Blood (hero)",
+                  "Visceral Strength (hero)",
+                  "Death Notes (class)"
+                ],
+                "skips": [
+                  "Death Pact (class)",
+                  "Blood Scent (class)",
+                  "Coldthirst (class)",
+                  "Improved Vampiric Blood (spec)",
+                  "Lifeblood (spec)",
+                  "Relish in Blood (spec)",
+                  "Swift and Painful (hero)",
+                  "Grim Reaper (hero)",
+                  "Rune Carved Plates (hero)",
+                  "Wave of Souls (hero)",
+                  "Bind in Darkness (hero)",
+                  "Death's Messenger (hero)",
+                  "Dark Talons (hero)",
+                  "Wither Away (hero)",
+                  "Soul Rupture (hero)",
+                  "Reaper's Mark (hero)",
+                  "Exterminate (hero)",
+                  "Echoing Fury (hero)",
+                  "Deathly Blows (hero)",
+                  "Frigid Resolve (hero)",
+                  "Death Defiance (class)"
+                ],
+                "sameHero": false,
+                "consensusHero": "Deathbringer"
+              }
+            }
+          }
         }
       },
       "Frost": {
@@ -897,7 +2039,32 @@
               "familySupport": 21
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Deathbringer Raid",
+            "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMAmZMjZAz2MzMzMLzMjMjxYYmxgZmZmZmZmZAAAAAAAAAYMbDMgFwywEyYBzMmZGYAYYmBYmBD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Deathbringer",
+              "headline": "Deathbringer for raid, matching what top raiders in our data run.",
+              "why": [
+                "Top raiders and Method agree: this is the exact loadout most top raiders in our data run, and it matches Method's Raid / cleave Breath of Sindragosa (Deathbringer) build.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/frost-death-knight/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         },
         "aoe": {
           "title": "Frost - AoE (Mythic+)",
@@ -935,7 +2102,36 @@
               "familySupport": 21
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Deathbringer Mythic+",
+            "exportString": "CsPAAAAAAAAAAAAAAAAAAAAAAMAzMMjZAz2MzMzMLzMjMjxYYmxgZmZmZmZmZAAAAAAAAAYMbDMgFwywEyYBzMmZGYAYYmBYmBD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Deathbringer",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run Deathbringer, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Frost Death Knights on Murlok.io play Deathbringer.",
+                "It is the exact loadout most top players in our data run, and it matches Method's Mythic+ Frostbane (Deathbringer) build."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/death-knight/frost/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/frost-death-knight/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Unholy": {
@@ -961,7 +2157,42 @@
               "familySupport": 60
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Rider of the Apocalypse Raid",
+            "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAwMjZMDDz2MzMTzmZmZMjBAAAAAAAgZGmZAwyMmZ2mZGjZAbmFDDZgZjhGLAYGAGzMjZAmZmxYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Rider of the Apocalypse",
+              "headline": "Rider of the Apocalypse for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Rider of the Apocalypse, and this is Method's Raid Riders Single Target build for it (Patch 12.1.5, 13 Oct 2026).",
+                "It is within 2 talents of the most-copied raid loadout, which comes from only 7 sampled builds; the guide build is the safer default.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/unholy-death-knight/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Blightburst (spec)"
+                ],
+                "skips": [
+                  "Ghoulish Frenzy (spec)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Rider of the Apocalypse"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -985,7 +2216,54 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "San'layn Mythic+",
+            "exportString": "CwPAAAAAAAAAAAAAAAAAAAAAAAYmhZMGDz2MzMTzyMzYMjBAAAAAAAg5BGDDAWmhZ2MzYMjBGYGbassAYbiNMgZAMzMzMmBzMYMjB",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "San'layn",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run San'layn, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Unholy Death Knights on Murlok.io play San'layn.",
+                "This is Method's Mythic+ San'layn Blightfall build (Patch 12.1.5, 13 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Menacing Magus (43 of 50), Enfeeble (42 of 50) and Permafrost (42 of 50).",
+                "Skips the ones few of them take: Infected Claws (7 of 50) and Outnumber (11 of 50).",
+                "Goes against the majority on Wraith Walk (35 of 50 take it) and Coldthirst (35 of 50 take it); swap if your group needs it."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/death-knight/unholy/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/unholy-death-knight/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "March of Darkness (class)",
+                  "Vampiric Aura (hero)",
+                  "Blightfall (spec)",
+                  "Scourging (spec)"
+                ],
+                "skips": [
+                  "Wraith Walk (class)",
+                  "Outnumber (spec)",
+                  "Ghoulish Frenzy (spec)",
+                  "Bloody Fortitude (hero)"
+                ],
+                "sameHero": true,
+                "consensusHero": "San'layn"
+              }
+            }
+          }
         }
       }
     },
@@ -1013,7 +2291,50 @@
               "familySupport": 61.93
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Farseer Raid",
+            "exportString": "CYQALMl7AwW51MWzGneuHE3tPCAAAAzMbbzMmZmZZbZMMjBAAAAsYmNYADY2YCZWAgZbmZGjtlZajZmFWmZmZMDWGWMzwMLDAYYAMzYYYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Farseer",
+              "headline": "Farseer for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Farseer, and this is Method's Farseer Single Target build for it (Patch 12.1.5, 14 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/elemental-shaman/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Thunderous Paws (class)",
+                  "Refreshing Waters (class)",
+                  "Poison Cleansing Totem (class)",
+                  "Earthgrab Totem (class)",
+                  "Frost Shock (class)"
+                ],
+                "skips": [
+                  "Spirit Wolf (class)",
+                  "Cleanse Spirit (class)",
+                  "Purge (class)",
+                  "Totemic Focus (class)",
+                  "Windveil (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Farseer"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1037,7 +2358,55 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Farseer Mythic+",
+            "exportString": "CYQALMl7AwW51MWzGneuHE3tPCAAAAzMbbzMGjZZbZMmhZAAAAgFzsBDYAzGTIzCAMLzMzYstYajZmtxyMzMjhFLzMLDjZmFAgBAmZMMMA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Farseer",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run Farseer, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Elemental Shamans on Murlok.io play Farseer.",
+                "This is Method's Farseer Mythic+ build (Patch 12.1.5, 14 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Gust of Wind (43 of 50), Purge (43 of 50) and First Ascendant (43 of 50).",
+                "Skips the ones few of them take: Totemic Surge (4 of 50), Elemental Unity (4 of 50) and Everlasting Elements (4 of 50)."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/shaman/elemental/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/elemental-shaman/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Master of the Elements (spec)",
+                  "Swelling Maelstrom (spec)",
+                  "Jet Stream (class)",
+                  "Wind Rush Totem (class)",
+                  "Flames of the Cauldron (spec)"
+                ],
+                "skips": [
+                  "Molten Wrath (spec)",
+                  "Totemic Focus (class)",
+                  "Elemental Unity (spec)",
+                  "Everlasting Elements (spec)",
+                  "Totemic Surge (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Farseer"
+              }
+            }
+          }
         }
       },
       "Enhancement": {
@@ -1069,7 +2438,50 @@
               "familySupport": 21
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Stormbringer Raid",
+            "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAz2MmxYZZGbMzsNWmZmZYsMGAAzwYmhZCMzgBjB",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Stormbringer",
+              "headline": "Stormbringer for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Stormbringer, and this is Method's Stormbringer Single Target build for it (Patch 12.1.5, 13 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/enhancement-shaman/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Storm Swell (hero)",
+                  "Thunderous Paws (class)",
+                  "Poison Cleansing Totem (class)",
+                  "Cleanse Spirit (class)",
+                  "Purge (class)"
+                ],
+                "skips": [
+                  "Supercharge (hero)",
+                  "Spirit Wolf (class)",
+                  "Mana Spring (class)",
+                  "Windveil (class)",
+                  "Totemic Projection (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Stormbringer"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1093,7 +2505,54 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Stormbringer Mythic+",
+            "exportString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbkFYGGawCAz2MmxYZZGbMzYsMzMzMGLjBAwMMmZYEYmBDGDA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Stormbringer",
+              "headline": "49 of the top 50 Mythic+ players sampled run Stormbringer, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "49 of the top 50 Mythic+ Enhancement Shamans on Murlok.io play Stormbringer.",
+                "This is Method's Stormbringer Mythic+ build (Patch 12.1.5, 13 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Earthgrab Totem (35 of 50), Refreshing Waters (32 of 50) and Totemic Focus (32 of 50).",
+                "Skips the ones few of them take: Totemic Surge (14 of 50).",
+                "Goes against the majority on Jet Stream (32 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Totemic is the alternative: 1 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/shaman/enhancement/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/enhancement-shaman/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Thunderous Paws (class)",
+                  "Refreshing Waters (class)",
+                  "Earthgrab Totem (class)",
+                  "Totemic Focus (class)"
+                ],
+                "skips": [
+                  "Spirit Wolf (class)",
+                  "Jet Stream (class)",
+                  "Windveil (class)",
+                  "Totemic Surge (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Stormbringer"
+              }
+            }
+          }
         }
       },
       "Restoration": {
@@ -1119,7 +2578,54 @@
               "familySupport": 60
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Totemic Raid",
+            "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAzMzsssNzMzYMzYmBjFYDmxmGbDgZgNzgBLjZmpZbZmZxMmF2m5BmZMYWGAAAYmZwMDAMYG",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Totemic",
+              "headline": "Totemic for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Totemic, and this is Method's Raid Totemic build for it (Patch 12.1.5, 16 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 6 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/restoration-shaman/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Acid Rain (spec)",
+                  "Oversurge (hero)",
+                  "Spirit Wolf (class)",
+                  "Earth Elemental (class)",
+                  "Tremor Totem (class)",
+                  "Astral Bulwark (class)",
+                  "Primordial Bond (class)"
+                ],
+                "skips": [
+                  "Improved Purify Spirit (class)",
+                  "Amplification Core (hero)",
+                  "Torrent (spec)",
+                  "Thunderous Paws (class)",
+                  "Poison Cleansing Totem (class)",
+                  "Planes Traveler (class)",
+                  "Earthgrab Totem (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Totemic"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1143,7 +2649,43 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Totemic Mythic+",
+            "exportString": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAzMzsstMzMzMjZGjZgFYDmxiGbDIzAbMzMY2mZMa2WmZ2MjZhFjZGDLzyAAAAzMDmZAgBzA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Totemic",
+              "headline": "49 of the top 50 Mythic+ players sampled run Totemic, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "49 of the top 50 Mythic+ Restoration Shamans on Murlok.io play Totemic.",
+                "This is Method's Mythic+ Totemic build (Patch 12.1.5, 16 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Chain Lightning (44 of 50), Healing Tide Totem (44 of 50) and First Ascendant (44 of 50).",
+                "Goes against the majority on Improved Purify Spirit (13 of 50 take it), Soothing Rain (11 of 50 take it) and Current Control (9 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Farseer is the alternative: 1 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/shaman/restoration/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/restoration-shaman/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [],
+                "skips": [],
+                "sameHero": true,
+                "consensusHero": "Totemic"
+              }
+            }
+          }
         }
       }
     },
@@ -1171,7 +2713,50 @@
               "familySupport": 60
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Sunfury Raid",
+            "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMDamxAAAwAAmZmmlllZAgYDAgNMzMzYzyMzMLzYMmZGswMzMzMAADAAwAMzAmBADzMD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Sunfury",
+              "headline": "Sunfury for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Sunfury, and this is Method's Sunfury single target build for it (Patch 12.1.5, 16 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/arcane-mage/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Spellsteal (class)",
+                  "Supernova (class)",
+                  "Energized Familiar (spec)",
+                  "Impetus (spec)",
+                  "Arcane Familiar (spec)",
+                  "Master of Escape (class)"
+                ],
+                "skips": [
+                  "Incantation of Swiftness (class)",
+                  "Captured Thoughts (class)",
+                  "Aether Attunement (spec)",
+                  "Resonance (spec)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Sunfury"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1195,7 +2780,47 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Sunfury Mythic+",
+            "exportString": "C4DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMDamxAAAwAAmZmmlllZAgYDAgNYmZYzyMmZZGjZmZmhFmZmZmBAYAAAGgZGwMAYYmZA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Sunfury",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run Sunfury, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Arcane Mages on Murlok.io play Sunfury.",
+                "This is Method's Sunfury raid and Mythic+ cleave build (Patch 12.1.5, 16 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Supernova (44 of 50), Master of Escape (43 of 50) and Consortium's Bauble (41 of 50).",
+                "Skips the ones few of them take: Remove Curse (15 of 50)."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/mage/arcane/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/arcane-mage/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Mana Confluence (class)"
+                ],
+                "skips": [
+                  "Remove Curse (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Sunfury"
+              }
+            }
+          }
         }
       },
       "Fire": {
@@ -1221,7 +2846,48 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Sunfury Raid",
+            "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAYGGLzMzswMzIzMGAAAGAwMz0sstMDAwmZmx2MzMzYBAAAAALmZmZAAgZMmZmZMzsMAMzQGjBMDjB",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Sunfury",
+              "headline": "Sunfury for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Sunfury, and this is Method's Sunfury (Season 2 set bonus) build for it (Patch 12.1.5, 14 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 6 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/fire-mage/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Incantation of Swiftness (class)",
+                  "Lessons in Debilitation (hero)",
+                  "Time Walk (class)",
+                  "Master of Escape (class)"
+                ],
+                "skips": [
+                  "Captured Thoughts (class)",
+                  "Explosive Potential (hero)",
+                  "Temporal Realignment (class)",
+                  "Improved Conjuration (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Sunfury"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1245,7 +2911,34 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Sunfury Mythic+",
+            "exportString": "C8DAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzIzMzMAAAGAwMz0sstNDAwmZmx2MzMzYDAAAAALmZmZAAgZMmZmZMzsNAMzAMGwMMGA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Sunfury",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run Sunfury, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Fire Mages on Murlok.io play Sunfury.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Barrier Diffusion (43 of 50), Master of Escape (41 of 50) and Spellsteal (40 of 50).",
+                "Skips the ones few of them take: Master of Flame (1 of 50), Burnout (1 of 50) and Wildfire (3 of 50)."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/mage/fire/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Frost": {
@@ -1271,7 +2964,51 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Spellslinger Raid",
+            "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAMzwYZm5BmFMzEzMGzMzMziZmZMjZAAAgZmZWWmZaDAA2AAAALAstMmZmZY2GGzwCAAAzsBMTGDYGMMA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Spellslinger",
+              "headline": "Spellslinger for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Spellslinger, and this is Method's Spellslinger Raid build for it (Patch 12.1.5, 16 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/frost-mage/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Spellsteal (class)",
+                  "Supernova (class)",
+                  "Splintering Ray (spec)",
+                  "Time Walk (class)",
+                  "Improved Conjuration (class)",
+                  "Improved Counterspell (class)"
+                ],
+                "skips": [
+                  "Frost Conditioning (class)",
+                  "Incantation of Swiftness (class)",
+                  "Captured Thoughts (class)",
+                  "Frigid Focus (spec)",
+                  "Temporal Realignment (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Spellslinger"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1295,7 +3032,95 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Frostfire Mythic+",
+            "exportString": "CAEAAAAAAAAAAAAAAAAAAAAAAMzwYZmZmFMzEzMGzMzMWMzMzMGzsMTzMLzCAAAaBAA2AAAALAstMmZm5BYMjxM2WAAAAzMYmMGwADD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Frostfire",
+              "headline": "30 of the top 50 Mythic+ players sampled run Frostfire, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "30 of the top 50 Mythic+ Frost Mages on Murlok.io play Frostfire.",
+                "This is Method's Frostfire Mythic+ build (Patch 12.1.5, 16 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Wintertide (43 of 50), Improved Warding (42 of 50) and Blizzard (37 of 50).",
+                "Skips the ones few of them take: Frigid Focus (14 of 50).",
+                "Goes against the majority on Improved Conjuration (8 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Spellslinger is the alternative: 20 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/mage/frost/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/frost-mage/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Spellsteal (class)",
+                  "Ice Cold (class)",
+                  "Piercing Cold (spec)",
+                  "Comet Storm (spec)",
+                  "Flash Freezeburn (hero)",
+                  "Elemental Affinity (hero)",
+                  "Dualcasting Adept (hero)",
+                  "Isothermic Core (hero)",
+                  "Frostfire Bolt (hero)",
+                  "Blast Radius (hero)",
+                  "Heat Sink (hero)",
+                  "Frostfire Infusion (hero)",
+                  "Thermal Conditioning (hero)",
+                  "Frostfire Empowerment (hero)",
+                  "Imbued Warding (hero)",
+                  "Splintering Ray (spec)",
+                  "Time Walk (class)",
+                  "Improved Conjuration (class)",
+                  "Rimecaster (spec)",
+                  "Glacial Shatter (spec)",
+                  "Elemental Conduit (hero)",
+                  "Molten Chill (hero)",
+                  "Duality (hero)",
+                  "Improved Counterspell (class)"
+                ],
+                "skips": [
+                  "Ice Nova (class)",
+                  "Frost Conditioning (class)",
+                  "Captured Thoughts (class)",
+                  "Time Manipulation (class)",
+                  "Permafrost Lances (spec)",
+                  "Glaciate (spec)",
+                  "Everlasting Frost (spec)",
+                  "Splinterstorm (hero)",
+                  "Spellfrost Teachings (hero)",
+                  "Controlled Instincts (hero)",
+                  "Signature Spell (hero)",
+                  "Archmage's Wrath (hero)",
+                  "Slippery Slinging (hero)",
+                  "Reactive Barrier (hero)",
+                  "Splintering Orbs (hero)",
+                  "Augury Abounds (hero)",
+                  "Force of Will (hero)",
+                  "Splintering Sorcery (hero)",
+                  "Frigid Focus (spec)",
+                  "Temporal Realignment (class)",
+                  "Lonely Winter (spec)",
+                  "Polished Focus (hero)",
+                  "Infused Splinters (hero)",
+                  "Shifting Shards (hero)",
+                  "Crystalline Refraction (spec)"
+                ],
+                "sameHero": false,
+                "consensusHero": "Spellslinger"
+              }
+            }
+          }
         }
       }
     },
@@ -1323,7 +3148,57 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Soul Harvester Raid",
+            "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMzMzoZjhZmZmlBAAYmZZ2mZmFzAAjttBGwAmhlADbDAAAzAAAYmZMjZGDDzYmZGDmZmBAYGYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Soul Harvester",
+              "headline": "Soul Harvester for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Soul Harvester, and this is Method's Soul Harvester Single Target build for it (Patch 12.1.5, 13 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/affliction-warlock/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Frequent Donor (class)",
+                  "Withering Bolt (spec)",
+                  "Feast of Souls (hero)",
+                  "Gorefiend's Resolve (hero)",
+                  "Gorebound Fortitude (hero)",
+                  "Foul Mouth (class)",
+                  "Curse of Tongues (class)",
+                  "Sudden Onset (spec)"
+                ],
+                "skips": [
+                  "Ichor of Devils (class)",
+                  "Cunning Cruelty (spec)",
+                  "Shared Fate (hero)",
+                  "Eternal Servitude (hero)",
+                  "Friends In Dark Places (hero)",
+                  "Infernal Beneficiary (class)",
+                  "Impetuous Wrath (spec)",
+                  "Malefic Grasp (spec)",
+                  "Empowered Drain Life (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Soul Harvester"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1347,7 +3222,58 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Soul Harvester Mythic+",
+            "exportString": "CkQAAAAAAAAAAAAAAAAAAAAAAwMMzoZzM2mZmZWGAAwMzsMbzMzyYAgx2yADYCmhtADbDAAAGAAAzMjZMzsNGzgZmZGDzMzAAMDMA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Soul Harvester",
+              "headline": "37 of the top 50 Mythic+ players sampled run Soul Harvester, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "37 of the top 50 Mythic+ Affliction Warlocks on Murlok.io play Soul Harvester.",
+                "This is Method's Soul Harvester Multi Target / Mythic+ build (Patch 12.1.5, 13 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Fiendish Stride (44 of 50), Foul Mouth (44 of 50) and Frequent Donor (44 of 50).",
+                "Skips the ones few of them take: Gorefiend's Avarice (15 of 50).",
+                "Goes against the majority on Improved Shadow Bolt (40 of 50 take it) and Potent Soul Shards (12 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Hellcaller is the alternative: 13 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/warlock/affliction/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/affliction-warlock/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Abyss Walker (class)",
+                  "Drain Soul (spec)",
+                  "Malediction (spec)",
+                  "Absolute Corruption (spec)",
+                  "Curse of Exhaustion (class)",
+                  "Eye Contract (spec)"
+                ],
+                "skips": [
+                  "Gorefiend's Avarice (class)",
+                  "Banish (class)",
+                  "Improved Shadow Bolt (spec)",
+                  "Siphon Life (spec)",
+                  "Improved Haunt (spec)",
+                  "Shard Instability (spec)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Soul Harvester"
+              }
+            }
+          }
         }
       },
       "Demonology": {
@@ -1373,7 +3299,58 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Diabolist Raid",
+            "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMzMzoZjxmZGzyAAAAAAAAGzYYBGYb0GNsYwMLzyMzMmBAmhZmZmZAGzYMbAAgZmZmZGzwyMGwA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Diabolist",
+              "headline": "Diabolist for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Diabolist, and this is Method's Diabolist Single Target build for it (Patch 12.1.5, 13 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/demonology-warlock/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Gorefiend's Avarice (class)",
+                  "Fel Synergy (class)",
+                  "Improved Demonic Tactics (spec)",
+                  "Mark of Shatug (spec)",
+                  "Practiced Rituals (spec)",
+                  "Improved Mortal Coil (class)",
+                  "Fel Armaments (spec)",
+                  "Empowered Drain Life (class)",
+                  "Spiteful Reconstitution (spec)"
+                ],
+                "skips": [
+                  "Demonic Resilience (class)",
+                  "Oppressive Darkness (class)",
+                  "Fiendish Stride (class)",
+                  "Carnivorous Stalkers (spec)",
+                  "Dreadlash (spec)",
+                  "Mark of F'harg (spec)",
+                  "Blighted Maw (spec)",
+                  "Frequent Traveler (class)",
+                  "Curse of Tongues (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Diabolist"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1397,7 +3374,35 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Diabolist Mythic+",
+            "exportString": "CoQAAAAAAAAAAAAAAAAAAAAAAwMMzoZzMz2MzYWGAAAAAAAwYGDLwAbDL0wixMjlZbmZGzAAzMGzMzMAjZMzsBAAGzMzYYYZGDYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Diabolist",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run Diabolist, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Demonology Warlocks on Murlok.io play Diabolist.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Improved Mortal Coil (44 of 50), Shadowfury (44 of 50) and Blight of Tongues (41 of 50).",
+                "Skips the ones few of them take: Empowered Drain Life (4 of 50) and Gorefiend's Avarice (7 of 50).",
+                "Goes against the majority on Curse of Exhaustion (13 of 50 take it) and Fel Synergy (31 of 50 take it); swap if your group needs it."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/warlock/demonology/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Destruction": {
@@ -1423,7 +3428,59 @@
               "familySupport": 60
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Hellcaller Raid",
+            "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAwMmZmpZbMMzMmtZxMzMLGjFzAAgZmxMzsZBGYWMaMDgZL2YAAgxAjNAgZGYmxMDAAAzMzAAwYYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Hellcaller",
+              "headline": "Hellcaller for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Hellcaller, and this is Method's Hellcaller Single Target build for it (Patch 12.1.5, 13 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/destruction-warlock/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Fel Pact (class)",
+                  "Frequent Donor (class)",
+                  "Teachings of the Black Harvest (class)",
+                  "Fiendish Stride (class)",
+                  "Dark Accord (class)",
+                  "Chaotic Inferno (spec)",
+                  "Curse of the Satyr (hero)",
+                  "Frequent Traveler (class)",
+                  "Curse of Exhaustion (class)"
+                ],
+                "skips": [
+                  "Ichor of Devils (class)",
+                  "Banish (class)",
+                  "Shadowfury (class)",
+                  "Abyss Walker (class)",
+                  "Strength of Will (class)",
+                  "Improved Havoc (spec)",
+                  "Havoc (spec)",
+                  "Aura of Enfeeblement (hero)",
+                  "Foul Mouth (class)",
+                  "Blight of Tongues (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Hellcaller"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1447,7 +3504,35 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Diabolist Mythic+",
+            "exportString": "CsQAAAAAAAAAAAAAAAAAAAAAAwMMzoZzMz2MzYWmNzMzsYmZZZMAAYGjZmZDMmxwCMw2wCNWYAAgxgBAYmBYMjZmNAAAzMzAAgZYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Diabolist",
+              "headline": "36 of the top 50 Mythic+ players sampled run Diabolist, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "36 of the top 50 Mythic+ Destruction Warlocks on Murlok.io play Diabolist.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Shadowfury (44 of 50), Curse of Tongues (43 of 50) and Frequent Donor (43 of 50).",
+                "Skips the ones few of them take: Fel Pact (2 of 50) and Improved Havoc (14 of 50).",
+                "Goes against the majority on Fel Synergy (39 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Hellcaller is the alternative: 14 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/warlock/destruction/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       }
     },
@@ -1475,7 +3560,58 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Shado-Pan Raid",
+            "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAwMbbGzwYWmxGzMjBAAAAAAYZBzEzMwMMzGDmZmZY2GmxMLPALbPwy2sNmBAAshAAAMbzSzMzsxwGAzMMNGAAwA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Shado-Pan",
+              "headline": "Shado-Pan for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Shado-Pan, and this is Method's Raid Standard (Shado-Pan) build for it (Patch 12.1.5, 14 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/brewmaster-monk/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Zen State (spec)",
+                  "Shadowboxing Treads (spec)",
+                  "Elixir of Determination (spec)",
+                  "Strength of Spirit (class)",
+                  "Improved Touch of Death (class)",
+                  "Fatal Touch (class)",
+                  "Bob and Weave (spec)",
+                  "Ox Stance (spec)",
+                  "Initiator's Edge (hero)",
+                  "Chi Burst (class)"
+                ],
+                "skips": [
+                  "Walk with the Ox (spec)",
+                  "Fluidity of Motion (spec)",
+                  "Profound Rebuttal (class)",
+                  "Jade Walk (class)",
+                  "Chi Transfer (class)",
+                  "Special Delivery (spec)",
+                  "Combat Stance (hero)",
+                  "Chi Wave (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Shado-Pan"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1499,7 +3635,33 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Master of Harmony Mythic+",
+            "exportString": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAgZbzYGGzyMzGzMjBAAAAAAYZBzEzMwMM2gxMzMDz2YmxYZYZ7B22mNMLAAwysMtMbzsMAAAAG2AzMgpxAAAG",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Master of Harmony",
+              "headline": "42 of the top 50 Mythic+ players sampled run Master of Harmony, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "42 of the top 50 Mythic+ Brewmaster Monks on Murlok.io play Master of Harmony.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Improved Touch of Death (44 of 50), Black Ox Brew (44 of 50) and Pressure Points (43 of 50)."
+              ],
+              "players": "Shado-Pan is the alternative: 8 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/monk/brewmaster/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Windwalker": {
@@ -1531,7 +3693,47 @@
               "familySupport": 21
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Shado-Pan Raid",
+            "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYw2MmhlZGbzAAAAAAAAAAAAsMMaGzAGwMGmZmZY2GmhZZmAAWMz2MDzMzMAA2AgZZWamZmFAMwMDAjlBiB8B",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Shado-Pan",
+              "headline": "Shado-Pan for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Shado-Pan, and this is Method's Shado-Pan Single Target build for it (Patch 12.1.5, 14 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/windwalker-monk/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Universal Energy (spec)",
+                  "Soothing Mist (class)",
+                  "Elusive Mists (class)"
+                ],
+                "skips": [
+                  "Communion With Wind (spec)",
+                  "Detox (class)",
+                  "Bounding Agility (class)",
+                  "Knowledge of the Broken Temple (spec)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Shado-Pan"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1555,7 +3757,89 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Conduit of the Celestials Mythic+",
+            "exportString": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYMgxYZmx2MAAAAAAAAAAAALDz0MmhhBMMMzMzwsxMDzyDMBAswsNmxMzMDAgFzsMbjJIAgZMAmBYsMQMzMbG",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Conduit of the Celestials",
+              "headline": "48 of the top 50 Mythic+ players sampled run Conduit of the Celestials, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "48 of the top 50 Mythic+ Windwalker Monks on Murlok.io play Conduit of the Celestials.",
+                "This is Method's Conduit Mythic+ build (Patch 12.1.5, 14 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Soothing Mist (43 of 50), Vigorous Expulsion (43 of 50) and Jade Ignition (43 of 50).",
+                "Skips the ones few of them take: Stillstep Coil (5 of 50), Memory of the Monastery (5 of 50) and Diffuse Magic (6 of 50).",
+                "Goes against the majority on Energy Burst (30 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Shado-Pan is the alternative: 2 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/monk/windwalker/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/windwalker-monk/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Communion With Wind (spec)",
+                  "Drinking Horn Cover (spec)",
+                  "Soothing Mist (class)",
+                  "Elusive Mists (class)",
+                  "Chi Transfer (class)",
+                  "Path of the Falling Star (hero)",
+                  "Inner Compass (hero)",
+                  "Temple Training (hero)",
+                  "Chi-Ji's Swiftness (hero)",
+                  "Jade Sanctuary (hero)",
+                  "Unity Within (hero)",
+                  "Courage of the White Tiger (hero)",
+                  "Invoke Xuen, the White Tiger (hero)",
+                  "Skyfire Heel (spec)",
+                  "Harmonic Combo (spec)",
+                  "Flowing Wisdom (hero)",
+                  "Heart of the Jade Serpent (hero)",
+                  "Vigorous Expulsion (class)",
+                  "Strength of the Black Ox (hero)",
+                  "Yu'lon's Avatar (hero)",
+                  "Celestial Conduit (hero)",
+                  "Xuen's Bond (hero)"
+                ],
+                "skips": [
+                  "Spiritual Focus (spec)",
+                  "Energy Burst (spec)",
+                  "Jade Walk (class)",
+                  "Rising Star (spec)",
+                  "Memory of the Monastery (spec)",
+                  "Vigilant Watch (hero)",
+                  "Whirling Steel (hero)",
+                  "Martial Precision (hero)",
+                  "Pride of Pandaria (hero)",
+                  "Flurry Strikes (hero)",
+                  "Veteran's Eye (hero)",
+                  "One Versus Many (hero)",
+                  "Efficient Training (hero)",
+                  "Wisdom of the Wall (hero)",
+                  "Against All Odds (hero)",
+                  "Combat Stance (hero)",
+                  "Diffuse Magic (class)",
+                  "Shado Over the Battlefield (hero)",
+                  "Stand Ready (hero)",
+                  "Weapons of the Wall (hero)",
+                  "Stillstep Coil (class)"
+                ],
+                "sameHero": false,
+                "consensusHero": "Shado-Pan"
+              }
+            }
+          }
         }
       },
       "Mistweaver": {
@@ -1581,7 +3865,56 @@
               "familySupport": 60
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Conduit of the Celestials Raid",
+            "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAghx2MwmFzYmZbGbYmZYmlttZGLMjmxMgBDGWmZmZYWGMYxEAAAAABYxyMLz2MDAAMgBYGwYYsMZMDA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Conduit of the Celestials",
+              "headline": "Conduit of the Celestials for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Conduit of the Celestials, and this is Method's Raid Conduit of the Celestials (preferred) build for it (Patch 12.1.5, 14 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 6 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/mistweaver-monk/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Crane Style (spec)",
+                  "Zen Pulse (spec)",
+                  "Gift of the Celestials (spec)",
+                  "Deep Clarity (spec)",
+                  "Lifecycles (spec)",
+                  "Jade Infusion (class)",
+                  "Ironshell Brew (class)",
+                  "Reinvigoration (class)"
+                ],
+                "skips": [
+                  "Chrysalis (spec)",
+                  "Mists of Life (spec)",
+                  "Healing Elixir (spec)",
+                  "Jade Bond (spec)",
+                  "Energizing Brew (spec)",
+                  "Peace and Prosperity (class)",
+                  "Expeditious Fortification (class)",
+                  "Chi Transfer (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Conduit of the Celestials"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1605,7 +3938,93 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Conduit of the Celestials Mythic+",
+            "exportString": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMWmZZYxixMzsZsssND2Mz22yMjFmRzYGwgBjZZmZmhZbYGmlZCAAAAgAsYbmlZbmBAAAGgZADwiMmBA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Conduit of the Celestials",
+              "headline": "49 of the top 50 Mythic+ players sampled run Conduit of the Celestials, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "49 of the top 50 Mythic+ Mistweaver Monks on Murlok.io play Conduit of the Celestials.",
+                "This is Method's Mythic+ Conduit of the Celestials (preferred) build (Patch 12.1.5, 14 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Tiger Tail Sweep (44 of 50), Pool of Mists (44 of 50) and Gift of the Celestials (44 of 50).",
+                "Skips the ones few of them take: Uplifted Spirits (1 of 50), Mistline (4 of 50) and Rising Mist (4 of 50).",
+                "Goes against the majority on Chi Wave (35 of 50 take it), Improved Touch of Death (12 of 50 take it) and Vital Clarity (36 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Master of Harmony is the alternative: 1 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/monk/mistweaver/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/mistweaver-monk/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Way of the Serpent (spec)",
+                  "Dancing Mists (spec)",
+                  "Tear of Morning (spec)",
+                  "Tranquil Tea (spec)",
+                  "Lifecycles (spec)",
+                  "Bounding Agility (class)",
+                  "Windwalking (class)",
+                  "Yu'lon's Knowledge (hero)",
+                  "Path of the Falling Star (hero)",
+                  "Inner Compass (hero)",
+                  "Temple Training (hero)",
+                  "Chi-Ji's Swiftness (hero)",
+                  "Jade Sanctuary (hero)",
+                  "Unity Within (hero)",
+                  "Stampede of the Ancients (hero)",
+                  "Courage of the White Tiger (hero)",
+                  "Spiritfont (spec)",
+                  "Flowing Wisdom (hero)",
+                  "Heart of the Jade Serpent (hero)",
+                  "Celestial Conduit (hero)",
+                  "Strength of the Black Ox (hero)",
+                  "Yu'lon's Avatar (hero)"
+                ],
+                "skips": [
+                  "Improved Detox (class)",
+                  "Emperor's Elixir (spec)",
+                  "Way of the Crane (spec)",
+                  "Dance of Chi-Ji (spec)",
+                  "Rising Mist (spec)",
+                  "Veil of Pride (spec)",
+                  "Mistline (spec)",
+                  "Secret Infusion (spec)",
+                  "Energizing Brew (spec)",
+                  "Overwhelming Force (hero)",
+                  "Roar from the Heavens (hero)",
+                  "Manifestation (hero)",
+                  "Aspect of Harmony (hero)",
+                  "Harmonic Gambit (hero)",
+                  "Endless Draught (hero)",
+                  "Way of a Thousand Strikes (hero)",
+                  "Coalescence (hero)",
+                  "Clarity of Purpose (hero)",
+                  "Mantra of Purity (hero)",
+                  "Balanced Stratagem (hero)",
+                  "Chi Wave (class)",
+                  "Harmonic Surge (hero)",
+                  "Potential Energy (hero)",
+                  "Meditative Focus (hero)",
+                  "Vital Clarity (class)"
+                ],
+                "sameHero": false,
+                "consensusHero": "Master of Harmony"
+              }
+            }
+          }
         }
       }
     },
@@ -1633,7 +4052,38 @@
               "familySupport": 60
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Elune's Chosen Raid",
+            "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNjxMDwsMzMzMYYGjZWmhxMWYZmlZGjZ2wAgx2yMDGz2IwEAAAgFzMzMD2MMGzAAYmBLDA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Elune's Chosen",
+              "headline": "Elune's Chosen for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Elune's Chosen, and this is Method's Elune's Chosen Single Target build for it (Patch 12.1.5, 16 Oct 2026).",
+                "It is within 0 talents of the most-copied raid loadout, which comes from only 7 sampled builds; the guide build is the safer default.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/balance-druid/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [],
+                "skips": [],
+                "sameHero": true,
+                "consensusHero": "Elune's Chosen"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1657,7 +4107,35 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Elune's Chosen Mythic+",
+            "exportString": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWoMbNMmZgxsMzMzMLMgxMLzsYmZswyMLjxMjNMAYstNzgxsNAmAAAAswMzMD2MmxYAAYmBLDA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Elune's Chosen",
+              "headline": "43 of the top 50 Mythic+ players sampled run Elune's Chosen, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "43 of the top 50 Mythic+ Balance Druids on Murlok.io play Elune's Chosen.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Light of the Sun (44 of 50), Typhoon (44 of 50) and Radiant Moonlight (43 of 50).",
+                "Skips the ones few of them take: Sculpt the Stars (1 of 50).",
+                "Goes against the majority on Perfectly-Honed Instincts (11 of 50 take it) and Meteorites (11 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Keeper of the Grove is the alternative: 7 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/druid/balance/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Feral": {
@@ -1683,7 +4161,45 @@
               "familySupport": 60
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Druid of the Claw Raid",
+            "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAwghxYmZmxsxDsMz2MzMmZGAAAAWCmNYMzomxsMzMzMGzYGAAAAAAgBAAAQzsMLzMzACsAmZAWMDGAAAzshB",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Druid of the Claw",
+              "headline": "Druid of the Claw for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Druid of the Claw, and this is Method's Druid of the Claw single target raid build for it (Patch 12.1.5, 16 Oct 2026).",
+                "It is within 5 talents of the most-copied raid loadout, which comes from only 7 sampled builds; the guide build is the safer default.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/feral-druid/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Improved Stampeding Roar (class)",
+                  "Heart of the Wild (class)",
+                  "Fluid Form (class)"
+                ],
+                "skips": [
+                  "Forestwalk (class)",
+                  "Perfectly-Honed Instincts (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Druid of the Claw"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1707,7 +4223,52 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Druid of the Claw Mythic+",
+            "exportString": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmZ2MzMzMGzmx2YbGzMmZAAAAYJY2M8AmZUzYWMzMzsMm5BMAAAAAAADAAAgmZZWmZmBEYBmZGgFGMAAAmZDD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Druid of the Claw",
+              "headline": "33 of the top 50 Mythic+ players sampled run Druid of the Claw, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "33 of the top 50 Mythic+ Feral Druids on Murlok.io play Druid of the Claw.",
+                "This is Method's Mythic+ Druid of the Claw Convoke + Rake build (Patch 12.1.5, 16 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Wild Charge (44 of 50), Rip and Tear (43 of 50) and Primal Wrath (42 of 50).",
+                "Skips the ones few of them take: Merciless Claws (3 of 50), Improved Stampeding Roar (11 of 50) and Lore of the Grove (14 of 50).",
+                "Goes against the majority on Incarnation: Avatar of Ashamane (35 of 50 take it), Ashamane's Guidance (35 of 50 take it) and Hunger for Battle (10 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Wildstalker is the alternative: 17 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/druid/feral/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/feral-druid/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Heart of the Wild (class)",
+                  "Forestwalk (class)",
+                  "Ursine Vigor (class)"
+                ],
+                "skips": [
+                  "Improved Stampeding Roar (class)",
+                  "Innervate (class)",
+                  "Lycara's Inspiration (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Druid of the Claw"
+              }
+            }
+          }
         }
       },
       "Guardian": {
@@ -1733,7 +4294,49 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Elune's Chosen Raid",
+            "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmhFzYMzmZZGMLLDMbMGNRzMzyMzMzYMjZAAAAAAzYZGwy2MDGz2AYKAAAwGmxAWMDGwiltBYmBwA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Elune's Chosen",
+              "headline": "Elune's Chosen for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Elune's Chosen, and this is Method's Elune's Chosen Raid build for it (Patch 12.1.5, 14 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/guardian-druid/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Killing Blow (spec)",
+                  "Astral Influence (class)",
+                  "Dream of Cenarius (spec)",
+                  "Starlight Conduit (class)",
+                  "Ursoc's Endurance (spec)"
+                ],
+                "skips": [
+                  "Ursoc's Guidance (spec)",
+                  "Dream Guide (spec)",
+                  "Matted Fur (class)",
+                  "Gory Fur (spec)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Elune's Chosen"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1757,7 +4360,34 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Elune's Chosen Mythic+",
+            "exportString": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgZmxsYmZMziZxMPwMLLDMbGGNRzMzyMzMzsMmBAAAAAAjNDYZbmBjZZAMBAAAshZGgFjhBsYBgZGAD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Elune's Chosen",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run Elune's Chosen, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Guardian Druids on Murlok.io play Elune's Chosen.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Perfectly-Honed Instincts (39 of 50) and Primal Fury (38 of 50).",
+                "Skips the ones few of them take: Instincts of the Claw (2 of 50) and Fluid Form (7 of 50)."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/druid/guardian/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Restoration": {
@@ -1783,7 +4413,49 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Wildstalker Raid",
+            "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAYMmZZmZMzMmthHYYmNjtxMAAAAAAAAAAYZQzmZMNzYYMLzMzMDDzAAAAAAAAAAIAAgZbmlmtZ2sxYmBmBoZAAmZAYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Wildstalker",
+              "headline": "Wildstalker for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Wildstalker, and this is Method's Raid Wildstalker build for it (Patch 12.1.5, 13 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 6 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/restoration-druid/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Reforestation (spec)",
+                  "Unstoppable Growth (spec)",
+                  "Wild Charge (class)",
+                  "Typhoon (class)"
+                ],
+                "skips": [
+                  "Grove Guardians (spec)",
+                  "Tiger Dash (class)",
+                  "Starlight Conduit (class)",
+                  "Improved Swiftmend (spec)",
+                  "Perfectly-Honed Instincts (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Wildstalker"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1807,7 +4479,58 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Wildstalker Mythic+",
+            "exportString": "CkGAAAAAAAAAAAAAAAAAAAAAAMMmZZMjZmxsN8ADzsYsZbGAAAAAAAAAAsMoZbGmmZMwsYmZmZZGegBAAAAgBAYGAACAAY2mZrZbmFbMzMwMzCoZAAmZAYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Wildstalker",
+              "headline": "47 of the top 50 Mythic+ players sampled run Wildstalker, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "47 of the top 50 Mythic+ Restoration Druids on Murlok.io play Wildstalker.",
+                "This is Method's Mythic+ Wildstalker build (Patch 12.1.5, 13 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Heart of the Wild (43 of 50), Typhoon (42 of 50) and Wild Charge (40 of 50).",
+                "Skips the ones few of them take: Regenerative Heartwood (3 of 50) and Swipe (13 of 50).",
+                "Goes against the majority on Starlight Conduit (31 of 50 take it), Matted Fur (41 of 50 take it) and Nature's Bounty (7 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Keeper of the Grove is the alternative: 3 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/druid/restoration/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/restoration-druid/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Reforestation (spec)",
+                  "Nurturing Dormancy (spec)",
+                  "Moonkin Form (class)",
+                  "Starfire (class)",
+                  "Sunfire (class)",
+                  "Ursine Vigor (class)",
+                  "Improved Swiftmend (spec)"
+                ],
+                "skips": [
+                  "Verdancy (spec)",
+                  "Regenerative Heartwood (spec)",
+                  "Swipe (class)",
+                  "Fluid Form (class)",
+                  "Matted Fur (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Wildstalker"
+              }
+            }
+          }
         }
       }
     },
@@ -1835,7 +4558,47 @@
               "familySupport": 60
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Fel-Scarred Raid",
+            "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZGzMz2MmZmxMzkxMDAAAAAAY2MmtZYmBPwMWmZegZYmxYWGYbWMjhZTTjZmxwGAAAAAAAAzMYAAAAYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Fel-Scarred",
+              "headline": "Fel-Scarred for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Fel-Scarred, and this is Method's Fel-Scarred Raid Cleave build for it (Patch 12.1.5, 16 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/havoc-demon-hunter/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Demon Muzzle (class)",
+                  "Champion of the Glaive (class)",
+                  "Blind Fury (spec)",
+                  "Improved Soul Rending (hero)"
+                ],
+                "skips": [
+                  "Master of the Glaive (class)",
+                  "Erratic Felheart (class)",
+                  "Set Fire to the Pain (hero)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Fel-Scarred"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1859,7 +4622,89 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Aldrachi Reaver Mythic+",
+            "exportString": "CEkAAAAAAAAAAAAAAAAAAAAAAYGMzMz2MmZmxMzkxMDAAAAAAY2MmtZYmZ2mZGLzMmhZGmZZmtZwwYbjJZMzYYBAAAAAAAMzAMAAAAM",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Aldrachi Reaver",
+              "headline": "45 of the top 50 Mythic+ players sampled run Aldrachi Reaver, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "45 of the top 50 Mythic+ Havoc Demon Hunters on Murlok.io play Aldrachi Reaver.",
+                "This is Method's Aldrachi Reaver Mythic+ build (Patch 12.1.5, 16 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Demon Muzzle (42 of 50), Imprison (41 of 50) and Incorruptible Spirit (41 of 50).",
+                "Skips the ones few of them take: Isolated Prey (1 of 50), Wave of Debilitation (3 of 50) and Blind Fury (4 of 50)."
+              ],
+              "players": "Fel-Scarred is the alternative: 5 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/demon-hunter/havoc/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/havoc-demon-hunter/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Screaming Brutality (spec)",
+                  "Felfire Haste (class)",
+                  "Champion of the Glaive (class)",
+                  "Accelerated Blade (spec)",
+                  "Soulscar (spec)",
+                  "Serrated Glaive (spec)",
+                  "Dancing with Fate (spec)",
+                  "Furious Throws (spec)",
+                  "Incisive Blade (hero)",
+                  "Incorruptible Spirit (hero)",
+                  "Wounded Quarry (hero)",
+                  "Fury of the Aldrachi (hero)",
+                  "Reaver's Mark (hero)",
+                  "Bladecraft (hero)",
+                  "Preemptive Strike (hero)",
+                  "Unhindered Assault (hero)",
+                  "Aldrachi Tactics (hero)",
+                  "Art of the Glaive (hero)",
+                  "Thrill of the Fight (hero)",
+                  "Warblade's Hunger (hero)",
+                  "Keen Edge (hero)",
+                  "Broken Spirit (hero)"
+                ],
+                "skips": [
+                  "Growing Inferno (spec)",
+                  "Burning Wound (spec)",
+                  "Ragefire (spec)",
+                  "Master of the Glaive (class)",
+                  "Blind Fury (spec)",
+                  "Set Fire to the Pain (hero)",
+                  "Demonic Intensity (hero)",
+                  "Flamebound (hero)",
+                  "Untethered Fury (hero)",
+                  "Burning Blades (hero)",
+                  "Monster Rising (hero)",
+                  "Violent Transformation (hero)",
+                  "Wave of Debilitation (hero)",
+                  "Enduring Torment (hero)",
+                  "Demonsurge (hero)",
+                  "Focused Hatred (hero)",
+                  "A Fire Inside (spec)",
+                  "Focused Ire (class)",
+                  "Glaive Tempest (spec)",
+                  "Volatile Instinct (hero)",
+                  "Blind Focus (hero)",
+                  "Undying Embers (hero)"
+                ],
+                "sameHero": false,
+                "consensusHero": "Fel-Scarred"
+              }
+            }
+          }
         }
       },
       "Vengeance": {
@@ -1891,7 +4736,45 @@
               "familySupport": 21
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Annihilator Raid",
+            "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAMjZmZMzMjMzMYWMzMjBjZGzYGzMDzMzM2MzsNGAAAAAAAIgZmxGAAAAGMmZmZ2abmZGAYAAAAMA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Annihilator",
+              "headline": "Annihilator for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Annihilator, and this is Method's Annihilator Raid build for it (Patch 12.1.5, 14 Oct 2026).",
+                "It is within 5 talents of the most-copied raid loadout, which comes from only 7 sampled builds; the guide build is the safer default.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/vengeance-demon-hunter/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Chains of Anger (spec)",
+                  "Demonic Resilience (class)",
+                  "Final Breath (class)"
+                ],
+                "skips": [
+                  "Calcified Spikes (spec)",
+                  "Erratic Felheart (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Annihilator"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -1915,7 +4798,35 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Annihilator Mythic+",
+            "exportString": "CUkAAAAAAAAAAAAAAAAAAAAAAAAYMzMjhZkZmBWMjZwMjZGz8AzMzYYmZmx2YGjxMAAAAAAAAMzM2AAAAwAzMzMzSbzMzAgZAAAAMA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Annihilator",
+              "headline": "All 50 of the top 50 Mythic+ players sampled run Annihilator, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "All 50 of the top 50 Mythic+ Vengeance Demon Hunters on Murlok.io play Annihilator.",
+                "It is the exact loadout most top players in our data run, and it fits the wider top-50 talent choices better than the guide builds checked.",
+                "Takes the optional talents most of them take: Soul Barrier (41 of 50), Painbringer (37 of 50) and Quickened Sigils (32 of 50).",
+                "Skips the ones few of them take: Focused Ire (5 of 50) and Improved Sigil of Misery (13 of 50).",
+                "Goes against the majority on Erratic Felheart (15 of 50 take it), Demon Muzzle (44 of 50 take it) and Sigil of Silence (9 of 50 take it); swap if your group needs it."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/demon-hunter/vengeance/m+"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         }
       },
       "Devourer": {
@@ -1943,7 +4854,85 @@
               "familySupport": 28
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Annihilator Mythic+",
+            "exportString": "CgcBAAAAAAAAAAAAAAAAAAAAAAAWmxMzMzMzMGmBAAAAAAgxsNYGAAAAAAAAmxMMzMzMzMzMDzsYGjFZhZmZmt2mZmBwwAQgHYMDjZA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Annihilator",
+              "headline": "35 of the top 50 Mythic+ players sampled run Annihilator, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "35 of the top 50 Mythic+ Devourer Demon Hunters on Murlok.io play Annihilator.",
+                "This is Method's Annihilator Raid Cleave / Mythic+ build (Patch 12.1.5, 18 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Focused Ire (44 of 50), Sweet Suffering (44 of 50) and Rolling Torment (39 of 50).",
+                "Skips the ones few of them take: Second Helping (8 of 50), The Hunt (15 of 50) and Hungering Slash (15 of 50)."
+              ],
+              "players": "Void-Scarred is the alternative: 15 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/demon-hunter/devourer/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/devourer-demon-hunter/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Sweet Suffering (spec)",
+                  "World Killer (hero)",
+                  "Otherworldly Focus (hero)",
+                  "Dark Matter (hero)",
+                  "Final Hour (hero)",
+                  "Meteoric Fall (hero)",
+                  "Mass Acceleration (hero)",
+                  "State of Matter (hero)",
+                  "Voidfall (hero)",
+                  "Harness the Cosmos (hero)",
+                  "Celestial Echoes (hero)",
+                  "Phase Shift (hero)",
+                  "Catastrophe (hero)",
+                  "Swift Erasure (hero)",
+                  "Meteoric Rise (hero)",
+                  "Voidrage (spec)",
+                  "Demonic Instinct (spec)",
+                  "Voidglare Boon (spec)",
+                  "Voidpurge (spec)"
+                ],
+                "skips": [
+                  "Hungering Slash (spec)",
+                  "Scythe's Embrace (spec)",
+                  "The Hunt (spec)",
+                  "Second Helping (spec)",
+                  "Monster Rising (hero)",
+                  "Blind Focus (hero)",
+                  "Enduring Torment (hero)",
+                  "Student of Suffering (hero)",
+                  "Undying Embers (hero)",
+                  "Untethered Fury (hero)",
+                  "Volatile Instinct (hero)",
+                  "Burning Blades (hero)",
+                  "Voidsurge (hero)",
+                  "Focused Hatred (hero)",
+                  "Pursuit of Angriness (hero)",
+                  "Violent Transformation (hero)",
+                  "Demonic Intensity (hero)",
+                  "Improved Soul Rending (hero)",
+                  "Devourer's Bite (spec)",
+                  "Singular Strikes (spec)",
+                  "Voidrush (spec)"
+                ],
+                "sameHero": false,
+                "consensusHero": "Void-Scarred"
+              }
+            }
+          }
         },
         "raid": {
           "title": "Devourer - Raid",
@@ -1969,7 +4958,46 @@
               "familySupport": 28
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Void-Scarred Raid",
+            "exportString": "CgcBAAAAAAAAAAAAAAAAAAAAAAAWmxMzMzMzMGmBAAAAAAgxsNYGAAAAAAAAmxMMmZmZMzMDzsMzYsptFAEwAYMzMbzMTz2MbzMMmxA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Void-Scarred",
+              "headline": "Void-Scarred for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Void-Scarred, and this is Method's Void-Scarred Single Target build for it (Patch 12.1.5, 18 Oct 2026).",
+                "It is within 6 talents of the most-copied raid loadout, which comes from only 3 sampled builds; the guide build is the safer default.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/devourer-demon-hunter/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Demon Muzzle (class)",
+                  "Sigil of Misery (class)",
+                  "Focused Ire (class)"
+                ],
+                "skips": [
+                  "Vengeful Bonds (class)",
+                  "Master of the Glaive (class)",
+                  "Erratic Felheart (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Void-Scarred"
+              }
+            }
+          }
         }
       }
     },
@@ -1997,7 +5025,49 @@
               "familySupport": 57.51
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Scalecommander Raid",
+            "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMDMDzwMgBjZaMzMNjx2wMzMzMzMzAmZmxYmZZmZgBGD2glxox2AYGA2wMYmBDD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Scalecommander",
+              "headline": "Scalecommander for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Scalecommander, and this is Method's Scalecommander Single Target build for it (Patch 12.1.5, 16 Oct 2026).",
+                "It differs from the most-copied raid loadout in several places (that one comes from only 7 sampled builds); use the switch above to compare.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/devastation-evoker/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Event Horizon (spec)",
+                  "Terror of the Skies (class)",
+                  "Diverted Power (hero)",
+                  "Clobbering Sweep (class)"
+                ],
+                "skips": [
+                  "Twin Guardian (class)",
+                  "Eye of Infinity (spec)",
+                  "Eternity's Span (spec)",
+                  "Foci of Life (class)",
+                  "Extended Battle (hero)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Scalecommander"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -2021,7 +5091,61 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Scalecommander Mythic+",
+            "exportString": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZAMzwMwMYMTjZmpZmZ2mhZmZmZmZGwMzMGzMLzMDMwYwGsMGN2GAzAwGGYmBDD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Scalecommander",
+              "headline": "47 of the top 50 Mythic+ players sampled run Scalecommander, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "47 of the top 50 Mythic+ Devastation Evokers on Murlok.io play Scalecommander.",
+                "This is Method's Scalecommander Mythic+ and Cleave build (Patch 12.1.5, 16 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Time Spiral (43 of 50), Rescue (42 of 50) and Scarlet Adaptation (36 of 50).",
+                "Skips the ones few of them take: Twin Guardian (2 of 50), Azure Sweep (3 of 50) and Scorching Embers (3 of 50)."
+              ],
+              "players": "Flameshaper is the alternative: 3 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/evoker/devastation/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/devastation-evoker/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Volatility (spec)",
+                  "Enkindled (class)",
+                  "Star Salvo (spec)",
+                  "Event Horizon (spec)",
+                  "Honed Aggression (spec)",
+                  "Time Spiral (class)",
+                  "Diverted Power (hero)"
+                ],
+                "skips": [
+                  "Azure Sweep (spec)",
+                  "Catalyze (spec)",
+                  "Heat Wave (spec)",
+                  "Overawe (class)",
+                  "Oppressing Roar (class)",
+                  "Eye of Infinity (spec)",
+                  "Power Swell (spec)",
+                  "Extended Battle (hero)",
+                  "Clobbering Sweep (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Scalecommander"
+              }
+            }
+          }
         }
       },
       "Preservation": {
@@ -2047,7 +5171,45 @@
               "familySupport": 61.93
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Flameshaper Raid",
+            "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMDmZMYGzmhZmZbYAAgZMjZwYGZmZAAAAmZmJzYmxYmZAwMmBWALgZYCZzwmhBwMzYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Flameshaper",
+              "headline": "Flameshaper for raid, following Method's current build.",
+              "why": [
+                "Top raiders in our data play Flameshaper, and this is Method's Raid Flameshaper build for it (Patch 12.1.5, 13 Oct 2026).",
+                "It is within 5 talents of the most-copied raid loadout, which comes from only 6 sampled builds; the guide build is the safer default.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/preservation-evoker/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Ancient Flame (class)",
+                  "Enkindled (class)"
+                ],
+                "skips": [
+                  "Exuberance (class)",
+                  "Foci of Life (class)",
+                  "Time Spiral (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Flameshaper"
+              }
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -2071,7 +5233,57 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Flameshaper Mythic+",
+            "exportString": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ2WGzYYMPwsZGw2wAAAzYGzYmhZiZmBAAAMzMTGzMjZZMDAMmBWAbgZYCZzM2MMDwMDD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Flameshaper",
+              "headline": "46 of the top 50 Mythic+ players sampled run Flameshaper, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "46 of the top 50 Mythic+ Preservation Evokers on Murlok.io play Flameshaper.",
+                "This is Method's Mythic+ Flameshaper (+12 and higher) build (Patch 12.1.5, 13 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Ancient Flame (43 of 50), Landslide (42 of 50) and Natural Convergence (42 of 50).",
+                "Skips the ones few of them take: Sleep Walk (3 of 50), Time of Need (3 of 50) and Inner Flame (9 of 50)."
+              ],
+              "players": "Chronowarden is the alternative: 4 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/evoker/preservation/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/preservation-evoker/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Flow State (spec)",
+                  "Exuberance (class)",
+                  "Instinctive Arcana (class)",
+                  "Time Spiral (class)",
+                  "Titan's Gift (spec)",
+                  "Lifespark (spec)"
+                ],
+                "skips": [
+                  "Timeless Magic (spec)",
+                  "Twin Echoes (spec)",
+                  "Inner Flame (spec)",
+                  "Sleep Walk (class)",
+                  "Overawe (class)",
+                  "Extended Flight (class)"
+                ],
+                "sameHero": true,
+                "consensusHero": "Flameshaper"
+              }
+            }
+          }
         }
       },
       "Augmentation": {
@@ -2109,7 +5321,32 @@
               "familySupport": 21
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Chronowarden Raid",
+            "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMMzMbzMzgZYmZZGzMjZ2AAAAAAAAYmhxMYM1YmZGAAAAMjZMmZWGzMwMMwYGLsADMDDNwCGjZGAYA",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Chronowarden",
+              "headline": "Chronowarden for raid, matching what top raiders in our data run.",
+              "why": [
+                "Top raiders and Method agree: this is the exact loadout most top raiders in our data run, and it matches Method's Raid Single Target Chronowarden build.",
+                "Raid picks lean on guides because there is no large per-talent sample of raiders to check against; swap talents for specific bosses as your raid needs."
+              ],
+              "players": null,
+              "sources": [
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/augmentation-evoker/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": true,
+              "differs": null
+            }
+          }
         },
         "aoe": {
           "title": "All Dungeons",
@@ -2133,7 +5370,80 @@
               "familySupport": 54
             }
           },
-          "selectedTalents": null
+          "selectedTalents": null,
+          "selected": {
+            "title": "Chronowarden Mythic+",
+            "exportString": "CEcBAAAAAAAAAAAAAAAAAAAAAMMzMbzMzgZYmZZGzMjZ2AAAAAAAAYmhZGYM1YmZGAAAAMjZMmZWGzMwMMwYGLsADMDDNwCGzMzAAD",
+            "updated": "2026-11-12",
+            "source": "ai-pick",
+            "notes": [],
+            "ai": {
+              "hero": "Chronowarden",
+              "headline": "45 of the top 50 Mythic+ players sampled run Chronowarden, and this loadout is the closest match to their talent choices.",
+              "why": [
+                "45 of the top 50 Mythic+ Augmentation Evokers on Murlok.io play Chronowarden.",
+                "This is Method's Mythic+ Chronowarden build (Patch 12.1.5, 13 Oct 2026), the closest match to the top players' talent choices among the loadouts checked on that hero tree.",
+                "Takes the optional talents most of them take: Cauterizing Flame (43 of 50), Time Spiral (42 of 50) and Improved Defy Fate (42 of 50).",
+                "Skips the ones few of them take: Protracted Talons (1 of 50).",
+                "Goes against the majority on Blistering Scales (36 of 50 take it), Draconic Attunements (14 of 50 take it) and Regenerative Chitin (36 of 50 take it); swap if your group needs it."
+              ],
+              "players": "Scalecommander is the alternative: 5 of 50 top players use it.",
+              "sources": [
+                {
+                  "name": "Murlok.io",
+                  "url": "https://murlok.io/evoker/augmentation/m+"
+                },
+                {
+                  "name": "Method",
+                  "url": "https://www.method.gg/guides/augmentation-evoker/talents"
+                }
+              ],
+              "reviewedAt": "2026-11-12",
+              "sameAsConsensus": false,
+              "differs": {
+                "takes": [
+                  "Rumbling Earth (spec)",
+                  "Twin Guardian (class)",
+                  "Time Spiral (class)",
+                  "Reverberations (hero)",
+                  "Afterimage (hero)",
+                  "Instability Matrix (hero)",
+                  "Double-time (hero)",
+                  "Temporality (hero)",
+                  "Golden Opportunity (hero)",
+                  "Nozdormu Adept (hero)",
+                  "Warp (hero)",
+                  "Primacy (hero)",
+                  "Chrono Flame (hero)",
+                  "Temporal Burst (hero)",
+                  "Overclock (hero)",
+                  "Chronal Dynamo (hero)",
+                  "Chronoboon (hero)"
+                ],
+                "skips": [
+                  "Terror of the Skies (class)",
+                  "Spatial Paradox (class)",
+                  "Interwoven Threads (spec)",
+                  "Melt Armor (hero)",
+                  "Extended Battle (hero)",
+                  "Hardened Scales (hero)",
+                  "Unrelenting Siege (hero)",
+                  "Bombardments (hero)",
+                  "Maneuverability (hero)",
+                  "Slipstream (hero)",
+                  "Onslaught (hero)",
+                  "Might of the Black Dragonflight (hero)",
+                  "Wingleader (hero)",
+                  "Mass Eruption (hero)",
+                  "Refined Essence (hero)",
+                  "Concentrated Power (hero)",
+                  "Command Squadron (hero)"
+                ],
+                "sameHero": false,
+                "consensusHero": "Scalecommander"
+              }
+            }
+          }
         }
       }
     }

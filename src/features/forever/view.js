@@ -4,6 +4,7 @@ import { $, $$, html, raw } from "../../lib/dom.js";
 import { classStyle, setClassColor } from "../../lib/color.js";
 import { navigate } from "../../lib/router.js";
 import { KEYS, readString, writeJson, writeString } from "../../lib/storage.js";
+import { foreverTalentsHtml } from "./talents.js";
 import {
   FOREVER_CLASSES, FOREVER_RULES, FOREVER_LAUNCH, FOREVER_RAIDS_OPEN,
   TALENT_CALC_URL, findForeverClass, findTree, racesFor, roleLabel
@@ -186,6 +187,8 @@ function renderTree() {
         <p class="tree-focus">${tree.focus}</p>
       </div>
     </header>
+
+    ${raw(foreverTalentsHtml(cls, tree))}
 
     <section class="tree-path" aria-labelledby="pathHeading">
       <h4 id="pathHeading">Gold talents by points spent</h4>

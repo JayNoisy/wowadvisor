@@ -1,0 +1,106 @@
+/* Talent trees (Retail viewer and Forever trees). */
+
+.tree-card { margin-top: var(--s-4); }
+.tree-card .card-head { margin-bottom: var(--s-4); }
+.tree-state { padding: var(--s-5) 0; color: var(--muted); }
+
+/* Three panels side by side on wide screens: class, hero, spec. Cell size shrinks to fit. */
+.tree-panels {
+  --gap: var(--s-6);
+  /* sidebar + page gutters + card padding, then split what's left between every column */
+  --cell: clamp(24px, calc((100vw - 248px - 152px - 2 * var(--gap)) / var(--total-cols, 23)), 46px);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--gap);
+}
+.tree-panel { min-width: 0; }
+.tree-panel-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px var(--s-3); margin-bottom: var(--s-3); }
+.tree-panel-head h4 { font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); font-size: var(--step-1); }
+.tree-panel-head .muted { font-size: var(--step--1); }
+
+.tree-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--cell));
+  grid-auto-rows: var(--cell);
+  width: max-content;
+}
+.tree-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.tree-lines line { stroke: var(--line-strong); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.tree-lines line.is-on { stroke: var(--ink); stroke-width: 2.5; }
+
+.tnode {
+  position: relative;
+  z-index: 1;
+  place-self: center;
+  width: 78%;
+  aspect-ratio: 1;
+  display: block;
+  border-radius: 22%;
+  background: var(--surface-3);
+  box-shadow: 0 0 0 2px var(--surface);
+  transition: transform 0.12s var(--ease, ease);
+}
+.tnode img { width: 100%; height: 100%; display: block; border-radius: inherit; filter: grayscale(1) brightness(0.55); opacity: 0.55; }
+.tnode.is-on { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--ink); }
+.tnode.is-on img { filter: none; opacity: 1; }
+.tnode:hover, .tnode:focus-visible { transform: scale(1.12); z-index: 2; }
+.tnode:hover img, .tnode:focus-visible img { filter: none; opacity: 1; }
+.tnode:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+/* Choice talents are octagons in game; here they get clipped corners. Untaken ones show both options. */
+.tnode.is-choice, .tnode.is-choice img { border-radius: 34%; }
+.tnode .tnode-alt { position: absolute; inset: 0; clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%); }
+.tnode.is-tiered { border-radius: 50%; }
+.tnode.is-tiered img { border-radius: 50%; }
+
+.tnode-rank {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  padding: 0 5px;
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.68rem;
+  font-weight: 750;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Built-in name label, used until Wowhead's tooltips have loaded (or when they're blocked). */
+.tree-tip {
+  position: fixed;
+  z-index: 60;
+  max-width: 260px;
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--r-sm);
+  background: var(--ink);
+  color: var(--bg);
+  font-size: var(--step--1);
+  font-weight: 600;
+  line-height: 1.35;
+  pointer-events: none;
+}
+.has-wowhead .tree-tip { display: none; }
+
+.tree-foot { margin-top: var(--s-5); color: var(--muted); font-size: var(--step--1); }
+
+/* No sidebar below 1080px. */
+@media (max-width: 1079px) {
+  .tree-panels { --cell: clamp(24px, calc((100vw - 120px - 2 * var(--gap)) / var(--total-cols, 23)), 46px); }
+}
+/* Too narrow for three across: stack, and size each panel to its own columns. */
+@media (max-width: 1280px) {
+  .tree-panels { flex-direction: column; align-items: center; gap: var(--s-6); }
+  .tree-panel { width: 100%; }
+  .tree-panel-head { justify-content: center; }
+  .tree-grid { --cell: min(46px, calc((100vw - 76px) / var(--cols))); margin: 0 auto; }
+}
+
+/* Never let a wide tree push the page sideways; scroll inside the card instead. */
+.tree-card { min-width: 0; }
+.tree-panels { max-width: 100%; overflow-x: auto; }
+.tree-panel { flex: none; width: min-content; }
+@media (max-width: 1280px) { .tree-panel { flex: initial; width: 100%; } }

@@ -58,6 +58,43 @@ export function getBuild(className, specName, mode) {
 export function normalizeBuild(build) {
   if (!build || typeof build !== "object") return null;
   const core = build.selected && typeof build.selected === "object" ? build.selected : build;
+  // An AI-reviewed pick sits in `selected`; the top-player consensus it was checked against stays underneath.
+  if (core !== build && core.ai && typeof core.ai === "object") {
+    const consensus = build.exportString ? normalizeCore(build, build) : null;
+    const ai = normalizeAi(core.ai);
+    return {
+      ...normalizeCore(core, {}),
+      // Stat priorities and data-quality figures still come from the player data.
+      statPriority: build.statPriority || build.statPriorities || null,
+      ai,
+      consensus: consensus && consensus.exportString !== String(core.exportString || "") ? consensus : null,
+      matchesConsensus: Boolean(consensus && consensus.exportString === String(core.exportString || "")),
+      consensusSample: consensus?.sampleSize ?? null
+    };
+  }
+  return normalizeCore(core, build);
+}
+
+const HTTP_URL = /^https?:\/\//i;
+
+function normalizeAi(ai) {
+  const list = (v) => (Array.isArray(v) ? v : []);
+  return {
+    hero: ai.hero ? String(ai.hero) : null,
+    headline: String(ai.headline || ""),
+    why: list(ai.why).map(String).filter(Boolean),
+    players: ai.players ? String(ai.players) : null,
+    sources: list(ai.sources)
+      .filter((s) => s && s.name && HTTP_URL.test(String(s.url || "")))
+      .map((s) => ({ name: String(s.name), url: String(s.url) })),
+    reviewedAt: ai.reviewedAt || null,
+    differs: ai.differs && typeof ai.differs === "object"
+      ? { takes: list(ai.differs.takes).map(String), skips: list(ai.differs.skips).map(String), sameHero: ai.differs.sameHero !== false, consensusHero: ai.differs.consensusHero || null }
+      : null
+  };
+}
+
+function normalizeCore(core, build) {
   const pick = (key) => core[key] ?? build[key] ?? null;
   const notes = Array.isArray(core.notes) ? core.notes : Array.isArray(build.notes) ? build.notes : [];
   const breakdown = pick("consensusBreakdown");
@@ -74,7 +111,9 @@ export function normalizeBuild(build) {
     agreementCount: pick("agreementCount"),
     agreementRatio: pick("agreementRatio"),
     sourceFamilies: breakdown && typeof breakdown === "object" ? Object.keys(breakdown) : [],
-    statPriority: pick("statPriority") || pick("statPriorities")
+    statPriority: pick("statPriority") || pick("statPriorities"),
+    ai: null,
+    consensus: null
   };
 }
 

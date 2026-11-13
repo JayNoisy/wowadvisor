@@ -391,3 +391,15 @@ button.stat-rung:hover::before { background: color-mix(in srgb, var(--cc) 42%, v
 #fvToolkitGrid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 
 @media (min-width: 981px) and (max-width: 1320px) { .toolkit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---------- AI pick ---------- */
+.pick-badge { display: inline-block; margin-bottom: var(--s-2); padding: 3px 10px; border-radius: var(--r-pill); background: var(--cc, var(--ink)); color: var(--cc-ink, var(--bg)); font-size: var(--step--1); font-weight: 750; letter-spacing: 0.02em; }
+.pick-badge.is-plain { background: var(--surface-3); color: var(--ink-2); }
+.pick-switch { margin-top: var(--s-4); }
+.pick-why { margin-top: var(--s-5); padding-top: var(--s-4); border-top: 1px solid var(--line); }
+.pick-headline { max-width: 62ch; color: var(--ink); font-size: var(--step-1); font-weight: 650; line-height: 1.4; }
+.pick-reasons { display: grid; gap: var(--s-2); margin-top: var(--s-3); padding-left: 1.2em; list-style: disc; max-width: 70ch; color: var(--ink-2); line-height: 1.5; }
+.pick-players, .pick-diff { margin-top: var(--s-3); max-width: 70ch; color: var(--ink-2); line-height: 1.5; }
+.pick-sources { margin-top: var(--s-3); color: var(--muted); font-size: var(--step--1); }
+.pick-sources a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.pick-sources a:hover { color: var(--ink); }
