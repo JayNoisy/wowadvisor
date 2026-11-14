@@ -38,6 +38,7 @@ function retailTiles() {
     { href: "#mplus", icon: "mplus", name: "Mythic+", text: "Affixes by key level and the timer to beat in every dungeon", live: `Your +${getMythicContext().keyLevel}: ${activeAffixNames().join(", ")}` },
     { href: "#party", icon: "party", name: "Group check", text: "See what your party covers before the key goes in" },
     { href: "#armory", icon: "armory", name: "Armory", text: "Inspect any character and copy their talents", live: chars.length ? `${chars.length} saved` : "" },
+    { href: "#tiers", icon: "tiers", name: "Tier lists", text: "Strongest specs for Mythic+, raid and PvP, by role" },
     { href: "#calc", icon: "tree", name: "Talent calculator", text: "Plan a build on the real trees and copy the code" },
     { href: "#gear", icon: "gem", name: "Gear and upgrades", text: "Item levels by source, upgrade tracks and crest costs", live: `A +${getMythicContext().keyLevel} drops ${ilvlOf(mplusRow(getMythicContext().keyLevel).loot)}, vault ${ilvlOf(mplusRow(getMythicContext().keyLevel).vault)}` },
     { href: "#macros", icon: "macros", name: "Macros", text: "Mouseover, focus and cursor macros, ready to paste" },
@@ -52,6 +53,7 @@ function foreverTiles() {
   const opens = new Date(FOREVER_RAIDS_OPEN);
   const raidLine = Date.now() < opens.getTime() ? `Raids open in ${formatCountdown(opens)}` : "Raids are open";
   return [
+    { href: "#tiers", icon: "tiers", name: "Tier lists", text: "How the specs rank for dungeons and raids, by role" },
     { href: "#planner", icon: "tree", name: "Talent planner", text: "Spend your 51 points and share the build as a link" },
     { href: "#atlas", icon: "atlas", name: "Dungeons and raids", text: "Every dungeon by level, with a done list", live: raidLine },
     { href: "#levels", icon: "levels", name: "Level guide", text: "Talent points and unlocks for your level" },

@@ -8,6 +8,7 @@
 //   #calc/shaman/elemental/CODE   Retail talent calculator (the code is optional)
 //   #macros                       Macro builder (works in both editions)
 //   #lingo                        Glossary and chat commands (works in both editions)
+//   #tiers                        Tier lists (works in both editions)
 //   #planner/shaman/POINTS        WoW Forever talent planner (the points string is optional)
 //   #forever                      WoW Forever class picker
 //   #forever/shaman/enhancement   WoW Forever class + talent tree
@@ -17,10 +18,10 @@
 
 import { emit } from "./events.js";
 
-export const VIEWS = ["builds", "weekly", "tracker", "mplus", "party", "armory", "gear", "calc", "links", "macros", "lingo", "forever", "planner", "atlas", "levels", "todo"];
+export const VIEWS = ["builds", "weekly", "tracker", "mplus", "party", "armory", "gear", "calc", "links", "macros", "lingo", "tiers", "forever", "planner", "atlas", "levels", "todo"];
 const CLASS_VIEWS = ["builds", "forever"];
 const FOREVER_VIEWS = ["forever", "planner", "atlas", "levels", "todo"];
-const SHARED_VIEWS = ["macros", "lingo"];
+const SHARED_VIEWS = ["macros", "lingo", "tiers"];
 // Views whose extra path parts are passed through untouched (talent codes are case-sensitive).
 const ARG_VIEWS = ["calc", "planner"];
 

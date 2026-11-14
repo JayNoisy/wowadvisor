@@ -132,3 +132,31 @@ button.fnode:not(.is-open):not(.is-on) { cursor: not-allowed; }
   .level-text { grid-column: 2; }
   .ftree-grid { --cell: clamp(46px, 16vw, 60px); }
 }
+
+/* ---------- Tier lists ---------- */
+.tiers-bar { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-bottom: var(--s-4); }
+.tiers-card { padding: var(--s-3) var(--s-5); }
+.tier-row { display: grid; grid-template-columns: 3.4rem minmax(0, 1fr); gap: var(--s-4); align-items: start; padding: var(--s-4) 0; border-bottom: 1px solid var(--line); }
+.tier-row:last-child { border-bottom: 0; }
+.tier-letter { display: grid; place-items: center; width: 3.4rem; height: 3.4rem; border-radius: var(--r-md); background: var(--surface-3); color: var(--ink); font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); font-size: var(--step-3); line-height: 1; }
+.tier-letter.tier-s { background: var(--ink); color: var(--bg); }
+.tier-letter.tier-a { background: color-mix(in srgb, var(--ink) 55%, var(--surface-3)); color: var(--bg); }
+.tier-letter.tier-d { color: var(--muted); }
+.tier-specs { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.tier-spec { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: var(--s-2); min-height: 44px; padding: 6px var(--s-4) 6px 6px; border-radius: var(--r-pill); background: var(--surface-2); color: var(--ink-2); text-decoration: none; box-shadow: inset 3px 0 0 var(--cc, transparent); transition: background-color 0.15s, color 0.15s; }
+.tier-spec:not(:has(img)) { padding-left: var(--s-4); }
+.tier-spec img { grid-row: 1 / span 2; width: 28px; height: 28px; border-radius: 50%; }
+.tier-spec strong { color: var(--ink); font-weight: 750; }
+.tier-spec-name { white-space: nowrap; }
+.tier-spec-by { grid-column: 2; color: var(--muted); font-size: 0.72rem; line-height: 1.2; white-space: nowrap; }
+.tier-spec:hover { background: var(--cc, var(--ink)); color: var(--cc-ink, var(--bg)); }
+.tier-spec:hover strong, .tier-spec:hover .tier-spec-by { color: inherit; }
+.tiers-about { margin-top: var(--s-6); max-width: 76ch; }
+.tiers-sources { display: grid; gap: var(--s-2); margin-top: var(--s-3); padding-left: 1.2em; list-style: disc; color: var(--ink-2); line-height: 1.5; }
+.tiers-empty { padding: var(--s-5) 0; }
+@media (max-width: 560px) {
+  .tier-row { grid-template-columns: 2.6rem minmax(0, 1fr); gap: var(--s-3); }
+  .tier-letter { width: 2.6rem; height: 2.6rem; font-size: var(--step-2); }
+  .tiers-card { padding: var(--s-2) var(--s-4); }
+  .tier-spec-name { white-space: normal; }
+}

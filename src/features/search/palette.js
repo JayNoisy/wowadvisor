@@ -19,6 +19,7 @@ const PAGES = [
   { title: "Talent calculator", sub: "Plan a Retail build, import and export codes", href: "#calc", icon: "tree", words: "talent calculator planner tree loadout import export code hero talents" },
   { title: "Gear and upgrades", sub: "Item levels, upgrade tracks, crest costs", href: "#gear", icon: "gem", words: "gear item level ilvl upgrade track crest mistcrest champion hero myth veteran adventurer vault loot delve raid crafted spark" },
   { title: "Macros", sub: "Macro builder", href: "#macros", icon: "macros", words: "macro mouseover focus cursor interrupt keybind" },
+  { title: "Tier lists", sub: "Strongest specs by role, refreshed weekly", href: "#tiers", icon: "tiers", words: "tier list tierlist ranking best spec class meta dps healer tank pve pvp mythic raid arena" },
   { title: "Lingo and commands", sub: "Glossary and slash commands", href: "#lingo", icon: "book", words: "glossary lingo slang abbreviations terms meaning bis aoe cc commands slash reload readycheck" },
   { title: "Resources", sub: "Best community sites", href: "#links", icon: "links", words: "links sites raider.io raiderio warcraft logs raidbots sim wowhead addons" },
   { title: "WoW Forever classes", sub: "Talent trees and races", href: "#forever", icon: "forever", words: "classic forever talents" },
@@ -73,7 +74,7 @@ function search(query) {
   const pool = [...characterItems(), ...index];
   if (!words.length) {
     // Nothing typed yet: show the pages for the edition you're in.
-    return pool.filter((i) => i.kind === "page" && /forever/i.test(i.title) === forever || (i.kind === "page" && ["#macros", "#lingo"].includes(i.href))).slice(0, 8);
+    return pool.filter((i) => i.kind === "page" && /forever/i.test(i.title) === forever || (i.kind === "page" && ["#macros", "#lingo", "#tiers"].includes(i.href))).slice(0, 8);
   }
   return pool
     .map((item) => {

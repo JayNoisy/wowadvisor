@@ -42,6 +42,7 @@ import { initLinksView, showLinks } from "./features/links/view.js";
 import { initGearView, showGear } from "./features/gear/view.js";
 import { initCalcView, showCalc } from "./features/calc/view.js";
 import { initLingoView, showLingo } from "./features/lingo/view.js";
+import { initTiersView, showTiers } from "./features/tiers/view.js";
 import { initPlannerView, showPlanner } from "./features/planner/view.js";
 import { initSearch } from "./features/search/palette.js";
 import { initToolkit, renderToolkit } from "./features/home/toolkit.js";
@@ -60,6 +61,7 @@ const VIEW_TITLES = {
   calc: "Talent calculator",
   links: "Resources",
   lingo: "Lingo and commands",
+  tiers: "Tier lists",
   planner: "WoW Forever talent planner",
   macros: "Macros",
   forever: "WoW Forever classes",
@@ -185,6 +187,7 @@ on("route", (route) => {
   if (route.view === "gear") showGear();
   if (route.view === "calc") showCalc(route);
   if (route.view === "lingo") showLingo();
+  if (route.view === "tiers") showTiers();
   if (route.view === "planner") showPlanner(route);
   if (route.view === "macros") showMacros();
   if (route.view === "forever") { showForeverRoute(route); renderToolkit(); }
@@ -232,6 +235,7 @@ initLinksView();
 initGearView();
 initCalcView();
 initLingoView();
+initTiersView();
 initPlannerView();
 initSearch();
 initToolkit();
