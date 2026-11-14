@@ -1,0 +1,146 @@
+// Player shorthand and slash commands. Long-standing terms only; nothing here changes patch to patch.
+// `ed`: "both" (default), "retail" or "forever" where a term only applies to one edition.
+
+export const LINGO_GROUPS = ["Roles and groups", "Combat", "Dungeons and raids", "Gear and loot", "Chat and trade"];
+
+export const LINGO = [
+  // Roles and groups
+  { term: "Tank", group: "Roles and groups", text: "Holds enemies' attention and takes the hits." },
+  { term: "Healer", also: "heals", group: "Roles and groups", text: "Keeps the group alive." },
+  { term: "DPS", group: "Roles and groups", text: "Damage per second. Also the name for damage dealers themselves." },
+  { term: "Melee / Ranged", also: "mdps rdps", group: "Roles and groups", text: "Damage dealers who fight up close, or from a distance." },
+  { term: "PUG", also: "pick-up group", group: "Roles and groups", text: "A group of strangers, as opposed to a guild or friends group." },
+  { term: "LFG / LFM", group: "Roles and groups", text: "Looking for group / looking for more. LF1M means one spot left." },
+  { term: "Premade", group: "Roles and groups", text: "A group put together by hand instead of by automatic matchmaking." },
+  { term: "Main / Alt", group: "Roles and groups", text: "Your primary character, and every other character you play." },
+  { term: "Off-spec", also: "OS MS main spec", group: "Roles and groups", text: "A specialization you play sometimes. MS is main spec. In loot rules, MS > OS means main-spec rolls win." },
+  { term: "Carry / Boost", group: "Roles and groups", text: "Stronger players taking someone through content, often for gold." },
+  { term: "Summon", also: "summ lock", group: "Roles and groups", text: "Being teleported to the group, usually by a Warlock or a meeting stone." },
+  { term: "RL", also: "raid leader", group: "Roles and groups", text: "Raid leader. Sometimes just 'real life'." },
+
+  // Combat
+  { term: "Aggro / Threat", group: "Combat", text: "Which player an enemy is attacking. 'Pulling aggro' means it turned on you instead of the tank." },
+  { term: "Pull", group: "Combat", text: "Starting a fight. Also a group of enemies taken at once." },
+  { term: "Kick", also: "interrupt", group: "Combat", text: "Interrupt an enemy's spell cast. Named after the Rogue ability." },
+  { term: "CC", also: "crowd control", group: "Combat", text: "Crowd control: stuns, roots, fears, polymorph and anything else that stops an enemy acting." },
+  { term: "DR", also: "diminishing returns", group: "Combat", text: "Diminishing returns. The same kind of crowd control lasts less each time it is repeated on a target." },
+  { term: "CD / CDs", also: "cooldown", group: "Combat", text: "Cooldown. Usually means your big abilities: 'pop CDs' is 'use them now'." },
+  { term: "Defensive", also: "def personal", group: "Combat", text: "An ability that reduces the damage you take. A 'personal' only protects you; an 'external' is cast on someone else." },
+  { term: "Lust / BL / Hero", also: "bloodlust heroism time warp", group: "Combat", text: "Bloodlust, Heroism and their equivalents: a big haste buff for the whole group, usable once per fight." },
+  { term: "Brez / CR", also: "battle res combat res", group: "Combat", text: "Combat resurrection: bringing a dead player back during a fight." },
+  { term: "Dispel / Purge", also: "decurse cleanse", group: "Combat", text: "Dispel removes harmful effects from allies. Purge removes helpful effects from enemies." },
+  { term: "DoT / HoT", group: "Combat", text: "Damage over time / healing over time." },
+  { term: "AoE / ST", also: "single target cleave", group: "Combat", text: "Area of effect (many targets) / single target. Cleave is two or three targets close together." },
+  { term: "Proc", group: "Combat", text: "An effect that triggers by chance, like a free instant cast." },
+  { term: "GCD", also: "global cooldown", group: "Combat", text: "Global cooldown: the short pause after most abilities before you can use the next." },
+  { term: "Kite", group: "Combat", text: "Running from an enemy so it can't hit you while it chases." },
+  { term: "LoS", also: "line of sight", group: "Combat", text: "Line of sight. 'LoS the caster' means hide behind something so it has to walk to you." },
+  { term: "OOM", group: "Combat", text: "Out of mana." },
+  { term: "Wipe", group: "Combat", text: "Everyone dies and the fight starts over." },
+  { term: "Opener / Rotation / Prio", also: "priority", group: "Combat", text: "The opener is your first few seconds. Rotation or priority is the order you press buttons after that." },
+  { term: "Burst / Sustain", group: "Combat", text: "Burst is damage packed into a short window. Sustain is what you do the rest of the time." },
+  { term: "Soak", group: "Combat", text: "Stand in a mechanic on purpose so its damage is shared or absorbed." },
+  { term: "Stack / Spread", group: "Combat", text: "Stand together, or stand apart. Usually shouted for a boss mechanic." },
+  { term: "Taunt swap", group: "Combat", text: "Two tanks trading the boss when a stacking debuff gets too high." },
+
+  // Dungeons and raids
+  { term: "M+", also: "mythic plus keys", group: "Dungeons and raids", ed: "retail", text: "Mythic+: timed dungeons that scale with the level of your keystone." },
+  { term: "Key / Keystone", group: "Dungeons and raids", ed: "retail", text: "The item that starts a Mythic+ run. Its level sets the difficulty." },
+  { term: "Timed / In time", also: "depleted deplete", group: "Dungeons and raids", ed: "retail", text: "Finished before the timer ran out, which upgrades the key. A failed key is 'depleted' and drops a level." },
+  { term: "+2 / +3", also: "two chest three chest", group: "Dungeons and raids", ed: "retail", text: "Finishing fast enough to raise the key two or three levels." },
+  { term: "IO / Rating / Score", also: "rio raider.io", group: "Dungeons and raids", ed: "retail", text: "Your Mythic+ rating. 'IO' comes from Raider.IO, the site that tracked it first." },
+  { term: "Fort / Tyran", also: "fortified tyrannical", group: "Dungeons and raids", ed: "retail", text: "Fortified makes trash stronger; Tyrannical makes bosses stronger." },
+  { term: "Trash", group: "Dungeons and raids", text: "Every enemy that isn't a boss." },
+  { term: "Count / %", also: "enemy forces", group: "Dungeons and raids", ed: "retail", text: "Enemy forces: the share of trash you must kill before a Mythic+ key can finish." },
+  { term: "Route", also: "mdt", group: "Dungeons and raids", ed: "retail", text: "The planned path and pulls through a dungeon." },
+  { term: "Skip", group: "Dungeons and raids", text: "Getting past a pack without fighting it, by pathing, stealth or invisibility." },
+  { term: "AOTC / CE", also: "ahead of the curve cutting edge", group: "Dungeons and raids", ed: "retail", text: "Ahead of the Curve: the last raid boss killed on Heroic during its season. Cutting Edge: the same on Mythic." },
+  { term: "LFR / N / H / M", also: "raid finder normal heroic mythic", group: "Dungeons and raids", ed: "retail", text: "Raid difficulties, easiest to hardest: Raid Finder, Normal, Heroic, Mythic." },
+  { term: "Prog / Farm", also: "progression", group: "Dungeons and raids", text: "Prog is learning a boss you haven't killed. Farm is re-killing bosses you have." },
+  { term: "Lockout / Saved", also: "raid id", group: "Dungeons and raids", text: "Once you kill a boss you can't loot it again until the reset. Being 'saved' means you're locked." },
+  { term: "Reset", group: "Dungeons and raids", text: "When lockouts and weekly chores start over. In the Americas that's Tuesday; in Europe, Wednesday." },
+  { term: "Vault", also: "great vault", group: "Dungeons and raids", ed: "retail", text: "The Great Vault: a weekly choice of loot based on what you did the week before." },
+  { term: "Attunement", also: "attune", group: "Dungeons and raids", ed: "forever", text: "A quest chain or item you need before you can enter a raid." },
+  { term: "World buffs", also: "wb", group: "Dungeons and raids", ed: "forever", text: "Long-lasting buffs picked up in the world before a raid." },
+
+  // Gear and loot
+  { term: "ilvl", also: "item level gear score gs", group: "Gear and loot", text: "Item level. The quick measure of how strong a piece of gear, or a whole character, is." },
+  { term: "BiS", also: "best in slot", group: "Gear and loot", text: "Best in slot: the best possible item for that gear slot." },
+  { term: "BoE / BoP", also: "bind on equip pickup warbound", group: "Gear and loot", text: "Bind on Equip can be traded or sold until someone wears it. Bind on Pickup is yours the moment you loot it." },
+  { term: "Tier / Set", also: "tier set 2pc 4pc", group: "Gear and loot", text: "Class armor sets with bonuses for wearing two pieces (2pc) and four pieces (4pc)." },
+  { term: "Crests", group: "Gear and loot", ed: "retail", text: "The currency that upgrades gear. Each upgrade track uses its own crest." },
+  { term: "Track", also: "champion hero myth veteran adventurer", group: "Gear and loot", ed: "retail", text: "A piece of gear's upgrade track decides how far it can be upgraded: Adventurer, Veteran, Champion, Hero or Myth." },
+  { term: "Catalyst", group: "Gear and loot", ed: "retail", text: "Turns an ordinary piece of season gear into the tier-set piece for that slot." },
+  { term: "Sim", also: "simulate raidbots simc", group: "Gear and loot", ed: "retail", text: "Running your character through a simulator to see which gear or talents do more damage." },
+  { term: "Need / Greed", also: "roll pass", group: "Gear and loot", text: "Loot rolls. Need is for an upgrade you'll use; Greed is for everything else." },
+  { term: "Reserve / SR", also: "soft res hard res hr", group: "Gear and loot", text: "An item claimed before the run. Soft reserve: reservers roll among themselves. Hard reserve: it goes to one person, no roll." },
+  { term: "Ninja", group: "Gear and loot", text: "Taking loot against the group's agreed rules." },
+  { term: "Stat prio", also: "secondary stats haste crit mastery versatility", group: "Gear and loot", text: "The order of stats your spec prefers. Each Retail build page here lists it." },
+  { term: "Twink", group: "Gear and loot", text: "A low-level character geared far beyond what's normal for its level." },
+
+  // Chat and trade
+  { term: "WTS / WTB / WTT", group: "Chat and trade", text: "Want to sell / want to buy / want to trade." },
+  { term: "AH", also: "auction house", group: "Chat and trade", text: "The auction house." },
+  { term: "Mats", also: "materials reagents", group: "Chat and trade", text: "Crafting materials." },
+  { term: "CoD", also: "cash on delivery", group: "Chat and trade", text: "Mail that the receiver has to pay for before they can take the item." },
+  { term: "PST", also: "whisper w/ me", group: "Chat and trade", text: "Please send tell: whisper me." },
+  { term: "Inv", also: "invite", group: "Chat and trade", text: "Invite me to the group. '123 for inv' means type 123 to be invited." },
+  { term: "GZ / Grats", group: "Chat and trade", text: "Congratulations." },
+  { term: "AFK / BRB / BIO", group: "Chat and trade", text: "Away from keyboard / be right back / short bathroom break." },
+  { term: "r / rdy", also: "ready check", group: "Chat and trade", text: "Ready." },
+  { term: "Hearth / HS", also: "hearthstone", group: "Chat and trade", text: "Hearthstone: the item that teleports you back to your inn." },
+  { term: "GM", also: "guild master", group: "Chat and trade", text: "Guild master. Also a Blizzard game master." },
+  { term: "Gank", group: "Chat and trade", text: "Killing a player who can't fight back, usually out in the world." }
+];
+
+/** Slash commands. `{…}` marks something you type yourself. */
+export const COMMAND_GROUPS = ["Group and raid", "Interface", "Chat", "Character", "Macros and targeting"];
+
+export const COMMANDS = [
+  { cmd: "/readycheck", group: "Group and raid", text: "Ask everyone to confirm they're ready. Leader or assistant only." },
+  { cmd: "/countdown 10", also: "/cd /pull timer", group: "Group and raid", ed: "retail", text: "Start a visible pull countdown, here 10 seconds. /cd 10 is the short form. Boss mod addons add /pull 10." },
+  { cmd: "/roll", also: "/random /rnd", group: "Group and raid", text: "Roll 1 to 100. /roll 50 rolls 1 to 50." },
+  { cmd: "/invite {name}", also: "/inv", group: "Group and raid", text: "Invite a player to your group." },
+  { cmd: "/p, /ra, /rw, /i", also: "party raid warning instance", group: "Group and raid", text: "Talk in party, raid, raid warning (leader or assistant) or instance chat." },
+  { cmd: "/tm 1 to /tm 8", also: "target marker raid icon skull", group: "Group and raid", text: "Put a raid marker on your target. 8 is skull, 7 is cross, 0 clears it." },
+  { cmd: "/wm 1 to /wm 8", also: "world marker", group: "Group and raid", ed: "retail", text: "Drop a world marker at your cursor. /cwm 0 clears them all." },
+
+  { cmd: "/reload", also: "/rl reload ui", group: "Interface", text: "Reload the interface. The first thing to try when an addon misbehaves." },
+  { cmd: "/fstack", also: "frame stack", group: "Interface", text: "Show the name of whatever interface element is under your cursor. Type it again to turn it off." },
+  { cmd: "/console scriptErrors 1", also: "lua errors", group: "Interface", text: "Show interface errors on screen. Use 0 to hide them again." },
+  { cmd: "/console cameraDistanceMaxZoomFactor 2.6", also: "max camera zoom", group: "Interface", ed: "retail", text: "Let the camera zoom out as far as the game allows." },
+  { cmd: "/console Sound_EnableErrorSpeech 0", also: "not enough rage error voice", group: "Interface", text: "Silence the 'I can't do that yet' voice lines. Use 1 to bring them back." },
+  { cmd: "/stopwatch", also: "/sw timer", group: "Interface", text: "Open a simple stopwatch and countdown timer." },
+  { cmd: "/macro", also: "/m", group: "Interface", text: "Open the macro window." },
+
+  { cmd: "/w {name}", also: "/whisper /t /tell", group: "Chat", text: "Whisper a player. /r replies to the last whisper you got." },
+  { cmd: "/s, /y, /g, /o", also: "say yell guild officer", group: "Chat", text: "Say, yell, guild chat, officer chat." },
+  { cmd: "/1, /2, /4", also: "general trade lfg channel", group: "Chat", text: "Numbered channels. Usually 1 is General, 2 is Trade and 4 is Looking for Group." },
+  { cmd: "/join {channel}", also: "/leave channel", group: "Chat", text: "Join a chat channel. /leave followed by its number leaves it." },
+  { cmd: "/who {name or class}", group: "Chat", text: "Search for players who are online." },
+  { cmd: "/ignore {name}", also: "block", group: "Chat", text: "Stop seeing a player's messages." },
+  { cmd: "/friend {name}", also: "add friend", group: "Chat", text: "Add a character to your friends list." },
+  { cmd: "/afk, /dnd", also: "away busy", group: "Chat", text: "Mark yourself away or busy. Add a message after it if you like." },
+  { cmd: "/combatlog", also: "warcraft logs logging", group: "Chat", text: "Start or stop saving the combat log to a file, for uploading to a log site." },
+
+  { cmd: "/played", group: "Character", text: "How long you've played this character, in total and at this level." },
+  { cmd: "/logout, /exit", also: "/camp /quit", group: "Character", text: "Log out to the character screen, or quit the game." },
+  { cmd: "/sit, /stand, /sleep", group: "Character", text: "Sit, stand up or lie down." },
+  { cmd: "/dismount", group: "Character", text: "Get off your mount. Handy at the top of a macro." },
+  { cmd: "/follow", also: "/f", group: "Character", text: "Follow your target." },
+  { cmd: "/inspect", also: "/ins", group: "Character", text: "Look at your target's gear." },
+  { cmd: "/trade", group: "Character", text: "Open a trade with your target." },
+  { cmd: "/duel, /forfeit", also: "/yield", group: "Character", text: "Challenge your target to a duel, or give up one you're in." },
+  { cmd: "/dance, /wave, /cheer, /thank", also: "emote", group: "Character", text: "A few of the many emotes. /e followed by text makes your own." },
+
+  { cmd: "/cast {spell}", also: "/use", group: "Macros and targeting", text: "Cast a spell. /use does the same for an item." },
+  { cmd: "/cast [@mouseover,exists] {spell}", also: "mouseover macro", group: "Macros and targeting", text: "Cast on whatever your cursor is over without changing target. The Macros page builds these for you." },
+  { cmd: "/focus", also: "/clearfocus", group: "Macros and targeting", text: "Set your target as your focus, so you can keep an eye on it or interrupt it while targeting something else." },
+  { cmd: "/target {name}", also: "/tar", group: "Macros and targeting", text: "Target the nearest unit whose name starts with what you typed." },
+  { cmd: "/targetenemy, /targetlasttarget", also: "tab target", group: "Macros and targeting", text: "Cycle to the next enemy, or go back to your previous target." },
+  { cmd: "/assist {name}", group: "Macros and targeting", text: "Target whatever that player is targeting." },
+  { cmd: "/stopcasting", group: "Macros and targeting", text: "Cancel your current cast. Put it before an interrupt so the interrupt goes off immediately." },
+  { cmd: "/cancelaura {buff}", group: "Macros and targeting", text: "Remove one of your own buffs." },
+  { cmd: "/petattack, /petfollow, /petpassive", also: "pet", group: "Macros and targeting", text: "Basic pet orders for macros." },
+  { cmd: "#showtooltip", group: "Macros and targeting", text: "First line of a macro: makes the button show the icon and tooltip of the spell it will cast." }
+];

@@ -4,7 +4,7 @@
 import { html, raw } from "../../lib/dom.js";
 import { decodeLoadoutCode } from "../../lib/loadout-code.mjs";
 
-const ICON = (name) => `https://wow.zamimg.com/images/wow/icons/large/${name || "inv_misc_questionmark"}.jpg`;
+export const ICON = (name) => `https://wow.zamimg.com/images/wow/icons/large/${name || "inv_misc_questionmark"}.jpg`;
 const SPELL_URL = (id) => `https://www.wowhead.com/spell=${id}`;
 const cache = new Map(); // "class-spec" -> Promise<tree | null>
 
@@ -166,7 +166,8 @@ export function activateTree(container) {
 let tip = null;
 
 function showTip(node) {
-  if (document.documentElement.classList.contains("has-wowhead")) return;
+  // Wowhead only decorates links; buttons (the calculator) always use the built-in label.
+  if (node.tagName === "A" && document.documentElement.classList.contains("has-wowhead")) return;
   if (!tip) {
     tip = document.createElement("div");
     tip.className = "tree-tip";

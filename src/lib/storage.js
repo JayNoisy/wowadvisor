@@ -19,7 +19,10 @@ export const KEYS = {
   // Tools
   weekly: "wowadvisor_weekly_v1",
   party: "wowadvisor_party_v1",
-  macro: "wowadvisor_macro_v1"
+  macro: "wowadvisor_macro_v1",
+  gearCalc: "wowadvisor_gear_calc_v1",
+  calc: "wowadvisor_talent_calc_v1",
+  foreverPlanner: "wowadvisor_forever_planner_v1"
 };
 
 export function readJson(key, fallback) {

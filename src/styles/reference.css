@@ -1,0 +1,178 @@
+/* Gear and upgrades, Talent calculator, Lingo and commands, WoW Forever talent planner. */
+
+/* ---------- Gear ---------- */
+.gear-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: var(--s-4); }
+.gear-section { margin-top: var(--s-7); }
+.gear-answer { display: grid; gap: 0; margin-top: var(--s-5); }
+.gear-answer > div { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--s-1) var(--s-3); padding: var(--s-3) 0; border-top: 1px solid var(--line); }
+.gear-answer dt { color: var(--ink-2); font-weight: 650; }
+.gear-answer dd strong { font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); font-size: var(--step-3); line-height: 1; }
+.gear-track { color: var(--muted); font-size: var(--step--1); font-weight: 600; white-space: nowrap; }
+.gear-hint { margin-top: var(--s-3); color: var(--muted); font-size: var(--step--1); }
+.gear-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.gear-table th, .gear-table td { padding: var(--s-3) var(--s-2); text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.gear-table tbody tr:last-child th, .gear-table tbody tr:last-child td { border-bottom: 0; }
+.gear-table thead th { color: var(--muted); font-size: var(--step--1); font-weight: 650; }
+.gear-table th:first-child { text-align: left; white-space: normal; font-weight: 750; }
+.gear-table td strong { font-size: var(--step-1); font-weight: 700; }
+.gear-table td:not(:has(strong)) { font-weight: 650; }
+.gear-table .col-wide { min-width: 16rem; text-align: left; white-space: normal; color: var(--ink-2); font-weight: 500; line-height: 1.4; }
+.calc-row { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--s-3); margin-top: var(--s-4); }
+.calc-label { margin: var(--s-4) 0 var(--s-2); color: var(--ink-2); font-weight: 650; }
+.rank-pick { display: flex; }
+.rank-pick button { flex: 1; padding: 0 var(--s-1); }
+.calc-result { margin-top: var(--s-4); padding-top: var(--s-4); border-top: 1px solid var(--line); color: var(--ink-2); line-height: 1.5; }
+.calc-result strong { color: var(--ink); }
+
+/* ---------- Talent calculator ---------- */
+.calc-body { display: grid; gap: var(--s-4); }
+.calc-bar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr); gap: var(--s-3); align-items: end; }
+.calc-import { display: flex; align-items: flex-end; gap: var(--s-2); }
+.calc-import .field { flex: 1; min-width: 0; }
+.calc-status { display: grid; gap: var(--s-4); }
+.calc-counts { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-6); }
+.calc-count { color: var(--muted); font-weight: 650; white-space: nowrap; }
+.calc-count strong { color: var(--ink); font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); font-size: var(--step-4); line-height: 1; }
+.calc-count.is-full strong { color: var(--good); }
+.calc-heroes, .calc-presets { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-2) var(--s-3); }
+.calc-heroes .calc-label { margin: 0; }
+.calc-mode.is-active { background: var(--ink); color: var(--bg); }
+.calc-status .loadout-label { margin-top: 0; }
+
+button.tnode { padding: 0; border: 0; background: none; cursor: pointer; font: inherit; }
+.cnode.is-open:not(.is-on) { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--good); }
+.cnode.is-open img { filter: none; opacity: 0.85; }
+.cnode.is-on.is-open { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--ink), 0 0 0 6px var(--good); }
+.cnode.is-free { cursor: default; }
+.cnode:not(.is-on):not(.is-open) { cursor: not-allowed; }
+.is-removing .cnode.is-on:not(.is-free) { cursor: pointer; box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--accent); }
+.tree-foot-row { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-2) var(--s-4); }
+
+/* ---------- Lingo and commands ---------- */
+.lingo-bar { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-3); margin-bottom: var(--s-5); }
+.lingo-search { flex: 1; min-width: min(100%, 16rem); max-width: 28rem; }
+.lingo-group { margin-top: var(--s-6); }
+.lingo-group:first-child { margin-top: 0; }
+.lingo-list { display: grid; margin-top: var(--s-3); background: var(--surface); border-radius: var(--r-lg); padding: var(--s-2) var(--s-5); }
+.lingo-row { display: grid; grid-template-columns: minmax(9rem, 14rem) minmax(0, 1fr); gap: var(--s-2) var(--s-5); padding: var(--s-3) 0; border-bottom: 1px solid var(--line); }
+.lingo-row:last-child { border-bottom: 0; }
+.lingo-row.is-cmd { grid-template-columns: minmax(12rem, 22rem) minmax(0, 1fr); }
+.lingo-row dt { font-weight: 750; color: var(--ink); overflow-wrap: anywhere; }
+.lingo-row dd { color: var(--ink-2); line-height: 1.5; }
+.lingo-ed { display: inline-block; margin-left: var(--s-1); padding: 1px 8px; border-radius: var(--r-pill); background: var(--surface-3); color: var(--ink-2); font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+.cmd { display: inline-block; max-width: 100%; padding: 3px 8px; border: 0; border-radius: var(--r-sm); background: var(--surface-3); color: var(--ink); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88rem; font-weight: 600; text-align: left; overflow-wrap: anywhere; }
+button.cmd { cursor: copy; }
+button.cmd:hover { background: var(--ink); color: var(--bg); }
+.lingo-empty { padding: var(--s-5) 0; }
+
+/* ---------- WoW Forever talent planner ---------- */
+.plan-pick { margin-bottom: var(--s-3); color: var(--ink-2); font-weight: 650; }
+.plan-classes { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.plan-class { min-height: 40px; padding: 0 var(--s-4); border: 0; border-radius: var(--r-pill); background: var(--surface); color: var(--ink-2); font-weight: 650; }
+.plan-class:hover { background: var(--surface-2); color: var(--ink); }
+.plan-class.is-active { background: var(--cc, var(--ink)); color: var(--cc-ink, var(--bg)); }
+.plan-summary { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-4); }
+.plan-split { font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); font-size: var(--step-4); line-height: 1.05; }
+.plan-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.plan-presets { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-4); }
+.plan-help { margin-top: var(--s-3); color: var(--muted); font-size: var(--step--1); }
+.plan-trees { grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); }
+.ptalent { display: inline-flex; align-items: stretch; gap: 2px; }
+button.ftalent { background: none; font: inherit; font-size: var(--step--1); cursor: pointer; color: var(--ink-2); border-color: var(--line-strong); }
+button.ftalent:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); }
+button.ftalent:disabled { cursor: not-allowed; opacity: 0.45; }
+button.ftalent.is-on { border-color: transparent; background: var(--cc, var(--ink)); color: var(--cc-ink, var(--bg)); }
+.ptalent-sub { width: 26px; border: 1px solid var(--line-strong); border-radius: var(--r-sm); background: none; color: var(--ink-2); font-weight: 700; line-height: 1; }
+.ptalent-sub:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); }
+.ptalent-sub:disabled { opacity: 0.35; cursor: not-allowed; }
+.ftree-tier.is-locked .ftree-tier-label { opacity: 0.55; }
+.tree-build-side { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-2) var(--s-3); }
+
+@media (max-width: 900px) {
+  .gear-top { grid-template-columns: 1fr; }
+  .calc-bar { grid-template-columns: 1fr 1fr; }
+  .calc-import { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .lingo-row, .lingo-row.is-cmd { grid-template-columns: 1fr; gap: var(--s-1); }
+  .lingo-list { padding: var(--s-1) var(--s-4); }
+  .calc-status .loadout-row { flex-wrap: wrap; }
+}
+
+/* ---------- WoW Forever trees, drawn like the in-game talent window ---------- */
+.fgrids { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr)); }
+.fgrid { display: grid; justify-items: center; }
+.fgrid .ftree-head { width: 100%; margin-bottom: var(--s-3); }
+.ftree-grid { --cell: clamp(46px, 5.2vw, 58px); margin: 0 auto; }
+.fnode { width: 80%; border-radius: 16%; cursor: default; }
+button.fnode { cursor: pointer; }
+.fnode .tnode-rank { right: -7px; bottom: -7px; }
+.fnode .tnode-rank.is-zero { background: var(--surface-3); color: var(--muted); }
+.fnode.is-open .tnode-rank.is-zero { background: var(--good); color: var(--bg); }
+.fnode.is-on { box-shadow: 0 0 0 2px var(--surface-2), 0 0 0 4px var(--cc, var(--ink)); }
+.fnode.is-on:not(.is-part) .tnode-rank { background: var(--cc, var(--ink)); color: var(--cc-ink, var(--bg)); }
+.fnode.is-open:not(.is-on) { box-shadow: 0 0 0 2px var(--surface-2), 0 0 0 4px var(--good); }
+.fnode.is-open img { filter: none; opacity: 0.9; }
+button.fnode:not(.is-open):not(.is-on) { cursor: not-allowed; }
+.fgrid .tree-lines line { stroke-width: 3; }
+.fgrid .tree-lines line.is-on { stroke: var(--cc, var(--ink)); stroke-width: 3.5; }
+.is-removing button.fnode.is-on { cursor: pointer; box-shadow: 0 0 0 2px var(--surface-2), 0 0 0 4px var(--accent); }
+
+.level-order { margin-top: var(--s-6); padding-top: var(--s-5); border-top: 1px solid var(--line); }
+.level-order h4 { font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); font-size: var(--step-2); }
+.level-steps { display: grid; margin-top: var(--s-4); }
+.level-step { display: grid; grid-template-columns: 5.5rem minmax(0, 15rem) minmax(0, 1fr); gap: var(--s-1) var(--s-4); align-items: baseline; padding: var(--s-2) 0; border-bottom: 1px solid var(--line); }
+.level-step:last-child { border-bottom: 0; }
+.level-range { font-variant-numeric: tabular-nums; font-weight: 750; color: var(--ink); white-space: nowrap; }
+.level-talent .muted { font-size: var(--step--1); white-space: nowrap; }
+.level-text { color: var(--ink-2); font-size: var(--step--1); line-height: 1.45; }
+.level-step.is-key .level-talent strong { color: var(--accent); }
+@media (max-width: 700px) {
+  .level-step { grid-template-columns: 4.5rem minmax(0, 1fr); }
+  .level-text { grid-column: 2; }
+  .ftree-grid { --cell: clamp(46px, 16vw, 60px); }
+}
+
+/* ---------- Tier lists ---------- */
+.tiers-bar { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-bottom: var(--s-4); }
+.tiers-card { padding: var(--s-3) var(--s-5); }
+.tier-row { display: grid; grid-template-columns: 3.4rem minmax(0, 1fr); gap: var(--s-4); align-items: start; padding: var(--s-4) 0; border-bottom: 1px solid var(--line); }
+.tier-row:last-child { border-bottom: 0; }
+.tier-letter { display: grid; place-items: center; width: 3.4rem; height: 3.4rem; border-radius: var(--r-md); background: var(--surface-3); color: var(--ink); font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); font-size: var(--step-3); line-height: 1; }
+.tier-letter.tier-s { background: var(--ink); color: var(--bg); }
+.tier-letter.tier-a { background: color-mix(in srgb, var(--ink) 55%, var(--surface-3)); color: var(--bg); }
+.tier-letter.tier-d { color: var(--muted); }
+.tier-specs { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.tier-spec { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: var(--s-2); min-height: 44px; padding: 6px var(--s-4) 6px 6px; border-radius: var(--r-pill); background: var(--surface-2); color: var(--ink-2); text-decoration: none; box-shadow: inset 3px 0 0 var(--cc, transparent); transition: background-color 0.15s, color 0.15s; }
+.tier-spec:not(:has(img)) { padding-left: var(--s-4); }
+.tier-spec img { grid-row: 1 / span 2; width: 28px; height: 28px; border-radius: 50%; }
+.tier-spec strong { color: var(--ink); font-weight: 750; }
+.tier-spec-name { white-space: nowrap; }
+.tier-spec-by { grid-column: 2; color: var(--muted); font-size: 0.72rem; line-height: 1.2; white-space: nowrap; }
+.tier-spec:hover { background: var(--cc, var(--ink)); color: var(--cc-ink, var(--bg)); }
+.tier-spec:hover strong, .tier-spec:hover .tier-spec-by { color: inherit; }
+.tiers-about { margin-top: var(--s-6); max-width: 76ch; }
+.tiers-sources { display: grid; gap: var(--s-2); margin-top: var(--s-3); padding-left: 1.2em; list-style: disc; color: var(--ink-2); line-height: 1.5; }
+.tiers-empty { padding: var(--s-5) 0; }
+@media (max-width: 560px) {
+  .tier-row { grid-template-columns: 2.6rem minmax(0, 1fr); gap: var(--s-3); }
+  .tier-letter { width: 2.6rem; height: 2.6rem; font-size: var(--step-2); }
+  .tiers-card { padding: var(--s-2) var(--s-4); }
+  .tier-spec-name { white-space: normal; }
+}
+
+/* How a class's players split between trees while leveling */
+.level-shares { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-2); margin-top: var(--s-4); }
+.level-share { display: grid; gap: 6px; padding: var(--s-3); border-radius: var(--r-md); background: var(--surface-2); }
+.level-share a { color: var(--ink-2); text-decoration: none; line-height: 1.3; }
+.level-share a:hover { color: var(--ink); }
+.level-share strong { color: var(--ink); font-size: var(--step-1); }
+.level-share.is-current { box-shadow: inset 0 0 0 2px var(--cc, var(--ink)); }
+.level-share-top { display: inline-block; margin-left: 2px; padding: 1px 7px; border-radius: var(--r-pill); background: var(--surface-3); font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+.level-share-bar { height: 6px; border-radius: var(--r-pill); background: var(--surface-3); overflow: hidden; }
+.level-share-bar i { display: block; height: 100%; border-radius: inherit; background: var(--cc, var(--ink)); }
+.level-gap { margin-top: var(--s-5); padding-top: var(--s-4); border-top: 1px dashed var(--line-strong); color: var(--ink-2); font-weight: 650; }
+.level-actions { margin-top: var(--s-4); }
+@media (max-width: 560px) { .level-shares { grid-template-columns: 1fr; } }
+.level-alt { margin-top: var(--s-3); }
+.level-alt summary { cursor: pointer; padding: var(--s-2) 0; color: var(--ink); font-weight: 700; }

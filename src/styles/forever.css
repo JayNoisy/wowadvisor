@@ -191,7 +191,7 @@ input[type="range"]:focus-visible::-moz-range-thumb { outline: 2px solid var(--f
 .ftree.is-main { box-shadow: inset 0 0 0 2px var(--cc, var(--ink)); }
 .ftree.is-empty { opacity: 0.6; }
 .ftree-head { padding: 0; margin: 0; border: 0; min-height: 0; display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-2); }
-.ftree-head h5 { font-size: var(--step-1); font-weight: 750; }
+.ftree-head h5 { margin: 0; font-size: var(--step-1); font-weight: 750; }
 .ftree-spent { color: var(--muted); font-size: var(--step--1); font-weight: 650; white-space: nowrap; }
 .ftree-tiers { display: grid; gap: var(--s-2); margin-top: var(--s-3); }
 .ftree-tier { display: grid; grid-template-columns: 3.1rem minmax(0, 1fr); gap: var(--s-2); align-items: start; padding-top: var(--s-2); border-top: 1px solid var(--line); }

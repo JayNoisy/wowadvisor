@@ -43,6 +43,8 @@ function parseWowAnalyzerIcons(text) {
 }
 
 async function main() {
+  let knownBuilds = {};
+  try { knownBuilds = JSON.parse(await fs.readFile(path.join(ROOT, "builds.json"), "utf8")).builds || {}; } catch { /* first run without builds */ }
   const blizzard = JSON.parse(await fs.readFile(path.join(ROOT, "talent-trees.json"), "utf8"));
   const { build, traits, subTrees } = parseTraitData(await source("trait_data.inc", SIMC_TRAIT_URL));
   if (traits.length < 2000) throw new Error(`Trait table looks wrong: only ${traits.length} rows parsed`);
@@ -124,6 +126,8 @@ async function main() {
         max: tiered ? list.reduce((sum, t) => sum + t.maxRanks, 0) : Math.max(...list.map((t) => t.maxRanks)),
         ...(list.length > 1 ? { kind: tiered ? "tiered" : "choice" } : {}),
         ...(first.reqPoints ? { req: first.reqPoints } : {}),
+        // Granted for free to this spec (shown as taken, costs no point).
+        ...(list.some((t) => (t.starterSpecIds || []).includes(spec.specId)) ? { free: true } : {}),
         entries,
         next: [...(next.get(id) || [])].filter((to) => visible.has(to)),
         _explicit: list.some((t) => t.specIds.includes(spec.specId))
@@ -186,6 +190,34 @@ async function main() {
       cells.add(key);
     }
 
+    // Learn from real loadout codes for this spec: which talents the game grants for free, and which of two
+    // same-cell node ids this spec actually uses. The trait table doesn't always say.
+    {
+      const byId = new Map();
+      for (const n of nodes) { byId.set(n.id, n); for (const alt of n.alt || []) byId.set(alt, n); }
+      for (const entry of Object.values(knownBuilds?.[spec.className]?.[spec.specName] || {})) {
+        for (const code of [entry?.exportString, entry?.selected?.exportString].filter(Boolean)) {
+          const d = decodeLoadoutCode(code, order);
+          if (!d.ok || (d.specId && d.specId !== spec.specId)) continue;
+          for (const [id, sel] of d.nodes) {
+            const n = byId.get(id);
+            if (!n) continue;
+            if (!sel.purchased) n.free = true;
+            // Listed with two entries, but this spec's codes never carry a choice for it.
+            if (sel.purchased && sel.choice == null && n.kind === "choice") n.single = true;
+            if (sel.purchased && sel.choice != null) n._choiceSeen = true;
+            if (id !== n.id) {
+              const old = n.id;
+              n.alt = [old, ...n.alt.filter((x) => x !== id)];
+              n.id = id;
+              for (const other of nodes) if (other.next?.includes(old)) other.next = other.next.map((to) => (to === old ? id : to));
+            }
+          }
+        }
+      }
+    }
+
+    for (const n of nodes) { if (n._choiceSeen) delete n.single; delete n._choiceSeen; }
     const file = `${slug(spec.className)}-${slug(spec.specName)}.json`;
     const out = {
       build,
@@ -208,7 +240,7 @@ async function main() {
   console.log(report.join("\n"));
 
   // Self-check: every recommended build must decode cleanly against the node order we just wrote.
-  const builds = JSON.parse(await fs.readFile(path.join(ROOT, "builds.json"), "utf8")).builds || {};
+  const builds = knownBuilds;
   let ok = 0;
   const bad = [];
   for (const s of index.specs) {

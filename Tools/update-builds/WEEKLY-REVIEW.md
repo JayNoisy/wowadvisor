@@ -28,9 +28,33 @@ How picks are chosen:
 
 ## WoW Forever
 
-Forever has no loadout codes or player data yet, so its trees and builds are kept by hand in `Tools/forever/`:
+Forever has no loadout codes yet, so its trees and builds are kept by hand in `Tools/forever/`:
 `trees.txt` (every talent, max rank, points its tier needs) and `builds.txt` (one recommended build per tree, with
 the guide it is credited to). Both come from timesaver.gg's WoW Forever talent calculator pages
 (`/tools/wow-forever/talent-calculator/<class>` and `/<class>/<tree>`). After editing either file run
 `node Tools/forever/build-forever-talents.mjs`; it refuses to write if a build names a missing talent, overspends a
 talent, skips a tier requirement or doesn't add up to its stated split.
+
+## Tier lists (every week)
+
+The Tier lists page is built from `Tools/tiers/sources.txt` by `node Tools/tiers/build-tier-list.mjs`, which writes
+`src/data/tier-list.json` and refuses to run if a spec name doesn't match the site's class data or a spec is filed
+under the wrong role. Each week, re-read every source named in `sources.txt` with WebFetch, rewrite its block with
+the current tiers and its "updated" date, and rebuild:
+
+- Mythic+: Icy Veins (`/wow/mythic-dps-tier-list`, `/wow/mythic-healer-tier-list`, `/wow/mythic-tank-tier-list`)
+  and Method (`/guides/tier-list/mythic-plus`).
+- Raid: Method (`/guides/tier-list/raiding`).
+- PvP: wow.gg (`/meta/pvp/dps`, `/meta/pvp/healer`, `/meta/pvp/tank`; 2v2 popularity among top-rated players).
+- WoW Forever PvE: SeeMeta (`/en/wow-forever/tier-list`).
+
+If a source can't be read, keep its previous block and date rather than guessing. Copy tiers exactly as published.
+
+The Forever tree layouts (`Tools/forever/layout.txt`) come from Talents Forever's export
+(`https://talentsforever.com/export/<class>.json`, CC BY 4.0). `build-forever-talents.mjs` cross-checks them against
+`trees.txt` and regenerates every build's leveling order.
+
+Forever leveling orders (`Tools/forever/leveling.txt`) are the most common orders among builds planned on Talents
+Forever (`https://talentsforever.com/<class>/leveling`). When that page's "counted" date changes, rewrite the
+class's blocks and rerun `build-forever-talents.mjs`; it replays every order against the tree rules and cuts any
+order at the first step the game wouldn't allow (it prints a warning when it does).

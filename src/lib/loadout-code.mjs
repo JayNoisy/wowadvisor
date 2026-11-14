@@ -56,3 +56,33 @@ export function decodeLoadoutCode(code, nodeOrder) {
 
   return { ok: !overrun && trailing === 0, version, specId, nodes, overrun, trailingBitsSet: trailing === 1 };
 }
+
+/**
+ * Writes a loadout export code. `nodes` maps node id -> { purchased, rank (null = full), choice (null = not a choice) },
+ * the same shape decodeLoadoutCode returns. The tree hash is written as zeros, which the game accepts
+ * (it then skips its "is this from the current patch" check and validates the talents themselves).
+ */
+export function encodeLoadoutCode({ version = 2, specId, nodeOrder, nodes }) {
+  const bits = [];
+  const write = (value, n) => { for (let i = 0; i < n; i++) bits.push((value >> i) & 1); };
+  write(version, 8);
+  write(specId, 16);
+  for (let i = 0; i < 128; i++) bits.push(0);
+  for (const nodeId of nodeOrder) {
+    const sel = nodes.get(nodeId);
+    if (!sel) { bits.push(0); continue; }
+    bits.push(1);
+    bits.push(sel.purchased ? 1 : 0);
+    if (!sel.purchased) continue;
+    if (sel.rank != null) { bits.push(1); write(sel.rank, 6); } else bits.push(0);
+    if (sel.choice != null) { bits.push(1); write(sel.choice, 2); } else bits.push(0);
+  }
+  while (bits.length % 6) bits.push(0);
+  let out = "";
+  for (let i = 0; i < bits.length; i += 6) {
+    let v = 0;
+    for (let j = 0; j < 6; j++) v |= bits[i + j] << j;
+    out += ALPHABET[v];
+  }
+  return out;
+}

@@ -48,11 +48,16 @@
         <a href="#mplus" data-nav="mplus" data-for="retail" data-icon="mplus"><span>Mythic+</span></a>
         <a href="#party" data-nav="party" data-for="retail" data-icon="party"><span>Group check</span></a>
         <a href="#armory" data-nav="armory" data-for="retail" data-icon="armory"><span>Armory</span></a>
+        <a href="#calc" data-nav="calc" data-for="retail" data-icon="tree"><span>Talent calculator</span></a>
+        <a href="#gear" data-nav="gear" data-for="retail" data-icon="gem"><span>Gear &amp; upgrades</span></a>
         <a href="#forever" data-nav="forever" data-for="forever" data-icon="forever"><span>Classes</span></a>
+        <a href="#planner" data-nav="planner" data-for="forever" data-icon="tree"><span>Talent planner</span></a>
         <a href="#atlas" data-nav="atlas" data-for="forever" data-icon="atlas"><span>Dungeons &amp; raids</span></a>
         <a href="#levels" data-nav="levels" data-for="forever" data-icon="levels"><span>Level guide</span></a>
         <a href="#todo" data-nav="todo" data-for="forever" data-icon="weekly"><span>To-do list</span></a>
+        <a href="#tiers" data-nav="tiers" data-icon="tiers"><span>Tier lists</span></a>
         <a href="#macros" data-nav="macros" data-icon="macros"><span>Macros</span></a>
+        <a href="#lingo" data-nav="lingo" data-icon="book"><span>Lingo &amp; commands</span></a>
         <a href="#links" data-nav="links" data-for="retail" data-icon="links"><span>Resources</span></a>
       </nav>
 
@@ -232,6 +237,51 @@
             <p class="muted">The sites worth knowing, sorted by what you're trying to do. Pick a character and the links open straight on their profile.</p>
           </header>
           <div id="linksBody" class="links-body"></div>
+        </section>
+
+        <!-- ================= RETAIL: GEAR ================= -->
+        <section id="view-gear" class="view view-gear" hidden aria-labelledby="gearHeading">
+          <header class="page-head">
+            <h1 id="gearHeading">Gear and upgrades</h1>
+            <p class="muted">What item level drops where this season, how far each piece can be upgraded, and what it costs to get there.</p>
+          </header>
+          <div id="gearBody" class="gear-body"></div>
+        </section>
+
+        <!-- ================= RETAIL: TALENT CALCULATOR ================= -->
+        <section id="view-calc" class="view view-calc" hidden aria-labelledby="calcHeading">
+          <header class="page-head">
+            <h1 id="calcHeading">Talent calculator</h1>
+            <p class="muted">Plan a build on the real trees, or paste a loadout code to see and change it. Copy the code when you're done and import it in game.</p>
+          </header>
+          <div id="calcBody" class="calc-body"></div>
+        </section>
+
+        <!-- ================= SHARED: TIER LISTS ================= -->
+        <section id="view-tiers" class="view view-tiers" hidden aria-labelledby="tiersHeading">
+          <header class="page-head">
+            <h1 id="tiersHeading">Tier lists</h1>
+            <p class="muted">Which specs are strongest right now, by role. Refreshed every week from the sources listed under each ranking.</p>
+          </header>
+          <div id="tiersBody" class="tiers-body"></div>
+        </section>
+
+        <!-- ================= SHARED: LINGO ================= -->
+        <section id="view-lingo" class="view view-lingo" hidden aria-labelledby="lingoHeading">
+          <header class="page-head">
+            <h1 id="lingoHeading">Lingo and commands</h1>
+            <p class="muted">What people mean in chat, and the slash commands worth knowing. Type to filter.</p>
+          </header>
+          <div id="lingoBody" class="lingo-body"></div>
+        </section>
+
+        <!-- ================= FOREVER: TALENT PLANNER ================= -->
+        <section id="view-planner" class="view view-planner" hidden aria-labelledby="plannerHeading">
+          <header class="page-head">
+            <h1 id="plannerHeading">Talent planner</h1>
+            <p class="muted">Spend your 51 points across the three trees and share the link. Start from a recommended build or from scratch.</p>
+          </header>
+          <div id="plannerBody" class="planner-body"></div>
         </section>
 
         <!-- ================= SHARED: MACROS ================= -->
