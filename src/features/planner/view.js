@@ -8,11 +8,13 @@ import { navigate } from "../../lib/router.js";
 import { KEYS, readJson, writeJson } from "../../lib/storage.js";
 import { setClassColor } from "../../lib/color.js";
 import { toast } from "../../lib/toast.js";
+import { foreverTreeGridHtml } from "../forever/tree-grid.js";
 
 const MAX_POINTS = 51;
 const FIRST_POINT_LEVEL = 10;
 let els = {};
 let state = { classSlug: null, points: [] }; // points[treeIndex][talentIndex]
+let removeMode = false;
 
 const classData = (slug) => FOREVER_TALENTS[slug] || null;
 const classInfo = (slug) => FOREVER_CLASSES.find((c) => c.slug === slug) || null;
@@ -51,6 +53,18 @@ function decode(slug, text) {
       below = tree.talents.reduce((sum, t, i) => sum + (t.needs <= needs ? points[ti][i] : 0), 0);
     }
   });
+  // A talent whose prerequisite isn't full can't hold points.
+  data.trees.forEach((tree, ti) => {
+    let changed = true;
+    while (changed) {
+      changed = false;
+      tree.talents.forEach((t, i) => {
+        if (!t.req || !points[ti][i]) return;
+        const pi = tree.talents.findIndex((x) => x.name === t.req);
+        if (points[ti][pi] < tree.talents[pi].max) { points[ti][i] = 0; changed = true; }
+      });
+    }
+  });
   state = keep;
   return points;
 }
@@ -62,16 +76,30 @@ function fromBuild(slug, build) {
 
 const below = (ti, needs) => classData(state.classSlug).trees[ti].talents.reduce((sum, t, i) => sum + (t.needs < needs ? state.points[ti][i] : 0), 0);
 
-function canAdd(ti, i) {
-  const t = classData(state.classSlug).trees[ti].talents[i];
-  return total() < MAX_POINTS && state.points[ti][i] < t.max && below(ti, t.needs) >= t.needs;
+function parentIndex(ti, i) {
+  const tree = classData(state.classSlug).trees[ti];
+  return tree.talents[i].req ? tree.talents.findIndex((t) => t.name === tree.talents[i].req) : -1;
 }
 
-/** A point can come out only if every deeper tier you've spent in would still be open. */
+/** Why a point can't go here right now, or "" when it can. */
+function blocked(ti, i) {
+  const tree = classData(state.classSlug).trees[ti];
+  const t = tree.talents[i];
+  if (state.points[ti][i] >= t.max) return "Full";
+  if (total() >= MAX_POINTS) return "No points left";
+  if (below(ti, t.needs) < t.needs) return `Opens after ${t.needs} points in ${tree.name}`;
+  const pi = parentIndex(ti, i);
+  if (pi >= 0 && state.points[ti][pi] < tree.talents[pi].max) return `Needs ${tree.talents[pi].name} ${tree.talents[pi].max}/${tree.talents[pi].max} first`;
+  return "";
+}
+const canAdd = (ti, i) => blocked(ti, i) === "";
+
+/** A point can come out only if every deeper tier you've spent in stays open and nothing depends on this talent. */
 function canRemove(ti, i) {
   if (state.points[ti][i] < 1) return false;
   const tree = classData(state.classSlug).trees[ti];
   const mine = tree.talents[i].needs;
+  if (tree.talents.some((t, j) => t.req === tree.talents[i].name && state.points[ti][j] > 0)) return false;
   return tree.talents.every((t, j) => !(state.points[ti][j] > 0 && t.needs > mine) || below(ti, t.needs) - 1 >= t.needs);
 }
 
@@ -95,9 +123,13 @@ export function initPlannerView() {
     const add = e.target.closest("[data-add]");
     if (add) {
       const [ti, i] = add.dataset.add.split(".").map(Number);
-      if (canAdd(ti, i)) { state.points[ti][i]++; commit(`[data-add="${ti}.${i}"]`); }
+      if (removeMode || e.shiftKey) {
+        if (canRemove(ti, i)) { state.points[ti][i]--; commit(`[data-add="${ti}.${i}"]`); }
+        else if (state.points[ti][i]) toast("Other talents depend on that one. Remove those first.", "error");
+      } else if (canAdd(ti, i)) { state.points[ti][i]++; commit(`[data-add="${ti}.${i}"]`); }
       return;
     }
+    if (e.target.closest("[data-action='plan-mode']")) { removeMode = !removeMode; render(); $("[data-action='plan-mode']", els.body)?.focus(); return; }
     const sub = e.target.closest("[data-sub]");
     if (sub) {
       const [ti, i] = sub.dataset.sub.split(".").map(Number);
@@ -194,47 +226,18 @@ function render() {
         return b ? raw(html`<button type="button" class="btn btn-quiet btn-sm" data-preset="${slug}">${t.name} ${b.split.join("/")}</button>`) : "";
       })}
     </div>
-    <p class="plan-help">Click a talent to add a point. Right-click it, or use the minus button, to take one back.</p>
-    <div class="ftrees plan-trees">
-      ${data.trees.map((tree, ti) => raw(treeHtml(tree, ti)))}
+    <div class="plan-presets">
+      <button type="button" class="btn btn-quiet btn-sm calc-mode${removeMode ? " is-active" : ""}" data-action="plan-mode" aria-pressed="${String(removeMode)}">${removeMode ? "Removing points: tap to stop" : "Remove points by tapping"}</button>
+      <span class="muted">Click a talent to add a point. Right-click or Shift-click takes one back.</span>
     </div>
-    <p class="fine">Talents and tiers come from timesaver.gg's WoW Forever calculator. Rows show each tier; exact positions and prerequisite arrows between talents aren't included, so the game may ask for one talent before another in a few places.</p>
+    <div class="ftrees fgrids plan-trees${removeMode ? " is-removing" : ""}">
+      ${data.trees.map((tree, ti) => raw(foreverTreeGridHtml(tree, state.points[ti], {
+        interactive: true,
+        treeIndex: ti,
+        main: treeTotal(ti) > 0 && treeTotal(ti) === Math.max(...state.points.map((_, k) => treeTotal(k))),
+        state: (t, i) => { const why = blocked(ti, i); return { open: why === "", why }; }
+      })))}
+    </div>
+    <p class="fine">Tree layout and talent summaries come from Talents Forever (CC BY 4.0), checked against timesaver.gg's calculator. Summaries describe the first rank and may trail the live game after a hotfix.</p>
   `;
-}
-
-function treeHtml(tree, ti) {
-  const spent = treeTotal(ti);
-  const tiers = [...new Set(tree.talents.map((t) => t.needs))].sort((a, b) => a - b);
-  return html`
-    <section class="ftree${spent ? " is-main" : ""}">
-      <header class="ftree-head">
-        <h5>${tree.name}</h5>
-        <span class="ftree-spent">${spent} ${spent === 1 ? "point" : "points"}</span>
-      </header>
-      <ol class="ftree-tiers">
-        ${tiers.map((needs) => {
-          const open = below(ti, needs) >= needs;
-          return raw(html`
-            <li class="ftree-tier${open ? "" : " is-locked"}">
-              <span class="ftree-tier-label">${needs === 0 ? "Start" : `${needs} pts`}</span>
-              <ul class="ftree-row">
-                ${tree.talents.map((t, i) => {
-                  if (t.needs !== needs) return "";
-                  const have = state.points[ti][i];
-                  const addable = canAdd(ti, i);
-                  return raw(html`
-                    <li class="ptalent">
-                      <button type="button" class="ftalent${have ? " is-on" : ""}${have && have < t.max ? " is-part" : ""}" data-add="${ti}.${i}"
-                        aria-label="${t.name}, ${have} of ${t.max} points. ${addable ? "Add a point" : have >= t.max ? "Full" : open ? "No points left" : `Opens after ${needs} points in ${tree.name}`}" ${addable || have ? "" : "disabled"} ${addable ? "" : 'aria-disabled="true"'}>
-                        <span class="ftalent-name">${t.name}</span>
-                        <span class="ftalent-rank" aria-hidden="true">${have}/${t.max}</span>
-                      </button>
-                      ${have ? raw(html`<button type="button" class="ptalent-sub" data-sub="${ti}.${i}" aria-label="Take a point out of ${t.name}" ${canRemove(ti, i) ? "" : "disabled"}>−</button>`) : ""}
-                    </li>`);
-                })}
-              </ul>
-            </li>`);
-        })}
-      </ol>
-    </section>`;
 }
