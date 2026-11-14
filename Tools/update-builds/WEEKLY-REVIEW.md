@@ -53,3 +53,8 @@ If a source can't be read, keep its previous block and date rather than guessing
 The Forever tree layouts (`Tools/forever/layout.txt`) come from Talents Forever's export
 (`https://talentsforever.com/export/<class>.json`, CC BY 4.0). `build-forever-talents.mjs` cross-checks them against
 `trees.txt` and regenerates every build's leveling order.
+
+Forever leveling orders (`Tools/forever/leveling.txt`) are the most common orders among builds planned on Talents
+Forever (`https://talentsforever.com/<class>/leveling`). When that page's "counted" date changes, rewrite the
+class's blocks and rerun `build-forever-talents.mjs`; it replays every order against the tree rules and cuts any
+order at the first step the game wouldn't allow (it prints a warning when it does).

@@ -23,6 +23,7 @@ const PAGES = [
   { title: "Lingo and commands", sub: "Glossary and slash commands", href: "#lingo", icon: "book", words: "glossary lingo slang abbreviations terms meaning bis aoe cc commands slash reload readycheck" },
   { title: "Resources", sub: "Best community sites", href: "#links", icon: "links", words: "links sites raider.io raiderio warcraft logs raidbots sim wowhead addons" },
   { title: "WoW Forever classes", sub: "Talent trees and races", href: "#forever", icon: "forever", words: "classic forever talents" },
+  { title: "WoW Forever leveling talents", sub: "What to take at each level, for every class and tree", href: "#forever", icon: "tree", words: "classic forever leveling talents order level by level which talents first best leveling spec build" },
   { title: "WoW Forever talent planner", sub: "Spend 51 points, share the link", href: "#planner", icon: "tree", words: "classic forever talent calculator planner tree points build" },
   { title: "WoW Forever dungeons and raids", sub: "Dungeons by level, raid schedule", href: "#atlas", icon: "atlas", words: "classic forever dungeon raid level atlas" },
   { title: "WoW Forever to-do list", sub: "A session checklist you can edit", href: "#todo", icon: "weekly", words: "classic forever todo to-do checklist tasks chores" },
