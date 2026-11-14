@@ -10,6 +10,7 @@ import { icon } from "../../lib/icons.js";
 import { fetchTokenPrice, formatGold } from "../../lib/token.js";
 import { listCharacters, weeklyPeriod, lockoutPeriod } from "../tracker/store.js";
 import { GENERAL_ID, weeklySummary } from "../weekly/store.js";
+import { ilvlOf, mplusRow } from "../../data/gear.js";
 
 let token = null;
 let tokenAsked = false;
@@ -37,7 +38,10 @@ function retailTiles() {
     { href: "#mplus", icon: "mplus", name: "Mythic+", text: "Affixes by key level and the timer to beat in every dungeon", live: `Your +${getMythicContext().keyLevel}: ${activeAffixNames().join(", ")}` },
     { href: "#party", icon: "party", name: "Group check", text: "See what your party covers before the key goes in" },
     { href: "#armory", icon: "armory", name: "Armory", text: "Inspect any character and copy their talents", live: chars.length ? `${chars.length} saved` : "" },
+    { href: "#calc", icon: "tree", name: "Talent calculator", text: "Plan a build on the real trees and copy the code" },
+    { href: "#gear", icon: "gem", name: "Gear and upgrades", text: "Item levels by source, upgrade tracks and crest costs", live: `A +${getMythicContext().keyLevel} drops ${ilvlOf(mplusRow(getMythicContext().keyLevel).loot)}, vault ${ilvlOf(mplusRow(getMythicContext().keyLevel).vault)}` },
     { href: "#macros", icon: "macros", name: "Macros", text: "Mouseover, focus and cursor macros, ready to paste" },
+    { href: "#lingo", icon: "book", name: "Lingo and commands", text: "What BiS, kick and CR mean, plus handy slash commands" },
     { href: "#links", icon: "links", name: "Resources", text: "Sims, logs, routes and guides, sorted by need" },
     // Only shown once a price has arrived, so there's never a tile promising a number it can't show.
     ...(token ? [{ href: "#weekly", icon: "coins", name: "WoW Token", text: "The gold price of a token right now", live: `${formatGold(token.gold)} in ${token.region.toUpperCase()}` }] : [])
@@ -48,10 +52,12 @@ function foreverTiles() {
   const opens = new Date(FOREVER_RAIDS_OPEN);
   const raidLine = Date.now() < opens.getTime() ? `Raids open in ${formatCountdown(opens)}` : "Raids are open";
   return [
+    { href: "#planner", icon: "tree", name: "Talent planner", text: "Spend your 51 points and share the build as a link" },
     { href: "#atlas", icon: "atlas", name: "Dungeons and raids", text: "Every dungeon by level, with a done list", live: raidLine },
     { href: "#levels", icon: "levels", name: "Level guide", text: "Talent points and unlocks for your level" },
     { href: "#todo", icon: "weekly", name: "To-do list", text: "The chores that are easy to forget between quests" },
-    { href: "#macros", icon: "macros", name: "Macros", text: "Mouseover, focus and cursor macros, ready to paste" }
+    { href: "#macros", icon: "macros", name: "Macros", text: "Mouseover, focus and cursor macros, ready to paste" },
+    { href: "#lingo", icon: "book", name: "Lingo and commands", text: "What BiS, kick and CR mean, plus handy slash commands" }
   ];
 }
 

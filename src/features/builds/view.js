@@ -469,7 +469,10 @@ async function renderTree() {
   const total = cols("class") + cols("hero", read.activeHero) + cols("spec");
   els.tree.innerHTML = head + html`
     <div style="--total-cols:${total}">${raw(treeHtml(tree, read))}</div>
-    <p class="tree-foot">Tree data for game build ${tree.build}. Talent details open on Wowhead.</p>`;
+    <div class="tree-foot tree-foot-row">
+      <a class="btn btn-quiet btn-sm" href="#calc/${sel.cls.slug}/${sel.spec.slug}/${encodeURIComponent(build.exportString)}">Change this build in the calculator</a>
+      <p>Tree data for game build ${tree.build}. Talent details open on Wowhead.</p>
+    </div>`;
   // --total-cols has to sit on the panels element itself for the cell-size maths.
   els.tree.querySelector(".tree-panels").style.setProperty("--total-cols", total);
   activateTree(els.tree);

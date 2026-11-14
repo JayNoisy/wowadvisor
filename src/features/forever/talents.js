@@ -34,6 +34,11 @@ function treeColumn(tree, points, isMain) {
     </section>`;
 }
 
+/** The planner's link format: one digit per talent, trees joined with "-". */
+function planCode(data, build) {
+  return data.trees.map((t) => t.talents.map((x) => build.points[t.name]?.[x.name] || 0).join("").replace(/0+$/, "")).join("-");
+}
+
 /** The talent section for one Forever tree, or "" when there's no data for it. */
 export function foreverTalentsHtml(cls, tree) {
   const data = FOREVER_TALENTS[cls.slug];
@@ -48,7 +53,10 @@ export function foreverTalentsHtml(cls, tree) {
           <p class="pick-badge">Recommended build</p>
           <h4 id="buildHeading">${build.split.join(" / ")} <span class="tree-build-for">${build.purpose}</span></h4>
         </div>
-        <p class="tree-build-total"><strong>${build.total}</strong> of 51 points</p>
+        <div class="tree-build-side">
+          <p class="tree-build-total"><strong>${build.total}</strong> of 51 points</p>
+          <a class="btn btn-quiet btn-sm" href="#planner/${cls.slug}/${planCode(data, build)}">Change it in the planner</a>
+        </div>
       </header>
       <p class="tree-build-note">
         Lit talents are the ones to take, with how many points each gets. Tiers open as you spend points in that tree, so fill each row before moving down.

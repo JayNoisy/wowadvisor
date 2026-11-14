@@ -16,9 +16,13 @@ const PAGES = [
   { title: "Mythic+", sub: "Affixes by key level, dungeon timers, rating rewards", href: "#mplus", icon: "mplus", words: "mythic plus m+ keystone keys affix affixes fortified tyrannical bargain guile timer timers season dungeons rating score portal" },
   { title: "Group check", sub: "What your party covers", href: "#party", icon: "party", words: "party comp composition bloodlust lust brez dispel interrupt buffs" },
   { title: "Armory", sub: "Look up a character", href: "#armory", icon: "armory", words: "character gear lookup import item level" },
+  { title: "Talent calculator", sub: "Plan a Retail build, import and export codes", href: "#calc", icon: "tree", words: "talent calculator planner tree loadout import export code hero talents" },
+  { title: "Gear and upgrades", sub: "Item levels, upgrade tracks, crest costs", href: "#gear", icon: "gem", words: "gear item level ilvl upgrade track crest mistcrest champion hero myth veteran adventurer vault loot delve raid crafted spark" },
   { title: "Macros", sub: "Macro builder", href: "#macros", icon: "macros", words: "macro mouseover focus cursor interrupt keybind" },
+  { title: "Lingo and commands", sub: "Glossary and slash commands", href: "#lingo", icon: "book", words: "glossary lingo slang abbreviations terms meaning bis aoe cc commands slash reload readycheck" },
   { title: "Resources", sub: "Best community sites", href: "#links", icon: "links", words: "links sites raider.io raiderio warcraft logs raidbots sim wowhead addons" },
   { title: "WoW Forever classes", sub: "Talent trees and races", href: "#forever", icon: "forever", words: "classic forever talents" },
+  { title: "WoW Forever talent planner", sub: "Spend 51 points, share the link", href: "#planner", icon: "tree", words: "classic forever talent calculator planner tree points build" },
   { title: "WoW Forever dungeons and raids", sub: "Dungeons by level, raid schedule", href: "#atlas", icon: "atlas", words: "classic forever dungeon raid level atlas" },
   { title: "WoW Forever to-do list", sub: "A session checklist you can edit", href: "#todo", icon: "weekly", words: "classic forever todo to-do checklist tasks chores" },
   { title: "WoW Forever level guide", sub: "Talent points and unlocks by level", href: "#levels", icon: "levels", words: "classic forever leveling talent points dual spec" }
@@ -69,7 +73,7 @@ function search(query) {
   const pool = [...characterItems(), ...index];
   if (!words.length) {
     // Nothing typed yet: show the pages for the edition you're in.
-    return pool.filter((i) => i.kind === "page" && /forever/i.test(i.title) === forever || (i.kind === "page" && i.href === "#macros")).slice(0, 8);
+    return pool.filter((i) => i.kind === "page" && /forever/i.test(i.title) === forever || (i.kind === "page" && ["#macros", "#lingo"].includes(i.href))).slice(0, 8);
   }
   return pool
     .map((item) => {

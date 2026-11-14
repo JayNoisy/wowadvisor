@@ -16,6 +16,7 @@ import "./styles/forever.css";
 import "./styles/tools.css";
 import "./styles/mplus.css";
 import "./styles/talents.css";
+import "./styles/reference.css";
 
 import { $, $$, prefersReducedMotion } from "./lib/dom.js";
 import { on } from "./lib/events.js";
@@ -38,6 +39,10 @@ import { initPartyView, showParty } from "./features/party/view.js";
 import { initMplusView, showMplus } from "./features/mplus/view.js";
 import { initMacrosView, showMacros } from "./features/macros/view.js";
 import { initLinksView, showLinks } from "./features/links/view.js";
+import { initGearView, showGear } from "./features/gear/view.js";
+import { initCalcView, showCalc } from "./features/calc/view.js";
+import { initLingoView, showLingo } from "./features/lingo/view.js";
+import { initPlannerView, showPlanner } from "./features/planner/view.js";
 import { initSearch } from "./features/search/palette.js";
 import { initToolkit, renderToolkit } from "./features/home/toolkit.js";
 import { initTheme, getTheme, toggleTheme } from "./lib/theme.js";
@@ -51,7 +56,11 @@ const VIEW_TITLES = {
   mplus: "Mythic+ season guide",
   party: "Group check",
   armory: "Armory",
+  gear: "Gear and upgrades",
+  calc: "Talent calculator",
   links: "Resources",
+  lingo: "Lingo and commands",
+  planner: "WoW Forever talent planner",
   macros: "Macros",
   forever: "WoW Forever classes",
   atlas: "WoW Forever dungeons and raids",
@@ -165,7 +174,7 @@ on("route", (route) => {
   setEdition(routeEdition);
   showView(route.view);
   // Class color only applies on class pages; elsewhere the neutral chrome takes over.
-  if (!["builds", "forever"].includes(route.view)) setClassColor(document.documentElement, null);
+  if (!["builds", "forever", "calc", "planner"].includes(route.view)) setClassColor(document.documentElement, null);
   document.title = `${VIEW_TITLES[route.view]} | WoW Advisor`;
   if (route.view === "builds") { showBuildsRoute(route); renderToolkit(); }
   if (route.view === "weekly") showWeekly();
@@ -173,6 +182,10 @@ on("route", (route) => {
   if (route.view === "mplus") showMplus();
   if (route.view === "party") showParty();
   if (route.view === "links") showLinks();
+  if (route.view === "gear") showGear();
+  if (route.view === "calc") showCalc(route);
+  if (route.view === "lingo") showLingo();
+  if (route.view === "planner") showPlanner(route);
   if (route.view === "macros") showMacros();
   if (route.view === "forever") { showForeverRoute(route); renderToolkit(); }
   if (route.view === "atlas") showAtlas();
@@ -216,6 +229,10 @@ initPartyView();
 initMplusView();
 initMacrosView();
 initLinksView();
+initGearView();
+initCalcView();
+initLingoView();
+initPlannerView();
 initSearch();
 initToolkit();
 startRouter();
